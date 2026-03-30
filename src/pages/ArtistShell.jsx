@@ -4,11 +4,23 @@ import "leaflet/dist/leaflet.css";
 
 /* ━━━ MOCK DATA ━━━ */
 const DEMO_ARTIST = {
-  name: "Amara Osei", email: "amara@lanced.io", plan: "Core",
+  firstName: "Amara", lastName: "Osei", name: "Amara Osei", handle: "amaraosei", email: "amara@lanced.io", plan: "Core",
   photo: "/demo/artists/nisha-huizing.jpg",
-  dob: "1999-08-14", gender: "Female", height: "5'8\"", nationality: "British-Ghanaian",
+  dob: "1999-08-14", gender: "Female", pronouns: "She/Her/Hers", height: "5'8\"",
+  nationality: ["British-Ghanaian"], ethnicity: ["Black or African American"], heightUnit: "ft",
+  country: "United Kingdom", city: "London",
+  languages: ["English", "Twi"],
   bio: "Contemporary and Afro-fusion dancer trained at the Royal Ballet School. Three seasons with Akram Khan Company. Passionate about bridging traditional West African movement with contemporary European choreography.",
+  profileBio: "Contemporary & Afro-fusion dancer. Three seasons with Akram Khan Company.",
+  biography: "Amara was born into a family of musicians and dancers in South London. From the age of five she trained in West African dance forms passed down through her Ghanaian heritage, and at nine she earned a scholarship to the Royal Ballet School's junior programme.\n\nAfter graduating with distinction in BA Dance Performance, Amara joined the Royal Ballet as Corps de Ballet before transitioning to contemporary work with Akram Khan Company, where she spent three seasons as Lead Dancer touring internationally in Jungle Book Reimagined.\n\nHer unique movement vocabulary blends classical European technique with traditional West African dance, creating a distinctive style that has been praised by critics as \"a bridge between two worlds.\" She has performed across 14 countries and continues to push the boundaries of contemporary dance.",
   links: { resume: "#", instagram: "@amaraosei", website: "amaraosei.com" },
+  eyeColor: "Brown", hairColor: "Black", weight: "58", weightUnit: "kg",
+  shoeSize: "39", shoeSizeUnit: "EU", clothingSize: "S",
+  chest: "", waist: "", hips: "", measurementUnit: "cm",
+  unionStatus: ["Equity"],
+  agency: "", agencyContact: "",
+  specialSkills: ["Acrobatics", "Stage Combat", "Aerial Silks"],
+  socials: { instagram: "amaraosei", tiktok: "", youtube: "", vimeo: "", linkedin: "" },
   styles: ["Contemporary", "Afro-fusion", "Floor Work"],
   location: "London, UK"
 };
@@ -342,17 +354,17 @@ const CSS = `
 /* ━━━ Main ━━━ */
 .main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .25s cubic-bezier(.4,0,.2,1)}
 .topbar{display:flex;align-items:center;justify-content:flex-end;padding:10px 36px;gap:12px;flex-shrink:0;height:52px}
-.topbar-studio{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:36px;border-radius:40px;background:linear-gradient(135deg,rgba(96,77,255,.08),rgba(96,77,255,.15));color:var(--ac);border:1px solid rgba(96,77,255,.12);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.topbar-studio{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:linear-gradient(135deg,rgba(96,77,255,.08),rgba(96,77,255,.15));color:var(--ac);border:none;box-shadow:inset 0 0 0 1px rgba(96,77,255,.12);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
 .topbar-studio:hover{background:linear-gradient(135deg,rgba(96,77,255,.15),rgba(96,77,255,.25));transform:translateY(-1px)}
-.notif-bell{position:relative;width:36px;height:36px;border-radius:50%;background:var(--sf);box-shadow:0 1px 4px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.03);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;transition:all .15s;font-size:16px;color:var(--g5)}
+.notif-bell{position:relative;width:34px;height:34px;border-radius:50%;background:var(--sf);box-shadow:0 1px 4px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.03);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;transition:all .15s;font-size:16px;color:var(--g5)}
 .notif-bell:hover{background:var(--g1);color:var(--tx)}
 .notif-bell .notif-dot{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--red);border:2px solid var(--sf)}
 .notif-bell .notif-count{position:absolute;top:-2px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--sf)}
 .dark .notif-bell{background:var(--g1);box-shadow:0 1px 4px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.04)}
 .dark .notif-bell .notif-dot,.dark .notif-bell .notif-count{border-color:var(--g1)}
-.topbar-avatar{display:flex;align-items:center;gap:8px;cursor:pointer;padding:0 12px 0 4px;height:36px;border-radius:40px;border:1px solid var(--g2);transition:all .15s;background:var(--sf)}
-.topbar-avatar:hover{border-color:var(--ac)}
-.topbar-avatar img{width:28px;height:28px;border-radius:50%;object-fit:cover}
+.topbar-avatar{display:flex;align-items:center;gap:8px;cursor:pointer;padding:0 12px 0 3px;height:34px;border-radius:40px;border:none;box-shadow:inset 0 0 0 1px var(--g2);transition:all .15s;background:var(--sf)}
+.topbar-avatar:hover{box-shadow:inset 0 0 0 1px var(--ac)}
+.topbar-avatar img{width:26px;height:26px;border-radius:50%;object-fit:cover}
 .topbar-avatar .ta-name{font-size:12px;font-weight:600;color:var(--tx)}
 .topbar-avatar .ta-plan{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);background:rgba(96,77,255,.08);padding:1px 6px;border-radius:40px}
 .content{padding:16px 36px 32px;max-width:1200px;margin:0 auto;width:100%}
@@ -456,7 +468,20 @@ const CSS = `
 .profile-info .pi-links a{font-size:11px;font-weight:600;color:var(--ac);text-decoration:none;padding:4px 12px;border:1px solid rgba(96,77,255,.2);border-radius:40px;transition:all .15s}
 .profile-info .pi-links a:hover{background:rgba(96,77,255,.06)}
 .info-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
-.info-card h4{font-size:13px;font-weight:600;margin-bottom:12px;color:var(--tx)}
+.info-card h4{font-size:20px;font-weight:700;margin-bottom:16px;color:var(--tx)}
+.pf-field{display:flex;flex-direction:column;gap:4px}
+.pf-label{font-size:12px;font-weight:600;color:var(--tx)}
+.pf-input{padding:10px 14px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--tx);background:var(--bg);outline:none;transition:border-color .15s;width:100%;box-sizing:border-box}
+.pf-input:focus{border-color:var(--ac)}
+select.pf-input{appearance:auto;cursor:pointer}
+textarea.pf-input{line-height:1.6}
+.pf-multiselect{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border:1px solid var(--g2);border-radius:10px;background:var(--bg);min-height:42px;align-items:center;box-sizing:border-box;transition:border-color .15s}
+.pf-multiselect:focus-within{border-color:var(--ac)}
+.pf-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:6px;border:1px solid rgba(96,77,255,.2);color:var(--ac);font-size:12px;font-weight:500;white-space:nowrap}
+.pf-chip-x{cursor:pointer;font-size:13px;opacity:.7;transition:opacity .15s}
+.pf-chip-x:hover{opacity:1}
+.pf-add-select{border:none;outline:none;background:transparent;font-size:12px;color:var(--g4);font-family:var(--sans);cursor:pointer;padding:2px 0;min-width:60px}
+.pf-add-input{border:none;outline:none;background:transparent;font-size:12px;color:var(--tx);font-family:var(--sans);flex:1;min-width:80px;padding:2px 0}
 .info-row{display:flex;align-items:center;padding:6px 0;font-size:13px}
 .info-row .ir-label{width:120px;color:var(--g4);flex-shrink:0}
 .info-row .ir-value{color:var(--tx);font-weight:500}
@@ -749,6 +774,56 @@ const CSS = `
 .share-modal .sm-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
 .share-modal .sm-actions button{padding:8px 18px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)}
 
+/* Comp Card Preview */
+.cc-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:flex-start;justify-content:center;animation:fadeIn .2s;overflow:auto;padding:80px 20px 40px}
+.cc-toolbar{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(0,0,0,.8);backdrop-filter:blur(12px)}
+.cc-toolbar span{color:#fff;font-size:14px;font-weight:600}
+.cc-toolbar .cc-actions{display:flex;gap:8px;align-items:center}
+.cc-toolbar .cc-actions button{padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;gap:5px}
+.cc-zoom{display:flex;align-items:center;gap:6px;margin-right:12px}
+.cc-zoom button{width:28px;height:28px;border-radius:6px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cc-zoom span{color:#fff;font-size:11px;font-weight:600;min-width:36px;text-align:center}
+.cc-page{width:794px;height:1123px;background:#fff;border-radius:4px;box-shadow:0 20px 80px rgba(0,0,0,.3);padding:36px 40px;box-sizing:border-box;color:#1a1a2e;font-family:var(--sans);position:relative;transform-origin:top center;transition:transform .2s ease;overflow:hidden;display:flex;flex-direction:column}
+.cc-page *{color:#1a1a2e}
+.cc-header{display:flex;gap:24px;margin-bottom:20px;align-items:flex-start}
+.cc-photo{width:170px;height:220px;border-radius:12px;object-fit:cover;flex-shrink:0;border:2px solid #ddd}
+.cc-info{flex:1;display:flex;flex-direction:column;gap:4px}
+.cc-info h1{font-size:26px;font-weight:800;margin:0;letter-spacing:-.02em}
+.cc-info h1 span{color:#604DFF}
+.cc-info .cc-discipline{font-size:14px;color:#666;font-weight:500;margin-bottom:8px}
+.cc-info .cc-bio{font-size:12px;color:#444;line-height:1.6;margin-top:8px}
+.cc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+.cc-stat{padding:8px;border-radius:8px;background:#f8f8f8;text-align:center}
+.cc-stat .cc-stat-val{font-size:14px;font-weight:700;color:#1a1a2e}
+.cc-stat .cc-stat-label{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#888;margin-top:2px}
+.cc-section{margin-bottom:14px}
+.cc-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#604DFF;margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid #eee}
+.cc-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.cc-grid-item{display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #f5f5f5;font-size:11px}
+.cc-grid-item .cc-gi-label{color:#888;font-weight:500}
+.cc-grid-item .cc-gi-value{font-weight:600;text-align:right}
+.cc-chips{display:flex;flex-wrap:wrap;gap:5px}
+.cc-chips span{padding:3px 10px;border-radius:20px;background:#f5f5f5;font-size:10px;font-weight:500;color:#1a1a2e}
+.cc-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:6px}
+.cc-photos img{width:100%;height:100px;object-fit:cover;border-radius:6px}
+.cc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;border-top:1px solid #eee}
+.cc-footer .cc-qr{display:flex;align-items:center;gap:12px}
+.cc-footer .cc-qr img{width:64px;height:64px;border-radius:4px}
+.cc-footer .cc-qr-text{font-size:10px;color:#888;line-height:1.5}
+.cc-footer .cc-qr-text strong{color:#1a1a2e;font-size:11px;display:block}
+.cc-footer .cc-logo{height:20px;opacity:.6}
+.cc-contact{display:flex;gap:20px;font-size:11px;color:#666;margin-top:8px}
+.cc-contact span{display:flex;align-items:center;gap:4px}
+
+@media print{
+  body>*{display:none!important}
+  .cc-overlay{display:block!important;position:static!important;background:none!important;padding:0!important}
+  .cc-overlay *{display:revert}
+  .cc-toolbar{display:none!important}
+  .cc-page{box-shadow:none!important;margin:0!important;border-radius:0!important;width:210mm!important;height:297mm!important;transform:none!important;padding:12mm!important;overflow:hidden!important}
+  @page{size:A4;margin:0}
+}
+
 /* Tracking View */
 .pft-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
 .pft-stat{padding:16px;border-radius:14px;background:var(--bg);border:1px solid var(--g1);text-align:center}
@@ -776,12 +851,39 @@ const CSS = `
 .pfl-topbar-title{font-size:13px;font-weight:600;color:var(--tx)}
 .pfl-topbar-actions{display:flex;gap:8px;align-items:center}
 .pfl-topbar-actions button{padding:6px 14px;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s}
-.pfl-content{max-width:900px;margin:0 auto;padding:32px 24px 80px}
-.pfl-footer{text-align:center;padding:32px 0 24px;border-top:1px solid var(--g1);margin-top:40px;display:flex;align-items:center;justify-content:center;gap:8px}
-.pfl-footer img{width:18px;height:18px;border-radius:4px}
-.pfl-footer span{font-size:12px;color:var(--g4);font-weight:500}
-.pfl-footer a{color:var(--ac);font-weight:600;text-decoration:none;font-size:12px}
+.pfl-content{max-width:900px;margin:0 auto;padding:32px 24px 48px}
+.pfl-footer{position:fixed;bottom:0;left:0;right:0;z-index:8;padding:8px 0;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(var(--bg-rgb,255,255,255),.45);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(0,0,0,.03)}
+.pfl-footer img{height:36px;opacity:.85}
+.pfl-footer a{color:var(--g5);font-weight:600;text-decoration:none;font-size:11px;letter-spacing:.01em}
 .dark .pfl-topbar{background:rgba(18,18,22,.85)}
+.dark .pfl-footer{background:rgba(18,18,22,.4)}
+
+/* Lightbox */
+.pfl-lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;animation:fadeIn .2s;cursor:zoom-out}
+.pfl-lightbox img,.pfl-lightbox video{max-width:90vw;max-height:85vh;border-radius:8px;object-fit:contain;animation:pflSlideUp .3s ease}
+.pfl-lightbox .pfl-lb-close{position:absolute;top:16px;right:20px;background:rgba(255,255,255,.1);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.pfl-lightbox .pfl-lb-close:hover{background:rgba(255,255,255,.2)}
+.pfl-lightbox .pfl-lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:none;color:#fff;width:40px;height:40px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.pfl-lightbox .pfl-lb-nav:hover{background:rgba(255,255,255,.2)}
+.pfl-lightbox .pfl-lb-nav.prev{left:16px}
+.pfl-lightbox .pfl-lb-nav.next{right:16px}
+.pfl-lightbox .pfl-lb-caption{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.7);font-size:12px;font-weight:500}
+
+/* Hero with banner image */
+.pfp-hero.has-cover{background-size:cover;background-position:center}
+.pfp-hero.has-cover::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,10,30,.88),rgba(22,33,62,.75),rgba(15,52,96,.65));border-radius:inherit}
+.pfp-hero.has-cover>*{position:relative;z-index:1}
+.pfl-content .pfp-hero{min-height:320px}
+
+/* Live view scroll animations */
+@keyframes pflSlideUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.pfl-anim{opacity:0;transform:translateY(24px)}
+.pfl-anim.visible{animation:pflSlideUp .6s ease both}
+
+/* Live view overrides — all Lanced purple, no emerald */
+.pfl-content .pfe-resume-item .pfe-ri-icon.exp,.pfl-content .pfe-resume-item .pfe-ri-icon.edu{background:rgba(96,77,255,.1);color:var(--ac)}
+.pfl-content .pfe-ref-card .pfe-ref-type.reference{background:rgba(96,77,255,.1);color:var(--ac)}
+.pfl-content .pfp-tab.active{color:var(--ac);border-color:var(--ac)}
 
 /* ━━━ Network (stubs) ━━━ */
 .stub-section{text-align:center;padding:60px 20px;color:var(--g4);animation:fadeIn .3s ease}
@@ -1389,8 +1491,11 @@ export default function ArtistShell() {
   const [portfolioPreview, setPortfolioPreview] = useState(false);
   const [portfolioLive, setPortfolioLive] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showCompCard, setShowCompCard] = useState(false);
+  const [ccZoom, setCcZoom] = useState(75);
   const [shareEmail, setShareEmail] = useState("");
   const [shareSettings, setShareSettings] = useState({ trackLink: false, requireEmail: false, password: "" });
+  const [lightbox, setLightbox] = useState(null); // { items: [{src,caption,type}], index: 0 }
 
   /* Media */
   const [mediaItems] = useState(MOCK_MEDIA);
@@ -1448,6 +1553,30 @@ export default function ArtistShell() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showUserMenu]);
+
+  /* Scroll-triggered animations for live view */
+  useEffect(() => {
+    if (!portfolioLive) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visible"); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, root: document.querySelector(".pfl-overlay") });
+    const timer = setTimeout(() => {
+      document.querySelectorAll(".pfl-anim").forEach(el => observer.observe(el));
+    }, 50);
+    return () => { clearTimeout(timer); observer.disconnect(); };
+  }, [portfolioLive]);
+
+  /* Lightbox keyboard navigation */
+  useEffect(() => {
+    if (!lightbox) return;
+    const handleKey = (e) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox(prev => prev ? { ...prev, index: Math.min(prev.index + 1, prev.items.length - 1) } : null);
+      if (e.key === "ArrowLeft") setLightbox(prev => prev ? { ...prev, index: Math.max(prev.index - 1, 0) } : null);
+    };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [lightbox]);
 
   /* ━━━ AUTH SCREEN ━━━ */
   if (auth !== "app") {
@@ -2362,34 +2491,142 @@ export default function ArtistShell() {
             </div>
 
             {profileTab === "general" && (
-              <div>
-                <div className="profile-header">
-                  <img className="profile-photo" src={artist.photo} alt="" />
-                  <div className="profile-info">
-                    <h2>{artist.name}</h2>
-                    <div className="pi-location">📍 {artist.location}</div>
-                    <div className="pi-styles">
-                      {artist.styles.map(s => <span key={s}>{s}</span>)}
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                {/* Profile Details */}
+                <div className="info-card">
+                  <h4>Profile Details</h4>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                        <div className="pf-field">
+                          <label className="pf-label">First Name</label>
+                          <input className="pf-input" value={artist.firstName} onChange={e => setArtist(a => ({ ...a, firstName: e.target.value, name: `${e.target.value} ${a.lastName}` }))} />
+                        </div>
+                        <div className="pf-field">
+                          <label className="pf-label">Last Name</label>
+                          <input className="pf-input" value={artist.lastName} onChange={e => setArtist(a => ({ ...a, lastName: e.target.value, name: `${a.firstName} ${e.target.value}` }))} />
+                        </div>
+                      </div>
+                      <div className="pf-field">
+                        <label className="pf-label">Lanced Handle (username)</label>
+                        <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
+                          <span style={{ padding: "9px 10px 9px 14px", background: "var(--bg)", border: "1px solid var(--g2)", borderRight: "none", borderRadius: "10px 0 0 10px", fontSize: 13, color: "var(--g4)", fontWeight: 500 }}>@</span>
+                          <input className="pf-input" style={{ borderRadius: "0 10px 10px 0" }} value={artist.handle} onChange={e => setArtist(a => ({ ...a, handle: e.target.value }))} />
+                        </div>
+                      </div>
+                      <div className="pf-field">
+                        <label className="pf-label">Date of Birth</label>
+                        <input className="pf-input" type="date" value={artist.dob} onChange={e => setArtist(a => ({ ...a, dob: e.target.value }))} />
+                      </div>
+                      <div className="pf-field">
+                        <label className="pf-label">Country of Residence</label>
+                        <input className="pf-input" value={artist.country} onChange={e => setArtist(a => ({ ...a, country: e.target.value }))} />
+                      </div>
+                      <div className="pf-field">
+                        <label className="pf-label">City</label>
+                        <input className="pf-input" value={artist.city} onChange={e => setArtist(a => ({ ...a, city: e.target.value }))} />
+                      </div>
                     </div>
-                    <div className="pi-links">
-                      <a href="#">Resume</a>
-                      <a href="#">{artist.links.instagram}</a>
-                      <a href="#">{artist.links.website}</a>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 10 }}>
+                      <h4 style={{ fontWeight: 700, fontSize: 15, margin: 0 }}>Your Headshot</h4>
+                      <p style={{ fontSize: 12, color: "var(--g4)", margin: 0, textAlign: "center", lineHeight: 1.5 }}>Upload a clear headshot as profile image.<br/>This photo will appear on your profile and with all your applications.</p>
+                      <img src={artist.photo} alt="" style={{ width: 220, height: 280, objectFit: "cover", borderRadius: 16, border: "3px solid var(--ac)", boxShadow: "0 4px 20px rgba(96,77,255,.15)" }} />
+                      <button className="btn btn-s btn-sm" style={{ marginTop: 4 }}>Change Photo</button>
                     </div>
                   </div>
-                  <button className="btn btn-s btn-sm">Edit Profile</button>
                 </div>
-                <div className="bio-card">
-                  <h4>Bio / Cover Letter</h4>
-                  <p>{artist.bio}</p>
-                </div>
+
+                {/* General Info */}
                 <div className="info-card">
                   <h4>General Info</h4>
-                  <div className="info-row"><span className="ir-label">Date of Birth</span><span className="ir-value">{artist.dob}</span></div>
-                  <div className="info-row"><span className="ir-label">Age</span><span className="ir-value">{calcAge(artist.dob)}</span></div>
-                  <div className="info-row"><span className="ir-label">Gender</span><span className="ir-value">{artist.gender}</span></div>
-                  <div className="info-row"><span className="ir-label">Height</span><span className="ir-value">{artist.height}</span></div>
-                  <div className="info-row"><span className="ir-label">Nationality</span><span className="ir-value">{artist.nationality}</span></div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                    <div className="pf-field">
+                      <label className="pf-label">Pronouns</label>
+                      <input className="pf-input" value={artist.pronouns} onChange={e => setArtist(a => ({ ...a, pronouns: e.target.value }))} />
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Gender</label>
+                      <select className="pf-input" value={artist.gender} onChange={e => setArtist(a => ({ ...a, gender: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {["Female", "Male", "Non-Binary", "Trans Woman", "Trans Man", "Intersex", "Agender", "Genderqueer", "My gender is not listed", "Prefer not to say"].map(o => <option key={o}>{o}</option>)}
+                      </select>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Nationality</label>
+                      <div className="pf-multiselect">
+                        {artist.nationality.map(n => (
+                          <span key={n} className="pf-chip"><span className="pf-chip-x" onClick={() => setArtist(a => ({ ...a, nationality: a.nationality.filter(x => x !== n) }))}>×</span> {n}</span>
+                        ))}
+                        <input className="pf-add-input" placeholder="Add nationality..." onKeyDown={e => { if (e.key === "Enter" && e.target.value.trim() && !artist.nationality.includes(e.target.value.trim())) { const v = e.target.value.trim(); setArtist(a => ({ ...a, nationality: [...a.nationality, v] })); e.target.value = ""; e.preventDefault(); } }} />
+                      </div>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Ethnicity</label>
+                      <div className="pf-multiselect">
+                        {artist.ethnicity.map(et => (
+                          <span key={et} className="pf-chip"><span className="pf-chip-x" onClick={() => setArtist(a => ({ ...a, ethnicity: a.ethnicity.filter(x => x !== et) }))}>×</span> {et}</span>
+                        ))}
+                        <select className="pf-add-select" value="" onChange={e => { const v = e.target.value; if (v && !artist.ethnicity.includes(v)) setArtist(a => ({ ...a, ethnicity: [...a.ethnicity, v] })); }}>
+                          <option value="">Add...</option>
+                          {["American Indian or Alaska Native", "Hispanic, Latino or Spanish Origin", "White or European", "Asian", "Indian", "Middle Eastern or North African", "Black or African American", "Pacific Islander", "Identity not listed", "Wish not to identify"].filter(o => !artist.ethnicity.includes(o)).map(o => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Height</label>
+                      <div style={{ display: "flex", gap: 0 }}>
+                        <input className="pf-input" style={{ borderRadius: "10px 0 0 10px", flex: 1 }} value={artist.height} onChange={e => setArtist(a => ({ ...a, height: e.target.value }))} placeholder={artist.heightUnit === "cm" ? "e.g. 173" : "e.g. 5'8\""} />
+                        <div style={{ display: "flex", borderRadius: "0 10px 10px 0", overflow: "hidden", border: "1px solid var(--g2)", borderLeft: "none" }}>
+                          <button style={{ padding: "0 10px", border: "none", background: artist.heightUnit === "ft" ? "var(--ac)" : "var(--bg)", color: artist.heightUnit === "ft" ? "#fff" : "var(--g4)", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, heightUnit: "ft" }))}>ft/in</button>
+                          <button style={{ padding: "0 10px", border: "none", borderLeft: "1px solid var(--g2)", background: artist.heightUnit === "cm" ? "var(--ac)" : "var(--bg)", color: artist.heightUnit === "cm" ? "#fff" : "var(--g4)", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, heightUnit: "cm" }))}>cm</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Languages</label>
+                      <div className="pf-multiselect">
+                        {artist.languages.map(l => (
+                          <span key={l} className="pf-chip"><span className="pf-chip-x" onClick={() => setArtist(a => ({ ...a, languages: a.languages.filter(x => x !== l) }))}>×</span> {l}</span>
+                        ))}
+                        <input className="pf-add-input" placeholder="Add language..." onKeyDown={e => { if (e.key === "Enter" && e.target.value.trim() && !artist.languages.includes(e.target.value.trim())) { const v = e.target.value.trim(); setArtist(a => ({ ...a, languages: [...a.languages, v] })); e.target.value = ""; e.preventDefault(); } }} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Your Biography */}
+                <div className="info-card">
+                  <h4>Your Biography</h4>
+                  <div className="pf-field">
+                    <label className="pf-label">Profile Bio (max 150 characters)</label>
+                    <input className="pf-input" maxLength={150} value={artist.profileBio} onChange={e => setArtist(a => ({ ...a, profileBio: e.target.value }))} />
+                  </div>
+                  <div className="pf-field" style={{ marginTop: 14 }}>
+                    <label className="pf-label">Your Biography</label>
+                    <textarea className="pf-input" rows={8} style={{ resize: "vertical" }} value={artist.biography} onChange={e => setArtist(a => ({ ...a, biography: e.target.value }))} />
+                  </div>
+                </div>
+
+                {/* Socials */}
+                <div className="info-card">
+                  <h4>Socials</h4>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 14, maxWidth: 480 }}>
+                    {[
+                      { key: "instagram", label: "Instagram", prefix: "@" },
+                      { key: "tiktok", label: "Tik Tok", prefix: "@" },
+                      { key: "youtube", label: "Youtube", prefix: null, placeholder: "Youtube URL" },
+                      { key: "vimeo", label: "Vimeo", prefix: null, placeholder: "Vimeo URL" },
+                      { key: "linkedin", label: "Linkedin", prefix: null, placeholder: "LinkedIn URL" },
+                    ].map(s => (
+                      <div key={s.key} className="pf-field">
+                        <label className="pf-label">{s.label}</label>
+                        <div style={{ display: "flex", alignItems: "center", gap: 0 }}>
+                          {s.prefix && <span style={{ padding: "9px 10px 9px 14px", background: "var(--bg)", border: "1px solid var(--g2)", borderRight: "none", borderRadius: "10px 0 0 10px", fontSize: 13, color: "var(--g4)", fontWeight: 500 }}>@</span>}
+                          <input className="pf-input" style={s.prefix ? { borderRadius: "0 10px 10px 0" } : {}} placeholder={s.placeholder || `${s.label} Username`} value={artist.socials[s.key]} onChange={e => setArtist(a => ({ ...a, socials: { ...a.socials, [s.key]: e.target.value } }))} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
@@ -2455,10 +2692,141 @@ export default function ArtistShell() {
             )}
 
             {profileTab === "comp-card" && (
-              <div className="stub-section">
-                <div className="stub-icon">🃏</div>
-                <div className="stub-title">Comp Card</div>
-                <p>Your visual snapshot combining best media with key stats. Coming soon.</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                {/* Generate Button */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 20px", background: "linear-gradient(135deg, rgba(96,77,255,.06), rgba(96,77,255,.12))", borderRadius: 14, border: "1px solid rgba(96,77,255,.1)" }}>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)" }}>Your Comp Card</div>
+                    <div style={{ fontSize: 12, color: "var(--g4)", marginTop: 2 }}>Generate a printable one-pager with your headshot, stats, skills, and QR code.</div>
+                  </div>
+                  <button className="btn" style={{ background: "var(--ac)", color: "#fff", border: "none", padding: "10px 20px", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)", display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap" }} onClick={() => setShowCompCard(true)}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                    Generate Comp Card
+                  </button>
+                </div>
+
+                {/* Physical Appearance */}
+                <div className="info-card">
+                  <h4>Physical Appearance</h4>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }}>
+                    <div className="pf-field">
+                      <label className="pf-label">Eye Color</label>
+                      <select className="pf-input" value={artist.eyeColor} onChange={e => setArtist(a => ({ ...a, eyeColor: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {["Brown", "Blue", "Green", "Hazel", "Grey", "Amber", "Black", "Other"].map(o => <option key={o}>{o}</option>)}
+                      </select>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Hair Color</label>
+                      <select className="pf-input" value={artist.hairColor} onChange={e => setArtist(a => ({ ...a, hairColor: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {["Black", "Brown", "Blonde", "Red", "Auburn", "Grey", "White", "Bald", "Other"].map(o => <option key={o}>{o}</option>)}
+                      </select>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Clothing Size</label>
+                      <select className="pf-input" value={artist.clothingSize} onChange={e => setArtist(a => ({ ...a, clothingSize: e.target.value }))}>
+                        <option value="">Select...</option>
+                        {["XXS", "XS", "S", "M", "L", "XL", "XXL"].map(o => <option key={o}>{o}</option>)}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Body Measurements */}
+                <div className="info-card">
+                  <h4>Body Measurements</h4>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                    <div className="pf-field">
+                      <label className="pf-label">Weight</label>
+                      <div style={{ display: "flex", gap: 0 }}>
+                        <input className="pf-input" style={{ borderRadius: "10px 0 0 10px", flex: 1 }} value={artist.weight} onChange={e => setArtist(a => ({ ...a, weight: e.target.value }))} placeholder={artist.weightUnit === "kg" ? "e.g. 58" : "e.g. 128"} />
+                        <div style={{ display: "flex", borderRadius: "0 10px 10px 0", overflow: "hidden", border: "1px solid var(--g2)", borderLeft: "none" }}>
+                          <button style={{ padding: "0 10px", border: "none", background: artist.weightUnit === "kg" ? "var(--ac)" : "var(--bg)", color: artist.weightUnit === "kg" ? "#fff" : "var(--g4)", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, weightUnit: "kg" }))}>kg</button>
+                          <button style={{ padding: "0 10px", border: "none", borderLeft: "1px solid var(--g2)", background: artist.weightUnit === "lbs" ? "var(--ac)" : "var(--bg)", color: artist.weightUnit === "lbs" ? "#fff" : "var(--g4)", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, weightUnit: "lbs" }))}>lbs</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Shoe Size</label>
+                      <div style={{ display: "flex", gap: 0 }}>
+                        <input className="pf-input" style={{ borderRadius: "10px 0 0 10px", flex: 1 }} value={artist.shoeSize} onChange={e => setArtist(a => ({ ...a, shoeSize: e.target.value }))} placeholder={artist.shoeSizeUnit === "EU" ? "e.g. 39" : "e.g. 8"} />
+                        <div style={{ display: "flex", borderRadius: "0 10px 10px 0", overflow: "hidden", border: "1px solid var(--g2)", borderLeft: "none" }}>
+                          {["EU", "US", "UK"].map(u => (
+                            <button key={u} style={{ padding: "0 8px", border: "none", borderLeft: u !== "EU" ? "1px solid var(--g2)" : "none", background: artist.shoeSizeUnit === u ? "var(--ac)" : "var(--bg)", color: artist.shoeSizeUnit === u ? "#fff" : "var(--g4)", fontSize: 11, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, shoeSizeUnit: u }))}>{u}</button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ marginTop: 14 }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 10 }}>
+                      <label className="pf-label" style={{ margin: 0 }}>Measurements (Chest / Waist / Hips)</label>
+                      <div style={{ display: "flex", borderRadius: 8, overflow: "hidden", border: "1px solid var(--g2)" }}>
+                        <button style={{ padding: "4px 10px", border: "none", background: artist.measurementUnit === "cm" ? "var(--ac)" : "var(--bg)", color: artist.measurementUnit === "cm" ? "#fff" : "var(--g4)", fontSize: 10, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, measurementUnit: "cm" }))}>cm</button>
+                        <button style={{ padding: "4px 10px", border: "none", borderLeft: "1px solid var(--g2)", background: artist.measurementUnit === "in" ? "var(--ac)" : "var(--bg)", color: artist.measurementUnit === "in" ? "#fff" : "var(--g4)", fontSize: 10, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setArtist(a => ({ ...a, measurementUnit: "in" }))}>inches</button>
+                      </div>
+                    </div>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }}>
+                      <div className="pf-field">
+                        <label className="pf-label">Chest</label>
+                        <input className="pf-input" value={artist.chest} onChange={e => setArtist(a => ({ ...a, chest: e.target.value }))} placeholder={artist.measurementUnit === "cm" ? "e.g. 86" : "e.g. 34"} />
+                      </div>
+                      <div className="pf-field">
+                        <label className="pf-label">Waist</label>
+                        <input className="pf-input" value={artist.waist} onChange={e => setArtist(a => ({ ...a, waist: e.target.value }))} placeholder={artist.measurementUnit === "cm" ? "e.g. 66" : "e.g. 26"} />
+                      </div>
+                      <div className="pf-field">
+                        <label className="pf-label">Hips</label>
+                        <input className="pf-input" value={artist.hips} onChange={e => setArtist(a => ({ ...a, hips: e.target.value }))} placeholder={artist.measurementUnit === "cm" ? "e.g. 91" : "e.g. 36"} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Representation & Union */}
+                <div className="info-card">
+                  <h4>Representation & Union</h4>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                    <div className="pf-field">
+                      <label className="pf-label">Agency / Representation</label>
+                      <input className="pf-input" value={artist.agency} onChange={e => setArtist(a => ({ ...a, agency: e.target.value }))} placeholder="Agency name (if applicable)" />
+                    </div>
+                    <div className="pf-field">
+                      <label className="pf-label">Agent Contact</label>
+                      <input className="pf-input" value={artist.agencyContact} onChange={e => setArtist(a => ({ ...a, agencyContact: e.target.value }))} placeholder="Agent email or phone" />
+                    </div>
+                  </div>
+                  <div className="pf-field" style={{ marginTop: 14 }}>
+                    <label className="pf-label">Union Status</label>
+                    <div className="pf-multiselect">
+                      {artist.unionStatus.map(u => (
+                        <span key={u} className="pf-chip"><span className="pf-chip-x" onClick={() => setArtist(a => ({ ...a, unionStatus: a.unionStatus.filter(x => x !== u) }))}>×</span> {u}</span>
+                      ))}
+                      <select className="pf-add-select" value="" onChange={e => { const v = e.target.value; if (v && !artist.unionStatus.includes(v)) setArtist(a => ({ ...a, unionStatus: [...a.unionStatus, v] })); }}>
+                        <option value="">Add...</option>
+                        {["Equity", "SAG-AFTRA", "AGMA", "AEA", "MEAA", "BECTU", "Non-Union", "Other"].filter(o => !artist.unionStatus.includes(o)).map(o => <option key={o} value={o}>{o}</option>)}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Special Skills */}
+                <div className="info-card">
+                  <h4>Special Skills</h4>
+                  <p style={{ fontSize: 12, color: "var(--g4)", margin: "0 0 12px" }}>Skills beyond your primary discipline that casting directors should know about.</p>
+                  <div className="pf-multiselect">
+                    {artist.specialSkills.map(s => (
+                      <span key={s} className="pf-chip"><span className="pf-chip-x" onClick={() => setArtist(a => ({ ...a, specialSkills: a.specialSkills.filter(x => x !== s) }))}>×</span> {s}</span>
+                    ))}
+                    <input className="pf-add-input" placeholder="Add skill..." onKeyDown={e => { if (e.key === "Enter" && e.target.value.trim() && !artist.specialSkills.includes(e.target.value.trim())) { const v = e.target.value.trim(); setArtist(a => ({ ...a, specialSkills: [...a.specialSkills, v] })); e.target.value = ""; e.preventDefault(); } }} />
+                  </div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 10 }}>
+                    {["Singing", "Acting", "Acrobatics", "Aerial Silks", "Aerial Hoop", "Stage Combat", "Gymnastics", "Swimming", "Horse Riding", "Stilts", "Fire Performance", "Yoga", "Pilates", "Sign Language", "Voiceover", "Musical Instruments"].filter(s => !artist.specialSkills.includes(s)).map(s => (
+                      <button key={s} style={{ padding: "4px 10px", borderRadius: 6, border: "1px dashed var(--g2)", background: "none", fontSize: 11, color: "var(--g4)", cursor: "pointer", fontFamily: "var(--sans)", transition: "all .15s" }} onClick={() => setArtist(a => ({ ...a, specialSkills: [...a.specialSkills, s] }))} onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--ac)"; e.currentTarget.style.color = "var(--ac)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--g2)"; e.currentTarget.style.color = "var(--g4)"; }}>+ {s}</button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </div>
@@ -2725,7 +3093,7 @@ export default function ArtistShell() {
             /* ── Portfolio Public Preview ── */
             return (
               <div style={{ padding: "0 8px" }}>
-                <div className="pfp-hero">
+                <div className={`pfp-hero${pf.cover ? " has-cover" : ""}`} style={pf.cover ? { backgroundImage: `url(${pf.cover})` } : {}}>
                   <div className="pfp-hero-label">ARTIST PORTFOLIO</div>
                   <div className="pfp-hero-name">{artist.name.split(" ")[0]} <em>{artist.name.split(" ").slice(1).join(" ")}</em></div>
                   <div className="pfp-hero-sub">{pf.discipline} · {artist.location}</div>
@@ -3710,6 +4078,7 @@ export default function ArtistShell() {
                 <span style={{ background: currentPortfolio.status === "published" ? "#E6FFF0" : "var(--g1)", color: currentPortfolio.status === "published" ? "var(--green)" : "var(--g4)", padding: "3px 10px", borderRadius: 40, fontSize: 10, fontWeight: 700, textTransform: "uppercase" }}>{currentPortfolio.status}</span>
                 <button className="btn btn-s btn-sm" onClick={() => setShowShareModal(true)} style={{ display: "flex", alignItems: "center", gap: 4 }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>Share</button>
                 <button className="btn btn-s btn-sm" onClick={() => { setPortfolioPreview(true); setPortfolioTab("gallery"); }}>Preview</button>
+                <button className="btn btn-s btn-sm" style={{ display: "flex", alignItems: "center", gap: 4 }} onClick={() => { setPortfolioPreview(true); setPortfolioTab("gallery"); setTimeout(() => setPortfolioLive(true), 50); }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View Live</button>
                 {currentPortfolio.status === "draft" ? (
                   <button className="btn btn-sm" style={{ background: "#0D9488", color: "#fff", border: "none" }} onClick={() => { setPortfolios(prev => prev.map(p => p.id === viewPortfolio ? { ...p, status: "published" } : p)); showToast("Portfolio published!"); }}>Publish</button>
                 ) : (
@@ -4078,6 +4447,124 @@ export default function ArtistShell() {
         </div>
       )}
 
+      {/* ── Comp Card Preview ── */}
+      {showCompCard && (
+        <div className="cc-overlay" onClick={e => { if (e.target === e.currentTarget) setShowCompCard(false); }}>
+          <div className="cc-toolbar">
+            <span>Comp Card Preview</span>
+            <div className="cc-actions">
+              <div className="cc-zoom">
+                <button onClick={() => setCcZoom(z => Math.max(40, z - 10))}>−</button>
+                <span>{ccZoom}%</span>
+                <button onClick={() => setCcZoom(z => Math.min(120, z + 10))}>+</button>
+              </div>
+              <button style={{ background: "#fff", color: "#1a1a2e" }} onClick={() => window.print()}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                Print / Save PDF
+              </button>
+              <button style={{ background: "var(--ac)", color: "#fff" }} onClick={() => { showToast("Comp card link copied!"); }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+                Share
+              </button>
+              <button style={{ background: "rgba(255,255,255,.15)", color: "#fff" }} onClick={() => setShowCompCard(false)}>Close</button>
+            </div>
+          </div>
+          <div className="cc-page" style={{ transform: `scale(${ccZoom / 100})` }}>
+            {/* Header */}
+            <div className="cc-header">
+              <img className="cc-photo" src={artist.photo} alt="" />
+              <div className="cc-info">
+                <h1>{artist.firstName} <span>{artist.lastName}</span></h1>
+                <div className="cc-discipline">{artist.pronouns} · {artist.location}</div>
+                <div className="cc-stats">
+                  <div className="cc-stat"><div className="cc-stat-val">{artist.height}</div><div className="cc-stat-label">Height</div></div>
+                  <div className="cc-stat"><div className="cc-stat-val">{artist.weight}{artist.weightUnit}</div><div className="cc-stat-label">Weight</div></div>
+                  <div className="cc-stat"><div className="cc-stat-val">{artist.eyeColor}</div><div className="cc-stat-label">Eyes</div></div>
+                  <div className="cc-stat"><div className="cc-stat-val">{artist.hairColor}</div><div className="cc-stat-label">Hair</div></div>
+                </div>
+                <div className="cc-bio">{artist.profileBio}</div>
+              </div>
+            </div>
+
+            {/* Physical Details */}
+            <div className="cc-section">
+              <div className="cc-section-title">Physical Details</div>
+              <div className="cc-grid">
+                <div className="cc-grid-item"><span className="cc-gi-label">Gender</span><span className="cc-gi-value">{artist.gender}</span></div>
+                <div className="cc-grid-item"><span className="cc-gi-label">Age</span><span className="cc-gi-value">{calcAge(artist.dob)}</span></div>
+                <div className="cc-grid-item"><span className="cc-gi-label">Nationality</span><span className="cc-gi-value">{artist.nationality.join(", ")}</span></div>
+                <div className="cc-grid-item"><span className="cc-gi-label">Ethnicity</span><span className="cc-gi-value">{artist.ethnicity.join(", ")}</span></div>
+                <div className="cc-grid-item"><span className="cc-gi-label">Clothing Size</span><span className="cc-gi-value">{artist.clothingSize}</span></div>
+                <div className="cc-grid-item"><span className="cc-gi-label">Shoe Size</span><span className="cc-gi-value">{artist.shoeSize} {artist.shoeSizeUnit}</span></div>
+                {artist.chest && <div className="cc-grid-item"><span className="cc-gi-label">Chest</span><span className="cc-gi-value">{artist.chest} {artist.measurementUnit}</span></div>}
+                {artist.waist && <div className="cc-grid-item"><span className="cc-gi-label">Waist</span><span className="cc-gi-value">{artist.waist} {artist.measurementUnit}</span></div>}
+                {artist.hips && <div className="cc-grid-item"><span className="cc-gi-label">Hips</span><span className="cc-gi-value">{artist.hips} {artist.measurementUnit}</span></div>}
+              </div>
+            </div>
+
+            {/* Styles & Training */}
+            <div className="cc-section">
+              <div className="cc-section-title">Styles & Training</div>
+              <div className="cc-chips">
+                {artist.styles.map(s => <span key={s}>{s}</span>)}
+              </div>
+            </div>
+
+            {/* Special Skills */}
+            {artist.specialSkills.length > 0 && (
+              <div className="cc-section">
+                <div className="cc-section-title">Special Skills</div>
+                <div className="cc-chips">
+                  {artist.specialSkills.map(s => <span key={s}>{s}</span>)}
+                </div>
+              </div>
+            )}
+
+            {/* Languages */}
+            <div className="cc-section">
+              <div className="cc-section-title">Languages</div>
+              <div className="cc-chips">
+                {artist.languages.map(l => <span key={l}>{l}</span>)}
+              </div>
+            </div>
+
+            {/* Union & Representation */}
+            <div className="cc-section">
+              <div className="cc-section-title">Representation & Union</div>
+              <div className="cc-grid">
+                {artist.agency && <div className="cc-grid-item"><span className="cc-gi-label">Agency</span><span className="cc-gi-value">{artist.agency}</span></div>}
+                {artist.agencyContact && <div className="cc-grid-item"><span className="cc-gi-label">Agent Contact</span><span className="cc-gi-value">{artist.agencyContact}</span></div>}
+                <div className="cc-grid-item"><span className="cc-gi-label">Union</span><span className="cc-gi-value">{artist.unionStatus.length > 0 ? artist.unionStatus.join(", ") : "Non-Union"}</span></div>
+              </div>
+            </div>
+
+            {/* Gallery */}
+            {portfolios[0]?.photos?.length > 0 && (
+              <div className="cc-section">
+                <div className="cc-section-title">Gallery</div>
+                <div className="cc-photos">
+                  {portfolios[0].photos.slice(0, 4).map((p, i) => <img key={i} src={p} alt="" />)}
+                </div>
+              </div>
+            )}
+
+            {/* Contact & QR */}
+            <div className="cc-footer">
+              <div className="cc-qr">
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&color=604DFF&data=${encodeURIComponent("https://lanced.app/" + artist.handle)}`} alt="QR" />
+                <div className="cc-qr-text">
+                  <strong>View Full Portfolio</strong>
+                  lanced.app/{artist.handle}<br />
+                  {artist.email}
+                  {artist.socials.instagram && <><br />@{artist.socials.instagram}</>}
+                </div>
+              </div>
+              <img className="cc-logo" src="/made-with-lanced.png" alt="Lanced" />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ── Share Modal ── */}
       {showShareModal && currentPortfolio && (
         <div className="share-overlay" onClick={e => { if (e.target === e.currentTarget) setShowShareModal(false); }}>
@@ -4167,7 +4654,7 @@ export default function ArtistShell() {
               </div>
             </div>
             <div className="pfl-content">
-              <div className="pfp-hero">
+              <div className={`pfp-hero pfl-anim${pf.cover ? " has-cover" : ""}`} style={pf.cover ? { backgroundImage: `url(${pf.cover})` } : {}}>
                 <div className="pfp-hero-label">ARTIST PORTFOLIO</div>
                 <div className="pfp-hero-name">{artist.name.split(" ")[0]} <em>{artist.name.split(" ").slice(1).join(" ")}</em></div>
                 <div className="pfp-hero-sub">{pf.discipline} · {artist.location}</div>
@@ -4176,21 +4663,21 @@ export default function ArtistShell() {
                   <button style={{ background: "var(--ac)", border: "none", color: "#fff" }}>Contact →</button>
                 </div>
               </div>
-              <div className="pfp-stats">
+              <div className="pfp-stats pfl-anim">
                 <div className="pfp-avatar"><img src={artist.photo} alt="" /></div>
                 <div className="pfp-stat"><div className="pfp-stat-val">7</div><div className="pfp-stat-label">YRS EXP</div></div>
                 <div className="pfp-stat"><div className="pfp-stat-val">12</div><div className="pfp-stat-label">COMPANIES</div></div>
                 <div className="pfp-stat"><div className="pfp-stat-val">3</div><div className="pfp-stat-label">COUNTRIES</div></div>
                 <div className="pfp-stat"><div className="pfp-stat-val">24</div><div className="pfp-stat-label">PRODUCTIONS</div></div>
               </div>
-              <div className="pfp-tabs">
+              <div className="pfp-tabs pfl-anim">
                 {["gallery", "videos", "resume", "references", "documents"].map(t => (
                   <button key={t} className={`pfp-tab${portfolioTab === t ? " active" : ""}`} onClick={() => { setPortfolioTab(t); const el = document.getElementById("pfl-" + t); if (el) el.scrollIntoView({ behavior: "smooth", block: "start" }); }}>{t.charAt(0).toUpperCase() + t.slice(1)}</button>
                 ))}
               </div>
 
               {highlightedVid && (
-                <div className="pfe-highlight" style={{ marginBottom: 24 }}>
+                <div className="pfe-highlight pfl-anim" style={{ marginBottom: 24, cursor: "pointer" }} onClick={() => setLightbox({ items: pf.videos.map(v => ({ src: v.thumb, caption: v.title, type: "image" })), index: pf.videos.findIndex(v => v.id === pf.highlightedVideo) })}>
                   <img src={highlightedVid.thumb} alt="" />
                   <div className="pfe-hl-play" />
                   <div className="pfe-hl-info">
@@ -4201,18 +4688,18 @@ export default function ArtistShell() {
                 </div>
               )}
 
-              <div id="pfl-gallery" style={{ marginBottom: 32 }}>
+              <div id="pfl-gallery" className="pfl-anim" style={{ marginBottom: 32 }}>
                 <h3 style={{ margin: "0 0 16px" }}>Photo <em style={{ color: "var(--ac)", fontStyle: "italic" }}>Gallery</em> <span style={{ fontSize: 12, fontWeight: 400, color: "var(--g4)" }}>{pf.photos.length} photos</span></h3>
                 <div className="pfp-gallery">
-                  {pf.photos.map(ph => <div key={ph.id} className="pfp-gallery-item"><img src={ph.src} alt={ph.caption} /></div>)}
+                  {pf.photos.map((ph, i) => <div key={ph.id} className="pfp-gallery-item" style={{ cursor: "pointer" }} onClick={() => setLightbox({ items: pf.photos.map(p => ({ src: p.src, caption: p.caption, type: "image" })), index: i })}><img src={ph.src} alt={ph.caption} /></div>)}
                 </div>
               </div>
 
-              <div id="pfl-videos" style={{ marginBottom: 32 }}>
+              <div id="pfl-videos" className="pfl-anim" style={{ marginBottom: 32 }}>
                 <h3 style={{ margin: "0 0 16px" }}>Video <em style={{ color: "var(--ac)", fontStyle: "italic" }}>& Showreel</em> <span style={{ fontSize: 12, fontWeight: 400, color: "var(--g4)" }}>{pf.videos.length} videos</span></h3>
                 <div className="pfp-video-grid">
-                  {otherVideos.map(v => (
-                    <div key={v.id} className="pfp-video-card">
+                  {otherVideos.map((v, i) => (
+                    <div key={v.id} className="pfp-video-card" style={{ cursor: "pointer" }} onClick={() => setLightbox({ items: otherVideos.map(vid => ({ src: vid.thumb, caption: vid.title, type: "image" })), index: i })}>
                       <img src={v.thumb} alt="" />
                       <div className="pfp-vc-play" />
                       <div className="pfp-vc-info"><div className="pfp-vc-title">{v.title}</div><div className="pfp-vc-meta">{v.duration}</div></div>
@@ -4221,7 +4708,7 @@ export default function ArtistShell() {
                 </div>
               </div>
 
-              <div id="pfl-resume" style={{ marginBottom: 32 }}>
+              <div id="pfl-resume" className="pfl-anim" style={{ marginBottom: 32 }}>
                 <h3 style={{ margin: "0 0 16px" }}><em style={{ color: "var(--ac)", fontStyle: "italic" }}>Experience</em> & Education</h3>
                 <div className="pfe-resume-list">
                   {(pf.resume || []).map(r => (
@@ -4238,7 +4725,7 @@ export default function ArtistShell() {
                 </div>
               </div>
 
-              <div id="pfl-references" style={{ marginBottom: 32 }}>
+              <div id="pfl-references" className="pfl-anim" style={{ marginBottom: 32 }}>
                 <h3 style={{ margin: "0 0 16px" }}><em style={{ color: "var(--ac)", fontStyle: "italic" }}>References</em> & Reviews <span style={{ fontSize: 12, fontWeight: 400, color: "var(--g4)" }}>{(pf.references || []).length}</span></h3>
                 <div className="pfe-refs">
                   {(pf.references || []).map(ref => (
@@ -4257,7 +4744,7 @@ export default function ArtistShell() {
                 </div>
               </div>
 
-              <div id="pfl-documents" style={{ marginBottom: 32 }}>
+              <div id="pfl-documents" className="pfl-anim" style={{ marginBottom: 32 }}>
                 <h3 style={{ margin: "0 0 16px" }}>Documents</h3>
                 <div className="pfe-doc-list">
                   {pf.documents.map(d => (
@@ -4270,15 +4757,24 @@ export default function ArtistShell() {
                 </div>
               </div>
 
-              <div className="pfl-footer">
-                <img src="/favicon.svg" alt="Lanced" onError={e => { e.target.style.display = "none"; }} />
-                <span>Made with</span>
-                <a href="#">Lanced</a>
-              </div>
+            </div>
+            <div className="pfl-footer">
+              <img src="/made-with-lanced.png" alt="Made with Lanced" />
             </div>
           </div>
         );
       })()}
+
+      {/* ── Lightbox ── */}
+      {lightbox && (
+        <div className="pfl-lightbox" onClick={e => { if (e.target === e.currentTarget) setLightbox(null); }}>
+          <button className="pfl-lb-close" onClick={() => setLightbox(null)}>×</button>
+          {lightbox.index > 0 && <button className="pfl-lb-nav prev" onClick={e => { e.stopPropagation(); setLightbox(prev => ({ ...prev, index: prev.index - 1 })); }}>‹</button>}
+          {lightbox.index < lightbox.items.length - 1 && <button className="pfl-lb-nav next" onClick={e => { e.stopPropagation(); setLightbox(prev => ({ ...prev, index: prev.index + 1 })); }}>›</button>}
+          <img src={lightbox.items[lightbox.index].src} alt={lightbox.items[lightbox.index].caption || ""} onClick={e => e.stopPropagation()} style={{ cursor: "default" }} />
+          {lightbox.items[lightbox.index].caption && <div className="pfl-lb-caption">{lightbox.items[lightbox.index].caption}</div>}
+        </div>
+      )}
 
       {/* ── Toast ── */}
       {toast && <div className="toast">{toast}</div>}
