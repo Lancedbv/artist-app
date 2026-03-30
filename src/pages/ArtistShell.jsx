@@ -682,17 +682,106 @@ const CSS = `
 .sr-picker-item.selected .spi-check{background:var(--ac);border-color:var(--ac);color:#fff}
 .dark .sr-picker-item{border-color:var(--g2)}
 
+/* ━━━ Mobile Top Bar ━━━ */
+.mobile-topbar{display:none;position:fixed;top:0;left:0;right:0;height:56px;z-index:130;background:linear-gradient(to bottom,rgba(248,247,255,.55) 0%,rgba(248,247,255,.2) 60%,rgba(248,247,255,0) 100%);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);align-items:center;padding:0 16px;gap:10px;box-sizing:border-box}
+.shell.dark .mobile-topbar{background:linear-gradient(to bottom,rgba(13,13,18,.55) 0%,rgba(13,13,18,.2) 60%,rgba(13,13,18,0) 100%)}
+.mobile-topbar .mt-back{width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--tx);flex-shrink:0;transition:all .15s;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.shell.dark .mobile-topbar .mt-back{background:rgba(255,255,255,.1)}
+.mobile-topbar .mt-back:active{background:rgba(255,255,255,.8);transform:scale(.95)}
+.mobile-topbar .mt-logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#7A66FF,#4A35E0);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;flex-shrink:0;box-shadow:0 2px 8px rgba(96,77,255,.25);overflow:hidden}
+.mobile-topbar .mt-logo img{width:100%;height:100%;object-fit:cover}
+.mobile-topbar .mt-title{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--tx);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.mobile-topbar .mt-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.mobile-topbar .mt-bell{width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--g5);position:relative;transition:all .15s;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.shell.dark .mobile-topbar .mt-bell{background:rgba(255,255,255,.1)}
+.mobile-topbar .mt-bell:active{background:rgba(255,255,255,.8);transform:scale(.95)}
+.mobile-topbar .mt-badge{position:absolute;top:0;right:0;min-width:16px;height:16px;border-radius:8px;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.mobile-topbar .mt-hamburger{width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;color:var(--tx);transition:all .15s;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.shell.dark .mobile-topbar .mt-hamburger{background:rgba(255,255,255,.1)}
+
+/* ━━━ Mobile Bottom Nav ━━━ */
+.mobile-nav{display:none;position:fixed;bottom:12px;left:16px;right:16px;height:56px;background:rgba(255,255,255,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);z-index:150;align-items:center;justify-content:space-around;padding:0 8px;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04)}
+.dark .mobile-nav{background:rgba(30,30,40,.75);border-color:rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(0,0,0,.2)}
+.mobile-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:9px;font-weight:500;color:var(--g4);padding:6px 12px;border-radius:12px;transition:all .15s}
+.mobile-nav button.active{color:var(--ac);background:rgba(96,77,255,.1)}
+.mobile-nav button.active svg{color:var(--ac)}
+.mobile-nav button svg{width:18px;height:18px}
+
+/* Mobile actions dropdown */
+.mobile-actions-dropdown{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;display:flex;align-items:flex-start;justify-content:flex-end;padding:60px 12px 0;background:rgba(0,0,0,.3);animation:fadeIn .15s}
+.mobile-actions-menu{background:var(--sf);border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.15);padding:6px;min-width:180px;animation:slideInUp .15s}
+.mobile-actions-menu button{display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;border:none;background:none;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--tx);border-radius:10px;cursor:pointer;transition:background .1s}
+.mobile-actions-menu button:hover{background:var(--g1)}
+
+/* Mobile message page (full chat view) */
+.mobile-chat-page{display:flex;flex-direction:column;height:calc(100vh - 136px);animation:fadeIn .2s}
+.mobile-chat-page .mcp-header{display:flex;align-items:center;gap:12px;padding:0 0 16px;flex-shrink:0}
+.mobile-chat-page .mcp-header img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.mobile-chat-page .mcp-header .mcp-name{font-size:16px;font-weight:600;color:var(--tx)}
+.mobile-chat-page .mcp-header .mcp-status{font-size:11px;color:var(--g4)}
+.mobile-chat-page .mcp-body{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:8px 0}
+.mobile-chat-page .mcp-input{display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--g1);flex-shrink:0}
+
 /* ━━━ Responsive ━━━ */
 @media(max-width:768px){
-  .sidebar{display:none}
-  .main{margin-left:0!important}
+  .sidebar{display:none!important}
+  .main{margin-left:0!important;overflow-x:hidden;max-width:100vw;margin:0!important;border-radius:0!important}
+  .topbar{display:none!important}
+  .mobile-topbar{display:flex}
+  .mobile-nav{display:flex}
+  .shell{padding-top:56px;padding-bottom:80px}
   .content{padding:20px 16px}
+  .pg-header{margin-bottom:16px}
+  .pg-header h1{font-size:26px}
   .dash-stats{grid-template-columns:1fr 1fr}
+  .dash-banner{padding:24px;border-radius:12px}
+  .dash-banner .db-title{font-size:22px}
   .spotlight-grid{grid-template-columns:1fr}
-  .spotlight-row{grid-template-columns:1fr}
+  .spotlight-row{grid-template-columns:1fr!important}
   .welcome-grid{grid-template-columns:1fr}
-  .ctx-spotlight .main{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;border-radius:0!important;box-shadow:none!important;min-height:100vh;background:transparent!important}
-  .ctx-spotlight .topbar{display:flex}
+  .messenger{grid-template-columns:1fr;height:auto;min-height:auto;border:none;background:transparent;border-radius:0}
+  .ms-thread{display:none}
+  .ms-empty{display:none}
+  .ms-sidebar{border-right:none}
+  .ms-sidebar-header{padding:0 0 12px}
+  .ms-contact{border-radius:12px;margin-bottom:2px}
+  .ctx-spotlight .main{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;border-radius:0!important;box-shadow:none!important;min-height:auto;background:transparent!important}
+  .ctx-spotlight .topbar{display:none!important}
+  .ctx-spotlight::before{display:none}
+  .breadcrumb-bar{display:none!important}
+  .stat-card{padding:14px}
+  .stat-card .sc-val{font-size:22px}
+  .opp-grid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+  .sr-grid{grid-template-columns:1fr}
+  .sr-toolbar{gap:6px}
+  .list-search{max-width:100%}
+  .app-card{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
+  .app-card .ac-status{align-self:flex-start}
+  .app-submission{grid-template-columns:1fr}
+  .community-grid{grid-template-columns:1fr}
+  .info-card{padding:16px}
+  .overlay>div{padding:24px 20px;border-radius:20px}
+  .picker-modal{width:100%;max-width:100%;border-radius:20px 20px 0 0;max-height:90vh}
+  .picker-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+  .picker-toolbar{flex-direction:column;padding:0 16px 12px;gap:10px}
+  .picker-toolbar .pt-tabs{width:100%;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none;-ms-overflow-style:none}
+  .picker-toolbar .pt-tabs::-webkit-scrollbar{display:none}
+  .picker-toolbar .pt-search{width:100%}
+  .notif-panel{top:0;right:0;bottom:0;left:0;width:100%;max-width:100%;border-radius:0}
+  .faq-list{gap:8px}
+  .plan-checklist{gap:8px}
+  .media-action-bar{bottom:80px;left:16px;right:16px;transform:none;border-radius:12px;padding:10px 16px;font-size:12px}
+  .tab-bar{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex-wrap:nowrap;gap:0;padding-bottom:0}
+  .tab-bar::-webkit-scrollbar{display:none}
+  .tab-btn{padding:10px 14px;font-size:12px;flex-shrink:0}
+}
+@media(max-width:480px){
+  .dash-stats{grid-template-columns:1fr 1fr}
+  .stat-card .sc-val{font-size:20px}
+  .pg-header h1{font-size:22px}
+  .content{padding:16px 12px}
+  .spotlight-hero{height:160px;border-radius:12px}
 }
 `;
 
@@ -722,6 +811,11 @@ const I = {
   community: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
   plan: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838.838-2.872a2 2 0 0 1 .506-.855z"/></svg>,
   star: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+  menu: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>,
+  x: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
+  home: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
+  inbox: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>,
+  settings: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
 };
 
 /* ━━━ COMPONENT ━━━ */
@@ -787,6 +881,11 @@ export default function ArtistShell() {
   const [notifications, setNotifications] = useState(MOCK_NOTIFICATIONS);
   const [showNotifPanel, setShowNotifPanel] = useState(false);
   const [notifFilter, setNotifFilter] = useState("all");
+
+  /* Mobile */
+  const [showMobileActions, setShowMobileActions] = useState(false);
+  const [mobileChatOpen, setMobileChatOpen] = useState(null); // msg id for mobile full-page chat
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
   /* Toast */
   const [toast, setToast] = useState(null);
@@ -1618,6 +1717,36 @@ export default function ArtistShell() {
       /* ── Messages ── */
       case "messages": {
         const activeMsgObj = activeChat ? messages.find(m => m.id === activeChat) : null;
+        const mobileChatObj = mobileChatOpen ? messages.find(m => m.id === mobileChatOpen) : null;
+
+        // Mobile: full-page chat view
+        if (mobileChatObj) {
+          return (
+            <div className="mobile-chat-page">
+              <div className="mcp-header">
+                <button className="btn btn-s btn-sm" onClick={() => setMobileChatOpen(null)} style={{ padding: "6px 10px" }}>{I.back}</button>
+                <img src={mobileChatObj.avatar} alt="" />
+                <div>
+                  <div className="mcp-name">{mobileChatObj.from}</div>
+                  <div className="mcp-status">Online</div>
+                </div>
+              </div>
+              <div className="mcp-body">
+                {mobileChatObj.thread.map((m, i) => (
+                  <div key={i} className={`ms-bubble ${m.sender === "me" ? "me" : "them"}`}>
+                    {m.text}
+                    <div className="ms-btime">{m.time}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mcp-input">
+                <textarea style={{ flex: 1, padding: "10px 14px", border: "1px solid var(--g2)", borderRadius: 12, background: "var(--bg)", fontFamily: "var(--sans)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "none", minHeight: 40 }} placeholder="Type a message..." rows={1} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); showToast("Message sent!"); e.target.value = ""; }}} />
+                <button className="btn btn-p btn-sm" onClick={() => showToast("Message sent!")}>Send</button>
+              </div>
+            </div>
+          );
+        }
+
         return (
           <div>
             <div className="pg-header">
@@ -1632,7 +1761,14 @@ export default function ArtistShell() {
                 </div>
                 <div className="ms-contacts">
                   {messages.map(msg => (
-                    <div key={msg.id} className={`ms-contact${activeChat === msg.id ? " active" : ""}`} onClick={() => setActiveChat(msg.id)}>
+                    <div key={msg.id} className={`ms-contact${activeChat === msg.id ? " active" : ""}`} onClick={() => {
+                      // On mobile: open full-page chat. On desktop: use sidebar pattern.
+                      if (window.innerWidth <= 768) {
+                        setMobileChatOpen(msg.id);
+                      } else {
+                        setActiveChat(msg.id);
+                      }
+                    }}>
                       <img className="ms-avatar" src={msg.avatar} alt="" />
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -1691,6 +1827,64 @@ export default function ArtistShell() {
     <>
       <style>{CSS}</style>
       <div className={shellClass}>
+        {/* ── Mobile Top Bar ── */}
+        <div className="mobile-topbar">
+          {viewSpotlight ? (
+            <button className="mt-back" onClick={() => { setViewSpotlight(null); setPage("applications"); }}>{I.back}</button>
+          ) : mobileChatOpen ? (
+            <button className="mt-back" onClick={() => setMobileChatOpen(null)}>{I.back}</button>
+          ) : (
+            <div className="mt-logo"><img src="/lanced-logo.svg" alt="L" /></div>
+          )}
+          <span className="mt-title">
+            {viewSpotlight && spotlightApp ? spotlightApp.opportunity : mobileChatOpen ? (messages.find(m => m.id === mobileChatOpen)?.from || "Chat") : NAV_ITEMS.find(n => n.id === page)?.label || "Dashboard"}
+          </span>
+          <div className="mt-actions">
+            <button className="mt-bell" onClick={() => setShowNotifPanel(true)}>
+              {I.bell}
+              {notifications.filter(n => n.unread).length > 0 && <span className="mt-badge">{notifications.filter(n => n.unread).length}</span>}
+            </button>
+            {viewSpotlight && (
+              <button className="mt-hamburger" onClick={() => setShowMobileActions(v => !v)}>
+                {showMobileActions ? I.x : I.menu}
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile Actions Dropdown (spotlight context) */}
+        {showMobileActions && viewSpotlight && (
+          <div className="mobile-actions-dropdown" onClick={() => setShowMobileActions(false)}>
+            <div className="mobile-actions-menu" onClick={e => e.stopPropagation()}>
+              {SPOTLIGHT_TABS.map(t => (
+                <button key={t.id} onClick={() => { setSpotlightTab(t.id); setShowMobileActions(false); }}>
+                  {t.icon} {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── Mobile Bottom Nav ── */}
+        <nav className="mobile-nav">
+          {viewSpotlight ? (
+            <>
+              <button onClick={() => { setViewSpotlight(null); setPage("applications"); }}>{I.back}<span>Back</span></button>
+              {SPOTLIGHT_TABS.slice(0, 4).map(t => (
+                <button key={t.id} className={spotlightTab === t.id ? "active" : ""} onClick={() => setSpotlightTab(t.id)}>{t.icon}<span>{t.label}</span></button>
+              ))}
+            </>
+          ) : (
+            <>
+              <button className={page === "dashboard" ? "active" : ""} onClick={() => { setPage("dashboard"); setViewSpotlight(null); }}>{I.home}<span>Home</span></button>
+              <button className={page === "discover" ? "active" : ""} onClick={() => { setPage("discover"); setViewSpotlight(null); }}>{I.discover}<span>Discover</span></button>
+              <button className={page === "applications" ? "active" : ""} onClick={() => { setPage("applications"); setViewSpotlight(null); }}>{I.applications}<span>Apply</span></button>
+              <button className={page === "messages" ? "active" : ""} onClick={() => { setPage("messages"); setViewSpotlight(null); }}>{I.messages}<span>Messages</span></button>
+              <button className={page === "profile" ? "active" : ""} onClick={() => { setPage("profile"); setViewSpotlight(null); }}>{I.profile}<span>Profile</span></button>
+            </>
+          )}
+        </nav>
+
         {/* ── Sidebar ── */}
         <nav className="sidebar">
           <div className="sidebar-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
