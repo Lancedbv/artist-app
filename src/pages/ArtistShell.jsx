@@ -52,7 +52,7 @@ const MOCK_OPPORTUNITIES = [
     description: "The Royal Danish Ballet is seeking an exceptional soloist to join the company for the 2026/27 season. This is a rare opportunity to perform with one of Europe's most prestigious ballet companies in a diverse repertoire spanning Bournonville classics to cutting-edge contemporary works. The position involves 8-10 productions per season with international touring.",
     requirements: "We are looking for dancers with exceptional classical technique, strong partnering skills, and the versatility to perform in both classical and contemporary repertoire. Candidates should have at least 3 years of professional company experience at soloist or principal level. Must be physically fit and available for the full season (August 2026 — June 2027).",
     employmentDetails: "Full-time permanent contract. Competitive salary according to Danish performing arts union rates (approx. €48,000-62,000/year). Benefits include health insurance, pension contribution, housing assistance for international dancers, 5 weeks paid vacation. Rehearsal schedule: Mon-Sat, 10:00-18:00.",
-    howToApply: "Submit your application through Lanced including your showreel, headshot, full body photo, and updated CV/Stage Record. Shortlisted candidates will be invited for a live audition in Copenhagen on May 10, 2026.",
+    howToApply: "Submit your application through Lanced including your showreel, headshot, full body photo, and updated CV/Resume. Shortlisted candidates will be invited for a live audition in Copenhagen on May 10, 2026.",
     profileFieldsRequired: ["nationality", "height", "gender", "dob", "shoeSize"],
     materialsRequired: [
       { id: "mat1", label: "Classical Showreel", type: "video", required: true },
@@ -489,7 +489,7 @@ textarea.pf-input{line-height:1.6}
 .bio-card h4{font-size:13px;font-weight:600;margin-bottom:8px}
 .bio-card p{font-size:13px;color:var(--g5);line-height:1.6}
 
-/* ━━━ Stage Record ━━━ */
+/* ━━━ Resume ━━━ */
 .sr-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
 .sr-count{font-size:10px;font-weight:700;padding:3px 10px;border-radius:40px;background:var(--g1);color:var(--g4);text-transform:uppercase;letter-spacing:.05em}
 .sr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;animation:fadeIn .3s ease}
@@ -821,8 +821,52 @@ textarea.pf-input{line-height:1.6}
   .cc-overlay *{display:revert}
   .cc-toolbar{display:none!important}
   .cc-page{box-shadow:none!important;margin:0!important;border-radius:0!important;width:210mm!important;height:297mm!important;transform:none!important;padding:12mm!important;overflow:hidden!important}
+  .cr-overlay{display:block!important;position:static!important;background:none!important;padding:0!important}
+  .cr-overlay *{display:revert}
+  .cr-toolbar{display:none!important}
+  .cr-page{box-shadow:none!important;margin:0!important;border-radius:0!important;width:210mm!important;min-height:297mm!important;transform:none!important;padding:12mm!important;overflow:visible!important;page-break-after:always}
   @page{size:A4;margin:0}
 }
+
+/* Comp Resume Preview */
+.cr-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:flex-start;justify-content:center;animation:fadeIn .2s;overflow:auto;padding:80px 20px 40px}
+.cr-toolbar{position:fixed;top:0;left:0;right:0;z-index:10000;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(0,0,0,.8);backdrop-filter:blur(12px)}
+.cr-toolbar span{color:#fff;font-size:14px;font-weight:600}
+.cr-toolbar .cr-actions{display:flex;gap:8px;align-items:center}
+.cr-toolbar .cr-actions button{padding:7px 16px;border-radius:8px;border:none;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;gap:5px}
+.cr-zoom{display:flex;align-items:center;gap:6px;margin-right:12px}
+.cr-zoom button{width:28px;height:28px;border-radius:6px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cr-zoom span{color:#fff;font-size:11px;font-weight:600;min-width:36px;text-align:center}
+.cr-page{width:794px;min-height:1123px;background:#fff;border-radius:4px;box-shadow:0 20px 80px rgba(0,0,0,.3);padding:36px 40px;box-sizing:border-box;color:#1a1a2e;font-family:var(--sans);position:relative;transform-origin:top center;transition:transform .2s ease;display:flex;flex-direction:column}
+.cr-page *{color:#1a1a2e}
+.cr-header{display:flex;gap:24px;margin-bottom:16px;align-items:flex-start;padding-bottom:16px;border-bottom:2px solid #604DFF}
+.cr-photo{width:120px;height:150px;border-radius:8px;object-fit:cover;flex-shrink:0;border:2px solid #eee}
+.cr-info{flex:1;display:flex;flex-direction:column;gap:2px}
+.cr-info h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-.02em}
+.cr-info h1 span{color:#604DFF}
+.cr-info .cr-discipline{font-size:13px;color:#666;font-weight:500}
+.cr-info .cr-pronouns{font-size:11px;color:#888;font-weight:500}
+.cr-info .cr-contact{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:#666;margin-top:6px}
+.cr-info .cr-contact span{display:flex;align-items:center;gap:4px}
+.cr-info .cr-bio{font-size:11px;color:#444;line-height:1.6;margin-top:8px}
+.cr-qr-block{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cr-qr-block img{width:72px;height:72px;border-radius:4px}
+.cr-qr-block .cr-qr-url{font-size:9px;color:#888;text-align:center}
+.cr-section{margin-bottom:12px}
+.cr-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#604DFF;margin-bottom:6px;padding-bottom:3px;border-bottom:1px solid #eee}
+.cr-entry{margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid #f8f8f8}
+.cr-entry:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.cr-entry-header{display:flex;justify-content:space-between;align-items:baseline}
+.cr-entry-title{font-size:12px;font-weight:700;color:#1a1a2e}
+.cr-entry-dates{font-size:10px;color:#888;font-weight:500;white-space:nowrap}
+.cr-entry-org{font-size:11px;color:#604DFF;font-weight:600}
+.cr-entry-location{font-size:10px;color:#888;margin-top:1px}
+.cr-entry-desc{font-size:10px;color:#444;line-height:1.5;margin-top:3px}
+.cr-entry-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.cr-entry-tags span{padding:2px 8px;border-radius:20px;background:#f5f5f5;font-size:9px;font-weight:500;color:#666}
+.cr-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:12px;border-top:1px solid #eee}
+.cr-footer .cr-footer-text{font-size:9px;color:#888}
+.cr-footer img{height:20px;opacity:.6}
 
 /* Tracking View */
 .pft-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
@@ -1215,7 +1259,7 @@ textarea.pf-input{line-height:1.6}
 /* ━━━ Mobile Bottom Nav ━━━ */
 .mobile-nav{display:none;position:fixed;bottom:12px;left:16px;right:16px;height:56px;background:rgba(255,255,255,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);z-index:150;align-items:center;justify-content:space-around;padding:0 8px;border-radius:20px;box-shadow:0 4px 24px rgba(0,0,0,.08),0 1px 4px rgba(0,0,0,.04)}
 .dark .mobile-nav{background:rgba(30,30,40,.75);border-color:rgba(255,255,255,.08);box-shadow:0 4px 24px rgba(0,0,0,.2)}
-.mobile-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:9px;font-weight:500;color:var(--g4);padding:6px 12px;border-radius:12px;transition:all .15s}
+.mobile-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:9px;font-weight:500;color:var(--g4);padding:6px 8px;border-radius:12px;transition:all .15s}
 .mobile-nav button.active{color:var(--ac);background:rgba(96,77,255,.1)}
 .mobile-nav button.active svg{color:var(--ac)}
 .mobile-nav button svg{width:18px;height:18px}
@@ -1234,6 +1278,29 @@ textarea.pf-input{line-height:1.6}
 .mobile-chat-page .mcp-header .mcp-status{font-size:11px;color:var(--g4)}
 .mobile-chat-page .mcp-body{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding:8px 0}
 .mobile-chat-page .mcp-input{display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--g1);flex-shrink:0}
+
+/* Mobile Side Panel */
+.mob-panel-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.35);animation:fadeIn .15s;display:none}
+.mob-panel-overlay.open{display:block}
+.mob-panel{position:fixed;top:0;right:-280px;bottom:0;width:280px;background:var(--sf);z-index:301;transition:right .25s cubic-bezier(.4,0,.2,1);box-shadow:-4px 0 24px rgba(0,0,0,.12);display:flex;flex-direction:column;padding:0}
+.mob-panel.open{right:0}
+.dark .mob-panel{background:var(--bg);box-shadow:-4px 0 24px rgba(0,0,0,.3)}
+.mob-panel-header{display:flex;align-items:center;gap:12px;padding:20px 20px 16px;border-bottom:1px solid var(--g1)}
+.mob-panel-header img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.mob-panel-header .mp-name{font-size:15px;font-weight:600;color:var(--tx)}
+.mob-panel-header .mp-plan{font-size:11px;color:var(--g4);margin-top:1px}
+.mob-panel-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--g4);cursor:pointer;padding:4px;border-radius:8px}
+.mob-panel-close:hover{background:var(--g1)}
+.mob-panel-nav{flex:1;overflow-y:auto;padding:12px 10px}
+.mob-panel-nav button{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border:none;background:none;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--tx);border-radius:12px;cursor:pointer;transition:all .12s}
+.mob-panel-nav button:hover{background:var(--g1)}
+.mob-panel-nav button.active{color:var(--ac);background:rgba(96,77,255,.08)}
+.mob-panel-nav button svg{width:18px;height:18px;flex-shrink:0}
+.mob-panel-nav .mp-badge{background:var(--er);color:#fff;font-size:9px;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-left:auto;padding:0 5px}
+.mob-panel-nav .mp-divider{height:1px;background:var(--g1);margin:8px 14px}
+.mob-panel-footer{padding:16px 20px;border-top:1px solid var(--g1);display:flex;align-items:center;gap:8px}
+.mob-panel-footer button{display:flex;align-items:center;gap:8px;background:none;border:none;font-family:var(--sans);font-size:12px;color:var(--g4);cursor:pointer;padding:6px 10px;border-radius:8px;transition:all .12s}
+.mob-panel-footer button:hover{background:var(--g1);color:var(--tx)}
 
 /* ━━━ Responsive ━━━ */
 @media(max-width:768px){
@@ -1295,6 +1362,11 @@ textarea.pf-input{line-height:1.6}
   .tab-bar{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex-wrap:nowrap;gap:0;padding-bottom:0}
   .tab-bar::-webkit-scrollbar{display:none}
   .tab-btn{padding:10px 14px;font-size:12px;flex-shrink:0}
+  .network-cards{grid-template-columns:1fr}
+  .network-map{height:300px}
+  .pf-details-grid{grid-template-columns:1fr!important}
+  .pf-name-row{grid-template-columns:1fr 1fr!important}
+  .pf-general-grid{grid-template-columns:1fr!important}
 }
 @media(max-width:480px){
   .dash-stats{grid-template-columns:1fr 1fr}
@@ -1453,7 +1525,7 @@ export default function ArtistShell() {
   const [profileTab, setProfileTab] = useState("general");
   const [artist, setArtist] = useState(DEMO_ARTIST);
 
-  /* Stage Record */
+  /* Resume */
   const [stageRecords, setStageRecords] = useState(STAGE_RECORD);
   const [srView, setSrView] = useState("grid");
   const [srFilter, setSrFilter] = useState("all");
@@ -1493,9 +1565,12 @@ export default function ArtistShell() {
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCompCard, setShowCompCard] = useState(false);
   const [ccZoom, setCcZoom] = useState(75);
+  const [showResumePreview, setShowResumePreview] = useState(false);
+  const [resumeZoom, setResumeZoom] = useState(75);
   const [shareEmail, setShareEmail] = useState("");
   const [shareSettings, setShareSettings] = useState({ trackLink: false, requireEmail: false, password: "" });
   const [lightbox, setLightbox] = useState(null); // { items: [{src,caption,type}], index: 0 }
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   /* Media */
   const [mediaItems] = useState(MOCK_MEDIA);
@@ -1533,7 +1608,7 @@ export default function ArtistShell() {
   const [checklist, setChecklist] = useState([
     { label: "Complete your profile", done: true },
     { label: "Upload a headshot", done: true },
-    { label: "Add Stage Record entries", done: false },
+    { label: "Add Resume entries", done: false },
     { label: "Create your first portfolio", done: false },
     { label: "Browse opportunities", done: false },
   ]);
@@ -1715,7 +1790,7 @@ export default function ArtistShell() {
     setNewEntryType(null);
     setEditEntry(null);
     setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" });
-    showToast(editEntry ? "Entry updated" : "Entry added to Stage Record");
+    showToast(editEntry ? "Entry updated" : "Entry added to Resume");
   };
 
   const openEditEntry = (entry) => {
@@ -1871,7 +1946,7 @@ export default function ArtistShell() {
                 </div>
                 <div className="info-card">
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                    <h4 style={{ margin: 0 }}>Stage Record <span style={{ fontSize: 11, color: "var(--g4)", fontWeight: 400 }}>({stageRecords.filter(sr => sr.usedIn.includes("Resume")).length} entries)</span></h4>
+                    <h4 style={{ margin: 0 }}>Resume <span style={{ fontSize: 11, color: "var(--g4)", fontWeight: 400 }}>({stageRecords.filter(sr => sr.usedIn.includes("Resume")).length} entries)</span></h4>
                     <button className="btn btn-s btn-sm" onClick={() => { setPickerSelected([]); setShowSRPicker(true); }}>+ Add more</button>
                   </div>
                   {stageRecords.filter(sr => sr.usedIn.includes("Resume")).slice(0, 5).map(sr => (
@@ -1923,7 +1998,7 @@ export default function ArtistShell() {
                       <div className="cm-time">{spotlightApp.company} · Mar 8, 2026</div>
                     </div>
                     <div className="chat-msg them">
-                      <div>Reminder: Please ensure your Stage Record is up to date before the audition. The panel will review your profile in advance.</div>
+                      <div>Reminder: Please ensure your Resume is up to date before the audition. The panel will review your profile in advance.</div>
                       <div className="cm-time">{spotlightApp.company} · Mar 15, 2026</div>
                     </div>
                   </div>
@@ -1941,7 +2016,7 @@ export default function ArtistShell() {
                   {[
                     { q: "What should I bring to the audition?", a: "Please bring a valid photo ID, your dance shoes (pointe and flat), and a printed copy of your CV. Water and a light snack are recommended." },
                     { q: "What is the audition format?", a: "The audition consists of a classical ballet class (1 hour), followed by a contemporary phrase (30 min). Shortlisted candidates will be asked to prepare a 1-minute solo." },
-                    { q: "Can I submit additional materials after applying?", a: "Yes, you can update your media and stage record up until the application deadline. Any changes will be reflected in your submission." },
+                    { q: "Can I submit additional materials after applying?", a: "Yes, you can update your media and resume up until the application deadline. Any changes will be reflected in your submission." },
                     { q: "When will I hear back about my application?", a: "All applicants will be notified of their status within 2 weeks of the deadline. Shortlisted candidates will receive an email with audition details." },
                     { q: "Is housing provided for the contract period?", a: "The company offers a housing allowance and assistance in finding accommodation. Details will be shared with selected candidates." },
                   ].map((faq, i) => (
@@ -2007,7 +2082,7 @@ export default function ArtistShell() {
                 <p style={{ fontSize: 13, color: "var(--g4)", marginBottom: 16 }}>Track your preparation for this opportunity. Check items off as you complete them.</p>
                 <div className="plan-checklist">
                   {[
-                    { title: "Update Stage Record", desc: "Ensure all recent experience is added", done: true },
+                    { title: "Update Resume", desc: "Ensure all recent experience is added", done: true },
                     { title: "Upload new headshot", desc: "Professional photo, taken within last 6 months", done: true },
                     { title: "Record showreel", desc: "2-3 minutes showcasing your range", done: false },
                     { title: "Prepare classical variation", desc: "Select and rehearse a 1-minute solo", done: false },
@@ -2196,15 +2271,15 @@ export default function ArtistShell() {
             </div>
           )}
 
-          {/* Step 2: Resume / Stage Record */}
+          {/* Step 2: Resume */}
           {applyStep === 2 && (
             <div style={{ animation: "slideInUp .3s ease" }}>
               <div className="info-card" style={{ marginBottom: 16 }}>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                  <h4 style={{ margin: 0 }}>Select Stage Record Entries</h4>
+                  <h4 style={{ margin: 0 }}>Select Resume Entries</h4>
                   <button className="btn btn-p btn-sm" onClick={() => { setShowNewEntry(true); setNewEntryType(null); setEditEntry(null); setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" }); }}>+ Add New</button>
                 </div>
-                <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>Choose which entries from your Stage Record to include in this application.</p>
+                <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>Choose which entries from your Resume to include in this application.</p>
                 <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
                   {Object.entries(SR_LABELS).map(([key, label]) => {
                     const count = stageRecords.filter(s => s.type === key).length;
@@ -2230,7 +2305,7 @@ export default function ArtistShell() {
               </div>
               <div className="info-card">
                 <h4>Upload Own Resume (Optional)</h4>
-                <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>Optionally upload a PDF resume alongside your Lanced Stage Record.</p>
+                <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>Optionally upload a PDF resume alongside your Lanced Resume.</p>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                   <button className={`btn ${applyDraft.uploadedResumePDF ? "btn-success" : "btn-s"} btn-sm`} onClick={() => setApplyDraft(prev => ({ ...prev, uploadedResumePDF: !prev.uploadedResumePDF }))}>
                     {applyDraft.uploadedResumePDF ? "✓ PDF Attached" : "Upload PDF"}
@@ -2342,7 +2417,7 @@ export default function ArtistShell() {
 
               <div className="review-section">
                 <div className="review-section-header">
-                  <h4>Stage Record</h4>
+                  <h4>Resume</h4>
                   <button className="rs-edit" onClick={() => setApplyStep(2)}>Edit</button>
                 </div>
                 <div style={{ fontSize: 13, color: "var(--g5)", marginBottom: 8 }}>{applyDraft.selectedSRIds.length} entries selected</div>
@@ -2483,9 +2558,9 @@ export default function ArtistShell() {
               <p className="pg-sub">Your professional identity on Lanced</p>
             </div>
             <div className="tab-bar">
-              {["general", "stage-record", "comp-card"].map(t => (
+              {["general", "resume", "comp-card"].map(t => (
                 <button key={t} className={`tab-btn${profileTab === t ? " on" : ""}`} onClick={() => setProfileTab(t)}>
-                  {t === "general" ? "General Info" : t === "stage-record" ? "Stage Record" : "Comp Card"}
+                  {t === "general" ? "General Info" : t === "resume" ? "Resume" : "Comp Card"}
                 </button>
               ))}
             </div>
@@ -2495,9 +2570,9 @@ export default function ArtistShell() {
                 {/* Profile Details */}
                 <div className="info-card">
                   <h4>Profile Details</h4>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+                  <div className="pf-details-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
                     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                      <div className="pf-name-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                         <div className="pf-field">
                           <label className="pf-label">First Name</label>
                           <input className="pf-input" value={artist.firstName} onChange={e => setArtist(a => ({ ...a, firstName: e.target.value, name: `${e.target.value} ${a.lastName}` }))} />
@@ -2539,7 +2614,7 @@ export default function ArtistShell() {
                 {/* General Info */}
                 <div className="info-card">
                   <h4>General Info</h4>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                  <div className="pf-general-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
                     <div className="pf-field">
                       <label className="pf-label">Pronouns</label>
                       <input className="pf-input" value={artist.pronouns} onChange={e => setArtist(a => ({ ...a, pronouns: e.target.value }))} />
@@ -2631,8 +2706,20 @@ export default function ArtistShell() {
               </div>
             )}
 
-            {profileTab === "stage-record" && (
+            {profileTab === "resume" && (
               <div>
+                {/* Generate Resume Banner */}
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 20px", background: "linear-gradient(135deg, rgba(96,77,255,.06), rgba(96,77,255,.12))", borderRadius: 14, border: "1px solid rgba(96,77,255,.1)", marginBottom: 16 }}>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)" }}>Your Lanced Resume</div>
+                    <div style={{ fontSize: 12, color: "var(--g4)", marginTop: 2 }}>Generate a printable multi-page resume with your experience, education, awards, and more.</div>
+                  </div>
+                  <button className="btn" style={{ background: "var(--ac)", color: "#fff", border: "none", padding: "10px 20px", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)", display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap" }} onClick={() => setShowResumePreview(true)}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                    Generate Resume
+                  </button>
+                </div>
+
                 <div className="sr-toolbar">
                   <span className="sr-count">{stageRecords.length} entries</span>
                   <div className="list-search">
@@ -3377,7 +3464,7 @@ export default function ArtistShell() {
                   ))}
                 </div>
                 <div className="pfe-add-row">
-                  <button className="pfe-add-btn primary" onClick={() => showToast("Add from Stage Record")}>Add From Stage Record</button>
+                  <button className="pfe-add-btn primary" onClick={() => showToast("Add from Resume")}>Add From Resume</button>
                   <button className="pfe-add-btn secondary" onClick={() => showToast("Add entry manually")}>+ Add Manually</button>
                 </div>
               </div>
@@ -3687,7 +3774,7 @@ export default function ArtistShell() {
                     <h4 style={{ margin: 0 }}>Current Plan</h4>
                     <span style={{ padding: "4px 14px", borderRadius: 20, background: "rgba(96,77,255,.1)", color: "var(--ac)", fontSize: 12, fontWeight: 700, textTransform: "uppercase" }}>{artist.plan}</span>
                   </div>
-                  <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.6, marginBottom: 16 }}>Your Core plan includes unlimited applications, full Stage Record, media library, and portfolio builder.</p>
+                  <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.6, marginBottom: 16 }}>Your Core plan includes unlimited applications, full Resume, media library, and portfolio builder.</p>
                   <div className="info-row"><span className="ir-label">Billing Period</span><span className="ir-value">Monthly</span></div>
                   <div className="info-row"><span className="ir-label">Next Billing</span><span className="ir-value">April 30, 2026</span></div>
                   <div className="info-row"><span className="ir-label">Amount</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>€9.99/month</span></div>
@@ -3697,8 +3784,8 @@ export default function ArtistShell() {
                   <h4>Available Plans</h4>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 12 }}>
                     {[
-                      { name: "Free", price: "€0", features: ["5 applications/month", "Basic Stage Record", "1 Portfolio"] },
-                      { name: "Core", price: "€9.99", features: ["Unlimited applications", "Full Stage Record", "Media Library", "3 Portfolios"], current: true },
+                      { name: "Free", price: "€0", features: ["5 applications/month", "Basic Resume", "1 Portfolio"] },
+                      { name: "Core", price: "€9.99", features: ["Unlimited applications", "Full Resume", "Media Library", "3 Portfolios"], current: true },
                       { name: "Pro", price: "€19.99", features: ["Everything in Core", "Priority visibility", "Analytics", "Unlimited Portfolios", "Custom domain"] },
                     ].map(plan => (
                       <div key={plan.name} style={{ padding: 16, border: plan.current ? "2px solid var(--ac)" : "1px solid var(--g2)", borderRadius: 14, textAlign: "center", position: "relative" }}>
@@ -3900,11 +3987,53 @@ export default function ArtistShell() {
               <button className={page === "dashboard" ? "active" : ""} onClick={() => { setPage("dashboard"); setViewSpotlight(null); }}>{I.home}<span>Home</span></button>
               <button className={page === "discover" ? "active" : ""} onClick={() => { setPage("discover"); setViewSpotlight(null); }}>{I.discover}<span>Discover</span></button>
               <button className={page === "applications" ? "active" : ""} onClick={() => { setPage("applications"); setViewSpotlight(null); }}>{I.applications}<span>Apply</span></button>
-              <button className={page === "messages" ? "active" : ""} onClick={() => { setPage("messages"); setViewSpotlight(null); }}>{I.messages}<span>Messages</span></button>
-              <button className={page === "profile" ? "active" : ""} onClick={() => { setPage("profile"); setViewSpotlight(null); }}>{I.profile}<span>Profile</span></button>
+              <button className={page === "network" ? "active" : ""} onClick={() => { setPage("network"); setViewSpotlight(null); }}>{I.network}<span>Network</span></button>
+              <button className={["profile","present","media","academy","messages"].includes(page) ? "active" : ""} onClick={() => setShowMobileMenu(true)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>More</span></button>
             </>
           )}
         </nav>
+
+        {/* ── Mobile Side Panel ── */}
+        {showMobileMenu && <div className="mob-panel-overlay open" onClick={() => setShowMobileMenu(false)} />}
+        <div className={`mob-panel${showMobileMenu ? " open" : ""}`}>
+          <div className="mob-panel-header">
+            <img src={artist.headshot || "/demo/artists/1.jpg"} alt="" />
+            <div>
+              <div className="mp-name">{artist.firstName} {artist.lastName}</div>
+              <div className="mp-plan">{artist.plan === "studio" ? "Studio" : artist.plan === "pro" ? "Pro" : "Core"} Plan</div>
+            </div>
+            <button className="mob-panel-close" onClick={() => setShowMobileMenu(false)}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          <div className="mob-panel-nav">
+            {[
+              { id: "profile", icon: I.profile, label: "Profile" },
+              { id: "present", icon: I.present, label: "Present" },
+              { id: "media", icon: I.media, label: "Media Library" },
+              { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
+              { id: "academy", icon: I.academy, label: "Academy" },
+            ].map(item => (
+              <button key={item.id} className={page === item.id ? "active" : ""} onClick={() => { setPage(item.id); setShowMobileMenu(false); setViewSpotlight(null); }}>
+                {item.icon}<span>{item.label}</span>
+                {item.badge && <span className="mp-badge">{item.badge}</span>}
+              </button>
+            ))}
+            <div className="mp-divider" />
+            <button onClick={() => { setShowMobileMenu(false); showToast("Settings coming soon"); }}>
+              {I.settings}<span>Settings</span>
+            </button>
+            <button onClick={() => { setDarkMode(!darkMode); }}>
+              {darkMode ? I.sun : I.moon}<span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
+            </button>
+          </div>
+          <div className="mob-panel-footer">
+            <button onClick={() => { setShowMobileMenu(false); setLoggedIn(false); }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              Sign Out
+            </button>
+          </div>
+        </div>
 
         {/* ── Sidebar ── */}
         <nav className="sidebar">
@@ -4187,7 +4316,7 @@ export default function ArtistShell() {
             </div>
             <div className="welcome-grid">
               {[
-                { icon: "👤", title: "Profile & Stage Record", desc: "Build your professional identity with a modular career library" },
+                { icon: "👤", title: "Profile & Resume", desc: "Build your professional identity with a modular career library" },
                 { icon: "🔍", title: "Discover", desc: "Find auditions, jobs, and open calls from top companies" },
                 { icon: "📋", title: "Applications", desc: "Track submissions and manage your entire audition pipeline" },
                 { icon: "🎨", title: "Present", desc: "Create stunning portfolios to share with the industry" },
@@ -4216,7 +4345,7 @@ export default function ArtistShell() {
           <div onClick={e => e.stopPropagation()} style={{ position: "relative", maxWidth: 560 }}>
             <button className="modal-close" onClick={() => setShowNewEntry(false)}>✕</button>
             <h2>{editEntry ? "Edit Entry" : "New Entry"}</h2>
-            <p className="modal-sub">{editEntry ? "Update your stage record entry" : "Add to your Stage Record"}</p>
+            <p className="modal-sub">{editEntry ? "Update your resume entry" : "Add to your Resume"}</p>
 
             {!newEntryType ? (
               <div className="entry-type-grid">
@@ -4333,12 +4462,12 @@ export default function ArtistShell() {
         );
       })()}
 
-      {/* ── Stage Record Picker ── */}
+      {/* ── Resume Picker ── */}
       {showSRPicker && (
         <div className="picker-overlay" onClick={() => setShowSRPicker(false)}>
           <div className="picker-modal" onClick={e => e.stopPropagation()}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
-              <h3>Add Stage Record Entries</h3>
+              <h3>Add Resume Entries</h3>
               <button className="modal-close" style={{ position: "static" }} onClick={() => setShowSRPicker(false)}>✕</button>
             </div>
             <div className="pm-sub">Select entries to attach to this application</div>
@@ -4564,6 +4693,94 @@ export default function ArtistShell() {
           </div>
         </div>
       )}
+
+      {/* ── Resume Preview ── */}
+      {showResumePreview && (() => {
+        const grouped = {};
+        const sectionOrder = ["experience", "education", "award", "repertoire", "skills", "press"];
+        const sectionLabels = { experience: "Experience", education: "Education", award: "Awards", repertoire: "Repertoire", skills: "Skills", press: "Press" };
+        stageRecords.forEach(sr => {
+          if (!grouped[sr.type]) grouped[sr.type] = [];
+          grouped[sr.type].push(sr);
+        });
+        return (
+          <div className="cr-overlay" onClick={e => { if (e.target === e.currentTarget) setShowResumePreview(false); }}>
+            <div className="cr-toolbar">
+              <span>Lanced Resume Preview</span>
+              <div className="cr-actions">
+                <div className="cr-zoom">
+                  <button onClick={() => setResumeZoom(z => Math.max(40, z - 10))}>−</button>
+                  <span>{resumeZoom}%</span>
+                  <button onClick={() => setResumeZoom(z => Math.min(120, z + 10))}>+</button>
+                </div>
+                <button style={{ background: "#fff", color: "#1a1a2e" }} onClick={() => window.print()}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                  Print / Save PDF
+                </button>
+                <button style={{ background: "var(--ac)", color: "#fff" }} onClick={() => { showToast("Resume link copied!"); }}>
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+                  Share
+                </button>
+                <button style={{ background: "rgba(255,255,255,.15)", color: "#fff" }} onClick={() => setShowResumePreview(false)}>Close</button>
+              </div>
+            </div>
+            <div className="cr-page" style={{ transform: `scale(${resumeZoom / 100})` }}>
+              {/* Header */}
+              <div className="cr-header">
+                <img className="cr-photo" src={artist.photo} alt="" />
+                <div className="cr-info">
+                  <h1>{artist.firstName} <span>{artist.lastName}</span></h1>
+                  <div className="cr-discipline">{artist.styles?.[0] || "Performer"} · {artist.location}</div>
+                  <div className="cr-pronouns">{artist.pronouns}</div>
+                  <div className="cr-contact">
+                    <span>{artist.email}</span>
+                    {artist.socials?.instagram && <span>@{artist.socials.instagram}</span>}
+                    {artist.links?.website && <span>{artist.links.website}</span>}
+                  </div>
+                  <div className="cr-bio">{artist.profileBio}</div>
+                </div>
+                <div className="cr-qr-block">
+                  <img src={`https://api.qrserver.com/v1/create-qr-code/?size=160x160&color=604DFF&data=${encodeURIComponent("https://lanced.app/" + artist.handle)}`} alt="QR" />
+                  <div className="cr-qr-url">lanced.app/{artist.handle}</div>
+                </div>
+              </div>
+
+              {/* Resume Sections */}
+              {sectionOrder.map(type => {
+                const entries = grouped[type];
+                if (!entries || entries.length === 0) return null;
+                return (
+                  <div key={type} className="cr-section">
+                    <div className="cr-section-title">{sectionLabels[type]}</div>
+                    {entries.map(sr => (
+                      <div key={sr.id} className="cr-entry">
+                        <div className="cr-entry-header">
+                          <div className="cr-entry-title">{sr.title}</div>
+                          <div className="cr-entry-dates">{sr.start}{sr.end ? ` — ${sr.end}` : sr.start ? " — Present" : ""}</div>
+                        </div>
+                        {sr.org && <div className="cr-entry-org">{sr.org}</div>}
+                        {sr.location && <div className="cr-entry-location">{sr.location}</div>}
+                        {sr.desc && <div className="cr-entry-desc">{sr.desc}</div>}
+                        {sr.tags.length > 0 && (
+                          <div className="cr-entry-tags">
+                            {sr.tags.map(t => <span key={t}>{t}</span>)}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+
+              {/* Footer */}
+              <div className="cr-footer">
+                <div className="cr-footer-text">Generated on {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</div>
+                <img src="/made-with-lanced.png" alt="Lanced" />
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* ── Share Modal ── */}
       {showShareModal && currentPortfolio && (
