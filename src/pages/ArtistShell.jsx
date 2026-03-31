@@ -37,12 +37,13 @@ const STAGE_RECORD = [
 ];
 
 const MOCK_APPLICATIONS = [
-  { id: "app1", company: "Nederlands Dans Theater", companyLogo: "/demo/artists/1.jpg", opportunity: "NDT 2 — Open Audition 2026/27 Season", status: "shortlisted", submitted: "2026-03-10", deadline: "2026-04-15", banner: "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg", desc: "NDT is looking for versatile contemporary dancers for the upcoming season. We seek artists who bring unique movement quality and strong technical foundation.", companyDesc: "Nederlands Dans Theater is one of the world's leading contemporary dance companies, based in The Hague." },
-  { id: "app2", company: "Sadler's Wells", companyLogo: "/demo/artists/2.jpg", opportunity: "Associate Artist Programme 2026", status: "in_review", submitted: "2026-03-05", deadline: "2026-05-01", banner: "/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg", desc: "Seeking emerging choreographers and dancers for our Associate Artist programme. Two-year residency with studio access and production support.", companyDesc: "Sadler's Wells is a world-leading dance house dedicated to bringing the very best international and UK dance to London audiences." },
-  { id: "app3", company: "Batsheva Dance Company", companyLogo: "/demo/artists/3.jpg", opportunity: "Ensemble Dancer — 2026 Season", status: "invited", submitted: "2026-02-20", deadline: "2026-03-30", banner: "/demo/banners/fabian-centeno-k4s5mtsyuli-unsplash.jpg", desc: "Join Batsheva's renowned ensemble. We're looking for dancers with strong Gaga technique background and improvisational skills.", companyDesc: "Batsheva Dance Company, founded in 1964, is Israel's world-renowned modern dance company." },
-  { id: "app4", company: "Crystal Pite / Kidd Pivot", companyLogo: "/demo/artists/4.jpg", opportunity: "Revival Cast — Body and Soul", status: "submitted", submitted: "2026-03-22", deadline: "2026-06-01", banner: "/demo/banners/shutterstock_1234830199.jpg", desc: "Casting for the revival of Body and Soul. Looking for highly physical performers with strong theatrical sensibility.", companyDesc: "Kidd Pivot is Crystal Pite's company blending movement and theatre into visceral productions." },
-  { id: "app5", company: "English National Ballet", companyLogo: "/demo/artists/5.jpg", opportunity: "Guest Artist — Modern Masters", status: "not_selected", submitted: "2026-01-15", deadline: "2026-02-28", banner: "/demo/banners/shutterstock_1505137721.jpg", desc: "Guest artist opportunity for our Modern Masters triple bill featuring works by Forsythe, Pite, and Khan.", companyDesc: "English National Ballet is one of the UK's leading ballet companies." },
-  { id: "app6", company: "Hamburg Ballet", companyLogo: "/demo/artists/2.jpg", opportunity: "Apprentice Dancer — 2026/27", status: "draft", submitted: "", deadline: "2026-05-20", banner: "/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg", desc: "John Neumeier's Hamburg Ballet seeks apprentice dancers for the upcoming season.", companyDesc: "Hamburg Ballet is one of Germany's premier ballet companies under the legendary direction of John Neumeier.", draftProgress: { profile: true, resume: true, materials: false, motivation: false } },
+  { id: "app1", company: "Ballett Zürich", companyLogo: "/demo/artists/1.jpg", opportunity: "Corps de Ballet — 2026/27 Season", status: "shortlisted", submitted: "2026-03-10", deadline: "2026-04-15", banner: "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg", desc: "Ballett Zürich is seeking versatile classical and contemporary dancers for the upcoming season under the direction of Christian Spuck.", companyDesc: "Ballett Zürich is one of Europe's leading ballet companies, resident at the Opernhaus Zürich." },
+  { id: "app2", company: "Theater Regensburg", companyLogo: "/demo/artists/2.jpg", opportunity: "Ensemble Dancer — 2026/27 Season", status: "submitted", submitted: "2026-03-05", deadline: "2026-05-01", banner: "/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg", desc: "Theater Regensburg's dance company is looking for versatile dancers with strong contemporary and classical technique for the upcoming repertoire season.", companyDesc: "Theater Regensburg is a multi-genre theatre in Bavaria, Germany, with a renowned dance ensemble." },
+  { id: "app3", company: "The Movers", companyLogo: "/demo/artists/3.jpg", opportunity: "Open Casting — New Production 2026", status: "invited", submitted: "2026-02-20", deadline: "2026-03-30", banner: "/demo/banners/fabian-centeno-k4s5mtsyuli-unsplash.jpg", desc: "Casting call for a new contemporary dance production. Seeking performers with strong physical theatre and improvisation skills.", companyDesc: "The Movers is a casting agency specialising in dance and physical theatre across Europe." },
+  { id: "app4", company: "Tanz Luzern", companyLogo: "/demo/artists/4.jpg", opportunity: "Guest Dancer — Spring Programme 2026", status: "submitted", submitted: "2026-03-22", deadline: "2026-06-01", banner: "/demo/banners/shutterstock_1234830199.jpg", desc: "Tanz Luzern invites guest dancers for our spring contemporary programme. We value unique movement voices and collaborative artists.", companyDesc: "Tanz Luzern is a contemporary dance platform at the Luzerner Theater in Switzerland." },
+  { id: "app5", company: "Ballett Zürich", companyLogo: "/demo/artists/1.jpg", opportunity: "Guest Artist — Giselle Revival", status: "not_selected", submitted: "2026-01-15", deadline: "2026-02-28", banner: "/demo/banners/shutterstock_1505137721.jpg", desc: "Guest artist opportunity for the revival of Giselle in the 2025/26 repertoire.", companyDesc: "Ballett Zürich is one of Europe's leading ballet companies, resident at the Opernhaus Zürich." },
+  { id: "app6", company: "Theater Regensburg", companyLogo: "/demo/artists/2.jpg", opportunity: "Apprentice Dancer — 2026/27", status: "draft", submitted: "", deadline: "2026-05-20", banner: "/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg", desc: "Theater Regensburg seeks apprentice dancers for the upcoming season to join its growing dance ensemble.", companyDesc: "Theater Regensburg is a multi-genre theatre in Bavaria, Germany, with a renowned dance ensemble.", draftProgress: { profile: true, resume: true, materials: false, motivation: false } },
+  { id: "app7", company: "Tanz Luzern", companyLogo: "/demo/artists/4.jpg", opportunity: "Company Dancer — 2026/27 Season", status: "waitlisted", submitted: "2026-02-28", deadline: "2026-04-01", banner: "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg", desc: "Seeking contemporary dancers for the upcoming full season. Strong improvisation and partnering skills required.", companyDesc: "Tanz Luzern is a contemporary dance platform at the Luzerner Theater in Switzerland." },
 ];
 
 const MOCK_OPPORTUNITIES = [
@@ -151,10 +152,10 @@ const MOCK_PORTFOLIOS = [
 ];
 
 const MOCK_PF_TRACKING = [
-  { id: "tv1", portfolioId: "pf1", email: "casting@ndt.nl", name: "Sarah de Vries", org: "Nederlands Dans Theater", viewedAt: "2026-03-28T14:22:00", duration: "4m 12s", sections: ["Gallery", "Videos", "Resume"], device: "Desktop" },
+  { id: "tv1", portfolioId: "pf1", email: "casting@ballett-zurich.ch", name: "Sarah Müller", org: "Ballett Zürich", viewedAt: "2026-03-28T14:22:00", duration: "4m 12s", sections: ["Gallery", "Videos", "Resume"], device: "Desktop" },
   { id: "tv2", portfolioId: "pf1", email: null, name: "Anonymous", org: null, viewedAt: "2026-03-27T09:45:00", duration: "1m 38s", sections: ["Gallery"], device: "Mobile" },
-  { id: "tv3", portfolioId: "pf1", email: "hr@sadlerswells.com", name: "James Chen", org: "Sadler's Wells", viewedAt: "2026-03-26T16:10:00", duration: "6m 05s", sections: ["Gallery", "Videos", "Resume", "References"], device: "Desktop" },
-  { id: "tv4", portfolioId: "pf1", email: "info@batsheva.co.il", name: "Noa Levy", org: "Batsheva Dance Company", viewedAt: "2026-03-25T11:30:00", duration: "3m 22s", sections: ["Videos", "Resume"], device: "Desktop" },
+  { id: "tv3", portfolioId: "pf1", email: "hr@theater-regensburg.de", name: "Thomas Weber", org: "Theater Regensburg", viewedAt: "2026-03-26T16:10:00", duration: "6m 05s", sections: ["Gallery", "Videos", "Resume", "References"], device: "Desktop" },
+  { id: "tv4", portfolioId: "pf1", email: "casting@themovers.eu", name: "Noa Levy", org: "The Movers", viewedAt: "2026-03-25T11:30:00", duration: "3m 22s", sections: ["Videos", "Resume"], device: "Desktop" },
   { id: "tv5", portfolioId: "pf1", email: null, name: "Anonymous", org: null, viewedAt: "2026-03-24T20:15:00", duration: "0m 45s", sections: ["Gallery"], device: "Mobile" },
 ];
 
@@ -174,21 +175,21 @@ const MOCK_MEDIA = [
 ];
 
 const MOCK_MESSAGES = [
-  { id: "msg1", from: "NDT Casting", preview: "Thank you for your audition video. We'd like to invite you to...", time: "2h ago", unread: true, avatar: "/demo/artists/1.jpg",
+  { id: "msg1", from: "Ballett Zürich", preview: "Thank you for your audition video. We'd like to invite you to...", time: "2h ago", unread: true, avatar: "/demo/artists/1.jpg",
     thread: [
       { sender: "them", text: "Hi Amara, thank you for your audition video. We've reviewed your materials and are very impressed with your technique.", time: "Mar 10, 10:30" },
-      { sender: "them", text: "We'd like to invite you to the next round of auditions on April 5th in The Hague.", time: "Mar 10, 10:31" },
+      { sender: "them", text: "We'd like to invite you to the next round of auditions on April 5th in Zürich.", time: "Mar 10, 10:31" },
       { sender: "me", text: "Thank you so much! I'm honoured. I'll confirm my attendance shortly.", time: "Mar 10, 14:22" },
       { sender: "them", text: "Great! Please bring pointe shoes and a contemporary solo (max 1 min). Details will follow by email.", time: "Mar 10, 15:00" },
     ]},
-  { id: "msg2", from: "Sadler's Wells", preview: "Your application has been received and is currently under review.", time: "1d ago", unread: false, avatar: "/demo/artists/2.jpg",
+  { id: "msg2", from: "Theater Regensburg", preview: "Your application has been received and is currently under review.", time: "1d ago", unread: false, avatar: "/demo/artists/2.jpg",
     thread: [
-      { sender: "them", text: "Dear Amara, thank you for applying to our Associate Artist Programme 2026. Your application has been received and is currently under review.", time: "Mar 6, 09:15" },
+      { sender: "them", text: "Dear Amara, thank you for applying to our Ensemble Dancer position for 2026/27. Your application has been received and is currently under review.", time: "Mar 6, 09:15" },
       { sender: "me", text: "Thank you for confirming! Looking forward to hearing from you.", time: "Mar 6, 11:40" },
     ]},
-  { id: "msg3", from: "Batsheva Dance Company", preview: "Congratulations! We are pleased to invite you to the final round.", time: "3d ago", unread: false, avatar: "/demo/artists/3.jpg",
+  { id: "msg3", from: "The Movers", preview: "Congratulations! We are pleased to invite you to the final round.", time: "3d ago", unread: false, avatar: "/demo/artists/3.jpg",
     thread: [
-      { sender: "them", text: "Dear Amara, we are pleased to inform you that you have been shortlisted for the Ensemble Dancer position.", time: "Mar 1, 08:00" },
+      { sender: "them", text: "Dear Amara, we are pleased to inform you that you have been shortlisted for the Open Casting.", time: "Mar 1, 08:00" },
       { sender: "me", text: "This is wonderful news! Thank you so much.", time: "Mar 1, 09:30" },
       { sender: "them", text: "Congratulations! We are pleased to invite you to the final round. Please confirm your attendance by March 25.", time: "Mar 5, 14:00" },
       { sender: "me", text: "I'm absolutely thrilled! I confirm my attendance. Is there anything specific I should prepare?", time: "Mar 5, 16:15" },
@@ -197,18 +198,18 @@ const MOCK_MESSAGES = [
 ];
 
 const MOCK_NOTIFICATIONS = [
-  { id: "n1", type: "application", title: "Application Update", body: "Your application for NDT 2 — Open Audition has been shortlisted!", time: "2h ago", unread: true, color: "#1E90FF", icon: "📋" },
-  { id: "n2", type: "broadcast", title: "Crystal Pite / Kidd Pivot", body: "Reminder: Please submit any additional materials before the deadline on June 1st.", time: "5h ago", unread: true, color: "#604DFF", icon: "📢" },
-  { id: "n3", type: "invitation", title: "Invitation Received", body: "Batsheva Dance Company has invited you to the final audition round.", time: "1d ago", unread: false, color: "#1DB954", icon: "🎉" },
-  { id: "n4", type: "broadcast", title: "Nederlands Dans Theater", body: "The audition schedule has been finalized. All applicants will receive individual time slots by email.", time: "2d ago", unread: false, color: "#604DFF", icon: "📢" },
+  { id: "n1", type: "application", title: "Application Update", body: "Your application for Corps de Ballet at Ballett Zürich has been shortlisted!", time: "2h ago", unread: true, color: "#1E90FF", icon: "📋" },
+  { id: "n2", type: "broadcast", title: "Tanz Luzern", body: "Reminder: Please submit any additional materials before the deadline on June 1st.", time: "5h ago", unread: true, color: "#604DFF", icon: "📢" },
+  { id: "n3", type: "invitation", title: "Invitation Received", body: "The Movers has invited you to the final casting round.", time: "1d ago", unread: false, color: "#1DB954", icon: "🎉" },
+  { id: "n4", type: "broadcast", title: "Ballett Zürich", body: "The audition schedule has been finalized. All applicants will receive individual time slots by email.", time: "2d ago", unread: false, color: "#604DFF", icon: "📢" },
   { id: "n5", type: "profile", title: "Profile Views", body: "Your profile was viewed 48 times this week — up 23% from last week.", time: "3d ago", unread: false, color: "#F5A623", icon: "👁" },
   { id: "n6", type: "opportunity", title: "New Opportunity", body: "A new opportunity matching your profile: Soloist — 2026/27 Season at Royal Danish Ballet.", time: "4d ago", unread: false, color: "#FF69B4", icon: "✨" },
-  { id: "n7", type: "broadcast", title: "Sadler's Wells", body: "Thank you to all applicants. We will be sending out decisions by the end of this week.", time: "5d ago", unread: false, color: "#604DFF", icon: "📢" },
+  { id: "n7", type: "broadcast", title: "Theater Regensburg", body: "Thank you to all applicants. We will be sending out decisions by the end of this week.", time: "5d ago", unread: false, color: "#604DFF", icon: "📢" },
 ];
 
 /* ━━━ HELPERS ━━━ */
-const STATUS_COLORS = { submitted: { bg: "#F0F0FF", color: "#604DFF" }, in_review: { bg: "#FFF8E6", color: "#F5A623" }, shortlisted: { bg: "#E6F0FF", color: "#1E90FF" }, invited: { bg: "#E6FFF0", color: "#1DB954" }, not_selected: { bg: "#FFF0F0", color: "#FF4757" }, pending: { bg: "#F5F4FB", color: "#98989F" }, draft: { bg: "rgba(255,171,0,.12)", color: "#F5A623" } };
-const STATUS_LABELS = { submitted: "Submitted", in_review: "In Review", shortlisted: "Shortlisted", invited: "Invited", not_selected: "Not Selected", pending: "Pending", draft: "Draft" };
+const STATUS_COLORS = { submitted: { bg: "#F0F0FF", color: "#604DFF" }, shortlisted: { bg: "#E6F0FF", color: "#1E90FF" }, invited: { bg: "#E6FFF0", color: "#1DB954" }, waitlisted: { bg: "#FFF5E6", color: "#E67E22" }, not_selected: { bg: "#FFF0F0", color: "#FF4757" }, archived: { bg: "#F0F0F0", color: "#98989F" }, draft: { bg: "rgba(255,171,0,.12)", color: "#F5A623" } };
+const STATUS_LABELS = { submitted: "Submitted", shortlisted: "Shortlisted", invited: "Invited", waitlisted: "Waitlisted", not_selected: "Not Selected", archived: "Archived", draft: "Draft" };
 const SR_COLORS = { experience: "#604DFF", education: "#1E90FF", award: "#F5A623", skills: "#1DB954", press: "#FF4757", repertoire: "#FF69B4" };
 const SR_LABELS = { experience: "Experience", education: "Education", award: "Award", skills: "Skills", press: "Press", repertoire: "Repertoire" };
 const MEDIA_COLORS = { video: "#FF4757", photo: "#1DB954", doc: "#F5A623", audio: "#1E90FF", link: "#604DFF" };
@@ -232,7 +233,14 @@ const CSS = `
 .dark .field input,.dark .field textarea,.dark .field select{background:var(--g1);border-color:var(--g3);color:var(--tx)}
 .dark .field input:focus,.dark .field textarea:focus,.dark .field select:focus{background:var(--sf);border-color:var(--ac)}
 .dark .field input::placeholder,.dark .field textarea::placeholder{color:var(--g4)}
+.dark .app-toolbar.stuck{background:rgba(13,13,18,.75)}
+.dark .app-toolbar .at-search-btn{background:var(--sf);border-color:var(--g3)}
+.dark .app-toolbar .at-search-expanded{background:var(--sf);border-color:var(--ac)}
+.dark .app-toolbar .at-filter-btn{background:var(--sf);border-color:var(--g3)}
 .dark .app-card{background:var(--sf);border-color:var(--g2)}
+.dark .app-tile{background:var(--sf);border-color:var(--g2)}
+.dark .ak-column{background:var(--sf);border-color:var(--g2)}
+.dark .ak-card{background:var(--bg);border-color:var(--g2)}
 .dark .sc-card{background:var(--sf);border-color:var(--g2)}
 .dark .dash-section{background:var(--sf);border-color:var(--g2)}
 .dark .dash-banner{background:linear-gradient(135deg,#1a1040 0%,#2d1b69 25%,#4a2a8a 50%,#604DFF 75%,#2d1b69 100%);background-size:200% 200%;animation:bannerShift 8s ease infinite;border:1px solid var(--g2)}
@@ -328,15 +336,15 @@ const CSS = `
 .sidebar:hover .sb-toggle,.sb-toggle:focus{opacity:1}
 .sb-toggle:hover{color:var(--ac);background:rgba(96,77,255,.06)}
 .sb-collapsed .sb-toggle{opacity:1}
-.sb-collapsed .sidebar-back-top{padding:4px 6px 0;flex-direction:column;gap:4px}
+.sb-collapsed .sidebar-back-top{padding:4px 6px 0;flex-direction:column;gap:4px;align-items:center;justify-content:center}
 .sidebar-back-top .sb-toggle{margin-right:4px}
 .sb-back-toggle{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;color:var(--g4);font-size:12px;font-weight:500;font-family:var(--sans);background:none;border:none;border-radius:10px;transition:all .15s;width:100%;text-align:left}
 .sb-back-toggle:hover{color:var(--ac);background:var(--g1)}
 .sb-collapsed .sb-back-toggle{justify-content:center;padding:10px}
 .sb-collapsed .sb-back-toggle .sb-label{display:none}
 .sb-collapsed .sidebar-header{padding:12px 0 8px;display:flex;flex-direction:column;align-items:center;gap:6px}
-.sb-collapsed .sidebar-logo{justify-content:center}
-.sb-collapsed .sidebar-logo .sb-name,.sb-collapsed .sidebar-logo .sb-email{display:none}
+.sb-collapsed .sidebar-logo{justify-content:center;width:100%}
+.sb-collapsed .sidebar-logo>div:not(.sb-mark){display:none}
 .sb-collapsed .sidebar-nav{padding:8px 6px;overflow:visible}
 .sb-collapsed .sidebar-item{justify-content:center;padding:10px;gap:0}
 .sb-label{white-space:nowrap;overflow:hidden;transition:opacity .15s}
@@ -525,8 +533,26 @@ textarea.pf-input{line-height:1.6}
 .entry-type-card .etc-sub{font-size:10px;color:var(--g4)}
 
 /* ━━━ Applications ━━━ */
+.app-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;margin-bottom:20px;position:sticky;top:0;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;border-bottom:1px solid var(--g2);transition:all .2s}
+.app-toolbar.stuck{background:rgba(var(--bg-rgb,248,247,252),.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--g2)}
+.app-toolbar .at-filters{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.app-toolbar .at-filters .chip{font-size:12px;padding:6px 12px}
+.app-toolbar .at-filters .chip .at-chip-count{font-size:10px;opacity:.6;margin-left:3px;font-weight:500}
+.app-toolbar .at-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
+.app-toolbar .at-search-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--g2);background:var(--sf);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--g5);transition:all .2s;flex-shrink:0}
+.app-toolbar .at-search-btn:hover{border-color:var(--ac);color:var(--ac)}
+.app-toolbar .at-search-expanded{display:flex;align-items:center;gap:8px;padding:0 14px;border:1px solid var(--ac);border-radius:40px;background:var(--sf);height:38px;animation:expandSearch .25s ease;overflow:hidden;min-width:200px}
+.app-toolbar .at-search-expanded input{border:none;outline:none;font-family:var(--sans);font-size:12px;flex:1;background:none;color:var(--tx);min-width:100px}
+.app-toolbar .at-search-expanded input::placeholder{color:var(--g4)}
+.app-toolbar .at-search-close{background:none;border:none;cursor:pointer;color:var(--g4);padding:2px;display:flex;align-items:center;transition:color .15s}
+.app-toolbar .at-search-close:hover{color:var(--tx)}
+@keyframes expandSearch{from{min-width:38px;opacity:.5}to{min-width:200px;opacity:1}}
+.app-toolbar .at-filter-btn{height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--g2);background:var(--sf);display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--g5);font-size:12px;font-weight:500;transition:all .15s}
+.app-toolbar .at-filter-btn:hover{border-color:var(--ac);color:var(--ac)}
+.app-toolbar .at-filter-btn.active{background:var(--ac);color:#fff;border-color:var(--ac)}
+.app-toolbar .at-filter-btn svg{width:14px;height:14px}
 .app-list{display:flex;flex-direction:column;gap:8px;animation:fadeIn .3s ease}
-.app-card{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sf);border:1px solid var(--g2);border-radius:14px;cursor:pointer;transition:all .2s;animation:slideInUp .3s ease both}
+.app-card{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sf);border:1px solid var(--g2);border-radius:14px;cursor:pointer;transition:all .2s;animation:slideInUp .3s ease both;position:relative}
 .app-card:nth-child(1){animation-delay:.03s}.app-card:nth-child(2){animation-delay:.06s}.app-card:nth-child(3){animation-delay:.09s}.app-card:nth-child(4){animation-delay:.12s}
 .app-card:hover{border-color:rgba(96,77,255,.18);transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .app-card .ac-logo{width:44px;height:44px;border-radius:12px;object-fit:cover;flex-shrink:0}
@@ -535,6 +561,43 @@ textarea.pf-input{line-height:1.6}
 .app-card .ac-company{font-size:12px;color:var(--g4)}
 .app-card .ac-meta{display:flex;gap:16px;font-size:11px;color:var(--g5);margin-top:4px}
 .app-card .ac-status{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:4px 12px;border-radius:40px;flex-shrink:0}
+.app-card .ac-archive{position:absolute;top:8px;right:8px;background:none;border:none;cursor:pointer;color:var(--g3);padding:4px;border-radius:6px;opacity:0;transition:all .15s;display:flex;align-items:center}
+.app-card:hover .ac-archive{opacity:1}
+.app-card .ac-archive:hover{color:var(--g5);background:var(--g1)}
+/* tile/card view */
+.app-tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;animation:fadeIn .3s ease}
+.app-tile{background:var(--sf);border:1px solid var(--g2);border-radius:16px;cursor:pointer;transition:all .2s;animation:popIn .25s ease both;overflow:hidden;position:relative}
+.app-tile:nth-child(1){animation-delay:.03s}.app-tile:nth-child(2){animation-delay:.06s}.app-tile:nth-child(3){animation-delay:.09s}.app-tile:nth-child(4){animation-delay:.12s}
+.app-tile:hover{border-color:rgba(96,77,255,.18);transform:translateY(-3px);box-shadow:0 8px 24px rgba(96,77,255,.1)}
+.app-tile .at-banner{height:100px;overflow:hidden;position:relative}
+.app-tile .at-banner img{width:100%;height:100%;object-fit:cover}
+.app-tile .at-banner .at-status{position:absolute;top:10px;right:10px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:4px 10px;border-radius:40px}
+.app-tile .at-body{padding:16px}
+.app-tile .at-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.app-tile .at-head img{width:36px;height:36px;border-radius:10px;object-fit:cover;flex-shrink:0;border:2px solid var(--sf);margin-top:-28px;position:relative;z-index:1}
+.app-tile .at-head .at-company{font-size:11px;color:var(--g4);font-weight:500}
+.app-tile .at-title{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:6px;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.app-tile .at-meta{display:flex;gap:12px;font-size:10px;color:var(--g5)}
+.app-tile .at-meta span{display:flex;align-items:center;gap:3px}
+.app-tile .at-archive{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.4);backdrop-filter:blur(6px);border:none;cursor:pointer;color:rgba(255,255,255,.7);padding:5px;border-radius:6px;opacity:0;transition:all .15s;display:flex;align-items:center}
+.app-tile:hover .at-archive{opacity:1}
+.app-tile .at-archive:hover{color:#fff;background:rgba(0,0,0,.6)}
+/* kanban board */
+.app-kanban{display:flex;gap:12px;overflow-x:auto;padding-bottom:16px;min-height:400px}
+.ak-column{min-width:240px;flex:1;background:var(--bg);border-radius:14px;border:1px solid var(--g2);display:flex;flex-direction:column;max-height:600px}
+.ak-col-header{display:flex;align-items:center;gap:8px;padding:14px 16px 10px;border-bottom:1px solid var(--g2)}
+.ak-col-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ak-col-title{font-size:12px;font-weight:600;color:var(--tx)}
+.ak-col-count{font-size:10px;color:var(--g4);background:var(--g1);padding:1px 7px;border-radius:40px;margin-left:auto}
+.ak-col-body{flex:1;overflow-y:auto;padding:10px;display:flex;flex-direction:column;gap:8px}
+.ak-card{display:flex;gap:10px;padding:12px;background:var(--sf);border:1px solid var(--g2);border-radius:10px;cursor:pointer;transition:all .2s}
+.ak-card:hover{border-color:rgba(96,77,255,.18);box-shadow:0 2px 8px rgba(96,77,255,.06);transform:translateY(-1px)}
+.ak-logo{width:32px;height:32px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.ak-info{flex:1;min-width:0}
+.ak-title{font-size:12px;font-weight:600;color:var(--tx);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ak-company{font-size:11px;color:var(--g4);margin-top:2px}
+.ak-deadline{font-size:10px;color:var(--g5);margin-top:4px}
+.ak-empty{text-align:center;padding:24px 8px;font-size:11px;color:var(--g3)}
 
 /* ━━━ Spotlight (Room pattern) ━━━ */
 .spotlight-hero{width:100%;height:200px;border-radius:16px;overflow:hidden;position:relative;margin-bottom:24px;animation:slideInUp .3s ease both}
@@ -902,6 +965,114 @@ textarea.pf-input{line-height:1.6}
 .dark .pfl-topbar{background:rgba(18,18,22,.85)}
 .dark .pfl-footer{background:rgba(18,18,22,.4)}
 
+/* ━━━ Public Profile ━━━ */
+.pp-overlay{position:fixed;inset:0;z-index:500;background:var(--bg);overflow-y:auto;animation:fadeIn .3s ease}
+.pp-topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(var(--bg-rgb,255,255,255),.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.pp-topbar-left{display:flex;align-items:center;gap:10px}
+.pp-topbar-left img{height:20px}
+.pp-topbar-left span{font-size:12px;color:var(--g4);font-weight:500}
+.pp-topbar-actions{display:flex;align-items:center;gap:8px}
+.pp-topbar-actions button{padding:6px 16px;border-radius:40px;font-size:12px;font-weight:600;font-family:var(--sans);cursor:pointer;transition:all .15s}
+.dark .pp-topbar{background:rgba(18,18,22,.7)}
+.pp-hero{position:relative;width:100%;height:340px;overflow:hidden}
+.pp-hero-banner{width:100%;height:100%;object-fit:cover}
+.pp-hero-gradient{position:absolute;inset:0;background:linear-gradient(transparent 30%,rgba(0,0,0,.6))}
+.pp-hero-content{position:absolute;bottom:0;left:0;right:0;padding:40px;display:flex;align-items:flex-end;gap:24px}
+.pp-avatar{width:110px;height:110px;border-radius:50%;border:4px solid #fff;box-shadow:0 4px 20px rgba(0,0,0,.2);overflow:hidden;flex-shrink:0}
+.pp-avatar img{width:100%;height:100%;object-fit:cover}
+.pp-hero-info{flex:1;min-width:0;color:#fff;padding-bottom:4px}
+.pp-hero-name{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.1;margin-bottom:4px}
+.pp-hero-name em{font-style:italic;color:rgba(255,255,255,.85)}
+.pp-hero-handle{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px}
+.pp-hero-bio{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5;max-width:520px}
+.pp-hero-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.pp-hero-tags span{padding:4px 12px;border-radius:40px;font-size:11px;font-weight:600;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#fff}
+.pp-hero-socials{display:flex;gap:8px;margin-top:12px}
+.pp-hero-socials a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;transition:all .2s;text-decoration:none;font-size:14px}
+.pp-hero-socials a:hover{background:rgba(255,255,255,.3);transform:scale(1.1)}
+.pp-body{max-width:900px;margin:0 auto;padding:32px 24px 80px}
+.pp-section{margin-bottom:40px;animation:slideInUp .4s ease both}
+.pp-section-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--tx);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.pp-section-title em{color:var(--ac);font-style:italic}
+.pp-featured-video{position:relative;width:100%;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:16/7;background:#000}
+.pp-featured-video img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
+.pp-featured-video:hover img{opacity:.7}
+.pp-featured-video .pp-fv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.pp-featured-video .pp-fv-play::after{content:'';border-left:22px solid #fff;border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:4px}
+.pp-featured-video:hover .pp-fv-play{background:rgba(96,77,255,.8);transform:translate(-50%,-50%) scale(1.1)}
+.pp-featured-video .pp-fv-info{position:absolute;bottom:20px;left:20px;color:#fff}
+.pp-featured-video .pp-fv-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:40px;background:rgba(96,77,255,.8);margin-bottom:6px;display:inline-block}
+.pp-featured-video .pp-fv-title{font-size:18px;font-weight:600}
+.pp-featured-video .pp-fv-dur{font-size:12px;opacity:.7;margin-top:2px}
+.pp-portfolio-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:16/8;background:#000;transition:all .3s}
+.pp-portfolio-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(96,77,255,.15)}
+.pp-portfolio-card img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s}
+.pp-portfolio-card:hover img{opacity:.6}
+.pp-portfolio-card .pp-pc-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.pp-portfolio-card .pp-pc-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6);margin-bottom:6px}
+.pp-portfolio-card .pp-pc-name{font-family:var(--serif);font-size:26px;color:#fff;font-weight:400;line-height:1.2}
+.pp-portfolio-card .pp-pc-name em{font-style:italic;color:rgba(255,255,255,.8)}
+.pp-portfolio-card .pp-pc-meta{font-size:12px;color:rgba(255,255,255,.6);margin-top:6px;display:flex;gap:12px}
+.pp-portfolio-card .pp-pc-arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:all .3s;font-size:16px}
+.pp-portfolio-card:hover .pp-pc-arrow{opacity:1}
+.pp-portfolio-card.expanded{border-radius:20px 20px 0 0}
+.pp-pf-expanded{background:var(--sf);border:1px solid var(--g2);border-top:none;border-radius:0 0 20px 20px;padding:28px;animation:slideInUp .3s ease both}
+.pp-pf-expanded h4{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--tx);margin:0 0 14px}
+.pp-pf-expanded h4 em{color:var(--ac);font-style:italic}
+.pp-pf-section{margin-bottom:28px}
+.pp-pf-section:last-child{margin-bottom:0}
+.pp-pf-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pp-pf-photos .pp-pfp-item{border-radius:12px;overflow:hidden;aspect-ratio:1;cursor:pointer;transition:all .2s}
+.pp-pf-photos .pp-pfp-item:hover{transform:scale(1.03)}
+.pp-pf-photos .pp-pfp-item img{width:100%;height:100%;object-fit:cover}
+.pp-pf-videos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pp-pf-vid{border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--g2);transition:all .2s}
+.pp-pf-vid:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
+.pp-pf-vid .pp-pfv-thumb{aspect-ratio:16/9;overflow:hidden;position:relative;background:#000}
+.pp-pf-vid .pp-pfv-thumb img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.pp-pf-vid .pp-pfv-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center}
+.pp-pf-vid .pp-pfv-play::after{content:'';border-left:12px solid #fff;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:2px}
+.pp-pf-vid .pp-pfv-info{padding:10px 12px}
+.pp-pf-vid .pp-pfv-title{font-size:13px;font-weight:600;color:var(--tx)}
+.pp-pf-vid .pp-pfv-dur{font-size:11px;color:var(--g4);margin-top:2px}
+.pp-pf-refs{display:flex;flex-direction:column;gap:12px}
+.pp-pf-ref{padding:16px;border:1px solid var(--g2);border-radius:14px;background:var(--bg)}
+.pp-pf-ref-quote{font-size:13px;color:var(--g5);line-height:1.6;font-style:italic;margin-bottom:8px}
+.pp-pf-ref-source{font-size:11px;font-weight:600;color:var(--tx)}
+.pp-pf-ref-context{font-size:10px;color:var(--g4);margin-top:2px}
+@media(max-width:768px){
+  .pp-pf-photos{grid-template-columns:repeat(3,1fr)}
+  .pp-pf-videos{grid-template-columns:1fr 1fr}
+}
+.pp-gallery-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pp-gallery-strip .pp-gal-item{border-radius:14px;overflow:hidden;aspect-ratio:1;cursor:pointer;transition:all .3s}
+.pp-gallery-strip .pp-gal-item:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.pp-gallery-strip .pp-gal-item img{width:100%;height:100%;object-fit:cover}
+.pp-about{display:grid;grid-template-columns:1.5fr 1fr;gap:24px}
+.pp-about-bio{font-size:14px;color:var(--g5);line-height:1.8}
+.pp-about-stats{display:flex;flex-direction:column;gap:10px}
+.pp-about-stat{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g1)}
+.pp-about-stat .pp-as-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--g4)}
+.pp-about-stat .pp-as-value{font-size:13px;font-weight:500;color:var(--tx)}
+.pp-resume-highlights{display:flex;flex-direction:column;gap:12px}
+.pp-resume-item{display:flex;align-items:flex-start;gap:14px;padding:14px;border:1px solid var(--g2);border-radius:14px;background:var(--sf)}
+.pp-resume-item .pp-ri-emoji{font-size:20px;flex-shrink:0;margin-top:2px}
+.pp-resume-item .pp-ri-title{font-size:14px;font-weight:600;color:var(--tx)}
+.pp-resume-item .pp-ri-org{font-size:12px;color:var(--ac);margin-top:1px}
+.pp-resume-item .pp-ri-meta{font-size:11px;color:var(--g4);margin-top:3px}
+@media(max-width:768px){
+  .pp-hero{height:280px}
+  .pp-hero-content{padding:20px;gap:16px;flex-direction:column;align-items:flex-start}
+  .pp-avatar{width:80px;height:80px;margin-top:-40px}
+  .pp-hero-name{font-size:26px}
+  .pp-body{padding:20px 16px 80px}
+  .pp-about{grid-template-columns:1fr}
+  .pp-gallery-strip{grid-template-columns:repeat(2,1fr)}
+  .pp-portfolio-card{aspect-ratio:16/10}
+  .pp-portfolio-card .pp-pc-name{font-size:20px}
+  .pp-featured-video{aspect-ratio:16/9}
+}
+
 /* Lightbox */
 .pfl-lightbox{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;animation:fadeIn .2s;cursor:zoom-out}
 .pfl-lightbox img,.pfl-lightbox video{max-width:90vw;max-height:85vh;border-radius:8px;object-fit:contain;animation:pflSlideUp .3s ease}
@@ -1020,6 +1191,11 @@ textarea.pf-input{line-height:1.6}
 
 /* ━━━ Toast ━━━ */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--tx);color:#fff;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:500;z-index:500;animation:slideUp .2s ease;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.feedback-tab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:999;writing-mode:vertical-rl;text-orientation:mixed}
+.feedback-tab a{display:flex;align-items:center;gap:8px;background:#604DFF;color:#fff;padding:14px 10px;border-radius:12px 0 0 12px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none;box-shadow:-4px 0 20px rgba(96,77,255,.35);transition:all .2s ease;cursor:pointer}
+.feedback-tab a:hover{padding-right:14px;background:#5040e0;box-shadow:-6px 0 28px rgba(96,77,255,.5)}
+.feedback-tab a svg{width:16px;height:16px;flex-shrink:0}
+@media(max-width:768px){.feedback-tab a{font-size:11px;padding:10px 8px}.feedback-tab a svg{width:14px;height:14px}}
 
 /* ━━━ List toolbar (shared) ━━━ */
 .list-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
@@ -1066,6 +1242,9 @@ textarea.pf-input{line-height:1.6}
 /* Spotlight card rows */
 .spotlight-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;animation:slideInUp .3s ease both}
 .spotlight-row.two-col{grid-template-columns:1fr 1fr}
+.plan-section{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:16px;animation:slideInUp .3s ease both;animation-delay:.15s}
+.plan-section-left{min-width:0}
+.plan-section-right{display:flex;flex-direction:column;min-width:0}
 .spotlight-row .info-card{margin-bottom:0}
 /* Message input */
 .msg-input-wrap{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--g1)}
@@ -1318,6 +1497,7 @@ textarea.pf-input{line-height:1.6}
   .dash-banner .db-title{font-size:22px}
   .spotlight-grid{grid-template-columns:1fr}
   .spotlight-row{grid-template-columns:1fr!important}
+  .plan-section{grid-template-columns:1fr}
   .welcome-grid{grid-template-columns:1fr}
   .messenger{grid-template-columns:1fr;height:auto;min-height:auto;border:none;background:transparent;border-radius:0}
   .ms-thread{display:none}
@@ -1339,8 +1519,14 @@ textarea.pf-input{line-height:1.6}
   .sr-grid{grid-template-columns:1fr}
   .sr-toolbar{gap:6px}
   .list-search{max-width:100%}
+  .app-toolbar{margin:0 -16px;padding-left:16px;padding-right:16px;overflow-x:auto;gap:6px;flex-wrap:nowrap}
+  .app-toolbar .at-filters{overflow-x:auto;flex-shrink:1;min-width:0;gap:4px}
+  .app-toolbar .at-filters .chip{font-size:11px;padding:5px 10px;white-space:nowrap}
+  .app-toolbar .at-search-expanded{min-width:140px}
+  .app-tiles{grid-template-columns:1fr}
   .app-card{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
   .app-card .ac-status{align-self:flex-start}
+  .app-card .ac-archive{opacity:1}
   .app-submission{grid-template-columns:1fr}
   .opp-highlight-row{grid-template-columns:1fr}
   .apply-stepper{overflow-x:auto;justify-content:flex-start;padding:4px 0}
@@ -1407,6 +1593,10 @@ const I = {
   x: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
   home: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>,
   inbox: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>,
+  archive: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>,
+  archiveRestore: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="m9.5 14.5 2.5-2.5 2.5 2.5"/><path d="M12 12v5"/></svg>,
+  kanban: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="5" height="15" rx="1"/></svg>,
+  filter: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
   settings: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
 };
 
@@ -1432,8 +1622,8 @@ function NetworkMap({ items, networkTab, darkMode }) {
       });
       L.tileLayer(
         darkMode
-          ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-          : "https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png",
+          ? "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png"
+          : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
         { attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>', subdomains: "abcd", maxZoom: 19 }
       ).addTo(mapInstanceRef.current);
     }
@@ -1455,8 +1645,8 @@ function NetworkMap({ items, networkTab, darkMode }) {
     });
     L.tileLayer(
       darkMode
-        ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-        : "https://{s}.basemaps.cartocdn.com/voyager/{z}/{x}/{y}{r}.png",
+        ? "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png"
+        : "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
       { attribution: '&copy; <a href="https://carto.com/">CARTO</a> &copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>', subdomains: "abcd", maxZoom: 19 }
     ).addTo(mapInstanceRef.current);
   }, [darkMode]);
@@ -1539,6 +1729,9 @@ export default function ArtistShell() {
   const [applications, setApplications] = useState(MOCK_APPLICATIONS);
   const [appFilter, setAppFilter] = useState("all");
   const [appSort, setAppSort] = useState("newest");
+  const [appSearch, setAppSearch] = useState("");
+  const [appSearchOpen, setAppSearchOpen] = useState(false);
+  const [appView, setAppView] = useState("list");
   const [viewSpotlight, setViewSpotlight] = useState(null);
   const [spotlightTab, setSpotlightTab] = useState("overview");
 
@@ -1562,6 +1755,8 @@ export default function ArtistShell() {
   const [newPf, setNewPf] = useState({ name: "", description: "", discipline: "", styles: [], skills: [], styleInput: "", skillInput: "" });
   const [portfolioPreview, setPortfolioPreview] = useState(false);
   const [portfolioLive, setPortfolioLive] = useState(false);
+  const [showPublicProfile, setShowPublicProfile] = useState(false);
+  const [ppViewPortfolio, setPpViewPortfolio] = useState(null);
   const [showShareModal, setShowShareModal] = useState(false);
   const [showCompCard, setShowCompCard] = useState(false);
   const [ccZoom, setCcZoom] = useState(75);
@@ -1728,7 +1923,6 @@ export default function ArtistShell() {
     { id: "updates", icon: I.updates, label: "Updates" },
     { id: "faq", icon: I.faq, label: "FAQ" },
     { id: "community", icon: I.community, label: "Community" },
-    { id: "plan", icon: I.plan, label: "Plan" },
   ];
 
   const PORTFOLIO_TABS = [
@@ -1744,7 +1938,16 @@ export default function ArtistShell() {
   const currentPortfolio = viewPortfolio ? portfolios.find(p => p.id === viewPortfolio) : null;
 
   /* ━━━ FILTERED DATA ━━━ */
-  const filteredApps = (appFilter === "all" ? applications : applications.filter(a => a.status === appFilter)).slice().sort((a, b) => {
+  const filteredApps = applications.filter(a => {
+    if (a.status === "draft") return false;
+    if (appFilter === "all") { if (a.status === "archived") return false; }
+    else if (a.status !== appFilter) return false;
+    if (appSearch) {
+      const q = appSearch.toLowerCase();
+      if (!a.opportunity.toLowerCase().includes(q) && !a.company.toLowerCase().includes(q)) return false;
+    }
+    return true;
+  }).slice().sort((a, b) => {
     if (appSort === "newest") return b.submitted.localeCompare(a.submitted);
     if (appSort === "oldest") return a.submitted.localeCompare(b.submitted);
     if (appSort === "a-z") return a.opportunity.localeCompare(b.opportunity);
@@ -1752,6 +1955,9 @@ export default function ArtistShell() {
     if (appSort === "deadline") return a.deadline.localeCompare(b.deadline);
     return 0;
   });
+  const appCounts = {};
+  for (const k of Object.keys(STATUS_LABELS)) appCounts[k] = applications.filter(a => a.status === k).length;
+  const activeAppCount = applications.filter(a => a.status !== "draft" && a.status !== "archived").length;
   const filteredSR = stageRecords.filter(sr => {
     if (srFilter !== "all" && sr.type !== srFilter) return false;
     if (srSearch && !sr.title.toLowerCase().includes(srSearch.toLowerCase()) && !sr.org.toLowerCase().includes(srSearch.toLowerCase())) return false;
@@ -1886,6 +2092,48 @@ export default function ArtistShell() {
                 <div className="info-card">
                   <h4>About {spotlightApp.company}</h4>
                   <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.6 }}>{spotlightApp.companyDesc}</p>
+                </div>
+              </div>
+
+              {/* ── Plan section ── */}
+              <div className="plan-section">
+                <div className="plan-section-left">
+                  <div className="info-card" style={{ marginBottom: 0, height: "100%" }}>
+                    <h4>Preparation Plan</h4>
+                    <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 14 }}>Track your prep — check items off as you go.</p>
+                    <div className="plan-checklist">
+                      {[
+                        { title: "Update Resume", desc: "Ensure all recent experience is added", done: true },
+                        { title: "Upload new headshot", desc: "Professional photo, taken within last 6 months", done: true },
+                        { title: "Record showreel", desc: "2-3 minutes showcasing your range", done: false },
+                        { title: "Prepare classical variation", desc: "Select and rehearse a 1-minute solo", done: false },
+                        { title: "Prepare contemporary solo", desc: "Original or repertoire piece, 1 minute", done: false },
+                        { title: "Review company repertoire", desc: "Watch recent performances on their channel", done: false },
+                        { title: "Confirm travel & accommodation", desc: "Book transport and lodging for audition dates", done: false },
+                      ].map((item, i) => (
+                        <div key={i} className="plan-item">
+                          <div className={`plan-check${item.done ? " done" : ""}`} onClick={e => { e.currentTarget.classList.toggle("done"); }}>{item.done ? "✓" : ""}</div>
+                          <div className="plan-item-content">
+                            <div className="plan-item-title" style={item.done ? { textDecoration: "line-through", opacity: .6 } : {}}>{item.title}</div>
+                            <div className="plan-item-desc">{item.desc}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="plan-section-right">
+                  <div className="info-card" style={{ marginBottom: 16 }}>
+                    <h4>Notes</h4>
+                    <textarea className="msg-input" style={{ width: "100%", minHeight: 100, resize: "vertical" }} placeholder="Add personal notes for this audition..." />
+                  </div>
+                  <div className="info-card" style={{ marginBottom: 0 }}>
+                    <h4>Important Dates</h4>
+                    <div className="info-row"><span className="ir-label">Application Deadline</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>{spotlightApp.deadline}</span></div>
+                    <div className="info-row"><span className="ir-label">Submitted</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>{spotlightApp.submitted}</span></div>
+                    <div className="info-row"><span className="ir-label">Audition Period</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>TBD</span></div>
+                    <div className="info-row"><span className="ir-label">Results Expected</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>TBD</span></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -2075,46 +2323,6 @@ export default function ArtistShell() {
             </div>
           )}
 
-          {spotlightTab === "plan" && (
-            <div>
-              <div className="info-card" style={{ marginBottom: 16 }}>
-                <h4>Preparation Plan</h4>
-                <p style={{ fontSize: 13, color: "var(--g4)", marginBottom: 16 }}>Track your preparation for this opportunity. Check items off as you complete them.</p>
-                <div className="plan-checklist">
-                  {[
-                    { title: "Update Resume", desc: "Ensure all recent experience is added", done: true },
-                    { title: "Upload new headshot", desc: "Professional photo, taken within last 6 months", done: true },
-                    { title: "Record showreel", desc: "2-3 minutes showcasing your range", done: false },
-                    { title: "Prepare classical variation", desc: "Select and rehearse a 1-minute solo", done: false },
-                    { title: "Prepare contemporary solo", desc: "Original or repertoire piece, 1 minute", done: false },
-                    { title: "Review company repertoire", desc: "Watch recent performances on their channel", done: false },
-                    { title: "Confirm travel & accommodation", desc: "Book transport and lodging for audition dates", done: false },
-                  ].map((item, i) => (
-                    <div key={i} className="plan-item">
-                      <div className={`plan-check${item.done ? " done" : ""}`} onClick={e => { e.currentTarget.classList.toggle("done"); }}>{item.done ? "✓" : ""}</div>
-                      <div className="plan-item-content">
-                        <div className="plan-item-title" style={item.done ? { textDecoration: "line-through", opacity: .6 } : {}}>{item.title}</div>
-                        <div className="plan-item-desc">{item.desc}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="spotlight-row two-col">
-                <div className="info-card">
-                  <h4>Notes</h4>
-                  <textarea className="msg-input" style={{ width: "100%", minHeight: 120 }} placeholder="Add personal notes for this audition..." />
-                </div>
-                <div className="info-card">
-                  <h4>Important Dates</h4>
-                  <div className="info-row"><span className="ir-label">Application Deadline</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>{spotlightApp.deadline}</span></div>
-                  <div className="info-row"><span className="ir-label">Submitted</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>{spotlightApp.submitted}</span></div>
-                  <div className="info-row"><span className="ir-label">Audition Period</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>TBD</span></div>
-                  <div className="info-row"><span className="ir-label">Results Expected</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>TBD</span></div>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       );
     }
@@ -2920,73 +3128,223 @@ export default function ArtistShell() {
         );
 
       /* ── Applications ── */
-      case "applications":
+      case "applications": {
+        const archiveApp = (e, id) => { e.stopPropagation(); setApplications(prev => prev.map(a => a.id === id ? { ...a, status: a.status === "archived" ? "submitted" : "archived" } : a)); };
+        const APP_FILTER_CHIPS = [
+          ["all", "All", activeAppCount],
+          ...Object.entries(STATUS_LABELS).filter(([k]) => k !== "draft" && k !== "archived").map(([k, v]) => [k, v, appCounts[k] || 0]),
+        ];
         return (
           <div>
             <div className="pg-header">
               <h1><em>Applications</em></h1>
               <p className="pg-sub">Track and manage everything you've applied to</p>
             </div>
-            <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
-              {[["all", "All"], ...Object.entries(STATUS_LABELS)].map(([key, label]) => (
-                <button key={key} className={`chip${appFilter === key ? " on" : ""}`} onClick={() => setAppFilter(key)}>{label}</button>
-              ))}
-              <select className="sort-filter" value={appSort} onChange={e => setAppSort(e.target.value)} style={{ marginLeft: "auto" }}>
-                <option value="newest">Newest First</option>
-                <option value="oldest">Oldest First</option>
-                <option value="a-z">A → Z</option>
-                <option value="z-a">Z → A</option>
-                <option value="deadline">Deadline</option>
-              </select>
+
+            {/* ── Unified Toolbar ── */}
+            <div className="app-toolbar" ref={el => {
+              if (!el) return;
+              const obs = new IntersectionObserver(([e]) => el.classList.toggle("stuck", e.intersectionRatio < 1), { threshold: [1], rootMargin: "-1px 0px 0px 0px" });
+              obs.observe(el);
+            }}>
+              <div className="at-filters">
+                {APP_FILTER_CHIPS.map(([key, label, count]) => (
+                  <button key={key} className={`chip${appFilter === key ? " on" : ""}`} onClick={() => setAppFilter(key)}>
+                    {label}<span className="at-chip-count">{count}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="at-right">
+                {appSearchOpen ? (
+                  <div className="at-search-expanded">
+                    {I.search}
+                    <input autoFocus placeholder="Search applications..." value={appSearch} onChange={e => setAppSearch(e.target.value)} />
+                    <button className="at-search-close" onClick={() => { setAppSearchOpen(false); setAppSearch(""); }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                  </div>
+                ) : (
+                  <button className="at-search-btn" onClick={() => setAppSearchOpen(true)} title="Search">
+                    {I.search}
+                  </button>
+                )}
+
+                <div className="view-toggle">
+                  <button className={appView === "grid" ? "active" : ""} onClick={() => setAppView("grid")} title="Card view">{I.grid}</button>
+                  <button className={appView === "kanban" ? "active" : ""} onClick={() => setAppView("kanban")} title="Board view">{I.kanban}</button>
+                  <button className={appView === "list" ? "active" : ""} onClick={() => setAppView("list")} title="List view">{I.list}</button>
+                </div>
+
+                <select className="sort-filter" value={appSort} onChange={e => setAppSort(e.target.value)}>
+                  <option value="newest">Newest</option>
+                  <option value="oldest">Oldest</option>
+                  <option value="a-z">A → Z</option>
+                  <option value="z-a">Z → A</option>
+                  <option value="deadline">Deadline</option>
+                </select>
+
+                <button className={`at-filter-btn${appFilter === "archived" ? " active" : ""}`} onClick={() => setAppFilter(appFilter === "archived" ? "all" : "archived")}>
+                  {I.archive} Archived
+                </button>
+              </div>
             </div>
-            {applications.filter(a => a.status === "draft").length > 0 && (
-              <div style={{ marginBottom: 24 }}>
-                <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 12 }}>📝 Drafts</h3>
-                <div className="app-list">
-                  {applications.filter(a => a.status === "draft").map(app => {
-                    const progress = Math.round(((app.draftProgress?.profile ? 1 : 0) + (app.draftProgress?.resume ? 1 : 0) + (app.draftProgress?.materials ? 1 : 0) + (app.draftProgress?.motivation ? 1 : 0)) / 4 * 100);
-                    return (
-                      <div key={app.id} className="app-card" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }} style={{ position: "relative" }}>
+
+            {appFilter === "archived" ? (
+              /* ── Archived view ── */
+              <div>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                  {I.archive}
+                  <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--g5)", margin: 0 }}>Archived Applications</h3>
+                  <span style={{ fontSize: 11, color: "var(--g4)", background: "var(--g1)", padding: "2px 8px", borderRadius: 40 }}>{applications.filter(a => a.status === "archived").length}</span>
+                </div>
+                {applications.filter(a => a.status === "archived").length === 0 ? (
+                  <div style={{ textAlign: "center", padding: 60, color: "var(--g4)", fontSize: 13 }}>No archived applications yet. Archive applications you want to keep but hide from your main view.</div>
+                ) : (
+                  <div className="app-list">
+                    {applications.filter(a => a.status === "archived").map(app => (
+                      <div key={app.id} className="app-card" style={{ opacity: .7 }} onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
                         <img className="ac-logo" src={app.companyLogo} alt="" />
                         <div className="ac-info">
                           <div className="ac-title">{app.opportunity}</div>
                           <div className="ac-company">{app.company}</div>
-                          <div className="ac-meta"><span>Deadline: {app.deadline}</span></div>
-                        </div>
-                        <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
-                          <span className="ac-status" style={{ background: "rgba(255,171,0,.12)", color: "var(--amber)" }}>DRAFT</span>
-                          <div style={{ width: 60, height: 5, borderRadius: 3, background: "var(--g2)", overflow: "hidden" }}>
-                            <div style={{ width: `${progress}%`, height: "100%", borderRadius: 3, background: progress === 100 ? "var(--green)" : "var(--ac)" }} />
+                          <div className="ac-meta">
+                            <span>Submitted: {app.submitted}</span>
+                            <span>Deadline: {app.deadline}</span>
                           </div>
-                          <span style={{ fontSize: 9, color: "var(--g4)" }}>{progress}% complete</span>
                         </div>
+                        <span className="ac-status" style={{ background: STATUS_COLORS.archived.bg, color: STATUS_COLORS.archived.color }}>Archived</span>
+                        <button className="ac-archive" style={{ opacity: 1 }} onClick={e => archiveApp(e, app.id)} title="Unarchive">
+                          {I.archiveRestore}
+                        </button>
                       </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-            <div className="app-list">
-              {filteredApps.map(app => {
-                const sc = STATUS_COLORS[app.status];
-                return (
-                  <div key={app.id} className="app-card" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
-                    <img className="ac-logo" src={app.companyLogo} alt="" />
-                    <div className="ac-info">
-                      <div className="ac-title">{app.opportunity}</div>
-                      <div className="ac-company">{app.company}</div>
-                      <div className="ac-meta">
-                        <span>Submitted: {app.submitted}</span>
-                        <span>Deadline: {app.deadline}</span>
-                      </div>
-                    </div>
-                    <span className="ac-status" style={{ background: sc.bg, color: sc.color }}>{STATUS_LABELS[app.status]}</span>
+                    ))}
                   </div>
-                );
-              })}
-            </div>
+                )}
+              </div>
+            ) : (
+              /* ── Normal views ── */
+              <>
+                {/* ── Drafts section ── */}
+                {appFilter === "all" && applications.filter(a => a.status === "draft").length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 12 }}>📝 Drafts</h3>
+                    <div className="app-list">
+                      {applications.filter(a => a.status === "draft").map(app => {
+                        const progress = Math.round(((app.draftProgress?.profile ? 1 : 0) + (app.draftProgress?.resume ? 1 : 0) + (app.draftProgress?.materials ? 1 : 0) + (app.draftProgress?.motivation ? 1 : 0)) / 4 * 100);
+                        return (
+                          <div key={app.id} className="app-card" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
+                            <img className="ac-logo" src={app.companyLogo} alt="" />
+                            <div className="ac-info">
+                              <div className="ac-title">{app.opportunity}</div>
+                              <div className="ac-company">{app.company}</div>
+                              <div className="ac-meta"><span>Deadline: {app.deadline}</span></div>
+                            </div>
+                            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
+                              <span className="ac-status" style={{ background: "rgba(255,171,0,.12)", color: "var(--amber)" }}>DRAFT</span>
+                              <div style={{ width: 60, height: 5, borderRadius: 3, background: "var(--g2)", overflow: "hidden" }}>
+                                <div style={{ width: `${progress}%`, height: "100%", borderRadius: 3, background: progress === 100 ? "var(--green)" : "var(--ac)" }} />
+                              </div>
+                              <span style={{ fontSize: 9, color: "var(--g4)" }}>{progress}% complete</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* ── List view ── */}
+                {appView === "list" ? (
+                  <div className="app-list">
+                    {filteredApps.length === 0 && <div style={{ textAlign: "center", padding: 40, color: "var(--g4)", fontSize: 13 }}>{appSearch ? "No applications match your search" : "No applications in this category"}</div>}
+                    {filteredApps.map(app => {
+                      const sc = STATUS_COLORS[app.status];
+                      return (
+                        <div key={app.id} className="app-card" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
+                          <img className="ac-logo" src={app.companyLogo} alt="" />
+                          <div className="ac-info">
+                            <div className="ac-title">{app.opportunity}</div>
+                            <div className="ac-company">{app.company}</div>
+                            <div className="ac-meta">
+                              <span>Submitted: {app.submitted}</span>
+                              <span>Deadline: {app.deadline}</span>
+                            </div>
+                          </div>
+                          <span className="ac-status" style={{ background: sc.bg, color: sc.color }}>{STATUS_LABELS[app.status]}</span>
+                          <button className="ac-archive" onClick={e => archiveApp(e, app.id)} title="Archive">
+                            {I.archive}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : appView === "grid" ? (
+                  /* ── Tile/Card view ── */
+                  <div className="app-tiles">
+                    {filteredApps.length === 0 && <div style={{ gridColumn: "1/-1", textAlign: "center", padding: 40, color: "var(--g4)", fontSize: 13 }}>{appSearch ? "No applications match your search" : "No applications in this category"}</div>}
+                    {filteredApps.map(app => {
+                      const sc = STATUS_COLORS[app.status];
+                      return (
+                        <div key={app.id} className="app-tile" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
+                          <div className="at-banner">
+                            <img src={app.banner} alt="" />
+                            <span className="at-status" style={{ background: sc.bg, color: sc.color }}>{STATUS_LABELS[app.status]}</span>
+                          </div>
+                          <div className="at-body">
+                            <div className="at-head">
+                              <img src={app.companyLogo} alt="" />
+                              <span className="at-company">{app.company}</span>
+                            </div>
+                            <div className="at-title">{app.opportunity}</div>
+                            <div className="at-meta">
+                              <span>📅 {app.submitted || "—"}</span>
+                              <span>⏰ {app.deadline}</span>
+                            </div>
+                          </div>
+                          <button className="at-archive" onClick={e => archiveApp(e, app.id)} title="Archive">
+                            {I.archive}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  /* ── Kanban/Board view ── */
+                  <div className="app-kanban">
+                    {Object.entries(STATUS_LABELS).filter(([k]) => k !== "draft" && k !== "archived").map(([status, label]) => {
+                      const col = applications.filter(a => a.status === status);
+                      const sc = STATUS_COLORS[status];
+                      return (
+                        <div key={status} className="ak-column">
+                          <div className="ak-col-header">
+                            <span className="ak-col-dot" style={{ background: sc.color }} />
+                            <span className="ak-col-title">{label}</span>
+                            <span className="ak-col-count">{col.length}</span>
+                          </div>
+                          <div className="ak-col-body">
+                            {col.map(app => (
+                              <div key={app.id} className="ak-card" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
+                                <img className="ak-logo" src={app.companyLogo} alt="" />
+                                <div className="ak-info">
+                                  <div className="ak-title">{app.opportunity}</div>
+                                  <div className="ak-company">{app.company}</div>
+                                  <div className="ak-deadline">⏰ {app.deadline}</div>
+                                </div>
+                              </div>
+                            ))}
+                            {col.length === 0 && <div className="ak-empty">No applications</div>}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </>
+            )}
           </div>
         );
+      }
 
       /* ── Discover ── */
       case "discover":
@@ -3062,12 +3420,12 @@ export default function ArtistShell() {
           { id: "p6", name: "Aisha Diallo", role: "Afro-Contemporary Dancer", company: "Compagnie Käfig", location: "Paris, FR", lat: 48.86, lng: 2.35, photo: "/demo/artists/nisha-huizing.jpg", styles: ["Afro-fusion", "Contemporary"], mutual: 7 },
         ];
         const MOCK_NETWORK_COMPANIES = [
-          { id: "c1", name: "Nederlands Dans Theater", type: "Company", location: "The Hague, NL", lat: 52.07, lng: 4.30, logo: "/demo/artists/1.jpg", styles: ["Contemporary"], openPositions: 2 },
-          { id: "c2", name: "Royal Ballet", type: "Company", location: "London, UK", lat: 51.51, lng: -0.13, logo: "/demo/artists/2.jpg", styles: ["Classical", "Contemporary"], openPositions: 3 },
-          { id: "c3", name: "Batsheva Dance Company", type: "Company", location: "Tel Aviv, IL", lat: 32.07, lng: 34.77, logo: "/demo/artists/3.jpg", styles: ["Contemporary", "Gaga"], openPositions: 1 },
-          { id: "c4", name: "Hamburg Ballet", type: "Company", location: "Hamburg, DE", lat: 53.55, lng: 10.00, logo: "/demo/artists/4.jpg", styles: ["Classical", "Neoclassical"], openPositions: 0 },
+          { id: "c1", name: "Ballett Zürich", type: "Company", location: "Zürich, CH", lat: 47.37, lng: 8.54, logo: "/demo/artists/1.jpg", styles: ["Classical", "Contemporary"], openPositions: 2 },
+          { id: "c2", name: "Theater Regensburg", type: "Company", location: "Regensburg, DE", lat: 49.02, lng: 12.10, logo: "/demo/artists/2.jpg", styles: ["Contemporary", "Classical"], openPositions: 3 },
+          { id: "c3", name: "The Movers", type: "Casting Agency", location: "Berlin, DE", lat: 52.52, lng: 13.41, logo: "/demo/artists/3.jpg", styles: ["Contemporary", "Physical Theatre"], openPositions: 1 },
+          { id: "c4", name: "Tanz Luzern", type: "Company", location: "Luzern, CH", lat: 47.05, lng: 8.31, logo: "/demo/artists/4.jpg", styles: ["Contemporary"], openPositions: 1 },
           { id: "c5", name: "Pina Bausch Tanztheater", type: "Company", location: "Wuppertal, DE", lat: 51.26, lng: 7.17, logo: "/demo/artists/5.jpg", styles: ["Tanztheater"], openPositions: 1 },
-          { id: "c6", name: "Sadler's Wells", type: "Venue / Producer", location: "London, UK", lat: 51.53, lng: -0.11, logo: "/demo/artists/nisha-huizing.jpg", styles: ["All Genres"], openPositions: 2 },
+          { id: "c6", name: "Royal Ballet", type: "Company", location: "London, UK", lat: 51.51, lng: -0.13, logo: "/demo/artists/nisha-huizing.jpg", styles: ["Classical", "Contemporary"], openPositions: 2 },
         ];
         const networkItems = networkTab === "people" ? MOCK_NETWORK_PEOPLE : MOCK_NETWORK_COMPANIES;
         const filteredNetworkItems = networkItems.filter(item => {
@@ -4170,6 +4528,12 @@ export default function ArtistShell() {
                   </button>
                 </div>
                 <div style={{ borderTop: "1px solid var(--g2)", padding: "6px 8px" }}>
+                  <button style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: "none", background: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, color: "var(--ac)", textAlign: "left", fontFamily: "var(--sans)" }} onMouseEnter={(e) => e.currentTarget.style.background = "rgba(96,77,255,.05)"} onMouseLeave={(e) => e.currentTarget.style.background = "none"} onClick={() => { setShowPublicProfile(true); setShowUserMenu(false); }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    View Public Profile
+                  </button>
+                </div>
+                <div style={{ borderTop: "1px solid var(--g2)", padding: "6px 8px" }}>
                   <button style={{ width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", border: "none", background: "none", borderRadius: 8, cursor: "pointer", fontSize: 12, color: "var(--red)", textAlign: "left", fontFamily: "var(--sans)" }} onMouseEnter={(e) => e.currentTarget.style.background = "rgba(255,71,87,.05)"} onMouseLeave={(e) => e.currentTarget.style.background = "none"} onClick={() => { setAuth("login"); setShowUserMenu(false); }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
                     Log out
@@ -4190,7 +4554,7 @@ export default function ArtistShell() {
               {I.bell}
               {notifications.filter(n => n.unread).length > 0 && <span className="notif-count">{notifications.filter(n => n.unread).length}</span>}
             </button>
-            <div className="topbar-avatar">
+            <div className="topbar-avatar" style={{ cursor: "pointer" }} onClick={() => setShowPublicProfile(true)}>
               <img src={artist.photo} alt="" />
               <span className="ta-name">{artist.name.split(" ")[0]}</span>
               <span className="ta-plan">{artist.plan}</span>
@@ -4982,6 +5346,270 @@ export default function ArtistShell() {
         );
       })()}
 
+      {/* ── Public Profile ── */}
+      {showPublicProfile && (() => {
+        const publishedPortfolios = portfolios.filter(p => p.status === "published");
+        const primaryPortfolio = publishedPortfolios[0];
+        const highlightedVid = primaryPortfolio?.highlightedVideo ? primaryPortfolio.videos.find(v => v.id === primaryPortfolio.highlightedVideo) : null;
+        const curatedPhotos = primaryPortfolio ? primaryPortfolio.photos.slice(0, 6) : [];
+        const topResume = stageRecords.filter(sr => sr.usedIn.includes("Resume") || sr.usedIn.includes("Portfolio")).slice(0, 4);
+        const RESUME_EMOJI = { experience: "💼", education: "🎓", award: "🏆", skills: "⚡", repertoire: "🎭", press: "📰" };
+        const viewingPf = ppViewPortfolio ? portfolios.find(p => p.id === ppViewPortfolio) : null;
+        return (
+          <div className="pp-overlay">
+            <div className="pp-topbar">
+              <div className="pp-topbar-left">
+                {viewingPf ? (
+                  <>
+                    <button style={{ background: "none", border: "none", cursor: "pointer", color: "var(--tx)", display: "flex", alignItems: "center", gap: 6, fontFamily: "var(--sans)", fontSize: 12, fontWeight: 500, padding: 0 }} onClick={() => { setPpViewPortfolio(null); document.querySelector(".pp-overlay")?.scrollTo({ top: 0 }); }}>
+                      {I.back} <span style={{ color: "var(--g4)" }}>Back to profile</span>
+                    </button>
+                    <span style={{ color: "var(--g3)", margin: "0 4px" }}>·</span>
+                    <span style={{ fontWeight: 600, color: "var(--tx)", fontSize: 12 }}>{viewingPf.name}</span>
+                  </>
+                ) : (
+                  <>
+                    <img src="/lanced-logo-full.png" alt="Lanced" />
+                    <span>·</span>
+                    <span>@{artist.handle}</span>
+                  </>
+                )}
+              </div>
+              <div className="pp-topbar-actions">
+                <button style={{ background: "none", border: "1px solid var(--g2)", color: "var(--tx)" }} onClick={() => { navigator.clipboard?.writeText(viewingPf ? `lanced.app/${artist.handle}/${viewingPf.slug}` : `lanced.app/${artist.handle}`); showToast("Link copied!"); }}>Copy Link</button>
+                <button style={{ background: "var(--ac)", border: "none", color: "#fff" }} onClick={() => { setShowPublicProfile(false); setPpViewPortfolio(null); }}>Close</button>
+              </div>
+            </div>
+
+            {viewingPf ? (
+              /* ── Portfolio sub-page ── */
+              <>
+                <div className="pp-hero">
+                  <img className="pp-hero-banner" src={viewingPf.cover} alt="" />
+                  <div className="pp-hero-gradient" />
+                  <div className="pp-hero-content">
+                    <div className="pp-avatar"><img src={artist.photo} alt="" /></div>
+                    <div className="pp-hero-info">
+                      <div className="pp-hero-name">{viewingPf.name.split(" ")[0]} <em>{viewingPf.name.split(" ").slice(1).join(" ")}</em></div>
+                      <div className="pp-hero-handle">{artist.firstName} {artist.lastName} · {viewingPf.discipline} · {artist.city}</div>
+                      <div className="pp-hero-bio">{viewingPf.description}</div>
+                      <div className="pp-hero-tags">
+                        {viewingPf.styles?.map(s => <span key={s}>{s}</span>)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="pp-body">
+                  {/* Featured video */}
+                  {viewingPf.highlightedVideo && (() => { const hv = viewingPf.videos.find(v => v.id === viewingPf.highlightedVideo); return hv ? (
+                    <div className="pp-section">
+                      <div className="pp-section-title">Featured <em>Reel</em></div>
+                      <div className="pp-featured-video" onClick={() => setLightbox({ items: viewingPf.videos.map(v => ({ src: v.thumb, caption: v.title, type: "image" })), index: viewingPf.videos.indexOf(hv) })}>
+                        <img src={hv.thumb} alt="" />
+                        <div className="pp-fv-play" />
+                        <div className="pp-fv-info">
+                          <div className="pp-fv-badge">Featured Showreel</div>
+                          <div className="pp-fv-title">{hv.title}</div>
+                          <div className="pp-fv-dur">{hv.duration}</div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null; })()}
+                  {/* Photos */}
+                  {viewingPf.photos.length > 0 && (
+                    <div className="pp-section">
+                      <div className="pp-section-title">Photo <em>Gallery</em> <span style={{ fontSize: 13, fontWeight: 400, color: "var(--g4)", fontFamily: "var(--sans)" }}>{viewingPf.photos.length}</span></div>
+                      <div className="pp-pf-photos">
+                        {viewingPf.photos.map((ph, i) => (
+                          <div key={ph.id} className="pp-pfp-item" onClick={() => setLightbox({ items: viewingPf.photos.map(p => ({ src: p.src, caption: p.caption, type: "image" })), index: i })}>
+                            <img src={ph.src} alt={ph.caption} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {/* Videos */}
+                  {viewingPf.videos.filter(v => v.id !== viewingPf.highlightedVideo).length > 0 && (
+                    <div className="pp-section">
+                      <div className="pp-section-title">More <em>Videos</em></div>
+                      <div className="pp-pf-videos">
+                        {viewingPf.videos.filter(v => v.id !== viewingPf.highlightedVideo).map(v => (
+                          <div key={v.id} className="pp-pf-vid" onClick={() => setLightbox({ items: viewingPf.videos.map(vid => ({ src: vid.thumb, caption: vid.title, type: "image" })), index: viewingPf.videos.indexOf(v) })}>
+                            <div className="pp-pfv-thumb">
+                              <img src={v.thumb} alt="" />
+                              <div className="pp-pfv-play" />
+                            </div>
+                            <div className="pp-pfv-info">
+                              <div className="pp-pfv-title">{v.title}</div>
+                              <div className="pp-pfv-dur">{v.duration}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {/* References */}
+                  {viewingPf.references?.length > 0 && (
+                    <div className="pp-section">
+                      <div className="pp-section-title">References & <em>Reviews</em></div>
+                      <div className="pp-pf-refs">
+                        {viewingPf.references.map(ref => (
+                          <div key={ref.id} className="pp-pf-ref">
+                            <div className="pp-pf-ref-quote">"{ref.quote}"</div>
+                            <div className="pp-pf-ref-source">{ref.name || ref.source}{ref.role ? ` — ${ref.role}` : ""}{ref.org ? `, ${ref.org}` : ""}</div>
+                            {ref.context && <div className="pp-pf-ref-context">{ref.context}</div>}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {/* Resume */}
+                  {viewingPf.resume?.length > 0 && (
+                    <div className="pp-section">
+                      <div className="pp-section-title">Resume</div>
+                      <div className="pp-resume-highlights">
+                        {viewingPf.resume.map(sr => (
+                          <div key={sr.id} className="pp-resume-item">
+                            <div className="pp-ri-emoji">{RESUME_EMOJI[sr.type] || "📄"}</div>
+                            <div>
+                              <div className="pp-ri-title">{sr.title}</div>
+                              <div className="pp-ri-org">{sr.org}</div>
+                              <div className="pp-ri-meta">{sr.period}{sr.location ? ` · ${sr.location}` : ""}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              /* ── Main Profile ── */
+              <>
+                {/* Hero */}
+                <div className="pp-hero">
+                  <img className="pp-hero-banner" src={primaryPortfolio?.cover || "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg"} alt="" />
+                  <div className="pp-hero-gradient" />
+                  <div className="pp-hero-content">
+                    <div className="pp-avatar"><img src={artist.photo} alt="" /></div>
+                    <div className="pp-hero-info">
+                      <div className="pp-hero-name">{artist.firstName} <em>{artist.lastName}</em></div>
+                      <div className="pp-hero-handle">@{artist.handle} · {artist.city}, {artist.country}</div>
+                      <div className="pp-hero-bio">{artist.profileBio}</div>
+                      <div className="pp-hero-tags">
+                        {artist.styles?.map(s => <span key={s}>{s}</span>)}
+                      </div>
+                      <div className="pp-hero-socials">
+                        {artist.socials?.instagram && <a href="#" title="Instagram">IG</a>}
+                        {artist.socials?.tiktok && <a href="#" title="TikTok">TT</a>}
+                        {artist.socials?.youtube && <a href="#" title="YouTube">YT</a>}
+                        {artist.socials?.vimeo && <a href="#" title="Vimeo">VM</a>}
+                        {artist.socials?.linkedin && <a href="#" title="LinkedIn">LI</a>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pp-body">
+                  {/* Featured Video */}
+                  {highlightedVid && (
+                    <div className="pp-section" style={{ animationDelay: ".1s" }}>
+                      <div className="pp-section-title">Featured <em>Reel</em></div>
+                      <div className="pp-featured-video" onClick={() => setLightbox({ items: primaryPortfolio.videos.map(v => ({ src: v.thumb, caption: v.title, type: "image" })), index: primaryPortfolio.videos.findIndex(v => v.id === primaryPortfolio.highlightedVideo) })}>
+                        <img src={highlightedVid.thumb} alt="" />
+                        <div className="pp-fv-play" />
+                        <div className="pp-fv-info">
+                          <div className="pp-fv-badge">Featured Showreel</div>
+                          <div className="pp-fv-title">{highlightedVid.title}</div>
+                          <div className="pp-fv-dur">{highlightedVid.duration}</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Portfolio Showcase */}
+                  {publishedPortfolios.length > 0 && (
+                    <div className="pp-section" style={{ animationDelay: ".2s" }}>
+                      <div className="pp-section-title">Portfolio <em>Showcase</em></div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                        {publishedPortfolios.map(pf => (
+                          <div key={pf.id} className="pp-portfolio-card" onClick={() => { setPpViewPortfolio(pf.id); document.querySelector(".pp-overlay")?.scrollTo({ top: 0, behavior: "smooth" }); }}>
+                            <img src={pf.cover} alt="" />
+                            <div className="pp-pc-overlay">
+                              <div className="pp-pc-label">ARTIST PORTFOLIO</div>
+                              <div className="pp-pc-name">{pf.name.split(" ")[0]} <em>{pf.name.split(" ").slice(1).join(" ")}</em></div>
+                              <div className="pp-pc-meta">
+                                <span>{pf.discipline}</span>
+                                <span>{pf.photos.length} photos</span>
+                                <span>{pf.videos.length} videos</span>
+                              </div>
+                            </div>
+                            <div className="pp-pc-arrow">→</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Curated Gallery */}
+                  {curatedPhotos.length > 0 && (
+                    <div className="pp-section" style={{ animationDelay: ".3s" }}>
+                      <div className="pp-section-title">Photo <em>Gallery</em></div>
+                      <div className="pp-gallery-strip">
+                        {curatedPhotos.map((ph, i) => (
+                          <div key={ph.id} className="pp-gal-item" onClick={() => setLightbox({ items: curatedPhotos.map(p => ({ src: p.src, caption: p.caption, type: "image" })), index: i })}>
+                            <img src={ph.src} alt={ph.caption} />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* About */}
+                  <div className="pp-section" style={{ animationDelay: ".4s" }}>
+                    <div className="pp-section-title">About <em>{artist.firstName}</em></div>
+                    <div className="pp-about">
+                      <div className="pp-about-bio">{artist.biography || artist.bio}</div>
+                      <div className="pp-about-stats">
+                        {artist.pronouns && <div className="pp-about-stat"><span className="pp-as-label">Pronouns</span><span className="pp-as-value">{artist.pronouns}</span></div>}
+                        {artist.height && <div className="pp-about-stat"><span className="pp-as-label">Height</span><span className="pp-as-value">{artist.height}</span></div>}
+                        {artist.nationality?.length > 0 && <div className="pp-about-stat"><span className="pp-as-label">Nationality</span><span className="pp-as-value">{artist.nationality.join(", ")}</span></div>}
+                        {artist.languages?.length > 0 && <div className="pp-about-stat"><span className="pp-as-label">Languages</span><span className="pp-as-value">{artist.languages.join(", ")}</span></div>}
+                        {artist.unionStatus?.length > 0 && <div className="pp-about-stat"><span className="pp-as-label">Union</span><span className="pp-as-value">{artist.unionStatus.join(", ")}</span></div>}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Resume Highlights */}
+                  {topResume.length > 0 && (
+                    <div className="pp-section" style={{ animationDelay: ".5s" }}>
+                      <div className="pp-section-title">Resume <em>Highlights</em></div>
+                      <div className="pp-resume-highlights">
+                        {topResume.map(sr => (
+                          <div key={sr.id} className="pp-resume-item">
+                            <div className="pp-ri-emoji">{RESUME_EMOJI[sr.type] || "📄"}</div>
+                            <div>
+                              <div className="pp-ri-title">{sr.title}</div>
+                              <div className="pp-ri-org">{sr.org}</div>
+                              <div className="pp-ri-meta">{sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}{sr.location ? ` · ${sr.location}` : ""}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+
+            {/* Footer */}
+            <div className="pfl-footer" style={{ position: "sticky" }}>
+              <img src="/made-with-lanced.png" alt="Made with Lanced" />
+            </div>
+          </div>
+        );
+      })()}
+
       {/* ── Lightbox ── */}
       {lightbox && (
         <div className="pfl-lightbox" onClick={e => { if (e.target === e.currentTarget) setLightbox(null); }}>
@@ -4992,6 +5620,14 @@ export default function ArtistShell() {
           {lightbox.items[lightbox.index].caption && <div className="pfl-lb-caption">{lightbox.items[lightbox.index].caption}</div>}
         </div>
       )}
+
+      {/* ── Feedback Tab ── */}
+      <div className="feedback-tab">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdwVLff94ZnL5lFM-F_Z7z4qUAjvppXQpEIQheRfKzZhX0nsw/viewform?usp=sharing&ouid=112162380164512043316" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Share Feedback
+        </a>
+      </div>
 
       {/* ── Toast ── */}
       {toast && <div className="toast">{toast}</div>}
