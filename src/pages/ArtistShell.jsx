@@ -161,6 +161,165 @@ const MOCK_PF_TRACKING = [
 
 const DISCIPLINES = ["Dancer", "Choreographer", "Singer", "Actor", "Musical Theatre", "Circus Artist", "Stage Manager", "Other"];
 
+const WORK_ROLES = ["Choreographer", "Director", "Producer", "Dancer", "Performer", "Maker", "Composer", "Dramaturg", "Company", "Other"];
+const TOURING_STATUSES = [
+  { id: "available", label: "Available for Touring" },
+  { id: "in_creation", label: "In Creation" },
+  { id: "touring", label: "Currently Touring" },
+  { id: "on_hold", label: "On Hold" },
+  { id: "archived", label: "Archived" },
+];
+
+const MOCK_WORKS = [
+  {
+    id: "wk1", name: "Echoes in Glass", status: "published", tagline: "A solo about memory and fracture",
+    shortPitch: "A mesmerizing solo exploring the fragility of memory through glass-like movement and shattered reflections. Created by Amara Osei after a residency at ICK Amsterdam.",
+    fullDescription: "Echoes in Glass is a 55-minute solo performance that traces the contours of memory — how it bends, fractures, and reforms. Drawing on contemporary dance, installation, and live sound design, the work transforms the stage into a landscape of remembering and forgetting. The piece was developed over two years through residencies at ICK Amsterdam and Dansmakers, and premiered at Holland Dance Festival 2024.",
+    conceptNote: "The work began with a simple question: what does it feel like when a memory breaks? Through improvisation with light and reflective materials, I discovered a physical vocabulary that mirrors the way memories distort over time.",
+    genre: "Contemporary Dance", duration: "55 min", premiereYear: "2024", country: "Netherlands", city: "Amsterdam",
+    language: "Non-verbal", ageGuidance: "12+", touringStatus: "available", role: "Choreographer & Performer",
+    cover: "/demo/artists/boris-de-jong/pexels-cottonbro-6221374.jpg", trailerUrl: "",
+    credits: [
+      { id: "cr1", name: "Amara Osei", role: "Choreographer & Performer", profileUrl: "" },
+      { id: "cr2", name: "Lena Vogel", role: "Light Design", profileUrl: "" },
+      { id: "cr3", name: "Kees van Dijk", role: "Sound Design", profileUrl: "" },
+      { id: "cr4", name: "Studio Noord", role: "Set Design", profileUrl: "" },
+    ],
+    gallery: [
+      { id: "wg1", src: "/demo/artists/boris-de-jong/pexels-cottonbro-5102571.jpg", caption: "Echoes in Glass — opening scene" },
+      { id: "wg2", src: "/demo/artists/boris-de-jong/pexels-cottonbro-6221378.jpg", caption: "Glass floor installation" },
+      { id: "wg3", src: "/demo/artists/boris-de-jong/pexels-cottonbro-6221374.jpg", caption: "Final tableau" },
+    ],
+    reviews: [
+      { id: "rv1", quote: "A breathtaking meditation on loss — Osei's physicality is unmatched.", source: "The Guardian", rating: 5, type: "press" },
+      { id: "rv2", quote: "One of the most compelling solos I've seen this decade.", source: "Theaterkrant", rating: 4, type: "press" },
+      { id: "rv3", quote: "I was moved to tears. The way she uses space and silence is extraordinary.", source: "Audience member, Holland Dance Festival", rating: 5, type: "audience" },
+    ],
+    awards: [
+      { id: "aw1", title: "Best Solo Performance", festival: "Holland Dance Festival", year: "2024", type: "win" },
+      { id: "aw2", title: "Jury Prize", festival: "Aerowaves Spring Forward", year: "2025", type: "nomination" },
+    ],
+    upcomingPerformances: [
+      { id: "up1", date: "2026-05-15", venue: "Stadsschouwburg", city: "Amsterdam", ticketUrl: "" },
+      { id: "up2", date: "2026-06-08", venue: "Sadler's Wells", city: "London", ticketUrl: "" },
+      { id: "up3", date: "2026-09-20", venue: "Théâtre de la Ville", city: "Paris", ticketUrl: "" },
+    ],
+    pastPerformances: [
+      { id: "pp1", date: "2024-06-12", venue: "Korzo Theater", city: "The Hague" },
+      { id: "pp2", date: "2024-11-03", venue: "DeSingel", city: "Antwerp" },
+      { id: "pp3", date: "2025-02-18", venue: "Tanzhaus NRW", city: "Düsseldorf" },
+    ],
+    partners: [
+      { id: "pt1", name: "Holland Dance Festival", type: "co-producer" },
+      { id: "pt2", name: "ICK Amsterdam", type: "residency" },
+      { id: "pt3", name: "Performing Arts Fund NL", type: "funder" },
+    ],
+    techRequirements: { stageMinWidth: "10m", stageMinDepth: "8m", performers: "1", setupTime: "4 hours" },
+    accessibility: { captions: false, relaxedPerformance: true, audioDescription: false, sensoryNotes: "Occasional strobe effects, low ambient sound" },
+    downloads: [
+      { id: "dl1", label: "Press Kit", format: "PDF", size: "8.2 MB" },
+      { id: "dl2", label: "Technical Rider", format: "PDF", size: "1.4 MB" },
+    ],
+    bookingEmail: "booking@amaraosei.com",
+    bookingCtas: [
+      { label: "Book This Work", url: "", intent: "book" },
+      { label: "Request Press Kit", url: "", intent: "presskit" },
+    ],
+    slug: "echoes-in-glass",
+    date: "Mar 10, 2026",
+  },
+  {
+    id: "wk2", name: "PULSE", status: "draft", tagline: "Group piece exploring collective rhythm",
+    shortPitch: "An explosive group work investigating what happens when eight bodies share a single heartbeat. PULSE blurs the line between concert, club, and ceremony.",
+    fullDescription: "PULSE is a 70-minute group performance for eight dancers that explores collective rhythm, synchronicity, and the edge where control meets chaos. Rooted in hip-hop, house, and West African movement traditions, the work builds from stillness to a kinetic storm.",
+    conceptNote: "",
+    genre: "Urban / Hip-hop", duration: "70 min", premiereYear: "2025", country: "UK", city: "London",
+    language: "English", ageGuidance: "All ages", touringStatus: "in_creation", role: "Director",
+    cover: "/demo/artists/boris-de-jong/pexels-cottonbro-5102571.jpg", trailerUrl: "",
+    credits: [
+      { id: "cr5", name: "Amara Osei", role: "Director", profileUrl: "" },
+      { id: "cr6", name: "Marcus Johnson", role: "Rehearsal Director", profileUrl: "" },
+    ],
+    gallery: [],
+    reviews: [],
+    awards: [],
+    upcomingPerformances: [],
+    pastPerformances: [],
+    partners: [{ id: "pt4", name: "The Place", type: "residency" }],
+    techRequirements: { stageMinWidth: "12m", stageMinDepth: "10m", performers: "8", setupTime: "6 hours" },
+    accessibility: { captions: false, relaxedPerformance: false, audioDescription: false, sensoryNotes: "" },
+    downloads: [],
+    bookingEmail: "",
+    bookingCtas: [],
+    slug: "pulse",
+    date: "Mar 15, 2026",
+  },
+];
+
+const MOCK_WORK_TRACKING = [
+  { id: "wt1", workId: "wk1", email: "programming@sadlerswells.com", name: "Rachel Howard", org: "Sadler's Wells", viewedAt: "2026-03-29T10:15:00", duration: "5m 30s", sections: ["About", "Credits", "Performances", "Reviews"], device: "Desktop" },
+  { id: "wt2", workId: "wk1", email: "festivals@theatredelaville.fr", name: "Pierre Dumont", org: "Théâtre de la Ville", viewedAt: "2026-03-28T15:42:00", duration: "3m 48s", sections: ["About", "Trailer", "Reviews"], device: "Desktop" },
+  { id: "wt3", workId: "wk1", email: null, name: "Anonymous", org: null, viewedAt: "2026-03-27T08:20:00", duration: "1m 12s", sections: ["About"], device: "Mobile" },
+];
+
+const STUDIO_THEMES = [
+  {
+    id: "noir", name: "Noir", desc: "Bold editorial. Cinematic. Motion-heavy.", tier: "free",
+    preview: "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg",
+    colors: { bg: "#0a0a0a", text: "#ffffff", accent: "#ffffff", muted: "rgba(255,255,255,.5)" },
+    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "aurora", name: "Aurora", desc: "Ethereal gradients. Soft. Dreamlike.", tier: "pro", locked: true,
+    preview: "/demo/banners/aleksandr-popov-htv8aapzioq-unsplash.jpg",
+    colors: { bg: "#0f0a1a", text: "#f0e6ff", accent: "#a78bfa", muted: "rgba(240,230,255,.5)" },
+    fonts: { heading: "'Georgia',serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "editorial", name: "Editorial", desc: "Clean magazine layout. Refined typography.", tier: "pro", locked: true,
+    preview: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg",
+    colors: { bg: "#faf9f6", text: "#1a1a1a", accent: "#1a1a1a", muted: "rgba(26,26,26,.5)" },
+    fonts: { heading: "'Georgia',serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "vivid", name: "Vivid", desc: "Colorful. Energetic. Playful.", tier: "pro", locked: true,
+    preview: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg",
+    colors: { bg: "#fffbeb", text: "#1a1a1a", accent: "#f59e0b", muted: "rgba(26,26,26,.5)" },
+    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "minimal", name: "Minimal", desc: "Whitespace. Quiet elegance. Less is more.", tier: "pro", locked: true,
+    preview: "/demo/banners/rachel-coyne-u7hlzmo4siy-unsplash.jpg",
+    colors: { bg: "#ffffff", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.4)" },
+    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "brutalist", name: "Brutalist", desc: "Raw. Oversized type. Unapologetic.", tier: "pro", locked: true,
+    preview: "/demo/banners/shutterstock_1505137721.jpg",
+    colors: { bg: "#f5f5f0", text: "#000000", accent: "#ff3300", muted: "rgba(0,0,0,.4)" },
+    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "atrium", name: "Atrium", desc: "Refined. Rounded. Numbered sections.", tier: "free",
+    preview: "/demo/banners/rachel-coyne-u7hlzmo4siy-unsplash.jpg",
+    colors: { bg: "#F7F7F5", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.45)" },
+    fonts: { heading: "'Plus Jakarta Sans',system-ui,sans-serif", body: "'Plus Jakarta Sans',system-ui,sans-serif" },
+  },
+];
+
+const STUDIO_DEFAULT_SECTIONS = [
+  { id: "hero", label: "Hero", enabled: true, order: 0 },
+  { id: "about", label: "About", enabled: true, order: 1 },
+  { id: "gallery", label: "Gallery", enabled: true, order: 2 },
+  { id: "portfolios", label: "Portfolios", enabled: true, order: 3 },
+  { id: "featuredWork", label: "Featured Work", enabled: true, order: 4 },
+  { id: "experience", label: "Experience", enabled: true, order: 5 },
+  { id: "works", label: "Works", enabled: true, order: 6 },
+  { id: "exploreGallery", label: "Explore Gallery", enabled: true, order: 7 },
+  { id: "testimonials", label: "Testimonials", enabled: true, order: 8 },
+  { id: "contact", label: "Contact", enabled: true, order: 9 },
+];
+
 const MOCK_MEDIA = [
   { id: "m1", title: "Showreel 2026", type: "video", format: "MOV", size: "248 MB", duration: "3:24", thumb: "/demo/artists/boris-de-jong/pexels-cottonbro-5102571.jpg" },
   { id: "m2", title: "Headshot — Studio", type: "photo", format: "JPG", size: "4.2 MB", thumb: "/demo/artists/nisha-huizing.jpg" },
@@ -682,6 +841,197 @@ textarea.pf-input{line-height:1.6}
 .dark .ctx-portfolio .main{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.04)}
 .dark .ctx-portfolio .sidebar{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.06)}
 .dark .ctx-portfolio{background-image:radial-gradient(ellipse at 20% 0%,rgba(13,148,136,.14) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(13,148,136,.08) 0%,transparent 50%)}
+
+/* ━━━ Works Context ━━━ */
+.ctx-works{--wk-ac:#D97706;--wk-ac-light:rgba(217,119,6,.08);background-image:radial-gradient(ellipse at 20% 0%,rgba(217,119,6,.10) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(217,119,6,.06) 0%,transparent 50%);transition:background .4s ease}
+.ctx-works::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--wk-ac),transparent 80%);z-index:210;animation:fadeIn .4s}
+.ctx-works .main{position:fixed;top:12px;right:12px;bottom:12px;left:calc(var(--sb-w) + 24px);border-radius:20px;background:var(--sf);box-shadow:0 8px 40px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.03);animation:ctxPanelIn .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;margin:0;min-height:0}
+.ctx-works .main .breadcrumb-bar{border-radius:20px 20px 0 0;flex-shrink:0;position:sticky;top:0;z-index:10;border-image:linear-gradient(90deg,var(--wk-ac) 0%,transparent 70%) 1}
+.ctx-works .main .content{overflow-y:auto;flex:1;min-height:0;padding-top:8px}
+.ctx-works .main .content>div>:first-child{margin-top:8px}
+.ctx-works .main>*{animation:ctxStagger .3s ease backwards}
+.ctx-works .main>*:nth-child(1){animation-delay:0s}
+.ctx-works .main>*:nth-child(2){animation-delay:.03s}
+.ctx-works .main>*:nth-child(3){animation-delay:.06s}
+.ctx-works .topbar{display:none}
+.sb-collapsed.ctx-works .main{left:calc(var(--sb-wc) + 24px)}
+.ctx-works .sidebar{top:12px;left:12px;bottom:12px;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04);animation:sbSlideIn .3s cubic-bezier(.4,0,.2,1);overflow:hidden;background:linear-gradient(180deg,rgba(217,119,6,.06) 0%,var(--sf) 60%)}
+.ctx-works .sidebar-item.active{background:rgba(217,119,6,.08);color:var(--wk-ac);font-weight:600}
+.ctx-works .sidebar-item.active::before{background:var(--wk-ac)}
+.dark .ctx-works .main{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.04)}
+.dark .ctx-works .sidebar{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.06)}
+.dark .ctx-works{background-image:radial-gradient(ellipse at 20% 0%,rgba(217,119,6,.14) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(217,119,6,.08) 0%,transparent 50%)}
+
+/* Works Editor */
+.wke-section{background:var(--sf);border:1px solid var(--g2);border-radius:16px;padding:24px;margin-bottom:16px}
+.wke-section h3{font-size:16px;font-weight:700;margin:0 0 16px}
+.wke-section h3 em{color:#D97706;font-style:italic}
+.wke-banner{position:relative;height:200px;border-radius:16px;overflow:hidden;margin-bottom:16px;background:linear-gradient(135deg,rgba(217,119,6,.15),rgba(217,119,6,.03))}
+.wke-banner img{width:100%;height:100%;object-fit:cover}
+.wke-banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.6));display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.wke-banner-title{font-size:22px;font-weight:700;color:#fff}
+.wke-banner-tagline{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px}
+.wke-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.wke-add-row{display:flex;gap:8px;margin-top:12px}
+.wke-add-btn{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s}
+.wke-add-btn.primary{background:rgba(217,119,6,.08);color:#D97706;border:1px solid rgba(217,119,6,.15)}
+.wke-add-btn.primary:hover{background:rgba(217,119,6,.15)}
+.wke-add-btn.secondary{background:var(--bg);color:var(--g5);border:1px solid var(--g2)}
+.wke-add-btn.secondary:hover{border-color:var(--g3)}
+.wke-count{font-size:11px;font-weight:500;color:var(--g4);margin-left:6px}
+.wke-pill-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.wke-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;background:rgba(217,119,6,.06);color:#D97706;border:1px solid rgba(217,119,6,.12)}
+.wke-credit{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--g2);border-radius:12px;margin-bottom:8px}
+.wke-credit-avatar{width:36px;height:36px;border-radius:10px;background:rgba(217,119,6,.08);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#D97706;flex-shrink:0}
+.wke-credit-info{flex:1;min-width:0}
+.wke-credit-name{font-size:13px;font-weight:600}
+.wke-credit-role{font-size:11px;color:var(--g4)}
+.wke-credit-actions{display:flex;gap:4px}
+.wke-credit-actions button{background:none;border:none;font-size:11px;color:var(--g4);cursor:pointer;padding:4px}
+.wke-credit-actions button:hover{color:var(--red)}
+.wke-review-card{padding:16px;border:1px solid var(--g2);border-radius:12px;margin-bottom:8px}
+.wke-review-quote{font-size:13px;font-style:italic;color:var(--tx);margin-bottom:8px;line-height:1.5}
+.wke-review-source{font-size:11px;color:var(--g4)}
+.wke-review-type{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:20px;margin-bottom:8px}
+.wke-review-type.press{background:rgba(96,77,255,.08);color:var(--ac)}
+.wke-review-type.audience{background:rgba(217,119,6,.08);color:#D97706}
+.wke-award-card{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--g2);border-radius:12px;margin-bottom:8px}
+.wke-award-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.wke-award-icon.win{background:rgba(245,166,35,.12)}
+.wke-award-icon.nomination{background:rgba(96,77,255,.08)}
+.wke-award-icon.selection{background:rgba(13,148,136,.08)}
+.wke-award-info{flex:1}
+.wke-award-title{font-size:13px;font-weight:600}
+.wke-award-meta{font-size:11px;color:var(--g4)}
+.wke-perf-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--g2);border-radius:12px;margin-bottom:8px}
+.wke-perf-date{width:56px;text-align:center;flex-shrink:0}
+.wke-perf-date-d{font-size:18px;font-weight:700;color:#D97706}
+.wke-perf-date-m{font-size:10px;font-weight:600;text-transform:uppercase;color:var(--g4)}
+.wke-perf-info{flex:1}
+.wke-perf-venue{font-size:13px;font-weight:600}
+.wke-perf-city{font-size:11px;color:var(--g4)}
+.wke-perf-ticket{font-size:11px;color:#D97706;font-weight:600;cursor:pointer;text-decoration:none;background:none;border:none;font-family:var(--sans)}
+.wke-perf-ticket:hover{text-decoration:underline}
+.wke-partner{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--g2);border-radius:10px;margin-bottom:6px}
+.wke-partner-name{font-size:13px;font-weight:600}
+.wke-partner-type{font-size:10px;color:var(--g4);text-transform:uppercase;letter-spacing:.04em}
+.wke-tech-table{width:100%;border-collapse:separate;border-spacing:0}
+.wke-tech-table td{padding:8px 12px;font-size:13px;border-bottom:1px solid var(--g1)}
+.wke-tech-table td:first-child{font-weight:600;color:var(--g5);width:40%}
+.wke-access-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g1)}
+.wke-access-row:last-child{border-bottom:none}
+.wke-access-label{font-size:13px;font-weight:500}
+.wke-access-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600}
+.wke-access-badge.yes{background:rgba(29,185,84,.1);color:var(--green)}
+.wke-access-badge.no{background:var(--g1);color:var(--g4)}
+.wke-dl-item{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--g2);border-radius:10px;margin-bottom:6px}
+.wke-dl-icon{font-size:16px}
+.wke-dl-info{flex:1}
+.wke-dl-title{font-size:13px;font-weight:600}
+.wke-dl-meta{font-size:11px;color:var(--g4)}
+.wke-cta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.wke-cta-btn{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s}
+.wke-cta-btn.book{background:linear-gradient(135deg,#D97706,#B45309);color:#fff;border:none}
+.wke-cta-btn.tickets{background:#D97706;color:#fff;border:none}
+.wke-cta-btn.presskit{background:rgba(217,119,6,.08);color:#D97706;border:1px solid rgba(217,119,6,.15)}
+.wke-cta-btn.contact{background:var(--bg);color:var(--tx);border:1px solid var(--g2)}
+.wke-input-label{font-size:12px;font-weight:600;color:var(--g5);display:block;margin-bottom:6px}
+.wke-input{width:100%;padding:10px 14px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);background:var(--bg);color:var(--tx);outline:none;box-sizing:border-box}
+.wke-input:focus{border-color:#D97706;box-shadow:0 0 0 3px rgba(217,119,6,.1)}
+.wke-textarea{width:100%;padding:10px 14px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);background:var(--bg);color:var(--tx);outline:none;resize:vertical;min-height:80px;box-sizing:border-box}
+.wke-textarea:focus{border-color:#D97706;box-shadow:0 0 0 3px rgba(217,119,6,.1)}
+.wke-select{width:100%;padding:10px 14px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);background:var(--bg);color:var(--tx);outline:none}
+.wke-select:focus{border-color:#D97706;box-shadow:0 0 0 3px rgba(217,119,6,.1)}
+
+/* Works Preview */
+.wkp-hero{position:relative;border-radius:16px;overflow:hidden;min-height:320px;background:linear-gradient(135deg,#1a1200,#2d1b00);display:flex;flex-direction:column;justify-content:flex-end;padding:40px;margin-bottom:24px}
+.wkp-hero.has-cover{background-size:cover;background-position:center}
+.wkp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.7));pointer-events:none}
+.wkp-hero>*{position:relative;z-index:1}
+.wkp-hero-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-bottom:8px}
+.wkp-hero-title{font-size:36px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:6px;font-family:var(--serif)}
+.wkp-hero-tagline{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:4px}
+.wkp-hero-role{display:inline-block;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;background:rgba(217,119,6,.2);color:#FBBF24;margin-bottom:16px}
+.wkp-hero-actions{display:flex;gap:8px}
+.wkp-hero-actions button{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.wkp-keyinfo{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.wkp-keyinfo-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:12px;font-size:12px;font-weight:500;background:var(--sf);border:1px solid var(--g2)}
+.wkp-keyinfo-pill strong{font-weight:700;color:var(--tx)}
+.wkp-keyinfo-pill span{color:var(--g5)}
+.wkp-about{margin-bottom:24px}
+.wkp-about-pitch{font-size:18px;line-height:1.6;color:var(--tx);font-weight:500;margin-bottom:16px;font-family:var(--serif)}
+.wkp-about-desc{font-size:14px;line-height:1.7;color:var(--g5);margin-bottom:16px}
+.wkp-about-note{font-size:13px;line-height:1.6;color:var(--g4);padding:16px;border-left:3px solid #D97706;background:rgba(217,119,6,.03);border-radius:0 10px 10px 0}
+.wkp-section-title{font-size:18px;font-weight:700;margin:0 0 16px}
+.wkp-section-title em{color:#D97706;font-style:italic}
+.wkp-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:24px}
+.wkp-gallery-item{aspect-ratio:4/3;border-radius:10px;overflow:hidden;cursor:pointer}
+.wkp-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.wkp-gallery-item:hover img{transform:scale(1.03)}
+.wkp-credits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:24px}
+.wkp-credit-card{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--g2);border-radius:12px;background:var(--sf)}
+.wkp-credit-avatar{width:36px;height:36px;border-radius:10px;background:rgba(217,119,6,.08);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#D97706;flex-shrink:0}
+.wkp-credit-name{font-size:13px;font-weight:600}
+.wkp-credit-role{font-size:11px;color:var(--g4)}
+.wkp-trailer{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;margin-bottom:24px;display:flex;align-items:center;justify-content:center}
+.wkp-trailer img{width:100%;height:100%;object-fit:cover;opacity:.6}
+.wkp-trailer-play{position:absolute;width:64px;height:64px;border-radius:50%;background:rgba(217,119,6,.9);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.wkp-trailer-play::after{content:'';border-left:20px solid #fff;border-top:12px solid transparent;border-bottom:12px solid transparent;margin-left:4px}
+.wkp-avail{padding:20px;border:1px solid var(--g2);border-radius:16px;margin-bottom:24px;display:flex;align-items:center;justify-content:space-between}
+.wkp-avail-status{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.wkp-avail-dot{width:8px;height:8px;border-radius:50%}
+.wkp-avail-dot.available{background:#1DB954}
+.wkp-avail-dot.touring{background:#D97706}
+.wkp-avail-dot.in_creation{background:#F5A623}
+.wkp-avail-dot.on_hold{background:var(--g4)}
+.wkp-avail-dot.archived{background:var(--g3)}
+
+/* Works Tracking */
+.wkt-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.wkt-stat{background:var(--bg);border-radius:12px;padding:16px;text-align:center}
+.wkt-val{font-size:24px;font-weight:800;color:#D97706}
+.wkt-label{font-size:11px;color:var(--g4);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+.wkt-list{display:flex;flex-direction:column;gap:8px}
+.wkt-item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--g2);border-radius:12px}
+.wkt-avatar{width:36px;height:36px;border-radius:10px;background:rgba(217,119,6,.08);color:#D97706;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.wkt-info{flex:1;min-width:0}
+.wkt-name{font-size:13px;font-weight:600}
+.wkt-org{font-size:11px;color:var(--g4)}
+.wkt-sections{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.wkt-sections span{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(217,119,6,.06);color:#D97706}
+.wkt-meta{display:flex;flex-direction:column;align-items:flex-end;gap:2px;font-size:11px;color:var(--g4);flex-shrink:0}
+.wkt-pro-gate{text-align:center;padding:40px 20px}
+.wkt-pro-gate h4{font-size:16px;margin:0 0 8px;color:#D97706}
+.wkt-pro-gate p{font-size:13px;color:var(--g4);margin:0 0 16px;max-width:360px;margin-inline:auto}
+.wkt-pro-gate button{padding:10px 24px;border-radius:10px;background:linear-gradient(135deg,#D97706,#B45309);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+
+/* Works Cards on Present page */
+.wk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:16px}
+.wk-card{border:1px solid var(--g2);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .2s;background:var(--sf)}
+.wk-card:hover{border-color:rgba(217,119,6,.3);box-shadow:0 4px 20px rgba(217,119,6,.08)}
+.wkc-cover{height:140px;object-fit:cover;width:100%}
+.wkc-body{padding:16px}
+.wkc-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.wkc-tagline{font-size:12px;color:var(--g5);margin-bottom:8px}
+.wkc-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.wkc-status{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:20px}
+.wkc-genre{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(217,119,6,.06);color:#D97706;font-weight:600}
+.wkc-touring{font-size:9px;padding:2px 8px;border-radius:20px;background:rgba(29,185,84,.08);color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.wkc-role{font-size:11px;color:var(--g4);margin-top:8px}
+
+/* Works Live View */
+.wkl-overlay{position:fixed;inset:0;background:var(--bg);z-index:300;display:flex;flex-direction:column;animation:fadeIn .2s}
+.wkl-topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--sf);border-bottom:1px solid var(--g2)}
+.wkl-topbar-title{font-size:14px;font-weight:600}
+.wkl-topbar-actions{display:flex;gap:8px}
+.wkl-topbar-actions button{padding:8px 16px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.wkl-content{flex:1;overflow-y:auto;padding:24px;max-width:800px;margin:0 auto;width:100%}
+.wkl-anim{animation:slideUp .3s ease backwards}
+
+/* New Work Modal */
+.nwk-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:300;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s}
+.nwk-modal{background:var(--sf);border-radius:20px;width:480px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.15);animation:slideUp .25s ease}
+.nwk-modal h2{font-size:20px;font-weight:700;margin:0}
 
 /* New Portfolio Modal */
 .npf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:300;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s}
@@ -1561,6 +1911,488 @@ textarea.pf-input{line-height:1.6}
   .content{padding:16px 12px}
   .spotlight-hero{height:160px;border-radius:12px}
 }
+
+/* ━━━ STUDIO ━━━ */
+.studio-live-banner{display:flex;align-items:center;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;margin-bottom:20px;font-size:13px;color:var(--tx)}
+.studio-gallery-header{margin-bottom:16px}
+.studio-gallery-header h3{font-size:18px;font-weight:700;margin:0}
+.studio-theme-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.studio-gallery-card{border:1px solid var(--g2);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .2s}
+.studio-gallery-card:hover{border-color:var(--g3);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.studio-gallery-card.active{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
+.studio-gallery-card.locked{opacity:.7}
+.studio-gallery-preview{height:180px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.studio-gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
+.studio-gallery-card:hover .studio-gallery-overlay{opacity:1}
+.studio-gallery-active{position:absolute;top:10px;left:10px;background:var(--ac);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
+.studio-gallery-info{padding:12px 14px}
+.studio-gallery-name{display:block;font-size:14px;font-weight:700;color:var(--tx)}
+.studio-gallery-desc{display:block;font-size:12px;color:var(--g4);margin-top:2px}
+
+/* Studio Builder */
+.studio-builder{position:fixed;inset:0;z-index:500;background:var(--bg);display:flex;flex-direction:column}
+.studio-builder-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--g2);background:var(--sf);gap:12px;flex-shrink:0}
+.studio-builder-topbar-left,.studio-builder-topbar-right{display:flex;align-items:center;gap:8px}
+.studio-builder-theme-name{font-size:13px;font-weight:600;color:var(--tx)}
+.studio-builder-devices{display:flex;align-items:center;gap:2px;background:var(--g1);border-radius:8px;padding:2px}
+.studio-device-btn{padding:6px 10px;border:none;background:transparent;color:var(--g4);cursor:pointer;border-radius:6px;display:flex;align-items:center;transition:all .15s}
+.studio-device-btn.active{background:var(--sf);color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.studio-builder-body{display:grid;grid-template-columns:320px 1fr;flex:1;min-height:0;overflow:hidden}
+.studio-panel{display:flex;flex-direction:column;border-right:1px solid var(--g2);background:var(--sf);overflow:hidden}
+.studio-panel-tabs{display:flex;border-bottom:1px solid var(--g2);flex-shrink:0}
+.studio-panel-tab{flex:1;padding:10px 8px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--g4);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .15s}
+.studio-panel-tab.active{color:var(--ac);border-bottom-color:var(--ac)}
+.studio-panel-content{flex:1;overflow-y:auto;padding:16px}
+
+/* Theme selector in panel */
+.studio-theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.studio-theme-card{border:1px solid var(--g2);border-radius:10px;overflow:hidden;cursor:pointer;transition:all .2s}
+.studio-theme-card.active{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
+.studio-theme-card.locked{opacity:.6;cursor:not-allowed}
+.studio-theme-preview{height:80px;background-size:cover;background-position:center;position:relative}
+.studio-theme-lock{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px}
+.studio-theme-active{position:absolute;top:6px;left:6px;background:var(--ac);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px}
+.studio-theme-info{padding:8px 10px}
+.studio-theme-name{display:block;font-size:12px;font-weight:700;color:var(--tx)}
+.studio-theme-desc{display:block;font-size:10px;color:var(--g4);margin-top:1px}
+
+/* Content sub-tab */
+.studio-content-section h4{font-size:14px;font-weight:700;margin:0 0 4px;color:var(--tx)}
+.studio-content-hint{font-size:12px;color:var(--g4);margin:0 0 12px}
+.studio-content-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--g2);border-radius:10px;margin-bottom:8px;transition:all .15s}
+.studio-content-row.selected{border-color:var(--g3);background:var(--bg)}
+.studio-content-info{flex:1;min-width:0}
+.studio-content-name{display:block;font-size:13px;font-weight:600;color:var(--tx)}
+.studio-content-meta{display:block;font-size:11px;color:var(--g4);margin-top:1px}
+.studio-featured-btn{padding:4px 10px;border:1px solid var(--g3);border-radius:8px;background:transparent;font-size:11px;font-weight:600;color:var(--g4);cursor:pointer;transition:all .15s;white-space:nowrap}
+.studio-featured-btn.active{border-color:var(--ac);color:var(--ac);background:rgba(96,77,255,.05)}
+
+/* Layout sub-tab */
+.studio-section-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--g2);border-radius:10px;margin-bottom:6px}
+.studio-section-drag{color:var(--g3);cursor:grab;display:flex;align-items:center}
+.studio-section-label{font-size:13px;font-weight:600;color:var(--tx)}
+.studio-section-move{width:24px;height:24px;border:1px solid var(--g2);border-radius:6px;background:var(--sf);color:var(--g4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px}
+.studio-section-move:hover{background:var(--g1);color:var(--tx)}
+
+/* Brand sub-tab */
+.studio-color-swatches{display:flex;gap:8px;flex-wrap:wrap}
+.studio-swatch{width:32px;height:32px;border-radius:50%;cursor:pointer;transition:transform .15s;border:2px solid transparent}
+.studio-swatch:hover{transform:scale(1.15)}
+.studio-swatch.active{box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--ac)}
+.studio-font-pair{padding:10px 14px;border:1px solid var(--g2);border-radius:10px;margin-bottom:6px;cursor:pointer;display:flex;flex-direction:column;gap:2px;transition:all .15s}
+.studio-font-pair.active{border-color:var(--ac);background:rgba(96,77,255,.04)}
+.studio-font-pair:hover{border-color:var(--g3)}
+
+/* Preview area */
+.studio-preview-area{background:#1a1a1a;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:24px}
+.studio-preview-frame{background:#0a0a0a;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.3);transition:width .3s ease;width:100%;height:100%;overflow-y:auto;scroll-behavior:smooth}
+.studio-preview-desktop{width:100%;border-radius:0}
+.studio-preview-tablet{width:768px;max-width:100%;border-radius:12px;margin:0 auto}
+.studio-preview-mobile{width:375px;max-width:100%;border-radius:24px;margin:0 auto;border:4px solid #333}
+
+/* Full preview mode */
+.studio-preview-full{position:fixed;inset:0;z-index:600;background:#0a0a0a;display:flex;flex-direction:column}
+.studio-preview-topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(10,10,10,.95);border-bottom:1px solid rgba(255,255,255,.08);flex-shrink:0;z-index:10}
+.studio-preview-viewport{flex:1;overflow:auto}
+
+/* ━━━ NOIR THEME ━━━ */
+.noir-theme{background:#0a0a0a;color:#fff;font-family:'Inter',system-ui,-apple-system,sans-serif;overflow:visible;position:relative}
+.noir-theme *{box-sizing:border-box}
+
+/* Noir fixed bottom blur overlay */
+.noir-blur-overlay{position:fixed;bottom:0;left:0;right:0;height:180px;z-index:90;pointer-events:none;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.15) 30%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.85) 100%);-webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,.15) 30%,rgba(0,0,0,.5) 60%,rgba(0,0,0,.85) 100%)}
+
+/* Noir custom cursor */
+.noir-theme{cursor:none}
+.noir-cursor{position:fixed;width:28px;height:28px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s}
+
+/* Noir Nav */
+.noir-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 32px;transition:padding .4s cubic-bezier(.4,0,.2,1);background:transparent;mix-blend-mode:difference}
+.noir-nav-compact{padding:16px 32px}
+.noir-nav-name{font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;font-family:'Inter',system-ui,sans-serif}
+.noir-nav-links{display:flex;gap:28px;font-size:11px;font-weight:500;letter-spacing:2px;color:#fff}
+.noir-nav-spread{width:100%;justify-content:space-between;gap:40px;font-size:14px;font-weight:500;letter-spacing:3px}
+.noir-nav-links span{cursor:pointer;transition:opacity .2s;opacity:.7}
+.noir-nav-links span:hover{opacity:1}
+
+/* Noir Hero */
+.noir-hero{position:relative;padding:0 32px;margin-bottom:0;overflow:hidden;height:95vh;min-height:600px}
+.noir-hero-name-wrap{position:absolute;top:50%;left:32px;right:32px;transform:translateY(-50%);z-index:5;mix-blend-mode:difference;pointer-events:none;will-change:opacity}
+.noir-hero-name{display:flex;flex-direction:column;line-height:.86;font-weight:900;letter-spacing:-0.04em;user-select:none;will-change:transform;transform-origin:center center;align-items:center;text-align:center}
+.noir-hero-first,.noir-hero-last{display:block;font-size:clamp(80px,16vw,200px);text-transform:uppercase;white-space:nowrap;overflow:visible;color:#fff}
+.noir-hero-grid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;position:absolute;top:8%;left:32px;right:32px;bottom:0;z-index:2;will-change:transform;align-items:start}
+.noir-hero-img{border-radius:12px;overflow:hidden;aspect-ratio:3/4;position:relative}
+.noir-hero-img img{width:100%;height:100%;object-fit:cover;filter:saturate(1.25) contrast(1.08) brightness(1.05)}
+.noir-hero-img:hover img{transform:scale(1.04);transition:transform .6s ease}
+.noir-hero-img-center{aspect-ratio:3/4.5;z-index:3;margin-top:-24px}
+.noir-hero-gradient{position:absolute;bottom:0;left:0;right:0;height:250px;background:linear-gradient(transparent,#0a0a0a);z-index:6;pointer-events:none}
+
+/* Noir scroll-driven reveal animations */
+@keyframes noirRevealUp{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:translateY(0)}}
+@keyframes noirRevealScale{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes noirRevealLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes noirRevealRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes noirTitleSlide{from{opacity:0;transform:translateY(30px) skewY(2deg)}to{opacity:1;transform:translateY(0) skewY(0)}}
+.noir-reveal{opacity:0;transform:translateY(60px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.noir-reveal.revealed{opacity:1;transform:translateY(0)}
+.noir-reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.noir-reveal-left.revealed{opacity:1;transform:translateX(0)}
+.noir-reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.noir-reveal-right.revealed{opacity:1;transform:translateX(0)}
+.noir-reveal-scale{opacity:0;transform:scale(.92);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.noir-reveal-scale.revealed{opacity:1;transform:scale(1)}
+.noir-stagger-1{transition-delay:.1s}
+.noir-stagger-2{transition-delay:.2s}
+.noir-stagger-3{transition-delay:.3s}
+.noir-stagger-4{transition-delay:.4s}
+.noir-stagger-5{transition-delay:.5s}
+.noir-stagger-6{transition-delay:.6s}
+
+/* Noir parallax title overlays */
+.noir-parallax-title{font-size:clamp(60px,12vw,160px);font-weight:900;line-height:.85;letter-spacing:-0.04em;text-transform:uppercase;color:rgba(255,255,255,.04);pointer-events:none;will-change:transform;position:absolute;white-space:nowrap}
+.noir-parallax-title-left{left:-20px;top:0}
+.noir-parallax-title-right{right:-20px;bottom:0;text-align:right}
+
+/* Noir About */
+.noir-about{padding:80px 32px}
+.noir-about-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-bottom:60px;align-items:start}
+.noir-about-left svg{color:rgba(255,255,255,.3);margin-bottom:20px}
+.noir-about-headline{font-size:clamp(24px,3.5vw,42px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin:0;text-transform:uppercase}
+.noir-about-right{padding-top:20px}
+.noir-available{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:1.5px;color:rgba(255,255,255,.7);margin-bottom:16px}
+.noir-avail-dot{width:8px;height:8px;border-radius:50%;background:#10b981;flex-shrink:0;animation:noirPulse 2s ease infinite}
+@keyframes noirPulse{0%,100%{opacity:1}50%{opacity:.4}}
+.noir-about-body{font-size:13px;line-height:1.7;color:rgba(255,255,255,.6);margin:0}
+.noir-about-portrait{position:relative;border-radius:14px;overflow:hidden;max-height:85vh}
+.noir-about-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.noir-about-overlay{position:absolute;bottom:0;left:0;right:0;padding:40px 32px;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.noir-about-quote{font-size:13px;line-height:1.7;color:rgba(255,255,255,.8);text-align:center;text-transform:uppercase;letter-spacing:.5px;margin:0 0 16px}
+.noir-about-link{display:block;text-align:center;font-size:12px;font-weight:600;letter-spacing:2px;color:#fff;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+
+/* Noir Gallery / Explore */
+.noir-gallery{padding:80px 0;position:relative;overflow:hidden}
+.noir-section-title{font-size:clamp(32px,6vw,64px);font-weight:900;line-height:1;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 40px}
+.noir-gallery-header{padding:0 32px;margin-bottom:40px}
+.noir-gallery-cta{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#fff;cursor:pointer;margin-top:16px;transition:gap .3s}
+.noir-gallery-cta:hover{gap:14px}
+.noir-gallery-cta svg{width:14px;height:14px}
+/* Auto-scrolling marquee rows */
+.noir-marquee-row{display:flex;gap:16px;overflow:hidden;margin-bottom:16px;width:100%;position:relative}
+.noir-marquee-row::before,.noir-marquee-row::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.noir-marquee-row::before{left:0;background:linear-gradient(to right,#0a0a0a,transparent)}
+.noir-marquee-row::after{right:0;background:linear-gradient(to left,#0a0a0a,transparent)}
+.noir-marquee-track{display:flex;gap:16px;animation:noirMarqueeLeft 80s linear infinite;flex-shrink:0}
+.noir-marquee-row.reverse .noir-marquee-track{animation:noirMarqueeRight 80s linear infinite}
+@keyframes noirMarqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes noirMarqueeRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.noir-marquee-img{flex-shrink:0;width:360px;height:240px;border-radius:12px;overflow:hidden}
+.noir-marquee-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.noir-marquee-img:hover img{transform:scale(1.06)}
+/* Builder-only gallery layouts */
+.noir-gallery-grid-builder{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 32px}
+.noir-gallery-masonry-builder{columns:2;column-gap:16px;padding:0 32px}
+.noir-gallery-masonry-builder .noir-gallery-item{break-inside:avoid;margin-bottom:16px;aspect-ratio:auto}
+.noir-gallery-masonry-builder .noir-gallery-item:nth-child(odd) img{aspect-ratio:3/4;height:auto}
+.noir-gallery-masonry-builder .noir-gallery-item:nth-child(even) img{aspect-ratio:4/5;height:auto}
+.noir-gallery-masonry-builder .noir-gallery-item:nth-child(3n) img{aspect-ratio:1/1;height:auto}
+.noir-gallery-magazine-builder{display:grid;grid-template-columns:1.6fr 1fr;grid-auto-rows:200px;gap:12px;padding:0 32px}
+.noir-gallery-magazine-builder .noir-gallery-item:first-child{grid-row:span 2}
+.noir-gallery-magazine-builder .noir-gallery-item:nth-child(4){grid-column:span 2}
+.noir-gallery-spread-builder{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;padding:0 32px}
+.noir-gallery-spread-builder .noir-gallery-item{flex:0 0 auto;width:42%;border-radius:16px}
+.noir-gallery-spread-builder .noir-gallery-item:nth-child(odd){transform:rotate(-1.5deg);margin-top:30px}
+.noir-gallery-spread-builder .noir-gallery-item:nth-child(even){transform:rotate(1.5deg);margin-top:-10px}
+.noir-gallery-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:none}
+.noir-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.noir-gallery-item:hover img{transform:scale(1.05)}
+.noir-gallery-hover{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
+.noir-gallery-hover svg{width:40px;height:40px;padding:8px;background:rgba(255,255,255,.15);border-radius:50%;color:#fff}
+.noir-gallery-item:hover .noir-gallery-hover{opacity:1}
+.noir-gallery-caption{position:absolute;bottom:12px;left:14px;font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.5px}
+
+/* Noir Testimonials */
+.noir-testimonials{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.noir-testimonials-bg{position:absolute;inset:0;z-index:1}
+.noir-testimonials-bg img{width:100%;height:100%;object-fit:cover}
+.noir-testimonials-card{position:relative;z-index:2;background:rgba(255,255,255,.08);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:48px 40px;max-width:540px;width:90%;text-align:center}
+.noir-testimonials-quote{font-size:clamp(13px,1.6vw,16px);line-height:1.7;color:#fff;text-transform:uppercase;letter-spacing:.5px;font-weight:500;margin:0 0 24px}
+.noir-testimonials-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);margin:0 auto 20px}
+.noir-testimonials-name{font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:4px}
+.noir-testimonials-role{font-size:11px;letter-spacing:1.5px;color:rgba(255,255,255,.5);text-transform:uppercase}
+.noir-testimonials-arrows{display:flex;gap:8px;justify-content:center;margin-top:32px}
+.noir-testimonials-arrows button{width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:16px}
+.noir-testimonials-arrows button:hover{background:rgba(255,255,255,.1)}
+
+/* Noir Portfolios */
+.noir-portfolios{padding:80px 32px;border-top:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
+.noir-portfolios-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.noir-portfolio-card{border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.noir-portfolio-card:hover{border-color:rgba(255,255,255,.12);transform:translateY(-6px)}
+.noir-portfolio-card.featured{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.04)}
+.noir-pf-cover{aspect-ratio:16/9;overflow:hidden}
+.noir-pf-cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.noir-portfolio-card:hover .noir-pf-cover img{transform:scale(1.04)}
+.noir-pf-info{padding:20px 22px}
+.noir-pf-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:rgba(255,255,255,.1);padding:3px 10px;border-radius:20px;margin-bottom:8px}
+.noir-pf-info h3{font-size:18px;font-weight:700;margin:0 0 6px;text-transform:uppercase;letter-spacing:-.01em}
+.noir-pf-info p{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin:0 0 12px}
+.noir-pf-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.noir-pf-tags span{font-size:10px;letter-spacing:.5px;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);padding:3px 10px;border-radius:20px}
+.noir-pf-stats{display:flex;gap:16px;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.5px}
+
+/* Noir Featured Work */
+.noir-featured-work{padding:80px 32px;border-top:1px solid rgba(255,255,255,.06)}
+.noir-fw-label{font-size:11px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:12px}
+.noir-fw-title{font-size:clamp(36px,5vw,72px);font-weight:900;line-height:1;letter-spacing:-0.03em;margin:0 0 12px;text-transform:uppercase}
+.noir-fw-tagline{font-size:16px;color:rgba(255,255,255,.5);font-style:italic;margin:0 0 32px}
+.noir-fw-cover{border-radius:14px;overflow:hidden;margin-bottom:32px;aspect-ratio:16/7}
+.noir-fw-cover img{width:100%;height:100%;object-fit:cover}
+.noir-fw-meta{display:flex;gap:20px;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:20px}
+.noir-fw-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,.6);max-width:640px;margin:0 0 40px}
+.noir-fw-reviews{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px}
+.noir-fw-quote{margin:0;padding:24px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.02)}
+.noir-fw-quote p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin:0 0 12px;font-style:italic}
+.noir-fw-quote cite{font-size:11px;color:rgba(255,255,255,.4);font-style:normal;letter-spacing:.5px}
+.noir-fw-performances h3{font-size:12px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.4);margin:0 0 16px}
+.noir-fw-perf{display:flex;gap:20px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:13px;color:rgba(255,255,255,.6)}
+.noir-fw-perf-date{font-weight:600;color:#fff;min-width:120px}
+
+/* Noir Experience */
+.noir-experience{padding:80px 32px;border-top:1px solid rgba(255,255,255,.06)}
+.noir-exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.noir-exp-card{padding:24px;border:1px solid rgba(255,255,255,.06);border-radius:12px;background:rgba(255,255,255,.02);transition:border-color .2s}
+.noir-exp-card:hover{border-color:rgba(255,255,255,.12)}
+.noir-exp-type{font-size:10px;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:10px}
+.noir-exp-title{font-size:16px;font-weight:700;margin:0 0 4px}
+.noir-exp-org{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:4px}
+.noir-exp-period{font-size:11px;color:rgba(255,255,255,.3);margin-bottom:8px}
+.noir-exp-desc{font-size:12px;line-height:1.6;color:rgba(255,255,255,.4);margin:0}
+
+/* Noir Works */
+.noir-works{padding:80px 32px;border-top:1px solid rgba(255,255,255,.06);position:relative;overflow:hidden}
+.noir-works-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.noir-work-card{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:all .5s cubic-bezier(.16,1,.3,1)}
+.noir-work-card:hover{border-color:rgba(255,255,255,.12);transform:translateY(-6px)}
+.noir-work-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.noir-work-info{padding:16px 18px}
+.noir-work-info h3{font-size:16px;font-weight:700;margin:0 0 4px;text-transform:uppercase}
+.noir-work-info span{display:block;font-size:12px;color:rgba(255,255,255,.4)}
+.noir-work-role{margin-top:2px;font-weight:500;color:rgba(255,255,255,.5)!important}
+
+/* Noir Connect / CTA section */
+.noir-connect{padding:100px 32px;border-top:1px solid rgba(255,255,255,.06);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.noir-connect-left h2{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:.95;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 20px}
+.noir-connect-left p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);margin:0 0 32px;max-width:400px}
+.noir-connect-cta{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;padding:16px 32px;border:1px solid rgba(255,255,255,.2);border-radius:40px;transition:all .3s}
+.noir-connect-cta:hover{background:rgba(255,255,255,.08);gap:16px}
+.noir-connect-right{display:flex;flex-direction:column;gap:20px}
+.noir-connect-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.noir-connect-item-label{font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,.35);text-transform:uppercase}
+.noir-connect-item-value{font-size:14px;color:rgba(255,255,255,.7);text-align:right}
+.noir-connect-item-value a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+.noir-connect-item-value a:hover{color:#fff}
+@media(max-width:768px){.noir-connect{grid-template-columns:1fr;gap:40px}}
+
+/* Noir Footer */
+.noir-footer-full{position:relative;overflow:hidden}
+.noir-footer-bg{position:absolute;inset:0;z-index:1}
+.noir-footer-bg img{width:100%;height:100%;object-fit:cover}
+.noir-footer-bg-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,#0a0a0a 0%,rgba(10,10,10,.4) 30%,rgba(10,10,10,.6) 70%,rgba(10,10,10,.85) 100%)}
+.noir-footer-content{position:relative;z-index:2;padding:120px 32px 0}
+.noir-footer-subtitle{font-size:12px;font-weight:500;letter-spacing:1.5px;line-height:1.7;color:rgba(255,255,255,.6);margin:0 0 40px;text-transform:uppercase}
+.noir-footer-mid{display:flex;justify-content:space-between;align-items:flex-start;padding:24px 0;border-top:1px solid rgba(255,255,255,.1)}
+.noir-footer-nav{display:flex;gap:24px;font-size:11px;font-weight:500;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase}
+.noir-footer-nav span{cursor:pointer;transition:color .2s}
+.noir-footer-nav span:hover{color:#fff}
+.noir-footer-socials{display:flex;gap:20px}
+.noir-footer-socials a{font-size:11px;font-weight:600;letter-spacing:1.5px;color:rgba(255,255,255,.4);text-transform:uppercase;text-decoration:none;transition:color .2s}
+.noir-footer-socials a:hover{color:#fff}
+.noir-footer-bottom{display:flex;justify-content:space-between;padding:16px 0 20px;font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.5px}
+.noir-footer-bigname{font-weight:900;text-transform:uppercase;color:#fff;text-align:center;padding:0;margin:0 -32px 0;white-space:nowrap;overflow:visible;width:calc(100% + 64px);line-height:0}
+.noir-footer-bigname svg{width:100%;height:auto;display:block}
+.noir-footer-bigname svg text{fill:#fff;font-weight:900;font-family:'Inter',system-ui,sans-serif}
+
+/* Noir responsive */
+@media(max-width:768px){
+  .noir-hero{min-height:auto}
+  .noir-hero-name .noir-hero-first,.noir-hero-name .noir-hero-last{font-size:clamp(48px,14vw,100px)}
+  .noir-hero-grid{grid-template-columns:1fr;gap:12px}
+  .noir-hero-img-center{margin-top:0}
+  .noir-about-split{grid-template-columns:1fr;gap:32px}
+  .noir-gallery-grid{grid-template-columns:1fr}
+  .noir-fw-reviews{grid-template-columns:1fr}
+  .noir-exp-grid{grid-template-columns:1fr}
+  .noir-works-grid{grid-template-columns:1fr}
+  .noir-portfolios-grid{grid-template-columns:1fr}
+  .noir-nav-links{gap:16px;font-size:11px}
+  .studio-builder-body{grid-template-columns:280px 1fr}
+}
+
+/* ═══ ATRIUM THEME ═══ */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+.atrium-theme{background:#F7F7F5;color:#111;font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;position:relative}
+.atrium-theme *{box-sizing:border-box}
+
+/* Atrium Nav — translucent blur with gradient fade */
+.atrium-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;background:linear-gradient(to bottom,rgba(247,247,245,.95) 0%,rgba(247,247,245,.8) 60%,rgba(247,247,245,0) 100%);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:padding .3s,background .3s}
+.atrium-nav-compact{padding:16px 48px;background:rgba(247,247,245,.88);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.atrium-nav-name{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+.atrium-nav-links{display:flex;gap:32px;font-size:11px;font-weight:500;letter-spacing:.12em;color:rgba(17,17,17,.4);text-transform:uppercase}
+.atrium-nav-links span{cursor:pointer;transition:color .2s}
+.atrium-nav-links span:hover{color:#111}
+
+/* Atrium section header with number */
+.atrium-sh{display:flex;align-items:center;gap:20px;margin-bottom:40px}
+.atrium-sh-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:#bbb;font-weight:500;letter-spacing:.05em;flex-shrink:0}
+.atrium-sh-line{height:1px;flex:1;background:rgba(0,0,0,.06)}
+.atrium-sh-label{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:#aaa;font-weight:500;flex-shrink:0}
+
+/* Atrium Hero — floating card with image */
+.atrium-hero{padding:24px 32px 0;border-bottom:none;position:relative}
+.atrium-hero-inner{position:relative;overflow:hidden;border-radius:20px}
+.atrium-hero-img{width:100%;height:70vh;min-height:480px;object-fit:cover;display:block;filter:brightness(.82)}
+.atrium-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 40%,transparent 65%);pointer-events:none;border-radius:20px}
+.atrium-hero-content{position:absolute;bottom:0;left:0;right:0;padding:48px 56px 52px;color:#fff}
+.atrium-hero-brand{font-size:11px;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.6);font-weight:500;margin-bottom:16px}
+.atrium-hero-name{font-size:clamp(44px,9vw,110px);font-weight:800;line-height:.9;letter-spacing:-0.04em;margin:0;text-transform:uppercase;color:#fff}
+.atrium-hero-desc{font-size:15px;line-height:1.7;color:rgba(255,255,255,.6);max-width:480px;margin-top:20px}
+.atrium-hero-tags{display:flex;gap:8px;margin-top:16px}
+.atrium-hero-tags span{font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.5);padding:5px 14px;border:1px solid rgba(255,255,255,.15);border-radius:20px;text-transform:uppercase;backdrop-filter:blur(8px);background:rgba(255,255,255,.06)}
+
+/* Atrium About */
+.atrium-about{padding:80px 64px}
+.atrium-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.atrium-about-left h2{font-size:clamp(24px,3vw,34px);font-weight:700;line-height:1.2;letter-spacing:-0.02em;margin:0;text-transform:uppercase}
+.atrium-about-avail{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.15em;color:rgba(17,17,17,.5);margin-top:16px;text-transform:uppercase}
+.atrium-about-avail-dot{width:7px;height:7px;border-radius:50%;background:#10b981;animation:noirPulse 2s ease infinite}
+.atrium-about-right{font-size:14px;line-height:1.8;color:rgba(17,17,17,.5)}
+.atrium-about-portrait{margin-top:48px;position:relative;overflow:hidden;border-radius:16px}
+.atrium-about-portrait img{width:100%;max-height:70vh;object-fit:cover;display:block}
+
+/* Atrium Gallery */
+.atrium-gallery{padding:80px 64px;overflow:hidden}
+.atrium-gallery-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.atrium-gallery-item{position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:14px}
+.atrium-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.atrium-gallery-item:hover img{transform:scale(1.04)}
+.atrium-gallery-item:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+
+/* Atrium Portfolios */
+.atrium-portfolios{padding:80px 64px}
+.atrium-pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.atrium-pf-card{border:1px solid rgba(0,0,0,.06);border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;background:#fff}
+.atrium-pf-card:hover{border-color:rgba(0,0,0,.12);box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.atrium-pf-card.featured{border-color:rgba(0,0,0,.15)}
+.atrium-pf-cover{aspect-ratio:16/9;overflow:hidden}
+.atrium-pf-cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.atrium-pf-card:hover .atrium-pf-cover img{transform:scale(1.03)}
+.atrium-pf-info{padding:20px 24px}
+.atrium-pf-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#111;background:rgba(0,0,0,.04);padding:4px 12px;margin-bottom:8px;border-radius:6px}
+.atrium-pf-info h3{font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
+.atrium-pf-info p{font-size:13px;line-height:1.6;color:rgba(17,17,17,.45);margin:0 0 12px}
+.atrium-pf-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.atrium-pf-tags span{font-size:10px;letter-spacing:.05em;color:rgba(17,17,17,.35);border:1px solid rgba(0,0,0,.06);padding:3px 10px;border-radius:20px}
+.atrium-pf-stats{display:flex;gap:16px;font-size:11px;color:rgba(17,17,17,.3);letter-spacing:.05em}
+
+/* Atrium Featured Work */
+.atrium-fw{padding:80px 64px}
+.atrium-fw-label{font-size:11px;font-weight:600;letter-spacing:.2em;color:rgba(17,17,17,.35);text-transform:uppercase;margin-bottom:12px}
+.atrium-fw-title{font-size:clamp(32px,5vw,60px);font-weight:800;line-height:1;letter-spacing:-0.03em;margin:0 0 12px;text-transform:uppercase}
+.atrium-fw-tagline{font-size:15px;color:rgba(17,17,17,.45);font-style:italic;margin:0 0 32px}
+.atrium-fw-cover{overflow:hidden;margin-bottom:32px;aspect-ratio:16/7;border-radius:16px}
+.atrium-fw-cover img{width:100%;height:100%;object-fit:cover}
+.atrium-fw-meta{display:flex;gap:24px;font-size:12px;letter-spacing:.1em;color:rgba(17,17,17,.35);text-transform:uppercase;margin-bottom:20px}
+.atrium-fw-desc{font-size:14px;line-height:1.7;color:rgba(17,17,17,.5);max-width:640px;margin:0 0 40px}
+.atrium-fw-reviews{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px}
+.atrium-fw-quote{margin:0;padding:28px;border:1px solid rgba(0,0,0,.06);background:#fff;border-radius:14px}
+.atrium-fw-quote p{font-size:14px;line-height:1.6;color:rgba(17,17,17,.6);margin:0 0 12px;font-style:italic}
+.atrium-fw-quote cite{font-size:11px;color:rgba(17,17,17,.35);font-style:normal;letter-spacing:.05em}
+
+/* Atrium Experience */
+.atrium-experience{padding:80px 64px}
+.atrium-exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.atrium-exp-card{padding:24px;border:1px solid rgba(0,0,0,.05);border-radius:14px;background:#fff;transition:all .2s}
+.atrium-exp-card:hover{border-color:rgba(0,0,0,.1);box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.atrium-exp-type{font-size:10px;font-weight:600;letter-spacing:.15em;color:rgba(17,17,17,.3);text-transform:uppercase;margin-bottom:10px}
+.atrium-exp-title{font-size:15px;font-weight:600;margin:0 0 4px}
+.atrium-exp-org{font-size:13px;color:rgba(17,17,17,.45);margin-bottom:4px}
+.atrium-exp-period{font-size:11px;color:rgba(17,17,17,.3);margin-bottom:8px;font-family:'JetBrains Mono',monospace}
+.atrium-exp-desc{font-size:12px;line-height:1.6;color:rgba(17,17,17,.4);margin:0}
+
+/* Atrium Works */
+.atrium-works{padding:80px 64px}
+.atrium-works-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.atrium-work-card{overflow:hidden;border:1px solid rgba(0,0,0,.05);border-radius:16px;cursor:pointer;transition:all .3s;background:#fff}
+.atrium-work-card:hover{border-color:rgba(0,0,0,.1);box-shadow:0 8px 32px rgba(0,0,0,.06)}
+.atrium-work-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.atrium-work-info{padding:16px 20px}
+.atrium-work-info h3{font-size:15px;font-weight:600;margin:0 0 4px}
+.atrium-work-info span{display:block;font-size:12px;color:rgba(17,17,17,.35)}
+
+/* Atrium Testimonials */
+.atrium-testimonials{padding:80px 64px;background:rgba(0,0,0,.025);border-radius:24px;margin:0 32px}
+.atrium-test-card{max-width:640px;margin:0 auto;text-align:center;padding:40px 0}
+.atrium-test-quote{font-size:clamp(16px,2vw,22px);line-height:1.6;color:#111;font-weight:400;margin:0 0 28px;letter-spacing:-0.01em}
+.atrium-test-divider{width:32px;height:1px;background:rgba(0,0,0,.15);margin:0 auto 20px}
+.atrium-test-name{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.atrium-test-role{font-size:12px;color:rgba(17,17,17,.4);letter-spacing:.05em}
+.atrium-test-arrows{display:flex;gap:8px;justify-content:center;margin-top:32px}
+.atrium-test-arrows button{width:40px;height:40px;border:1px solid rgba(0,0,0,.08);border-radius:10px;background:#fff;color:#111;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:16px}
+.atrium-test-arrows button:hover{background:rgba(0,0,0,.04);border-color:rgba(0,0,0,.15)}
+
+/* Atrium Contact */
+.atrium-contact{padding:100px 64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.atrium-contact-left h2{font-size:clamp(32px,5vw,56px);font-weight:800;line-height:.95;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 20px}
+.atrium-contact-left p{font-size:14px;line-height:1.7;color:rgba(17,17,17,.45);margin:0 0 32px;max-width:400px}
+.atrium-contact-cta{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#111;text-decoration:none;padding:14px 32px;border:1px solid rgba(0,0,0,.12);border-radius:12px;transition:all .3s;background:#fff}
+.atrium-contact-cta:hover{background:rgba(0,0,0,.04);gap:16px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.atrium-contact-right{display:flex;flex-direction:column;gap:0;background:#fff;border-radius:16px;padding:8px 24px;border:1px solid rgba(0,0,0,.05)}
+.atrium-contact-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.05)}
+.atrium-contact-item:last-child{border-bottom:none}
+.atrium-contact-item-label{font-size:11px;font-weight:600;letter-spacing:.15em;color:rgba(17,17,17,.3);text-transform:uppercase}
+.atrium-contact-item-value{font-size:14px;color:rgba(17,17,17,.65);text-align:right}
+.atrium-contact-item-value a{color:rgba(17,17,17,.65);text-decoration:none;transition:color .2s}
+.atrium-contact-item-value a:hover{color:#111}
+
+/* Atrium Footer */
+.atrium-footer{padding:48px 64px;display:flex;justify-content:space-between;align-items:center}
+.atrium-footer-nav{display:flex;gap:24px;font-size:11px;font-weight:500;letter-spacing:.15em;color:rgba(17,17,17,.3);text-transform:uppercase}
+.atrium-footer-nav span{cursor:pointer;transition:color .2s}
+.atrium-footer-nav span:hover{color:#111}
+.atrium-footer-copy{font-size:11px;color:rgba(17,17,17,.18);letter-spacing:.05em}
+
+/* Atrium reveal animations */
+.atrium-reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.atrium-reveal.revealed{opacity:1;transform:translateY(0)}
+.atrium-stagger-1{transition-delay:.1s}
+.atrium-stagger-2{transition-delay:.2s}
+.atrium-stagger-3{transition-delay:.3s}
+.atrium-stagger-4{transition-delay:.4s}
+
+/* Atrium responsive */
+@media(max-width:768px){
+  .atrium-hero{padding:16px 16px 0}
+  .atrium-hero-inner{border-radius:16px}
+  .atrium-hero-overlay{border-radius:16px}
+  .atrium-hero-content{padding:28px 24px 32px}
+  .atrium-hero-img{height:55vh;min-height:360px}
+  .atrium-about,.atrium-gallery,.atrium-portfolios,.atrium-fw,.atrium-experience,.atrium-works{padding:60px 32px}
+  .atrium-testimonials{padding:60px 24px;margin:0 16px;border-radius:16px}
+  .atrium-about-grid{grid-template-columns:1fr;gap:32px}
+  .atrium-contact{grid-template-columns:1fr;gap:40px;padding:60px 32px}
+  .atrium-gallery-grid{grid-template-columns:1fr 1fr}
+  .atrium-gallery-item:first-child{grid-column:span 2;grid-row:auto}
+  .atrium-pf-grid,.atrium-exp-grid,.atrium-works-grid,.atrium-fw-reviews{grid-template-columns:1fr}
+  .atrium-footer{flex-direction:column;gap:16px;text-align:center;padding:32px}
+  .atrium-nav{padding:16px 24px}
+  .atrium-nav-links{gap:16px}
+
+  .studio-panel{min-width:0}
+}
+@media(max-width:540px){
+  .studio-builder-body{grid-template-columns:1fr}
+  .studio-panel{display:none}
+}
 `;
 
 /* ━━━ SVG ICONS (inline) ━━━ */
@@ -1598,6 +2430,7 @@ const I = {
   kanban: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="5" height="18" rx="1"/><rect x="10" y="3" width="5" height="12" rx="1"/><rect x="17" y="3" width="5" height="15" rx="1"/></svg>,
   filter: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
   settings: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
+  studio: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
 };
 
 /* ━━━ NETWORK MAP ━━━ */
@@ -1767,6 +2600,46 @@ export default function ArtistShell() {
   const [lightbox, setLightbox] = useState(null); // { items: [{src,caption,type}], index: 0 }
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
+  /* Works */
+  const [works, setWorks] = useState(MOCK_WORKS);
+  const [viewWork, setViewWork] = useState(null);
+  const [workTab, setWorkTab] = useState("overview");
+  const [showNewWorkModal, setShowNewWorkModal] = useState(false);
+  const [newWk, setNewWk] = useState({ name: "", tagline: "", role: "", genre: "" });
+  const [workPreview, setWorkPreview] = useState(false);
+  const [workLive, setWorkLive] = useState(false);
+  const [showWorkShareModal, setShowWorkShareModal] = useState(false);
+  const [workShareEmail, setWorkShareEmail] = useState("");
+  const [workShareSettings, setWorkShareSettings] = useState({ trackLink: false, requireEmail: false, password: "" });
+
+  /* Studio */
+  const [studioTab, setStudioTab] = useState("website");
+  const [studioMode, setStudioMode] = useState("gallery");
+  const [studioTheme, setStudioTheme] = useState("noir");
+  const [studioCustomizeTab, setStudioCustomizeTab] = useState("theme");
+  const [studioPreviewDevice, setStudioPreviewDevice] = useState("desktop");
+  const [studioBrand, setStudioBrand] = useState({ accentColor: "#ffffff", fontPairId: "inter" });
+  const [studioSections, setStudioSections] = useState(STUDIO_DEFAULT_SECTIONS);
+  const [studioContent, setStudioContent] = useState({
+    selectedPortfolios: portfolios.filter(p => p.status === "published").map(p => p.id),
+    featuredPortfolio: portfolios.find(p => p.status === "published")?.id || null,
+    selectedWorks: works.filter(w => w.status === "published").map(w => w.id),
+    featuredWork: works.find(w => w.status === "published")?.id || null,
+  });
+  const [studioSettings, setStudioSettings] = useState({
+    slug: artist.handle || "amara-osei",
+    customDomain: "",
+    seoTitle: `${artist.name} — ${artist.styles?.[0] || "Artist"}`,
+    seoDesc: artist.bio || "",
+    visibility: "public",
+  });
+  const [studioPublished, setStudioPublished] = useState(false);
+  const [studioScrollY, setStudioScrollY] = useState(0);
+  const [studioGalleryLayout, setStudioGalleryLayout] = useState("masonry");
+  const [noirRevealed, setNoirRevealed] = useState(new Set());
+  const [studioTestimonialIdx, setStudioTestimonialIdx] = useState(0);
+  const [noirCursorPos, setNoirCursorPos] = useState({ x: -100, y: -100 });
+
   /* Media */
   const [mediaItems] = useState(MOCK_MEDIA);
   const [mediaFilter, setMediaFilter] = useState("all");
@@ -1913,6 +2786,7 @@ export default function ArtistShell() {
     { id: "present", icon: I.present, label: "Present" },
     { id: "media", icon: I.media, label: "Media Library" },
     { id: "applications", icon: I.applications, label: "Applications", badge: applications.filter(a => a.status === "invited").length || null },
+    { id: "studio", icon: I.studio, label: "Studio" },
     { id: "academy", icon: I.academy, label: "Academy" },
     { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
   ];
@@ -1936,6 +2810,20 @@ export default function ArtistShell() {
   ];
 
   const currentPortfolio = viewPortfolio ? portfolios.find(p => p.id === viewPortfolio) : null;
+
+  const WORKS_TABS = [
+    { id: "overview", icon: I.overview, label: "Overview" },
+    { id: "about", icon: I.doc, label: "About" },
+    { id: "media", icon: I.media, label: "Media" },
+    { id: "credits", icon: I.profile, label: "Credits" },
+    { id: "performances", icon: I.discover, label: "Performances" },
+    { id: "reviews", icon: I.doc, label: "Reviews & Awards" },
+    { id: "booking", icon: I.applications, label: "Booking" },
+    { id: "tracking", icon: I.applications, label: "Tracking" },
+    { id: "settings", icon: I.settings, label: "Settings" },
+  ];
+
+  const currentWork = viewWork ? works.find(w => w.id === viewWork) : null;
 
   /* ━━━ FILTERED DATA ━━━ */
   const filteredApps = applications.filter(a => {
@@ -3871,15 +4759,723 @@ export default function ArtistShell() {
           );
         }
 
-        /* ── Present — Portfolio List ── */
+        /* ═══ WORKS EDITOR ═══ */
+        if (viewWork && currentWork) {
+          const wk = currentWork;
+          const touringLabel = TOURING_STATUSES.find(s => s.id === wk.touringStatus)?.label || wk.touringStatus;
+
+          if (workPreview) {
+            /* ── Work Public Preview ── */
+            return (
+              <div style={{ padding: "0 8px" }}>
+                {/* Hero */}
+                <div className={`wkp-hero${wk.cover ? " has-cover" : ""}`} style={wk.cover ? { backgroundImage: `url(${wk.cover})` } : {}}>
+                  <div className="wkp-hero-label">WORK</div>
+                  <div className="wkp-hero-title">{wk.name}</div>
+                  <div className="wkp-hero-tagline">{wk.tagline}</div>
+                  <div className="wkp-hero-role">{wk.role}</div>
+                  <div className="wkp-hero-actions">
+                    {wk.upcomingPerformances.length > 0 && <button style={{ background: "#D97706", border: "none", color: "#fff" }}>Get Tickets</button>}
+                    <button style={{ background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.2)", color: "#fff" }}>Book This Work</button>
+                  </div>
+                </div>
+
+                {/* Key Info */}
+                <div className="wkp-keyinfo">
+                  {wk.genre && <div className="wkp-keyinfo-pill"><strong>{wk.genre}</strong></div>}
+                  {wk.duration && <div className="wkp-keyinfo-pill"><span>Duration</span> <strong>{wk.duration}</strong></div>}
+                  {wk.premiereYear && <div className="wkp-keyinfo-pill"><span>Premiere</span> <strong>{wk.premiereYear}</strong></div>}
+                  {wk.country && <div className="wkp-keyinfo-pill"><span>{wk.city},</span> <strong>{wk.country}</strong></div>}
+                  {wk.language && <div className="wkp-keyinfo-pill"><span>Language</span> <strong>{wk.language}</strong></div>}
+                  {wk.ageGuidance && <div className="wkp-keyinfo-pill"><span>Age</span> <strong>{wk.ageGuidance}</strong></div>}
+                  <div className="wkp-keyinfo-pill"><span>Status</span> <strong>{touringLabel}</strong></div>
+                </div>
+
+                {/* About */}
+                {(wk.shortPitch || wk.fullDescription) && (
+                  <div className="wkp-about">
+                    {wk.shortPitch && <div className="wkp-about-pitch">{wk.shortPitch}</div>}
+                    {wk.fullDescription && <div className="wkp-about-desc">{wk.fullDescription}</div>}
+                    {wk.conceptNote && <div className="wkp-about-note"><strong>Concept Note</strong><br/>{wk.conceptNote}</div>}
+                  </div>
+                )}
+
+                {/* Trailer */}
+                {wk.cover && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title"><em>Trailer</em> & Video</h3>
+                    <div className="wkp-trailer">
+                      <img src={wk.cover} alt="" />
+                      <div className="wkp-trailer-play" />
+                    </div>
+                  </div>
+                )}
+
+                {/* Credits */}
+                {wk.credits.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title">Credits & <em>Team</em></h3>
+                    <div className="wkp-credits-grid">
+                      {wk.credits.map(cr => (
+                        <div key={cr.id} className="wkp-credit-card">
+                          <div className="wkp-credit-avatar">{cr.name.split(" ").map(w => w[0]).join("")}</div>
+                          <div><div className="wkp-credit-name">{cr.name}</div><div className="wkp-credit-role">{cr.role}</div></div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Gallery */}
+                {wk.gallery.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title">Photo <em>Gallery</em> <span style={{ fontSize: 12, fontWeight: 400, color: "var(--g4)" }}>{wk.gallery.length} photos</span></h3>
+                    <div className="wkp-gallery">
+                      {wk.gallery.map(ph => <div key={ph.id} className="wkp-gallery-item"><img src={ph.src} alt={ph.caption} /></div>)}
+                    </div>
+                  </div>
+                )}
+
+                {/* Reviews & Awards */}
+                {(wk.reviews.length > 0 || wk.awards.length > 0) && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title"><em>Reviews</em> & Awards</h3>
+                    {wk.reviews.map(rv => (
+                      <div key={rv.id} className="wke-review-card">
+                        <span className={`wke-review-type ${rv.type}`}>{rv.type === "press" ? "Press" : "Audience"}</span>
+                        <div className="wke-review-quote">"{rv.quote}"</div>
+                        <div className="wke-review-source"><strong>{rv.source}</strong>{rv.rating ? ` · ${"★".repeat(rv.rating)}${"☆".repeat(5 - rv.rating)}` : ""}</div>
+                      </div>
+                    ))}
+                    {wk.awards.map(aw => (
+                      <div key={aw.id} className="wke-award-card">
+                        <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? "🏆" : aw.type === "nomination" ? "🌟" : "✨"}</div>
+                        <div className="wke-award-info">
+                          <div className="wke-award-title">{aw.title}</div>
+                          <div className="wke-award-meta">{aw.festival} · {aw.year} · {aw.type}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Upcoming Performances */}
+                {wk.upcomingPerformances.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title">Upcoming <em>Performances</em></h3>
+                    {wk.upcomingPerformances.map(p => {
+                      const d = new Date(p.date);
+                      return (
+                        <div key={p.id} className="wke-perf-item">
+                          <div className="wke-perf-date">
+                            <div className="wke-perf-date-d">{d.getDate()}</div>
+                            <div className="wke-perf-date-m">{d.toLocaleDateString("en-GB", { month: "short" })}</div>
+                          </div>
+                          <div className="wke-perf-info">
+                            <div className="wke-perf-venue">{p.venue}</div>
+                            <div className="wke-perf-city">{p.city}</div>
+                          </div>
+                          {p.ticketUrl && <button className="wke-perf-ticket">Get Tickets →</button>}
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Past Performances */}
+                {wk.pastPerformances.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title">Performance <em>History</em></h3>
+                    {wk.pastPerformances.map(p => {
+                      const d = new Date(p.date);
+                      return (
+                        <div key={p.id} className="wke-perf-item" style={{ opacity: 0.7 }}>
+                          <div className="wke-perf-date">
+                            <div className="wke-perf-date-d">{d.getDate()}</div>
+                            <div className="wke-perf-date-m">{d.toLocaleDateString("en-GB", { month: "short", year: "2-digit" })}</div>
+                          </div>
+                          <div className="wke-perf-info">
+                            <div className="wke-perf-venue">{p.venue}</div>
+                            <div className="wke-perf-city">{p.city}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Availability & Booking */}
+                <div className="wkp-avail">
+                  <div className="wkp-avail-status">
+                    <div className={`wkp-avail-dot ${wk.touringStatus}`} />
+                    {touringLabel}
+                  </div>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    {wk.bookingCtas.map((cta, i) => (
+                      <button key={i} className={`wke-cta-btn ${cta.intent}`}>{cta.label}</button>
+                    ))}
+                    {wk.bookingCtas.length === 0 && wk.bookingEmail && <button className="wke-cta-btn contact">Contact</button>}
+                  </div>
+                </div>
+
+                {/* Partners */}
+                {wk.partners.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title">Partners & <em>Presented By</em></h3>
+                    {wk.partners.map(pt => (
+                      <div key={pt.id} className="wke-partner">
+                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤝</div>
+                        <div><div className="wke-partner-name">{pt.name}</div><div className="wke-partner-type">{pt.type}</div></div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Technical Info */}
+                {(wk.techRequirements.stageMinWidth || wk.techRequirements.performers) && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title"><em>Technical</em> Info</h3>
+                    <div className="wke-section" style={{ padding: 0 }}>
+                      <table className="wke-tech-table">
+                        <tbody>
+                          {wk.techRequirements.stageMinWidth && <tr><td>Stage Width (min)</td><td>{wk.techRequirements.stageMinWidth}</td></tr>}
+                          {wk.techRequirements.stageMinDepth && <tr><td>Stage Depth (min)</td><td>{wk.techRequirements.stageMinDepth}</td></tr>}
+                          {wk.techRequirements.performers && <tr><td>Performers</td><td>{wk.techRequirements.performers}</td></tr>}
+                          {wk.techRequirements.setupTime && <tr><td>Setup Time</td><td>{wk.techRequirements.setupTime}</td></tr>}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
+                {/* Accessibility */}
+                {(wk.accessibility.captions || wk.accessibility.relaxedPerformance || wk.accessibility.audioDescription || wk.accessibility.sensoryNotes) && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title"><em>Accessibility</em></h3>
+                    <div className="wke-section">
+                      <div className="wke-access-row"><span className="wke-access-label">Captions</span><span className={`wke-access-badge ${wk.accessibility.captions ? "yes" : "no"}`}>{wk.accessibility.captions ? "Yes" : "No"}</span></div>
+                      <div className="wke-access-row"><span className="wke-access-label">Relaxed Performance</span><span className={`wke-access-badge ${wk.accessibility.relaxedPerformance ? "yes" : "no"}`}>{wk.accessibility.relaxedPerformance ? "Yes" : "No"}</span></div>
+                      <div className="wke-access-row"><span className="wke-access-label">Audio Description</span><span className={`wke-access-badge ${wk.accessibility.audioDescription ? "yes" : "no"}`}>{wk.accessibility.audioDescription ? "Yes" : "No"}</span></div>
+                      {wk.accessibility.sensoryNotes && <div style={{ marginTop: 8, fontSize: 12, color: "var(--g4)" }}>Note: {wk.accessibility.sensoryNotes}</div>}
+                    </div>
+                  </div>
+                )}
+
+                {/* Downloads */}
+                {wk.downloads.length > 0 && (
+                  <div style={{ marginBottom: 24 }}>
+                    <h3 className="wkp-section-title"><em>Downloads</em></h3>
+                    {wk.downloads.map(dl => (
+                      <div key={dl.id} className="wke-dl-item">
+                        <div className="wke-dl-icon">📄</div>
+                        <div className="wke-dl-info"><div className="wke-dl-title">{dl.label}</div><div className="wke-dl-meta">{dl.format} · {dl.size}</div></div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          }
+
+          /* ── Work Tracking View ── */
+          if (workTab === "tracking") {
+            const views = MOCK_WORK_TRACKING.filter(t => t.workId === viewWork);
+            const isPro = artist.plan === "Pro" || artist.plan === "Studio";
+            return (
+              <div style={{ padding: "0 8px", animation: "fadeIn .3s ease" }}>
+                <div className="wke-section">
+                  <h3><em style={{ color: "#D97706" }}>Tracking</em> & Analytics</h3>
+                  {isPro ? (
+                    <>
+                      <div className="wkt-stats">
+                        <div className="wkt-stat"><div className="wkt-val">{views.length}</div><div className="wkt-label">Total Views</div></div>
+                        <div className="wkt-stat"><div className="wkt-val">{views.filter(v => v.email).length}</div><div className="wkt-label">Identified</div></div>
+                        <div className="wkt-stat"><div className="wkt-val">{views.filter(v => v.sections.length >= 3).length}</div><div className="wkt-label">Deep Views</div></div>
+                      </div>
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Recent Viewers</div>
+                      <div className="wkt-list">
+                        {views.map(v => (
+                          <div key={v.id} className="wkt-item">
+                            <div className="wkt-avatar">{v.name === "Anonymous" ? "?" : v.name.split(" ").map(w => w[0]).join("")}</div>
+                            <div className="wkt-info">
+                              <div className="wkt-name">{v.name}</div>
+                              <div className="wkt-org">{v.org || "Unknown"}{v.email ? ` · ${v.email}` : ""}</div>
+                              <div className="wkt-sections">{v.sections.map(s => <span key={s}>{s}</span>)}</div>
+                            </div>
+                            <div className="wkt-meta">
+                              <span>{v.duration}</span>
+                              <span>{new Date(v.viewedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
+                              <span>{v.device}</span>
+                            </div>
+                          </div>
+                        ))}
+                        {views.length === 0 && <p style={{ color: "var(--g4)", fontSize: 13, textAlign: "center", padding: 20 }}>No views yet. Share your work to start tracking.</p>}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="wkt-pro-gate">
+                      <h4>Upgrade to Pro</h4>
+                      <p>Track who views your work page, see which sections they explore, and get notified when someone opens your link.</p>
+                      <button onClick={() => showToast("Upgrade to Pro")}>Upgrade to Pro</button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          }
+
+          /* ── Work Settings ── */
+          if (workTab === "settings") {
+            return (
+              <div style={{ padding: "0 8px", animation: "fadeIn .3s ease" }}>
+                <div className="wke-section">
+                  <h3>Work <em>Settings</em></h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+                    <div>
+                      <label className="wke-input-label">Work Name</label>
+                      <input className="wke-input" value={wk.name} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, name: e.target.value } : w))} />
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Tagline</label>
+                      <input className="wke-input" value={wk.tagline} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, tagline: e.target.value } : w))} />
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Role</label>
+                      <select className="wke-select" value={wk.role} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, role: e.target.value } : w))}>
+                        <option value="">Select...</option>
+                        {WORK_ROLES.map(r => <option key={r} value={r}>{r}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Genre</label>
+                      <input className="wke-input" value={wk.genre} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, genre: e.target.value } : w))} />
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Duration</label>
+                      <input className="wke-input" value={wk.duration} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, duration: e.target.value } : w))} />
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Premiere Year</label>
+                      <input className="wke-input" value={wk.premiereYear} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, premiereYear: e.target.value } : w))} />
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Touring Status</label>
+                      <select className="wke-select" value={wk.touringStatus} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, touringStatus: e.target.value } : w))}>
+                        {TOURING_STATUSES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="wke-input-label">Banner Image</label>
+                      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                        {wk.cover ? (
+                          <div style={{ width: 200, height: 80, borderRadius: 10, overflow: "hidden", border: "1px solid var(--g2)", position: "relative" }}>
+                            <img src={wk.cover} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                            <button style={{ position: "absolute", top: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "rgba(0,0,0,.5)", color: "#fff", border: "none", fontSize: 11, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, cover: "" } : w))}>×</button>
+                          </div>
+                        ) : null}
+                        <button className="wke-add-btn secondary" onClick={() => showToast("Upload banner image")}>{wk.cover ? "Replace Banner" : "Upload Banner Image"}</button>
+                      </div>
+                    </div>
+                    <div style={{ borderTop: "1px solid var(--g1)", paddingTop: 16 }}>
+                      <button className="btn" style={{ background: "rgba(255,71,87,.08)", color: "var(--red)", border: "1px solid rgba(255,71,87,.15)" }} onClick={() => {
+                        setWorks(prev => prev.filter(w => w.id !== viewWork));
+                        setViewWork(null); setPage("present");
+                        showToast("Work deleted");
+                      }}>Delete Work</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+
+          /* ── Work Editor — Tab-based ── */
+          return (
+            <div style={{ padding: "0 8px", animation: "fadeIn .3s ease" }}>
+              {/* Banner */}
+              <div className="wke-banner">
+                {wk.cover ? <img src={wk.cover} alt="" /> : null}
+                <div className="wke-banner-overlay">
+                  <div className="wke-banner-title">{wk.name}</div>
+                  <div className="wke-banner-tagline">{wk.tagline}</div>
+                </div>
+              </div>
+
+              {workTab === "overview" && (
+                <>
+                  {/* Key Info Pills */}
+                  <div className="wke-section">
+                    <h3><em>Key</em> Info</h3>
+                    <div className="wke-pill-row">
+                      {wk.genre && <span className="wke-pill">{wk.genre}</span>}
+                      {wk.duration && <span className="wke-pill">{wk.duration}</span>}
+                      {wk.premiereYear && <span className="wke-pill">Premiere {wk.premiereYear}</span>}
+                      {wk.country && <span className="wke-pill">{wk.city}, {wk.country}</span>}
+                      {wk.language && <span className="wke-pill">{wk.language}</span>}
+                      {wk.ageGuidance && <span className="wke-pill">{wk.ageGuidance}</span>}
+                      <span className="wke-pill">{touringLabel}</span>
+                    </div>
+                  </div>
+
+                  {/* Short Pitch */}
+                  <div className="wke-section">
+                    <h3><em>Short</em> Pitch</h3>
+                    <textarea className="wke-textarea" style={{ minHeight: 60 }} value={wk.shortPitch} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, shortPitch: e.target.value } : w))} placeholder="A 1-2 sentence hook for your work..." />
+                  </div>
+
+                  {/* Stats summary */}
+                  <div className="wke-row">
+                    <div className="wke-section" style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>{wk.credits.length}</div>
+                      <div style={{ fontSize: 11, color: "var(--g4)", textTransform: "uppercase" }}>Credits</div>
+                    </div>
+                    <div className="wke-section" style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>{wk.upcomingPerformances.length}</div>
+                      <div style={{ fontSize: 11, color: "var(--g4)", textTransform: "uppercase" }}>Upcoming Shows</div>
+                    </div>
+                  </div>
+                  <div className="wke-row">
+                    <div className="wke-section" style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>{wk.reviews.length}</div>
+                      <div style={{ fontSize: 11, color: "var(--g4)", textTransform: "uppercase" }}>Reviews</div>
+                    </div>
+                    <div className="wke-section" style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 28, fontWeight: 800, color: "#D97706" }}>{wk.awards.length}</div>
+                      <div style={{ fontSize: 11, color: "var(--g4)", textTransform: "uppercase" }}>Awards</div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {workTab === "about" && (
+                <>
+                  <div className="wke-section">
+                    <h3><em>Short</em> Pitch</h3>
+                    <textarea className="wke-textarea" style={{ minHeight: 60 }} value={wk.shortPitch} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, shortPitch: e.target.value } : w))} placeholder="A 1-2 sentence hook for your work..." />
+                  </div>
+                  <div className="wke-section">
+                    <h3>Full <em>Description</em></h3>
+                    <textarea className="wke-textarea" style={{ minHeight: 120 }} value={wk.fullDescription} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, fullDescription: e.target.value } : w))} placeholder="Full synopsis and background of the work..." />
+                  </div>
+                  <div className="wke-section">
+                    <h3><em>Concept</em> Note</h3>
+                    <textarea className="wke-textarea" style={{ minHeight: 100 }} value={wk.conceptNote} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, conceptNote: e.target.value } : w))} placeholder="Artistic concept note (optional)..." />
+                  </div>
+                  <div className="wke-section">
+                    <h3>Key <em>Info</em></h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                      <div><label className="wke-input-label">Genre</label><input className="wke-input" value={wk.genre} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, genre: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">Duration</label><input className="wke-input" value={wk.duration} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, duration: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">Premiere Year</label><input className="wke-input" value={wk.premiereYear} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, premiereYear: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">Country</label><input className="wke-input" value={wk.country} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, country: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">City</label><input className="wke-input" value={wk.city} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, city: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">Language</label><input className="wke-input" value={wk.language} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, language: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">Age Guidance</label><input className="wke-input" value={wk.ageGuidance} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, ageGuidance: e.target.value } : w))} /></div>
+                      <div><label className="wke-input-label">Touring Status</label><select className="wke-select" value={wk.touringStatus} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, touringStatus: e.target.value } : w))}>{TOURING_STATUSES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}</select></div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {workTab === "media" && (
+                <>
+                  <div className="wke-section">
+                    <h3><em>Trailer</em> / Video</h3>
+                    <div>
+                      <label className="wke-input-label">Trailer URL (YouTube/Vimeo)</label>
+                      <input className="wke-input" value={wk.trailerUrl} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, trailerUrl: e.target.value } : w))} placeholder="https://youtube.com/watch?v=..." />
+                    </div>
+                    {wk.cover && (
+                      <div className="wkp-trailer" style={{ marginTop: 12 }}>
+                        <img src={wk.cover} alt="" />
+                        <div className="wkp-trailer-play" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="wke-section">
+                    <h3>Photo <em>Gallery</em> <span className="wke-count">{wk.gallery.length}</span></h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
+                      {wk.gallery.map(ph => (
+                        <div key={ph.id} style={{ position: "relative", aspectRatio: "4/3", borderRadius: 10, overflow: "hidden" }}>
+                          <img src={ph.src} alt={ph.caption} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                          <button style={{ position: "absolute", top: 4, right: 4, width: 20, height: 20, borderRadius: "50%", background: "rgba(0,0,0,.5)", color: "#fff", border: "none", fontSize: 11, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
+                            onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, gallery: w.gallery.filter(g => g.id !== ph.id) } : w))}>×</button>
+                        </div>
+                      ))}
+                      <div style={{ aspectRatio: "4/3", borderRadius: 10, border: "2px dashed var(--g2)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: 12, color: "var(--g4)", gap: 4 }} onClick={() => showToast("Add photos from Media Library")}>
+                        <span style={{ fontSize: 18 }}>+</span>Add Photos
+                      </div>
+                    </div>
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => showToast("Opening Media Library picker...")}>Add From Library</button>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {workTab === "credits" && (
+                <div className="wke-section">
+                  <h3>Credits & <em>Team</em> <span className="wke-count">{wk.credits.length}</span></h3>
+                  {wk.credits.map(cr => (
+                    <div key={cr.id} className="wke-credit">
+                      <div className="wke-credit-avatar">{cr.name.split(" ").map(w => w[0]).join("")}</div>
+                      <div className="wke-credit-info">
+                        <div className="wke-credit-name">{cr.name}</div>
+                        <div className="wke-credit-role">{cr.role}</div>
+                      </div>
+                      <div className="wke-credit-actions">
+                        <button onClick={() => showToast("Edit credit")}>Edit</button>
+                        <button onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, credits: w.credits.filter(c => c.id !== cr.id) } : w))}>×</button>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="wke-add-row">
+                    <button className="wke-add-btn primary" onClick={() => {
+                      const id = "cr" + Date.now();
+                      setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, credits: [...w.credits, { id, name: "New Credit", role: "Role", profileUrl: "" }] } : w));
+                      showToast("Credit added — edit details");
+                    }}>+ Add Credit</button>
+                    <button className="wke-add-btn secondary" onClick={() => showToast("Link from Lanced profiles")}>Link Profile</button>
+                  </div>
+                </div>
+              )}
+
+              {workTab === "performances" && (
+                <>
+                  <div className="wke-section">
+                    <h3>Upcoming <em>Performances</em> <span className="wke-count">{wk.upcomingPerformances.length}</span></h3>
+                    {wk.upcomingPerformances.map(p => {
+                      const d = new Date(p.date);
+                      return (
+                        <div key={p.id} className="wke-perf-item">
+                          <div className="wke-perf-date">
+                            <div className="wke-perf-date-d">{d.getDate()}</div>
+                            <div className="wke-perf-date-m">{d.toLocaleDateString("en-GB", { month: "short" })}</div>
+                          </div>
+                          <div className="wke-perf-info">
+                            <div className="wke-perf-venue">{p.venue}</div>
+                            <div className="wke-perf-city">{p.city}</div>
+                          </div>
+                          <button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                            onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, upcomingPerformances: w.upcomingPerformances.filter(x => x.id !== p.id) } : w))}>×</button>
+                        </div>
+                      );
+                    })}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => {
+                        const id = "up" + Date.now();
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, upcomingPerformances: [...w.upcomingPerformances, { id, date: "2026-12-01", venue: "New Venue", city: "City", ticketUrl: "" }] } : w));
+                        showToast("Performance added — edit details");
+                      }}>+ Add Performance</button>
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3>Performance <em>History</em> <span className="wke-count">{wk.pastPerformances.length}</span></h3>
+                    {wk.pastPerformances.map(p => {
+                      const d = new Date(p.date);
+                      return (
+                        <div key={p.id} className="wke-perf-item" style={{ opacity: 0.7 }}>
+                          <div className="wke-perf-date">
+                            <div className="wke-perf-date-d">{d.getDate()}</div>
+                            <div className="wke-perf-date-m">{d.toLocaleDateString("en-GB", { month: "short", year: "2-digit" })}</div>
+                          </div>
+                          <div className="wke-perf-info">
+                            <div className="wke-perf-venue">{p.venue}</div>
+                            <div className="wke-perf-city">{p.city}</div>
+                          </div>
+                          <button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                            onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, pastPerformances: w.pastPerformances.filter(x => x.id !== p.id) } : w))}>×</button>
+                        </div>
+                      );
+                    })}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => {
+                        const id = "pp" + Date.now();
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, pastPerformances: [...w.pastPerformances, { id, date: "2025-01-01", venue: "Past Venue", city: "City" }] } : w));
+                        showToast("Past performance added");
+                      }}>+ Add Past Performance</button>
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3><em>Availability</em></h3>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                      <div className={`wkp-avail-dot ${wk.touringStatus}`} style={{ width: 10, height: 10 }} />
+                      <span style={{ fontSize: 14, fontWeight: 600 }}>{touringLabel}</span>
+                    </div>
+                    <select className="wke-select" value={wk.touringStatus} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, touringStatus: e.target.value } : w))}>
+                      {TOURING_STATUSES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}
+                    </select>
+                  </div>
+                </>
+              )}
+
+              {workTab === "reviews" && (
+                <>
+                  <div className="wke-section">
+                    <h3><em>Reviews</em> & Press <span className="wke-count">{wk.reviews.length}</span></h3>
+                    {wk.reviews.map(rv => (
+                      <div key={rv.id} className="wke-review-card">
+                        <span className={`wke-review-type ${rv.type}`}>{rv.type === "press" ? "Press" : "Audience"}</span>
+                        <div className="wke-review-quote">"{rv.quote}"</div>
+                        <div className="wke-review-source">
+                          <strong>{rv.source}</strong>{rv.rating ? ` · ${"★".repeat(rv.rating)}${"☆".repeat(5 - rv.rating)}` : ""}
+                          <button style={{ marginLeft: 8, background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                            onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, reviews: w.reviews.filter(r => r.id !== rv.id) } : w))}>Remove</button>
+                        </div>
+                      </div>
+                    ))}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => {
+                        const id = "rv" + Date.now();
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, reviews: [...w.reviews, { id, quote: "New review...", source: "Source", rating: 0, type: "press" }] } : w));
+                        showToast("Review added — edit details");
+                      }}>+ Add Review</button>
+                      <button className="wke-add-btn secondary" onClick={() => {
+                        const id = "rv" + Date.now();
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, reviews: [...w.reviews, { id, quote: "Audience quote...", source: "Audience member", rating: 0, type: "audience" }] } : w));
+                        showToast("Audience quote added");
+                      }}>+ Add Audience Quote</button>
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3><em>Awards</em> & Selections <span className="wke-count">{wk.awards.length}</span></h3>
+                    {wk.awards.map(aw => (
+                      <div key={aw.id} className="wke-award-card">
+                        <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? "🏆" : aw.type === "nomination" ? "🌟" : "✨"}</div>
+                        <div className="wke-award-info">
+                          <div className="wke-award-title">{aw.title}</div>
+                          <div className="wke-award-meta">{aw.festival} · {aw.year} · <em>{aw.type}</em></div>
+                        </div>
+                        <button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                          onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, awards: w.awards.filter(a => a.id !== aw.id) } : w))}>×</button>
+                      </div>
+                    ))}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => {
+                        const id = "aw" + Date.now();
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, awards: [...w.awards, { id, title: "Award Name", festival: "Festival", year: "2026", type: "win" }] } : w));
+                        showToast("Award added");
+                      }}>+ Add Award</button>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {workTab === "booking" && (
+                <>
+                  <div className="wke-section">
+                    <h3><em>Booking</em> Contact</h3>
+                    <div>
+                      <label className="wke-input-label">Booking Email</label>
+                      <input className="wke-input" type="email" value={wk.bookingEmail} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, bookingEmail: e.target.value } : w))} placeholder="booking@yourcompany.com" />
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3>Call to <em>Action</em> Buttons <span className="wke-count">{wk.bookingCtas.length}</span></h3>
+                    <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>These buttons appear on your public work page</p>
+                    {wk.bookingCtas.map((cta, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                        <button className={`wke-cta-btn ${cta.intent}`} style={{ pointerEvents: "none" }}>{cta.label}</button>
+                        <span style={{ fontSize: 11, color: "var(--g4)" }}>{cta.intent}</span>
+                        <button style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                          onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, bookingCtas: w.bookingCtas.filter((_, j) => j !== i) } : w))}>Remove</button>
+                      </div>
+                    ))}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => {
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, bookingCtas: [...w.bookingCtas, { label: "Book This Work", url: "", intent: "book" }] } : w));
+                        showToast("CTA added");
+                      }}>+ Add CTA</button>
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3>Partners & <em>Presented By</em> <span className="wke-count">{wk.partners.length}</span></h3>
+                    {wk.partners.map(pt => (
+                      <div key={pt.id} className="wke-partner">
+                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤝</div>
+                        <div><div className="wke-partner-name">{pt.name}</div><div className="wke-partner-type">{pt.type}</div></div>
+                        <button style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                          onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, partners: w.partners.filter(p => p.id !== pt.id) } : w))}>×</button>
+                      </div>
+                    ))}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => {
+                        const id = "pt" + Date.now();
+                        setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, partners: [...w.partners, { id, name: "Partner Name", type: "co-producer" }] } : w));
+                        showToast("Partner added");
+                      }}>+ Add Partner</button>
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3><em>Technical</em> Requirements</h3>
+                    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                      <div><label className="wke-input-label">Stage Width (min)</label><input className="wke-input" value={wk.techRequirements.stageMinWidth} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, techRequirements: { ...w.techRequirements, stageMinWidth: e.target.value } } : w))} /></div>
+                      <div><label className="wke-input-label">Stage Depth (min)</label><input className="wke-input" value={wk.techRequirements.stageMinDepth} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, techRequirements: { ...w.techRequirements, stageMinDepth: e.target.value } } : w))} /></div>
+                      <div><label className="wke-input-label">Performers</label><input className="wke-input" value={wk.techRequirements.performers} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, techRequirements: { ...w.techRequirements, performers: e.target.value } } : w))} /></div>
+                      <div><label className="wke-input-label">Setup Time</label><input className="wke-input" value={wk.techRequirements.setupTime} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, techRequirements: { ...w.techRequirements, setupTime: e.target.value } } : w))} /></div>
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3><em>Accessibility</em></h3>
+                    <div className="wke-access-row">
+                      <span className="wke-access-label">Captions available</span>
+                      <div className={`sm-switch${wk.accessibility.captions ? " on" : ""}`} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, accessibility: { ...w.accessibility, captions: !w.accessibility.captions } } : w))} />
+                    </div>
+                    <div className="wke-access-row">
+                      <span className="wke-access-label">Relaxed performance available</span>
+                      <div className={`sm-switch${wk.accessibility.relaxedPerformance ? " on" : ""}`} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, accessibility: { ...w.accessibility, relaxedPerformance: !w.accessibility.relaxedPerformance } } : w))} />
+                    </div>
+                    <div className="wke-access-row">
+                      <span className="wke-access-label">Audio description available</span>
+                      <div className={`sm-switch${wk.accessibility.audioDescription ? " on" : ""}`} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, accessibility: { ...w.accessibility, audioDescription: !w.accessibility.audioDescription } } : w))} />
+                    </div>
+                    <div style={{ marginTop: 12 }}>
+                      <label className="wke-input-label">Sensory Notes</label>
+                      <input className="wke-input" value={wk.accessibility.sensoryNotes} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, accessibility: { ...w.accessibility, sensoryNotes: e.target.value } } : w))} placeholder="e.g. Occasional strobe effects..." />
+                    </div>
+                  </div>
+
+                  <div className="wke-section">
+                    <h3><em>Downloads</em> <span className="wke-count">{wk.downloads.length}</span></h3>
+                    {wk.downloads.map(dl => (
+                      <div key={dl.id} className="wke-dl-item">
+                        <div className="wke-dl-icon">📄</div>
+                        <div className="wke-dl-info"><div className="wke-dl-title">{dl.label}</div><div className="wke-dl-meta">{dl.format} · {dl.size}</div></div>
+                        <button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
+                          onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, downloads: w.downloads.filter(d => d.id !== dl.id) } : w))}>×</button>
+                      </div>
+                    ))}
+                    <div className="wke-add-row">
+                      <button className="wke-add-btn primary" onClick={() => showToast("Upload file")}>+ Add Download</button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        }
+
+        /* ── Present — Portfolio & Works List ── */
         return (
           <div>
             <div className="pg-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
               <div>
                 <h1><em>Present</em></h1>
-                <p className="pg-sub">Curate and share your portfolios</p>
+                <p className="pg-sub">Curate and share your portfolios & works</p>
               </div>
-              <button className="btn btn-p" onClick={() => setShowNewPortfolioModal(true)}>+ New Portfolio</button>
+            </div>
+
+            {/* ── Portfolios ── */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+              <h2 style={{ fontSize: 16, fontWeight: 700, margin: 0 }}>Portfolios</h2>
+              <button className="btn btn-p" style={{ fontSize: 12, padding: "8px 16px" }} onClick={() => setShowNewPortfolioModal(true)}>+ New Portfolio</button>
             </div>
             <div className="pf-grid">
               {portfolios.map(pf => (
@@ -3893,6 +5489,32 @@ export default function ArtistShell() {
                       </span>
                       <span>{pf.photos.length + pf.videos.length} items</span>
                     </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Works ── */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 32, marginBottom: 12 }}>
+              <h2 style={{ fontSize: 16, fontWeight: 700, margin: 0, color: "#D97706" }}>Works</h2>
+              <button className="btn" style={{ fontSize: 12, padding: "8px 16px", background: "linear-gradient(135deg,#D97706,#B45309)", color: "#fff", border: "none" }} onClick={() => setShowNewWorkModal(true)}>+ New Work</button>
+            </div>
+            <p style={{ fontSize: 13, color: "var(--g4)", margin: "-4px 0 16px" }}>Create dedicated pages for your shows, productions, and creative works.</p>
+            <div className="wk-grid">
+              {works.map(wk => (
+                <div key={wk.id} className="wk-card" onClick={() => { setViewWork(wk.id); setWorkTab("overview"); }}>
+                  {wk.cover ? <img className="wkc-cover" src={wk.cover} alt="" /> : <div className="wkc-cover" style={{ height: 140, background: "linear-gradient(135deg,rgba(217,119,6,.12),rgba(217,119,6,.03))", display: "flex", alignItems: "center", justifyContent: "center", color: "#D97706", fontSize: 24 }}>🎭</div>}
+                  <div className="wkc-body">
+                    <div className="wkc-title">{wk.name}</div>
+                    <div className="wkc-tagline">{wk.tagline}</div>
+                    <div className="wkc-meta">
+                      <span className="wkc-status" style={{ background: wk.status === "published" ? "#E6FFF0" : "var(--g1)", color: wk.status === "published" ? "var(--green)" : "var(--g4)" }}>
+                        {wk.status}
+                      </span>
+                      <span className="wkc-genre">{wk.genre}</span>
+                      {wk.touringStatus === "available" && <span className="wkc-touring">Touring</span>}
+                    </div>
+                    <div className="wkc-role">{wk.role} · {wk.duration}</div>
                   </div>
                 </div>
               ))}
@@ -4266,13 +5888,1098 @@ export default function ArtistShell() {
           </div>
         );
 
+      /* ── Studio ── */
+      case "studio": {
+        const selectedPfs = portfolios.filter(p => studioContent.selectedPortfolios.includes(p.id));
+        const featuredPf = portfolios.find(p => p.id === studioContent.featuredPortfolio);
+        const selectedWks = works.filter(w => studioContent.selectedWorks.includes(w.id));
+        const featuredWk = works.find(w => w.id === studioContent.featuredWork);
+        const allPhotos = selectedPfs.flatMap(p => p.photos || []);
+        const heroPhotos = featuredPf ? (featuredPf.photos || []).slice(0, 3) : allPhotos.slice(0, 3);
+        const enabledSections = studioSections.filter(s => s.enabled).sort((a, b) => a.order - b.order);
+        const currentThemeData = STUDIO_THEMES.find(t => t.id === studioTheme) || STUDIO_THEMES[0];
+
+        /* ── Scroll-reveal observer ── */
+        const noirRevealRef = (el) => {
+          if (!el) return;
+          // Find the nearest scrollable ancestor as IntersectionObserver root
+          let root = el.parentElement;
+          while (root && root !== document.body) {
+            const ov = getComputedStyle(root).overflowY;
+            if (ov === "auto" || ov === "scroll") break;
+            root = root.parentElement;
+          }
+          if (root === document.body) root = null;
+          const observer = new IntersectionObserver(
+            (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("revealed"); observer.unobserve(e.target); } }),
+            { threshold: 0.08, root }
+          );
+          el.querySelectorAll(".noir-reveal,.noir-reveal-left,.noir-reveal-right,.noir-reveal-scale").forEach(child => observer.observe(child));
+        };
+
+        /* ── Noir Theme Renderer ── */
+        const renderNoirTheme = () => {
+          const nm = artist.name.toUpperCase();
+          const firstName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
+          const lastName = artist.lastName?.toUpperCase() || nm.split(" ").slice(1).join(" ");
+          const experiences = stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").slice(0, 6);
+
+          /* Scroll phases */
+          const imgPhase = Math.min(studioScrollY / 350, 1);
+          const namePhase = Math.max(0, Math.min((studioScrollY - 150) / 400, 1));
+          const navCompact = studioScrollY > 500;
+          const parallaxSlow = studioScrollY * 0.15;
+          const parallaxMed = studioScrollY * 0.3;
+          /* Nav name entrance — grows from slightly large to normal as hero name arrives */
+          const navNamePhase = Math.max(0, Math.min((studioScrollY - 420) / 120, 1));
+
+          return (
+            <div className="noir-theme" ref={noirRevealRef} onMouseMove={e => setNoirCursorPos({ x: e.clientX, y: e.clientY })}>
+              {/* Custom cursor */}
+              <div className="noir-cursor" style={{ left: noirCursorPos.x, top: noirCursorPos.y }} />
+              {/* Fixed bottom blur overlay */}
+              <div className="noir-blur-overlay" />
+              {/* Noir Nav */}
+              <nav className={`noir-nav${navCompact ? " noir-nav-compact" : ""}`}>
+                {navCompact && (
+                  <div className="noir-nav-name" style={{ opacity: navNamePhase, transform: `scale(${0.6 + navNamePhase * 0.4})`, transformOrigin: "left center" }}>{nm}</div>
+                )}
+                <div className={`noir-nav-links${navCompact ? "" : " noir-nav-spread"}`} style={navCompact ? { opacity: navNamePhase } : undefined}>
+                  <span>HOME</span>
+                  <span>ABOUT</span>
+                  <span>GALLERY</span>
+                  {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
+                  {selectedWks.length > 0 && <span>WORKS</span>}
+                  <span>CONTACT</span>
+                </div>
+              </nav>
+
+              {/* Sections rendered in order */}
+              {enabledSections.map(section => {
+                switch (section.id) {
+                  case "hero": {
+                    const imgTranslate = -imgPhase * 350;
+                    const imgOpacity = 1 - imgPhase * 0.9;
+                    const imgScale = 1 - imgPhase * 0.08;
+                    /* Name shrinks and flies toward top-left nav position */
+                    const nameScale = 1 - namePhase * 0.92;
+                    const nameOpacity = namePhase < 0.8 ? 1 : 1 - (namePhase - 0.8) / 0.2;
+                    const nameMoveY = namePhase * -45;
+                    const nameMoveX = namePhase * -35;
+                    return (
+                      <section key="hero" className="noir-hero">
+                        <div className="noir-hero-name-wrap" style={{ opacity: nameOpacity, transformOrigin: "0% 0%" }}>
+                          <div className="noir-hero-name" style={{ transform: `scale(${nameScale}) translate(${nameMoveX}%, ${nameMoveY}vh)` }}>
+                            <span className="noir-hero-first">{firstName}</span>
+                            {lastName && <span className="noir-hero-last">{lastName}</span>}
+                          </div>
+                        </div>
+                        {heroPhotos.length > 0 && (
+                          <div className="noir-hero-grid" style={{ transform: `translateY(${imgTranslate}px) scale(${imgScale})`, opacity: imgOpacity }}>
+                            {heroPhotos.map((ph, i) => (
+                              <div key={ph.id || i} className={`noir-hero-img${i === 1 ? " noir-hero-img-center" : ""}`}>
+                                <img src={ph.src} alt={ph.caption || ""} />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        <div className="noir-hero-gradient" />
+                      </section>
+                    );
+                  }
+
+                  case "about":
+                    return (
+                      <section key="about" className="noir-about" style={{ position: "relative", overflow: "hidden" }}>
+                        <div className="noir-parallax-title noir-parallax-title-right" style={{ transform: `translateX(${-parallaxSlow}px)` }}>ABOUT</div>
+                        <div className="noir-about-split">
+                          <div className="noir-about-left noir-reveal-left">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
+                            <h2 className="noir-about-headline">
+                              {artist.city?.toUpperCase() || "LONDON"}-BASED<br/>
+                              CREATOR OF STRIKING<br/>
+                              VISUALS & TIMELESS<br/>
+                              PERFORMANCES
+                            </h2>
+                          </div>
+                          <div className="noir-about-right noir-reveal-right">
+                            <div className="noir-available">
+                              <span className="noir-avail-dot" />
+                              AVAILABLE FOR WORK
+                            </div>
+                            <p className="noir-about-body">{artist.biography || artist.bio}</p>
+                          </div>
+                        </div>
+                        <div className="noir-about-portrait noir-reveal-scale">
+                          <img src={artist.photo} alt={artist.name} />
+                          <div className="noir-about-overlay">
+                            <p className="noir-about-quote">
+                              {artist.profileBio || "Step into my world, where every frame is a masterpiece, and your unique journey becomes the heart of my art."}
+                            </p>
+                            <span className="noir-about-link">ABOUT ME</span>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "gallery": {
+                    if (allPhotos.length === 0) return null;
+                    const marqueePhotos = [...allPhotos, ...allPhotos, ...allPhotos];
+                    const row1 = marqueePhotos;
+                    const row2 = [...marqueePhotos].reverse();
+                    const row3 = marqueePhotos;
+                    return (
+                      <section key="gallery" className="noir-gallery">
+                        <div className="noir-parallax-title noir-parallax-title-left" style={{ transform: `translateX(${parallaxSlow}px)` }}>GALLERY</div>
+                        <div className="noir-gallery-header noir-reveal">
+                          <h2 className="noir-section-title" style={{ marginBottom: 8 }}>EXPLORE THE<br/>FULL GALLERY</h2>
+                          <div className="noir-gallery-cta">
+                            VIEW ALL WORK
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                          </div>
+                        </div>
+                        <div className="noir-marquee-row">
+                          <div className="noir-marquee-track">
+                            {row1.map((ph, i) => <div key={`r1-${i}`} className="noir-marquee-img"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                          </div>
+                          <div className="noir-marquee-track">
+                            {row1.map((ph, i) => <div key={`r1d-${i}`} className="noir-marquee-img"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                          </div>
+                        </div>
+                        <div className="noir-marquee-row reverse">
+                          <div className="noir-marquee-track">
+                            {row2.map((ph, i) => <div key={`r2-${i}`} className="noir-marquee-img"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                          </div>
+                          <div className="noir-marquee-track">
+                            {row2.map((ph, i) => <div key={`r2d-${i}`} className="noir-marquee-img"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                          </div>
+                        </div>
+                        <div className="noir-marquee-row">
+                          <div className="noir-marquee-track">
+                            {row3.map((ph, i) => <div key={`r3-${i}`} className="noir-marquee-img"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                          </div>
+                          <div className="noir-marquee-track">
+                            {row3.map((ph, i) => <div key={`r3d-${i}`} className="noir-marquee-img"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                          </div>
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "portfolios":
+                    if (selectedPfs.length === 0) return null;
+                    return (
+                      <section key="portfolios" className="noir-portfolios">
+                        <div className="noir-parallax-title noir-parallax-title-right" style={{ transform: `translateX(${-parallaxMed + 100}px)` }}>COLLECTIONS</div>
+                        <h2 className="noir-section-title noir-reveal">PORTFOLIOS</h2>
+                        <div className="noir-portfolios-grid">
+                          {selectedPfs.map((pf, i) => (
+                            <div key={pf.id} className={`noir-portfolio-card noir-reveal noir-stagger-${Math.min(i + 1, 4)}${pf.id === studioContent.featuredPortfolio ? " featured" : ""}`}>
+                              {pf.cover && <div className="noir-pf-cover"><img src={pf.cover} alt={pf.name} /></div>}
+                              <div className="noir-pf-info">
+                                {pf.id === studioContent.featuredPortfolio && <span className="noir-pf-badge">Featured</span>}
+                                <h3>{pf.name}</h3>
+                                <p>{pf.description}</p>
+                                <div className="noir-pf-tags">
+                                  {pf.styles?.map(s => <span key={s}>{s}</span>)}
+                                </div>
+                                <div className="noir-pf-stats">
+                                  <span>{pf.photos?.length || 0} Photos</span>
+                                  <span>{pf.videos?.length || 0} Videos</span>
+                                  {pf.references?.length > 0 && <span>{pf.references.length} References</span>}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "featuredWork":
+                    if (!featuredWk) return null;
+                    return (
+                      <section key="featuredWork" className="noir-featured-work" style={{ position: "relative", overflow: "hidden" }}>
+                        <div className="noir-parallax-title noir-parallax-title-left" style={{ transform: `translateX(${parallaxSlow - 60}px)` }}>FEATURED</div>
+                        <div className="noir-fw-label noir-reveal">FEATURED WORK</div>
+                        <h2 className="noir-fw-title noir-reveal noir-stagger-1">{featuredWk.name}</h2>
+                        <p className="noir-fw-tagline noir-reveal noir-stagger-2">{featuredWk.tagline}</p>
+                        {featuredWk.cover && (
+                          <div className="noir-fw-cover noir-reveal-scale noir-stagger-3">
+                            <img src={featuredWk.cover} alt={featuredWk.name} />
+                          </div>
+                        )}
+                        <div className="noir-fw-meta noir-reveal noir-stagger-4">
+                          <span>{featuredWk.genre}</span>
+                          <span>{featuredWk.duration}</span>
+                          <span>{featuredWk.role}</span>
+                        </div>
+                        <p className="noir-fw-desc">{featuredWk.shortPitch}</p>
+                        {featuredWk.reviews?.length > 0 && (
+                          <div className="noir-fw-reviews">
+                            {featuredWk.reviews.slice(0, 2).map(rv => (
+                              <blockquote key={rv.id} className="noir-fw-quote">
+                                <p>"{rv.quote}"</p>
+                                <cite>— {rv.source}{rv.rating ? ` · ${"★".repeat(rv.rating)}` : ""}</cite>
+                              </blockquote>
+                            ))}
+                          </div>
+                        )}
+                        {featuredWk.upcomingPerformances?.length > 0 && (
+                          <div className="noir-fw-performances">
+                            <h3>UPCOMING</h3>
+                            {featuredWk.upcomingPerformances.map(p => (
+                              <div key={p.id} className="noir-fw-perf">
+                                <span className="noir-fw-perf-date">{new Date(p.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</span>
+                                <span>{p.venue}, {p.city}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </section>
+                    );
+
+                  case "experience":
+                    if (experiences.length === 0) return null;
+                    return (
+                      <section key="experience" className="noir-experience" style={{ position: "relative", overflow: "hidden" }}>
+                        <div className="noir-parallax-title noir-parallax-title-right" style={{ transform: `translateX(${-parallaxSlow + 40}px)` }}>CAREER</div>
+                        <h2 className="noir-section-title noir-reveal">CAREER<br/>HIGHLIGHTS</h2>
+                        <div className="noir-exp-grid">
+                          {experiences.map((sr, i) => (
+                            <div key={sr.id} className={`noir-exp-card noir-reveal noir-stagger-${Math.min(i + 1, 6)}`}>
+                              <div className="noir-exp-type">{sr.type.toUpperCase()}</div>
+                              <h3 className="noir-exp-title">{sr.title}</h3>
+                              <div className="noir-exp-org">{sr.org}</div>
+                              <div className="noir-exp-period">{sr.start?.slice(0, 4)}{sr.end ? ` — ${sr.end.slice(0, 4)}` : " — Present"}</div>
+                              {sr.desc && <p className="noir-exp-desc">{sr.desc}</p>}
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "works":
+                    if (selectedWks.length === 0) return null;
+                    return (
+                      <section key="works" className="noir-works">
+                        <div className="noir-parallax-title noir-parallax-title-left" style={{ transform: `translateX(${parallaxMed - 80}px)` }}>WORKS</div>
+                        <h2 className="noir-section-title noir-reveal">WORKS</h2>
+                        <div className="noir-works-grid">
+                          {selectedWks.map((wk, i) => (
+                            <div key={wk.id} className={`noir-work-card noir-reveal noir-stagger-${Math.min(i + 1, 4)}`}>
+                              {wk.cover && <img src={wk.cover} alt={wk.name} />}
+                              <div className="noir-work-info">
+                                <h3>{wk.name}</h3>
+                                <span>{wk.genre} · {wk.duration}</span>
+                                <span className="noir-work-role">{wk.role}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "exploreGallery":
+                    return null;
+
+                  case "testimonials": {
+                    const testimonials = [
+                      { quote: "Working with " + artist.firstName + " was an extraordinary experience. Their artistry and dedication brought an entirely new dimension to our production.", name: "Sarah Chen", role: "Artistic Director, National Dance Theatre" },
+                      { quote: "A truly remarkable talent. " + artist.firstName + " brings raw emotion and technical precision together in a way I've rarely seen in my career.", name: "Marcus Webb", role: "Choreographer" },
+                      { quote: "Every movement tells a story. " + artist.firstName + " has an innate ability to connect with an audience that goes beyond technique — it's pure magic.", name: "Elena Petrova", role: "Creative Director, Movement Studios" },
+                    ];
+                    const t = testimonials[studioTestimonialIdx % testimonials.length];
+                    return (
+                      <section key="testimonials" className="noir-testimonials noir-reveal-scale">
+                        <div className="noir-testimonials-bg">
+                          <img src={allPhotos[2]?.src || allPhotos[0]?.src || artist.photo} alt="" />
+                          <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.55)" }} />
+                        </div>
+                        <div className="noir-testimonials-card">
+                          <p className="noir-testimonials-quote">"{t.quote}"</p>
+                          <div className="noir-testimonials-dot" />
+                          <div className="noir-testimonials-name">{t.name}</div>
+                          <div className="noir-testimonials-role">{t.role}</div>
+                          <div className="noir-testimonials-arrows">
+                            <button onClick={() => setStudioTestimonialIdx(i => (i - 1 + testimonials.length) % testimonials.length)}>&#8592;</button>
+                            <button onClick={() => setStudioTestimonialIdx(i => (i + 1) % testimonials.length)}>&#8594;</button>
+                          </div>
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "contact":
+                    return (
+                      <section key="contact" className="noir-connect noir-reveal">
+                        <div className="noir-connect-left">
+                          <h2>LET'S<br/>WORK<br/>TOGETHER</h2>
+                          <p>Open to new collaborations, performances, and creative partnerships. Reach out and let's create something memorable.</p>
+                          <a className="noir-connect-cta" href={`mailto:${artist.email}`}>GET IN TOUCH <span>→</span></a>
+                        </div>
+                        <div className="noir-connect-right">
+                          <div className="noir-connect-item">
+                            <span className="noir-connect-item-label">Email</span>
+                            <span className="noir-connect-item-value"><a href={`mailto:${artist.email}`}>{artist.email}</a></span>
+                          </div>
+                          {artist.socials?.instagram && (
+                            <div className="noir-connect-item">
+                              <span className="noir-connect-item-label">Instagram</span>
+                              <span className="noir-connect-item-value"><a href="#">@{artist.socials.instagram}</a></span>
+                            </div>
+                          )}
+                          {artist.links?.website && (
+                            <div className="noir-connect-item">
+                              <span className="noir-connect-item-label">Website</span>
+                              <span className="noir-connect-item-value"><a href="#">{artist.links.website}</a></span>
+                            </div>
+                          )}
+                          <div className="noir-connect-item">
+                            <span className="noir-connect-item-label">Location</span>
+                            <span className="noir-connect-item-value">{artist.city}, {artist.country}</span>
+                          </div>
+                          <div className="noir-connect-item">
+                            <span className="noir-connect-item-label">Availability</span>
+                            <span className="noir-connect-item-value" style={{ color: "rgba(130,220,130,.8)" }}>Open to work</span>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  default:
+                    return null;
+                }
+              })}
+
+              {/* Noir Footer */}
+              <footer className="noir-footer-full">
+                <div className="noir-footer-bg">
+                  <img src={allPhotos[1]?.src || allPhotos[0]?.src || artist.photo} alt="" />
+                  <div className="noir-footer-bg-overlay" />
+                </div>
+                <div className="noir-footer-content">
+                  <div className="noir-footer-tagline noir-reveal">
+                    <p className="noir-footer-subtitle">EVERY MOMENT HOLDS<br/>A STORY WAITING TO BE<br/>CAPTURED</p>
+                    <div className="noir-footer-mid">
+                      <div className="noir-footer-nav">
+                        <span>HOME</span><span>ABOUT</span><span>GALLERY</span>
+                        {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
+                        {selectedWks.length > 0 && <span>WORKS</span>}
+                        <span>CONTACT</span>
+                      </div>
+                      <div className="noir-footer-socials">
+                        {artist.socials?.instagram && <a href="#">INSTAGRAM</a>}
+                        {artist.socials?.tiktok && <a href="#">TIKTOK</a>}
+                        {artist.socials?.youtube && <a href="#">YOUTUBE</a>}
+                        {artist.socials?.vimeo && <a href="#">VIMEO</a>}
+                        {artist.socials?.linkedin && <a href="#">LINKEDIN</a>}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="noir-footer-bottom">
+                    <span>© {new Date().getFullYear()} {artist.name.toUpperCase()}. ALL RIGHTS RESERVED.</span>
+                    <span>Built with Lanced</span>
+                  </div>
+                  <div className="noir-footer-bigname">
+                    {(() => {
+                      const footerName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
+                      const w = footerName.length * 190;
+                      return (
+                        <svg viewBox={`0 0 ${w} 320`} preserveAspectRatio="xMidYMax meet">
+                          <text x={w / 2} y="280" textAnchor="middle" fontSize="320" letterSpacing="-10">{footerName}</text>
+                        </svg>
+                      );
+                    })()}
+                  </div>
+                </div>
+              </footer>
+            </div>
+          );
+        };
+
+        /* ── Atrium Theme Renderer ── */
+        const atriumRevealRef = (el) => {
+          if (!el) return;
+          let root = el.parentElement;
+          while (root && root !== document.body) {
+            const ov = getComputedStyle(root).overflowY;
+            if (ov === "auto" || ov === "scroll") break;
+            root = root.parentElement;
+          }
+          if (root === document.body) root = null;
+          const observer = new IntersectionObserver(
+            (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("revealed"); observer.unobserve(e.target); } }),
+            { threshold: 0.08, root }
+          );
+          el.querySelectorAll(".atrium-reveal").forEach(child => observer.observe(child));
+        };
+
+        const renderAtriumTheme = () => {
+          const nm = artist.name.toUpperCase();
+          const firstName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
+          const lastName = artist.lastName?.toUpperCase() || nm.split(" ").slice(1).join(" ");
+          const experiences = stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").slice(0, 6);
+          const navCompact = studioScrollY > 300;
+          let sNum = 0;
+
+          const sh = (label) => { sNum++; return (
+            <div className="atrium-sh">
+              <span className="atrium-sh-num">{String(sNum).padStart(3, "0")}</span>
+              <div className="atrium-sh-line" />
+              <span className="atrium-sh-label">{label}</span>
+            </div>
+          ); };
+
+          return (
+            <div className="atrium-theme" ref={atriumRevealRef}>
+              {/* Nav */}
+              <nav className={`atrium-nav${navCompact ? " atrium-nav-compact" : ""}`}>
+                <div className="atrium-nav-name">{nm}</div>
+                <div className="atrium-nav-links">
+                  <span>HOME</span>
+                  <span>ABOUT</span>
+                  <span>GALLERY</span>
+                  {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
+                  {selectedWks.length > 0 && <span>WORKS</span>}
+                  <span>CONTACT</span>
+                </div>
+              </nav>
+
+              {/* Sections in order */}
+              {enabledSections.map(section => {
+                switch (section.id) {
+                  case "hero": {
+                    const heroImg = heroPhotos?.[0]?.src || artist.photo;
+                    return (
+                      <section key="hero" className="atrium-hero">
+                        <div className="atrium-hero-inner">
+                        {heroImg && <img className="atrium-hero-img" src={heroImg} alt={artist.name} />}
+                        <div className="atrium-hero-overlay" />
+                        <div className="atrium-hero-content">
+                          <div className="atrium-hero-brand">{artist.role || "Artist"}</div>
+                          <h1 className="atrium-hero-name">
+                            <span>{firstName}</span><br/>
+                            {lastName && <span>{lastName}</span>}
+                          </h1>
+                          {artist.biography && <p className="atrium-hero-desc">{(artist.biography || artist.bio || "").slice(0, 160)}...</p>}
+                          {artist.styles?.length > 0 && (
+                            <div className="atrium-hero-tags">
+                              {artist.styles.slice(0, 4).map(s => <span key={s}>{s}</span>)}
+                            </div>
+                          )}
+                        </div>
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "about":
+                    return (
+                      <section key="about" className="atrium-about">
+                        {sh("About")}
+                        <div className="atrium-about-grid">
+                          <div className="atrium-about-left atrium-reveal">
+                            <h2>{artist.city?.toUpperCase() || "LONDON"}-BASED<br/>CREATOR OF STRIKING<br/>VISUALS & TIMELESS<br/>PERFORMANCES</h2>
+                            <div className="atrium-about-avail">
+                              <span className="atrium-about-avail-dot" />
+                              AVAILABLE FOR WORK
+                            </div>
+                          </div>
+                          <div className="atrium-about-right atrium-reveal atrium-stagger-1">
+                            {artist.biography || artist.bio}
+                          </div>
+                        </div>
+                        <div className="atrium-about-portrait atrium-reveal atrium-stagger-2">
+                          <img src={artist.photo} alt={artist.name} />
+                        </div>
+                      </section>
+                    );
+
+                  case "gallery": {
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="gallery" className="atrium-gallery">
+                        {sh("Gallery")}
+                        <div className="atrium-gallery-grid">
+                          {allPhotos.slice(0, 7).map((ph, i) => (
+                            <div key={ph.id || i} className="atrium-gallery-item atrium-reveal">
+                              <img src={ph.src} alt={ph.caption || ""} />
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "portfolios":
+                    if (selectedPfs.length === 0) return null;
+                    return (
+                      <section key="portfolios" className="atrium-portfolios">
+                        {sh("Portfolios")}
+                        <div className="atrium-pf-grid">
+                          {selectedPfs.map((pf, i) => (
+                            <div key={pf.id} className={`atrium-pf-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}${pf.id === studioContent.featuredPortfolio ? " featured" : ""}`}>
+                              {pf.cover && <div className="atrium-pf-cover"><img src={pf.cover} alt={pf.name} /></div>}
+                              <div className="atrium-pf-info">
+                                {pf.id === studioContent.featuredPortfolio && <span className="atrium-pf-badge">Featured</span>}
+                                <h3>{pf.name}</h3>
+                                <p>{pf.description}</p>
+                                <div className="atrium-pf-tags">{pf.styles?.map(s => <span key={s}>{s}</span>)}</div>
+                                <div className="atrium-pf-stats">
+                                  <span>{pf.photos?.length || 0} Photos</span>
+                                  <span>{pf.videos?.length || 0} Videos</span>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "featuredWork":
+                    if (!featuredWk) return null;
+                    return (
+                      <section key="featuredWork" className="atrium-fw">
+                        {sh("Featured Work")}
+                        <div className="atrium-fw-label atrium-reveal">FEATURED WORK</div>
+                        <h2 className="atrium-fw-title atrium-reveal atrium-stagger-1">{featuredWk.name}</h2>
+                        <p className="atrium-fw-tagline atrium-reveal atrium-stagger-2">{featuredWk.tagline}</p>
+                        {featuredWk.cover && (
+                          <div className="atrium-fw-cover atrium-reveal atrium-stagger-3"><img src={featuredWk.cover} alt={featuredWk.name} /></div>
+                        )}
+                        <div className="atrium-fw-meta atrium-reveal">
+                          <span>{featuredWk.genre}</span>
+                          <span>{featuredWk.duration}</span>
+                          <span>{featuredWk.role}</span>
+                        </div>
+                        <p className="atrium-fw-desc">{featuredWk.shortPitch}</p>
+                        {featuredWk.reviews?.length > 0 && (
+                          <div className="atrium-fw-reviews">
+                            {featuredWk.reviews.slice(0, 2).map(rv => (
+                              <blockquote key={rv.id} className="atrium-fw-quote">
+                                <p>"{rv.quote}"</p>
+                                <cite>— {rv.source}{rv.rating ? ` · ${"★".repeat(rv.rating)}` : ""}</cite>
+                              </blockquote>
+                            ))}
+                          </div>
+                        )}
+                      </section>
+                    );
+
+                  case "experience":
+                    if (experiences.length === 0) return null;
+                    return (
+                      <section key="experience" className="atrium-experience">
+                        {sh("Experience")}
+                        <div className="atrium-exp-grid">
+                          {experiences.map((sr, i) => (
+                            <div key={sr.id} className={`atrium-exp-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}`}>
+                              <div className="atrium-exp-type">{sr.type.toUpperCase()}</div>
+                              <h3 className="atrium-exp-title">{sr.title}</h3>
+                              <div className="atrium-exp-org">{sr.org}</div>
+                              <div className="atrium-exp-period">{sr.start?.slice(0, 4)}{sr.end ? ` — ${sr.end.slice(0, 4)}` : " — Present"}</div>
+                              {sr.desc && <p className="atrium-exp-desc">{sr.desc}</p>}
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "works":
+                    if (selectedWks.length === 0) return null;
+                    return (
+                      <section key="works" className="atrium-works">
+                        {sh("Works")}
+                        <div className="atrium-works-grid">
+                          {selectedWks.map((wk, i) => (
+                            <div key={wk.id} className={`atrium-work-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}`}>
+                              {wk.cover && <img src={wk.cover} alt={wk.name} />}
+                              <div className="atrium-work-info">
+                                <h3>{wk.name}</h3>
+                                <span>{wk.genre} · {wk.duration}</span>
+                                <span style={{ marginTop: 2, fontWeight: 500, color: "rgba(17,17,17,.5)" }}>{wk.role}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "exploreGallery":
+                    return null;
+
+                  case "testimonials": {
+                    const testimonials = [
+                      { quote: "Working with " + artist.firstName + " was an extraordinary experience. Their artistry and dedication brought an entirely new dimension to our production.", name: "Sarah Chen", role: "Artistic Director, National Dance Theatre" },
+                      { quote: "A truly remarkable talent. " + artist.firstName + " brings raw emotion and technical precision together in a way I've rarely seen in my career.", name: "Marcus Webb", role: "Choreographer" },
+                      { quote: "Every movement tells a story. " + artist.firstName + " has an innate ability to connect with an audience that goes beyond technique — it's pure magic.", name: "Elena Petrova", role: "Creative Director, Movement Studios" },
+                    ];
+                    const t = testimonials[studioTestimonialIdx % testimonials.length];
+                    return (
+                      <section key="testimonials" className="atrium-testimonials">
+                        {sh("Testimonials")}
+                        <div className="atrium-test-card atrium-reveal">
+                          <p className="atrium-test-quote">"{t.quote}"</p>
+                          <div className="atrium-test-divider" />
+                          <div className="atrium-test-name">{t.name}</div>
+                          <div className="atrium-test-role">{t.role}</div>
+                          <div className="atrium-test-arrows">
+                            <button onClick={() => setStudioTestimonialIdx(i => (i - 1 + testimonials.length) % testimonials.length)}>&#8592;</button>
+                            <button onClick={() => setStudioTestimonialIdx(i => (i + 1) % testimonials.length)}>&#8594;</button>
+                          </div>
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "contact":
+                    return (
+                      <section key="contact" className="atrium-contact atrium-reveal">
+                        <div className="atrium-contact-left">
+                          <h2>LET'S<br/>WORK<br/>TOGETHER</h2>
+                          <p>Open to new collaborations, performances, and creative partnerships. Reach out and let's create something memorable.</p>
+                          <a className="atrium-contact-cta" href={`mailto:${artist.email}`}>GET IN TOUCH <span>→</span></a>
+                        </div>
+                        <div className="atrium-contact-right">
+                          <div className="atrium-contact-item">
+                            <span className="atrium-contact-item-label">Email</span>
+                            <span className="atrium-contact-item-value"><a href={`mailto:${artist.email}`}>{artist.email}</a></span>
+                          </div>
+                          {artist.socials?.instagram && (
+                            <div className="atrium-contact-item">
+                              <span className="atrium-contact-item-label">Instagram</span>
+                              <span className="atrium-contact-item-value"><a href="#">@{artist.socials.instagram}</a></span>
+                            </div>
+                          )}
+                          {artist.links?.website && (
+                            <div className="atrium-contact-item">
+                              <span className="atrium-contact-item-label">Website</span>
+                              <span className="atrium-contact-item-value"><a href="#">{artist.links.website}</a></span>
+                            </div>
+                          )}
+                          <div className="atrium-contact-item">
+                            <span className="atrium-contact-item-label">Location</span>
+                            <span className="atrium-contact-item-value">{artist.city}, {artist.country}</span>
+                          </div>
+                          <div className="atrium-contact-item">
+                            <span className="atrium-contact-item-label">Availability</span>
+                            <span className="atrium-contact-item-value" style={{ color: "#10b981" }}>Open to work</span>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  default:
+                    return null;
+                }
+              })}
+
+              {/* Atrium Footer */}
+              <footer className="atrium-footer">
+                <div className="atrium-footer-nav">
+                  <span>HOME</span><span>ABOUT</span><span>GALLERY</span>
+                  {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
+                  {selectedWks.length > 0 && <span>WORKS</span>}
+                  <span>CONTACT</span>
+                </div>
+                <div className="atrium-footer-copy">
+                  © {new Date().getFullYear()} {artist.name}. Built with Lanced.
+                </div>
+              </footer>
+            </div>
+          );
+        };
+
+        /* ── Full-screen preview mode ── */
+        if (studioMode === "preview") {
+          return (
+            <div className="studio-preview-full">
+              <div className="studio-preview-topbar">
+                <button className="btn btn-sm" style={{ background: "rgba(255,255,255,.1)", color: "#fff", border: "1px solid rgba(255,255,255,.15)" }} onClick={() => setStudioMode("builder")}>
+                  {I.back} <span style={{ marginLeft: 6 }}>Back to Editor</span>
+                </button>
+                <span style={{ fontSize: 12, color: "rgba(255,255,255,.5)" }}>Preview Mode — {currentThemeData.name}</span>
+                <button className="btn btn-sm" style={{ background: "#fff", color: "#000" }} onClick={() => { setStudioPublished(true); showToast("Website published!"); setStudioMode("builder"); }}>
+                  Publish
+                </button>
+              </div>
+              <div className="studio-preview-viewport" onScroll={e => setStudioScrollY(e.target.scrollTop)}>
+                {studioTheme === "noir" && renderNoirTheme()}
+                {studioTheme === "atrium" && renderAtriumTheme()}
+              </div>
+            </div>
+          );
+        }
+
+        /* ── Builder mode ── */
+        if (studioMode === "builder") {
+          return (
+            <div className="studio-builder">
+              {/* Top bar */}
+              <div className="studio-builder-topbar">
+                <div className="studio-builder-topbar-left">
+                  <button className="btn btn-sm btn-s" onClick={() => setStudioMode("gallery")}>
+                    {I.back} <span style={{ marginLeft: 6 }}>Exit</span>
+                  </button>
+                  <span className="studio-builder-theme-name">{currentThemeData.name} Theme</span>
+                </div>
+                <div className="studio-builder-devices">
+                  {[
+                    { id: "desktop", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg> },
+                    { id: "tablet", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M12 18h.01"/></svg> },
+                    { id: "mobile", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg> },
+                  ].map(d => (
+                    <button key={d.id} className={`studio-device-btn${studioPreviewDevice === d.id ? " active" : ""}`} onClick={() => setStudioPreviewDevice(d.id)}>
+                      {d.icon}
+                    </button>
+                  ))}
+                </div>
+                <div className="studio-builder-topbar-right">
+                  <button className="btn btn-sm btn-s" onClick={() => { setStudioScrollY(0); setStudioMode("preview"); }}>Preview</button>
+                  <button className="btn btn-sm btn-p" onClick={() => { setStudioPublished(true); showToast("Website published!"); }}>
+                    {studioPublished ? "Update" : "Publish"}
+                  </button>
+                </div>
+              </div>
+
+              {/* Split pane */}
+              <div className="studio-builder-body">
+                {/* Left panel */}
+                <div className="studio-panel">
+                  <div className="studio-panel-tabs">
+                    {["theme", "content", "layout", "brand"].map(t => (
+                      <button key={t} className={`studio-panel-tab${studioCustomizeTab === t ? " active" : ""}`} onClick={() => setStudioCustomizeTab(t)}>
+                        {t.charAt(0).toUpperCase() + t.slice(1)}
+                      </button>
+                    ))}
+                  </div>
+
+                  <div className="studio-panel-content">
+                    {/* Theme sub-tab */}
+                    {studioCustomizeTab === "theme" && (
+                      <div className="studio-theme-grid">
+                        {STUDIO_THEMES.map(th => (
+                          <div key={th.id} className={`studio-theme-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}
+                            onClick={() => !th.locked && setStudioTheme(th.id)}>
+                            <div className="studio-theme-preview" style={{ backgroundImage: `url(${th.preview})` }}>
+                              {th.locked && <div className="studio-theme-lock">PRO</div>}
+                              {studioTheme === th.id && <div className="studio-theme-active">Active</div>}
+                            </div>
+                            <div className="studio-theme-info">
+                              <span className="studio-theme-name">{th.name}</span>
+                              <span className="studio-theme-desc">{th.desc}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Content sub-tab */}
+                    {studioCustomizeTab === "content" && (
+                      <div className="studio-content-tab">
+                        <div className="studio-content-section">
+                          <h4>Portfolios</h4>
+                          <p className="studio-content-hint">Select which portfolios appear on your website. Mark one as featured for hero placement.</p>
+                          {portfolios.map(pf => {
+                            const isSelected = studioContent.selectedPortfolios.includes(pf.id);
+                            const isFeatured = studioContent.featuredPortfolio === pf.id;
+                            return (
+                              <div key={pf.id} className={`studio-content-row${isSelected ? " selected" : ""}`}>
+                                <div className={`sm-switch${isSelected ? " on" : ""}`} onClick={() => {
+                                  setStudioContent(prev => ({
+                                    ...prev,
+                                    selectedPortfolios: isSelected ? prev.selectedPortfolios.filter(id => id !== pf.id) : [...prev.selectedPortfolios, pf.id],
+                                    featuredPortfolio: isSelected && isFeatured ? null : prev.featuredPortfolio,
+                                  }));
+                                }} />
+                                <div className="studio-content-info">
+                                  <span className="studio-content-name">{pf.name}</span>
+                                  <span className="studio-content-meta">{pf.photos.length} photos · {pf.videos.length} videos · {pf.status}</span>
+                                </div>
+                                {isSelected && (
+                                  <button className={`studio-featured-btn${isFeatured ? " active" : ""}`} onClick={() => {
+                                    setStudioContent(prev => ({ ...prev, featuredPortfolio: isFeatured ? null : pf.id }));
+                                  }}>
+                                    {isFeatured ? "★ Featured" : "☆ Feature"}
+                                  </button>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <div className="studio-content-section" style={{ marginTop: 24 }}>
+                          <h4 style={{ color: "#D97706" }}>Works</h4>
+                          <p className="studio-content-hint">Select which works appear on your website. Mark one as featured for a dedicated section.</p>
+                          {works.map(wk => {
+                            const isSelected = studioContent.selectedWorks.includes(wk.id);
+                            const isFeatured = studioContent.featuredWork === wk.id;
+                            return (
+                              <div key={wk.id} className={`studio-content-row${isSelected ? " selected" : ""}`}>
+                                <div className={`sm-switch${isSelected ? " on" : ""}`} onClick={() => {
+                                  setStudioContent(prev => ({
+                                    ...prev,
+                                    selectedWorks: isSelected ? prev.selectedWorks.filter(id => id !== wk.id) : [...prev.selectedWorks, wk.id],
+                                    featuredWork: isSelected && isFeatured ? null : prev.featuredWork,
+                                  }));
+                                }} />
+                                <div className="studio-content-info">
+                                  <span className="studio-content-name">{wk.name}</span>
+                                  <span className="studio-content-meta">{wk.genre} · {wk.role} · {wk.status}</span>
+                                </div>
+                                {isSelected && (
+                                  <button className={`studio-featured-btn${isFeatured ? " active" : ""}`} style={{ borderColor: isFeatured ? "#D97706" : undefined, color: isFeatured ? "#D97706" : undefined }} onClick={() => {
+                                    setStudioContent(prev => ({ ...prev, featuredWork: isFeatured ? null : wk.id }));
+                                  }}>
+                                    {isFeatured ? "★ Featured" : "☆ Feature"}
+                                  </button>
+                                )}
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Layout sub-tab */}
+                    {studioCustomizeTab === "layout" && (
+                      <div className="studio-layout-tab">
+                        <h4>Sections</h4>
+                        <p className="studio-content-hint">Toggle sections on/off. Drag to reorder.</p>
+                        {studioSections.sort((a, b) => a.order - b.order).map((sec, idx) => (
+                          <div key={sec.id} className="studio-section-row">
+                            <div className="studio-section-drag">
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+                            </div>
+                            <span className="studio-section-label">{sec.label}</span>
+                            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
+                              {idx > 0 && (
+                                <button className="studio-section-move" onClick={() => {
+                                  setStudioSections(prev => {
+                                    const arr = [...prev].sort((a, b) => a.order - b.order);
+                                    const curOrder = arr[idx].order;
+                                    arr[idx].order = arr[idx - 1].order;
+                                    arr[idx - 1].order = curOrder;
+                                    return arr;
+                                  });
+                                }}>↑</button>
+                              )}
+                              {idx < studioSections.length - 1 && (
+                                <button className="studio-section-move" onClick={() => {
+                                  setStudioSections(prev => {
+                                    const arr = [...prev].sort((a, b) => a.order - b.order);
+                                    const curOrder = arr[idx].order;
+                                    arr[idx].order = arr[idx + 1].order;
+                                    arr[idx + 1].order = curOrder;
+                                    return arr;
+                                  });
+                                }}>↓</button>
+                              )}
+                              <div className={`sm-switch${sec.enabled ? " on" : ""}`} onClick={() => {
+                                setStudioSections(prev => prev.map(s => s.id === sec.id ? { ...s, enabled: !s.enabled } : s));
+                              }} />
+                            </div>
+                          </div>
+                        ))}
+
+                        <div style={{ marginTop: 24, borderTop: "1px solid rgba(255,255,255,.06)", paddingTop: 20 }}>
+                          <h4>Gallery Layout</h4>
+                          <p className="studio-content-hint">Choose how your gallery images are displayed.</p>
+                          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 12 }}>
+                            {[{id:"grid",label:"Grid",desc:"Clean 2-column"},{id:"masonry",label:"Masonry",desc:"Pinterest-style"},{id:"magazine",label:"Magazine",desc:"Editorial spread"},{id:"spread",label:"Spread",desc:"Scattered cards"}].map(l => (
+                              <div key={l.id} onClick={() => setStudioGalleryLayout(l.id)} style={{ padding: "12px 14px", borderRadius: 10, border: `1px solid ${studioGalleryLayout === l.id ? "rgba(99,102,241,.6)" : "rgba(255,255,255,.08)"}`, background: studioGalleryLayout === l.id ? "rgba(99,102,241,.1)" : "transparent", cursor: "pointer", transition: "all .2s" }}>
+                                <div style={{ fontSize: 12, fontWeight: 600, color: studioGalleryLayout === l.id ? "#fff" : "rgba(255,255,255,.7)" }}>{l.label}</div>
+                                <div style={{ fontSize: 10, color: "rgba(255,255,255,.35)", marginTop: 2 }}>{l.desc}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Brand sub-tab */}
+                    {studioCustomizeTab === "brand" && (
+                      <div className="studio-brand-tab">
+                        <h4>Accent Color</h4>
+                        <div className="studio-color-swatches">
+                          {["#ffffff", "#604dff", "#f43f5e", "#f59e0b", "#10b981", "#3b82f6", "#8b5cf6", "#ec4899"].map(c => (
+                            <button key={c} className={`studio-swatch${studioBrand.accentColor === c ? " active" : ""}`}
+                              style={{ background: c, border: c === "#ffffff" ? "1px solid var(--g3)" : "none" }}
+                              onClick={() => setStudioBrand(prev => ({ ...prev, accentColor: c }))} />
+                          ))}
+                        </div>
+
+                        <h4 style={{ marginTop: 20 }}>Font Pair</h4>
+                        {[
+                          { id: "inter", label: "Inter", desc: "Clean & modern", sample: "'Inter',system-ui,sans-serif" },
+                          { id: "playfair", label: "Playfair + DM Sans", desc: "Elegant editorial", sample: "'Georgia',serif" },
+                          { id: "mono", label: "Monospace", desc: "Technical & raw", sample: "'SF Mono',monospace" },
+                        ].map(fp => (
+                          <div key={fp.id} className={`studio-font-pair${studioBrand.fontPairId === fp.id ? " active" : ""}`}
+                            onClick={() => setStudioBrand(prev => ({ ...prev, fontPairId: fp.id }))}>
+                            <span style={{ fontFamily: fp.sample, fontSize: 14, fontWeight: 600 }}>{fp.label}</span>
+                            <span style={{ fontSize: 11, color: "var(--g4)" }}>{fp.desc}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Right preview */}
+                <div className="studio-preview-area">
+                  <div className={`studio-preview-frame studio-preview-${studioPreviewDevice}`} onScroll={e => setStudioScrollY(e.target.scrollTop)}>
+                    {studioTheme === "noir" && renderNoirTheme()}
+                {studioTheme === "atrium" && renderAtriumTheme()}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        }
+
+        /* ── Default: Studio page with tabs ── */
+        return (
+          <div>
+            <div className="pg-header">
+              <h1><em>Studio</em></h1>
+              <p className="pg-sub">Build and publish your personal website</p>
+            </div>
+
+            <div className="tab-bar" style={{ marginBottom: 20 }}>
+              {["website", "analytics", "settings"].map(t => (
+                <button key={t} className={`tab-btn${studioTab === t ? " on" : ""}`} onClick={() => setStudioTab(t)}>
+                  {t === "website" ? "Website" : t === "analytics" ? "Analytics" : "Settings"}
+                </button>
+              ))}
+            </div>
+
+            {/* Website tab — Gallery mode */}
+            {studioTab === "website" && (
+              <div style={{ animation: "slideInUp .2s ease" }}>
+                {studioPublished && (
+                  <div className="studio-live-banner">
+                    <span className="noir-avail-dot" style={{ marginRight: 8 }} />
+                    <span>Your website is live at <strong>lanced.io/{studioSettings.slug}</strong></span>
+                    <button className="btn btn-sm btn-s" style={{ marginLeft: "auto" }} onClick={() => showToast("Link copied!")}>Copy Link</button>
+                  </div>
+                )}
+                <div className="studio-gallery-header">
+                  <h3>Choose a Theme</h3>
+                  <p style={{ fontSize: 13, color: "var(--g4)", margin: "4px 0 0" }}>Select a theme and customize it to match your style.</p>
+                </div>
+                <div className="studio-theme-gallery">
+                  {STUDIO_THEMES.map(th => (
+                    <div key={th.id} className={`studio-gallery-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}>
+                      <div className="studio-gallery-preview" style={{ backgroundImage: `url(${th.preview})` }}>
+                        {th.locked && <div className="studio-theme-lock">PRO</div>}
+                        {studioTheme === th.id && <div className="studio-gallery-active">Current Theme</div>}
+                        <div className="studio-gallery-overlay">
+                          {!th.locked && (
+                            <button className="btn btn-sm" style={{ background: "#fff", color: "#000", fontWeight: 600 }}
+                              onClick={() => { setStudioTheme(th.id); setStudioMode("builder"); }}>
+                              {studioTheme === th.id ? "Edit Website" : "Use Theme"}
+                            </button>
+                          )}
+                          {th.locked && (
+                            <button className="btn btn-sm" style={{ background: "rgba(255,255,255,.15)", color: "#fff", border: "1px solid rgba(255,255,255,.2)" }}
+                              onClick={() => showToast("Upgrade to Pro to unlock this theme")}>
+                              Unlock
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                      <div className="studio-gallery-info">
+                        <span className="studio-gallery-name">{th.name}</span>
+                        <span className="studio-gallery-desc">{th.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Analytics tab — Stub */}
+            {studioTab === "analytics" && (
+              <div style={{ animation: "slideInUp .2s ease" }}>
+                <div className="stub-section">
+                  <div className="stub-icon">📊</div>
+                  <div className="stub-title">Website Analytics</div>
+                  <p>Track page views, visitor locations, popular sections, and link clicks. Coming soon.</p>
+                </div>
+              </div>
+            )}
+
+            {/* Settings tab */}
+            {studioTab === "settings" && (
+              <div style={{ animation: "slideInUp .2s ease" }}>
+                <div className="info-card" style={{ marginBottom: 16 }}>
+                  <h4 style={{ margin: "0 0 16px" }}>Website URL</h4>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                    <span style={{ fontSize: 13, color: "var(--g4)", whiteSpace: "nowrap" }}>lanced.io/</span>
+                    <input style={{ flex: 1, padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none" }}
+                      value={studioSettings.slug}
+                      onChange={e => setStudioSettings(prev => ({ ...prev, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "") }))} />
+                  </div>
+                  <div style={{ marginBottom: 12 }}>
+                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Custom Domain <span style={{ fontSize: 10, color: "var(--ac)", fontWeight: 400 }}>PRO</span></label>
+                    <input style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none" }}
+                      placeholder="www.yourdomain.com"
+                      value={studioSettings.customDomain}
+                      onChange={e => setStudioSettings(prev => ({ ...prev, customDomain: e.target.value }))} />
+                  </div>
+                </div>
+
+                <div className="info-card" style={{ marginBottom: 16 }}>
+                  <h4 style={{ margin: "0 0 16px" }}>SEO</h4>
+                  <div style={{ marginBottom: 12 }}>
+                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Page Title</label>
+                    <input style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none" }}
+                      value={studioSettings.seoTitle}
+                      onChange={e => setStudioSettings(prev => ({ ...prev, seoTitle: e.target.value }))} />
+                  </div>
+                  <div>
+                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Meta Description</label>
+                    <textarea style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "vertical", minHeight: 60, fontFamily: "var(--sans)" }}
+                      value={studioSettings.seoDesc}
+                      onChange={e => setStudioSettings(prev => ({ ...prev, seoDesc: e.target.value }))} />
+                  </div>
+                </div>
+
+                <div className="info-card">
+                  <h4 style={{ margin: "0 0 16px" }}>Visibility</h4>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {[
+                      { id: "public", label: "Public", desc: "Anyone with the link can view" },
+                      { id: "private", label: "Private", desc: "Only you can see your website" },
+                      { id: "password", label: "Password Protected", desc: "Visitors need a password to access" },
+                    ].map(v => (
+                      <div key={v.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", border: `1px solid ${studioSettings.visibility === v.id ? "var(--ac)" : "var(--g2)"}`, borderRadius: 10, cursor: "pointer", background: studioSettings.visibility === v.id ? "var(--ac-light, rgba(96,77,255,.05))" : "transparent" }}
+                        onClick={() => setStudioSettings(prev => ({ ...prev, visibility: v.id }))}>
+                        <div style={{ width: 16, height: 16, borderRadius: "50%", border: `2px solid ${studioSettings.visibility === v.id ? "var(--ac)" : "var(--g3)"}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                          {studioSettings.visibility === v.id && <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--ac)" }} />}
+                        </div>
+                        <div>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{v.label}</div>
+                          <div style={{ fontSize: 11, color: "var(--g4)" }}>{v.desc}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }
+
       default:
         return null;
     }
   };
 
   /* ━━━ MAIN RENDER ━━━ */
-  const shellClass = `shell${darkMode ? " dark" : ""}${sidebarCollapsed ? " sb-collapsed" : ""}${(viewSpotlight || viewOpportunity) ? " ctx-spotlight" : ""}${viewPortfolio ? " ctx-portfolio" : ""}`;
+  const shellClass = `shell${darkMode ? " dark" : ""}${sidebarCollapsed ? " sb-collapsed" : ""}${(viewSpotlight || viewOpportunity) ? " ctx-spotlight" : ""}${viewPortfolio ? " ctx-portfolio" : ""}${viewWork ? " ctx-works" : ""}`;
 
   return (
     <>
@@ -4346,7 +7053,7 @@ export default function ArtistShell() {
               <button className={page === "discover" ? "active" : ""} onClick={() => { setPage("discover"); setViewSpotlight(null); }}>{I.discover}<span>Discover</span></button>
               <button className={page === "applications" ? "active" : ""} onClick={() => { setPage("applications"); setViewSpotlight(null); }}>{I.applications}<span>Apply</span></button>
               <button className={page === "network" ? "active" : ""} onClick={() => { setPage("network"); setViewSpotlight(null); }}>{I.network}<span>Network</span></button>
-              <button className={["profile","present","media","academy","messages"].includes(page) ? "active" : ""} onClick={() => setShowMobileMenu(true)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>More</span></button>
+              <button className={["profile","present","media","academy","messages","studio"].includes(page) ? "active" : ""} onClick={() => setShowMobileMenu(true)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>More</span></button>
             </>
           )}
         </nav>
@@ -4368,6 +7075,7 @@ export default function ArtistShell() {
             {[
               { id: "profile", icon: I.profile, label: "Profile" },
               { id: "present", icon: I.present, label: "Present" },
+              { id: "studio", icon: I.studio, label: "Studio" },
               { id: "media", icon: I.media, label: "Media Library" },
               { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
               { id: "academy", icon: I.academy, label: "Academy" },
@@ -4425,6 +7133,27 @@ export default function ArtistShell() {
                 </div>
                 {SPOTLIGHT_TABS.map(t => (
                   <button key={t.id} className={`sidebar-item${spotlightTab === t.id ? " active" : ""}`} onClick={() => setSpotlightTab(t.id)}>
+                    {t.icon}
+                    <span className="sb-label">{t.label}</span>
+                    <span className="sb-tip">{t.label}</span>
+                  </button>
+                ))}
+              </>
+            ) : viewWork && currentWork ? (
+              <>
+                <button className="sb-back-toggle" onClick={() => { setViewWork(null); setWorkTab("overview"); setWorkPreview(false); setWorkLive(false); setPage("present"); }}>
+                  {I.back}
+                  <span className="sb-label">Back to Present</span>
+                </button>
+                <div style={{ padding: "8px 14px", marginBottom: 4 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }} className="sb-label">{currentWork.name}</div>
+                  <div style={{ fontSize: 11, color: "#D97706", marginTop: 2 }} className="sb-label">{currentWork.role} · {currentWork.genre}</div>
+                </div>
+                {WORKS_TABS.map(t => (
+                  <button key={t.id} className={`sidebar-item${workTab === t.id ? " active" : ""}`} onClick={() => {
+                    if (t.id === "settings" || t.id === "tracking") { setWorkTab(t.id); setWorkPreview(false); }
+                    else { setWorkTab(t.id); setWorkPreview(false); }
+                  }}>
                     {t.icon}
                     <span className="sb-label">{t.label}</span>
                     <span className="sb-tip">{t.label}</span>
@@ -4591,6 +7320,40 @@ export default function ArtistShell() {
                 <button className="btn btn-s btn-sm" onClick={() => { setPortfolioPreview(false); setPortfolioTab("overview"); }}>Back to Editor</button>
                 <button className="btn btn-sm" style={{ background: "var(--ac)", color: "#fff", border: "none" }} onClick={() => setPortfolioLive(true)}>View Live</button>
                 <button className="btn btn-sm" style={{ background: "#0D9488", color: "#fff", border: "none" }} onClick={() => { navigator.clipboard?.writeText(`lanced.app/${artist.name.toLowerCase().replace(/\s/g, "")}/${currentPortfolio.slug}`); showToast("Link copied!"); }}>Copy Link</button>
+              </div>
+            </div>
+          )}
+          {viewWork && currentWork && !workPreview && (
+            <div className="breadcrumb-bar">
+              <div>
+                <span className="bc-link" style={{ cursor: "pointer", color: "var(--g4)", fontSize: 12 }} onClick={() => { setViewWork(null); setWorkTab("overview"); setPage("present"); }}>Present</span>
+                <span style={{ color: "var(--g3)", margin: "0 6px" }}>›</span>
+                <span style={{ fontWeight: 600, color: "var(--tx)", fontSize: 12 }}>{currentWork.name}</span>
+              </div>
+              <div className="bc-actions">
+                <span style={{ background: currentWork.status === "published" ? "#E6FFF0" : "var(--g1)", color: currentWork.status === "published" ? "var(--green)" : "var(--g4)", padding: "3px 10px", borderRadius: 40, fontSize: 10, fontWeight: 700, textTransform: "uppercase" }}>{currentWork.status}</span>
+                <button className="btn btn-s btn-sm" onClick={() => setShowWorkShareModal(true)} style={{ display: "flex", alignItems: "center", gap: 4 }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>Share</button>
+                <button className="btn btn-s btn-sm" onClick={() => { setWorkPreview(true); setWorkTab("overview"); }}>Preview</button>
+                <button className="btn btn-s btn-sm" style={{ display: "flex", alignItems: "center", gap: 4 }} onClick={() => { setWorkPreview(true); setWorkTab("overview"); setTimeout(() => setWorkLive(true), 50); }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View Live</button>
+                {currentWork.status === "draft" ? (
+                  <button className="btn btn-sm" style={{ background: "#D97706", color: "#fff", border: "none" }} onClick={() => { setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, status: "published" } : w)); showToast("Work published!"); }}>Publish</button>
+                ) : (
+                  <button className="btn btn-sm" style={{ background: "#D97706", color: "#fff", border: "none" }} onClick={() => showToast("Changes published!")}>Publish Changes</button>
+                )}
+              </div>
+            </div>
+          )}
+          {viewWork && currentWork && workPreview && (
+            <div className="breadcrumb-bar">
+              <div>
+                <span className="bc-link" style={{ cursor: "pointer", color: "var(--g4)", fontSize: 12 }} onClick={() => setWorkPreview(false)}>Editor</span>
+                <span style={{ color: "var(--g3)", margin: "0 6px" }}>›</span>
+                <span style={{ fontWeight: 600, color: "#D97706", fontSize: 12 }}>Preview — {currentWork.name}</span>
+              </div>
+              <div className="bc-actions">
+                <button className="btn btn-s btn-sm" onClick={() => { setWorkPreview(false); setWorkTab("overview"); }}>Back to Editor</button>
+                <button className="btn btn-sm" style={{ background: "#D97706", color: "#fff", border: "none" }} onClick={() => setWorkLive(true)}>View Live</button>
+                <button className="btn btn-sm" style={{ background: "rgba(217,119,6,.1)", color: "#D97706", border: "1px solid rgba(217,119,6,.2)" }} onClick={() => { navigator.clipboard?.writeText(`lanced.app/${artist.name.toLowerCase().replace(/\s/g, "")}/works/${currentWork.slug}`); showToast("Link copied!"); }}>Copy Link</button>
               </div>
             </div>
           )}
@@ -5605,6 +8368,312 @@ export default function ArtistShell() {
             {/* Footer */}
             <div className="pfl-footer" style={{ position: "sticky" }}>
               <img src="/made-with-lanced.png" alt="Made with Lanced" />
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* ── New Work Modal ── */}
+      {showNewWorkModal && (
+        <div className="nwk-overlay" onClick={() => setShowNewWorkModal(false)}>
+          <div className="nwk-modal" onClick={e => e.stopPropagation()}>
+            <div style={{ padding: "28px 28px 0" }}>
+              <h2 style={{ color: "#D97706" }}>New Work</h2>
+              <p style={{ fontSize: 12, color: "var(--g4)", margin: "4px 0 0" }}>Create a dedicated page for a show, production, or creative work.</p>
+            </div>
+            <div style={{ padding: "20px 28px 28px", display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label className="wke-input-label">1. Work Name</label>
+                <input className="wke-input" placeholder="e.g. Echoes in Glass" value={newWk.name} onChange={e => setNewWk(p => ({ ...p, name: e.target.value }))} />
+              </div>
+              <div>
+                <label className="wke-input-label">2. Tagline</label>
+                <input className="wke-input" placeholder="A short artistic hook..." value={newWk.tagline} onChange={e => setNewWk(p => ({ ...p, tagline: e.target.value }))} />
+              </div>
+              <div>
+                <label className="wke-input-label">3. Your Role</label>
+                <select className="wke-select" value={newWk.role} onChange={e => setNewWk(p => ({ ...p, role: e.target.value }))}>
+                  <option value="">Select role...</option>
+                  {WORK_ROLES.map(r => <option key={r} value={r}>{r}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="wke-input-label">4. Genre</label>
+                <input className="wke-input" placeholder="e.g. Contemporary Dance" value={newWk.genre} onChange={e => setNewWk(p => ({ ...p, genre: e.target.value }))} />
+              </div>
+              <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", paddingTop: 8 }}>
+                <button className="btn btn-g" style={{ padding: "10px 20px", borderRadius: 10, border: "1px solid var(--g2)", background: "var(--bg)", color: "var(--tx)", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)" }} onClick={() => setShowNewWorkModal(false)}>Cancel</button>
+                <button style={{ padding: "10px 24px", borderRadius: 10, background: "linear-gradient(135deg,#D97706,#B45309)", color: "#fff", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)", opacity: (!newWk.name.trim() || !newWk.role) ? 0.5 : 1 }} disabled={!newWk.name.trim() || !newWk.role} onClick={() => {
+                  const id = "wk" + Date.now();
+                  const slug = newWk.name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+                  setWorks(prev => [...prev, {
+                    id, name: newWk.name.trim(), status: "draft", tagline: newWk.tagline, shortPitch: "", fullDescription: "", conceptNote: "",
+                    genre: newWk.genre, duration: "", premiereYear: "", country: "", city: "", language: "", ageGuidance: "", touringStatus: "in_creation",
+                    role: newWk.role, cover: "", trailerUrl: "",
+                    credits: [], gallery: [], reviews: [], awards: [],
+                    upcomingPerformances: [], pastPerformances: [],
+                    partners: [], techRequirements: { stageMinWidth: "", stageMinDepth: "", performers: "", setupTime: "" },
+                    accessibility: { captions: false, relaxedPerformance: false, audioDescription: false, sensoryNotes: "" },
+                    downloads: [], bookingEmail: "", bookingCtas: [], slug, date: new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }),
+                  }]);
+                  setShowNewWorkModal(false);
+                  setNewWk({ name: "", tagline: "", role: "", genre: "" });
+                  setViewWork(id);
+                  setWorkTab("overview");
+                  showToast("Work created!");
+                }}>Create Work</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Work Share Modal ── */}
+      {showWorkShareModal && currentWork && (
+        <div className="share-overlay" onClick={e => { if (e.target === e.currentTarget) setShowWorkShareModal(false); }}>
+          <div className="share-modal">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+              <div>
+                <h3 style={{ color: "#D97706" }}>Share Work</h3>
+                <div className="sm-sub">{currentWork.name}</div>
+              </div>
+              <button style={{ background: "none", border: "none", fontSize: 18, cursor: "pointer", color: "var(--g4)", padding: 4 }} onClick={() => setShowWorkShareModal(false)}>×</button>
+            </div>
+
+            <div className="sm-section">
+              <div className="sm-section-title">Share via Link</div>
+              <div className="sm-link-row">
+                <input readOnly value={`lanced.app/${artist.name.toLowerCase().replace(/\s/g, "")}/works/${currentWork.slug}`} />
+                <button onClick={() => { navigator.clipboard?.writeText(`lanced.app/${artist.name.toLowerCase().replace(/\s/g, "")}/works/${currentWork.slug}`); showToast("Link copied!"); }}>Copy Link</button>
+              </div>
+            </div>
+
+            <div className="sm-section">
+              <div className="sm-section-title">Share via Email</div>
+              <div className="sm-email-row">
+                <input placeholder="recipient@company.com" value={workShareEmail} onChange={e => setWorkShareEmail(e.target.value)} />
+                <button onClick={() => { if (workShareEmail.trim()) { showToast(`Work shared with ${workShareEmail}`); setWorkShareEmail(""); } }}>Send</button>
+              </div>
+            </div>
+
+            <div className="sm-pro">
+              <div className="sm-pro-title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Pro Features <span>PRO</span></div>
+              <div className="sm-toggle">
+                <div>
+                  <div className="sm-toggle-label">Track link views</div>
+                  <div className="sm-toggle-desc">See who viewed your work page and when</div>
+                </div>
+                <div className={`sm-switch${workShareSettings.trackLink ? " on" : ""}`} onClick={() => {
+                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                  setWorkShareSettings(s => ({ ...s, trackLink: !s.trackLink }));
+                }} />
+              </div>
+              <div className="sm-toggle">
+                <div>
+                  <div className="sm-toggle-label">Require email to view</div>
+                  <div className="sm-toggle-desc">Viewers must enter their email before accessing</div>
+                </div>
+                <div className={`sm-switch${workShareSettings.requireEmail ? " on" : ""}`} onClick={() => {
+                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                  setWorkShareSettings(s => ({ ...s, requireEmail: !s.requireEmail }));
+                }} />
+              </div>
+              <div className="sm-toggle" style={{ borderBottom: "none" }}>
+                <div>
+                  <div className="sm-toggle-label">Password protect</div>
+                  <div className="sm-toggle-desc">Require a password to access your work page</div>
+                </div>
+                <div className={`sm-switch${workShareSettings.password ? " on" : ""}`} onClick={() => {
+                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                  setWorkShareSettings(s => ({ ...s, password: s.password ? "" : "demo123" }));
+                }} />
+              </div>
+              {workShareSettings.password && (
+                <input className="sm-pw-input" type="text" placeholder="Enter password..." value={workShareSettings.password} onChange={e => setWorkShareSettings(s => ({ ...s, password: e.target.value }))} />
+              )}
+            </div>
+
+            <div className="sm-actions">
+              <button style={{ background: "none", border: "1px solid var(--g2)", color: "var(--tx)" }} onClick={() => setShowWorkShareModal(false)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Work Live View ── */}
+      {workLive && currentWork && (() => {
+        const wk = currentWork;
+        const touringLabel = TOURING_STATUSES.find(s => s.id === wk.touringStatus)?.label || wk.touringStatus;
+        return (
+          <div className="wkl-overlay">
+            <div className="wkl-topbar">
+              <div className="wkl-topbar-title">{wk.name} — Live Preview</div>
+              <div className="wkl-topbar-actions">
+                <button style={{ background: "none", border: "1px solid var(--g2)", color: "var(--tx)" }} onClick={() => { navigator.clipboard?.writeText(`lanced.app/${artist.name.toLowerCase().replace(/\s/g, "")}/works/${wk.slug}`); showToast("Link copied!"); }}>Copy Link</button>
+                <button style={{ background: "#D97706", border: "none", color: "#fff" }} onClick={() => setWorkLive(false)}>Close</button>
+              </div>
+            </div>
+            <div className="wkl-content">
+              {/* Hero */}
+              <div className={`wkp-hero wkl-anim${wk.cover ? " has-cover" : ""}`} style={wk.cover ? { backgroundImage: `url(${wk.cover})` } : {}}>
+                <div className="wkp-hero-label">WORK</div>
+                <div className="wkp-hero-title">{wk.name}</div>
+                <div className="wkp-hero-tagline">{wk.tagline}</div>
+                <div className="wkp-hero-role">{wk.role}</div>
+                <div className="wkp-hero-actions">
+                  {wk.upcomingPerformances.length > 0 && <button style={{ background: "#D97706", border: "none", color: "#fff" }}>Get Tickets</button>}
+                  <button style={{ background: "rgba(255,255,255,.1)", border: "1px solid rgba(255,255,255,.2)", color: "#fff" }}>Book This Work</button>
+                </div>
+              </div>
+
+              {/* Key Info */}
+              <div className="wkp-keyinfo wkl-anim" style={{ animationDelay: ".05s" }}>
+                {wk.genre && <div className="wkp-keyinfo-pill"><strong>{wk.genre}</strong></div>}
+                {wk.duration && <div className="wkp-keyinfo-pill"><span>Duration</span> <strong>{wk.duration}</strong></div>}
+                {wk.premiereYear && <div className="wkp-keyinfo-pill"><span>Premiere</span> <strong>{wk.premiereYear}</strong></div>}
+                {wk.country && <div className="wkp-keyinfo-pill"><span>{wk.city},</span> <strong>{wk.country}</strong></div>}
+                {wk.language && <div className="wkp-keyinfo-pill"><span>Language</span> <strong>{wk.language}</strong></div>}
+                {wk.ageGuidance && <div className="wkp-keyinfo-pill"><span>Age</span> <strong>{wk.ageGuidance}</strong></div>}
+                <div className="wkp-keyinfo-pill"><span>Status</span> <strong>{touringLabel}</strong></div>
+              </div>
+
+              {/* About */}
+              {(wk.shortPitch || wk.fullDescription) && (
+                <div className="wkp-about wkl-anim" style={{ animationDelay: ".1s" }}>
+                  {wk.shortPitch && <div className="wkp-about-pitch">{wk.shortPitch}</div>}
+                  {wk.fullDescription && <div className="wkp-about-desc">{wk.fullDescription}</div>}
+                  {wk.conceptNote && <div className="wkp-about-note"><strong>Concept Note</strong><br/>{wk.conceptNote}</div>}
+                </div>
+              )}
+
+              {/* Trailer */}
+              {wk.cover && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".15s" }}>
+                  <h3 className="wkp-section-title"><em>Trailer</em> & Video</h3>
+                  <div className="wkp-trailer">
+                    <img src={wk.cover} alt="" />
+                    <div className="wkp-trailer-play" />
+                  </div>
+                </div>
+              )}
+
+              {/* Credits */}
+              {wk.credits.length > 0 && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".2s" }}>
+                  <h3 className="wkp-section-title">Credits & <em>Team</em></h3>
+                  <div className="wkp-credits-grid">
+                    {wk.credits.map(cr => (
+                      <div key={cr.id} className="wkp-credit-card">
+                        <div className="wkp-credit-avatar">{cr.name.split(" ").map(w => w[0]).join("")}</div>
+                        <div><div className="wkp-credit-name">{cr.name}</div><div className="wkp-credit-role">{cr.role}</div></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Gallery */}
+              {wk.gallery.length > 0 && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".25s" }}>
+                  <h3 className="wkp-section-title">Photo <em>Gallery</em></h3>
+                  <div className="wkp-gallery">
+                    {wk.gallery.map(ph => <div key={ph.id} className="wkp-gallery-item"><img src={ph.src} alt={ph.caption} /></div>)}
+                  </div>
+                </div>
+              )}
+
+              {/* Reviews & Awards */}
+              {(wk.reviews.length > 0 || wk.awards.length > 0) && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".3s" }}>
+                  <h3 className="wkp-section-title"><em>Reviews</em> & Awards</h3>
+                  {wk.reviews.map(rv => (
+                    <div key={rv.id} className="wke-review-card" style={{ background: "var(--sf)" }}>
+                      <span className={`wke-review-type ${rv.type}`}>{rv.type === "press" ? "Press" : "Audience"}</span>
+                      <div className="wke-review-quote">"{rv.quote}"</div>
+                      <div className="wke-review-source"><strong>{rv.source}</strong>{rv.rating ? ` · ${"★".repeat(rv.rating)}${"☆".repeat(5 - rv.rating)}` : ""}</div>
+                    </div>
+                  ))}
+                  {wk.awards.map(aw => (
+                    <div key={aw.id} className="wke-award-card" style={{ background: "var(--sf)" }}>
+                      <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? "🏆" : aw.type === "nomination" ? "🌟" : "✨"}</div>
+                      <div className="wke-award-info">
+                        <div className="wke-award-title">{aw.title}</div>
+                        <div className="wke-award-meta">{aw.festival} · {aw.year} · {aw.type}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Upcoming Performances */}
+              {wk.upcomingPerformances.length > 0 && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".35s" }}>
+                  <h3 className="wkp-section-title">Upcoming <em>Performances</em></h3>
+                  {wk.upcomingPerformances.map(p => {
+                    const d = new Date(p.date);
+                    return (
+                      <div key={p.id} className="wke-perf-item" style={{ background: "var(--sf)" }}>
+                        <div className="wke-perf-date">
+                          <div className="wke-perf-date-d">{d.getDate()}</div>
+                          <div className="wke-perf-date-m">{d.toLocaleDateString("en-GB", { month: "short" })}</div>
+                        </div>
+                        <div className="wke-perf-info">
+                          <div className="wke-perf-venue">{p.venue}</div>
+                          <div className="wke-perf-city">{p.city}</div>
+                        </div>
+                        <button className="wke-cta-btn tickets" style={{ padding: "6px 14px", fontSize: 11 }}>Get Tickets</button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Availability */}
+              <div className="wkp-avail wkl-anim" style={{ animationDelay: ".4s" }}>
+                <div className="wkp-avail-status">
+                  <div className={`wkp-avail-dot ${wk.touringStatus}`} />
+                  {touringLabel}
+                </div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  {wk.bookingCtas.map((cta, i) => (
+                    <button key={i} className={`wke-cta-btn ${cta.intent}`}>{cta.label}</button>
+                  ))}
+                  {wk.bookingCtas.length === 0 && wk.bookingEmail && <button className="wke-cta-btn contact">Contact</button>}
+                </div>
+              </div>
+
+              {/* Partners */}
+              {wk.partners.length > 0 && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".45s" }}>
+                  <h3 className="wkp-section-title">Partners & <em>Presented By</em></h3>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {wk.partners.map(pt => (
+                      <div key={pt.id} className="wke-partner" style={{ background: "var(--sf)" }}>
+                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤝</div>
+                        <div><div className="wke-partner-name">{pt.name}</div><div className="wke-partner-type">{pt.type}</div></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Downloads */}
+              {wk.downloads.length > 0 && (
+                <div className="wkl-anim" style={{ marginBottom: 24, animationDelay: ".5s" }}>
+                  <h3 className="wkp-section-title"><em>Downloads</em></h3>
+                  {wk.downloads.map(dl => (
+                    <div key={dl.id} className="wke-dl-item" style={{ background: "var(--sf)" }}>
+                      <div className="wke-dl-icon">📄</div>
+                      <div className="wke-dl-info"><div className="wke-dl-title">{dl.label}</div><div className="wke-dl-meta">{dl.format} · {dl.size}</div></div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Footer */}
+              <div style={{ textAlign: "center", padding: "24px 0", color: "var(--g4)", fontSize: 11 }}>
+                {wk.name} · {artist.name} · Powered by Lanced
+              </div>
             </div>
           </div>
         );
