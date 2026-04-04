@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -265,45 +265,27 @@ const MOCK_WORK_TRACKING = [
 const STUDIO_THEMES = [
   {
     id: "noir", name: "Noir", desc: "Bold editorial. Cinematic. Motion-heavy.", tier: "free",
-    preview: "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg",
+    preview: "/demo/banners/theme-noir.png",
     colors: { bg: "#0a0a0a", text: "#ffffff", accent: "#ffffff", muted: "rgba(255,255,255,.5)" },
     fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
   },
   {
-    id: "aurora", name: "Aurora", desc: "Ethereal gradients. Soft. Dreamlike.", tier: "pro", locked: true,
-    preview: "/demo/banners/aleksandr-popov-htv8aapzioq-unsplash.jpg",
-    colors: { bg: "#0f0a1a", text: "#f0e6ff", accent: "#a78bfa", muted: "rgba(240,230,255,.5)" },
-    fonts: { heading: "'Georgia',serif", body: "'Inter',system-ui,sans-serif" },
-  },
-  {
-    id: "editorial", name: "Editorial", desc: "Clean magazine layout. Refined typography.", tier: "pro", locked: true,
-    preview: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg",
-    colors: { bg: "#faf9f6", text: "#1a1a1a", accent: "#1a1a1a", muted: "rgba(26,26,26,.5)" },
-    fonts: { heading: "'Georgia',serif", body: "'Inter',system-ui,sans-serif" },
-  },
-  {
-    id: "vivid", name: "Vivid", desc: "Colorful. Energetic. Playful.", tier: "pro", locked: true,
-    preview: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg",
-    colors: { bg: "#fffbeb", text: "#1a1a1a", accent: "#f59e0b", muted: "rgba(26,26,26,.5)" },
-    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
-  },
-  {
-    id: "minimal", name: "Minimal", desc: "Whitespace. Quiet elegance. Less is more.", tier: "pro", locked: true,
-    preview: "/demo/banners/rachel-coyne-u7hlzmo4siy-unsplash.jpg",
-    colors: { bg: "#ffffff", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.4)" },
-    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
-  },
-  {
-    id: "brutalist", name: "Brutalist", desc: "Raw. Oversized type. Unapologetic.", tier: "pro", locked: true,
-    preview: "/demo/banners/shutterstock_1505137721.jpg",
-    colors: { bg: "#f5f5f0", text: "#000000", accent: "#ff3300", muted: "rgba(0,0,0,.4)" },
-    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
-  },
-  {
     id: "atrium", name: "Atrium", desc: "Refined. Rounded. Numbered sections.", tier: "free",
-    preview: "/demo/banners/rachel-coyne-u7hlzmo4siy-unsplash.jpg",
+    preview: "/demo/banners/theme-atrium.png",
     colors: { bg: "#F7F7F5", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.45)" },
     fonts: { heading: "'Plus Jakarta Sans',system-ui,sans-serif", body: "'Plus Jakarta Sans',system-ui,sans-serif" },
+  },
+  {
+    id: "lumen", name: "Lumen", desc: "Warm. Personal. Soft & inviting.", tier: "free",
+    preview: "/demo/banners/theme-lumen.png",
+    colors: { bg: "#fdf8f4", text: "#2d2418", accent: "#c8956c", muted: "rgba(45,36,24,.4)" },
+    fonts: { heading: "'DM Serif Display',Georgia,serif", body: "'Inter',system-ui,sans-serif" },
+  },
+  {
+    id: "slater", name: "Slater", desc: "Editorial. Cinematic. Motion-rich.", tier: "free",
+    preview: "/demo/banners/theme-slater.png",
+    colors: { bg: "#ffffff", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.35)" },
+    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
   },
 ];
 
@@ -377,7 +359,7 @@ const ac = "#604DFF";
 
 /* ━━━ CSS ━━━ */
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
 
 :root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'DM Sans',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px}
 
@@ -1921,7 +1903,7 @@ textarea.pf-input{line-height:1.6}
 .studio-gallery-card:hover{border-color:var(--g3);box-shadow:0 4px 20px rgba(0,0,0,.06)}
 .studio-gallery-card.active{border-color:var(--ac);box-shadow:0 0 0 2px var(--ac)}
 .studio-gallery-card.locked{opacity:.7}
-.studio-gallery-preview{height:180px;background-size:cover;background-position:center;position:relative;display:flex;align-items:flex-end;justify-content:center;padding:16px}
+.studio-gallery-preview{aspect-ratio:1.8/1;background-size:cover;background-position:center top;position:relative;display:flex;align-items:flex-end;justify-content:center;padding:16px}
 .studio-gallery-overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
 .studio-gallery-card:hover .studio-gallery-overlay{opacity:1}
 .studio-gallery-active{position:absolute;top:10px;left:10px;background:var(--ac);color:#fff;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px}
@@ -1968,11 +1950,48 @@ textarea.pf-input{line-height:1.6}
 .studio-featured-btn.active{border-color:var(--ac);color:var(--ac);background:rgba(96,77,255,.05)}
 
 /* Layout sub-tab */
-.studio-section-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--g2);border-radius:10px;margin-bottom:6px}
+.studio-section-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--g2);border-radius:10px;margin-bottom:6px;transition:transform .15s,box-shadow .15s,border-color .15s;user-select:none}
+.studio-section-row.dragging{opacity:.4;transform:scale(.97)}
+.studio-section-row.drag-over{border-color:var(--ac);box-shadow:0 0 0 2px rgba(96,77,255,.15);transform:scale(1.01)}
 .studio-section-drag{color:var(--g3);cursor:grab;display:flex;align-items:center}
+.studio-section-drag:active{cursor:grabbing}
 .studio-section-label{font-size:13px;font-weight:600;color:var(--tx)}
-.studio-section-move{width:24px;height:24px;border:1px solid var(--g2);border-radius:6px;background:var(--sf);color:var(--g4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px}
-.studio-section-move:hover{background:var(--g1);color:var(--tx)}
+.studio-section-row .studio-section-edit{width:24px;height:24px;border:1px solid var(--g2);border-radius:6px;background:var(--sf);color:var(--g4);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s}
+.studio-section-row .studio-section-edit:hover{background:rgba(96,77,255,.15);color:var(--ac);border-color:var(--ac)}
+
+/* Section Inspector Panel */
+.studio-inspector{animation:inspectorIn .2s ease}
+@keyframes inspectorIn{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
+.studio-inspector-back{display:flex;align-items:center;gap:6px;font-size:12px;letter-spacing:1px;color:var(--g4);cursor:pointer;padding:0 0 16px;border:none;background:none;transition:color .15s;font-family:inherit}
+.studio-inspector-back:hover{color:var(--tx)}
+.studio-inspector h4{font-size:14px;font-weight:700;margin:0 0 4px;color:var(--tx)}
+.studio-inspector-hint{font-size:11px;color:var(--g4);margin:0 0 16px}
+.studio-inspector-group{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--g2)}
+.studio-inspector-group:last-child{border-bottom:none;margin-bottom:0}
+.studio-inspector-label{font-size:11px;font-weight:600;letter-spacing:1px;color:var(--g4);margin-bottom:6px;display:block}
+.studio-inspector-input{width:100%;padding:10px 12px;border:1px solid var(--g2);border-radius:8px;background:var(--sf);color:var(--tx);font-size:13px;font-family:inherit;outline:none;resize:vertical;transition:border-color .15s}
+.studio-inspector-input:focus{border-color:var(--ac)}
+.studio-inspector-input::placeholder{color:var(--g3)}
+.studio-inspector-toggle{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.studio-inspector-toggle span{font-size:12px;color:var(--g5)}
+.studio-inspector-media-btn{display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px dashed var(--g2);border-radius:10px;background:transparent;color:var(--g4);font-size:12px;cursor:pointer;width:100%;transition:all .15s;font-family:inherit}
+.studio-inspector-media-btn:hover{border-color:var(--ac);color:var(--ac);background:rgba(96,77,255,.04)}
+.studio-inspector-media-thumb{width:100%;aspect-ratio:16/9;border-radius:8px;overflow:hidden;position:relative;margin-bottom:8px;cursor:pointer;border:1px solid var(--g2)}
+.studio-inspector-media-thumb img{width:100%;height:100%;object-fit:cover}
+.studio-inspector-media-thumb:hover::after{content:'Change';position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;letter-spacing:1px}
+.studio-inspector-record{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--g2);border-radius:8px;margin-bottom:4px;cursor:pointer;transition:all .15s}
+.studio-inspector-record:hover{border-color:var(--g3)}
+.studio-inspector-record.selected{border-color:var(--ac);background:rgba(96,77,255,.06)}
+.studio-inspector-record-check{width:18px;height:18px;border:1.5px solid var(--g3);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;color:transparent;transition:all .15s}
+.studio-inspector-record.selected .studio-inspector-record-check{border-color:var(--ac);background:var(--ac);color:#fff}
+.studio-inspector-record-info{flex:1;min-width:0}
+.studio-inspector-record-title{font-size:12px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.studio-inspector-record-meta{font-size:10px;color:var(--g4)}
+.studio-inspector-source{display:flex;gap:6px;margin-top:8px}
+.studio-inspector-source button{flex:1;padding:8px;border:1px solid var(--g2);border-radius:8px;background:transparent;color:var(--g4);font-size:11px;cursor:pointer;font-family:inherit;transition:all .15s}
+.studio-inspector-source button.active{border-color:var(--ac);color:var(--ac);background:rgba(96,77,255,.08)}
+
+/* Click-to-edit in preview */
 
 /* Brand sub-tab */
 .studio-color-swatches{display:flex;gap:8px;flex-wrap:wrap}
@@ -2007,12 +2026,12 @@ textarea.pf-input{line-height:1.6}
 .noir-cursor{position:fixed;width:28px;height:28px;border-radius:50%;background:#fff;mix-blend-mode:difference;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .15s,height .15s}
 
 /* Noir Nav */
-.noir-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 32px;transition:padding .4s cubic-bezier(.4,0,.2,1);background:transparent;mix-blend-mode:difference}
+.noir-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;padding:20px 32px;background:transparent;mix-blend-mode:difference}
 .noir-nav-compact{padding:16px 32px}
-.noir-nav-name{font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;font-family:'Inter',system-ui,sans-serif}
-.noir-nav-links{display:flex;gap:28px;font-size:11px;font-weight:500;letter-spacing:2px;color:#fff}
-.noir-nav-spread{width:100%;justify-content:space-between;gap:40px;font-size:14px;font-weight:500;letter-spacing:3px}
-.noir-nav-links span{cursor:pointer;transition:opacity .2s;opacity:.7}
+.noir-nav-name{font-size:13px;font-weight:900;letter-spacing:3px;text-transform:uppercase;font-family:'Inter',system-ui,sans-serif;white-space:nowrap;flex-shrink:0;margin-right:16px}
+.noir-nav-links{display:flex;gap:28px;font-size:13px;font-weight:500;letter-spacing:2px;color:#fff;white-space:nowrap;transition:gap .5s cubic-bezier(.4,0,.2,1)}
+.noir-nav-spread{width:100%;justify-content:space-between;gap:40px}
+.noir-nav-links span{cursor:pointer;transition:opacity .2s,transform .5s cubic-bezier(.4,0,.2,1);opacity:.7}
 .noir-nav-links span:hover{opacity:1}
 
 /* Noir Hero */
@@ -2086,8 +2105,8 @@ textarea.pf-input{line-height:1.6}
 @keyframes noirMarqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes noirMarqueeRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 .noir-marquee-img{flex-shrink:0;width:360px;height:240px;border-radius:12px;overflow:hidden}
-.noir-marquee-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.noir-marquee-img:hover img{transform:scale(1.06)}
+.noir-marquee-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:brightness(.6)}
+.noir-marquee-img:hover img{transform:scale(1.06);filter:brightness(.85)}
 /* Builder-only gallery layouts */
 .noir-gallery-grid-builder{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 32px}
 .noir-gallery-masonry-builder{columns:2;column-gap:16px;padding:0 32px}
@@ -2109,6 +2128,16 @@ textarea.pf-input{line-height:1.6}
 .noir-gallery-hover svg{width:40px;height:40px;padding:8px;background:rgba(255,255,255,.15);border-radius:50%;color:#fff}
 .noir-gallery-item:hover .noir-gallery-hover{opacity:1}
 .noir-gallery-caption{position:absolute;bottom:12px;left:14px;font-size:11px;color:rgba(255,255,255,.7);letter-spacing:.5px}
+
+/* Noir Explore Gallery */
+.noir-explore{padding:80px 64px}
+.noir-explore-inner{position:relative;cursor:pointer;padding:40px;border:1px solid rgba(255,255,255,.08);border-radius:16px;transition:border-color .3s}
+.noir-explore-inner:hover{border-color:rgba(255,255,255,.2)}
+.noir-explore-label{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px}
+.noir-explore-thumbs{display:flex;gap:12px;margin-bottom:20px;overflow:hidden;border-radius:10px}
+.noir-explore-thumbs img{flex:1;min-width:0;height:100px;object-fit:cover;border-radius:8px;filter:brightness(.7);transition:filter .3s,transform .3s}
+.noir-explore-inner:hover .noir-explore-thumbs img{filter:brightness(.9)}
+.noir-explore-cta{font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase}
 
 /* Noir Testimonials */
 .noir-testimonials{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -2183,7 +2212,7 @@ textarea.pf-input{line-height:1.6}
 .noir-connect{padding:100px 32px;border-top:1px solid rgba(255,255,255,.06);display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 .noir-connect-left h2{font-size:clamp(36px,6vw,72px);font-weight:900;line-height:.95;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 20px}
 .noir-connect-left p{font-size:14px;line-height:1.7;color:rgba(255,255,255,.45);margin:0 0 32px;max-width:400px}
-.noir-connect-cta{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;text-decoration:none;padding:16px 32px;border:1px solid rgba(255,255,255,.2);border-radius:40px;transition:all .3s}
+.noir-connect-cta{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--noir-accent,#fff);text-decoration:none;padding:16px 32px;border:1px solid var(--noir-accent,rgba(255,255,255,.2));border-radius:40px;transition:all .3s}
 .noir-connect-cta:hover{background:rgba(255,255,255,.08);gap:16px}
 .noir-connect-right{display:flex;flex-direction:column;gap:20px}
 .noir-connect-item{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -2212,6 +2241,165 @@ textarea.pf-input{line-height:1.6}
 .noir-footer-bigname svg{width:100%;height:auto;display:block}
 .noir-footer-bigname svg text{fill:#fff;font-weight:900;font-family:'Inter',system-ui,sans-serif}
 
+/* ── Noir Sub-Pages ── */
+.noir-page{animation:noirPageIn .5s ease both}
+@keyframes noirPageIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Gallery Page */
+.noir-gallery-page{padding:120px 32px 80px}
+.noir-gallery-page-header{margin-bottom:60px}
+.noir-gallery-page-header h1{font-size:clamp(36px,6vw,64px);font-weight:900;letter-spacing:-1px;margin:0 0 12px}
+.noir-gallery-page-header p{font-size:14px;color:rgba(255,255,255,.5);letter-spacing:2px}
+.noir-gallery-page-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.noir-gallery-page-item{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.noir-gallery-page-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .3s;filter:brightness(.75)}
+.noir-gallery-page-item:hover img{transform:scale(1.04);filter:brightness(1)}
+.noir-gallery-page-item .noir-gp-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:20px}
+.noir-gallery-page-item:hover .noir-gp-overlay{opacity:1}
+.noir-gallery-page-item .noir-gp-overlay span{font-size:12px;letter-spacing:2px;font-weight:500}
+
+/* About Page */
+.noir-about-page{padding:120px 32px 80px}
+.noir-about-page-hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:80px}
+.noir-about-page-hero-left h1{font-size:clamp(36px,5vw,56px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin:0 0 24px}
+.noir-about-page-hero-left .noir-ap-role{font-size:12px;letter-spacing:3px;color:rgba(255,255,255,.4);margin-bottom:16px}
+.noir-about-page-hero-left .noir-ap-avail{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;color:rgba(130,220,130,.8);margin-bottom:32px}
+.noir-about-page-hero-left .noir-ap-avail-dot{width:8px;height:8px;border-radius:50%;background:rgba(130,220,130,.8)}
+.noir-about-page-hero-left .noir-ap-bio{font-size:16px;line-height:1.8;color:rgba(255,255,255,.7)}
+.noir-about-page-hero-right{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4}
+.noir-about-page-hero-right img{width:100%;height:100%;object-fit:cover}
+.noir-about-page-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:60px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:80px}
+.noir-about-page-stat{text-align:center}
+.noir-about-page-stat-num{font-size:clamp(32px,4vw,48px);font-weight:900;display:block;margin-bottom:8px}
+.noir-about-page-stat-label{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.4)}
+.noir-about-page-journey{margin-bottom:80px}
+.noir-about-page-journey h2{font-size:clamp(24px,3vw,36px);font-weight:900;margin:0 0 40px;letter-spacing:-1px}
+.noir-about-page-timeline{display:flex;flex-direction:column;gap:0}
+.noir-about-page-timeline-item{display:grid;grid-template-columns:140px 1fr;gap:40px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.noir-about-page-timeline-item .noir-at-year{font-size:13px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,.4)}
+.noir-about-page-timeline-item .noir-at-title{font-size:16px;font-weight:600;margin-bottom:4px}
+.noir-about-page-timeline-item .noir-at-org{font-size:13px;color:rgba(255,255,255,.5)}
+.noir-about-page-timeline-item .noir-at-desc{font-size:14px;color:rgba(255,255,255,.5);margin-top:8px;line-height:1.6}
+.noir-about-page-skills{margin-bottom:80px}
+.noir-about-page-skills h2{font-size:clamp(24px,3vw,36px);font-weight:900;margin:0 0 40px;letter-spacing:-1px}
+.noir-about-page-skills-grid{display:flex;flex-wrap:wrap;gap:12px}
+.noir-about-page-skill{padding:10px 24px;border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.6);transition:all .2s}
+.noir-about-page-skill:hover{border-color:rgba(255,255,255,.3);color:#fff}
+
+/* Portfolio / Work Detail Page */
+.noir-detail-page{padding:100px 32px 80px}
+.noir-detail-page-breadcrumb{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.4);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.noir-detail-page-breadcrumb span{cursor:pointer;transition:color .2s}
+.noir-detail-page-breadcrumb span:hover{color:#fff}
+.noir-detail-page h1{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-1px;line-height:1.1;margin:0 0 32px;max-width:800px}
+.noir-detail-page-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding:32px 0;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:48px}
+.noir-detail-page-meta-item .noir-dm-label{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.35);margin-bottom:6px}
+.noir-detail-page-meta-item .noir-dm-value{font-size:14px;font-weight:500;letter-spacing:1px}
+.noir-detail-page-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:60px}
+.noir-detail-page-photos.single-col{grid-template-columns:1fr}
+.noir-detail-page-photo{border-radius:12px;overflow:hidden;position:relative}
+.noir-detail-page-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.noir-detail-page-photo.full{grid-column:1/-1}
+.noir-detail-page-overview{display:grid;grid-template-columns:200px 1fr;gap:60px;margin-bottom:60px;padding:60px 0;border-top:1px solid rgba(255,255,255,.06)}
+.noir-detail-page-overview-label,.noir-detail-section-label{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.35)}
+.noir-detail-page-overview-text{font-size:16px;line-height:1.8;color:rgba(255,255,255,.7);max-width:700px}
+.noir-detail-page-info{border-top:1px solid rgba(255,255,255,.06);margin-bottom:80px}
+.noir-detail-page-info-row{display:grid;grid-template-columns:200px 1fr;gap:60px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.noir-detail-page-info-row .noir-di-label{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.35)}
+.noir-detail-page-info-row .noir-di-value{font-size:14px;font-weight:500;letter-spacing:1px}
+.noir-detail-next{position:relative;padding:80px 32px;overflow:hidden;cursor:pointer;border-top:1px solid rgba(255,255,255,.06)}
+.noir-detail-next-bg{position:absolute;inset:0;z-index:1}
+.noir-detail-next-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.3);transition:filter .4s}
+.noir-detail-next:hover .noir-detail-next-bg img{filter:brightness(.45)}
+.noir-detail-next-content{position:relative;z-index:2}
+.noir-detail-next-label{font-size:12px;letter-spacing:2px;color:rgba(255,255,255,.4);margin-bottom:12px}
+.noir-detail-next-title{font-size:clamp(24px,4vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+.noir-detail-next-cta{font-size:12px;letter-spacing:2px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.7)}
+.noir-detail-next-cta svg{width:16px;height:16px}
+
+/* Video Elements */
+.noir-detail-video-hero{margin-bottom:48px;border-radius:16px;overflow:hidden;background:#111}
+.noir-detail-video-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer}
+.noir-detail-video-thumb img{width:100%;height:100%;object-fit:cover;filter:brightness(.55);transition:filter .4s,transform .4s}
+.noir-detail-video-hero:hover .noir-detail-video-thumb img{filter:brightness(.7);transform:scale(1.02)}
+.noir-detail-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;transition:all .3s;cursor:pointer}
+.noir-detail-video-hero:hover .noir-detail-video-play{background:rgba(255,255,255,.2);transform:translate(-50%,-50%) scale(1.08)}
+.noir-detail-video-info{padding:20px 24px;display:flex;align-items:center;gap:16px}
+.noir-detail-video-info h3{font-size:16px;font-weight:700;letter-spacing:1px;margin:0}
+.noir-detail-videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px}
+.noir-detail-video-card{border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:border-color .3s,transform .3s;cursor:pointer}
+.noir-detail-video-card:hover{border-color:rgba(255,255,255,.15);transform:translateY(-2px)}
+.noir-detail-video-thumb-sm{position:relative;aspect-ratio:16/9;overflow:hidden}
+.noir-detail-video-thumb-sm img{width:100%;height:100%;object-fit:cover;filter:brightness(.5);transition:filter .3s}
+.noir-detail-video-card:hover .noir-detail-video-thumb-sm img{filter:brightness(.7)}
+.noir-detail-video-play-sm{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:all .3s}
+.noir-detail-video-card:hover .noir-detail-video-play-sm{background:rgba(255,255,255,.2)}
+
+/* Contact Modal */
+.noir-contact-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;animation:noirFadeIn .3s ease}
+@keyframes noirFadeIn{from{opacity:0}to{opacity:1}}
+.noir-contact-modal{background:#111;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:48px;width:90%;max-width:560px;position:relative;animation:noirModalIn .4s cubic-bezier(.4,0,.2,1)}
+@keyframes noirModalIn{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.noir-contact-modal-close{position:absolute;top:20px;right:20px;background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer;transition:color .2s;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.noir-contact-modal-close:hover{color:#fff;background:rgba(255,255,255,.06)}
+.noir-contact-modal h2{font-size:28px;font-weight:900;letter-spacing:-1px;margin:0 0 8px}
+.noir-contact-modal p{font-size:13px;color:rgba(255,255,255,.4);margin:0 0 32px;letter-spacing:1px}
+.noir-contact-form{display:flex;flex-direction:column;gap:20px}
+.noir-contact-field{display:flex;flex-direction:column;gap:6px}
+.noir-contact-field label{font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.4);font-weight:500}
+.noir-contact-field input,.noir-contact-field textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:14px 16px;color:#fff;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.noir-contact-field input:focus,.noir-contact-field textarea:focus{border-color:rgba(255,255,255,.3)}
+.noir-contact-field textarea{min-height:120px;resize:vertical}
+.noir-contact-submit{background:var(--noir-accent,#fff);color:#0a0a0a;border:none;border-radius:10px;padding:16px;font-size:13px;font-weight:700;letter-spacing:2px;cursor:pointer;transition:all .2s;margin-top:8px}
+.noir-contact-submit:hover{background:rgba(255,255,255,.9);transform:translateY(-1px)}
+
+/* Noir accent color overrides — structural / decorative elements */
+/* Featured work & experience labels */
+.noir-fw-label{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-fw-meta{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-fw-performances h3{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-exp-type{color:var(--noir-accent,rgba(255,255,255,.3))}
+/* Contact & footer labels */
+.noir-connect-item-label{color:var(--noir-accent,rgba(255,255,255,.35))}
+.noir-footer-nav{color:var(--noir-accent,rgba(255,255,255,.5))}
+.noir-footer-socials a{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-footer-subtitle{color:var(--noir-accent,rgba(255,255,255,.6))}
+/* Testimonials */
+.noir-testimonials-dot{background:var(--noir-accent,rgba(255,255,255,.3))}
+/* Availability badge */
+.noir-available{color:var(--noir-accent,rgba(255,255,255,.7))}
+/* Detail pages: breadcrumb, meta labels, overview labels, info labels, next label */
+.noir-detail-page-breadcrumb{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-detail-page-meta-item .noir-dm-label{color:var(--noir-accent,rgba(255,255,255,.35))}
+.noir-detail-page-overview-label,.noir-detail-section-label{color:var(--noir-accent,rgba(255,255,255,.35))}
+.noir-detail-page-info-row .noir-di-label{color:var(--noir-accent,rgba(255,255,255,.35))}
+.noir-detail-next-label{color:var(--noir-accent,rgba(255,255,255,.4))}
+/* Contact form labels */
+.noir-contact-field label{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-contact-modal p{color:var(--noir-accent,rgba(255,255,255,.4))}
+/* About section decorative icon */
+.noir-about-left svg{color:var(--noir-accent,rgba(255,255,255,.3))}
+/* Portfolio & work tags */
+.noir-pf-tags span{color:var(--noir-accent,rgba(255,255,255,.4));border-color:var(--noir-accent,rgba(255,255,255,.08));opacity:.7}
+/* About page skill tags */
+.noir-about-page-skill{color:var(--noir-accent,rgba(255,255,255,.6));border-color:var(--noir-accent,rgba(255,255,255,.12))}
+/* Partner pills */
+.noir-partner-pill{padding:8px 20px;border:1px solid var(--noir-accent,rgba(255,255,255,.1));border-radius:100px;font-size:12px;letter-spacing:2px;color:var(--noir-accent,rgba(255,255,255,.5));opacity:.7}
+.noir-partner-pill .noir-partner-type{color:var(--noir-accent,rgba(255,255,255,.25));opacity:.6}
+/* Review/reference citations & blockquote border */
+.noir-blockquote{border-left:2px solid var(--noir-accent,rgba(255,255,255,.12));padding-left:20px;margin:0 0 28px;opacity:.6}
+.noir-cite{font-size:12px;letter-spacing:2px;color:var(--noir-accent,rgba(255,255,255,.4))}
+/* Featured work quote cite */
+.noir-fw-quote cite{color:var(--noir-accent,rgba(255,255,255,.4))}
+/* Award year & festival */
+.noir-award-year{font-size:11px;color:var(--noir-accent,rgba(255,255,255,.3));width:40px}
+.noir-award-festival{font-size:12px;color:var(--noir-accent,rgba(255,255,255,.4))}
+/* Performance venue */
+.noir-perf-venue{font-size:14px;color:var(--noir-accent,rgba(255,255,255,.7));opacity:.6}
+/* Explore gallery */
+.noir-explore-label{color:var(--noir-accent,rgba(255,255,255,.4))}
+.noir-explore-cta{color:var(--noir-accent,#fff)}
+
 /* Noir responsive */
 @media(max-width:768px){
   .noir-hero{min-height:auto}
@@ -2227,6 +2415,11 @@ textarea.pf-input{line-height:1.6}
   .noir-nav-links{gap:16px;font-size:11px}
   .studio-builder-body{grid-template-columns:280px 1fr}
 }
+
+/* Noir customizable bg, title, text colors */
+.noir-theme{background:var(--noir-bg,#0a0a0a);color:var(--noir-title,#fff)}
+.noir-about-text p,.noir-fw-desc,.noir-exp-desc,.noir-exp-org,.noir-connect-left p{color:var(--noir-text,rgba(255,255,255,.7))}
+.noir-section-title,.noir-hero-name,.noir-fw-title,.noir-detail-page h1,.noir-about-page h1,.noir-about-page h2{color:var(--noir-title,#fff)}
 
 /* ═══ ATRIUM THEME ═══ */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
@@ -2250,8 +2443,9 @@ textarea.pf-input{line-height:1.6}
 /* Atrium Hero — floating card with image */
 .atrium-hero{padding:24px 32px 0;border-bottom:none;position:relative}
 .atrium-hero-inner{position:relative;overflow:hidden;border-radius:20px}
-.atrium-hero-img{width:100%;height:70vh;min-height:480px;object-fit:cover;display:block;filter:brightness(.82)}
+.atrium-hero-img{width:100%;height:82vh;min-height:540px;object-fit:cover;display:block;filter:brightness(.82)}
 .atrium-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.2) 40%,transparent 65%);pointer-events:none;border-radius:20px}
+.atrium-hero-inner::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;z-index:3;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:128px 128px;animation:atriumGrain 0.4s steps(3) infinite}
 .atrium-hero-content{position:absolute;bottom:0;left:0;right:0;padding:48px 56px 52px;color:#fff}
 .atrium-hero-brand{font-size:11px;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.6);font-weight:500;margin-bottom:16px}
 .atrium-hero-name{font-size:clamp(44px,9vw,110px);font-weight:800;line-height:.9;letter-spacing:-0.04em;margin:0;text-transform:uppercase;color:#fff}
@@ -2279,20 +2473,20 @@ textarea.pf-input{line-height:1.6}
 
 /* Atrium Portfolios */
 .atrium-portfolios{padding:80px 64px}
-.atrium-pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.atrium-pf-card{border:1px solid rgba(0,0,0,.06);border-radius:16px;overflow:hidden;transition:all .3s;cursor:pointer;background:#fff}
-.atrium-pf-card:hover{border-color:rgba(0,0,0,.12);box-shadow:0 8px 32px rgba(0,0,0,.06)}
-.atrium-pf-card.featured{border-color:rgba(0,0,0,.15)}
-.atrium-pf-cover{aspect-ratio:16/9;overflow:hidden}
-.atrium-pf-cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.atrium-pf-card:hover .atrium-pf-cover img{transform:scale(1.03)}
-.atrium-pf-info{padding:20px 24px}
-.atrium-pf-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#111;background:rgba(0,0,0,.04);padding:4px 12px;margin-bottom:8px;border-radius:6px}
-.atrium-pf-info h3{font-size:16px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
-.atrium-pf-info p{font-size:13px;line-height:1.6;color:rgba(17,17,17,.45);margin:0 0 12px}
-.atrium-pf-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.atrium-pf-tags span{font-size:10px;letter-spacing:.05em;color:rgba(17,17,17,.35);border:1px solid rgba(0,0,0,.06);padding:3px 10px;border-radius:20px}
-.atrium-pf-stats{display:flex;gap:16px;font-size:11px;color:rgba(17,17,17,.3);letter-spacing:.05em}
+.atrium-pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.atrium-pf-card{position:relative;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:1/1;background:#f5f5f5}
+.atrium-pf-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.atrium-pf-card.featured .atrium-pf-badge{display:inline-block}
+.atrium-pf-cover{position:absolute;inset:0}
+.atrium-pf-cover img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);filter:brightness(.85)}
+.atrium-pf-card:hover .atrium-pf-cover img{transform:scale(1.04);filter:brightness(.8)}
+.atrium-pf-info{position:absolute;bottom:0;left:0;right:0;padding:28px 32px;color:#fff;z-index:2;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 100%)}
+.atrium-pf-badge{display:none;font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;background:var(--atrium-accent,rgba(255,255,255,.2));color:#fff;padding:4px 12px;margin-bottom:10px;border-radius:6px;backdrop-filter:blur(8px)}
+.atrium-pf-info h3{font-size:18px;font-weight:700;margin:0 0 4px;letter-spacing:-0.01em}
+.atrium-pf-info p{font-size:12px;line-height:1.5;color:rgba(255,255,255,.7);margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.atrium-pf-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.atrium-pf-tags span{font-size:9px;letter-spacing:.05em;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);padding:3px 10px;border-radius:20px}
+.atrium-pf-stats{display:flex;gap:16px;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.05em}
 
 /* Atrium Featured Work */
 .atrium-fw{padding:80px 64px}
@@ -2321,13 +2515,14 @@ textarea.pf-input{line-height:1.6}
 
 /* Atrium Works */
 .atrium-works{padding:80px 64px}
-.atrium-works-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.atrium-work-card{overflow:hidden;border:1px solid rgba(0,0,0,.05);border-radius:16px;cursor:pointer;transition:all .3s;background:#fff}
-.atrium-work-card:hover{border-color:rgba(0,0,0,.1);box-shadow:0 8px 32px rgba(0,0,0,.06)}
-.atrium-work-card img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.atrium-work-info{padding:16px 20px}
-.atrium-work-info h3{font-size:15px;font-weight:600;margin:0 0 4px}
-.atrium-work-info span{display:block;font-size:12px;color:rgba(17,17,17,.35)}
+.atrium-works-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.atrium-work-card{position:relative;overflow:hidden;border-radius:20px;cursor:pointer;aspect-ratio:1/1;background:#f5f5f5}
+.atrium-work-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.atrium-work-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1);filter:brightness(.85)}
+.atrium-work-card:hover img{transform:scale(1.04);filter:brightness(.8)}
+.atrium-work-info{position:absolute;bottom:0;left:0;right:0;padding:24px 28px;color:#fff;z-index:2;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 100%)}
+.atrium-work-info h3{font-size:17px;font-weight:700;margin:0 0 4px;color:#fff}
+.atrium-work-info span{display:block;font-size:11px;color:rgba(255,255,255,.5)}
 
 /* Atrium Testimonials */
 .atrium-testimonials{padding:80px 64px;background:rgba(0,0,0,.025);border-radius:24px;margin:0 32px}
@@ -2361,6 +2556,121 @@ textarea.pf-input{line-height:1.6}
 .atrium-footer-nav span:hover{color:#111}
 .atrium-footer-copy{font-size:11px;color:rgba(17,17,17,.18);letter-spacing:.05em}
 
+/* Atrium accent — only on interactive/highlight elements */
+.atrium-contact-cta{border-color:var(--atrium-accent,rgba(0,0,0,.12));color:var(--atrium-accent,#111)}
+.atrium-contact-cta:hover{background:var(--atrium-accent,rgba(0,0,0,.04));color:#fff}
+.atrium-about-avail-dot{background:var(--atrium-accent,#10b981)}
+.atrium-pf-badge{background:var(--atrium-accent,rgba(0,0,0,.04));color:#fff}
+
+/* Atrium Explore Gallery CTA */
+.atrium-explore{padding:60px 64px;text-align:center}
+.atrium-explore-inner{border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:48px;background:#fff;cursor:pointer;transition:all .3s}
+.atrium-explore-inner:hover{border-color:rgba(0,0,0,.12);box-shadow:0 8px 40px rgba(0,0,0,.06)}
+.atrium-explore-label{font-size:11px;font-weight:600;letter-spacing:.2em;color:rgba(17,17,17,.3);text-transform:uppercase;margin-bottom:20px}
+.atrium-explore-thumbs{display:flex;gap:10px;justify-content:center;margin-bottom:24px}
+.atrium-explore-thumbs img{width:80px;height:80px;object-fit:cover;border-radius:12px;opacity:.8;transition:opacity .3s}
+.atrium-explore-inner:hover .atrium-explore-thumbs img{opacity:1}
+.atrium-explore-cta{font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--atrium-accent,#111);text-transform:uppercase}
+
+/* Atrium customizable bg, title, text colors */
+.atrium-theme{background:var(--atrium-bg,#F7F7F5);color:var(--atrium-title,#111)}
+.atrium-about-text,.atrium-fw-desc,.atrium-exp-desc,.atrium-contact-left p{color:var(--atrium-text,rgba(17,17,17,.55))}
+.atrium-about-headline,.atrium-fw-title,.atrium-contact-left h2,.atrium-detail-split h1,.atrium-page-header h1{color:var(--atrium-title,#111)}
+
+/* Atrium Sub-pages */
+@keyframes atriumFadeIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes atriumGrain{0%{transform:translate(0,0)}33%{transform:translate(-10px,-15px)}66%{transform:translate(5px,10px)}100%{transform:translate(12px,-8px)}}
+.atrium-page{padding:120px 64px 80px;animation:atriumFadeIn .5s cubic-bezier(.16,1,.3,1) both;min-height:60vh}
+.atrium-page-header{margin-bottom:48px}
+.atrium-page-header h1{font-size:clamp(32px,5vw,56px);font-weight:800;line-height:.95;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 8px}
+.atrium-page-header p{font-size:12px;letter-spacing:.2em;color:rgba(17,17,17,.3);text-transform:uppercase}
+.atrium-page-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.atrium-page-item{position:relative;overflow:hidden;border-radius:14px;aspect-ratio:4/3;cursor:pointer}
+.atrium-page-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.atrium-page-item:hover img{transform:scale(1.04)}
+.atrium-page-item-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 50%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:16px;color:#fff;font-size:12px;letter-spacing:.08em}
+.atrium-page-item:hover .atrium-page-item-overlay{opacity:1}
+
+/* Atrium Split-screen Detail */
+.atrium-detail-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);padding:100px clamp(20px,5vw,64px) 60px;animation:atriumFadeIn .5s cubic-bezier(.16,1,.3,1) both;min-height:60vh}
+.atrium-detail-text{min-width:0;overflow:hidden}
+.atrium-detail-text h1{font-size:clamp(22px,3.5vw,48px);font-weight:800;line-height:1;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 16px}
+.atrium-detail-media{display:flex;flex-direction:column;gap:12px;position:sticky;top:100px;max-height:calc(100vh - 140px);overflow-y:auto;border-radius:16px;scrollbar-width:none;-ms-overflow-style:none;min-width:0}
+.atrium-detail-media::-webkit-scrollbar{display:none}
+.atrium-detail-media-item{position:relative;border-radius:16px;overflow:hidden;flex-shrink:0}
+.atrium-detail-media-item img{width:100%;display:block;object-fit:cover}
+.atrium-detail-media-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:32px;color:#fff;background:rgba(0,0,0,.25);opacity:0;transition:opacity .3s;cursor:pointer}
+.atrium-detail-media-item:hover .atrium-detail-media-play{opacity:1}
+.atrium-detail-media-caption{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(to top,rgba(0,0,0,.5),transparent);color:rgba(255,255,255,.8);font-size:11px;letter-spacing:.05em}
+
+/* Atrium Detail Pages */
+.atrium-detail-page{padding:120px 64px 60px;animation:atriumFadeIn .5s cubic-bezier(.16,1,.3,1) both;min-height:60vh}
+.atrium-detail-page h1{font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1;letter-spacing:-0.03em;text-transform:uppercase;margin:0 0 16px}
+.atrium-detail-breadcrumb{display:flex;gap:8px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:24px}
+.atrium-detail-breadcrumb span{cursor:pointer;transition:color .2s}
+.atrium-detail-breadcrumb span:hover{color:#111}
+.atrium-detail-meta{display:flex;gap:32px;padding:24px 0;border-top:1px solid rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);margin-bottom:32px}
+.atrium-detail-meta-item .atrium-dm-label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;margin-bottom:4px}
+.atrium-detail-meta-item .atrium-dm-value{font-size:13px;font-weight:600;letter-spacing:.05em;color:#111}
+.atrium-detail-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:32px 0}
+.atrium-detail-photos .full{grid-column:span 2}
+.atrium-detail-photo{position:relative;overflow:hidden;border-radius:14px}
+.atrium-detail-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.atrium-detail-photo-caption{position:absolute;bottom:12px;left:16px;font-size:11px;letter-spacing:.08em;color:rgba(17,17,17,.5);background:rgba(247,247,245,.85);padding:4px 12px;border-radius:8px}
+.atrium-detail-overview{padding:40px 0;border-top:1px solid rgba(0,0,0,.06)}
+.atrium-detail-overview-label,.atrium-detail-section-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.atrium-detail-overview-text{font-size:15px;line-height:1.8;color:rgba(17,17,17,.55);max-width:680px}
+.atrium-detail-info{margin:8px 0 32px}
+.atrium-detail-info-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.atrium-detail-info-row .atrium-di-label{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase}
+.atrium-detail-info-row .atrium-di-value{font-size:13px;font-weight:500;color:rgba(17,17,17,.65);text-align:right}
+.atrium-detail-next{position:relative;overflow:hidden;border-radius:20px;margin:40px 64px 0;min-height:280px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.atrium-detail-next-bg{position:absolute;inset:0}
+.atrium-detail-next-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.75);transition:transform .5s}
+.atrium-detail-next:hover .atrium-detail-next-bg img{transform:scale(1.03)}
+.atrium-detail-next-content{position:relative;z-index:1;text-align:center;color:#fff}
+.atrium-detail-next-label{font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.5);margin-bottom:12px;text-transform:uppercase}
+.atrium-detail-next-title{font-size:clamp(24px,4vw,44px);font-weight:800;letter-spacing:-0.02em;text-transform:uppercase;margin-bottom:16px}
+.atrium-detail-next-cta{font-size:11px;letter-spacing:.15em;color:rgba(255,255,255,.6);display:inline-flex;align-items:center;gap:8px;text-transform:uppercase}
+.atrium-detail-next-cta svg{width:16px;height:16px}
+
+/* Atrium detail video */
+.atrium-detail-video-hero{overflow:hidden;border-radius:16px;margin-bottom:24px;position:relative}
+.atrium-detail-video-thumb{position:relative;aspect-ratio:16/9}
+.atrium-detail-video-thumb img{width:100%;height:100%;object-fit:cover}
+.atrium-detail-video-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;display:flex;align-items:center;justify-content:center;font-size:18px;cursor:pointer;transition:transform .2s}
+.atrium-detail-video-play:hover{transform:translate(-50%,-50%) scale(1.1)}
+
+/* Atrium About Page */
+.atrium-about-page-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:48px 0;padding:32px 0;border-top:1px solid rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06)}
+.atrium-about-page-stat{text-align:center}
+.atrium-about-page-stat-num{display:block;font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-0.03em;color:#111;line-height:1}
+.atrium-about-page-stat-label{display:block;font-size:10px;letter-spacing:.2em;color:rgba(17,17,17,.3);margin-top:8px;text-transform:uppercase}
+.atrium-about-page-journey{margin:48px 0}
+.atrium-about-page-journey h2{font-size:14px;letter-spacing:.2em;color:rgba(17,17,17,.3);text-transform:uppercase;margin:0 0 24px;font-weight:600}
+.atrium-about-page-timeline-item{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid rgba(0,0,0,.04)}
+.atrium-at-year{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(17,17,17,.3);padding-top:3px}
+.atrium-at-title{font-size:15px;font-weight:600;margin-bottom:2px}
+.atrium-at-org{font-size:13px;color:rgba(17,17,17,.45)}
+.atrium-at-desc{font-size:12px;line-height:1.6;color:rgba(17,17,17,.35);margin-top:6px}
+.atrium-about-page-skills{margin:48px 0}
+.atrium-about-page-skills h2{font-size:14px;letter-spacing:.2em;color:rgba(17,17,17,.3);text-transform:uppercase;margin:0 0 24px;font-weight:600}
+.atrium-about-page-skills-grid{display:flex;flex-wrap:wrap;gap:10px}
+.atrium-about-page-skill{padding:8px 20px;border:1px solid rgba(0,0,0,.08);border-radius:100px;font-size:12px;letter-spacing:.1em;color:rgba(17,17,17,.5);text-transform:uppercase}
+
+/* Atrium sub-page responsive */
+@media(max-width:768px){
+  .atrium-page,.atrium-detail-page{padding:100px 24px 60px}
+  .atrium-page-grid{grid-template-columns:1fr 1fr}
+  .atrium-detail-photos{grid-template-columns:1fr}
+  .atrium-detail-photos .full{grid-column:auto}
+  .atrium-detail-meta{flex-wrap:wrap;gap:16px}
+  .atrium-detail-next{margin:24px 24px 0;min-height:200px}
+  .atrium-about-page-stats{grid-template-columns:1fr 1fr}
+  .atrium-about-page-timeline-item{grid-template-columns:1fr;gap:4px}
+  .atrium-explore{padding:40px 24px}
+}
+
 /* Atrium reveal animations */
 .atrium-reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .atrium-reveal.revealed{opacity:1;transform:translateY(0)}
@@ -2375,7 +2685,7 @@ textarea.pf-input{line-height:1.6}
   .atrium-hero-inner{border-radius:16px}
   .atrium-hero-overlay{border-radius:16px}
   .atrium-hero-content{padding:28px 24px 32px}
-  .atrium-hero-img{height:55vh;min-height:360px}
+  .atrium-hero-img{height:75vh;min-height:440px}
   .atrium-about,.atrium-gallery,.atrium-portfolios,.atrium-fw,.atrium-experience,.atrium-works{padding:60px 32px}
   .atrium-testimonials{padding:60px 24px;margin:0 16px;border-radius:16px}
   .atrium-about-grid{grid-template-columns:1fr;gap:32px}
@@ -2393,6 +2703,404 @@ textarea.pf-input{line-height:1.6}
   .studio-builder-body{grid-template-columns:1fr}
   .studio-panel{display:none}
 }
+
+/* Shared keyframe used by Lumen */
+@keyframes meridianFadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════════════════════════════
+   LUMEN THEME — Warm, personal, soft & inviting
+   ═══════════════════════════════════════════════════════════════════ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap');
+.lumen-theme{background:var(--lumen-bg,#fdf8f4);color:var(--lumen-title,#2d2418);font-family:'Inter',system-ui,-apple-system,sans-serif;position:relative}
+.lumen-theme *{box-sizing:border-box}
+
+/* Lumen reveal animations */
+.lumen-reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.lumen-reveal.revealed{opacity:1;transform:translateY(0)}
+.lumen-reveal-scale{opacity:0;transform:scale(.96);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.lumen-reveal-scale.revealed{opacity:1;transform:scale(1)}
+
+/* Lumen Nav */
+.lumen-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:24px 48px;background:linear-gradient(to bottom,rgba(253,248,244,.95) 0%,rgba(253,248,244,.8) 60%,rgba(253,248,244,0) 100%);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:padding .3s}
+.lumen-nav-compact{padding:16px 48px;background:rgba(253,248,244,.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(45,36,24,.06)}
+.lumen-nav-name{font-size:18px;font-weight:700;font-family:'DM Serif Display',Georgia,serif;letter-spacing:-.01em}
+.lumen-nav-links{display:flex;gap:28px;font-size:12px;font-weight:500;color:var(--lumen-accent,rgba(45,36,24,.4));letter-spacing:.05em}
+.lumen-nav-links span{cursor:pointer;transition:color .2s}
+.lumen-nav-links span:hover{color:#2d2418}
+
+/* Lumen Hero — personal, warm */
+.lumen-hero{padding:60px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;min-height:70vh}
+.lumen-hero-text h1{font-size:clamp(32px,5vw,56px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;line-height:1.1;letter-spacing:-.02em;margin:0 0 20px}
+.lumen-hero-text p{font-size:15px;line-height:1.7;color:var(--lumen-text,rgba(45,36,24,.55));max-width:480px;margin:0 0 28px}
+.lumen-hero-cta{display:inline-block;padding:14px 32px;background:#2d2418;color:#fdf8f4;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;cursor:pointer;transition:opacity .2s}
+.lumen-hero-cta:hover{opacity:.85}
+.lumen-hero-img{aspect-ratio:3/4;overflow:hidden;border-radius:24px}
+.lumen-hero-img img{width:100%;height:100%;object-fit:cover}
+.lumen-hero-tag{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--lumen-accent,rgba(45,36,24,.35));margin-bottom:16px}
+
+/* Lumen Stats Banner */
+.lumen-stats{padding:40px 48px;display:flex;justify-content:center;gap:48px;border-top:1px solid rgba(45,36,24,.06);border-bottom:1px solid rgba(45,36,24,.06)}
+.lumen-stat{text-align:center}
+.lumen-stat-num{font-size:32px;font-weight:700;font-family:'DM Serif Display',Georgia,serif;margin-bottom:4px}
+.lumen-stat-label{font-size:11px;letter-spacing:.1em;color:var(--lumen-accent,rgba(45,36,24,.4));text-transform:uppercase}
+
+/* Lumen Section Headers */
+.lumen-sh{margin-bottom:40px}
+.lumen-sh-label{font-size:12px;font-weight:600;letter-spacing:.15em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin-bottom:8px}
+.lumen-sh-title{font-size:clamp(24px,3.5vw,40px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;letter-spacing:-.01em}
+
+/* Lumen About */
+.lumen-about{padding:80px 48px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center}
+.lumen-about-img{aspect-ratio:4/5;overflow:hidden;border-radius:20px}
+.lumen-about-img img{width:100%;height:100%;object-fit:cover}
+.lumen-about-content h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;line-height:1.1;margin:0 0 20px}
+.lumen-about-content p{font-size:14px;line-height:1.8;color:var(--lumen-text,rgba(45,36,24,.55));margin:0 0 16px}
+.lumen-about-avail{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.1em;color:var(--lumen-accent,rgba(45,36,24,.4));text-transform:uppercase;margin-top:16px}
+.lumen-about-avail-dot{width:6px;height:6px;border-radius:50%;background:rgba(80,200,120,.8);animation:noirPulse 2s infinite}
+
+/* Lumen Gallery */
+.lumen-gallery{padding:80px 48px}
+.lumen-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lumen-gallery-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:16px;cursor:pointer}
+.lumen-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.lumen-gallery-item:hover img{transform:scale(1.04)}
+
+/* Lumen Portfolios */
+.lumen-portfolios{padding:80px 48px}
+.lumen-pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lumen-pf-card{position:relative;overflow:hidden;border-radius:20px;cursor:pointer;background:#f0ebe5;transition:transform .3s,box-shadow .3s}
+.lumen-pf-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,36,24,.08)}
+.lumen-pf-card-img{aspect-ratio:4/3;overflow:hidden}
+.lumen-pf-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.lumen-pf-card:hover .lumen-pf-card-img img{transform:scale(1.03)}
+.lumen-pf-card-body{padding:20px 24px}
+.lumen-pf-card-body h3{font-size:18px;font-weight:700;font-family:'DM Serif Display',Georgia,serif;margin:0 0 6px}
+.lumen-pf-card-body p{font-size:13px;color:var(--lumen-text,rgba(45,36,24,.5));margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.lumen-pf-tags{display:flex;gap:6px;flex-wrap:wrap}
+.lumen-pf-tags span{font-size:10px;letter-spacing:.05em;color:var(--lumen-accent,rgba(45,36,24,.4));background:rgba(45,36,24,.04);padding:4px 10px;border-radius:100px}
+
+/* Lumen Featured Work */
+.lumen-fw{padding:80px 48px}
+.lumen-fw-card{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;background:#fff;border-radius:24px;padding:32px;box-shadow:0 4px 24px rgba(45,36,24,.04)}
+.lumen-fw-cover{overflow:hidden;border-radius:16px;aspect-ratio:16/9}
+.lumen-fw-cover img{width:100%;height:100%;object-fit:cover}
+.lumen-fw-label{font-size:11px;font-weight:600;letter-spacing:.15em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin-bottom:12px}
+.lumen-fw-title{font-size:clamp(24px,3vw,36px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;line-height:1.1;margin:0 0 12px}
+.lumen-fw-tagline{font-size:14px;color:var(--lumen-text,rgba(45,36,24,.45));font-style:italic;margin:0 0 20px}
+.lumen-fw-meta{display:flex;gap:20px;font-size:11px;letter-spacing:.08em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin-bottom:16px}
+.lumen-fw-desc{font-size:14px;line-height:1.7;color:var(--lumen-text,rgba(45,36,24,.5))}
+
+/* Lumen Experience */
+.lumen-experience{padding:80px 48px}
+.lumen-exp-timeline{position:relative;padding-left:32px;border-left:2px solid rgba(45,36,24,.08)}
+.lumen-exp-item{position:relative;padding:0 0 40px}
+.lumen-exp-item::before{content:'';position:absolute;left:-38px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--lumen-accent,rgba(45,36,24,.2));background:var(--lumen-bg,#fdf8f4)}
+.lumen-exp-type{font-size:10px;letter-spacing:.12em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin-bottom:6px}
+.lumen-exp-title{font-size:16px;font-weight:700;font-family:'DM Serif Display',Georgia,serif;margin-bottom:4px}
+.lumen-exp-org{font-size:13px;color:var(--lumen-text,rgba(45,36,24,.5));margin-bottom:4px}
+.lumen-exp-period{font-size:11px;color:var(--lumen-accent,rgba(45,36,24,.3))}
+.lumen-exp-desc{font-size:13px;line-height:1.6;color:var(--lumen-text,rgba(45,36,24,.5));margin-top:8px}
+
+/* Lumen Works */
+.lumen-works{padding:80px 48px}
+.lumen-works-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.lumen-work-card{overflow:hidden;border-radius:20px;cursor:pointer;background:#fff;transition:transform .3s,box-shadow .3s}
+.lumen-work-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,36,24,.08)}
+.lumen-work-card-img{aspect-ratio:16/9;overflow:hidden}
+.lumen-work-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.lumen-work-card:hover .lumen-work-card-img img{transform:scale(1.03)}
+.lumen-work-card-body{padding:20px 24px}
+.lumen-work-card-body h3{font-size:18px;font-weight:700;font-family:'DM Serif Display',Georgia,serif;margin:0 0 6px}
+.lumen-work-card-body span{font-size:12px;color:var(--lumen-text,rgba(45,36,24,.4))}
+
+/* Lumen Explore */
+.lumen-explore{padding:80px 48px}
+.lumen-explore-inner{cursor:pointer;padding:32px;background:#fff;border-radius:20px;box-shadow:0 4px 24px rgba(45,36,24,.04);transition:box-shadow .3s,transform .3s}
+.lumen-explore-inner:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(45,36,24,.08)}
+.lumen-explore-label{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin-bottom:16px}
+.lumen-explore-thumbs{display:flex;gap:12px;margin-bottom:16px;overflow:hidden;border-radius:12px}
+.lumen-explore-thumbs img{flex:1;min-width:0;height:80px;object-fit:cover;border-radius:8px;transition:transform .3s}
+.lumen-explore-inner:hover .lumen-explore-thumbs img{transform:scale(1.02)}
+.lumen-explore-cta{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--lumen-accent,#2d2418);text-transform:uppercase}
+
+/* Lumen Testimonials */
+.lumen-testimonials{padding:80px 48px}
+.lumen-testimonial-card{max-width:600px;background:#fff;border-radius:24px;padding:40px;box-shadow:0 4px 24px rgba(45,36,24,.04)}
+.lumen-testimonial-quote{font-size:clamp(16px,2vw,22px);font-family:'DM Serif Display',Georgia,serif;line-height:1.5;margin:0 0 24px;font-style:italic}
+.lumen-testimonial-name{font-size:14px;font-weight:700;margin-bottom:2px}
+.lumen-testimonial-role{font-size:12px;color:var(--lumen-accent,rgba(45,36,24,.4))}
+.lumen-testimonial-nav{display:flex;gap:8px;margin-top:24px}
+.lumen-testimonial-nav button{width:36px;height:36px;border-radius:50%;border:1px solid rgba(45,36,24,.1);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s}
+.lumen-testimonial-nav button:hover{background:rgba(45,36,24,.04)}
+
+/* Lumen Contact */
+.lumen-contact{padding:80px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.lumen-contact-left h2{font-size:clamp(24px,3.5vw,40px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;margin:0 0 16px}
+.lumen-contact-left p{font-size:14px;color:var(--lumen-text,rgba(45,36,24,.5));line-height:1.7;margin:0 0 24px}
+.lumen-contact-cta{display:inline-block;padding:14px 32px;background:#2d2418;color:#fdf8f4;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:100px;cursor:pointer;transition:opacity .2s}
+.lumen-contact-cta:hover{opacity:.85}
+.lumen-contact-items{display:flex;flex-direction:column;gap:16px;padding-top:8px}
+.lumen-contact-item{padding:20px;background:#fff;border-radius:16px;box-shadow:0 2px 12px rgba(45,36,24,.03)}
+.lumen-contact-item-label{font-size:10px;letter-spacing:.1em;color:var(--lumen-accent,rgba(45,36,24,.3));text-transform:uppercase;margin-bottom:6px}
+.lumen-contact-item-value{font-size:14px;font-weight:600}
+
+/* Lumen Footer */
+.lumen-footer{padding:32px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(45,36,24,.06)}
+.lumen-footer-left{font-size:12px;color:rgba(45,36,24,.3)}
+.lumen-footer-nav{display:flex;gap:24px;font-size:12px;color:var(--lumen-accent,rgba(45,36,24,.35))}
+.lumen-footer-nav span{cursor:pointer;transition:color .2s}
+.lumen-footer-nav span:hover{color:#2d2418}
+
+/* Lumen Detail Pages */
+.lumen-detail-page{padding:100px 48px 60px;animation:meridianFadeIn .5s cubic-bezier(.16,1,.3,1) both;min-height:60vh}
+.lumen-detail-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);padding:100px clamp(20px,5vw,48px) 60px;min-height:60vh}
+.lumen-detail-text{min-width:0;overflow:hidden}
+.lumen-detail-text h1{font-size:clamp(24px,3.5vw,40px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;line-height:1.1;margin:0 0 16px}
+.lumen-detail-breadcrumb{display:flex;gap:8px;font-size:11px;letter-spacing:.08em;color:var(--lumen-accent,rgba(45,36,24,.3));text-transform:uppercase;margin-bottom:20px}
+.lumen-detail-breadcrumb span{cursor:pointer;transition:color .2s}
+.lumen-detail-breadcrumb span:hover{color:#2d2418}
+.lumen-detail-meta{display:flex;gap:28px;padding:20px 0;border-top:1px solid rgba(45,36,24,.06);border-bottom:1px solid rgba(45,36,24,.06);margin-bottom:28px}
+.lumen-dm-label{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--lumen-accent,rgba(45,36,24,.3));text-transform:uppercase;margin-bottom:4px}
+.lumen-dm-value{font-size:13px;font-weight:600}
+.lumen-detail-overview{padding:28px 0;border-top:1px solid rgba(45,36,24,.06)}
+.lumen-detail-overview-label,.lumen-detail-section-label{font-size:11px;font-weight:600;letter-spacing:.12em;color:var(--lumen-accent,rgba(45,36,24,.3));text-transform:uppercase;margin-bottom:16px}
+.lumen-detail-overview-text{font-size:14px;line-height:1.8;color:var(--lumen-text,rgba(45,36,24,.55));max-width:600px}
+.lumen-detail-info{margin:8px 0 32px}
+.lumen-detail-info-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(45,36,24,.04)}
+.lumen-di-label{font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--lumen-accent,rgba(45,36,24,.3));text-transform:uppercase}
+.lumen-di-value{font-size:13px;font-weight:500;color:rgba(45,36,24,.65);text-align:right}
+.lumen-detail-media{display:flex;flex-direction:column;gap:12px;position:sticky;top:100px;max-height:calc(100vh - 140px);overflow-y:auto;border-radius:16px;scrollbar-width:none;min-width:0}
+.lumen-detail-media-item{position:relative;overflow:hidden;border-radius:16px;flex-shrink:0}
+.lumen-detail-media-item img{width:100%;display:block;object-fit:cover}
+.lumen-blockquote{border-left:2px solid var(--lumen-accent,rgba(45,36,24,.1));padding-left:20px;margin:0 0 28px}
+.lumen-cite{font-size:12px;letter-spacing:.08em;color:var(--lumen-accent,rgba(45,36,24,.35));font-style:normal}
+.lumen-partner-pill{padding:8px 20px;border:1px solid var(--lumen-accent,rgba(45,36,24,.08));border-radius:100px;font-size:11px;letter-spacing:.08em;color:var(--lumen-accent,rgba(45,36,24,.5));text-transform:uppercase}
+.lumen-partner-type{color:var(--lumen-accent,rgba(45,36,24,.25))}
+.lumen-detail-next{margin:40px 48px 0;padding:40px;background:#fff;border-radius:20px;cursor:pointer;text-align:center;box-shadow:0 4px 24px rgba(45,36,24,.04);transition:transform .3s,box-shadow .3s}
+.lumen-detail-next:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(45,36,24,.08)}
+.lumen-detail-next-label{font-size:11px;letter-spacing:.12em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin-bottom:8px}
+.lumen-detail-next-title{font-size:clamp(20px,3vw,32px);font-weight:700;font-family:'DM Serif Display',Georgia,serif}
+
+/* Lumen Sub-pages */
+.lumen-page{padding:100px 48px 60px;animation:meridianFadeIn .5s cubic-bezier(.16,1,.3,1) both;min-height:60vh}
+.lumen-page-header{margin-bottom:40px}
+.lumen-page-header h1{font-size:clamp(28px,4vw,44px);font-weight:700;font-family:'DM Serif Display',Georgia,serif;margin:0 0 8px}
+.lumen-page-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+
+/* Lumen About Page */
+.lumen-about-page{padding:100px 48px 60px}
+.lumen-about-page-hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:64px;align-items:center}
+.lumen-about-page-hero img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px}
+.lumen-about-page-stats{display:flex;justify-content:center;gap:48px;margin-bottom:64px;padding:32px 0;border-top:1px solid rgba(45,36,24,.06);border-bottom:1px solid rgba(45,36,24,.06)}
+.lumen-about-page-journey{margin-bottom:64px}
+.lumen-about-page-journey h2{font-size:12px;letter-spacing:.15em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin:0 0 28px;font-weight:600}
+.lumen-about-page-skills{margin-bottom:64px}
+.lumen-about-page-skills h2{font-size:12px;letter-spacing:.15em;color:var(--lumen-accent,rgba(45,36,24,.35));text-transform:uppercase;margin:0 0 20px;font-weight:600}
+.lumen-about-page-skills-grid{display:flex;flex-wrap:wrap;gap:10px}
+.lumen-about-page-skill{padding:8px 20px;border:1px solid var(--lumen-accent,rgba(45,36,24,.08));border-radius:100px;font-size:12px;color:var(--lumen-accent,rgba(45,36,24,.5))}
+
+/* Lumen customizable text overrides */
+.lumen-about-content p,.lumen-fw-desc,.lumen-exp-desc,.lumen-exp-org,.lumen-contact-left p,.lumen-hero-text p{color:var(--lumen-text,rgba(45,36,24,.55))}
+.lumen-hero-text h1,.lumen-about-content h2,.lumen-fw-title,.lumen-contact-left h2,.lumen-detail-text h1,.lumen-page-header h1,.lumen-sh-title{color:var(--lumen-title,#2d2418)}
+
+/* ═══════════════════════════════════════════════════
+   SLATER THEME — Editorial. Cinematic. Motion-rich.
+   Inspired by Möbius: giant typography, photo collage hero,
+   scattered-text bio, split-screen scroll, premium motion
+   ═══════════════════════════════════════════════════ */
+
+/* Container */
+.slater-theme{background:var(--slater-bg,#ffffff);color:var(--slater-title,#111111);font-family:'Inter',system-ui,-apple-system,sans-serif;position:relative;overflow-x:hidden}
+
+/* ── Reveal animations ── */
+.slater-reveal{opacity:0;transform:translateY(40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.slater-reveal.revealed{opacity:1;transform:translateY(0)}
+.slater-reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.slater-reveal-left.revealed{opacity:1;transform:translateX(0)}
+.slater-reveal-scale{opacity:0;transform:scale(.92);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.slater-reveal-scale.revealed{opacity:1;transform:scale(1)}
+
+/* ── Entrance keyframes ── */
+@keyframes slaterNameIn{0%{opacity:0;transform:translateY(60px) scaleY(1.3)}100%{opacity:1;transform:translateY(0) scaleY(1)}}
+@property --slater-entry{syntax:'<length>';inherits:false;initial-value:0px}
+@keyframes slaterCollageSlideIn{0%{--slater-entry:100vh;opacity:0}40%{opacity:1}100%{--slater-entry:0px;opacity:1}}
+@keyframes slaterNavIn{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slaterFadeUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slaterWordScatter{0%{opacity:0}30%{opacity:1}100%{opacity:1}}
+
+/* ── Nav — sticky + mix-blend-mode difference ── */
+.slater-nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 40px;background:transparent;mix-blend-mode:difference;transition:padding .4s;animation:slaterNavIn .8s cubic-bezier(.16,1,.3,1) both;animation-delay:.3s}
+.slater-nav-compact{padding:14px 40px}
+.slater-nav-name{font-size:14px;font-weight:900;letter-spacing:.02em;cursor:pointer;color:#fff}
+.slater-nav-links{display:flex;gap:32px}
+.slater-nav-link{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;color:#fff;opacity:.6;transition:opacity .3s;background:none;border:none;padding:0}
+.slater-nav-link:hover,.slater-nav-link.active{opacity:1}
+
+/* ── Hero section — giant name + photo collage (Möbius-style) ── */
+.slater-hero{position:relative;min-height:max(500px,85vh);display:flex;flex-direction:column;justify-content:flex-end;padding:0 40px 40px;overflow:hidden}
+.slater-hero-name{font-size:clamp(60px,15vw,240px);font-weight:900;line-height:.85;letter-spacing:-.05em;text-transform:uppercase;color:var(--slater-title,#111);animation:slaterNameIn 1s cubic-bezier(.16,1,.3,1) both;animation-delay:.1s;position:relative;z-index:1}
+.slater-hero-desc{position:absolute;top:100px;left:40px;max-width:340px;font-size:15px;line-height:1.7;color:var(--slater-text,rgba(17,17,17,.55));animation:slaterFadeUp .8s cubic-bezier(.16,1,.3,1) both;animation-delay:.6s;z-index:1}
+.slater-hero-meta{position:absolute;bottom:40px;right:40px;font-size:12px;letter-spacing:.1em;color:var(--slater-text,rgba(17,17,17,.4));animation:slaterFadeUp .8s cubic-bezier(.16,1,.3,1) both;animation-delay:.8s;z-index:1}
+
+/* Photo collage overlay — centered mid-high, scroll-driven translateY */
+.slater-hero-collage{position:absolute;top:calc(42% + var(--slater-entry,0px));left:50%;width:min(420px,50vw);height:min(540px,65vw);z-index:2;animation:slaterCollageSlideIn 1.4s cubic-bezier(.16,1,.3,1) both;animation-delay:.3s;cursor:pointer;will-change:transform,--slater-entry}
+.slater-hero-collage-img{position:absolute;width:100%;height:100%;object-fit:cover;border-radius:0;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .5s}
+.slater-hero-collage-img:nth-child(1){z-index:1;transform:rotate(-8deg) translate(-40px,20px) scale(.88);opacity:.7}
+.slater-hero-collage-img:nth-child(2){z-index:2;transform:rotate(4deg) translate(30px,-15px) scale(.92);opacity:.8}
+.slater-hero-collage-img:nth-child(3){z-index:3;transform:rotate(-1deg) scale(1)}
+.slater-hero-collage:hover .slater-hero-collage-img:nth-child(1){transform:rotate(-12deg) translate(-60px,35px) scale(.88)}
+.slater-hero-collage:hover .slater-hero-collage-img:nth-child(2){transform:rotate(8deg) translate(50px,-25px) scale(.92)}
+.slater-hero-collage:hover .slater-hero-collage-img:nth-child(3){transform:rotate(2deg) scale(1.03)}
+
+/* Circle arrow CTA on collage */
+.slater-hero-cta{position:absolute;top:45%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;border-radius:50%;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;z-index:10;opacity:0;transition:opacity .3s,transform .3s;cursor:pointer;font-size:22px}
+.slater-hero-collage:hover .slater-hero-cta{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+
+/* ── Scattered text bio section (Möbius-style scroll-driven) ── */
+.slater-bio{position:relative;min-height:800px;display:flex;align-items:center;justify-content:center;padding:120px 40px;overflow:visible}
+.slater-bio-words{display:flex;flex-wrap:wrap;gap:0 .22em;width:100%;max-width:1200px;font-size:clamp(28px,4.5vw,56px);font-weight:600;line-height:1.2;color:var(--slater-title,#111);text-align:left;justify-content:flex-start}
+.slater-bio-word{display:inline-block;will-change:transform,opacity}
+.slater-bio-dot{width:8px;height:8px;border-radius:50%;background:var(--slater-title,#111);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;opacity:.2}
+
+/* ── Services / sections layout ── */
+.slater-section{padding:80px 40px}
+.slater-section-header{margin-bottom:48px}
+.slater-section-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--slater-accent,#111);margin-bottom:8px}
+.slater-section-title{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--slater-title,#111)}
+.slater-section-rule{width:48px;height:2px;background:var(--slater-accent,#111);margin-top:16px}
+
+/* ── Split-screen scroll works ── */
+.slater-split{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.slater-split-left{position:sticky;top:60px;height:auto;min-height:300px;display:flex;flex-direction:column;justify-content:center;padding:60px 40px;background:var(--slater-bg,#fff)}
+.slater-split-right{display:flex;flex-direction:column}
+.slater-split-item{min-height:400px;display:flex;align-items:center;justify-content:center;padding:40px;border-top:1px solid rgba(0,0,0,.06)}
+.slater-split-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:0}
+.slater-split-text h3{font-size:clamp(20px,3vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.15;text-transform:uppercase;color:var(--slater-title,#111);margin:0 0 8px}
+.slater-split-text p{font-size:13px;line-height:1.7;color:var(--slater-text,rgba(17,17,17,.55));max-width:360px}
+.slater-split-text .slater-split-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--slater-accent,#111);margin-bottom:12px;opacity:.5}
+.slater-split-text .slater-split-num{font-size:72px;font-weight:900;letter-spacing:-.04em;color:var(--slater-accent,#111);opacity:.08;line-height:1;margin-bottom:8px}
+
+/* ── Gallery grid ── */
+.slater-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:0 40px}
+.slater-gallery-item{position:relative;overflow:hidden;aspect-ratio:1;cursor:pointer}
+.slater-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.slater-gallery-item:hover img{transform:scale(1.05)}
+
+/* ── Stats / In Numbers ── */
+.slater-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid rgba(0,0,0,.08);border-bottom:1px solid rgba(0,0,0,.08)}
+.slater-stat{padding:48px 32px;text-align:center;border-right:1px solid rgba(0,0,0,.08)}
+.slater-stat:last-child{border-right:none}
+.slater-stat-num{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.04em;color:var(--slater-title,#111);line-height:1}
+.slater-stat-label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--slater-text,rgba(17,17,17,.4));margin-top:8px}
+
+/* ── Experience timeline ── */
+.slater-exp{padding:80px 40px}
+.slater-exp-item{display:grid;grid-template-columns:120px 1fr;gap:32px;padding:24px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.slater-exp-year{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--slater-accent,#111)}
+.slater-exp-title{font-size:16px;font-weight:700;color:var(--slater-title,#111);margin-bottom:2px}
+.slater-exp-org{font-size:13px;color:var(--slater-text,rgba(17,17,17,.5))}
+
+/* ── Testimonial carousel ── */
+.slater-testimonials{padding:100px 40px;text-align:center}
+.slater-testimonial-quote{font-size:clamp(20px,3vw,32px);font-weight:400;line-height:1.5;color:var(--slater-title,#111);max-width:700px;margin:0 auto 24px;font-style:italic}
+.slater-testimonial-author{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slater-accent,#111)}
+.slater-testimonial-role{font-size:11px;color:var(--slater-text,rgba(17,17,17,.4));margin-top:4px}
+.slater-testimonial-nav{display:flex;justify-content:center;gap:12px;margin-top:32px}
+.slater-testimonial-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.15);cursor:pointer;transition:background .3s,transform .3s;border:none;padding:0}
+.slater-testimonial-dot.active{background:var(--slater-accent,#111);transform:scale(1.3)}
+
+/* ── Featured work — full-width banner ── */
+.slater-fw{position:relative;height:70vh;overflow:hidden;cursor:pointer}
+.slater-fw img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.slater-fw:hover img{transform:scale(1.03)}
+.slater-fw-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:flex-end;padding:48px}
+.slater-fw-title{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;color:#fff;line-height:1.1}
+.slater-fw-sub{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:8px}
+
+/* ── Contact section ── */
+.slater-contact{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:50vh}
+.slater-contact-left{padding:80px 40px;display:flex;flex-direction:column;justify-content:center}
+.slater-contact-left h2{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-.04em;line-height:1;text-transform:uppercase;color:var(--slater-title,#111)}
+.slater-contact-left p{font-size:14px;line-height:1.7;color:var(--slater-text,rgba(17,17,17,.5));margin-top:16px;max-width:400px}
+.slater-contact-right{background:var(--slater-accent,#111);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:80px 40px}
+.slater-contact-right a{color:#fff;font-size:clamp(20px,3vw,32px);font-weight:700;text-decoration:none;display:block;margin-bottom:12px;transition:opacity .3s}
+.slater-contact-right a:hover{opacity:.7}
+.slater-contact-social{display:flex;gap:20px;margin-top:24px}
+.slater-contact-social a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.5}
+.slater-contact-social a:hover{opacity:1}
+
+/* ── Footer ── */
+.slater-footer{display:flex;align-items:center;justify-content:space-between;padding:24px 40px;border-top:1px solid rgba(0,0,0,.06);font-size:11px;letter-spacing:.08em;color:var(--slater-text,rgba(17,17,17,.35))}
+
+/* ── Explore gallery ── */
+.slater-explore{overflow-x:auto;display:flex;gap:2px;padding:0 40px 40px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.slater-explore::-webkit-scrollbar{display:none}
+.slater-explore-item{flex:0 0 280px;height:360px;overflow:hidden;position:relative;cursor:pointer}
+.slater-explore-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.slater-explore-item:hover img{transform:scale(1.06)}
+
+/* ── Detail pages ── */
+.slater-detail{padding:0}
+.slater-detail-hero{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.slater-detail-hero-img{width:100%;height:100%;object-fit:cover}
+.slater-detail-hero-text{padding:80px 40px;display:flex;flex-direction:column;justify-content:center}
+.slater-detail-hero-text h1{font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:1.1;color:var(--slater-title,#111)}
+.slater-detail-breadcrumb{font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;color:var(--slater-accent,#111);opacity:.5;cursor:pointer}
+.slater-detail-breadcrumb:hover{opacity:1}
+.slater-detail-meta{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.slater-detail-meta-item{font-size:12px}
+.slater-detail-meta-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--slater-accent,#111);opacity:.4;margin-bottom:2px}
+.slater-detail-body{padding:60px 40px;max-width:800px}
+.slater-detail-body p{font-size:15px;line-height:1.8;color:var(--slater-text,rgba(17,17,17,.55));margin-bottom:16px}
+.slater-detail-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;padding:0 40px 60px}
+.slater-detail-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* ── Sub-pages ── */
+.slater-page{padding:40px}
+.slater-page-header{padding:60px 0 40px}
+.slater-page-header h1{font-size:clamp(36px,6vw,72px);font-weight:900;letter-spacing:-.04em;text-transform:uppercase;line-height:.9;color:var(--slater-title,#111)}
+.slater-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.slater-gallery-grid .slater-gallery-item{aspect-ratio:1}
+
+/* Portfolio/Work cards on sub-pages */
+.slater-card{position:relative;overflow:hidden;cursor:pointer}
+.slater-card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.slater-card:hover img{transform:scale(1.04)}
+.slater-card-info{padding:16px 0}
+.slater-card-info h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slater-title,#111)}
+.slater-card-info p{font-size:12px;color:var(--slater-text,rgba(17,17,17,.45));margin-top:2px}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+.slater-nav{padding:16px 20px}
+.slater-nav-compact{padding:12px 20px}
+.slater-nav-links{gap:20px}
+.slater-hero{min-height:70vh;padding:0 20px 20px}
+.slater-hero-name{font-size:clamp(40px,14vw,100px)}
+.slater-hero-desc{position:relative;top:auto;left:auto;padding:20px 0 0;max-width:100%;animation-delay:.4s}
+.slater-hero-collage{width:260px;height:340px;transform:translate(-50%,-50%)}
+.slater-bio{padding:80px 20px;min-height:600px}
+.slater-section{padding:60px 20px}
+.slater-split{grid-template-columns:1fr}
+.slater-split-left{position:relative;height:auto;padding:40px 20px}
+.slater-split-right{padding:0 20px}
+.slater-split-item{min-height:auto;padding:40px 0}
+.slater-gallery{grid-template-columns:repeat(2,1fr);padding:0 20px}
+.slater-stats{grid-template-columns:repeat(2,1fr)}
+.slater-stat{border-right:none;border-bottom:1px solid rgba(0,0,0,.08);padding:32px 20px}
+.slater-contact{grid-template-columns:1fr}
+.slater-detail-hero{grid-template-columns:1fr}
+.slater-detail-gallery{grid-template-columns:1fr}
+.slater-footer{padding:20px;flex-direction:column;gap:8px;text-align:center}
+.slater-exp-item{grid-template-columns:80px 1fr;gap:16px}
+.slater-page{padding:20px}
+}
+
+/* Slater customizable text overrides */
+.slater-hero-desc,.slater-bio-word,.slater-split-text p,.slater-exp-org,.slater-contact-left p,.slater-testimonial-role,.slater-detail-body p,.slater-fw-sub{color:var(--slater-text,rgba(17,17,17,.55))}
+.slater-hero-name,.slater-bio-words,.slater-split-text h3,.slater-section-title,.slater-stat-num,.slater-contact-left h2,.slater-fw-title,.slater-testimonial-quote,.slater-detail-hero-text h1,.slater-page-header h1{color:var(--slater-title,#111)}
+.slater-section-label,.slater-split-text .slater-split-label,.slater-exp-year,.slater-detail-breadcrumb,.slater-testimonial-author,.slater-detail-meta-label,.slater-section-rule,.slater-contact-right,.slater-testimonial-dot.active{color:var(--slater-accent,#111)}
+
 `;
 
 /* ━━━ SVG ICONS (inline) ━━━ */
@@ -2618,7 +3326,7 @@ export default function ArtistShell() {
   const [studioTheme, setStudioTheme] = useState("noir");
   const [studioCustomizeTab, setStudioCustomizeTab] = useState("theme");
   const [studioPreviewDevice, setStudioPreviewDevice] = useState("desktop");
-  const [studioBrand, setStudioBrand] = useState({ accentColor: "#ffffff", fontPairId: "inter" });
+  const [studioBrand, setStudioBrand] = useState({ accentColor: "#ffffff", fontPairId: "inter", backgroundColor: null, titleColor: null, textColor: null });
   const [studioSections, setStudioSections] = useState(STUDIO_DEFAULT_SECTIONS);
   const [studioContent, setStudioContent] = useState({
     selectedPortfolios: portfolios.filter(p => p.status === "published").map(p => p.id),
@@ -2639,6 +3347,41 @@ export default function ArtistShell() {
   const [noirRevealed, setNoirRevealed] = useState(new Set());
   const [studioTestimonialIdx, setStudioTestimonialIdx] = useState(0);
   const [noirCursorPos, setNoirCursorPos] = useState({ x: -100, y: -100 });
+  const [noirPage, setNoirPage] = useState({ type: "home" });
+  const [atriumPage, setAtriumPage] = useState({ type: "home" });
+
+  const [lumenPage, setLumenPage] = useState({ type: "home" });
+  const [slaterPage, setSlaterPage] = useState({ type: "home" });
+  const [slaterTestiIdx, setSlaterTestiIdx] = useState(0);
+  const [noirContactOpen, setNoirContactOpen] = useState(false);
+
+  /* Section settings — per-section overrides. null = use default from data */
+  const [studioSectionSettings, setStudioSectionSettings] = useState({
+    hero: { headline: null, imageSource: "featured_portfolio" },
+    about: { headline: null, quote: null, showAvailability: true, portraitImage: null },
+    gallery: { title: null },
+    portfolios: { title: null },
+    featuredWork: { title: null, showReviews: true, showUpcoming: true },
+    experience: { title: null, selectedRecords: [] },
+    works: { title: null },
+    testimonials: { source: "auto" },
+    contact: { headline: null, subline: null, buttonText: null },
+    footer: { tagline: null },
+  });
+  const [studioEditSection, setStudioEditSection] = useState(null); /* which section's inspector is open */
+  const [studioDragId, setStudioDragId] = useState(null); /* drag-and-drop section reorder */
+  const [studioDragOverId, setStudioDragOverId] = useState(null);
+  const [studioMediaPickerTarget, setStudioMediaPickerTarget] = useState(null); /* { section, field } for media picker */
+
+  /* Helper to update a single section setting */
+  const updateSectionSetting = (sectionId, field, value) => {
+    setStudioSectionSettings(prev => ({ ...prev, [sectionId]: { ...prev[sectionId], [field]: value } }));
+  };
+  /* Helper to get section setting with fallback */
+  const getSS = (sectionId, field, fallback) => {
+    const val = studioSectionSettings[sectionId]?.[field];
+    return val != null && val !== "" ? val : fallback;
+  };
 
   /* Media */
   const [mediaItems] = useState(MOCK_MEDIA);
@@ -5895,7 +6638,22 @@ export default function ArtistShell() {
         const selectedWks = works.filter(w => studioContent.selectedWorks.includes(w.id));
         const featuredWk = works.find(w => w.id === studioContent.featuredWork);
         const allPhotos = selectedPfs.flatMap(p => p.photos || []);
-        const heroPhotos = featuredPf ? (featuredPf.photos || []).slice(0, 3) : allPhotos.slice(0, 3);
+        const ss = studioSectionSettings;
+        const resolveHeroImg = (field) => {
+          const id = ss.hero?.[field];
+          if (id) { const m = mediaItems.find(mi => mi.id === id); if (m) return m.thumb || m.src; }
+          return null;
+        };
+        const heroImg1 = resolveHeroImg("heroImage1");
+        const heroImg2 = resolveHeroImg("heroImage2");
+        const heroImg3 = resolveHeroImg("heroImage3");
+        const heroImgSingle = resolveHeroImg("heroImage");
+        // Fallback: use portfolio photos if no custom hero images set
+        const fallbackPhotos = featuredPf ? (featuredPf.photos || []).slice(0, 3) : allPhotos.slice(0, 3);
+        const heroPhotos = [heroImg1, heroImg2, heroImg3].some(Boolean)
+          ? [heroImg1, heroImg2, heroImg3].map((src, i) => ({ id: `hero-${i}`, src: src || fallbackPhotos[i]?.src })).filter(p => p.src)
+          : fallbackPhotos;
+        const heroSingleImg = heroImgSingle || fallbackPhotos[0]?.src || artist.photo;
         const enabledSections = studioSections.filter(s => s.enabled).sort((a, b) => a.order - b.order);
         const currentThemeData = STUDIO_THEMES.find(t => t.id === studioTheme) || STUDIO_THEMES[0];
 
@@ -5922,39 +6680,533 @@ export default function ArtistShell() {
           const nm = artist.name.toUpperCase();
           const firstName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
           const lastName = artist.lastName?.toUpperCase() || nm.split(" ").slice(1).join(" ");
-          const experiences = stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").slice(0, 6);
+          const ss = studioSectionSettings;
+          const expRecordIds = ss.experience?.selectedRecords || [];
+          const experiences = expRecordIds.length > 0
+            ? stageRecords.filter(s => expRecordIds.includes(s.id))
+            : stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").slice(0, 6);
+          /* Build real testimonials from portfolio references + work reviews */
+          const realTestimonials = [
+            ...selectedPfs.flatMap(pf => (pf.references || []).map(r => ({ quote: r.quote, name: r.name || r.source, role: r.role ? `${r.role}${r.org ? `, ${r.org}` : ""}` : r.org || r.context || "" }))),
+            ...selectedWks.flatMap(wk => (wk.reviews || []).map(r => ({ quote: r.quote, name: r.source, role: r.type === "press" ? "Press" : "Audience Review" }))),
+          ].filter(t => t.quote);
+          /* Section title helper — renders h2 with getSS fallback */
+          const sectionTitle = (sectionId, field, fallback) => {
+            const value = String(getSS(sectionId, field, fallback) || fallback || "");
+            return <h2 className="noir-section-title noir-reveal" dangerouslySetInnerHTML={{ __html: value }} />;
+          };
+          const isHome = noirPage.type === "home";
 
-          /* Scroll phases */
-          const imgPhase = Math.min(studioScrollY / 350, 1);
-          const namePhase = Math.max(0, Math.min((studioScrollY - 150) / 400, 1));
-          const navCompact = studioScrollY > 500;
-          const parallaxSlow = studioScrollY * 0.15;
-          const parallaxMed = studioScrollY * 0.3;
-          /* Nav name entrance — grows from slightly large to normal as hero name arrives */
-          const navNamePhase = Math.max(0, Math.min((studioScrollY - 420) / 120, 1));
+          /* Scroll phases — only on home */
+          const imgPhase = isHome ? Math.min(studioScrollY / 350, 1) : 0;
+          const namePhase = isHome ? Math.max(0, Math.min((studioScrollY - 150) / 400, 1)) : 0;
+          const parallaxSlow = isHome ? studioScrollY * 0.15 : 0;
+          const parallaxMed = isHome ? studioScrollY * 0.3 : 0;
+
+          /* Nav click handler */
+          const navTo = (page) => {
+            setNoirPage(page);
+            setStudioScrollY(0);
+            /* Scroll the viewport to top */
+            const vp = document.querySelector(".studio-preview-viewport") || document.querySelector(".studio-preview-frame");
+            if (vp) vp.scrollTop = 0;
+          };
+
+          /* ── Sub-page: Gallery ── */
+          const renderGalleryPage = () => (
+            <div className="noir-page noir-gallery-page">
+              <div className="noir-gallery-page-header">
+                <h1>GALLERY</h1>
+                <p>{allPhotos.length} WORKS</p>
+              </div>
+              <div className="noir-gallery-page-grid">
+                {allPhotos.map((ph, i) => (
+                  <div key={ph.id || i} className="noir-gallery-page-item">
+                    <img src={ph.src} alt={ph.caption || ""} />
+                    <div className="noir-gp-overlay">
+                      <span>{ph.caption || `UNTITLED ${i + 1}`}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+
+          /* ── Sub-page: About ── */
+          const renderAboutPage = () => {
+            const allStyles = artist.styles || [];
+            const performanceCount = stageRecords.filter(s => s.type === "experience").length;
+            const awardCount = stageRecords.filter(s => s.type === "award").length;
+            return (
+              <div className="noir-page noir-about-page">
+                <div className="noir-about-page-hero">
+                  <div className="noir-about-page-hero-left">
+                    <div className="noir-ap-role">{(artist.role || artist.styles?.[0] || "ARTIST").toUpperCase()}</div>
+                    <h1>MORE THAN AN ARTIST,<br/>A STORYTELLER<br/>AT HEART</h1>
+                    <div className="noir-ap-avail"><div className="noir-ap-avail-dot" /> AVAILABLE FOR WORK</div>
+                    <p className="noir-ap-bio">{artist.biography || artist.bio}</p>
+                  </div>
+                  <div className="noir-about-page-hero-right">
+                    <img src={artist.photo} alt={artist.name} />
+                  </div>
+                </div>
+                <div className="noir-about-page-stats">
+                  <div className="noir-about-page-stat">
+                    <span className="noir-about-page-stat-num">{allPhotos.length}+</span>
+                    <span className="noir-about-page-stat-label">WORKS</span>
+                  </div>
+                  <div className="noir-about-page-stat">
+                    <span className="noir-about-page-stat-num">{performanceCount}+</span>
+                    <span className="noir-about-page-stat-label">EXPERIENCES</span>
+                  </div>
+                  <div className="noir-about-page-stat">
+                    <span className="noir-about-page-stat-num">{awardCount}</span>
+                    <span className="noir-about-page-stat-label">AWARDS</span>
+                  </div>
+                  <div className="noir-about-page-stat">
+                    <span className="noir-about-page-stat-num">{artist.country ? "14+" : "10+"}</span>
+                    <span className="noir-about-page-stat-label">COUNTRIES</span>
+                  </div>
+                </div>
+                {experiences.length > 0 && (
+                  <div className="noir-about-page-journey">
+                    <h2>JOURNEY</h2>
+                    <div className="noir-about-page-timeline">
+                      {experiences.map(sr => (
+                        <div key={sr.id} className="noir-about-page-timeline-item">
+                          <div className="noir-at-year">{sr.start?.slice(0, 4)}{sr.end ? ` — ${sr.end.slice(0, 4)}` : " — NOW"}</div>
+                          <div>
+                            <div className="noir-at-title">{sr.title}</div>
+                            <div className="noir-at-org">{sr.org}</div>
+                            {sr.desc && <div className="noir-at-desc">{sr.desc}</div>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {allStyles.length > 0 && (
+                  <div className="noir-about-page-skills">
+                    <h2>SPECIALIZATIONS</h2>
+                    <div className="noir-about-page-skills-grid">
+                      {allStyles.map(s => <div key={s} className="noir-about-page-skill">{s.toUpperCase()}</div>)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          };
+
+          /* ── Sub-page: Portfolio Detail ── */
+          /* ── Sub-page: Portfolios Overview ── */
+          const renderPortfoliosPage = () => (
+            <div className="noir-page noir-gallery-page">
+              <div className="noir-gallery-page-header">
+                <h1>PORTFOLIOS</h1>
+                <p>{selectedPfs.length} COLLECTIONS</p>
+              </div>
+              <div className="noir-detail-page-photos">
+                {selectedPfs.map(pf => (
+                  <div key={pf.id} className="noir-gallery-page-item" style={{ aspectRatio: "3/4" }} onClick={() => navTo({ type: "portfolio", id: pf.id })}>
+                    {pf.cover && <img src={pf.cover} alt={pf.name} />}
+                    <div className="noir-gp-overlay" style={{ opacity: 1, background: "linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 40%,transparent 70%)" }}>
+                      <div>
+                        <span style={{ fontSize: 11, letterSpacing: 2, color: "rgba(255,255,255,.5)", display: "block", marginBottom: 6 }}>{pf.styles?.[0]?.toUpperCase() || "PORTFOLIO"}</span>
+                        <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, display: "block" }}>{pf.name?.toUpperCase()}</span>
+                        <span style={{ fontSize: 11, letterSpacing: 2, color: "rgba(255,255,255,.4)", display: "block", marginTop: 6 }}>{(pf.photos?.length || 0)} PHOTOS · {(pf.videos?.length || 0)} VIDEOS</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+
+          /* ── Sub-page: Works Overview ── */
+          const renderWorksPage = () => (
+            <div className="noir-page noir-gallery-page">
+              <div className="noir-gallery-page-header">
+                <h1>WORKS</h1>
+                <p>{selectedWks.length} PRODUCTIONS</p>
+              </div>
+              <div className="noir-detail-page-photos">
+                {selectedWks.map(wk => (
+                  <div key={wk.id} className="noir-gallery-page-item" style={{ aspectRatio: "16/9" }} onClick={() => navTo({ type: "work", id: wk.id })}>
+                    {wk.cover && <img src={wk.cover} alt={wk.name} />}
+                    <div className="noir-gp-overlay" style={{ opacity: 1, background: "linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 40%,transparent 70%)" }}>
+                      <div>
+                        <span style={{ fontSize: 11, letterSpacing: 2, color: "rgba(255,255,255,.5)", display: "block", marginBottom: 6 }}>{wk.genre?.toUpperCase() || "WORK"}</span>
+                        <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: 1, display: "block" }}>{wk.name?.toUpperCase()}</span>
+                        <span style={{ fontSize: 11, letterSpacing: 2, color: "rgba(255,255,255,.4)", display: "block", marginTop: 6 }}>{wk.role?.toUpperCase()} · {wk.duration}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+
+          /* ── Sub-page: Portfolio Detail (enriched) ── */
+          const renderPortfolioDetail = (pfId) => {
+            const pf = selectedPfs.find(p => p.id === pfId);
+            if (!pf) return <div className="noir-page" style={{ padding: "200px 32px", textAlign: "center" }}>Portfolio not found</div>;
+            const photos = pf.photos || [];
+            const videos = pf.videos || [];
+            const refs = pf.references || [];
+            const pinnedVideo = videos.find(v => v.pinned || v.id === pf.highlightedVideo);
+            const pfIdx = selectedPfs.indexOf(pf);
+            const nextPf = selectedPfs[(pfIdx + 1) % selectedPfs.length];
+            return (
+              <div className="noir-page">
+                <div className="noir-detail-page">
+                  <div className="noir-detail-page-breadcrumb">
+                    <span onClick={() => navTo({ type: "home" })}>HOME</span> / <span onClick={() => navTo({ type: "portfolios" })}>PORTFOLIOS</span> / <span>{pf.name?.toUpperCase()}</span>
+                  </div>
+                  <h1>{pf.name?.toUpperCase()}</h1>
+                  <div className="noir-detail-page-meta">
+                    <div className="noir-detail-page-meta-item">
+                      <div className="noir-dm-label">/ CATEGORY</div>
+                      <div className="noir-dm-value">{(pf.styles?.[0] || "PORTFOLIO").toUpperCase()}</div>
+                    </div>
+                    <div className="noir-detail-page-meta-item">
+                      <div className="noir-dm-label">/ ARTIST</div>
+                      <div className="noir-dm-value">{nm}</div>
+                    </div>
+                    <div className="noir-detail-page-meta-item">
+                      <div className="noir-dm-label">/ COLLECTION</div>
+                      <div className="noir-dm-value">{photos.length} PHOTOS · {videos.length} VIDEOS</div>
+                    </div>
+                  </div>
+
+                  {/* Featured Video — video first */}
+                  {pinnedVideo && (
+                    <div className="noir-detail-video-hero">
+                      <div className="noir-detail-video-thumb">
+                        <img src={pinnedVideo.thumb} alt={pinnedVideo.title} />
+                        <div className="noir-detail-video-play">▶</div>
+                      </div>
+                      <div className="noir-detail-video-info">
+                        <span className="noir-dm-label">/ FEATURED VIDEO</span>
+                        <h3>{pinnedVideo.title}</h3>
+                        <span style={{ fontSize: 12, color: "rgba(255,255,255,.4)" }}>{pinnedVideo.duration}</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* All Videos */}
+                  {videos.length > 1 && (
+                    <div className="noir-detail-videos-grid">
+                      {videos.filter(v => v.id !== pinnedVideo?.id).map(v => (
+                        <div key={v.id} className="noir-detail-video-card">
+                          <div className="noir-detail-video-thumb-sm">
+                            <img src={v.thumb} alt={v.title} />
+                            <div className="noir-detail-video-play-sm">▶</div>
+                          </div>
+                          <div style={{ padding: "12px 0" }}>
+                            <div style={{ fontSize: 13, fontWeight: 600 }}>{v.title}</div>
+                            <div style={{ fontSize: 11, color: "rgba(255,255,255,.4)", marginTop: 4 }}>{v.duration}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Photo Grid */}
+                  <div className="noir-detail-page-photos" style={{ marginTop: 40 }}>
+                    {photos.map((ph, i) => (
+                      <div key={ph.id || i} className={`noir-detail-page-photo${i === 0 ? " full" : ""}`}>
+                        <img src={ph.src} alt={ph.caption || ""} />
+                        {ph.caption && <div style={{ position: "absolute", bottom: 12, left: 16, fontSize: 11, letterSpacing: 2, color: "rgba(255,255,255,.6)" }}>{ph.caption}</div>}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Overview */}
+                  {pf.description && (
+                    <div className="noir-detail-page-overview">
+                      <div className="noir-detail-page-overview-label">/ OVERVIEW</div>
+                      <div className="noir-detail-page-overview-text">{pf.description}</div>
+                    </div>
+                  )}
+
+                  {/* Info Table */}
+                  <div className="noir-detail-page-info">
+                    <div className="noir-detail-page-info-row"><div className="noir-di-label">/ ARTIST</div><div className="noir-di-value">{nm}</div></div>
+                    {pf.discipline && <div className="noir-detail-page-info-row"><div className="noir-di-label">/ DISCIPLINE</div><div className="noir-di-value">{pf.discipline.toUpperCase()}</div></div>}
+                    {pf.styles?.length > 0 && <div className="noir-detail-page-info-row"><div className="noir-di-label">/ STYLES</div><div className="noir-di-value">{pf.styles.join(", ").toUpperCase()}</div></div>}
+                    {pf.skills?.length > 0 && <div className="noir-detail-page-info-row"><div className="noir-di-label">/ SKILLS</div><div className="noir-di-value">{pf.skills.join(", ").toUpperCase()}</div></div>}
+                    <div className="noir-detail-page-info-row"><div className="noir-di-label">/ COLLECTION</div><div className="noir-di-value">{photos.length} PHOTOS, {videos.length} VIDEOS</div></div>
+                  </div>
+
+                  {/* References & Reviews */}
+                  {refs.length > 0 && (
+                    <div style={{ padding: "48px 0", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                      <div className="noir-detail-section-label" style={{ marginBottom: 32 }}>/ REFERENCES & REVIEWS</div>
+                      {refs.map(ref => (
+                        <blockquote key={ref.id} className="noir-blockquote" style={{ color: "rgba(255,255,255,.7)" }}>
+                          <p style={{ fontSize: 16, lineHeight: 1.7, margin: "0 0 8px" }}>"{ref.quote}"</p>
+                          <cite className="noir-cite">
+                            — {ref.name || ref.source}{ref.role ? `, ${ref.role}` : ""}{ref.org ? ` · ${ref.org}` : ""}{ref.context ? ` · ${ref.context}` : ""}
+                          </cite>
+                        </blockquote>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Next Portfolio */}
+                {nextPf && nextPf.id !== pf.id && (
+                  <div className="noir-detail-next" onClick={() => navTo({ type: "portfolio", id: nextPf.id })}>
+                    <div className="noir-detail-next-bg">{nextPf.cover && <img src={nextPf.cover} alt="" />}</div>
+                    <div className="noir-detail-next-content">
+                      <div className="noir-detail-next-label">/ NEXT PORTFOLIO</div>
+                      <div className="noir-detail-next-title">{nextPf.name?.toUpperCase()}</div>
+                      <div className="noir-detail-next-cta">VIEW PORTFOLIO <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          };
+
+          /* ── Sub-page: Work Detail (enriched) ── */
+          const renderWorkDetail = (wkId) => {
+            const wk = selectedWks.find(w => w.id === wkId);
+            if (!wk) return <div className="noir-page" style={{ padding: "200px 32px", textAlign: "center" }}>Work not found</div>;
+            const wkIdx = selectedWks.indexOf(wk);
+            const nextWk = selectedWks[(wkIdx + 1) % selectedWks.length];
+            const wkGallery = wk.gallery || [];
+            const credits = wk.credits || [];
+            const reviews = wk.reviews || [];
+            const awards = wk.awards || [];
+            const upcoming = wk.upcomingPerformances || [];
+            const partners = wk.partners || [];
+            return (
+              <div className="noir-page">
+                <div className="noir-detail-page">
+                  <div className="noir-detail-page-breadcrumb">
+                    <span onClick={() => navTo({ type: "home" })}>HOME</span> / <span onClick={() => navTo({ type: "works" })}>WORKS</span> / <span>{wk.name?.toUpperCase()}</span>
+                  </div>
+                  <h1>{wk.name?.toUpperCase()}</h1>
+                  {wk.tagline && <p style={{ fontSize: 18, color: "rgba(255,255,255,.5)", marginTop: -16, marginBottom: 32, fontStyle: "italic" }}>{wk.tagline}</p>}
+                  <div className="noir-detail-page-meta">
+                    <div className="noir-detail-page-meta-item"><div className="noir-dm-label">/ GENRE</div><div className="noir-dm-value">{(wk.genre || "PERFORMANCE").toUpperCase()}</div></div>
+                    <div className="noir-detail-page-meta-item"><div className="noir-dm-label">/ ROLE</div><div className="noir-dm-value">{(wk.role || "PERFORMER").toUpperCase()}</div></div>
+                    <div className="noir-detail-page-meta-item"><div className="noir-dm-label">/ DURATION</div><div className="noir-dm-value">{wk.duration || "—"}</div></div>
+                  </div>
+
+                  {/* Cover / Trailer — video first */}
+                  {wk.cover && (
+                    <div className="noir-detail-video-hero" style={{ cursor: wk.trailerUrl ? "pointer" : "default" }}>
+                      <div className="noir-detail-video-thumb" style={{ aspectRatio: "16/9" }}>
+                        <img src={wk.cover} alt={wk.name} />
+                        {wk.trailerUrl && <div className="noir-detail-video-play">▶</div>}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Gallery */}
+                  {wkGallery.length > 0 && (
+                    <div className="noir-detail-page-photos" style={{ marginTop: 24 }}>
+                      {wkGallery.map((ph, i) => (
+                        <div key={ph.id || i} className="noir-detail-page-photo">
+                          <img src={ph.src} alt={ph.caption || ""} />
+                          {ph.caption && <div style={{ position: "absolute", bottom: 12, left: 16, fontSize: 11, letterSpacing: 2, color: "rgba(255,255,255,.6)" }}>{ph.caption}</div>}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Overview */}
+                  {(wk.fullDescription || wk.shortPitch) && (
+                    <div className="noir-detail-page-overview">
+                      <div className="noir-detail-page-overview-label">/ OVERVIEW</div>
+                      <div className="noir-detail-page-overview-text">{wk.fullDescription || wk.shortPitch}</div>
+                    </div>
+                  )}
+
+                  {/* Concept Note */}
+                  {wk.conceptNote && (
+                    <div className="noir-detail-page-overview" style={{ borderTop: "none", paddingTop: 0 }}>
+                      <div className="noir-detail-page-overview-label">/ CONCEPT NOTE</div>
+                      <div className="noir-detail-page-overview-text" style={{ fontStyle: "italic" }}>{wk.conceptNote}</div>
+                    </div>
+                  )}
+
+                  {/* Info Table */}
+                  <div className="noir-detail-page-info">
+                    <div className="noir-detail-page-info-row"><div className="noir-di-label">/ GENRE</div><div className="noir-di-value">{(wk.genre || "—").toUpperCase()}</div></div>
+                    <div className="noir-detail-page-info-row"><div className="noir-di-label">/ DURATION</div><div className="noir-di-value">{wk.duration}</div></div>
+                    <div className="noir-detail-page-info-row"><div className="noir-di-label">/ PREMIERE</div><div className="noir-di-value">{wk.premiereYear} · {wk.city}, {wk.country}</div></div>
+                    {wk.language && <div className="noir-detail-page-info-row"><div className="noir-di-label">/ LANGUAGE</div><div className="noir-di-value">{wk.language.toUpperCase()}</div></div>}
+                    {wk.ageGuidance && <div className="noir-detail-page-info-row"><div className="noir-di-label">/ AGE GUIDANCE</div><div className="noir-di-value">{wk.ageGuidance}</div></div>}
+                    {wk.touringStatus && <div className="noir-detail-page-info-row"><div className="noir-di-label">/ STATUS</div><div className="noir-di-value">{wk.touringStatus.replace(/_/g, " ").toUpperCase()}</div></div>}
+                  </div>
+
+                  {/* Credits */}
+                  {credits.length > 0 && (
+                    <div className="noir-detail-page-info" style={{ marginBottom: 40 }}>
+                      <div className="noir-detail-section-label" style={{ padding: "24px 0 8px" }}>/ CREDITS</div>
+                      {credits.map(cr => (
+                        <div key={cr.id} className="noir-detail-page-info-row">
+                          <div className="noir-di-label">{cr.role?.toUpperCase()}</div>
+                          <div className="noir-di-value">{cr.name?.toUpperCase()}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Awards */}
+                  {awards.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                      <div className="noir-detail-section-label" style={{ marginBottom: 24 }}>/ AWARDS & RECOGNITION</div>
+                      {awards.map(aw => (
+                        <div key={aw.id} style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 0", borderBottom: "1px solid rgba(255,255,255,.04)" }}>
+                          <span className="noir-award-year">{aw.year}</span>
+                          <span style={{ fontSize: 14, fontWeight: 600 }}>{aw.title}</span>
+                          <span className="noir-award-festival">{aw.festival}</span>
+                          <span style={{ fontSize: 10, letterSpacing: 2, color: aw.type === "win" ? "rgba(255,210,80,.7)" : "rgba(255,255,255,.3)", marginLeft: "auto" }}>{aw.type === "win" ? "★ WON" : "NOMINATED"}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Reviews */}
+                  {reviews.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                      <div className="noir-detail-section-label" style={{ marginBottom: 24 }}>/ PRESS & REVIEWS</div>
+                      {reviews.map(rv => (
+                        <blockquote key={rv.id} className="noir-blockquote">
+                          <p style={{ fontSize: 16, lineHeight: 1.7, margin: "0 0 8px", color: "rgba(255,255,255,.7)" }}>"{rv.quote}"</p>
+                          <cite className="noir-cite">— {rv.source}{rv.rating ? ` · ${"★".repeat(rv.rating)}` : ""}</cite>
+                        </blockquote>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Upcoming Performances */}
+                  {upcoming.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                      <div className="noir-detail-section-label" style={{ marginBottom: 24 }}>/ UPCOMING PERFORMANCES</div>
+                      {upcoming.map(up => (
+                        <div key={up.id} style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: 24, padding: "16px 0", borderBottom: "1px solid rgba(255,255,255,.04)" }}>
+                          <span style={{ fontSize: 14, fontWeight: 700 }}>{new Date(up.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</span>
+                          <span className="noir-perf-venue">{up.venue}, {up.city}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Partners */}
+                  {partners.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                      <div className="noir-detail-section-label" style={{ marginBottom: 24 }}>/ PARTNERS & SUPPORT</div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                        {partners.map(pt => (
+                          <span key={pt.id} className="noir-partner-pill">
+                            {pt.name.toUpperCase()} <span className="noir-partner-type">· {pt.type.toUpperCase()}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Next Work */}
+                {nextWk && nextWk.id !== wk.id && (
+                  <div className="noir-detail-next" onClick={() => navTo({ type: "work", id: nextWk.id })}>
+                    <div className="noir-detail-next-bg">{nextWk.cover && <img src={nextWk.cover} alt="" />}</div>
+                    <div className="noir-detail-next-content">
+                      <div className="noir-detail-next-label">/ NEXT WORK</div>
+                      <div className="noir-detail-next-title">{nextWk.name?.toUpperCase()}</div>
+                      <div className="noir-detail-next-cta">VIEW WORK <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          };
+
+          /* ── Contact Modal ── */
+          const contactModal = noirContactOpen ? (
+            <div className="noir-contact-overlay" onClick={e => { if (e.target === e.currentTarget) setNoirContactOpen(false); }}>
+              <div className="noir-contact-modal">
+                <button className="noir-contact-modal-close" onClick={() => setNoirContactOpen(false)}>✕</button>
+                <h2>GET IN TOUCH</h2>
+                <p>FILL IN THE FORM BELOW AND I'LL GET BACK TO YOU</p>
+                <form className="noir-contact-form" onSubmit={e => { e.preventDefault(); setNoirContactOpen(false); }}>
+                  <div className="noir-contact-field">
+                    <label>NAME</label>
+                    <input type="text" placeholder="Your name" />
+                  </div>
+                  <div className="noir-contact-field">
+                    <label>EMAIL</label>
+                    <input type="email" placeholder="your@email.com" />
+                  </div>
+                  <div className="noir-contact-field">
+                    <label>SUBJECT</label>
+                    <input type="text" placeholder="What's this about?" />
+                  </div>
+                  <div className="noir-contact-field">
+                    <label>MESSAGE</label>
+                    <textarea placeholder="Tell me about your project..." />
+                  </div>
+                  <button type="submit" className="noir-contact-submit">SEND MESSAGE</button>
+                </form>
+              </div>
+            </div>
+          ) : null;
+
+          /* ── Render page content based on noirPage ── */
+          const renderPageContent = () => {
+            switch (noirPage.type) {
+              case "gallery": return renderGalleryPage();
+              case "about": return renderAboutPage();
+              case "portfolios": return renderPortfoliosPage();
+              case "works": return renderWorksPage();
+              case "portfolio": return renderPortfolioDetail(noirPage.id);
+              case "work": return renderWorkDetail(noirPage.id);
+              default: return null;
+            }
+          };
 
           return (
-            <div className="noir-theme" ref={noirRevealRef} onMouseMove={e => setNoirCursorPos({ x: e.clientX, y: e.clientY })}>
+            <div className="noir-theme" ref={noirRevealRef} onMouseMove={e => setNoirCursorPos({ x: e.clientX, y: e.clientY })} style={{ "--noir-accent": studioBrand.accentColor, "--noir-bg": studioBrand.backgroundColor || "#0a0a0a", "--noir-title": studioBrand.titleColor || "#ffffff", "--noir-text": studioBrand.textColor || "rgba(255,255,255,.7)", fontFamily: ({ playfair: "'Playfair Display',Georgia,serif", mono: "'Space Mono','JetBrains Mono',monospace", garamond: "'EB Garamond',Georgia,serif", poppins: "'Poppins',system-ui,sans-serif", syne: "'Syne',system-ui,sans-serif", cormorant: "'Cormorant Garamond',Georgia,serif", dmserif: "'DM Serif Display',Georgia,serif", outfit: "'Outfit',system-ui,sans-serif", sourceserif: "'Source Serif 4',Georgia,serif", spacegrotesk: "'Space Grotesk',system-ui,sans-serif", literata: "'Literata',Georgia,serif" })[studioBrand.fontPairId] || "'Inter',system-ui,sans-serif" }}>
               {/* Custom cursor */}
               <div className="noir-cursor" style={{ left: noirCursorPos.x, top: noirCursorPos.y }} />
               {/* Fixed bottom blur overlay */}
               <div className="noir-blur-overlay" />
-              {/* Noir Nav */}
-              <nav className={`noir-nav${navCompact ? " noir-nav-compact" : ""}`}>
-                {navCompact && (
-                  <div className="noir-nav-name" style={{ opacity: navNamePhase, transform: `scale(${0.6 + navNamePhase * 0.4})`, transformOrigin: "left center" }}>{nm}</div>
-                )}
-                <div className={`noir-nav-links${navCompact ? "" : " noir-nav-spread"}`} style={navCompact ? { opacity: navNamePhase } : undefined}>
-                  <span>HOME</span>
-                  <span>ABOUT</span>
-                  <span>GALLERY</span>
-                  {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
-                  {selectedWks.length > 0 && <span>WORKS</span>}
-                  <span>CONTACT</span>
-                </div>
-              </nav>
+              {/* Contact modal */}
+              {contactModal}
+              {/* Noir Nav — smooth slide transition */}
+              {(() => {
+                /* navSlide: 0 = fully spread, 1 = fully compact — one continuous value */
+                const navSlide = isHome ? Math.max(0, Math.min((studioScrollY - 300) / 200, 1)) : 1;
+                /* Name grows from 0 → full width, eating into links space.
+                   space-between then naturally compresses the gaps → items slide right.
+                   No binary switches, no jumps — pure interpolation. */
+                const nameMaxW = navSlide * 200; /* 0px → 200px */
+                const nameMarginR = navSlide * 16; /* 0 → 16px */
+                return (
+                  <nav className={`noir-nav${navSlide > 0.5 ? " noir-nav-compact" : ""}`}>
+                    <div className="noir-nav-name" style={{ opacity: navSlide, maxWidth: `${nameMaxW}px`, marginRight: `${nameMarginR}px`, overflow: "hidden", cursor: "pointer", pointerEvents: navSlide > 0.1 ? "auto" : "none" }} onClick={() => navTo({ type: "home" })}>{nm}</div>
+                    <div className="noir-nav-links" style={{ flex: 1, justifyContent: "space-between" }}>
+                      <div style={{ flex: navSlide * 2 }} />
+                      <span onClick={() => navTo({ type: "home" })}>HOME</span>
+                      <span onClick={() => navTo({ type: "about" })}>ABOUT</span>
+                      <span onClick={() => navTo({ type: "gallery" })}>GALLERY</span>
+                      {selectedPfs.length > 0 && <span onClick={() => navTo({ type: "portfolios" })}>PORTFOLIOS</span>}
+                      {selectedWks.length > 0 && <span onClick={() => navTo({ type: "works" })}>WORKS</span>}
+                      <span onClick={() => setNoirContactOpen(true)}>CONTACT</span>
+                    </div>
+                  </nav>
+                );
+              })()}
 
-              {/* Sections rendered in order */}
+              {/* Sub-pages or Home sections */}
+              {!isHome ? renderPageContent() : (
+              <>
+              {/* Home Sections rendered in order */}
               {enabledSections.map(section => {
                 switch (section.id) {
                   case "hero": {
@@ -5988,39 +7240,38 @@ export default function ArtistShell() {
                     );
                   }
 
-                  case "about":
+                  case "about": {
+                    const aboutHeadline = getSS("about", "headline", `${artist.city?.toUpperCase() || "LONDON"}-BASED<br/>CREATOR OF STRIKING<br/>VISUALS & TIMELESS<br/>PERFORMANCES`);
+                    const aboutQuote = getSS("about", "quote", artist.profileBio || "Step into my world, where every frame is a masterpiece, and your unique journey becomes the heart of my art.");
+                    const aboutPortrait = ss.about?.portraitImage ? mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo : artist.photo;
                     return (
                       <section key="about" className="noir-about" style={{ position: "relative", overflow: "hidden" }}>
                         <div className="noir-parallax-title noir-parallax-title-right" style={{ transform: `translateX(${-parallaxSlow}px)` }}>ABOUT</div>
                         <div className="noir-about-split">
                           <div className="noir-about-left noir-reveal-left">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 5v14M5 12h14"/></svg>
-                            <h2 className="noir-about-headline">
-                              {artist.city?.toUpperCase() || "LONDON"}-BASED<br/>
-                              CREATOR OF STRIKING<br/>
-                              VISUALS & TIMELESS<br/>
-                              PERFORMANCES
-                            </h2>
+                            <h2 className="noir-about-headline" dangerouslySetInnerHTML={{ __html: aboutHeadline }} />
                           </div>
                           <div className="noir-about-right noir-reveal-right">
-                            <div className="noir-available">
-                              <span className="noir-avail-dot" />
-                              AVAILABLE FOR WORK
-                            </div>
+                            {ss.about?.showAvailability !== false && (
+                              <div className="noir-available">
+                                <span className="noir-avail-dot" />
+                                AVAILABLE FOR WORK
+                              </div>
+                            )}
                             <p className="noir-about-body">{artist.biography || artist.bio}</p>
                           </div>
                         </div>
                         <div className="noir-about-portrait noir-reveal-scale">
-                          <img src={artist.photo} alt={artist.name} />
+                          <img src={aboutPortrait} alt={artist.name} />
                           <div className="noir-about-overlay">
-                            <p className="noir-about-quote">
-                              {artist.profileBio || "Step into my world, where every frame is a masterpiece, and your unique journey becomes the heart of my art."}
-                            </p>
-                            <span className="noir-about-link">ABOUT ME</span>
+                            <p className="noir-about-quote">{aboutQuote}</p>
+                            <span className="noir-about-link" style={{ cursor: "pointer" }} onClick={() => navTo({ type: "about" })}>ABOUT ME</span>
                           </div>
                         </div>
                       </section>
                     );
+                  }
 
                   case "gallery": {
                     if (allPhotos.length === 0) return null;
@@ -6033,7 +7284,7 @@ export default function ArtistShell() {
                         <div className="noir-parallax-title noir-parallax-title-left" style={{ transform: `translateX(${parallaxSlow}px)` }}>GALLERY</div>
                         <div className="noir-gallery-header noir-reveal">
                           <h2 className="noir-section-title" style={{ marginBottom: 8 }}>EXPLORE THE<br/>FULL GALLERY</h2>
-                          <div className="noir-gallery-cta">
+                          <div className="noir-gallery-cta" style={{ cursor: "pointer" }} onClick={() => navTo({ type: "gallery" })}>
                             VIEW ALL WORK
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                           </div>
@@ -6071,10 +7322,10 @@ export default function ArtistShell() {
                     return (
                       <section key="portfolios" className="noir-portfolios">
                         <div className="noir-parallax-title noir-parallax-title-right" style={{ transform: `translateX(${-parallaxMed + 100}px)` }}>COLLECTIONS</div>
-                        <h2 className="noir-section-title noir-reveal">PORTFOLIOS</h2>
+                        {sectionTitle("portfolios", "title", "PORTFOLIOS")}
                         <div className="noir-portfolios-grid">
                           {selectedPfs.map((pf, i) => (
-                            <div key={pf.id} className={`noir-portfolio-card noir-reveal noir-stagger-${Math.min(i + 1, 4)}${pf.id === studioContent.featuredPortfolio ? " featured" : ""}`}>
+                            <div key={pf.id} className={`noir-portfolio-card noir-reveal noir-stagger-${Math.min(i + 1, 4)}${pf.id === studioContent.featuredPortfolio ? " featured" : ""}`} style={{ cursor: "pointer" }} onClick={() => navTo({ type: "portfolio", id: pf.id })}>
                               {pf.cover && <div className="noir-pf-cover"><img src={pf.cover} alt={pf.name} /></div>}
                               <div className="noir-pf-info">
                                 {pf.id === studioContent.featuredPortfolio && <span className="noir-pf-badge">Featured</span>}
@@ -6143,7 +7394,7 @@ export default function ArtistShell() {
                     return (
                       <section key="experience" className="noir-experience" style={{ position: "relative", overflow: "hidden" }}>
                         <div className="noir-parallax-title noir-parallax-title-right" style={{ transform: `translateX(${-parallaxSlow + 40}px)` }}>CAREER</div>
-                        <h2 className="noir-section-title noir-reveal">CAREER<br/>HIGHLIGHTS</h2>
+                        {sectionTitle("experience", "title", "CAREER<br/>HIGHLIGHTS")}
                         <div className="noir-exp-grid">
                           {experiences.map((sr, i) => (
                             <div key={sr.id} className={`noir-exp-card noir-reveal noir-stagger-${Math.min(i + 1, 6)}`}>
@@ -6163,10 +7414,10 @@ export default function ArtistShell() {
                     return (
                       <section key="works" className="noir-works">
                         <div className="noir-parallax-title noir-parallax-title-left" style={{ transform: `translateX(${parallaxMed - 80}px)` }}>WORKS</div>
-                        <h2 className="noir-section-title noir-reveal">WORKS</h2>
+                        {sectionTitle("works", "title", "WORKS")}
                         <div className="noir-works-grid">
                           {selectedWks.map((wk, i) => (
-                            <div key={wk.id} className={`noir-work-card noir-reveal noir-stagger-${Math.min(i + 1, 4)}`}>
+                            <div key={wk.id} className={`noir-work-card noir-reveal noir-stagger-${Math.min(i + 1, 4)}`} style={{ cursor: "pointer" }} onClick={() => navTo({ type: "work", id: wk.id })}>
                               {wk.cover && <img src={wk.cover} alt={wk.name} />}
                               <div className="noir-work-info">
                                 <h3>{wk.name}</h3>
@@ -6179,15 +7430,30 @@ export default function ArtistShell() {
                       </section>
                     );
 
-                  case "exploreGallery":
-                    return null;
+                  case "exploreGallery": {
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="exploreGallery" className="noir-explore noir-reveal">
+                        <div className="noir-explore-inner" onClick={() => navTo({ type: "gallery" })}>
+                          <div className="noir-explore-label">EXPLORE THE FULL COLLECTION</div>
+                          <div className="noir-explore-thumbs">
+                            {allPhotos.slice(0, 5).map((ph, i) => (
+                              <img key={ph.id || i} src={ph.src} alt="" />
+                            ))}
+                          </div>
+                          <div className="noir-explore-cta">VIEW GALLERY →</div>
+                        </div>
+                      </section>
+                    );
+                  }
 
                   case "testimonials": {
-                    const testimonials = [
+                    const _fallbackT = [
                       { quote: "Working with " + artist.firstName + " was an extraordinary experience. Their artistry and dedication brought an entirely new dimension to our production.", name: "Sarah Chen", role: "Artistic Director, National Dance Theatre" },
                       { quote: "A truly remarkable talent. " + artist.firstName + " brings raw emotion and technical precision together in a way I've rarely seen in my career.", name: "Marcus Webb", role: "Choreographer" },
                       { quote: "Every movement tells a story. " + artist.firstName + " has an innate ability to connect with an audience that goes beyond technique — it's pure magic.", name: "Elena Petrova", role: "Creative Director, Movement Studios" },
                     ];
+                    const testimonials = (realTestimonials || []).length > 0 ? realTestimonials : _fallbackT;
                     const t = testimonials[studioTestimonialIdx % testimonials.length];
                     return (
                       <section key="testimonials" className="noir-testimonials noir-reveal-scale">
@@ -6213,9 +7479,9 @@ export default function ArtistShell() {
                     return (
                       <section key="contact" className="noir-connect noir-reveal">
                         <div className="noir-connect-left">
-                          <h2>LET'S<br/>WORK<br/>TOGETHER</h2>
-                          <p>Open to new collaborations, performances, and creative partnerships. Reach out and let's create something memorable.</p>
-                          <a className="noir-connect-cta" href={`mailto:${artist.email}`}>GET IN TOUCH <span>→</span></a>
+                          {sectionTitle("contact", "headline", "LET'S<br/>WORK<br/>TOGETHER")}
+                          <p>{getSS("contact", "subline", "Open to new collaborations, performances, and creative partnerships. Reach out and let's create something memorable.")}</p>
+                          <a className="noir-connect-cta" href="#" onClick={e => { e.preventDefault(); setNoirContactOpen(true); }}>{getSS("contact", "buttonText", "GET IN TOUCH")} <span>→</span></a>
                         </div>
                         <div className="noir-connect-right">
                           <div className="noir-connect-item">
@@ -6250,8 +7516,10 @@ export default function ArtistShell() {
                     return null;
                 }
               })}
+              </>
+              )}
 
-              {/* Noir Footer */}
+              {/* Noir Footer — shown on all pages */}
               <footer className="noir-footer-full">
                 <div className="noir-footer-bg">
                   <img src={allPhotos[1]?.src || allPhotos[0]?.src || artist.photo} alt="" />
@@ -6259,13 +7527,15 @@ export default function ArtistShell() {
                 </div>
                 <div className="noir-footer-content">
                   <div className="noir-footer-tagline noir-reveal">
-                    <p className="noir-footer-subtitle">EVERY MOMENT HOLDS<br/>A STORY WAITING TO BE<br/>CAPTURED</p>
+                    <p className="noir-footer-subtitle">{getSS("footer", "tagline", "EVERY MOMENT HOLDS\nA STORY WAITING TO BE\nCAPTURED").split("\n").map((l, i) => <React.Fragment key={i}>{i > 0 && <br/>}{l}</React.Fragment>)}</p>
                     <div className="noir-footer-mid">
                       <div className="noir-footer-nav">
-                        <span>HOME</span><span>ABOUT</span><span>GALLERY</span>
-                        {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
-                        {selectedWks.length > 0 && <span>WORKS</span>}
-                        <span>CONTACT</span>
+                        <span onClick={() => navTo({ type: "home" })}>HOME</span>
+                        <span onClick={() => navTo({ type: "about" })}>ABOUT</span>
+                        <span onClick={() => navTo({ type: "gallery" })}>GALLERY</span>
+                        {selectedPfs.length > 0 && <span onClick={() => navTo({ type: "home" })}>PORTFOLIOS</span>}
+                        {selectedWks.length > 0 && <span onClick={() => navTo({ type: "home" })}>WORKS</span>}
+                        <span onClick={() => setNoirContactOpen(true)}>CONTACT</span>
                       </div>
                       <div className="noir-footer-socials">
                         {artist.socials?.instagram && <a href="#">INSTAGRAM</a>}
@@ -6318,8 +7588,18 @@ export default function ArtistShell() {
           const nm = artist.name.toUpperCase();
           const firstName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
           const lastName = artist.lastName?.toUpperCase() || nm.split(" ").slice(1).join(" ");
-          const experiences = stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").slice(0, 6);
+          const ss = studioSectionSettings;
+          const expRecordIds = ss.experience?.selectedRecords || [];
+          const experiences = expRecordIds.length > 0
+            ? stageRecords.filter(s => expRecordIds.includes(s.id))
+            : stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").slice(0, 6);
+          /* Build real testimonials from portfolio references + work reviews */
+          const realTestimonialsA = [
+            ...selectedPfs.flatMap(pf => (pf.references || []).map(r => ({ quote: r.quote, name: r.name || r.source, role: r.role ? `${r.role}${r.org ? `, ${r.org}` : ""}` : r.org || r.context || "" }))),
+            ...selectedWks.flatMap(wk => (wk.reviews || []).map(r => ({ quote: r.quote, name: r.source, role: r.type === "press" ? "Press" : "Audience Review" }))),
+          ].filter(t => t.quote);
           const navCompact = studioScrollY > 300;
+          const isHome = atriumPage.type === "home";
           let sNum = 0;
 
           const sh = (label) => { sNum++; return (
@@ -6330,26 +7610,440 @@ export default function ArtistShell() {
             </div>
           ); };
 
+          /* Nav click handler */
+          const atriumNavTo = (page) => {
+            setAtriumPage(page);
+            setStudioScrollY(0);
+            const vp = document.querySelector(".studio-preview-viewport") || document.querySelector(".studio-preview-frame");
+            if (vp) vp.scrollTop = 0;
+          };
+
+          /* ── Sub-page: Gallery ── */
+          const renderAtriumGalleryPage = () => (
+            <div className="atrium-page">
+              <div className="atrium-page-header">
+                <h1>GALLERY</h1>
+                <p>{allPhotos.length} WORKS</p>
+              </div>
+              <div className="atrium-page-grid">
+                {allPhotos.map((ph, i) => (
+                  <div key={ph.id || i} className="atrium-page-item">
+                    <img src={ph.src} alt={ph.caption || ""} />
+                    <div className="atrium-page-item-overlay">
+                      <span>{ph.caption || `Untitled ${i + 1}`}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+
+          /* ── Sub-page: About ── */
+          const renderAtriumAboutPage = () => {
+            const allStyles = artist.styles || [];
+            const performanceCount = stageRecords.filter(s => s.type === "experience").length;
+            const awardCount = stageRecords.filter(s => s.type === "award").length;
+            return (
+              <div className="atrium-page">
+                <div className="atrium-page-header">
+                  <div style={{ fontSize: 11, letterSpacing: ".3em", color: "rgba(17,17,17,.35)", textTransform: "uppercase", marginBottom: 12 }}>{(artist.role || artist.styles?.[0] || "Artist").toUpperCase()}</div>
+                  <h1>MORE THAN AN ARTIST,<br/>A STORYTELLER<br/>AT HEART</h1>
+                  {ss.about?.showAvailability !== false && (
+                    <div className="atrium-about-avail" style={{ marginTop: 16 }}>
+                      <span className="atrium-about-avail-dot" />
+                      AVAILABLE FOR WORK
+                    </div>
+                  )}
+                  <p style={{ fontSize: 15, lineHeight: 1.8, color: "rgba(17,17,17,.5)", maxWidth: 640, marginTop: 24 }}>{artist.biography || artist.bio}</p>
+                </div>
+                <div style={{ overflow: "hidden", borderRadius: 16, marginBottom: 48 }}>
+                  <img src={ss.about?.portraitImage ? mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo : artist.photo} alt={artist.name} style={{ width: "100%", maxHeight: "60vh", objectFit: "cover", display: "block" }} />
+                </div>
+                <div className="atrium-about-page-stats">
+                  <div className="atrium-about-page-stat">
+                    <span className="atrium-about-page-stat-num">{allPhotos.length}+</span>
+                    <span className="atrium-about-page-stat-label">WORKS</span>
+                  </div>
+                  <div className="atrium-about-page-stat">
+                    <span className="atrium-about-page-stat-num">{performanceCount}+</span>
+                    <span className="atrium-about-page-stat-label">EXPERIENCES</span>
+                  </div>
+                  <div className="atrium-about-page-stat">
+                    <span className="atrium-about-page-stat-num">{awardCount}</span>
+                    <span className="atrium-about-page-stat-label">AWARDS</span>
+                  </div>
+                  <div className="atrium-about-page-stat">
+                    <span className="atrium-about-page-stat-num">{artist.country ? "14+" : "10+"}</span>
+                    <span className="atrium-about-page-stat-label">COUNTRIES</span>
+                  </div>
+                </div>
+                {experiences.length > 0 && (
+                  <div className="atrium-about-page-journey">
+                    <h2>JOURNEY</h2>
+                    <div>
+                      {experiences.map(sr => (
+                        <div key={sr.id} className="atrium-about-page-timeline-item">
+                          <div className="atrium-at-year">{sr.start?.slice(0, 4)}{sr.end ? ` — ${sr.end.slice(0, 4)}` : " — NOW"}</div>
+                          <div>
+                            <div className="atrium-at-title">{sr.title}</div>
+                            <div className="atrium-at-org">{sr.org}</div>
+                            {sr.desc && <div className="atrium-at-desc">{sr.desc}</div>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {allStyles.length > 0 && (
+                  <div className="atrium-about-page-skills">
+                    <h2>SPECIALIZATIONS</h2>
+                    <div className="atrium-about-page-skills-grid">
+                      {allStyles.map(s => <div key={s} className="atrium-about-page-skill">{s.toUpperCase()}</div>)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          };
+
+          /* ── Sub-page: Portfolios Overview ── */
+          const renderAtriumPortfoliosPage = () => (
+            <div className="atrium-page">
+              <div className="atrium-page-header">
+                <h1>PORTFOLIOS</h1>
+                <p>{selectedPfs.length} COLLECTIONS</p>
+              </div>
+              <div className="atrium-page-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
+                {selectedPfs.map(pf => (
+                  <div key={pf.id} className="atrium-pf-card" onClick={() => atriumNavTo({ type: "portfolio", id: pf.id })} style={{ cursor: "pointer" }}>
+                    {pf.cover && <div className="atrium-pf-cover"><img src={pf.cover} alt={pf.name} /></div>}
+                    <div className="atrium-pf-info">
+                      {pf.styles?.[0] && <span className="atrium-pf-badge">{pf.styles[0].toUpperCase()}</span>}
+                      <h3>{pf.name}</h3>
+                      <p>{pf.description}</p>
+                      <div className="atrium-pf-stats">
+                        <span>{pf.photos?.length || 0} Photos</span>
+                        <span>{pf.videos?.length || 0} Videos</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+
+          /* ── Sub-page: Works Overview ── */
+          const renderAtriumWorksPage = () => (
+            <div className="atrium-page">
+              <div className="atrium-page-header">
+                <h1>WORKS</h1>
+                <p>{selectedWks.length} PRODUCTIONS</p>
+              </div>
+              <div className="atrium-page-grid" style={{ gridTemplateColumns: "1fr 1fr" }}>
+                {selectedWks.map(wk => (
+                  <div key={wk.id} className="atrium-work-card" onClick={() => atriumNavTo({ type: "work", id: wk.id })}>
+                    {wk.cover && <img src={wk.cover} alt={wk.name} />}
+                    <div className="atrium-work-info">
+                      <h3>{wk.name}</h3>
+                      <span>{wk.genre} · {wk.duration}</span>
+                      <span style={{ marginTop: 2, fontWeight: 500, color: "rgba(17,17,17,.5)" }}>{wk.role}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+
+          /* ── Sub-page: Portfolio Detail ── */
+          const renderAtriumPortfolioDetail = (pfId) => {
+            const pf = selectedPfs.find(p => p.id === pfId);
+            if (!pf) return <div className="atrium-page" style={{ padding: "200px 32px", textAlign: "center" }}>Portfolio not found</div>;
+            const photos = pf.photos || [];
+            const videos = pf.videos || [];
+            const refs = pf.references || [];
+            const pinnedVideo = videos.find(v => v.pinned || v.id === pf.highlightedVideo);
+            const pfIdx = selectedPfs.indexOf(pf);
+            const nextPf = selectedPfs[(pfIdx + 1) % selectedPfs.length];
+            return (
+              <>
+              <div className="atrium-detail-split">
+                {/* Left: Text content */}
+                <div className="atrium-detail-text">
+                  <div className="atrium-detail-breadcrumb">
+                    <span onClick={() => atriumNavTo({ type: "home" })}>HOME</span> / <span onClick={() => atriumNavTo({ type: "portfolios" })}>PORTFOLIOS</span> / <span>{pf.name?.toUpperCase()}</span>
+                  </div>
+                  <h1>{pf.name?.toUpperCase()}</h1>
+                  <div className="atrium-detail-meta">
+                    <div className="atrium-detail-meta-item">
+                      <div className="atrium-dm-label">/ CATEGORY</div>
+                      <div className="atrium-dm-value">{(pf.styles?.[0] || "PORTFOLIO").toUpperCase()}</div>
+                    </div>
+                    <div className="atrium-detail-meta-item">
+                      <div className="atrium-dm-label">/ ARTIST</div>
+                      <div className="atrium-dm-value">{nm}</div>
+                    </div>
+                    <div className="atrium-detail-meta-item">
+                      <div className="atrium-dm-label">/ COLLECTION</div>
+                      <div className="atrium-dm-value">{photos.length} PHOTOS · {videos.length} VIDEOS</div>
+                    </div>
+                  </div>
+
+                  {/* Overview */}
+                  {pf.description && (
+                    <div className="atrium-detail-overview">
+                      <div className="atrium-detail-overview-label">/ OVERVIEW</div>
+                      <div className="atrium-detail-overview-text">{pf.description}</div>
+                    </div>
+                  )}
+
+                  {/* Info Table */}
+                  <div className="atrium-detail-info">
+                    <div className="atrium-detail-info-row"><div className="atrium-di-label">/ ARTIST</div><div className="atrium-di-value">{nm}</div></div>
+                    {pf.discipline && <div className="atrium-detail-info-row"><div className="atrium-di-label">/ DISCIPLINE</div><div className="atrium-di-value">{pf.discipline.toUpperCase()}</div></div>}
+                    {pf.styles?.length > 0 && <div className="atrium-detail-info-row"><div className="atrium-di-label">/ STYLES</div><div className="atrium-di-value">{pf.styles.join(", ").toUpperCase()}</div></div>}
+                    {pf.skills?.length > 0 && <div className="atrium-detail-info-row"><div className="atrium-di-label">/ SKILLS</div><div className="atrium-di-value">{pf.skills.join(", ").toUpperCase()}</div></div>}
+                    <div className="atrium-detail-info-row"><div className="atrium-di-label">/ COLLECTION</div><div className="atrium-di-value">{photos.length} PHOTOS, {videos.length} VIDEOS</div></div>
+                  </div>
+
+                  {/* References */}
+                  {refs.length > 0 && (
+                    <div style={{ padding: "48px 0", borderTop: "1px solid rgba(0,0,0,.06)" }}>
+                      <div className="atrium-detail-section-label" style={{ marginBottom: 32 }}>/ REFERENCES & REVIEWS</div>
+                      {refs.map(ref => (
+                        <blockquote key={ref.id} className="atrium-blockquote" style={{ color: "rgba(17,17,17,.6)" }}>
+                          <p style={{ fontSize: 16, lineHeight: 1.7, margin: "0 0 8px" }}>"{ref.quote}"</p>
+                          <cite className="atrium-cite">
+                            — {ref.name || ref.source}{ref.role ? `, ${ref.role}` : ""}{ref.org ? ` · ${ref.org}` : ""}{ref.context ? ` · ${ref.context}` : ""}
+                          </cite>
+                        </blockquote>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Right: Stacked media slider */}
+                <div className="atrium-detail-media">
+                  {pinnedVideo && (
+                    <div className="atrium-detail-media-item">
+                      <img src={pinnedVideo.thumb} alt={pinnedVideo.title} />
+                      <div className="atrium-detail-media-play">&#9654;</div>
+                    </div>
+                  )}
+                  {photos.map((ph, i) => (
+                    <div key={ph.id || i} className="atrium-detail-media-item">
+                      <img src={ph.src} alt={ph.caption || ""} />
+                      {ph.caption && <div className="atrium-detail-media-caption">{ph.caption}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Next Portfolio */}
+              {nextPf && nextPf.id !== pf.id && (
+                <div className="atrium-detail-next" onClick={() => atriumNavTo({ type: "portfolio", id: nextPf.id })}>
+                  <div className="atrium-detail-next-bg">{nextPf.cover && <img src={nextPf.cover} alt="" />}</div>
+                  <div className="atrium-detail-next-content">
+                    <div className="atrium-detail-next-label">/ NEXT PORTFOLIO</div>
+                    <div className="atrium-detail-next-title">{nextPf.name?.toUpperCase()}</div>
+                    <div className="atrium-detail-next-cta">VIEW PORTFOLIO <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  </div>
+                </div>
+              )}
+              </>
+            );
+          };
+
+          /* ── Sub-page: Work Detail ── */
+          const renderAtriumWorkDetail = (wkId) => {
+            const wk = selectedWks.find(w => w.id === wkId);
+            if (!wk) return <div className="atrium-page" style={{ padding: "200px 32px", textAlign: "center" }}>Work not found</div>;
+            const wkIdx = selectedWks.indexOf(wk);
+            const nextWk = selectedWks[(wkIdx + 1) % selectedWks.length];
+            const wkGallery = wk.gallery || [];
+            const credits = wk.credits || [];
+            const reviews = wk.reviews || [];
+            const awards = wk.awards || [];
+            const upcoming = wk.upcomingPerformances || [];
+            const partners = wk.partners || [];
+            return (
+              <>
+              <div className="atrium-detail-split">
+                {/* Left: Text content */}
+                <div className="atrium-detail-text">
+                  <div className="atrium-detail-breadcrumb">
+                    <span onClick={() => atriumNavTo({ type: "home" })}>HOME</span> / <span onClick={() => atriumNavTo({ type: "works" })}>WORKS</span> / <span>{wk.name?.toUpperCase()}</span>
+                  </div>
+                  <h1>{wk.name?.toUpperCase()}</h1>
+                  {wk.tagline && <p style={{ fontSize: 16, color: "rgba(17,17,17,.45)", marginTop: -8, marginBottom: 24, fontStyle: "italic" }}>{wk.tagline}</p>}
+                  <div className="atrium-detail-meta">
+                    <div className="atrium-detail-meta-item"><div className="atrium-dm-label">/ GENRE</div><div className="atrium-dm-value">{(wk.genre || "PERFORMANCE").toUpperCase()}</div></div>
+                    <div className="atrium-detail-meta-item"><div className="atrium-dm-label">/ ROLE</div><div className="atrium-dm-value">{(wk.role || "PERFORMER").toUpperCase()}</div></div>
+                    <div className="atrium-detail-meta-item"><div className="atrium-dm-label">/ DURATION</div><div className="atrium-dm-value">{wk.duration || "—"}</div></div>
+                  </div>
+
+                  {/* Overview */}
+                  {(wk.fullDescription || wk.shortPitch) && (
+                    <div className="atrium-detail-overview">
+                      <div className="atrium-detail-overview-label">/ OVERVIEW</div>
+                      <div className="atrium-detail-overview-text">{wk.fullDescription || wk.shortPitch}</div>
+                    </div>
+                  )}
+
+                  {/* Concept Note */}
+                  {wk.conceptNote && (
+                    <div className="atrium-detail-overview" style={{ borderTop: "none", paddingTop: 0 }}>
+                      <div className="atrium-detail-overview-label">/ CONCEPT NOTE</div>
+                      <div className="atrium-detail-overview-text" style={{ fontStyle: "italic" }}>{wk.conceptNote}</div>
+                    </div>
+                  )}
+
+                  {/* Info Table */}
+                  <div className="atrium-detail-info">
+                    <div className="atrium-detail-info-row"><div className="atrium-di-label">/ GENRE</div><div className="atrium-di-value">{(wk.genre || "—").toUpperCase()}</div></div>
+                    <div className="atrium-detail-info-row"><div className="atrium-di-label">/ DURATION</div><div className="atrium-di-value">{wk.duration}</div></div>
+                    <div className="atrium-detail-info-row"><div className="atrium-di-label">/ PREMIERE</div><div className="atrium-di-value">{wk.premiereYear} · {wk.city}, {wk.country}</div></div>
+                    {wk.language && <div className="atrium-detail-info-row"><div className="atrium-di-label">/ LANGUAGE</div><div className="atrium-di-value">{wk.language.toUpperCase()}</div></div>}
+                    {wk.ageGuidance && <div className="atrium-detail-info-row"><div className="atrium-di-label">/ AGE GUIDANCE</div><div className="atrium-di-value">{wk.ageGuidance}</div></div>}
+                    {wk.touringStatus && <div className="atrium-detail-info-row"><div className="atrium-di-label">/ STATUS</div><div className="atrium-di-value">{wk.touringStatus.replace(/_/g, " ").toUpperCase()}</div></div>}
+                  </div>
+
+                  {/* Credits */}
+                  {credits.length > 0 && (
+                    <div className="atrium-detail-info" style={{ marginBottom: 40 }}>
+                      <div className="atrium-detail-section-label" style={{ padding: "24px 0 8px" }}>/ CREDITS</div>
+                      {credits.map(cr => (
+                        <div key={cr.id} className="atrium-detail-info-row">
+                          <div className="atrium-di-label">{cr.role?.toUpperCase()}</div>
+                          <div className="atrium-di-value">{cr.name?.toUpperCase()}</div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Awards */}
+                  {awards.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(0,0,0,.06)" }}>
+                      <div className="atrium-detail-section-label" style={{ marginBottom: 24 }}>/ AWARDS & RECOGNITION</div>
+                      {awards.map(aw => (
+                        <div key={aw.id} style={{ display: "flex", alignItems: "center", gap: 16, padding: "12px 0", borderBottom: "1px solid rgba(0,0,0,.04)" }}>
+                          <span className="atrium-award-year">{aw.year}</span>
+                          <span style={{ fontSize: 14, fontWeight: 600 }}>{aw.title}</span>
+                          <span className="atrium-award-festival">{aw.festival}</span>
+                          <span style={{ fontSize: 10, letterSpacing: 2, color: aw.type === "win" ? "rgba(180,140,20,.8)" : "rgba(17,17,17,.3)", marginLeft: "auto" }}>{aw.type === "win" ? "★ WON" : "NOMINATED"}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Reviews */}
+                  {reviews.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(0,0,0,.06)" }}>
+                      <div className="atrium-detail-section-label" style={{ marginBottom: 24 }}>/ PRESS & REVIEWS</div>
+                      {reviews.map(rv => (
+                        <blockquote key={rv.id} className="atrium-blockquote">
+                          <p style={{ fontSize: 16, lineHeight: 1.7, margin: "0 0 8px", color: "rgba(17,17,17,.6)" }}>"{rv.quote}"</p>
+                          <cite className="atrium-cite">— {rv.source}{rv.rating ? ` · ${"★".repeat(rv.rating)}` : ""}</cite>
+                        </blockquote>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Upcoming Performances */}
+                  {upcoming.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(0,0,0,.06)" }}>
+                      <div className="atrium-detail-section-label" style={{ marginBottom: 24 }}>/ UPCOMING PERFORMANCES</div>
+                      {upcoming.map(up => (
+                        <div key={up.id} style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: 24, padding: "16px 0", borderBottom: "1px solid rgba(0,0,0,.04)" }}>
+                          <span style={{ fontSize: 14, fontWeight: 700, color: "#111" }}>{new Date(up.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</span>
+                          <span className="atrium-perf-venue">{up.venue}, {up.city}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Partners */}
+                  {partners.length > 0 && (
+                    <div style={{ padding: "32px 0", borderTop: "1px solid rgba(0,0,0,.06)" }}>
+                      <div className="atrium-detail-section-label" style={{ marginBottom: 24 }}>/ PARTNERS & SUPPORT</div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+                        {partners.map(pt => (
+                          <span key={pt.id} className="atrium-partner-pill">
+                            {pt.name.toUpperCase()} <span className="atrium-partner-type">· {pt.type.toUpperCase()}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Right: Stacked media */}
+                <div className="atrium-detail-media">
+                  {wk.cover && (
+                    <div className="atrium-detail-media-item">
+                      <img src={wk.cover} alt={wk.name} />
+                      {wk.trailerUrl && <div className="atrium-detail-media-play">&#9654;</div>}
+                    </div>
+                  )}
+                  {wkGallery.map((ph, i) => (
+                    <div key={ph.id || i} className="atrium-detail-media-item">
+                      <img src={ph.src} alt={ph.caption || ""} />
+                      {ph.caption && <div className="atrium-detail-media-caption">{ph.caption}</div>}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Next Work */}
+              {nextWk && nextWk.id !== wk.id && (
+                <div className="atrium-detail-next" onClick={() => atriumNavTo({ type: "work", id: nextWk.id })}>
+                  <div className="atrium-detail-next-bg">{nextWk.cover && <img src={nextWk.cover} alt="" />}</div>
+                  <div className="atrium-detail-next-content">
+                    <div className="atrium-detail-next-label">/ NEXT WORK</div>
+                    <div className="atrium-detail-next-title">{nextWk.name?.toUpperCase()}</div>
+                    <div className="atrium-detail-next-cta">VIEW WORK <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+                  </div>
+                </div>
+              )}
+              </>
+            );
+          };
+
+          /* ── Page content switcher ── */
+          const renderAtriumPageContent = () => {
+            switch (atriumPage.type) {
+              case "gallery": return renderAtriumGalleryPage();
+              case "about": return renderAtriumAboutPage();
+              case "portfolios": return renderAtriumPortfoliosPage();
+              case "works": return renderAtriumWorksPage();
+              case "portfolio": return renderAtriumPortfolioDetail(atriumPage.id);
+              case "work": return renderAtriumWorkDetail(atriumPage.id);
+              default: return null;
+            }
+          };
+
           return (
-            <div className="atrium-theme" ref={atriumRevealRef}>
+            <div className="atrium-theme" ref={atriumRevealRef} style={{ "--atrium-accent": studioBrand.accentColor, "--atrium-bg": studioBrand.backgroundColor || "#F7F7F5", "--atrium-title": studioBrand.titleColor || "#111111", "--atrium-text": studioBrand.textColor || "rgba(17,17,17,.55)", fontFamily: ({ playfair: "'Playfair Display',Georgia,serif", mono: "'Space Mono','JetBrains Mono',monospace", garamond: "'EB Garamond',Georgia,serif", poppins: "'Poppins',system-ui,sans-serif", syne: "'Syne',system-ui,sans-serif", cormorant: "'Cormorant Garamond',Georgia,serif", dmserif: "'DM Serif Display',Georgia,serif", outfit: "'Outfit',system-ui,sans-serif", sourceserif: "'Source Serif 4',Georgia,serif", spacegrotesk: "'Space Grotesk',system-ui,sans-serif", literata: "'Literata',Georgia,serif" })[studioBrand.fontPairId] || "'Plus Jakarta Sans',system-ui,sans-serif" }}>
               {/* Nav */}
               <nav className={`atrium-nav${navCompact ? " atrium-nav-compact" : ""}`}>
-                <div className="atrium-nav-name">{nm}</div>
+                <div className="atrium-nav-name" style={{ cursor: "pointer" }} onClick={() => atriumNavTo({ type: "home" })}>{nm}</div>
                 <div className="atrium-nav-links">
-                  <span>HOME</span>
-                  <span>ABOUT</span>
-                  <span>GALLERY</span>
-                  {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
-                  {selectedWks.length > 0 && <span>WORKS</span>}
+                  <span onClick={() => atriumNavTo({ type: "home" })}>HOME</span>
+                  <span onClick={() => atriumNavTo({ type: "about" })}>ABOUT</span>
+                  <span onClick={() => atriumNavTo({ type: "gallery" })}>GALLERY</span>
+                  {selectedPfs.length > 0 && <span onClick={() => atriumNavTo({ type: "portfolios" })}>PORTFOLIOS</span>}
+                  {selectedWks.length > 0 && <span onClick={() => atriumNavTo({ type: "works" })}>WORKS</span>}
                   <span>CONTACT</span>
                 </div>
               </nav>
 
+              {/* Sub-pages or Home sections */}
+              {!isHome ? renderAtriumPageContent() : (
+              <>
               {/* Sections in order */}
               {enabledSections.map(section => {
                 switch (section.id) {
                   case "hero": {
-                    const heroImg = heroPhotos?.[0]?.src || artist.photo;
+                    const heroImg = heroSingleImg;
                     return (
                       <section key="hero" className="atrium-hero">
                         <div className="atrium-hero-inner">
@@ -6373,33 +8067,38 @@ export default function ArtistShell() {
                     );
                   }
 
-                  case "about":
+                  case "about": {
+                    const aboutHeadline = getSS("about", "headline", `${artist.city?.toUpperCase() || "LONDON"}-BASED<br/>CREATOR OF STRIKING<br/>VISUALS & TIMELESS<br/>PERFORMANCES`);
+                    const aboutPortrait = ss.about?.portraitImage ? mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo : artist.photo;
                     return (
                       <section key="about" className="atrium-about">
                         {sh("About")}
                         <div className="atrium-about-grid">
                           <div className="atrium-about-left atrium-reveal">
-                            <h2>{artist.city?.toUpperCase() || "LONDON"}-BASED<br/>CREATOR OF STRIKING<br/>VISUALS & TIMELESS<br/>PERFORMANCES</h2>
-                            <div className="atrium-about-avail">
-                              <span className="atrium-about-avail-dot" />
-                              AVAILABLE FOR WORK
-                            </div>
+                            <h2 dangerouslySetInnerHTML={{ __html: aboutHeadline }} />
+                            {ss.about?.showAvailability !== false && (
+                              <div className="atrium-about-avail">
+                                <span className="atrium-about-avail-dot" />
+                                AVAILABLE FOR WORK
+                              </div>
+                            )}
                           </div>
                           <div className="atrium-about-right atrium-reveal atrium-stagger-1">
                             {artist.biography || artist.bio}
                           </div>
                         </div>
                         <div className="atrium-about-portrait atrium-reveal atrium-stagger-2">
-                          <img src={artist.photo} alt={artist.name} />
+                          <img src={aboutPortrait} alt={artist.name} />
                         </div>
                       </section>
                     );
+                  }
 
                   case "gallery": {
                     if (allPhotos.length === 0) return null;
                     return (
                       <section key="gallery" className="atrium-gallery">
-                        {sh("Gallery")}
+                        {sh(getSS("gallery", "title", "Gallery"))}
                         <div className="atrium-gallery-grid">
                           {allPhotos.slice(0, 7).map((ph, i) => (
                             <div key={ph.id || i} className="atrium-gallery-item atrium-reveal">
@@ -6415,10 +8114,10 @@ export default function ArtistShell() {
                     if (selectedPfs.length === 0) return null;
                     return (
                       <section key="portfolios" className="atrium-portfolios">
-                        {sh("Portfolios")}
+                        {sh(getSS("portfolios", "title", "Portfolios"))}
                         <div className="atrium-pf-grid">
                           {selectedPfs.map((pf, i) => (
-                            <div key={pf.id} className={`atrium-pf-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}${pf.id === studioContent.featuredPortfolio ? " featured" : ""}`}>
+                            <div key={pf.id} className={`atrium-pf-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}${pf.id === studioContent.featuredPortfolio ? " featured" : ""}`} onClick={() => atriumNavTo({ type: "portfolio", id: pf.id })}>
                               {pf.cover && <div className="atrium-pf-cover"><img src={pf.cover} alt={pf.name} /></div>}
                               <div className="atrium-pf-info">
                                 {pf.id === studioContent.featuredPortfolio && <span className="atrium-pf-badge">Featured</span>}
@@ -6470,7 +8169,7 @@ export default function ArtistShell() {
                     if (experiences.length === 0) return null;
                     return (
                       <section key="experience" className="atrium-experience">
-                        {sh("Experience")}
+                        {sh(getSS("experience", "title", "Experience"))}
                         <div className="atrium-exp-grid">
                           {experiences.map((sr, i) => (
                             <div key={sr.id} className={`atrium-exp-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}`}>
@@ -6489,10 +8188,10 @@ export default function ArtistShell() {
                     if (selectedWks.length === 0) return null;
                     return (
                       <section key="works" className="atrium-works">
-                        {sh("Works")}
+                        {sh(getSS("works", "title", "Works"))}
                         <div className="atrium-works-grid">
                           {selectedWks.map((wk, i) => (
-                            <div key={wk.id} className={`atrium-work-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}`}>
+                            <div key={wk.id} className={`atrium-work-card atrium-reveal atrium-stagger-${Math.min(i + 1, 4)}`} onClick={() => atriumNavTo({ type: "work", id: wk.id })}>
                               {wk.cover && <img src={wk.cover} alt={wk.name} />}
                               <div className="atrium-work-info">
                                 <h3>{wk.name}</h3>
@@ -6505,15 +8204,30 @@ export default function ArtistShell() {
                       </section>
                     );
 
-                  case "exploreGallery":
-                    return null;
+                  case "exploreGallery": {
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="exploreGallery" className="atrium-explore">
+                        <div className="atrium-explore-inner" onClick={() => atriumNavTo({ type: "gallery" })}>
+                          <div className="atrium-explore-label">EXPLORE THE FULL COLLECTION</div>
+                          <div className="atrium-explore-thumbs">
+                            {allPhotos.slice(0, 5).map((ph, i) => (
+                              <img key={ph.id || i} src={ph.src} alt="" />
+                            ))}
+                          </div>
+                          <div className="atrium-explore-cta">VIEW GALLERY →</div>
+                        </div>
+                      </section>
+                    );
+                  }
 
                   case "testimonials": {
-                    const testimonials = [
+                    const _fallbackTA = [
                       { quote: "Working with " + artist.firstName + " was an extraordinary experience. Their artistry and dedication brought an entirely new dimension to our production.", name: "Sarah Chen", role: "Artistic Director, National Dance Theatre" },
                       { quote: "A truly remarkable talent. " + artist.firstName + " brings raw emotion and technical precision together in a way I've rarely seen in my career.", name: "Marcus Webb", role: "Choreographer" },
                       { quote: "Every movement tells a story. " + artist.firstName + " has an innate ability to connect with an audience that goes beyond technique — it's pure magic.", name: "Elena Petrova", role: "Creative Director, Movement Studios" },
                     ];
+                    const testimonials = realTestimonialsA.length > 0 ? realTestimonialsA : _fallbackTA;
                     const t = testimonials[studioTestimonialIdx % testimonials.length];
                     return (
                       <section key="testimonials" className="atrium-testimonials">
@@ -6532,13 +8246,16 @@ export default function ArtistShell() {
                     );
                   }
 
-                  case "contact":
+                  case "contact": {
+                    const contactHL = getSS("contact", "headline", "LET'S\nWORK\nTOGETHER");
+                    const contactSub = getSS("contact", "subline", "Open to new collaborations, performances, and creative partnerships. Reach out and let's create something memorable.");
+                    const contactBtn = getSS("contact", "buttonText", "GET IN TOUCH");
                     return (
                       <section key="contact" className="atrium-contact atrium-reveal">
                         <div className="atrium-contact-left">
-                          <h2>LET'S<br/>WORK<br/>TOGETHER</h2>
-                          <p>Open to new collaborations, performances, and creative partnerships. Reach out and let's create something memorable.</p>
-                          <a className="atrium-contact-cta" href={`mailto:${artist.email}`}>GET IN TOUCH <span>→</span></a>
+                          <h2 dangerouslySetInnerHTML={{ __html: contactHL.split("\n").join("<br/>") }} />
+                          <p>{contactSub}</p>
+                          <a className="atrium-contact-cta" href={`mailto:${artist.email}`}>{contactBtn} <span>→</span></a>
                         </div>
                         <div className="atrium-contact-right">
                           <div className="atrium-contact-item">
@@ -6568,24 +8285,750 @@ export default function ArtistShell() {
                         </div>
                       </section>
                     );
+                  }
 
                   default:
                     return null;
                 }
               })}
+              </>
+              )}
 
-              {/* Atrium Footer */}
+              {/* Atrium Footer — shown on all pages */}
               <footer className="atrium-footer">
                 <div className="atrium-footer-nav">
-                  <span>HOME</span><span>ABOUT</span><span>GALLERY</span>
-                  {selectedPfs.length > 0 && <span>PORTFOLIOS</span>}
-                  {selectedWks.length > 0 && <span>WORKS</span>}
+                  <span onClick={() => atriumNavTo({ type: "home" })}>HOME</span>
+                  <span onClick={() => atriumNavTo({ type: "about" })}>ABOUT</span>
+                  <span onClick={() => atriumNavTo({ type: "gallery" })}>GALLERY</span>
+                  {selectedPfs.length > 0 && <span onClick={() => atriumNavTo({ type: "portfolios" })}>PORTFOLIOS</span>}
+                  {selectedWks.length > 0 && <span onClick={() => atriumNavTo({ type: "works" })}>WORKS</span>}
                   <span>CONTACT</span>
                 </div>
                 <div className="atrium-footer-copy">
+                  {getSS("footer", "tagline", null) ? <span style={{ display: "block", marginBottom: 8, fontSize: 12, color: "rgba(17,17,17,.3)" }}>{getSS("footer", "tagline", "")}</span> : null}
                   © {new Date().getFullYear()} {artist.name}. Built with Lanced.
                 </div>
               </footer>
+            </div>
+          );
+        };
+
+        /* ═══════════════════════════════════════════════════════════════════
+           LUMEN THEME — render function
+           ═══════════════════════════════════════════════════════════════════ */
+        const renderLumenTheme = () => {
+          const nm = artist.name || "Artist Name";
+          const nmUp = nm.toUpperCase();
+          const ss = studioSectionSettings;
+          const expRecordIds = ss.experience?.selectedRecords || [];
+          const experiences = expRecordIds.length > 0 ? stageRecords.filter(r => expRecordIds.includes(r.id)) : stageRecords.slice(0, 6);
+          const realTestimonialsL = [...selectedPfs.flatMap(p => (p.references || []).map(r => ({ quote: r.quote, name: r.name || r.source, role: r.role ? `${r.role}${r.org ? ` · ${r.org}` : ""}` : r.org || "" }))), ...selectedWks.flatMap(w => (w.reviews || []).map(r => ({ quote: r.quote, name: r.source, role: r.rating ? "★".repeat(r.rating) : "" })))];
+
+          const isHome = lumenPage.type === "home";
+          const navTo = (page) => { setLumenPage(page); setStudioScrollY(0); const vp = document.querySelector(".studio-preview-viewport") || document.querySelector(".studio-preview-frame"); if (vp) vp.scrollTop = 0; };
+
+          const lumenRevealRef = (el) => {
+            if (!el) return;
+            let root = el.parentElement;
+            while (root && root !== document.body) { const ov = getComputedStyle(root).overflowY; if (ov === "auto" || ov === "scroll") break; root = root.parentElement; }
+            if (root === document.body) root = null;
+            const observer = new IntersectionObserver((entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("revealed"); observer.unobserve(e.target); } }), { threshold: 0.08, root });
+            el.querySelectorAll(".lumen-reveal,.lumen-reveal-scale").forEach(child => observer.observe(child));
+          };
+
+          /* Sub-page renderers — same data pattern as other themes */
+          const renderGalleryPage = () => (<div className="lumen-page"><div className="lumen-page-header"><h1>Gallery</h1></div><div className="lumen-gallery-grid">{allPhotos.map((ph, i) => <div key={ph.id || i} className="lumen-gallery-item"><img src={ph.src} alt="" /></div>)}</div></div>);
+
+          const renderAboutPage = () => {
+            const allStyles = [...new Set(selectedPfs.flatMap(p => p.styles || []))];
+            const performanceCount = selectedWks.reduce((n, w) => n + (w.upcomingPerformances?.length || 0), 0);
+            const awardCount = selectedWks.reduce((n, w) => n + (w.awards?.length || 0), 0);
+            return (
+              <div className="lumen-about-page">
+                <div className="lumen-about-page-hero">
+                  <div>
+                    <div className="lumen-sh-label">{artist.role?.toUpperCase() || "PERFORMER"}</div>
+                    <h1 style={{ fontSize: "clamp(32px,5vw,48px)", fontWeight: 700, fontFamily: "'DM Serif Display',Georgia,serif", lineHeight: 1.1, margin: "0 0 20px" }}>{nm}</h1>
+                    <div className="lumen-about-avail"><div className="lumen-about-avail-dot" /> Available for bookings</div>
+                    <p style={{ fontSize: 14, lineHeight: 1.8, color: "var(--lumen-text,rgba(45,36,24,.55))", marginTop: 20, maxWidth: 480 }}>{artist.biography || "A passionate performing artist."}</p>
+                  </div>
+                  <img src={artist.photo} alt={artist.name} />
+                </div>
+                <div className="lumen-about-page-stats">
+                  {[{ n: selectedWks.length, l: "Works" }, { n: experiences.length, l: "Experiences" }, { n: awardCount, l: "Awards" }, { n: performanceCount, l: "Performances" }].map(s => <div key={s.l} className="lumen-stat"><div className="lumen-stat-num">{s.n}</div><div className="lumen-stat-label">{s.l}</div></div>)}
+                </div>
+                <div className="lumen-about-page-journey">
+                  <h2>Journey</h2>
+                  <div className="lumen-exp-timeline">
+                    {experiences.map(exp => (
+                      <div key={exp.id} className="lumen-exp-item">
+                        <div className="lumen-exp-type">{exp.type?.toUpperCase() || "ROLE"}</div>
+                        <div className="lumen-exp-title">{exp.title}</div>
+                        <div className="lumen-exp-org">{exp.org}</div>
+                        <div className="lumen-exp-period">{exp.yearStart}{exp.yearEnd && exp.yearEnd !== exp.yearStart ? `–${exp.yearEnd}` : ""}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {allStyles.length > 0 && (
+                  <div className="lumen-about-page-skills"><h2>Specializations</h2><div className="lumen-about-page-skills-grid">{allStyles.map(s => <div key={s} className="lumen-about-page-skill">{s}</div>)}</div></div>
+                )}
+              </div>
+            );
+          };
+
+          const renderPortfoliosPage = () => (<div className="lumen-page"><div className="lumen-page-header"><h1>Portfolios</h1></div><div className="lumen-page-grid">{selectedPfs.map(pf => (<div key={pf.id} className="lumen-pf-card" onClick={() => navTo({ type: "portfolio", id: pf.id })}><div className="lumen-pf-card-img"><img src={pf.cover || pf.photos?.[0]?.src} alt={pf.name} /></div><div className="lumen-pf-card-body"><h3>{pf.name}</h3><p>{pf.description}</p></div></div>))}</div></div>);
+          const renderWorksPage = () => (<div className="lumen-page"><div className="lumen-page-header"><h1>Works</h1></div><div className="lumen-works-grid">{selectedWks.map(wk => (<div key={wk.id} className="lumen-work-card" onClick={() => navTo({ type: "work", id: wk.id })}><div className="lumen-work-card-img"><img src={wk.cover} alt={wk.name} /></div><div className="lumen-work-card-body"><h3>{wk.name}</h3><span>{wk.genre} · {wk.duration}</span></div></div>))}</div></div>);
+
+          const renderPortfolioDetail = (pfId) => {
+            const pf = selectedPfs.find(p => p.id === pfId) || selectedPfs[0]; if (!pf) return null;
+            const photos = pf.photos || []; const videos = pf.videos || []; const refs = pf.references || [];
+            const pinnedVideo = pf.pinnedVideo ? videos.find(v => v.id === pf.pinnedVideo) : videos[0];
+            const nextPf = selectedPfs[(selectedPfs.indexOf(pf) + 1) % selectedPfs.length];
+            return (<>
+              <div className="lumen-detail-split">
+                <div className="lumen-detail-text">
+                  <div className="lumen-detail-breadcrumb"><span onClick={() => navTo({ type: "home" })}>Home</span><span>/</span><span onClick={() => navTo({ type: "portfolios" })}>Portfolios</span><span>/</span><span>{pf.name}</span></div>
+                  <h1>{pf.name}</h1>
+                  <div className="lumen-detail-meta">
+                    <div><div className="lumen-dm-label">Category</div><div className="lumen-dm-value">{pf.styles?.[0] || "—"}</div></div>
+                    <div><div className="lumen-dm-label">Artist</div><div className="lumen-dm-value">{nm}</div></div>
+                    <div><div className="lumen-dm-label">Collection</div><div className="lumen-dm-value">{photos.length + videos.length} items</div></div>
+                  </div>
+                  {pf.description && <div className="lumen-detail-overview"><div className="lumen-detail-overview-label">Overview</div><div className="lumen-detail-overview-text">{pf.description}</div></div>}
+                  <div className="lumen-detail-info">
+                    <div className="lumen-detail-info-row"><div className="lumen-di-label">Artist</div><div className="lumen-di-value">{nm}</div></div>
+                    {pf.discipline && <div className="lumen-detail-info-row"><div className="lumen-di-label">Discipline</div><div className="lumen-di-value">{pf.discipline}</div></div>}
+                    {pf.styles?.length > 0 && <div className="lumen-detail-info-row"><div className="lumen-di-label">Styles</div><div className="lumen-di-value">{pf.styles.join(", ")}</div></div>}
+                  </div>
+                  {refs.length > 0 && (<div style={{ padding: "28px 0", borderTop: "1px solid rgba(45,36,24,.06)" }}><div className="lumen-detail-section-label">References & Reviews</div>{refs.map(ref => (<blockquote key={ref.id} className="lumen-blockquote"><p style={{ fontSize: 15, lineHeight: 1.7, margin: "0 0 8px" }}>"{ref.quote}"</p><cite className="lumen-cite">— {ref.name || ref.source}{ref.role ? `, ${ref.role}` : ""}{ref.org ? ` · ${ref.org}` : ""}</cite></blockquote>))}</div>)}
+                </div>
+                <div className="lumen-detail-media">
+                  {pinnedVideo && <div className="lumen-detail-media-item"><img src={pinnedVideo.thumb} alt={pinnedVideo.title} /></div>}
+                  {photos.map((ph, i) => <div key={ph.id || i} className="lumen-detail-media-item"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                </div>
+              </div>
+              {nextPf && nextPf.id !== pf.id && (<div className="lumen-detail-next" onClick={() => navTo({ type: "portfolio", id: nextPf.id })}><div className="lumen-detail-next-label">Next Portfolio</div><div className="lumen-detail-next-title">{nextPf.name}</div></div>)}
+            </>);
+          };
+
+          const renderWorkDetail = (wkId) => {
+            const wk = selectedWks.find(w => w.id === wkId) || selectedWks[0]; if (!wk) return null;
+            const wkGallery = wk.gallery || []; const credits = wk.credits || []; const reviews = wk.reviews || [];
+            const awards = wk.awards || []; const upcoming = wk.upcomingPerformances || []; const partners = wk.partners || [];
+            const nextWk = selectedWks[(selectedWks.indexOf(wk) + 1) % selectedWks.length];
+            return (<>
+              <div className="lumen-detail-split">
+                <div className="lumen-detail-text">
+                  <div className="lumen-detail-breadcrumb"><span onClick={() => navTo({ type: "home" })}>Home</span><span>/</span><span onClick={() => navTo({ type: "works" })}>Works</span><span>/</span><span>{wk.name}</span></div>
+                  <h1>{wk.name}</h1>
+                  {wk.tagline && <p style={{ fontSize: 14, color: "var(--lumen-text,rgba(45,36,24,.45))", fontStyle: "italic", margin: "0 0 20px" }}>{wk.tagline}</p>}
+                  <div className="lumen-detail-meta">
+                    {wk.genre && <div><div className="lumen-dm-label">Genre</div><div className="lumen-dm-value">{wk.genre}</div></div>}
+                    {wk.role && <div><div className="lumen-dm-label">Role</div><div className="lumen-dm-value">{wk.role}</div></div>}
+                    {wk.duration && <div><div className="lumen-dm-label">Duration</div><div className="lumen-dm-value">{wk.duration}</div></div>}
+                  </div>
+                  {(wk.fullDescription || wk.shortPitch) && <div className="lumen-detail-overview"><div className="lumen-detail-overview-label">Overview</div><div className="lumen-detail-overview-text">{wk.fullDescription || wk.shortPitch}</div></div>}
+                  <div className="lumen-detail-info">
+                    <div className="lumen-detail-info-row"><div className="lumen-di-label">Genre</div><div className="lumen-di-value">{wk.genre || "—"}</div></div>
+                    <div className="lumen-detail-info-row"><div className="lumen-di-label">Duration</div><div className="lumen-di-value">{wk.duration}</div></div>
+                    <div className="lumen-detail-info-row"><div className="lumen-di-label">Premiere</div><div className="lumen-di-value">{wk.premiereYear} · {wk.city}, {wk.country}</div></div>
+                    {wk.language && <div className="lumen-detail-info-row"><div className="lumen-di-label">Language</div><div className="lumen-di-value">{wk.language}</div></div>}
+                    {wk.touringStatus && <div className="lumen-detail-info-row"><div className="lumen-di-label">Status</div><div className="lumen-di-value">{wk.touringStatus.replace(/_/g, " ")}</div></div>}
+                  </div>
+                  {credits.length > 0 && (<div className="lumen-detail-info" style={{ marginBottom: 40 }}><div className="lumen-detail-section-label" style={{ padding: "24px 0 8px" }}>Credits</div>{credits.map(cr => <div key={cr.id} className="lumen-detail-info-row"><div className="lumen-di-label">{cr.role}</div><div className="lumen-di-value">{cr.name}</div></div>)}</div>)}
+                  {reviews.length > 0 && (<div style={{ padding: "28px 0", borderTop: "1px solid rgba(45,36,24,.06)" }}><div className="lumen-detail-section-label">Press & Reviews</div>{reviews.map(rv => (<blockquote key={rv.id} className="lumen-blockquote"><p style={{ fontSize: 15, lineHeight: 1.7, margin: "0 0 8px" }}>"{rv.quote}"</p><cite className="lumen-cite">— {rv.source}</cite></blockquote>))}</div>)}
+                  {partners.length > 0 && (<div style={{ padding: "28px 0", borderTop: "1px solid rgba(45,36,24,.06)" }}><div className="lumen-detail-section-label">Partners & Support</div><div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>{partners.map(pt => <span key={pt.id} className="lumen-partner-pill">{pt.name} <span className="lumen-partner-type">· {pt.type}</span></span>)}</div></div>)}
+                </div>
+                <div className="lumen-detail-media">
+                  {wk.cover && <div className="lumen-detail-media-item"><img src={wk.cover} alt={wk.name} /></div>}
+                  {wkGallery.map((ph, i) => <div key={ph.id || i} className="lumen-detail-media-item"><img src={ph.src} alt={ph.caption || ""} /></div>)}
+                </div>
+              </div>
+              {nextWk && nextWk.id !== wk.id && (<div className="lumen-detail-next" onClick={() => navTo({ type: "work", id: nextWk.id })}><div className="lumen-detail-next-label">Next Work</div><div className="lumen-detail-next-title">{nextWk.name}</div></div>)}
+            </>);
+          };
+
+          const renderPageContent = () => { switch (lumenPage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolios": return renderPortfoliosPage(); case "works": return renderWorksPage(); case "portfolio": return renderPortfolioDetail(lumenPage.id); case "work": return renderWorkDetail(lumenPage.id); default: return null; } };
+          const navCompact = studioScrollY > 60;
+
+          return (
+            <div className="lumen-theme" ref={lumenRevealRef} style={{ "--lumen-accent": studioBrand.accentColor, "--lumen-bg": studioBrand.backgroundColor || "#fdf8f4", "--lumen-title": studioBrand.titleColor || "#2d2418", "--lumen-text": studioBrand.textColor || "rgba(45,36,24,.55)", fontFamily: ({ playfair: "'Playfair Display',Georgia,serif", mono: "'Space Mono','JetBrains Mono',monospace", garamond: "'EB Garamond',Georgia,serif", poppins: "'Poppins',system-ui,sans-serif", syne: "'Syne',system-ui,sans-serif", cormorant: "'Cormorant Garamond',Georgia,serif", dmserif: "'DM Serif Display',Georgia,serif", outfit: "'Outfit',system-ui,sans-serif", sourceserif: "'Source Serif 4',Georgia,serif", spacegrotesk: "'Space Grotesk',system-ui,sans-serif", literata: "'Literata',Georgia,serif", inter: "'Inter',system-ui,sans-serif" })[studioBrand.fontPairId] || "'Inter',system-ui,sans-serif" }}>
+              <nav className={`lumen-nav${navCompact ? " lumen-nav-compact" : ""}`}>
+                <div className="lumen-nav-name" style={{ cursor: "pointer" }} onClick={() => navTo({ type: "home" })}>{nm}</div>
+                <div className="lumen-nav-links">
+                  <span onClick={() => navTo({ type: "home" })}>Home</span>
+                  <span onClick={() => navTo({ type: "about" })}>About</span>
+                  <span onClick={() => navTo({ type: "gallery" })}>Gallery</span>
+                  {selectedPfs.length > 0 && <span onClick={() => navTo({ type: "portfolios" })}>Portfolios</span>}
+                  {selectedWks.length > 0 && <span onClick={() => navTo({ type: "works" })}>Works</span>}
+                  <span>Contact</span>
+                </div>
+              </nav>
+              {!isHome ? renderPageContent() : (
+              <>
+              {enabledSections.map(section => {
+                switch (section.id) {
+                  case "hero":
+                    return (
+                      <section key="hero" className="lumen-hero lumen-reveal">
+                        <div className="lumen-hero-text">
+                          <div className="lumen-hero-tag">{artist.role || "Performing Artist"}</div>
+                          <h1>Hello! I'm {nm}</h1>
+                          <p>{getSS("hero", "headline", null) || artist.biography?.slice(0, 180) || `A ${artist.city}-based performing artist crafting movement and emotion.`}</p>
+                          {artist.email && <div className="lumen-hero-cta" onClick={() => window.open(`mailto:${artist.email}`)}>Get in Touch</div>}
+                        </div>
+                        <div className="lumen-hero-img"><img src={heroSingleImg} alt={artist.name} /></div>
+                      </section>
+                    );
+
+                  case "about":
+                    return (
+                      <section key="about" className="lumen-about lumen-reveal">
+                        <div className="lumen-about-img"><img src={artist.photo} alt={artist.name} /></div>
+                        <div className="lumen-about-content">
+                          <div className="lumen-sh"><div className="lumen-sh-label">About Me</div><h2 className="lumen-sh-title">{getSS("about", "headline", null) || `${artist.city}-Based ${artist.role || "Artist"}`}</h2></div>
+                          <p>{artist.biography || "A dedicated performing artist."}</p>
+                          <div className="lumen-about-avail"><div className="lumen-about-avail-dot" /> Available for bookings</div>
+                        </div>
+                      </section>
+                    );
+
+                  case "gallery":
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="gallery" className="lumen-gallery lumen-reveal">
+                        <div className="lumen-sh"><div className="lumen-sh-label">Gallery</div><h2 className="lumen-sh-title">Selected Moments</h2></div>
+                        <div className="lumen-gallery-grid">{allPhotos.slice(0, 6).map((ph, i) => <div key={ph.id || i} className="lumen-gallery-item" onClick={() => navTo({ type: "gallery" })}><img src={ph.src} alt="" /></div>)}</div>
+                      </section>
+                    );
+
+                  case "portfolios":
+                    if (selectedPfs.length === 0) return null;
+                    return (
+                      <section key="portfolios" className="lumen-portfolios lumen-reveal">
+                        <div className="lumen-sh"><div className="lumen-sh-label">Portfolios</div><h2 className="lumen-sh-title">Featured Collections</h2></div>
+                        <div className="lumen-pf-grid">
+                          {selectedPfs.map(pf => (
+                            <div key={pf.id} className="lumen-pf-card" onClick={() => navTo({ type: "portfolio", id: pf.id })}>
+                              <div className="lumen-pf-card-img"><img src={pf.cover || pf.photos?.[0]?.src} alt={pf.name} /></div>
+                              <div className="lumen-pf-card-body"><h3>{pf.name}</h3><p>{pf.description}</p><div className="lumen-pf-tags">{pf.styles?.map(s => <span key={s}>{s}</span>)}</div></div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "featuredWork":
+                    if (!featuredWk) return null;
+                    return (
+                      <section key="featuredWork" className="lumen-fw lumen-reveal">
+                        <div className="lumen-sh"><div className="lumen-sh-label">Featured</div><h2 className="lumen-sh-title">Latest Work</h2></div>
+                        <div className="lumen-fw-card" style={{ cursor: "pointer" }} onClick={() => navTo({ type: "work", id: featuredWk.id })}>
+                          <div className="lumen-fw-cover"><img src={featuredWk.cover} alt={featuredWk.name} /></div>
+                          <div>
+                            <div className="lumen-fw-label">NOW SHOWING</div>
+                            <h3 className="lumen-fw-title">{featuredWk.name}</h3>
+                            {featuredWk.tagline && <p className="lumen-fw-tagline">{featuredWk.tagline}</p>}
+                            <div className="lumen-fw-meta"><span>{featuredWk.genre}</span><span>{featuredWk.duration}</span></div>
+                            <p className="lumen-fw-desc">{featuredWk.shortPitch || featuredWk.fullDescription?.slice(0, 160)}</p>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "experience":
+                    if (experiences.length === 0) return null;
+                    return (
+                      <section key="experience" className="lumen-experience lumen-reveal">
+                        <div className="lumen-sh"><div className="lumen-sh-label">Experience</div><h2 className="lumen-sh-title">My Journey</h2></div>
+                        <div className="lumen-exp-timeline">
+                          {experiences.map(exp => (
+                            <div key={exp.id} className="lumen-exp-item">
+                              <div className="lumen-exp-type">{exp.type?.toUpperCase() || "ROLE"}</div>
+                              <div className="lumen-exp-title">{exp.title}</div>
+                              <div className="lumen-exp-org">{exp.org}</div>
+                              <div className="lumen-exp-period">{exp.yearStart}{exp.yearEnd && exp.yearEnd !== exp.yearStart ? `–${exp.yearEnd}` : ""}</div>
+                              {exp.description && <div className="lumen-exp-desc">{exp.description}</div>}
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "works":
+                    if (selectedWks.length === 0) return null;
+                    return (
+                      <section key="works" className="lumen-works lumen-reveal">
+                        <div className="lumen-sh"><div className="lumen-sh-label">Works</div><h2 className="lumen-sh-title">Productions</h2></div>
+                        <div className="lumen-works-grid">
+                          {selectedWks.map(wk => (
+                            <div key={wk.id} className="lumen-work-card" onClick={() => navTo({ type: "work", id: wk.id })}>
+                              <div className="lumen-work-card-img"><img src={wk.cover} alt={wk.name} /></div>
+                              <div className="lumen-work-card-body"><h3>{wk.name}</h3><span>{wk.genre} · {wk.duration}</span></div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "exploreGallery":
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="exploreGallery" className="lumen-explore lumen-reveal">
+                        <div className="lumen-explore-inner" onClick={() => navTo({ type: "gallery" })}>
+                          <div className="lumen-explore-label">Explore the Full Collection</div>
+                          <div className="lumen-explore-thumbs">{allPhotos.slice(0, 5).map((ph, i) => <img key={ph.id || i} src={ph.src} alt="" />)}</div>
+                          <div className="lumen-explore-cta">View Gallery →</div>
+                        </div>
+                      </section>
+                    );
+
+                  case "testimonials": {
+                    const _fallback = [{ quote: `Working with ${artist.firstName} was extraordinary.`, name: "Sarah Chen", role: "Artistic Director" }];
+                    const tList = realTestimonialsL.length > 0 ? realTestimonialsL : _fallback;
+                    const tIdx = studioTestimonialIdx % tList.length;
+                    return (
+                      <section key="testimonials" className="lumen-testimonials lumen-reveal">
+                        <div className="lumen-sh"><div className="lumen-sh-label">Testimonials</div><h2 className="lumen-sh-title">What People Say</h2></div>
+                        <div className="lumen-testimonial-card">
+                          <p className="lumen-testimonial-quote">"{tList[tIdx].quote}"</p>
+                          <div className="lumen-testimonial-name">{tList[tIdx].name}</div>
+                          <div className="lumen-testimonial-role">{tList[tIdx].role}</div>
+                          {tList.length > 1 && (<div className="lumen-testimonial-nav"><button onClick={() => setStudioTestimonialIdx(i => (i - 1 + tList.length) % tList.length)}>←</button><button onClick={() => setStudioTestimonialIdx(i => (i + 1) % tList.length)}>→</button></div>)}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "contact":
+                    return (
+                      <section key="contact" className="lumen-contact lumen-reveal">
+                        <div className="lumen-contact-left">
+                          <div className="lumen-sh"><div className="lumen-sh-label">Contact</div><h2 className="lumen-sh-title">Let's Connect</h2></div>
+                          <p>{getSS("contact", "subline", null) || "Interested in working together? I'd love to hear from you."}</p>
+                          {artist.email && <div className="lumen-contact-cta" onClick={() => window.open(`mailto:${artist.email}`)}>Send a Message</div>}
+                        </div>
+                        <div className="lumen-contact-items">
+                          {artist.email && <div className="lumen-contact-item"><div className="lumen-contact-item-label">Email</div><div className="lumen-contact-item-value">{artist.email}</div></div>}
+                          {artist.instagram && <div className="lumen-contact-item"><div className="lumen-contact-item-label">Instagram</div><div className="lumen-contact-item-value">@{artist.instagram}</div></div>}
+                          {artist.website && <div className="lumen-contact-item"><div className="lumen-contact-item-label">Website</div><div className="lumen-contact-item-value">{artist.website}</div></div>}
+                          {artist.city && <div className="lumen-contact-item"><div className="lumen-contact-item-label">Location</div><div className="lumen-contact-item-value">{artist.city}, {artist.country}</div></div>}
+                        </div>
+                      </section>
+                    );
+
+                  default: return null;
+                }
+              })}
+              </>
+              )}
+              <footer className="lumen-footer">
+                <div className="lumen-footer-left">© {new Date().getFullYear()} {artist.name}. Built with Lanced.</div>
+                <div className="lumen-footer-nav">
+                  <span onClick={() => navTo({ type: "home" })}>Home</span>
+                  <span onClick={() => navTo({ type: "about" })}>About</span>
+                  {selectedPfs.length > 0 && <span onClick={() => navTo({ type: "portfolios" })}>Portfolios</span>}
+                  {selectedWks.length > 0 && <span onClick={() => navTo({ type: "works" })}>Works</span>}
+                </div>
+              </footer>
+            </div>
+          );
+        };
+
+        /* ═══════════════════════════════════════════════════
+           SLATER THEME RENDER
+           ═══════════════════════════════════════════════════ */
+        const renderSlaterTheme = () => {
+          const nm = (artist.name || "Artist Name").toUpperCase();
+          const firstName = (artist.firstName || "Artist").toUpperCase();
+          const ss = studioSectionSettings;
+          const expRecordIds = ss.experience?.selectedRecords || [];
+          const experiences = expRecordIds.length > 0 ? stageRecords.filter(r => expRecordIds.includes(r.id)) : stageRecords.slice(0, 6);
+          const realTestimonialsS = [...selectedPfs.flatMap(p => (p.references || []).map(r => ({ quote: r.quote, name: r.name || r.source, role: r.role ? `${r.role}${r.org ? ` · ${r.org}` : ""}` : r.org || "" }))), ...selectedWks.flatMap(w => (w.reviews || []).map(r => ({ quote: r.quote, name: r.source, role: r.rating ? "★".repeat(r.rating) : "" })))];
+
+          const isHome = slaterPage.type === "home";
+          const navTo = (page) => { setSlaterPage(page); setStudioScrollY(0); const vp = document.querySelector(".studio-preview-viewport") || document.querySelector(".studio-preview-frame"); if (vp) vp.scrollTop = 0; };
+
+          /* Reveal observer */
+          const slaterRevealRef = (el) => {
+            if (!el) return;
+            let root = el.parentElement;
+            while (root && root !== document.body) { const ov = getComputedStyle(root).overflowY; if ((ov === "auto" || ov === "scroll") && root.scrollHeight > root.clientHeight + 10) break; root = root.parentElement; }
+            if (root === document.body) root = null;
+            const observer = new IntersectionObserver((entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("revealed"); observer.unobserve(e.target); } }), { threshold: 0.08, root });
+            el.querySelectorAll(".slater-reveal,.slater-reveal-left,.slater-reveal-scale").forEach(child => observer.observe(child));
+          };
+
+          /* Scattered bio ref — smooth scroll-driven: words glide from edges into reading position */
+          /* Scattered bio — words visible on screen in displaced positions, glide into sentence on scroll */
+          const slaterBioRef = (el) => {
+            if (!el || el._bioInit) return;
+            el._bioInit = true;
+            let scrollContainer = el.parentElement;
+            while (scrollContainer && scrollContainer !== document.body) {
+              const ov = getComputedStyle(scrollContainer).overflowY;
+              if ((ov === "auto" || ov === "scroll") && scrollContainer.scrollHeight > scrollContainer.clientHeight + 10) break;
+              scrollContainer = scrollContainer.parentElement;
+            }
+            if (scrollContainer === document.body) scrollContainer = null;
+            const words = el.querySelectorAll(".slater-bio-word");
+            const origins = [];
+            /* Scatter within visible area — small displacements so words are always on-screen */
+            const seeds = [
+              { x: -180, y: -90 }, { x: 160, y: 70 }, { x: -60, y: 130 }, { x: 200, y: -50 },
+              { x: -140, y: 60 }, { x: 90, y: -120 }, { x: -200, y: -30 }, { x: 130, y: 110 },
+              { x: -100, y: -70 }, { x: 170, y: 40 }, { x: -50, y: 100 }, { x: 110, y: -100 },
+            ];
+            words.forEach((w, i) => {
+              const s = seeds[i % seeds.length];
+              const scale = 0.6 + (i % 3) * 0.25;
+              const ox = s.x * scale;
+              const oy = s.y * scale;
+              origins.push({ x: ox, y: oy });
+              w.style.transform = `translate(${ox}px, ${oy}px)`;
+              w.style.opacity = "0.35";
+            });
+            let peak = 0, cur = 0, done = false, raf = null;
+            const tick = () => {
+              raf = null;
+              if (done) return;
+              cur += (peak - cur) * 0.035;
+              if (Math.abs(cur - peak) < 0.002) cur = peak;
+              words.forEach((w, i) => {
+                const stagger = i / words.length * 0.5;
+                const p = Math.max(0, Math.min(1, (cur - stagger) / (1 - stagger)));
+                /* Smooth ease-out quint for very premium deceleration */
+                const ease = 1 - Math.pow(1 - p, 5);
+                const { x, y } = origins[i];
+                w.style.transform = `translate(${x * (1 - ease)}px, ${y * (1 - ease)}px)`;
+                w.style.opacity = `${0.35 + ease * 0.65}`;
+              });
+              if (cur >= 0.99) {
+                done = true;
+                words.forEach(w => { w.style.transform = "translate(0,0)"; w.style.opacity = "1"; });
+                if (scrollContainer) scrollContainer.removeEventListener("scroll", onScroll);
+                return;
+              }
+              if (cur < peak - 0.002) raf = requestAnimationFrame(tick);
+            };
+            const onScroll = () => {
+              if (done || !scrollContainer) return;
+              const rect = el.getBoundingClientRect();
+              const cRect = scrollContainer.getBoundingClientRect();
+              const viewH = cRect.height;
+              const sTop = rect.top - cRect.top;
+              /* Start assembling when section top reaches 70% of viewport, finish when it reaches 10% */
+              const startAt = viewH * 0.7;
+              const endAt = viewH * 0.1;
+              const raw = (startAt - sTop) / (startAt - endAt);
+              const t = Math.max(0, Math.min(1, raw));
+              if (t > peak) peak = t;
+              if (!raf) raf = requestAnimationFrame(tick);
+            };
+            if (scrollContainer) scrollContainer.addEventListener("scroll", onScroll, { passive: true });
+            onScroll();
+          };
+
+          /* Sub-page renderers */
+          const renderGalleryPage = () => (<div className="slater-page"><div className="slater-page-header"><h1>Gallery</h1></div><div className="slater-gallery-grid">{allPhotos.map((ph, i) => <div key={ph.id || i} className="slater-gallery-item"><img src={ph.src} alt="" /></div>)}</div></div>);
+
+          const renderAboutPage = () => {
+            const allStyles = [...new Set(selectedPfs.flatMap(p => p.styles || []))];
+            const performanceCount = selectedWks.reduce((n, w) => n + (w.upcomingPerformances?.length || 0), 0);
+            const awardCount = selectedWks.reduce((n, w) => n + (w.awards?.length || 0), 0);
+            return (
+              <div className="slater-page">
+                <div className="slater-page-header"><h1>About</h1></div>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginBottom: 60 }}>
+                  <div>
+                    <p style={{ fontSize: 15, lineHeight: 1.8, color: "var(--slater-text,rgba(17,17,17,.55))" }}>{artist.biography || "An artist pushing boundaries."}</p>
+                    {allStyles.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>{allStyles.map(s => <span key={s} style={{ padding: "6px 16px", border: "1px solid rgba(0,0,0,.1)", fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase" }}>{s}</span>)}</div>}
+                  </div>
+                  {artist.photo && <img src={artist.photo} alt={artist.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />}
+                </div>
+                <div className="slater-stats">
+                  {[{ n: selectedWks.length, l: "WORKS" }, { n: experiences.length, l: "EXPERIENCES" }, { n: awardCount, l: "AWARDS" }, { n: performanceCount, l: "PERFORMANCES" }].map(s => (
+                    <div key={s.l} className="slater-stat slater-reveal"><div className="slater-stat-num">{s.n}</div><div className="slater-stat-label">{s.l}</div></div>
+                  ))}
+                </div>
+                <div style={{ marginTop: 60 }}>
+                  <h2 style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".2em", marginBottom: 24 }}>JOURNEY</h2>
+                  {experiences.map(exp => (<div key={exp.id} className="slater-exp-item"><div className="slater-exp-year">{exp.yearStart || "—"}</div><div><div className="slater-exp-title">{exp.title}</div><div className="slater-exp-org">{exp.org}</div></div></div>))}
+                </div>
+              </div>
+            );
+          };
+
+          const renderPortfoliosPage = () => (<div className="slater-page"><div className="slater-page-header"><h1>Portfolios</h1></div><div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 2 }}>{selectedPfs.map(pf => (<div key={pf.id} className="slater-card" onClick={() => navTo({ type: "portfolio", id: pf.id })}>{pf.cover && <img src={pf.cover} alt={pf.name} />}<div className="slater-card-info"><h3>{pf.name}</h3><p>{pf.styles?.join(" · ")}</p></div></div>))}</div></div>);
+
+          const renderWorksPage = () => (<div className="slater-page"><div className="slater-page-header"><h1>Works</h1></div><div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 2 }}>{selectedWks.map(wk => (<div key={wk.id} className="slater-card" onClick={() => navTo({ type: "work", id: wk.id })}>{wk.cover && <img src={wk.cover} alt={wk.name} />}<div className="slater-card-info"><h3>{wk.name}</h3><p>{wk.type}</p></div></div>))}</div></div>);
+
+          const renderPortfolioDetail = (pfId) => {
+            const pf = selectedPfs.find(p => p.id === pfId); if (!pf) return null;
+            const pfPhotos = (pf.photos || []);
+            return (<>
+              <div className="slater-detail">
+                <div className="slater-detail-hero">
+                  {pf.cover ? <img className="slater-detail-hero-img" src={pf.cover} alt={pf.name} /> : <div style={{ background: "#f0f0f0" }} />}
+                  <div className="slater-detail-hero-text">
+                    <div className="slater-detail-breadcrumb" onClick={() => navTo({ type: "home" })}>← BACK</div>
+                    <h1>{pf.name?.toUpperCase()}</h1>
+                    <div className="slater-detail-meta">
+                      {pf.styles?.length > 0 && <div className="slater-detail-meta-item"><div className="slater-detail-meta-label">STYLE</div>{pf.styles.join(", ")}</div>}
+                      {pf.partners?.length > 0 && <div className="slater-detail-meta-item"><div className="slater-detail-meta-label">PARTNERS</div>{pf.partners.map(p => p.name || p).join(", ")}</div>}
+                    </div>
+                  </div>
+                </div>
+                {pf.description && <div className="slater-detail-body"><p>{pf.description}</p></div>}
+                {pfPhotos.length > 0 && <div className="slater-detail-gallery">{pfPhotos.map((ph, i) => <img key={ph.id || i} src={ph.src} alt="" />)}</div>}
+              </div>
+            </>);
+          };
+
+          const renderWorkDetail = (wkId) => {
+            const wk = selectedWks.find(w => w.id === wkId); if (!wk) return null;
+            const wkGallery = (wk.media || []);
+            const nextWk = selectedWks[(selectedWks.findIndex(w => w.id === wkId) + 1) % selectedWks.length];
+            return (<>
+              <div className="slater-detail">
+                <div className="slater-detail-hero">
+                  {wk.cover ? <img className="slater-detail-hero-img" src={wk.cover} alt={wk.name} /> : <div style={{ background: "#f0f0f0" }} />}
+                  <div className="slater-detail-hero-text">
+                    <div className="slater-detail-breadcrumb" onClick={() => navTo({ type: "home" })}>← BACK</div>
+                    <h1>{wk.name?.toUpperCase()}</h1>
+                    <div className="slater-detail-meta">
+                      {wk.type && <div className="slater-detail-meta-item"><div className="slater-detail-meta-label">TYPE</div>{wk.type}</div>}
+                      {wk.year && <div className="slater-detail-meta-item"><div className="slater-detail-meta-label">YEAR</div>{wk.year}</div>}
+                      {wk.venue && <div className="slater-detail-meta-item"><div className="slater-detail-meta-label">VENUE</div>{wk.venue}</div>}
+                    </div>
+                  </div>
+                </div>
+                {wk.description && <div className="slater-detail-body"><p>{wk.description}</p></div>}
+                {wkGallery.length > 0 && <div className="slater-detail-gallery">{wkGallery.map((ph, i) => <img key={ph.id || i} src={ph.src} alt="" />)}</div>}
+              </div>
+              {nextWk && nextWk.id !== wk.id && (<div style={{ padding: "60px 40px", borderTop: "1px solid rgba(0,0,0,.06)", cursor: "pointer", textAlign: "center" }} onClick={() => navTo({ type: "work", id: nextWk.id })}><div style={{ fontSize: 11, letterSpacing: ".15em", color: "var(--slater-text,rgba(17,17,17,.4))" }}>NEXT WORK</div><div style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 900, letterSpacing: "-.03em", textTransform: "uppercase", marginTop: 8 }}>{nextWk.name?.toUpperCase()}</div></div>)}
+            </>);
+          };
+
+          const renderPageContent = () => { switch (slaterPage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolios": return renderPortfoliosPage(); case "works": return renderWorksPage(); case "portfolio": return renderPortfolioDetail(slaterPage.id); case "work": return renderWorkDetail(slaterPage.id); default: return null; } };
+          const navCompact = studioScrollY > 60;
+
+          /* Hero collage photos */
+          const resolveHeroImg = (key) => { const id = ss.hero?.[key]; return id ? (mediaItems.find(m => m.id === id)?.src) : null; };
+          const heroImgSingle = resolveHeroImg("heroImage");
+          const collagePhotos = heroImgSingle ? [heroImgSingle] : heroPhotos.length > 0 ? heroPhotos.slice(0, 3).map(p => p.src) : allPhotos.slice(0, 3).map(p => p.src);
+
+          /* Bio text for scattered words — short profile bio (150 char cap) */
+          const bioText = artist.profileBio || "";
+          const bioWords = bioText ? bioText.split(/\s+/) : [];
+
+          const fontFamily = ({ playfair: "'Playfair Display',Georgia,serif", mono: "'Space Mono','JetBrains Mono',monospace", garamond: "'EB Garamond',Georgia,serif", poppins: "'Poppins',system-ui,sans-serif", syne: "'Syne',system-ui,sans-serif", cormorant: "'Cormorant Garamond',Georgia,serif", dmserif: "'DM Serif Display',Georgia,serif", outfit: "'Outfit',system-ui,sans-serif", sourceserif: "'Source Serif 4',Georgia,serif", spacegrotesk: "'Space Grotesk',system-ui,sans-serif", literata: "'Literata',Georgia,serif" })[studioBrand.fontPairId] || "'Inter',system-ui,sans-serif";
+
+          return (
+            <div className="slater-theme" ref={slaterRevealRef} style={{ "--slater-accent": studioBrand.accentColor || "#111111", "--slater-bg": studioBrand.backgroundColor || "#ffffff", "--slater-title": studioBrand.titleColor || "#111111", "--slater-text": studioBrand.textColor || "rgba(17,17,17,.55)", fontFamily }}>
+              {/* Nav */}
+              <nav className={`slater-nav${navCompact ? " slater-nav-compact" : ""}`}>
+                <div className="slater-nav-name" onClick={() => navTo({ type: "home" })}>{nm}</div>
+                <div className="slater-nav-links">
+                  <button className={`slater-nav-link${slaterPage.type === "home" ? " active" : ""}`} onClick={() => navTo({ type: "home" })}>WORK</button>
+                  <button className={`slater-nav-link${slaterPage.type === "about" ? " active" : ""}`} onClick={() => navTo({ type: "about" })}>ABOUT</button>
+                  <button className={`slater-nav-link${slaterPage.type === "gallery" ? " active" : ""}`} onClick={() => navTo({ type: "gallery" })}>GALLERY</button>
+                  <button className="slater-nav-link" onClick={() => { const el = document.querySelector(".slater-contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>CONTACT</button>
+                </div>
+              </nav>
+
+              {isHome ? (<>
+                {/* ── HERO: Giant name + collage ── */}
+                {enabledSections.some(s => s.id === "hero") && (
+                  <section className="slater-hero">
+                    <div className="slater-hero-desc">{ss.hero?.headline || `${artist.role || "Performing artist"} — shaping experiences through motion, clarity, and timeless craft.`}</div>
+                    {collagePhotos.length > 0 && (
+                      <div className="slater-hero-collage" style={{ transform: `translate(-50%, -50%) translateY(-${Math.min(studioScrollY * 1.2, 800)}px)` }} onClick={() => navTo({ type: "gallery" })}>
+                        {collagePhotos.slice(0, 3).map((src, i) => <img key={i} className="slater-hero-collage-img" src={src} alt="" />)}
+                        <div className="slater-hero-cta">→</div>
+                      </div>
+                    )}
+                    <div className="slater-hero-name">{nm}</div>
+                    <div className="slater-hero-meta">© {new Date().getFullYear().toString().slice(-2)}</div>
+                  </section>
+                )}
+
+                {/* ── Bio: Scattered words assemble (Möbius-style) ── */}
+                {enabledSections.some(s => s.id === "about") && bioWords.length > 0 && (
+                  <section className="slater-bio" ref={slaterBioRef}>
+                    <div className="slater-bio-dot" />
+                    <div className="slater-bio-words">
+                      {bioWords.map((w, i) => <span key={i} className="slater-bio-word">{w}</span>)}
+                    </div>
+                  </section>
+                )}
+
+                {/* Render section order */}
+                {enabledSections.filter(s => s.id !== "hero" && s.id !== "about").map(sec => { const secId = sec.id;
+                  switch (secId) {
+                  case "gallery":
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="gallery" className="slater-section slater-reveal">
+                        <div className="slater-section-header"><div className="slater-section-label">GALLERY</div><div className="slater-section-title">Selected Works</div><div className="slater-section-rule" /></div>
+                        <div className="slater-gallery">{allPhotos.slice(0, 9).map((ph, i) => <div key={ph.id || i} className="slater-gallery-item" onClick={() => navTo({ type: "gallery" })}><img src={ph.src} alt="" /></div>)}</div>
+                      </section>
+                    );
+
+                  case "portfolios":
+                    if (selectedPfs.length === 0) return null;
+                    return (
+                      <section key="portfolios">
+                        <div className="slater-section slater-reveal" style={{ paddingBottom: 0 }}>
+                          <div className="slater-section-header"><div className="slater-section-label">PORTFOLIOS</div><div className="slater-section-title">Featured Collections</div><div className="slater-section-rule" /></div>
+                        </div>
+                        {/* Split-screen layout */}
+                        <div className="slater-split">
+                          <div className="slater-split-left">
+                            <div className="slater-split-text">
+                              <div className="slater-split-num">0{selectedPfs.length}</div>
+                              <div className="slater-split-label">PORTFOLIOS</div>
+                              <h3>{selectedPfs[0]?.name?.toUpperCase()}</h3>
+                              <p>{selectedPfs[0]?.description || "Explore a curated collection of work."}</p>
+                            </div>
+                          </div>
+                          <div className="slater-split-right">
+                            {selectedPfs.map((pf, i) => (
+                              <div key={pf.id} className="slater-split-item" onClick={() => navTo({ type: "portfolio", id: pf.id })} style={{ cursor: "pointer" }}>
+                                {pf.cover && <img className="slater-split-img" src={pf.cover} alt={pf.name} />}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "featuredWork": {
+                    if (!featuredWk) return null;
+                    return (
+                      <section key="fw" className="slater-fw slater-reveal-scale" onClick={() => navTo({ type: "work", id: featuredWk.id })}>
+                        {featuredWk.cover && <img src={featuredWk.cover} alt={featuredWk.name} />}
+                        <div className="slater-fw-overlay">
+                          <div className="slater-fw-sub">FEATURED WORK</div>
+                          <div className="slater-fw-title">{featuredWk.name?.toUpperCase()}</div>
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "works":
+                    if (selectedWks.length === 0) return null;
+                    return (
+                      <section key="works">
+                        <div className="slater-section slater-reveal" style={{ paddingBottom: 0 }}>
+                          <div className="slater-section-header"><div className="slater-section-label">WORKS</div><div className="slater-section-title">Creative Output</div><div className="slater-section-rule" /></div>
+                        </div>
+                        <div className="slater-split">
+                          <div className="slater-split-left">
+                            <div className="slater-split-text">
+                              <div className="slater-split-num">0{selectedWks.length}</div>
+                              <div className="slater-split-label">WORKS</div>
+                              <h3>{selectedWks[0]?.name?.toUpperCase()}</h3>
+                              <p>{selectedWks[0]?.description || "A body of creative work."}</p>
+                            </div>
+                          </div>
+                          <div className="slater-split-right">
+                            {selectedWks.map(wk => (
+                              <div key={wk.id} className="slater-split-item" onClick={() => navTo({ type: "work", id: wk.id })} style={{ cursor: "pointer" }}>
+                                {wk.cover && <img className="slater-split-img" src={wk.cover} alt={wk.name} />}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "experience":
+                    if (experiences.length === 0) return null;
+                    return (
+                      <section key="exp" className="slater-exp slater-reveal">
+                        <div className="slater-section-header"><div className="slater-section-label">EXPERIENCE</div><div className="slater-section-title">Journey</div><div className="slater-section-rule" /></div>
+                        {experiences.map(exp => (<div key={exp.id} className="slater-exp-item"><div className="slater-exp-year">{exp.yearStart || "—"}</div><div><div className="slater-exp-title">{exp.title}</div><div className="slater-exp-org">{exp.org}</div></div></div>))}
+                      </section>
+                    );
+
+                  case "stats": {
+                    const performanceCount = selectedWks.reduce((n, w) => n + (w.upcomingPerformances?.length || 0), 0);
+                    const awardCount = selectedWks.reduce((n, w) => n + (w.awards?.length || 0), 0);
+                    return (
+                      <section key="stats" className="slater-reveal">
+                        <div className="slater-section" style={{ paddingBottom: 0 }}>
+                          <div className="slater-section-header"><div className="slater-section-label">IN NUMBERS</div><div className="slater-section-title">At a Glance</div><div className="slater-section-rule" /></div>
+                        </div>
+                        <div className="slater-stats">
+                          {[{ n: selectedPfs.length, l: "PORTFOLIOS" }, { n: selectedWks.length, l: "WORKS" }, { n: awardCount, l: "AWARDS" }, { n: performanceCount, l: "PERFORMANCES" }].map(s => (
+                            <div key={s.l} className="slater-stat"><div className="slater-stat-num">{s.n}</div><div className="slater-stat-label">{s.l}</div></div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "exploreGallery":
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="explore" className="slater-section slater-reveal">
+                        <div className="slater-section-header"><div className="slater-section-label">EXPLORE</div><div className="slater-section-title">Visual Reel</div><div className="slater-section-rule" /></div>
+                        <div className="slater-explore">
+                          {allPhotos.slice(0, 8).map((ph, i) => <div key={ph.id || i} className="slater-explore-item" onClick={() => navTo({ type: "gallery" })}><img src={ph.src} alt="" /></div>)}
+                        </div>
+                      </section>
+                    );
+
+                  case "testimonials": {
+                    const _fallback = [{ quote: `Working with ${artist.firstName} was extraordinary.`, name: "Sarah Chen", role: "Artistic Director" }];
+                    const tList = realTestimonialsS.length > 0 ? realTestimonialsS : _fallback;
+                    const ti = slaterTestiIdx % tList.length;
+                    const t = tList[ti];
+                    return (
+                      <section key="testi" className="slater-testimonials slater-reveal">
+                        <div className="slater-section-label" style={{ textAlign: "center", marginBottom: 32 }}>TESTIMONIALS</div>
+                        <div className="slater-testimonial-quote">"{t.quote}"</div>
+                        <div className="slater-testimonial-author">{t.name}</div>
+                        <div className="slater-testimonial-role">{t.role}</div>
+                        {tList.length > 1 && (
+                          <div className="slater-testimonial-nav">
+                            {tList.map((_, i) => <button key={i} className={`slater-testimonial-dot${i === ti ? " active" : ""}`} onClick={() => setSlaterTestiIdx(i)} />)}
+                          </div>
+                        )}
+                      </section>
+                    );
+                  }
+
+                  case "contact":
+                    return (
+                      <section key="contact" className="slater-contact slater-reveal">
+                        <div className="slater-contact-left">
+                          <h2>Let's Talk</h2>
+                          <p>{ss.contact?.headline || "Interested in working together? Let's connect and make something extraordinary."}</p>
+                        </div>
+                        <div className="slater-contact-right">
+                          {artist.email && <a href={`mailto:${artist.email}`}>{artist.email}</a>}
+                          <div className="slater-contact-social">
+                            {artist.socials?.instagram && <a href={artist.socials.instagram} target="_blank" rel="noreferrer">INSTAGRAM</a>}
+                            {artist.socials?.youtube && <a href={artist.socials.youtube} target="_blank" rel="noreferrer">YOUTUBE</a>}
+                            {artist.socials?.vimeo && <a href={artist.socials.vimeo} target="_blank" rel="noreferrer">VIMEO</a>}
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  default: return null;
+                  }
+                })}
+
+                {/* Footer */}
+                <footer className="slater-footer">
+                  <span>© {new Date().getFullYear()} {artist.name}</span>
+                  <span>POWERED BY LANCED</span>
+                </footer>
+              </>) : renderPageContent()}
             </div>
           );
         };
@@ -6606,6 +9049,8 @@ export default function ArtistShell() {
               <div className="studio-preview-viewport" onScroll={e => setStudioScrollY(e.target.scrollTop)}>
                 {studioTheme === "noir" && renderNoirTheme()}
                 {studioTheme === "atrium" && renderAtriumTheme()}
+                {studioTheme === "lumen" && renderLumenTheme()}
+                {studioTheme === "slater" && renderSlaterTheme()}
               </div>
             </div>
           );
@@ -6647,7 +9092,7 @@ export default function ArtistShell() {
                 {/* Left panel */}
                 <div className="studio-panel">
                   <div className="studio-panel-tabs">
-                    {["theme", "content", "layout", "brand"].map(t => (
+                    {["theme", "layout", "brand"].map(t => (
                       <button key={t} className={`studio-panel-tab${studioCustomizeTab === t ? " active" : ""}`} onClick={() => setStudioCustomizeTab(t)}>
                         {t.charAt(0).toUpperCase() + t.slice(1)}
                       </button>
@@ -6660,7 +9105,7 @@ export default function ArtistShell() {
                       <div className="studio-theme-grid">
                         {STUDIO_THEMES.map(th => (
                           <div key={th.id} className={`studio-theme-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}
-                            onClick={() => !th.locked && setStudioTheme(th.id)}>
+                            onClick={() => { if (!th.locked) { setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); } }}>
                             <div className="studio-theme-preview" style={{ backgroundImage: `url(${th.preview})` }}>
                               {th.locked && <div className="studio-theme-lock">PRO</div>}
                               {studioTheme === th.id && <div className="studio-theme-active">Active</div>}
@@ -6674,155 +9119,361 @@ export default function ArtistShell() {
                       </div>
                     )}
 
-                    {/* Content sub-tab */}
-                    {studioCustomizeTab === "content" && (
-                      <div className="studio-content-tab">
-                        <div className="studio-content-section">
-                          <h4>Portfolios</h4>
-                          <p className="studio-content-hint">Select which portfolios appear on your website. Mark one as featured for hero placement.</p>
-                          {portfolios.map(pf => {
-                            const isSelected = studioContent.selectedPortfolios.includes(pf.id);
-                            const isFeatured = studioContent.featuredPortfolio === pf.id;
-                            return (
-                              <div key={pf.id} className={`studio-content-row${isSelected ? " selected" : ""}`}>
-                                <div className={`sm-switch${isSelected ? " on" : ""}`} onClick={() => {
-                                  setStudioContent(prev => ({
-                                    ...prev,
-                                    selectedPortfolios: isSelected ? prev.selectedPortfolios.filter(id => id !== pf.id) : [...prev.selectedPortfolios, pf.id],
-                                    featuredPortfolio: isSelected && isFeatured ? null : prev.featuredPortfolio,
-                                  }));
-                                }} />
-                                <div className="studio-content-info">
-                                  <span className="studio-content-name">{pf.name}</span>
-                                  <span className="studio-content-meta">{pf.photos.length} photos · {pf.videos.length} videos · {pf.status}</span>
-                                </div>
-                                {isSelected && (
-                                  <button className={`studio-featured-btn${isFeatured ? " active" : ""}`} onClick={() => {
-                                    setStudioContent(prev => ({ ...prev, featuredPortfolio: isFeatured ? null : pf.id }));
-                                  }}>
-                                    {isFeatured ? "★ Featured" : "☆ Feature"}
-                                  </button>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-
-                        <div className="studio-content-section" style={{ marginTop: 24 }}>
-                          <h4 style={{ color: "#D97706" }}>Works</h4>
-                          <p className="studio-content-hint">Select which works appear on your website. Mark one as featured for a dedicated section.</p>
-                          {works.map(wk => {
-                            const isSelected = studioContent.selectedWorks.includes(wk.id);
-                            const isFeatured = studioContent.featuredWork === wk.id;
-                            return (
-                              <div key={wk.id} className={`studio-content-row${isSelected ? " selected" : ""}`}>
-                                <div className={`sm-switch${isSelected ? " on" : ""}`} onClick={() => {
-                                  setStudioContent(prev => ({
-                                    ...prev,
-                                    selectedWorks: isSelected ? prev.selectedWorks.filter(id => id !== wk.id) : [...prev.selectedWorks, wk.id],
-                                    featuredWork: isSelected && isFeatured ? null : prev.featuredWork,
-                                  }));
-                                }} />
-                                <div className="studio-content-info">
-                                  <span className="studio-content-name">{wk.name}</span>
-                                  <span className="studio-content-meta">{wk.genre} · {wk.role} · {wk.status}</span>
-                                </div>
-                                {isSelected && (
-                                  <button className={`studio-featured-btn${isFeatured ? " active" : ""}`} style={{ borderColor: isFeatured ? "#D97706" : undefined, color: isFeatured ? "#D97706" : undefined }} onClick={() => {
-                                    setStudioContent(prev => ({ ...prev, featuredWork: isFeatured ? null : wk.id }));
-                                  }}>
-                                    {isFeatured ? "★ Featured" : "☆ Feature"}
-                                  </button>
-                                )}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Layout sub-tab */}
+                    {/* Layout sub-tab — sections list OR section inspector */}
                     {studioCustomizeTab === "layout" && (
                       <div className="studio-layout-tab">
-                        <h4>Sections</h4>
-                        <p className="studio-content-hint">Toggle sections on/off. Drag to reorder.</p>
-                        {studioSections.sort((a, b) => a.order - b.order).map((sec, idx) => (
-                          <div key={sec.id} className="studio-section-row">
-                            <div className="studio-section-drag">
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
-                            </div>
-                            <span className="studio-section-label">{sec.label}</span>
-                            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
-                              {idx > 0 && (
-                                <button className="studio-section-move" onClick={() => {
-                                  setStudioSections(prev => {
-                                    const arr = [...prev].sort((a, b) => a.order - b.order);
-                                    const curOrder = arr[idx].order;
-                                    arr[idx].order = arr[idx - 1].order;
-                                    arr[idx - 1].order = curOrder;
-                                    return arr;
-                                  });
-                                }}>↑</button>
+                        {studioEditSection ? (() => {
+                          /* ── Section Inspector Panel ── */
+                          const secId = studioEditSection;
+                          const secLabel = studioSections.find(s => s.id === secId)?.label || secId;
+                          const secS = studioSectionSettings[secId] || {};
+                          /* Inline helpers (plain functions, NOT React components — avoids remount/focus loss) */
+                          const inpField = (label, field, placeholder, multiline) => (
+                            <div key={`inp-${field}`} className="studio-inspector-group">
+                              <label className="studio-inspector-label">{label}</label>
+                              {multiline ? (
+                                <textarea className="studio-inspector-input" rows={3} placeholder={placeholder} value={secS[field] || ""} onChange={e => updateSectionSetting(secId, field, e.target.value || null)} />
+                              ) : (
+                                <input className="studio-inspector-input" placeholder={placeholder} value={secS[field] || ""} onChange={e => updateSectionSetting(secId, field, e.target.value || null)} />
                               )}
-                              {idx < studioSections.length - 1 && (
-                                <button className="studio-section-move" onClick={() => {
-                                  setStudioSections(prev => {
-                                    const arr = [...prev].sort((a, b) => a.order - b.order);
-                                    const curOrder = arr[idx].order;
-                                    arr[idx].order = arr[idx + 1].order;
-                                    arr[idx + 1].order = curOrder;
-                                    return arr;
-                                  });
-                                }}>↓</button>
-                              )}
-                              <div className={`sm-switch${sec.enabled ? " on" : ""}`} onClick={() => {
-                                setStudioSections(prev => prev.map(s => s.id === sec.id ? { ...s, enabled: !s.enabled } : s));
-                              }} />
                             </div>
-                          </div>
-                        ))}
+                          );
+                          const toggle = (label, field) => (
+                            <div key={`tog-${field}`} className="studio-inspector-toggle">
+                              <span>{label}</span>
+                              <div className={`sm-switch${secS[field] !== false ? " on" : ""}`} onClick={() => updateSectionSetting(secId, field, secS[field] === false ? true : false)} />
+                            </div>
+                          );
+                          const mediaBtn = (label, field, currentThumb) => (
+                            <div key={`med-${field}`} className="studio-inspector-group">
+                              <label className="studio-inspector-label">{label}</label>
+                              {currentThumb ? (
+                                <div className="studio-inspector-media-thumb" onClick={() => { setStudioMediaPickerTarget({ section: secId, field }); setShowMediaPicker("photo"); }}>
+                                  <img src={currentThumb} alt="" />
+                                </div>
+                              ) : (
+                                <button className="studio-inspector-media-btn" onClick={() => { setStudioMediaPickerTarget({ section: secId, field }); setShowMediaPicker("photo"); }}>
+                                  📷 Choose from Media Library
+                                </button>
+                              )}
+                              {currentThumb && <button style={{ fontSize: 11, color: "var(--g4)", background: "none", border: "none", cursor: "pointer", padding: 0 }} onClick={() => updateSectionSetting(secId, field, null)}>Remove</button>}
+                            </div>
+                          );
+                          return (
+                            <div className="studio-inspector">
+                              <button className="studio-inspector-back" onClick={() => setStudioEditSection(null)}>← SECTIONS</button>
+                              <h4>{secLabel} Settings</h4>
+                              <p className="studio-inspector-hint">Customize this section from the sidebar.</p>
 
-                        <div style={{ marginTop: 24, borderTop: "1px solid rgba(255,255,255,.06)", paddingTop: 20 }}>
-                          <h4>Gallery Layout</h4>
-                          <p className="studio-content-hint">Choose how your gallery images are displayed.</p>
-                          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginTop: 12 }}>
-                            {[{id:"grid",label:"Grid",desc:"Clean 2-column"},{id:"masonry",label:"Masonry",desc:"Pinterest-style"},{id:"magazine",label:"Magazine",desc:"Editorial spread"},{id:"spread",label:"Spread",desc:"Scattered cards"}].map(l => (
-                              <div key={l.id} onClick={() => setStudioGalleryLayout(l.id)} style={{ padding: "12px 14px", borderRadius: 10, border: `1px solid ${studioGalleryLayout === l.id ? "rgba(99,102,241,.6)" : "rgba(255,255,255,.08)"}`, background: studioGalleryLayout === l.id ? "rgba(99,102,241,.1)" : "transparent", cursor: "pointer", transition: "all .2s" }}>
-                                <div style={{ fontSize: 12, fontWeight: 600, color: studioGalleryLayout === l.id ? "#fff" : "rgba(255,255,255,.7)" }}>{l.label}</div>
-                                <div style={{ fontSize: 10, color: "rgba(255,255,255,.35)", marginTop: 2 }}>{l.desc}</div>
+                              {secId === "hero" && <>
+                                {inpField("HEADLINE", "headline", `${artist.city?.toUpperCase() || "LONDON"}-BASED CREATOR OF...`, true)}
+                                {studioTheme === "noir" && <>
+                                  <div className="studio-inspector-group">
+                                    <label className="studio-inspector-label">HERO IMAGES</label>
+                                    <p className="studio-inspector-hint" style={{ margin: "0 0 10px" }}>Set the three hero images. Falls back to portfolio photos if empty.</p>
+                                  </div>
+                                  {mediaBtn("LEFT IMAGE", "heroImage1", secS.heroImage1 ? (mediaItems.find(m => m.id === secS.heroImage1)?.thumb) : null)}
+                                  {mediaBtn("CENTER IMAGE", "heroImage2", secS.heroImage2 ? (mediaItems.find(m => m.id === secS.heroImage2)?.thumb) : null)}
+                                  {mediaBtn("RIGHT IMAGE", "heroImage3", secS.heroImage3 ? (mediaItems.find(m => m.id === secS.heroImage3)?.thumb) : null)}
+                                </>}
+                                {(studioTheme === "atrium" || studioTheme === "lumen" || studioTheme === "slater") && <>
+                                  <div className="studio-inspector-group">
+                                    <label className="studio-inspector-label">HERO IMAGE</label>
+                                    <p className="studio-inspector-hint" style={{ margin: "0 0 10px" }}>Set the hero background image.</p>
+                                  </div>
+                                  {mediaBtn("BACKGROUND IMAGE", "heroImage", secS.heroImage ? (mediaItems.find(m => m.id === secS.heroImage)?.thumb) : null)}
+                                </>}
+                              </>}
+
+                              {secId === "about" && <>
+                                {inpField("HEADLINE", "headline", `${artist.city?.toUpperCase() || "LONDON"}-BASED CREATOR OF...`, true)}
+                                {inpField("QUOTE OVERLAY", "quote", "Step into my world...", true)}
+                                {toggle("Show availability badge", "showAvailability")}
+                                {mediaBtn("PORTRAIT IMAGE", "portraitImage", secS.portraitImage ? (mediaItems.find(m => m.id === secS.portraitImage)?.thumb) : null)}
+                              </>}
+
+                              {secId === "gallery" && <>
+                                {inpField("TITLE", "title", "GALLERY")}
+                                <div className="studio-inspector-group">
+                                  <label className="studio-inspector-label">LAYOUT</label>
+                                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
+                                    {[{id:"grid",label:"Grid"},{id:"masonry",label:"Masonry"},{id:"magazine",label:"Magazine"},{id:"spread",label:"Spread"}].map(l => (
+                                      <button key={l.id} className={`studio-inspector-source ${studioGalleryLayout === l.id ? "active" : ""}`} style={{ padding: "8px 10px", border: `1px solid ${studioGalleryLayout === l.id ? "var(--ac)" : "var(--g2)"}`, borderRadius: 8, background: studioGalleryLayout === l.id ? "rgba(96,77,255,.08)" : "transparent", color: studioGalleryLayout === l.id ? "var(--ac)" : "var(--g4)", cursor: "pointer", fontSize: 11, fontFamily: "inherit" }} onClick={() => setStudioGalleryLayout(l.id)}>{l.label}</button>
+                                    ))}
+                                  </div>
+                                </div>
+                              </>}
+
+                              {secId === "portfolios" && <>
+                                {inpField("SECTION TITLE", "title", "PORTFOLIOS")}
+                                <div className="studio-inspector-group">
+                                  <label className="studio-inspector-label">PORTFOLIOS</label>
+                                  <p className="studio-inspector-hint" style={{ margin: "0 0 8px" }}>Select which portfolios to show. Mark one as featured for hero placement.</p>
+                                  {portfolios.map(pf => {
+                                    const isSelected = studioContent.selectedPortfolios.includes(pf.id);
+                                    const isFeatured = studioContent.featuredPortfolio === pf.id;
+                                    return (
+                                      <div key={pf.id} className={`studio-content-row${isSelected ? " selected" : ""}`}>
+                                        <div className={`sm-switch${isSelected ? " on" : ""}`} onClick={() => {
+                                          setStudioContent(prev => ({
+                                            ...prev,
+                                            selectedPortfolios: isSelected ? prev.selectedPortfolios.filter(id => id !== pf.id) : [...prev.selectedPortfolios, pf.id],
+                                            featuredPortfolio: isSelected && isFeatured ? null : prev.featuredPortfolio,
+                                          }));
+                                        }} />
+                                        <div className="studio-content-info">
+                                          <span className="studio-content-name">{pf.name}</span>
+                                          <span className="studio-content-meta">{pf.photos.length} photos · {pf.videos.length} videos</span>
+                                        </div>
+                                        {isSelected && (
+                                          <button className={`studio-featured-btn${isFeatured ? " active" : ""}`} onClick={() => {
+                                            setStudioContent(prev => ({ ...prev, featuredPortfolio: isFeatured ? null : pf.id }));
+                                          }}>
+                                            {isFeatured ? "★ Featured" : "☆ Feature"}
+                                          </button>
+                                        )}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </>}
+
+                              {secId === "featuredWork" && <>
+                                {inpField("SECTION TITLE", "title", "FEATURED WORK")}
+                                {toggle("Show reviews", "showReviews")}
+                                {toggle("Show upcoming performances", "showUpcoming")}
+                              </>}
+
+                              {secId === "experience" && <>
+                                {inpField("SECTION TITLE", "title", "CAREER HIGHLIGHTS", true)}
+                                <div className="studio-inspector-group">
+                                  <label className="studio-inspector-label">RESUME ENTRIES</label>
+                                  <p className="studio-inspector-hint" style={{ margin: "0 0 8px" }}>Select items from your Lanced resume. Empty = show top 6 automatically.</p>
+                                  {stageRecords.filter(s => s.type === "experience" || s.type === "education" || s.type === "award").map(sr => {
+                                    const sel = (secS.selectedRecords || []).includes(sr.id);
+                                    return (
+                                      <div key={sr.id} className={`studio-inspector-record${sel ? " selected" : ""}`} onClick={() => {
+                                        const current = secS.selectedRecords || [];
+                                        updateSectionSetting("experience", "selectedRecords", sel ? current.filter(id => id !== sr.id) : [...current, sr.id]);
+                                      }}>
+                                        <div className="studio-inspector-record-check">{sel ? "✓" : ""}</div>
+                                        <div className="studio-inspector-record-info">
+                                          <div className="studio-inspector-record-title">{sr.title}</div>
+                                          <div className="studio-inspector-record-meta">{sr.type.toUpperCase()} · {sr.org} · {sr.start?.slice(0, 4)}</div>
+                                        </div>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </>}
+
+                              {secId === "works" && <>
+                                {inpField("SECTION TITLE", "title", "WORKS")}
+                                <div className="studio-inspector-group">
+                                  <label className="studio-inspector-label">WORKS</label>
+                                  <p className="studio-inspector-hint" style={{ margin: "0 0 8px" }}>Select which works to show. Mark one as featured for a dedicated section.</p>
+                                  {works.map(wk => {
+                                    const isSelected = studioContent.selectedWorks.includes(wk.id);
+                                    const isFeatured = studioContent.featuredWork === wk.id;
+                                    return (
+                                      <div key={wk.id} className={`studio-content-row${isSelected ? " selected" : ""}`}>
+                                        <div className={`sm-switch${isSelected ? " on" : ""}`} onClick={() => {
+                                          setStudioContent(prev => ({
+                                            ...prev,
+                                            selectedWorks: isSelected ? prev.selectedWorks.filter(id => id !== wk.id) : [...prev.selectedWorks, wk.id],
+                                            featuredWork: isSelected && isFeatured ? null : prev.featuredWork,
+                                          }));
+                                        }} />
+                                        <div className="studio-content-info">
+                                          <span className="studio-content-name">{wk.name}</span>
+                                          <span className="studio-content-meta">{wk.genre} · {wk.role}</span>
+                                        </div>
+                                        {isSelected && (
+                                          <button className={`studio-featured-btn${isFeatured ? " active" : ""}`} style={{ borderColor: isFeatured ? "#D97706" : undefined, color: isFeatured ? "#D97706" : undefined }} onClick={() => {
+                                            setStudioContent(prev => ({ ...prev, featuredWork: isFeatured ? null : wk.id }));
+                                          }}>
+                                            {isFeatured ? "★ Featured" : "☆ Feature"}
+                                          </button>
+                                        )}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </>}
+
+                              {secId === "testimonials" && <>
+                                <div className="studio-inspector-group">
+                                  <label className="studio-inspector-label">SOURCE</label>
+                                  <p className="studio-inspector-hint" style={{ margin: "0 0 8px" }}>Testimonials are pulled from your portfolio references and work reviews.</p>
+                                  <div className="studio-inspector-source">
+                                    <button className={secS.source === "auto" || !secS.source ? "active" : ""} onClick={() => updateSectionSetting("testimonials", "source", "auto")}>Auto (from data)</button>
+                                  </div>
+                                  {(() => {
+                                    const refs = portfolios.flatMap(pf => (pf.references || []).map(r => r.quote?.substring(0, 50) + "..."));
+                                    const revs = works.flatMap(wk => (wk.reviews || []).map(r => r.quote?.substring(0, 50) + "..."));
+                                    const total = refs.length + revs.length;
+                                    return <p className="studio-inspector-hint" style={{ marginTop: 8 }}>Found {total} testimonial{total !== 1 ? "s" : ""} ({refs.length} references, {revs.length} reviews)</p>;
+                                  })()}
+                                </div>
+                              </>}
+
+                              {secId === "contact" && <>
+                                {inpField("HEADLINE", "headline", "LET'S WORK TOGETHER", true)}
+                                {inpField("DESCRIPTION", "subline", "Open to new collaborations...", true)}
+                                {inpField("BUTTON TEXT", "buttonText", "GET IN TOUCH")}
+                              </>}
+
+                              {secId === "footer" && <>
+                                {inpField("TAGLINE", "tagline", "EVERY MOMENT HOLDS A STORY WAITING TO BE CAPTURED", true)}
+                              </>}
+                            </div>
+                          );
+                        })() : (
+                          /* ── Section List with drag & drop ── */
+                          <>
+                            <h4>Sections</h4>
+                            <p className="studio-content-hint">Drag to reorder, toggle on/off, or click ✎ to customize.</p>
+                            {[...studioSections].sort((a, b) => a.order - b.order).map((sec) => (
+                              <div key={sec.id}
+                                className={`studio-section-row${studioDragId === sec.id ? " dragging" : ""}${studioDragOverId === sec.id ? " drag-over" : ""}`}
+                                draggable
+                                onDragStart={e => { setStudioDragId(sec.id); e.dataTransfer.effectAllowed = "move"; }}
+                                onDragEnd={() => { setStudioDragId(null); setStudioDragOverId(null); }}
+                                onDragOver={e => { e.preventDefault(); e.dataTransfer.dropEffect = "move"; if (studioDragOverId !== sec.id) setStudioDragOverId(sec.id); }}
+                                onDragLeave={() => { if (studioDragOverId === sec.id) setStudioDragOverId(null); }}
+                                onDrop={e => {
+                                  e.preventDefault();
+                                  if (studioDragId && studioDragId !== sec.id) {
+                                    setStudioSections(prev => {
+                                      const sorted = [...prev].sort((a, b) => a.order - b.order);
+                                      const fromIdx = sorted.findIndex(s => s.id === studioDragId);
+                                      const toIdx = sorted.findIndex(s => s.id === sec.id);
+                                      if (fromIdx < 0 || toIdx < 0) return prev;
+                                      const item = sorted.splice(fromIdx, 1)[0];
+                                      sorted.splice(toIdx, 0, item);
+                                      return sorted.map((s, i) => ({ ...s, order: i }));
+                                    });
+                                  }
+                                  setStudioDragId(null); setStudioDragOverId(null);
+                                }}>
+                                <div className="studio-section-drag">
+                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="9" cy="6" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="18" r="1"/></svg>
+                                </div>
+                                <span className="studio-section-label" style={{ cursor: "pointer" }} onClick={() => setStudioEditSection(sec.id)}>{sec.label}</span>
+                                <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 8 }}>
+                                  <button className="studio-section-edit" onClick={() => setStudioEditSection(sec.id)} title="Edit section">✎</button>
+                                  <div className={`sm-switch${sec.enabled ? " on" : ""}`} onClick={() => {
+                                    setStudioSections(prev => prev.map(s => s.id === sec.id ? { ...s, enabled: !s.enabled } : s));
+                                  }} />
+                                </div>
                               </div>
                             ))}
-                          </div>
-                        </div>
+                          </>
+                        )}
                       </div>
                     )}
 
                     {/* Brand sub-tab */}
-                    {studioCustomizeTab === "brand" && (
+                    {studioCustomizeTab === "brand" && (() => {
+                      const themeDefaults = { noir: { accent: "#ffffff", bg: "#0a0a0a", title: "#ffffff", text: "#b3b3b3" }, atrium: { accent: "#ffffff", bg: "#F7F7F5", title: "#111111", text: "#636363" }, lumen: { accent: "#c8956c", bg: "#fdf8f4", title: "#2d2418", text: "#8a7a6a" }, slater: { accent: "#111111", bg: "#ffffff", title: "#111111", text: "#8a8a8a" } };
+                      const td = themeDefaults[studioTheme] || themeDefaults.atrium;
+                      return (
                       <div className="studio-brand-tab">
-                        <h4>Accent Color</h4>
-                        <div className="studio-color-swatches">
-                          {["#ffffff", "#604dff", "#f43f5e", "#f59e0b", "#10b981", "#3b82f6", "#8b5cf6", "#ec4899"].map(c => (
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <h4>Colors</h4>
+                          <button
+                            style={{ fontSize: 10, letterSpacing: ".1em", color: "var(--g4)", background: "none", border: "1px solid var(--g2)", borderRadius: 6, padding: "4px 10px", cursor: "pointer", textTransform: "uppercase" }}
+                            onClick={() => setStudioBrand(prev => ({ ...prev, accentColor: td.accent, backgroundColor: null, titleColor: null, textColor: null }))}
+                          >Reset to Default</button>
+                        </div>
+
+                        <label className="studio-inspector-label" style={{ marginTop: 16 }}>ACCENT COLOR</label>
+                        <div className="studio-color-swatches" style={{ marginTop: 8 }}>
+                          {[td.accent, "#604dff", "#f43f5e", "#f59e0b", "#10b981", "#3b82f6", "#8b5cf6", "#ec4899", "#0ea5e9", "#d946ef"].map(c => (
                             <button key={c} className={`studio-swatch${studioBrand.accentColor === c ? " active" : ""}`}
-                              style={{ background: c, border: c === "#ffffff" ? "1px solid var(--g3)" : "none" }}
+                              style={{ background: c, border: (c === "#ffffff" || c === "#111111") ? "1px solid var(--g3)" : "none" }}
                               onClick={() => setStudioBrand(prev => ({ ...prev, accentColor: c }))} />
                           ))}
                         </div>
-
-                        <h4 style={{ marginTop: 20 }}>Font Pair</h4>
-                        {[
-                          { id: "inter", label: "Inter", desc: "Clean & modern", sample: "'Inter',system-ui,sans-serif" },
-                          { id: "playfair", label: "Playfair + DM Sans", desc: "Elegant editorial", sample: "'Georgia',serif" },
-                          { id: "mono", label: "Monospace", desc: "Technical & raw", sample: "'SF Mono',monospace" },
-                        ].map(fp => (
-                          <div key={fp.id} className={`studio-font-pair${studioBrand.fontPairId === fp.id ? " active" : ""}`}
-                            onClick={() => setStudioBrand(prev => ({ ...prev, fontPairId: fp.id }))}>
-                            <span style={{ fontFamily: fp.sample, fontSize: 14, fontWeight: 600 }}>{fp.label}</span>
-                            <span style={{ fontSize: 11, color: "var(--g4)" }}>{fp.desc}</span>
+                        <div className="studio-hex-picker" style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 8 }}>
+                          <div className="studio-hex-swatch" style={{ width: 28, height: 28, borderRadius: 8, background: studioBrand.accentColor, border: "1px solid var(--g2)", flexShrink: 0 }} />
+                          <div style={{ position: "relative", flex: 1 }}>
+                            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 12, color: "var(--g4)", pointerEvents: "none", fontFamily: "'SF Mono','Fira Code',monospace" }}>#</span>
+                            <input className="studio-inspector-input" style={{ paddingLeft: 22, fontFamily: "'SF Mono','Fira Code',monospace", fontSize: 12 }}
+                              value={studioBrand.accentColor?.replace("#", "") || td.accent.replace("#", "")}
+                              onChange={e => { const v = e.target.value.replace(/[^0-9a-fA-F]/g, "").slice(0, 6); setStudioBrand(prev => ({ ...prev, accentColor: `#${v}` })); }}
+                              onBlur={e => { let v = e.target.value.replace(/[^0-9a-fA-F]/g, ""); if (v.length < 6) v = v.padEnd(6, "0"); setStudioBrand(prev => ({ ...prev, accentColor: `#${v}` })); }}
+                              maxLength={6} placeholder={td.accent.replace("#", "")} />
                           </div>
-                        ))}
+                        </div>
+
+                        {/* Background Color */}
+                        <label className="studio-inspector-label" style={{ marginTop: 20 }}>BACKGROUND</label>
+                        <div className="studio-hex-picker" style={{ marginTop: 6, display: "flex", alignItems: "center", gap: 8 }}>
+                          <div className="studio-hex-swatch" style={{ width: 28, height: 28, borderRadius: 8, background: studioBrand.backgroundColor || td.bg, border: "1px solid var(--g2)", flexShrink: 0 }} />
+                          <div style={{ position: "relative", flex: 1 }}>
+                            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 12, color: "var(--g4)", pointerEvents: "none", fontFamily: "'SF Mono','Fira Code',monospace" }}>#</span>
+                            <input className="studio-inspector-input" style={{ paddingLeft: 22, fontFamily: "'SF Mono','Fira Code',monospace", fontSize: 12 }}
+                              value={(studioBrand.backgroundColor || td.bg).replace("#", "")}
+                              onChange={e => { const v = e.target.value.replace(/[^0-9a-fA-F]/g, "").slice(0, 6); setStudioBrand(prev => ({ ...prev, backgroundColor: `#${v}` })); }}
+                              onBlur={e => { let v = e.target.value.replace(/[^0-9a-fA-F]/g, ""); if (v.length < 6) v = v.padEnd(6, "0"); setStudioBrand(prev => ({ ...prev, backgroundColor: `#${v}` })); }}
+                              maxLength={6} placeholder={td.bg.replace("#", "")} />
+                          </div>
+                        </div>
+
+                        {/* Title Color */}
+                        <label className="studio-inspector-label" style={{ marginTop: 20 }}>TITLE COLOR</label>
+                        <div className="studio-hex-picker" style={{ marginTop: 6, display: "flex", alignItems: "center", gap: 8 }}>
+                          <div className="studio-hex-swatch" style={{ width: 28, height: 28, borderRadius: 8, background: studioBrand.titleColor || td.title, border: "1px solid var(--g2)", flexShrink: 0 }} />
+                          <div style={{ position: "relative", flex: 1 }}>
+                            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 12, color: "var(--g4)", pointerEvents: "none", fontFamily: "'SF Mono','Fira Code',monospace" }}>#</span>
+                            <input className="studio-inspector-input" style={{ paddingLeft: 22, fontFamily: "'SF Mono','Fira Code',monospace", fontSize: 12 }}
+                              value={(studioBrand.titleColor || td.title).replace("#", "")}
+                              onChange={e => { const v = e.target.value.replace(/[^0-9a-fA-F]/g, "").slice(0, 6); setStudioBrand(prev => ({ ...prev, titleColor: `#${v}` })); }}
+                              onBlur={e => { let v = e.target.value.replace(/[^0-9a-fA-F]/g, ""); if (v.length < 6) v = v.padEnd(6, "0"); setStudioBrand(prev => ({ ...prev, titleColor: `#${v}` })); }}
+                              maxLength={6} placeholder={td.title.replace("#", "")} />
+                          </div>
+                        </div>
+
+                        {/* Text Color */}
+                        <label className="studio-inspector-label" style={{ marginTop: 20 }}>TEXT COLOR</label>
+                        <div className="studio-hex-picker" style={{ marginTop: 6, display: "flex", alignItems: "center", gap: 8 }}>
+                          <div className="studio-hex-swatch" style={{ width: 28, height: 28, borderRadius: 8, background: studioBrand.textColor || td.text, border: "1px solid var(--g2)", flexShrink: 0 }} />
+                          <div style={{ position: "relative", flex: 1 }}>
+                            <span style={{ position: "absolute", left: 10, top: "50%", transform: "translateY(-50%)", fontSize: 12, color: "var(--g4)", pointerEvents: "none", fontFamily: "'SF Mono','Fira Code',monospace" }}>#</span>
+                            <input className="studio-inspector-input" style={{ paddingLeft: 22, fontFamily: "'SF Mono','Fira Code',monospace", fontSize: 12 }}
+                              value={(studioBrand.textColor || td.text).replace("#", "")}
+                              onChange={e => { const v = e.target.value.replace(/[^0-9a-fA-F]/g, "").slice(0, 6); setStudioBrand(prev => ({ ...prev, textColor: `#${v}` })); }}
+                              onBlur={e => { let v = e.target.value.replace(/[^0-9a-fA-F]/g, ""); if (v.length < 6) v = v.padEnd(6, "0"); setStudioBrand(prev => ({ ...prev, textColor: `#${v}` })); }}
+                              maxLength={6} placeholder={td.text.replace("#", "")} />
+                          </div>
+                        </div>
+
+                        <h4 style={{ marginTop: 28 }}>Font Pair</h4>
+                        <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 4 }}>
+                          {[
+                            { id: "inter", label: "Inter", desc: "Clean & modern", sample: "'Inter',system-ui,sans-serif" },
+                            { id: "playfair", label: "Playfair Display", desc: "Elegant editorial", sample: "'Playfair Display',Georgia,serif" },
+                            { id: "mono", label: "Space Mono", desc: "Technical & raw", sample: "'Space Mono','JetBrains Mono',monospace" },
+                            { id: "garamond", label: "EB Garamond", desc: "Classic & timeless", sample: "'EB Garamond',Georgia,serif" },
+                            { id: "poppins", label: "Poppins", desc: "Geometric & friendly", sample: "'Poppins',system-ui,sans-serif" },
+                            { id: "syne", label: "Syne", desc: "Bold & expressive", sample: "'Syne',system-ui,sans-serif" },
+                            { id: "cormorant", label: "Cormorant Garamond", desc: "Refined & delicate", sample: "'Cormorant Garamond',Georgia,serif" },
+                            { id: "dmserif", label: "DM Serif Display", desc: "Contemporary contrast", sample: "'DM Serif Display',Georgia,serif" },
+                            { id: "outfit", label: "Outfit", desc: "Sharp & versatile", sample: "'Outfit',system-ui,sans-serif" },
+                            { id: "sourceserif", label: "Source Serif 4", desc: "Journalistic & warm", sample: "'Source Serif 4',Georgia,serif" },
+                            { id: "spacegrotesk", label: "Space Grotesk", desc: "Futuristic & clean", sample: "'Space Grotesk',system-ui,sans-serif" },
+                            { id: "literata", label: "Literata", desc: "Book-quality reading", sample: "'Literata',Georgia,serif" },
+                          ].map(fp => (
+                            <div key={fp.id} className={`studio-font-pair${studioBrand.fontPairId === fp.id ? " active" : ""}`}
+                              onClick={() => setStudioBrand(prev => ({ ...prev, fontPairId: fp.id }))}>
+                              <span style={{ fontFamily: fp.sample, fontSize: 13, fontWeight: 600 }}>{fp.label}</span>
+                              <span style={{ fontSize: 11, color: "var(--g4)" }}>{fp.desc}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    )}
+                    );})()}
                   </div>
                 </div>
 
@@ -6830,7 +9481,9 @@ export default function ArtistShell() {
                 <div className="studio-preview-area">
                   <div className={`studio-preview-frame studio-preview-${studioPreviewDevice}`} onScroll={e => setStudioScrollY(e.target.scrollTop)}>
                     {studioTheme === "noir" && renderNoirTheme()}
-                {studioTheme === "atrium" && renderAtriumTheme()}
+                    {studioTheme === "atrium" && renderAtriumTheme()}
+                    {studioTheme === "lumen" && renderLumenTheme()}
+                    {studioTheme === "slater" && renderSlaterTheme()}
                   </div>
                 </div>
               </div>
@@ -6877,7 +9530,7 @@ export default function ArtistShell() {
                         <div className="studio-gallery-overlay">
                           {!th.locked && (
                             <button className="btn btn-sm" style={{ background: "#fff", color: "#000", fontWeight: 600 }}
-                              onClick={() => { setStudioTheme(th.id); setStudioMode("builder"); }}>
+                              onClick={() => { setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); setStudioMode("builder"); }}>
                               {studioTheme === th.id ? "Edit Website" : "Use Theme"}
                             </button>
                           )}
@@ -7575,13 +10228,17 @@ export default function ArtistShell() {
                 <div className="picker-footer">
                   <span className="pf-count">{pickerSelected.length} {pickerSelected.length === 1 ? "item" : "items"} selected</span>
                   <button className="btn btn-p btn-sm" onClick={() => {
-                    if (pickerTargetMaterial && pickerSelected.length > 0) {
+                    if (studioMediaPickerTarget && pickerSelected.length > 0) {
+                      updateSectionSetting(studioMediaPickerTarget.section, studioMediaPickerTarget.field, pickerSelected[0]);
+                      setStudioMediaPickerTarget(null);
+                      showToast("Image updated");
+                    } else if (pickerTargetMaterial && pickerSelected.length > 0) {
                       setApplyDraft(prev => ({ ...prev, attachedMaterials: { ...prev.attachedMaterials, [pickerTargetMaterial]: pickerSelected[0] } }));
                       setPickerTargetMaterial(null);
+                      showToast(`${pickerSelected.length} item${pickerSelected.length !== 1 ? "s" : ""} added to application`);
                     }
-                    showToast(`${pickerSelected.length} item${pickerSelected.length !== 1 ? "s" : ""} added to application`);
-                    setShowMediaPicker(null); setPickerFilter("all"); setPickerSearch("");
-                  }}>Add to Application</button>
+                    setShowMediaPicker(null); setPickerFilter("all"); setPickerSearch(""); setPickerSelected([]);
+                  }}>{studioMediaPickerTarget ? "Select Image" : "Add to Application"}</button>
                 </div>
               )}
             </div>
