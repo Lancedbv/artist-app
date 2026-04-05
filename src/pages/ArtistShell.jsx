@@ -287,6 +287,12 @@ const STUDIO_THEMES = [
     colors: { bg: "#ffffff", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.35)" },
     fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
   },
+  {
+    id: "strobe", name: "Strobe", desc: "Blinds reveal. Bold type. Full-bleed.", tier: "free",
+    preview: "/demo/banners/theme-noir.png",
+    colors: { bg: "#e6e2dc", text: "#111111", accent: "#7c3aed", muted: "rgba(17,17,17,.35)" },
+    fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
+  },
 ];
 
 const STUDIO_DEFAULT_SECTIONS = [
@@ -359,7 +365,7 @@ const ac = "#604DFF";
 
 /* ━━━ CSS ━━━ */
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
 
 :root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'DM Sans',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px}
 
@@ -1612,7 +1618,7 @@ textarea.pf-input{line-height:1.6}
 .plan-item-desc{font-size:12px;color:var(--g4);margin-top:2px}
 .dark .plan-item{border-color:var(--g2)}
 /* Picker modal */
-.picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;z-index:400;animation:fadeIn .15s ease}
+.picker-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;z-index:700;animation:fadeIn .15s ease}
 .picker-modal{background:var(--sf);border-radius:24px;padding:0;max-width:820px;width:94%;max-height:85vh;display:flex;flex-direction:column;animation:scaleIn .2s ease;box-shadow:0 24px 64px rgba(0,0,0,.15);overflow:hidden}
 .picker-modal::-webkit-scrollbar{width:0}
 .picker-header{padding:24px 28px 0;flex-shrink:0}
@@ -3101,6 +3107,243 @@ textarea.pf-input{line-height:1.6}
 .slater-hero-name,.slater-bio-words,.slater-split-text h3,.slater-section-title,.slater-stat-num,.slater-contact-left h2,.slater-fw-title,.slater-testimonial-quote,.slater-detail-hero-text h1,.slater-page-header h1{color:var(--slater-title,#111)}
 .slater-section-label,.slater-split-text .slater-split-label,.slater-exp-year,.slater-detail-breadcrumb,.slater-testimonial-author,.slater-detail-meta-label,.slater-section-rule,.slater-contact-right,.slater-testimonial-dot.active{color:var(--slater-accent,#111)}
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* STROBE THEME                                      */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.strobe-theme{background:var(--strobe-bg,#e6e2dc);color:var(--strobe-text,#111);font-family:'Inter',system-ui,-apple-system,sans-serif;position:relative;overflow-x:hidden}
+.strobe-theme *{box-sizing:border-box}
+
+/* ── Keyframes ── */
+@keyframes strobeBlindsReveal{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@keyframes strobeFadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes strobeNavIn{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes strobeCursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes strobeLetterReveal{0%{color:var(--strobe-accent,#7c3aed)}100%{color:var(--strobe-title,#111)}}
+
+/* ── Reveal on scroll ── */
+.strobe-reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.strobe-reveal.revealed{opacity:1;transform:translateY(0)}
+
+/* ── Top nav bar ── */
+.strobe-nav{position:relative;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 40px;background:var(--strobe-bg,#e6e2dc);animation:strobeNavIn .8s cubic-bezier(.16,1,.3,1) both;animation-delay:.3s}
+.strobe-nav-name{font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--strobe-title,#111)}
+.strobe-nav-menu-btn{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;color:var(--strobe-title,#111);background:none;border:none;padding:8px 0;font-family:inherit}
+.strobe-nav-menu-btn:hover{opacity:.6}
+/* Hero overlay mode — transparent, negative text over bars */
+.strobe-nav-hero{position:absolute;top:0;left:0;right:0;background:transparent;mix-blend-mode:difference;padding:20px 40px}
+.strobe-nav-hero .strobe-nav-name,.strobe-nav-hero .strobe-nav-menu-btn{color:#fff}
+
+/* ── Menu panel ── */
+.strobe-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:199;opacity:0;pointer-events:none;transition:opacity .4s}
+.strobe-menu-overlay.open{opacity:1;pointer-events:auto}
+.strobe-menu-panel{position:fixed;top:0;right:0;bottom:0;width:400px;background:var(--strobe-bg,#e6e2dc);z-index:200;transform:translateX(100%);transition:transform .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;padding:40px}
+.strobe-menu-panel.open{transform:translateX(0)}
+.strobe-menu-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:60px}
+.strobe-menu-title{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--strobe-accent,#111)}
+.strobe-menu-close{background:none;border:none;font-size:24px;cursor:pointer;color:var(--strobe-title,#111);padding:0;line-height:1}
+.strobe-menu-links{display:flex;flex-direction:column;gap:16px}
+.strobe-menu-link{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(36px,5vw,56px);font-weight:600;letter-spacing:-.01em;text-transform:uppercase;color:var(--strobe-title,#111);background:none;border:none;padding:0;cursor:pointer;text-align:left;transition:opacity .3s}
+.strobe-menu-link:hover{opacity:.4}
+
+/* ── Hero section ── */
+.strobe-hero{position:relative;width:100%;overflow:hidden;padding:0 10px;margin-top:0}
+.strobe-hero-img{display:none}
+.strobe-hero-strips{display:flex;gap:6px;width:100%;height:clamp(520px,78vh,800px);align-items:flex-start;padding-top:0}
+.strobe-hero-strip{position:relative;overflow:hidden;border-radius:10px;will-change:transform;background-size:cover;background-position:center;opacity:0;transform:translateY(-110vh)}
+.strobe-hero-strip.strobe-entered{opacity:1;transform:translateY(0);transition:none}
+.strobe-hero-strip img{display:none}
+/* Entrance — bars drop from above the viewport */
+@keyframes strobeStripIn{from{opacity:0;transform:translateY(-110vh)}to{opacity:1;transform:translateY(0)}}
+/* Continuous float keyframes — varied amplitudes */
+@keyframes strobeFloat1{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+@keyframes strobeFloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(16px)}}
+@keyframes strobeFloat3{0%,100%{transform:translateY(0)}50%{transform:translateY(-28px)}}
+@keyframes strobeFloat4{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+@keyframes strobeFloat5{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes strobeFloat6{0%,100%{transform:translateY(0)}50%{transform:translateY(24px)}}
+@keyframes strobeFloat7{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+/* Artsy uneven layout — bars drop from top in scattered order */
+.strobe-hero-strip:nth-child(1){flex:0.7;height:62%;margin-top:14px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .28s forwards}
+.strobe-hero-strip:nth-child(2){flex:1.1;height:88%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .08s forwards}
+.strobe-hero-strip:nth-child(3){flex:0.6;height:52%;margin-top:24px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .42s forwards}
+.strobe-hero-strip:nth-child(4){flex:1.3;height:96%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .14s forwards}
+.strobe-hero-strip:nth-child(5){flex:0.8;height:58%;margin-top:18px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .52s forwards}
+.strobe-hero-strip:nth-child(6){flex:1.4;height:100%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .04s forwards}
+.strobe-hero-strip:nth-child(7){flex:0.9;height:66%;margin-top:30px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .36s forwards}
+.strobe-hero-strip:nth-child(8){flex:1.2;height:92%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .18s forwards}
+.strobe-hero-strip:nth-child(9){flex:0.5;height:48%;margin-top:10px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .46s forwards}
+.strobe-hero-strip:nth-child(10){flex:1.3;height:94%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .1s forwards}
+.strobe-hero-strip:nth-child(11){flex:0.7;height:56%;margin-top:20px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .32s forwards}
+.strobe-hero-strip:nth-child(12){flex:1;height:82%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .22s forwards}
+.strobe-hero-strip:nth-child(13){flex:0.6;height:50%;margin-top:26px;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .5s forwards}
+.strobe-hero-strip:nth-child(14){flex:1.1;height:86%;margin-top:0;animation:strobeStripIn .9s cubic-bezier(.34,1.56,.64,1) .16s forwards}
+/* After entrance, bars stay visible and float continuously */
+.strobe-hero-strip.strobe-entered:nth-child(1){animation:strobeFloat1 4.2s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(2){animation:strobeFloat2 5.1s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(3){animation:strobeFloat3 3.8s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(4){animation:strobeFloat4 5.6s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(5){animation:strobeFloat5 4.4s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(6){animation:strobeFloat6 6s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(7){animation:strobeFloat7 4s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(8){animation:strobeFloat1 5.3s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(9){animation:strobeFloat3 3.6s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(10){animation:strobeFloat2 5.8s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(11){animation:strobeFloat5 4.6s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(12){animation:strobeFloat4 5s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(13){animation:strobeFloat7 3.4s ease-in-out infinite}
+.strobe-hero-strip.strobe-entered:nth-child(14){animation:strobeFloat6 5.4s ease-in-out infinite}
+.strobe-hero-title{padding:20px 16px 0;overflow:hidden}
+.strobe-hero-name{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(48px,9vw,120px);font-weight:700;line-height:.9;letter-spacing:-.02em;text-transform:uppercase;color:var(--strobe-title,#111);display:inline}
+.strobe-hero-cursor{display:inline-block;width:4px;height:.78em;background:var(--strobe-accent,#7c3aed);margin-left:4px;vertical-align:baseline;animation:strobeCursorBlink 1.06s step-end infinite;position:relative;top:0.06em;border-radius:1px}
+.strobe-hero-cursor.typing{animation:none;opacity:1}
+.strobe-hero-cursor.done{animation:strobeCursorBlink 1.06s step-end 3;animation-fill-mode:forwards;opacity:0}
+.strobe-hero-tagline{padding:24px 24px 40px;font-size:clamp(18px,2.5vw,30px);font-weight:900;letter-spacing:-.02em;line-height:1.3;color:var(--strobe-title,#111);max-width:800px}
+
+/* ── Section headers ── */
+.strobe-section{padding:0}
+.strobe-section-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--strobe-accent,#7c3aed);padding:40px 40px 16px}
+.strobe-section-title{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(64px,12vw,160px);font-weight:700;letter-spacing:-.02em;line-height:.85;text-transform:uppercase;color:var(--strobe-title,#111);padding:0 40px 24px;white-space:nowrap;overflow:hidden}
+.strobe-section-title .strobe-typed-letter{display:inline-block;animation:strobeLetterReveal .4s ease forwards}
+.strobe-section-title .strobe-type-cursor{display:inline-block;width:4px;height:.78em;background:var(--strobe-accent,#7c3aed);margin-left:2px;vertical-align:baseline;position:relative;top:0.06em;border-radius:1px;animation:strobeCursorBlink 1.06s step-end infinite}
+
+/* ── Section spacing ── */
+.strobe-theme > section,.strobe-theme > .strobe-contact{margin-top:clamp(80px,10vw,140px)}
+.strobe-theme > .strobe-hero{margin-top:0}
+
+/* ── Featured work (first = full-width hero card) ── */
+.strobe-work-featured{position:relative;width:100%;height:70vh;overflow:hidden;cursor:pointer}
+.strobe-work-featured img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.strobe-work-featured:hover img{filter:grayscale(0);transform:scale(1.03)}
+.strobe-work-featured-info{position:absolute;bottom:0;left:0;right:0;padding:24px 40px;display:flex;justify-content:space-between;align-items:flex-end;color:#fff}
+.strobe-work-featured-title{font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.strobe-work-featured-desc{font-size:12px;max-width:300px;text-align:right;opacity:.7;line-height:1.5;font-family:'SF Mono','Fira Code',monospace}
+
+/* ── Works grid (2-col) ── */
+.strobe-works-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+.strobe-work-card{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:4/3}
+.strobe-work-card img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.strobe-work-card:hover img{filter:grayscale(0);transform:scale(1.03)}
+.strobe-work-card-info{position:absolute;bottom:0;left:0;right:0;padding:20px;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 100%)}
+.strobe-work-card-info h3{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.strobe-work-card-info p{font-size:11px;opacity:.7;margin-top:4px;font-family:'SF Mono','Fira Code',monospace}
+
+/* ── Portfolios (2-col parallax) ── */
+.strobe-pf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px}
+.strobe-pf-card{position:relative;overflow:hidden;cursor:pointer;height:60vh}
+.strobe-pf-card img{width:100%;height:115%;object-fit:cover;filter:grayscale(.6);transition:filter .6s,transform .6s;transform:translateY(var(--strobe-parallax,0px))}
+.strobe-pf-card:hover img{filter:grayscale(0);transform:translateY(var(--strobe-parallax,0px)) scale(1.03)}
+.strobe-pf-card-info{position:absolute;bottom:0;left:0;right:0;padding:24px;color:#fff;background:linear-gradient(to top,rgba(0,0,0,.5) 0%,transparent 100%)}
+.strobe-pf-card-info h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.strobe-pf-card-tags{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+.strobe-pf-card-tags span{font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border:1px solid rgba(255,255,255,.4);border-radius:0}
+
+/* ── About section ── */
+.strobe-about{padding:100px 40px;max-width:900px}
+.strobe-about h2{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(36px,6vw,72px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase;line-height:.9;color:var(--strobe-title,#111);margin-bottom:32px}
+.strobe-about-bio{font-size:16px;line-height:1.8;color:var(--strobe-text,#8a8a8a);margin-bottom:48px}
+.strobe-about-stats{display:flex;gap:48px;flex-wrap:wrap}
+.strobe-about-stat-num{font-size:clamp(32px,4vw,56px);font-weight:900;letter-spacing:-.04em;color:var(--strobe-title,#111);line-height:1}
+.strobe-about-stat-label{font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--strobe-text,rgba(17,17,17,.4));margin-top:4px}
+
+/* ── Gallery (3-col grid) ── */
+.strobe-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.strobe-gallery-item{position:relative;overflow:hidden;cursor:pointer;aspect-ratio:1}
+.strobe-gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.strobe-gallery-item:hover img{transform:scale(1.06)}
+
+/* ── Contact (split) ── */
+.strobe-contact{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:50vh}
+.strobe-contact-left{padding:80px 40px;display:flex;flex-direction:column;justify-content:center}
+.strobe-contact-left h2{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(36px,5vw,64px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase;line-height:1;color:var(--strobe-title,#111)}
+.strobe-contact-left p{font-size:14px;line-height:1.7;color:var(--strobe-text,rgba(17,17,17,.5));margin-top:16px;max-width:400px}
+.strobe-contact-right{background:var(--strobe-accent,#111);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:80px 40px}
+.strobe-contact-right a{color:#fff;font-size:clamp(20px,3vw,32px);font-weight:700;text-decoration:none;display:block;margin-bottom:12px;transition:opacity .3s}
+.strobe-contact-right a:hover{opacity:.7}
+.strobe-contact-social{display:flex;gap:20px;margin-top:24px}
+.strobe-contact-social a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.5}
+.strobe-contact-social a:hover{opacity:1}
+.strobe-contact-cta{display:inline-block;padding:14px 36px;background:var(--strobe-accent,#111);color:#fff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;cursor:pointer;margin-top:24px;transition:opacity .3s}
+.strobe-contact-cta:hover{opacity:.8}
+
+/* ── Footer ── */
+.strobe-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;padding:60px 40px 40px;border-top:1px solid rgba(17,17,17,.08);font-size:12px;color:var(--strobe-text,rgba(17,17,17,.35))}
+.strobe-footer-left{display:flex;flex-direction:column;gap:6px}
+.strobe-footer-left a,.strobe-footer-left button{background:none;border:none;font-size:12px;color:var(--strobe-text,rgba(17,17,17,.5));cursor:pointer;padding:0;text-align:left;font-family:inherit;text-decoration:none}
+.strobe-footer-left a:hover,.strobe-footer-left button:hover{color:var(--strobe-title,#111)}
+.strobe-footer-center{text-align:center}
+.strobe-footer-logo{font-family:'Bebas Neue',system-ui,sans-serif;font-size:18px;font-weight:600;letter-spacing:-.01em;text-transform:uppercase;color:var(--strobe-title,#111);margin-bottom:8px}
+.strobe-footer-copy{font-size:11px;color:var(--strobe-text,rgba(17,17,17,.35));letter-spacing:.04em;text-transform:uppercase}
+.strobe-footer-right{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.strobe-footer-right a{font-size:12px;color:var(--strobe-text,rgba(17,17,17,.5));text-decoration:none}
+.strobe-footer-right a:hover{color:var(--strobe-title,#111)}
+.strobe-footer-links{display:none}
+
+/* ── Experience timeline ── */
+.strobe-exp{padding:80px 40px}
+.strobe-exp-item{display:grid;grid-template-columns:120px 1fr;gap:32px;padding:24px 0;border-bottom:1px solid rgba(17,17,17,.06)}
+.strobe-exp-year{font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--strobe-accent,#111)}
+.strobe-exp-title{font-size:16px;font-weight:700;color:var(--strobe-title,#111);margin-bottom:2px}
+.strobe-exp-org{font-size:13px;color:var(--strobe-text,rgba(17,17,17,.5))}
+
+/* ── Detail pages ── */
+.strobe-detail{padding:0}
+.strobe-detail-hero{display:grid;grid-template-columns:1fr 1fr;min-height:70vh}
+.strobe-detail-hero-img{width:100%;height:100%;object-fit:cover}
+.strobe-detail-hero-text{padding:80px 40px;display:flex;flex-direction:column;justify-content:center}
+.strobe-detail-hero-text h1{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(28px,4vw,48px);font-weight:700;letter-spacing:-.01em;text-transform:uppercase;line-height:1.1;color:var(--strobe-title,#111)}
+.strobe-detail-breadcrumb{font-size:11px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px;color:var(--strobe-accent,#111);opacity:.5;cursor:pointer}
+.strobe-detail-breadcrumb:hover{opacity:1}
+.strobe-detail-meta{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.strobe-detail-meta-item{font-size:12px}
+.strobe-detail-meta-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--strobe-accent,#111);opacity:.4;margin-bottom:2px}
+.strobe-detail-body{padding:60px 40px;max-width:800px}
+.strobe-detail-body p{font-size:15px;line-height:1.8;color:var(--strobe-text,rgba(17,17,17,.55));margin-bottom:16px}
+.strobe-detail-gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;padding:0 40px 60px}
+.strobe-detail-gallery img{width:100%;aspect-ratio:4/3;object-fit:cover}
+
+/* ── Sub-pages ── */
+.strobe-page{padding:40px}
+.strobe-page-header{padding:60px 0 40px}
+.strobe-page-header h1{font-family:'Bebas Neue',system-ui,sans-serif;font-size:clamp(36px,6vw,72px);font-weight:700;letter-spacing:-.02em;text-transform:uppercase;line-height:.9;color:var(--strobe-title,#111)}
+.strobe-gallery-page-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.strobe-gallery-page-grid .strobe-gallery-item{aspect-ratio:1}
+
+/* ── Customizable text overrides ── */
+.strobe-hero-tagline,.strobe-about-bio,.strobe-work-featured-desc,.strobe-contact-left p,.strobe-exp-org,.strobe-detail-body p{color:var(--strobe-text,rgba(17,17,17,.55))}
+.strobe-hero-name,.strobe-hero-title,.strobe-about h2,.strobe-section-title,.strobe-about-stat-num,.strobe-contact-left h2,.strobe-work-featured-title,.strobe-detail-hero-text h1,.strobe-page-header h1{color:var(--strobe-title,#111)}
+.strobe-section-label,.strobe-exp-year,.strobe-detail-breadcrumb,.strobe-detail-meta-label,.strobe-contact-right,.strobe-contact-cta{color:var(--strobe-accent,#111)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+.strobe-nav{padding:16px 20px}
+.strobe-nav-hero{padding:16px 20px}
+.strobe-hero{padding:0 6px}
+.strobe-hero-strips{height:clamp(360px,60vh,500px);gap:3px}
+.strobe-hero-title{padding:16px 4px 0}
+.strobe-hero-name{font-size:clamp(32px,10vw,64px)}
+.strobe-hero-tagline{padding:16px 16px 32px;font-size:clamp(16px,4vw,24px)}
+.strobe-menu-panel{width:100%}
+.strobe-section-title{font-size:clamp(36px,14vw,80px);padding:0 20px 16px}
+.strobe-section-label{padding:32px 20px 12px}
+.strobe-works-grid{grid-template-columns:1fr}
+.strobe-pf-grid{grid-template-columns:1fr}
+.strobe-pf-card{height:50vh}
+.strobe-gallery-grid{grid-template-columns:repeat(2,1fr)}
+.strobe-footer{grid-template-columns:1fr;gap:32px;padding:40px 20px}
+.strobe-footer-right{align-items:flex-start}
+.strobe-contact{grid-template-columns:1fr}
+.strobe-about{padding:60px 20px}
+.strobe-about-stats{gap:32px}
+.strobe-exp{padding:60px 20px}
+.strobe-exp-item{grid-template-columns:80px 1fr;gap:16px}
+.strobe-detail-hero{grid-template-columns:1fr}
+.strobe-detail-gallery{grid-template-columns:1fr}
+.strobe-page{padding:20px}
+.strobe-gallery-page-grid{grid-template-columns:repeat(2,1fr)}
+.strobe-theme > section,.strobe-theme > .strobe-contact{margin-top:clamp(48px,8vw,80px)}
+}
+
 `;
 
 /* ━━━ SVG ICONS (inline) ━━━ */
@@ -3353,6 +3596,13 @@ export default function ArtistShell() {
   const [lumenPage, setLumenPage] = useState({ type: "home" });
   const [slaterPage, setSlaterPage] = useState({ type: "home" });
   const [slaterTestiIdx, setSlaterTestiIdx] = useState(0);
+  const [strobePage, setStrobePage] = useState({ type: "home" });
+  const [strobeMenuOpen, setStrobeMenuOpen] = useState(false);
+  const [strobeTyped, setStrobeTyped] = useState("");
+  const [strobeTypingDone, setStrobeTypingDone] = useState(false);
+  const strobeTypingRef = useRef(null);
+  const [strobeSectionTyped, setStrobeSectionTyped] = useState({});
+  const strobeEnteredRef = useRef(false);
   const [noirContactOpen, setNoirContactOpen] = useState(false);
 
   /* Section settings — per-section overrides. null = use default from data */
@@ -3428,6 +3678,26 @@ export default function ArtistShell() {
   useEffect(() => {
     localStorage.setItem("lanced-artist-dark", darkMode);
   }, [darkMode]);
+
+  /* Strobe typewriter effect */
+  useEffect(() => {
+    if (studioTheme !== "strobe") { setStrobeTyped(""); setStrobeTypingDone(false); return; }
+    const fullName = (artist.name || "Artist Name").toUpperCase();
+    if (strobeTypingRef.current === fullName) return; // already typed this name
+    strobeTypingRef.current = fullName;
+    setStrobeTyped("");
+    setStrobeTypingDone(false);
+    let i = 0;
+    const delay = setTimeout(() => {
+      const interval = setInterval(() => {
+        i++;
+        setStrobeTyped(fullName.slice(0, i));
+        if (i >= fullName.length) { clearInterval(interval); setTimeout(() => setStrobeTypingDone(true), 200); }
+      }, 55);
+      return () => clearInterval(interval);
+    }, 800); // wait for blinds to start revealing
+    return () => clearTimeout(delay);
+  }, [studioTheme, artist.name]);
 
   useEffect(() => {
     if (!showUserMenu) return;
@@ -8485,7 +8755,7 @@ export default function ArtistShell() {
                   case "about":
                     return (
                       <section key="about" className="lumen-about lumen-reveal">
-                        <div className="lumen-about-img"><img src={artist.photo} alt={artist.name} /></div>
+                        <div className="lumen-about-img"><img src={ss.about?.portraitImage ? (mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo) : artist.photo} alt={artist.name} /></div>
                         <div className="lumen-about-content">
                           <div className="lumen-sh"><div className="lumen-sh-label">About Me</div><h2 className="lumen-sh-title">{getSS("about", "headline", null) || `${artist.city}-Based ${artist.role || "Artist"}`}</h2></div>
                           <p>{artist.biography || "A dedicated performing artist."}</p>
@@ -8745,7 +9015,7 @@ export default function ArtistShell() {
                     <p style={{ fontSize: 15, lineHeight: 1.8, color: "var(--slater-text,rgba(17,17,17,.55))" }}>{artist.biography || "An artist pushing boundaries."}</p>
                     {allStyles.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>{allStyles.map(s => <span key={s} style={{ padding: "6px 16px", border: "1px solid rgba(0,0,0,.1)", fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase" }}>{s}</span>)}</div>}
                   </div>
-                  {artist.photo && <img src={artist.photo} alt={artist.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />}
+                  {(ss.about?.portraitImage ? (mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo) : artist.photo) && <img src={ss.about?.portraitImage ? (mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo) : artist.photo} alt={artist.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />}
                 </div>
                 <div className="slater-stats">
                   {[{ n: selectedWks.length, l: "WORKS" }, { n: experiences.length, l: "EXPERIENCES" }, { n: awardCount, l: "AWARDS" }, { n: performanceCount, l: "PERFORMANCES" }].map(s => (
@@ -8815,7 +9085,7 @@ export default function ArtistShell() {
           const navCompact = studioScrollY > 60;
 
           /* Hero collage photos */
-          const resolveHeroImg = (key) => { const id = ss.hero?.[key]; return id ? (mediaItems.find(m => m.id === id)?.src) : null; };
+          const resolveHeroImg = (key) => { const id = ss.hero?.[key]; if (id) { const m = mediaItems.find(mi => mi.id === id); if (m) return m.thumb || m.src; } return null; };
           const heroImgSingle = resolveHeroImg("heroImage");
           const collagePhotos = heroImgSingle ? [heroImgSingle] : heroPhotos.length > 0 ? heroPhotos.slice(0, 3).map(p => p.src) : allPhotos.slice(0, 3).map(p => p.src);
 
@@ -9033,6 +9303,344 @@ export default function ArtistShell() {
           );
         };
 
+        /* ── Strobe Theme Renderer ── */
+        const renderStrobeTheme = () => {
+          const nm = (artist.name || "Artist Name").toUpperCase();
+          const ss = studioSectionSettings;
+          const expRecordIds = ss.experience?.selectedRecords || [];
+          const experiences = expRecordIds.length > 0 ? stageRecords.filter(r => expRecordIds.includes(r.id)) : stageRecords.slice(0, 6);
+
+          const isHome = strobePage.type === "home";
+          const navTo = (page) => { setStrobePage(page); setStrobeMenuOpen(false); setStudioScrollY(0); const vp = document.querySelector(".studio-preview-viewport") || document.querySelector(".studio-preview-frame"); if (vp) vp.scrollTop = 0; };
+
+          /* Reveal observer */
+          const strobeRevealRef = (el) => {
+            if (!el) return;
+            let root = el.parentElement;
+            while (root && root !== document.body) { const ov = getComputedStyle(root).overflowY; if ((ov === "auto" || ov === "scroll") && root.scrollHeight > root.clientHeight + 10) break; root = root.parentElement; }
+            if (root === document.body) root = null;
+            const observer = new IntersectionObserver((entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("revealed"); observer.unobserve(e.target); } }), { threshold: 0.08, root });
+            el.querySelectorAll(".strobe-reveal").forEach(child => observer.observe(child));
+          };
+
+          /* Hero image */
+          const resolveHeroImg = (key) => { const id = ss.hero?.[key]; if (id) { const m = mediaItems.find(mi => mi.id === id); if (m) return m.thumb || m.src; } return null; };
+          const heroImgSrc = resolveHeroImg("heroImage") || (heroPhotos.length > 0 ? heroPhotos[0].src : allPhotos[0]?.src || artist.photo);
+
+          /* Bio text */
+          const bioText = artist.biography || artist.bio || "";
+
+          /* Section typewriter title component — types once, then shows plain text */
+          const StrobeSectionTyped = ({ text, id }) => {
+            const elRef = useRef(null);
+            const typed = strobeSectionTyped[id];
+            const isDone = typed === true;
+            const typedText = typeof typed === "string" ? typed : "";
+            const isTyping = typedText.length > 0 && !isDone;
+            useEffect(() => {
+              if (!elRef.current || strobeSectionTyped[id] !== undefined) return;
+              let root = elRef.current.parentElement;
+              while (root && root !== document.body) { const ov = getComputedStyle(root).overflowY; if ((ov === "auto" || ov === "scroll") && root.scrollHeight > root.clientHeight + 10) break; root = root.parentElement; }
+              if (root === document.body) root = null;
+              const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                  if (e.isIntersecting) {
+                    observer.unobserve(e.target);
+                    let i = 0;
+                    const interval = setInterval(() => {
+                      i++;
+                      if (i >= text.length) { clearInterval(interval); setStrobeSectionTyped(prev => ({ ...prev, [id]: true })); }
+                      else { setStrobeSectionTyped(prev => ({ ...prev, [id]: text.slice(0, i) })); }
+                    }, 40);
+                  }
+                });
+              }, { threshold: 0.1, root });
+              observer.observe(elRef.current);
+              return () => observer.disconnect();
+            }, [id, text]);
+            /* Once done, render plain text — no spans or animations */
+            if (isDone) return <div className="strobe-section-title" ref={elRef}>{text}</div>;
+            return (
+              <div className="strobe-section-title" ref={elRef}>
+                {(typedText || "\u00A0").split("").map((ch, i) => (
+                  <span key={i} className="strobe-typed-letter" style={{ animationDelay: `${i * 0.02}s`, color: i >= typedText.length - 1 && isTyping ? "var(--strobe-accent,#7c3aed)" : undefined }}>{ch}</span>
+                ))}
+                {!isDone && <span className="strobe-type-cursor" style={!isTyping && !typedText ? { animation: "none", opacity: 0 } : undefined} />}
+              </div>
+            );
+          };
+
+          /* Stats */
+          const performanceCount = selectedWks.reduce((n, w) => n + (w.upcomingPerformances?.length || 0) + (w.pastPerformances?.length || 0), 0);
+          const awardCount = selectedWks.reduce((n, w) => n + (w.awards?.length || 0), 0);
+          const allStyles = [...new Set(selectedPfs.flatMap(p => p.styles || []))];
+
+          const fontFamily = ({ playfair: "'Playfair Display',Georgia,serif", mono: "'Space Mono','JetBrains Mono',monospace", garamond: "'EB Garamond',Georgia,serif", poppins: "'Poppins',system-ui,sans-serif", syne: "'Syne',system-ui,sans-serif", cormorant: "'Cormorant Garamond',Georgia,serif", dmserif: "'DM Serif Display',Georgia,serif", outfit: "'Outfit',system-ui,sans-serif", sourceserif: "'Source Serif 4',Georgia,serif", spacegrotesk: "'Space Grotesk',system-ui,sans-serif", literata: "'Literata',Georgia,serif" })[studioBrand.fontPairId] || "'Inter',system-ui,sans-serif";
+
+          /* Sub-page renderers */
+          const renderGalleryPage = () => (<div className="strobe-page"><div className="strobe-page-header"><h1>Gallery</h1></div><div className="strobe-gallery-page-grid">{allPhotos.map((ph, i) => <div key={ph.id || i} className="strobe-gallery-item"><img src={ph.src} alt="" /></div>)}</div></div>);
+
+          const renderAboutPage = () => (
+            <div className="strobe-page">
+              <div className="strobe-page-header"><h1>About</h1></div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginBottom: 60 }}>
+                <div>
+                  <p style={{ fontSize: 15, lineHeight: 1.8, color: "var(--strobe-text,rgba(17,17,17,.55))" }}>{bioText}</p>
+                  {allStyles.length > 0 && <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>{allStyles.map(s => <span key={s} style={{ padding: "6px 16px", border: "1px solid rgba(17,17,17,.1)", fontSize: 11, letterSpacing: ".1em", textTransform: "uppercase" }}>{s}</span>)}</div>}
+                </div>
+                {(ss.about?.portraitImage ? (mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo) : artist.photo) && <img src={ss.about?.portraitImage ? (mediaItems.find(m => m.id === ss.about.portraitImage)?.thumb || artist.photo) : artist.photo} alt={artist.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover" }} />}
+              </div>
+              <div style={{ display: "flex", gap: 48, flexWrap: "wrap", marginBottom: 60 }}>
+                {[{ n: selectedWks.length, l: "WORKS" }, { n: experiences.length, l: "EXPERIENCES" }, { n: awardCount, l: "AWARDS" }, { n: performanceCount, l: "PERFORMANCES" }].map(s => (
+                  <div key={s.l}><div className="strobe-about-stat-num">{s.n}</div><div className="strobe-about-stat-label">{s.l}</div></div>
+                ))}
+              </div>
+              {experiences.length > 0 && <div>
+                <h2 style={{ fontSize: 11, fontWeight: 700, letterSpacing: ".2em", marginBottom: 24, textTransform: "uppercase" }}>JOURNEY</h2>
+                {experiences.map(exp => (<div key={exp.id} className="strobe-exp-item"><div className="strobe-exp-year">{exp.yearStart || "—"}</div><div><div className="strobe-exp-title">{exp.title}</div><div className="strobe-exp-org">{exp.org}</div></div></div>))}
+              </div>}
+            </div>
+          );
+
+          const renderPortfolioDetail = (pfId) => {
+            const pf = selectedPfs.find(p => p.id === pfId); if (!pf) return null;
+            const pfPhotos = (pf.photos || []);
+            return (
+              <div className="strobe-detail">
+                <div className="strobe-detail-hero">
+                  {pf.cover ? <img className="strobe-detail-hero-img" src={pf.cover} alt={pf.name} /> : <div style={{ background: "#e0ddd8" }} />}
+                  <div className="strobe-detail-hero-text">
+                    <div className="strobe-detail-breadcrumb" onClick={() => navTo({ type: "home" })}>← BACK</div>
+                    <h1>{pf.name?.toUpperCase()}</h1>
+                    <div className="strobe-detail-meta">
+                      {pf.styles?.length > 0 && <div className="strobe-detail-meta-item"><div className="strobe-detail-meta-label">STYLE</div>{pf.styles.join(", ")}</div>}
+                    </div>
+                  </div>
+                </div>
+                {pf.description && <div className="strobe-detail-body"><p>{pf.description}</p></div>}
+                {pfPhotos.length > 0 && <div className="strobe-detail-gallery">{pfPhotos.map((ph, i) => <img key={ph.id || i} src={ph.src} alt="" />)}</div>}
+              </div>
+            );
+          };
+
+          const renderWorkDetail = (wkId) => {
+            const wk = selectedWks.find(w => w.id === wkId); if (!wk) return null;
+            const wkGallery = (wk.gallery || wk.media || []);
+            const nextWk = selectedWks[(selectedWks.findIndex(w => w.id === wkId) + 1) % selectedWks.length];
+            return (<>
+              <div className="strobe-detail">
+                <div className="strobe-detail-hero">
+                  {wk.cover ? <img className="strobe-detail-hero-img" src={wk.cover} alt={wk.name} /> : <div style={{ background: "#e0ddd8" }} />}
+                  <div className="strobe-detail-hero-text">
+                    <div className="strobe-detail-breadcrumb" onClick={() => navTo({ type: "home" })}>← BACK</div>
+                    <h1>{wk.name?.toUpperCase()}</h1>
+                    <div className="strobe-detail-meta">
+                      {wk.genre && <div className="strobe-detail-meta-item"><div className="strobe-detail-meta-label">GENRE</div>{wk.genre}</div>}
+                      {wk.premiereYear && <div className="strobe-detail-meta-item"><div className="strobe-detail-meta-label">YEAR</div>{wk.premiereYear}</div>}
+                      {wk.duration && <div className="strobe-detail-meta-item"><div className="strobe-detail-meta-label">DURATION</div>{wk.duration}</div>}
+                    </div>
+                  </div>
+                </div>
+                {(wk.fullDescription || wk.shortPitch) && <div className="strobe-detail-body"><p>{wk.fullDescription || wk.shortPitch}</p></div>}
+                {wkGallery.length > 0 && <div className="strobe-detail-gallery">{wkGallery.map((ph, i) => <img key={ph.id || i} src={ph.src} alt="" />)}</div>}
+              </div>
+              {nextWk && nextWk.id !== wk.id && (<div style={{ padding: "60px 40px", borderTop: "1px solid rgba(17,17,17,.06)", cursor: "pointer", textAlign: "center" }} onClick={() => navTo({ type: "work", id: nextWk.id })}><div style={{ fontSize: 11, letterSpacing: ".15em", color: "var(--strobe-text,rgba(17,17,17,.4))" }}>NEXT WORK</div><div style={{ fontSize: "clamp(24px,3vw,36px)", fontWeight: 900, letterSpacing: "-.03em", textTransform: "uppercase", marginTop: 8 }}>{nextWk.name?.toUpperCase()}</div></div>)}
+            </>);
+          };
+
+          const renderPageContent = () => { switch (strobePage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolio": return renderPortfolioDetail(strobePage.id); case "work": return renderWorkDetail(strobePage.id); default: return null; } };
+
+          return (
+            <div className="strobe-theme" ref={strobeRevealRef} style={{ "--strobe-accent": studioBrand.accentColor || "#111111", "--strobe-bg": studioBrand.backgroundColor || "#e6e2dc", "--strobe-title": studioBrand.titleColor || "#111111", "--strobe-text": studioBrand.textColor || "rgba(17,17,17,.55)", fontFamily }}>
+              {/* Menu overlay + panel */}
+              <div className={`strobe-menu-overlay${strobeMenuOpen ? " open" : ""}`} onClick={() => setStrobeMenuOpen(false)} />
+              <div className={`strobe-menu-panel${strobeMenuOpen ? " open" : ""}`}>
+                <div className="strobe-menu-top">
+                  <div className="strobe-menu-title">MENU</div>
+                  <button className="strobe-menu-close" onClick={() => setStrobeMenuOpen(false)}>&#x2715;</button>
+                </div>
+                <div className="strobe-menu-links">
+                  <button className="strobe-menu-link" onClick={() => navTo({ type: "home" })}>WORK</button>
+                  <button className="strobe-menu-link" onClick={() => navTo({ type: "about" })}>ABOUT</button>
+                  <button className="strobe-menu-link" onClick={() => navTo({ type: "gallery" })}>GALLERY</button>
+                  <button className="strobe-menu-link" onClick={() => { setStrobeMenuOpen(false); const el = document.querySelector(".strobe-contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>CONTACT</button>
+                </div>
+              </div>
+
+              {/* Nav */}
+              <nav className={`strobe-nav${isHome ? " strobe-nav-hero" : ""}`}>
+                <div className="strobe-nav-name" onClick={() => navTo({ type: "home" })}>{nm}</div>
+                <button className="strobe-nav-menu-btn" onClick={() => setStrobeMenuOpen(true)}>MENU</button>
+              </nav>
+
+              {isHome ? (<>
+                {/* ── HERO: Image-slice bars with parallax float ── */}
+                {enabledSections.some(s => s.id === "hero") && (
+                  <section className="strobe-hero">
+                    <div className="strobe-hero-strips" ref={(el) => {
+                      if (!el || strobeEnteredRef.current) return;
+                      const maxDelay = 520; /* longest nth-child delay (.52s) */
+                      const animDur = 900; /* .9s entrance */
+                      setTimeout(() => { el.querySelectorAll(".strobe-hero-strip").forEach(s => s.classList.add("strobe-entered")); strobeEnteredRef.current = true; }, maxDelay + animDur + 50);
+                    }}>
+                      {Array.from({ length: 14 }).map((_, i) => {
+                        const parallaxY = studioScrollY * 0.3;
+                        const entered = strobeEnteredRef.current;
+                        return <div key={i} className={`strobe-hero-strip${entered ? " strobe-entered" : ""}`} style={heroImgSrc ? { backgroundImage: `url(${heroImgSrc})`, backgroundSize: `${14 * 100}% auto`, backgroundPosition: `${(i / 13) * 100}% calc(50% + ${parallaxY}px)` } : { background: 'var(--strobe-accent,#7c3aed)', opacity: 0.15 }} />;
+                      })}
+                    </div>
+                    <div className="strobe-hero-title">
+                      <div className="strobe-hero-name">{strobeTypingDone ? nm : (strobeTyped || "\u00A0")}{!strobeTypingDone && <span className={`strobe-hero-cursor${!strobeTypingDone ? " typing" : " done"}`} />}</div>
+                    </div>
+                  </section>
+                )}
+
+                {/* Tagline below hero */}
+                {enabledSections.some(s => s.id === "about") && (
+                  <div className="strobe-hero-tagline strobe-reveal">{ss.hero?.headline || artist.profileBio || `${artist.firstName} is a ${(artist.styles || []).join(", ").toLowerCase() || "performing"} artist based in ${artist.city || "the world"}.`}</div>
+                )}
+
+                {/* Render section order — portfolios first (right after hero) */}
+                {enabledSections.filter(s => s.id !== "hero" && s.id !== "about").sort((a, b) => (a.id === "portfolios" ? -1 : b.id === "portfolios" ? 1 : 0)).map(sec => { const secId = sec.id;
+                  switch (secId) {
+                  case "featuredWork": {
+                    if (selectedWks.length === 0) return null;
+                    const first = featuredWk || selectedWks[0];
+                    const rest = selectedWks.filter(w => w.id !== first.id);
+                    return (
+                      <section key="fw" className="strobe-reveal">
+                        <div className="strobe-section">
+                          <StrobeSectionTyped text="Latest Work" id="fw" />
+                        </div>
+                        {/* Featured — full-width */}
+                        <div className="strobe-work-featured" onClick={() => navTo({ type: "work", id: first.id })}>
+                          {first.cover && <img src={first.cover} alt={first.name} />}
+                          <div className="strobe-work-featured-info">
+                            <div className="strobe-work-featured-title">{first.name?.toUpperCase()}</div>
+                            <div className="strobe-work-featured-desc">{first.tagline || first.shortPitch || ""}</div>
+                          </div>
+                        </div>
+                        {/* Remaining — 2-col grid */}
+                        {rest.length > 0 && (
+                          <div className="strobe-works-grid">
+                            {rest.map(wk => (
+                              <div key={wk.id} className="strobe-work-card" onClick={() => navTo({ type: "work", id: wk.id })}>
+                                {wk.cover && <img src={wk.cover} alt={wk.name} />}
+                                <div className="strobe-work-card-info"><h3>{wk.name?.toUpperCase()}</h3><p>{wk.tagline || wk.genre || ""}</p></div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </section>
+                    );
+                  }
+
+                  case "works": {
+                    if (selectedWks.length === 0) return null;
+                    return (
+                      <section key="works" className="strobe-reveal">
+                        <div className="strobe-section">
+                          <StrobeSectionTyped text="Latest Work" id="works" />
+                        </div>
+                        <div className="strobe-works-grid">
+                          {selectedWks.map(wk => (
+                            <div key={wk.id} className="strobe-work-card" onClick={() => navTo({ type: "work", id: wk.id })}>
+                              {wk.cover && <img src={wk.cover} alt={wk.name} />}
+                              <div className="strobe-work-card-info"><h3>{wk.name?.toUpperCase()}</h3><p>{wk.tagline || wk.genre || ""}</p></div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "portfolios":
+                    if (selectedPfs.length === 0) return null;
+                    return (
+                      <section key="portfolios" className="strobe-reveal">
+                        <div className="strobe-section">
+                          <StrobeSectionTyped text="My Creativity. My Art." id="portfolios" />
+                        </div>
+                        <div className="strobe-pf-grid">
+                          {selectedPfs.map((pf, pfIdx) => (
+                            <div key={pf.id} className="strobe-pf-card" style={{ "--strobe-parallax": `${(pfIdx % 2 === 0 ? -1 : 1) * studioScrollY * 0.04}px` }} onClick={() => navTo({ type: "portfolio", id: pf.id })}>
+                              {pf.cover && <img src={pf.cover} alt={pf.name} />}
+                              <div className="strobe-pf-card-info">
+                                <h3>{pf.name?.toUpperCase()}</h3>
+                                {pf.styles?.length > 0 && <div className="strobe-pf-card-tags">{pf.styles.map(s => <span key={s}>{s}</span>)}</div>}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </section>
+                    );
+
+                  case "gallery":
+                    if (allPhotos.length === 0) return null;
+                    return (
+                      <section key="gallery" className="strobe-reveal">
+                        <div className="strobe-section">
+                          <StrobeSectionTyped text="Visual Archive" id="gallery" />
+                        </div>
+                        <div className="strobe-gallery-grid">{allPhotos.slice(0, 9).map((ph, i) => <div key={ph.id || i} className="strobe-gallery-item" onClick={() => navTo({ type: "gallery" })}><img src={ph.src} alt="" /></div>)}</div>
+                      </section>
+                    );
+
+                  case "experience":
+                    if (experiences.length === 0) return null;
+                    return (
+                      <section key="exp" className="strobe-exp strobe-reveal">
+                        <StrobeSectionTyped text="Journey" id="experience" />
+                        {experiences.map(exp => (<div key={exp.id} className="strobe-exp-item"><div className="strobe-exp-year">{exp.yearStart || "—"}</div><div><div className="strobe-exp-title">{exp.title}</div><div className="strobe-exp-org">{exp.org}</div></div></div>))}
+                      </section>
+                    );
+
+                  case "contact":
+                    return (
+                      <section key="contact" className="strobe-contact strobe-reveal">
+                        <div className="strobe-contact-left">
+                          <h2>Let's Connect</h2>
+                          <p>{ss.contact?.headline || "Interested in working together? Let's create something extraordinary."}</p>
+                          {artist.email && <button className="strobe-contact-cta" onClick={() => window.open(`mailto:${artist.email}`)}>GET IN TOUCH</button>}
+                        </div>
+                        <div className="strobe-contact-right">
+                          {artist.email && <a href={`mailto:${artist.email}`}>{artist.email}</a>}
+                          <div className="strobe-contact-social">
+                            {artist.socials?.instagram && <a href={artist.socials.instagram} target="_blank" rel="noreferrer">INSTAGRAM</a>}
+                            {artist.socials?.youtube && <a href={artist.socials.youtube} target="_blank" rel="noreferrer">YOUTUBE</a>}
+                            {artist.socials?.vimeo && <a href={artist.socials.vimeo} target="_blank" rel="noreferrer">VIMEO</a>}
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  default: return null;
+                  }
+                })}
+
+                {/* Footer */}
+                <footer className="strobe-footer">
+                  <div className="strobe-footer-left">
+                    <button onClick={() => navTo({ type: "about" })}>About</button>
+                    <button onClick={() => navTo({ type: "home" })}>Work</button>
+                    <button onClick={() => navTo({ type: "gallery" })}>Gallery</button>
+                  </div>
+                  <div className="strobe-footer-center">
+                    <div className="strobe-footer-logo">{nm}</div>
+                    <div className="strobe-footer-copy">COPYRIGHT &copy; {new Date().getFullYear()} {nm} | ALL RIGHTS RESERVED</div>
+                  </div>
+                  <div className="strobe-footer-right">
+                    {artist.socials?.instagram && <a href={artist.socials.instagram} target="_blank" rel="noreferrer">Instagram</a>}
+                    {artist.socials?.youtube && <a href={artist.socials.youtube} target="_blank" rel="noreferrer">YouTube</a>}
+                    {artist.socials?.vimeo && <a href={artist.socials.vimeo} target="_blank" rel="noreferrer">Vimeo</a>}
+                    {artist.socials?.linkedin && <a href={artist.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>}
+                  </div>
+                </footer>
+              </>) : renderPageContent()}
+            </div>
+          );
+        };
+
         /* ── Full-screen preview mode ── */
         if (studioMode === "preview") {
           return (
@@ -9051,6 +9659,7 @@ export default function ArtistShell() {
                 {studioTheme === "atrium" && renderAtriumTheme()}
                 {studioTheme === "lumen" && renderLumenTheme()}
                 {studioTheme === "slater" && renderSlaterTheme()}
+                {studioTheme === "strobe" && renderStrobeTheme()}
               </div>
             </div>
           );
@@ -9167,7 +9776,7 @@ export default function ArtistShell() {
 
                               {secId === "hero" && <>
                                 {inpField("HEADLINE", "headline", `${artist.city?.toUpperCase() || "LONDON"}-BASED CREATOR OF...`, true)}
-                                {studioTheme === "noir" && <>
+                                {studioTheme === "noir" ? <>
                                   <div className="studio-inspector-group">
                                     <label className="studio-inspector-label">HERO IMAGES</label>
                                     <p className="studio-inspector-hint" style={{ margin: "0 0 10px" }}>Set the three hero images. Falls back to portfolio photos if empty.</p>
@@ -9175,13 +9784,12 @@ export default function ArtistShell() {
                                   {mediaBtn("LEFT IMAGE", "heroImage1", secS.heroImage1 ? (mediaItems.find(m => m.id === secS.heroImage1)?.thumb) : null)}
                                   {mediaBtn("CENTER IMAGE", "heroImage2", secS.heroImage2 ? (mediaItems.find(m => m.id === secS.heroImage2)?.thumb) : null)}
                                   {mediaBtn("RIGHT IMAGE", "heroImage3", secS.heroImage3 ? (mediaItems.find(m => m.id === secS.heroImage3)?.thumb) : null)}
-                                </>}
-                                {(studioTheme === "atrium" || studioTheme === "lumen" || studioTheme === "slater") && <>
+                                </> : <>
                                   <div className="studio-inspector-group">
                                     <label className="studio-inspector-label">HERO IMAGE</label>
-                                    <p className="studio-inspector-hint" style={{ margin: "0 0 10px" }}>Set the hero background image.</p>
+                                    <p className="studio-inspector-hint" style={{ margin: "0 0 10px" }}>Set the hero image. Falls back to portfolio photos if empty.</p>
                                   </div>
-                                  {mediaBtn("BACKGROUND IMAGE", "heroImage", secS.heroImage ? (mediaItems.find(m => m.id === secS.heroImage)?.thumb) : null)}
+                                  {mediaBtn("Set hero image", "heroImage", secS.heroImage ? (mediaItems.find(m => m.id === secS.heroImage)?.thumb) : null)}
                                 </>}
                               </>}
 
@@ -9375,7 +9983,7 @@ export default function ArtistShell() {
 
                     {/* Brand sub-tab */}
                     {studioCustomizeTab === "brand" && (() => {
-                      const themeDefaults = { noir: { accent: "#ffffff", bg: "#0a0a0a", title: "#ffffff", text: "#b3b3b3" }, atrium: { accent: "#ffffff", bg: "#F7F7F5", title: "#111111", text: "#636363" }, lumen: { accent: "#c8956c", bg: "#fdf8f4", title: "#2d2418", text: "#8a7a6a" }, slater: { accent: "#111111", bg: "#ffffff", title: "#111111", text: "#8a8a8a" } };
+                      const themeDefaults = { noir: { accent: "#ffffff", bg: "#0a0a0a", title: "#ffffff", text: "#b3b3b3" }, atrium: { accent: "#ffffff", bg: "#F7F7F5", title: "#111111", text: "#636363" }, lumen: { accent: "#c8956c", bg: "#fdf8f4", title: "#2d2418", text: "#8a7a6a" }, slater: { accent: "#111111", bg: "#ffffff", title: "#111111", text: "#8a8a8a" }, strobe: { accent: "#7c3aed", bg: "#e6e2dc", title: "#111111", text: "#8a8a8a" } };
                       const td = themeDefaults[studioTheme] || themeDefaults.atrium;
                       return (
                       <div className="studio-brand-tab">
@@ -9484,6 +10092,7 @@ export default function ArtistShell() {
                     {studioTheme === "atrium" && renderAtriumTheme()}
                     {studioTheme === "lumen" && renderLumenTheme()}
                     {studioTheme === "slater" && renderSlaterTheme()}
+                    {studioTheme === "strobe" && renderStrobeTheme()}
                   </div>
                 </div>
               </div>
