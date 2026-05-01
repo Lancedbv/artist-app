@@ -508,15 +508,18 @@ const CSS = `
 
 /* ━━━ Main ━━━ */
 .main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .25s cubic-bezier(.4,0,.2,1)}
-.topbar{display:flex;align-items:center;justify-content:flex-end;padding:10px 36px;gap:12px;flex-shrink:0;height:52px}
+.topbar{display:flex;align-items:center;justify-content:flex-end;padding:10px 36px;gap:8px;flex-shrink:0;height:52px;position:sticky;top:0;z-index:90;background:var(--bg);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
+.topbar.scrolled{border-bottom-color:var(--g2)}
 .topbar-studio{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:linear-gradient(135deg,rgba(96,77,255,.08),rgba(96,77,255,.15));color:var(--ac);border:none;box-shadow:inset 0 0 0 1px rgba(96,77,255,.12);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
 .topbar-studio:hover{background:linear-gradient(135deg,rgba(96,77,255,.15),rgba(96,77,255,.25));transform:translateY(-1px)}
-.notif-bell{position:relative;width:34px;height:34px;border-radius:50%;background:var(--sf);box-shadow:0 1px 4px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.03);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;transition:all .15s;font-size:16px;color:var(--g5)}
-.notif-bell:hover{background:var(--g1);color:var(--tx)}
-.notif-bell .notif-dot{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--red);border:2px solid var(--sf)}
-.notif-bell .notif-count{position:absolute;top:-2px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--sf)}
-.dark .notif-bell{background:var(--g1);box-shadow:0 1px 4px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.04)}
-.dark .notif-bell .notif-dot,.dark .notif-bell .notif-count{border-color:var(--g1)}
+.topbar-premium{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#3A2A00;border:none;box-shadow:inset 0 0 0 1px rgba(245,166,35,.35),0 1px 4px rgba(245,166,35,.15);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
+.topbar-premium:hover{background:linear-gradient(135deg,#FFE08C,#F5B23B);transform:translateY(-1px)}
+.topbar-pill{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:var(--sf);color:var(--g6);border:none;box-shadow:inset 0 0 0 1px var(--g2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.topbar-pill:hover{box-shadow:inset 0 0 0 1px var(--ac);color:var(--tx)}
+.topbar-pill .notif-pill-count{min-width:18px;height:18px;border-radius:9px;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+.dark .topbar{background:rgba(15,14,28,.72)}
+.dark .topbar-pill{background:var(--g1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);color:var(--g5)}
+.dark .topbar-pill:hover{box-shadow:inset 0 0 0 1px var(--ac)}
 .topbar-avatar{display:flex;align-items:center;gap:8px;cursor:pointer;padding:0 12px 0 3px;height:34px;border-radius:40px;border:none;box-shadow:inset 0 0 0 1px var(--g2);transition:all .15s;background:var(--sf)}
 .topbar-avatar:hover{box-shadow:inset 0 0 0 1px var(--ac)}
 .topbar-avatar img{width:26px;height:26px;border-radius:50%;object-fit:cover}
@@ -680,7 +683,7 @@ textarea.pf-input{line-height:1.6}
 .entry-type-card .etc-sub{font-size:10px;color:var(--g4)}
 
 /* ━━━ Applications ━━━ */
-.app-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;margin-bottom:20px;position:sticky;top:0;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;border-bottom:1px solid var(--g2);transition:all .2s}
+.app-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;margin-bottom:20px;position:sticky;top:52px;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;border-bottom:1px solid var(--g2);transition:all .2s}
 .app-toolbar.stuck{background:rgba(var(--bg-rgb,248,247,252),.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--g2)}
 .app-toolbar .at-filters{display:flex;align-items:center;gap:5px;flex-shrink:0}
 .app-toolbar .at-filters .chip{font-size:12px;padding:6px 12px}
@@ -10539,11 +10542,16 @@ export default function ArtistShell() {
         <div className="main">
           <div className="topbar">
             <button className="topbar-studio" onClick={() => showToast("Studio — premium tools coming soon")}>
-              ✨ <span>Try Studio</span>
+              <span>Try Studio</span>
             </button>
-            <button className="notif-bell" onClick={() => setShowNotifPanel(!showNotifPanel)}>
-              {I.bell}
-              {notifications.filter(n => n.unread).length > 0 && <span className="notif-count">{notifications.filter(n => n.unread).length}</span>}
+            {artist.plan === "Core" && (
+              <button className="topbar-premium" onClick={() => showToast("Plans — comparison coming soon")}>
+                <span>Go Premium</span>
+              </button>
+            )}
+            <button className="topbar-pill notif-pill" onClick={() => setShowNotifPanel(!showNotifPanel)}>
+              <span>Notifications</span>
+              {notifications.filter(n => n.unread).length > 0 && <span className="notif-pill-count">{notifications.filter(n => n.unread).length}</span>}
             </button>
             <div className="topbar-avatar" style={{ cursor: "pointer" }} onClick={() => setShowPublicProfile(true)}>
               <img src={artist.photo} alt="" />
