@@ -508,8 +508,7 @@ const CSS = `
 
 /* ━━━ Main ━━━ */
 .main{margin-left:var(--sb-w);flex:1;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .25s cubic-bezier(.4,0,.2,1)}
-.topbar{display:flex;align-items:center;justify-content:flex-end;padding:10px 36px;gap:8px;flex-shrink:0;height:52px;position:sticky;top:0;z-index:90;background:var(--bg);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
-.topbar.scrolled{border-bottom-color:var(--g2)}
+.topbar{display:flex;align-items:center;justify-content:flex-end;padding:10px 36px;gap:8px;flex-shrink:0;height:52px;background:transparent}
 .topbar-studio{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:linear-gradient(135deg,rgba(96,77,255,.08),rgba(96,77,255,.15));color:var(--ac);border:none;box-shadow:inset 0 0 0 1px rgba(96,77,255,.12);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
 .topbar-studio:hover{background:linear-gradient(135deg,rgba(96,77,255,.15),rgba(96,77,255,.25));transform:translateY(-1px)}
 .topbar-premium{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#3A2A00;border:none;box-shadow:inset 0 0 0 1px rgba(245,166,35,.35),0 1px 4px rgba(245,166,35,.15);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
@@ -683,7 +682,7 @@ textarea.pf-input{line-height:1.6}
 .entry-type-card .etc-sub{font-size:10px;color:var(--g4)}
 
 /* ━━━ Applications ━━━ */
-.app-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;margin-bottom:20px;position:sticky;top:52px;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;border-bottom:1px solid var(--g2);transition:all .2s}
+.app-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;margin-bottom:20px;position:sticky;top:0;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;border-bottom:1px solid var(--g2);transition:all .2s}
 .app-toolbar.stuck{background:rgba(var(--bg-rgb,248,247,252),.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--g2)}
 .app-toolbar .at-filters{display:flex;align-items:center;gap:5px;flex-shrink:0}
 .app-toolbar .at-filters .chip{font-size:12px;padding:6px 12px}
