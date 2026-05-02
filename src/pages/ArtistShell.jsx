@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -513,7 +514,7 @@ const CSS = `
 .topbar-studio:hover{background:linear-gradient(135deg,rgba(96,77,255,.15),rgba(96,77,255,.25));transform:translateY(-1px)}
 .topbar-premium{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#3A2A00;border:none;box-shadow:inset 0 0 0 1px rgba(245,166,35,.35),0 1px 4px rgba(245,166,35,.15);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
 .topbar-premium:hover{background:linear-gradient(135deg,#FFE08C,#F5B23B);transform:translateY(-1px)}
-.topbar-pill{font-family:var(--sans);font-size:11px;font-weight:600;padding:0 14px;height:34px;border-radius:40px;background:var(--sf);color:var(--g6);border:none;box-shadow:inset 0 0 0 1px var(--g2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.topbar-pill{font-family:var(--sans);font-size:12px;font-weight:600;padding:0 14px;height:36px;border-radius:40px;background:var(--sf);color:var(--g6);border:none;box-shadow:inset 0 0 0 1px var(--g2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
 .topbar-pill:hover{box-shadow:inset 0 0 0 1px var(--ac);color:var(--tx)}
 .topbar-pill .notif-pill-count{min-width:18px;height:18px;border-radius:9px;background:var(--red);color:#fff;font-size:9px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
 .dark .topbar{background:rgba(15,14,28,.72)}
@@ -684,21 +685,22 @@ textarea.pf-input{line-height:1.6}
 /* ━━━ Applications ━━━ */
 .app-toolbar{display:flex;align-items:center;gap:8px;padding:10px 0;margin-bottom:20px;position:sticky;top:0;z-index:50;background:transparent;backdrop-filter:none;-webkit-backdrop-filter:none;margin-left:-32px;margin-right:-32px;padding-left:32px;padding-right:32px;border-bottom:1px solid var(--g2);transition:all .2s}
 .app-toolbar.stuck{background:rgba(var(--bg-rgb,248,247,252),.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom-color:var(--g2)}
-.app-toolbar .at-filters{display:flex;align-items:center;gap:5px;flex-shrink:0}
-.app-toolbar .at-filters .chip{font-size:12px;padding:6px 12px}
-.app-toolbar .at-filters .chip .at-chip-count{font-size:10px;opacity:.6;margin-left:3px;font-weight:500}
-.app-toolbar .at-right{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0}
-.app-toolbar .at-search-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--g2);background:var(--sf);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--g5);transition:all .2s;flex-shrink:0}
-.app-toolbar .at-search-btn:hover{border-color:var(--ac);color:var(--ac)}
-.app-toolbar .at-search-expanded{display:flex;align-items:center;gap:8px;padding:0 14px;border:1px solid var(--ac);border-radius:40px;background:var(--sf);height:38px;animation:expandSearch .25s ease;overflow:hidden;min-width:200px}
-.app-toolbar .at-search-expanded input{border:none;outline:none;font-family:var(--sans);font-size:12px;flex:1;background:none;color:var(--tx);min-width:100px}
+.app-toolbar .at-filters{display:flex;align-items:center;gap:6px;flex-shrink:0;flex-wrap:wrap}
+.app-toolbar .at-filters .chip{font-size:12px;font-weight:500;padding:0 14px;height:36px;border-radius:40px;display:inline-flex;align-items:center;gap:6px;box-sizing:border-box;line-height:1}
+.app-toolbar .at-filters .chip .at-chip-count{font-size:10px;font-weight:600;opacity:.6;margin-left:0}
+.app-toolbar .at-filters .chip.on .at-chip-count{opacity:.85}
+.app-toolbar .at-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+.app-toolbar .at-search-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--g2);background:var(--sf);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--g5);transition:all .2s;flex-shrink:0;box-sizing:border-box}
+.app-toolbar .at-search-btn:hover{border-color:var(--g3);color:var(--tx)}
+.app-toolbar .at-search-expanded{display:flex;align-items:center;gap:8px;padding:0 14px;border:1px solid var(--ac);border-radius:40px;background:var(--sf);height:36px;animation:expandSearch .25s ease;overflow:hidden;min-width:200px;box-sizing:border-box}
+.app-toolbar .at-search-expanded input{border:none;outline:none;font-family:var(--sans);font-size:13px;flex:1;background:none;color:var(--tx);min-width:100px}
 .app-toolbar .at-search-expanded input::placeholder{color:var(--g4)}
 .app-toolbar .at-search-close{background:none;border:none;cursor:pointer;color:var(--g4);padding:2px;display:flex;align-items:center;transition:color .15s}
 .app-toolbar .at-search-close:hover{color:var(--tx)}
-@keyframes expandSearch{from{min-width:38px;opacity:.5}to{min-width:200px;opacity:1}}
-.app-toolbar .at-filter-btn{height:38px;padding:0 14px;border-radius:10px;border:1px solid var(--g2);background:var(--sf);display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--g5);font-size:12px;font-weight:500;transition:all .15s}
-.app-toolbar .at-filter-btn:hover{border-color:var(--ac);color:var(--ac)}
-.app-toolbar .at-filter-btn.active{background:var(--ac);color:#fff;border-color:var(--ac)}
+@keyframes expandSearch{from{min-width:36px;opacity:.5}to{min-width:200px;opacity:1}}
+.app-toolbar .at-filter-btn{height:36px;padding:0 14px;border-radius:40px;border:1px solid var(--g2);background:var(--sf);display:inline-flex;align-items:center;gap:6px;cursor:pointer;color:var(--g5);font-size:12px;font-weight:500;transition:all .15s;box-sizing:border-box;line-height:1}
+.app-toolbar .at-filter-btn:hover{border-color:var(--g3);color:var(--tx)}
+.app-toolbar .at-filter-btn.active{background:rgba(96,77,255,.08);color:var(--ac);border-color:var(--ac)}
 .app-toolbar .at-filter-btn svg{width:14px;height:14px}
 .app-list{display:flex;flex-direction:column;gap:8px;animation:fadeIn .3s ease}
 .app-card{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sf);border:1px solid var(--g2);border-radius:14px;cursor:pointer;transition:all .2s;animation:slideInUp .3s ease both;position:relative}
@@ -1535,17 +1537,19 @@ textarea.pf-input{line-height:1.6}
 .feedback-tab a{display:flex;align-items:center;gap:8px;background:#604DFF;color:#fff;padding:14px 10px;border-radius:12px 0 0 12px;font-size:13px;font-weight:700;letter-spacing:.5px;text-decoration:none;box-shadow:-4px 0 20px rgba(96,77,255,.35);transition:all .2s ease;cursor:pointer}
 .feedback-tab a:hover{padding-right:14px;background:#5040e0;box-shadow:-6px 0 28px rgba(96,77,255,.5)}
 .feedback-tab a svg{width:16px;height:16px;flex-shrink:0}
-@media(max-width:768px){.feedback-tab a{font-size:11px;padding:10px 8px}.feedback-tab a svg{width:14px;height:14px}}
+@media(max-width:768px){.feedback-tab{display:none!important}}
 
 /* ━━━ List toolbar (shared) ━━━ */
 .list-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
 .list-search{display:flex;align-items:center;gap:8px;padding:0 14px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);flex:1;max-width:280px;height:36px}
 .list-search input{border:none;outline:none;font-family:var(--sans);font-size:12px;flex:1;background:none;color:var(--tx)}
 .list-search input::placeholder{color:var(--g4)}
-.sort-filter{height:36px;padding:0 12px;border:1px solid var(--g2);border-radius:12px;background:var(--sf);font-family:var(--sans);font-size:11px;color:var(--g5);cursor:pointer;outline:none}
+.sort-filter{height:36px;padding:0 30px 0 14px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);font-family:var(--sans);font-size:12px;font-weight:500;color:var(--g5);cursor:pointer;outline:none;box-sizing:border-box;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2398989F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.sort-filter:hover{border-color:var(--g3);color:var(--tx)}
 .dark .sort-filter{background:var(--g1);border-color:var(--g3);color:var(--tx)}
-.view-toggle{display:flex;border:1px solid var(--g2);border-radius:8px;overflow:hidden;height:36px}
-.view-toggle button{padding:0 10px;background:none;border:none;cursor:pointer;color:var(--g4);transition:all .15s;height:100%;display:flex;align-items:center}
+.view-toggle{display:flex;border:1px solid var(--g2);border-radius:40px;overflow:hidden;height:36px;background:var(--sf);padding:3px;box-sizing:border-box;gap:0}
+.view-toggle button{padding:0 10px;min-width:34px;background:transparent;border:none;cursor:pointer;color:var(--g4);transition:all .15s;height:28px;display:flex;align-items:center;justify-content:center;border-radius:30px}
+.view-toggle button:hover{color:var(--tx)}
 .view-toggle button.active{background:var(--ac);color:#fff}
 
 /* ━━━ Spotlight context (room pattern) ━━━ */
@@ -1821,6 +1825,41 @@ textarea.pf-input{line-height:1.6}
 .mob-panel-footer button{display:flex;align-items:center;gap:8px;background:none;border:none;font-family:var(--sans);font-size:12px;color:var(--g4);cursor:pointer;padding:6px 10px;border-radius:8px;transition:all .12s}
 .mob-panel-footer button:hover{background:var(--g1);color:var(--tx)}
 
+/* ━━━ Filter Side Panel (right-anchored desktop overlay, mobile bottom sheet) ━━━ */
+@keyframes filterPanelSlideIn{from{transform:translateX(20px);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideInUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.filter-side-backdrop{position:fixed;inset:0;z-index:200;background:rgba(15,12,28,.18);backdrop-filter:saturate(1.2) blur(6px);-webkit-backdrop-filter:saturate(1.2) blur(6px);animation:fadeIn .15s}
+.filter-side-panel{position:fixed;top:12px;right:12px;bottom:12px;width:440px;z-index:201;background:rgba(255,255,255,.78);backdrop-filter:saturate(1.4) blur(20px);-webkit-backdrop-filter:saturate(1.4) blur(20px);border:1px solid rgba(255,255,255,.55);border-radius:20px;box-shadow:0 16px 48px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.04);display:flex;flex-direction:column;animation:filterPanelSlideIn .22s cubic-bezier(.4,0,.2,1);overflow:hidden}
+body:has(.filter-side-panel) .feedback-tab{display:none}
+.dark .filter-side-panel{background:rgba(28,28,38,.78);border-color:rgba(255,255,255,.06);box-shadow:0 16px 48px rgba(0,0,0,.4)}
+.filter-side-panel .fsp-header{display:flex;align-items:center;justify-content:space-between;padding:18px 24px 14px;border-bottom:1px solid var(--g2)}
+.filter-side-panel .fsp-header h2{font-family:var(--sans);font-size:18px;font-weight:600;letter-spacing:-.01em;margin:0;color:var(--tx)}
+.filter-side-panel .fsp-header .fsp-sub{font-size:12px;color:var(--g4);margin-top:2px}
+.filter-side-panel .fsp-close{width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--g4);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.filter-side-panel .fsp-close:hover{background:var(--g1);color:var(--tx)}
+.filter-side-panel .fsp-body{flex:1;overflow-y:auto;padding:18px 24px;scrollbar-gutter:stable}
+.filter-side-panel .fsp-body::-webkit-scrollbar{width:6px}
+.filter-side-panel .fsp-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12);border-radius:3px}
+.filter-side-panel .fsp-body::-webkit-scrollbar-track{margin:6px 0;background:transparent}
+.filter-side-panel .afm-section{margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--g2)}
+.filter-side-panel .afm-section:last-of-type{border-bottom:none;padding-bottom:0;margin-bottom:0}
+.filter-side-panel .afm-section h3{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--g5);margin-bottom:12px}
+.filter-side-panel .afm-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.filter-side-panel .field label{display:block;font-size:11px;font-weight:600;color:var(--g5);margin-bottom:6px}
+.filter-side-panel .field select,.filter-side-panel .field input{width:100%;height:36px;padding:0 12px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);font-family:var(--sans);font-size:12px;color:var(--tx);outline:none;box-sizing:border-box;transition:border-color .15s}
+.filter-side-panel .field select{appearance:none;-webkit-appearance:none;padding-right:30px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2398989F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+.filter-side-panel .field select:hover,.filter-side-panel .field input:hover{border-color:var(--g3)}
+.filter-side-panel .field select:focus,.filter-side-panel .field input:focus{border-color:var(--ac)}
+.filter-side-panel .afm-range{display:flex;align-items:center;gap:6px}
+.filter-side-panel .afm-range input{flex:1;min-width:0;width:auto}
+.filter-side-panel .afm-range span{font-size:12px;color:var(--g4)}
+.filter-side-panel .fsp-actions{display:flex;gap:8px;padding:14px 24px;border-top:1px solid var(--g2);background:rgba(255,255,255,.4);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.dark .filter-side-panel .fsp-actions{background:rgba(0,0,0,.15)}
+.filter-side-panel .fsp-actions .btn-clear{flex:0 0 auto;height:36px;padding:0 14px;border:1px solid var(--g2);border-radius:40px;background:transparent;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--g5);cursor:pointer;transition:all .15s}
+.filter-side-panel .fsp-actions .btn-clear:hover{border-color:var(--g3);color:var(--tx)}
+.filter-side-panel .fsp-actions .btn-apply{flex:1;height:36px;padding:0 18px;border:none;border-radius:40px;background:linear-gradient(135deg,#7A66FF,#4A35E0);color:#fff;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;box-shadow:0 2px 8px rgba(96,77,255,.2)}
+.filter-side-panel .fsp-actions .btn-apply:hover{filter:brightness(1.08);box-shadow:0 4px 14px rgba(96,77,255,.3)}
+
 /* ━━━ Responsive ━━━ */
 @media(max-width:768px){
   .sidebar{display:none!important}
@@ -1859,10 +1898,14 @@ textarea.pf-input{line-height:1.6}
   .sr-grid{grid-template-columns:1fr}
   .sr-toolbar{gap:6px}
   .list-search{max-width:100%}
-  .app-toolbar{margin:0 -16px;padding-left:16px;padding-right:16px;overflow-x:auto;gap:6px;flex-wrap:nowrap}
-  .app-toolbar .at-filters{overflow-x:auto;flex-shrink:1;min-width:0;gap:4px}
-  .app-toolbar .at-filters .chip{font-size:11px;padding:5px 10px;white-space:nowrap}
+  .app-toolbar{margin:0 -16px;padding:0 16px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;flex-wrap:nowrap;gap:8px;overflow:visible}
+  .app-toolbar .at-filters{overflow-x:auto;flex-shrink:1;min-width:0;gap:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .app-toolbar .at-filters::-webkit-scrollbar{display:none}
+  .app-toolbar .at-filters .chip{font-size:12px;padding:0 14px;height:36px;white-space:nowrap;flex:0 0 auto}
+  .app-toolbar .at-right{gap:6px}
   .app-toolbar .at-search-expanded{min-width:140px}
+  .app-toolbar .at-filter-btn .at-filter-label{display:none}
+  .app-toolbar .at-filter-btn{width:36px;padding:0;justify-content:center;border-radius:50%}
   .app-tiles{grid-template-columns:1fr}
   .app-card{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
   .app-card .ac-status{align-self:flex-start}
@@ -1893,6 +1936,29 @@ textarea.pf-input{line-height:1.6}
   .pf-details-grid{grid-template-columns:1fr!important}
   .pf-name-row{grid-template-columns:1fr 1fr!important}
   .pf-general-grid{grid-template-columns:1fr!important}
+  /* ─── Filter side panel as bottom sheet on mobile ─── */
+  .filter-side-backdrop{background:rgba(15,12,28,.42)!important;backdrop-filter:blur(2px)!important;-webkit-backdrop-filter:blur(2px)!important}
+  .filter-side-panel{top:auto!important;right:0!important;bottom:0!important;left:0!important;width:100%!important;max-height:85vh!important;border-radius:24px 24px 0 0!important;animation:slideInUp .25s cubic-bezier(.4,0,.2,1)!important;box-shadow:0 -8px 32px rgba(0,0,0,.12)!important}
+  .filter-side-panel::before{content:"";display:block;width:40px;height:4px;background:var(--g2);border-radius:2px;margin:10px auto 0;flex-shrink:0}
+  .filter-side-panel .fsp-header{padding:8px 20px 12px}
+  .filter-side-panel .fsp-body{padding:12px 20px}
+  .filter-side-panel .fsp-actions{padding:12px 20px 20px}
+  /* ─── Native white feel for Messages page on mobile ─── */
+  .shell.on-messages,.shell.on-messages .main{background:#fff!important;background-image:none!important}
+  .shell.on-messages::before{display:none!important}
+  .shell.on-messages .mobile-topbar{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid var(--g1)}
+  .shell.on-messages .content{background:#fff!important;padding-bottom:0!important}
+  .shell.on-messages .mobile-nav{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;border-top:1px solid var(--g1)!important;border-radius:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;box-shadow:none!important;height:64px!important;padding-bottom:8px!important}
+  .shell.on-messages .pg-header{display:none!important}
+  .shell.on-messages .messenger{border:none!important;background:transparent!important;height:auto!important;border-radius:0!important}
+  .shell.on-messages .ms-sidebar{border:none!important}
+  .shell.on-messages .ms-sidebar-header{padding:8px 0 12px!important}
+  .shell.on-messages .ms-sidebar-header h3{display:none}
+  .shell.on-messages .ms-search{height:36px;padding:0 14px;border-radius:40px;border:1px solid #E8E6F0;background:#F5F5F8;color:#1a1a1f;font-family:var(--sans);font-size:13px;width:100%;outline:none;box-sizing:border-box}
+  .shell.on-messages .ms-search::placeholder{color:#98989F}
+  .shell.on-messages .ms-contact{background:transparent;color:#1a1a1f}
+  .shell.on-messages .ms-contact .ms-name{color:#1a1a1f}
+  .shell.on-messages .ms-contact .ms-snippet{color:#6c6c7a}
 }
 @media(max-width:480px){
   .dash-stats{grid-template-columns:1fr 1fr}
@@ -3481,6 +3547,110 @@ function NetworkMap({ items, networkTab, darkMode }) {
   );
 }
 
+/* ━━━ SHARED FILTER PANEL (right-anchored overlay, used on Network etc.) ━━━ */
+function FilterPanel({ open, onClose, title, subtitle, filters, onChange, onClear, styleOptions = [], locationOptions = [], roleOptions = null }) {
+  if (!open) return null;
+  const f = filters || {};
+  return createPortal(
+    <>
+      <div className="filter-side-backdrop" onClick={onClose} />
+      <aside className="filter-side-panel" onClick={e => e.stopPropagation()}>
+        <div className="fsp-header">
+          <div>
+            <h2>{title || "Filters"}</h2>
+            {subtitle && <div className="fsp-sub">{subtitle}</div>}
+          </div>
+          <button className="fsp-close" onClick={onClose} aria-label="Close filters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        </div>
+        <div className="fsp-body">
+          <div className="afm-section">
+            <h3>Role &amp; Style</h3>
+            <div className="afm-grid">
+              <div className="field">
+                <label>{roleOptions ? "Role" : "Type"}</label>
+                <select value={f.artistType || "all"} onChange={e => onChange("artistType", e.target.value)}>
+                  <option value="all">{roleOptions ? "All Roles" : "Any type"}</option>
+                  {(roleOptions || ["Dancer","Choreographer","Model","Actor","Singer","Teacher"]).map(r => <option key={r} value={r}>{r}</option>)}
+                </select>
+              </div>
+              <div className="field">
+                <label>Style / Genre</label>
+                <select value={f.style || "all"} onChange={e => onChange("style", e.target.value)}>
+                  <option value="all">Any style</option>
+                  {styleOptions.map(s => <option key={s} value={s}>{s}</option>)}
+                </select>
+              </div>
+              <div className="field">
+                <label>Skills</label>
+                <input placeholder="e.g. Pointe, Improvisation, Partnering" value={f.skills || ""} onChange={e => onChange("skills", e.target.value)}/>
+              </div>
+            </div>
+          </div>
+          <div className="afm-section">
+            <h3>Location</h3>
+            <div className="afm-grid">
+              <div className="field">
+                <label>City or Country</label>
+                {locationOptions.length ? (
+                  <select value={f.location || "all"} onChange={e => onChange("location", e.target.value)}>
+                    <option value="all">Any location</option>
+                    {locationOptions.map(l => <option key={l} value={l}>{l}</option>)}
+                  </select>
+                ) : (
+                  <input placeholder="e.g. Berlin, Germany" value={f.location || ""} onChange={e => onChange("location", e.target.value)}/>
+                )}
+              </div>
+            </div>
+          </div>
+          <div className="afm-section">
+            <h3>Personal</h3>
+            <div className="afm-grid">
+              <div className="field">
+                <label>Gender</label>
+                <select value={f.gender || "all"} onChange={e => onChange("gender", e.target.value)}>
+                  <option value="all">Any</option>
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Non-binary">Non-binary</option>
+                </select>
+              </div>
+              <div className="field">
+                <label>Ethnicity</label>
+                <input placeholder="e.g. Asian, Black, Latinx" value={f.ethnicity || ""} onChange={e => onChange("ethnicity", e.target.value)}/>
+              </div>
+              <div className="field">
+                <label>Nationality</label>
+                <input placeholder="e.g. British" value={f.nationality || ""} onChange={e => onChange("nationality", e.target.value)}/>
+              </div>
+              <div className="field">
+                <label>Age</label>
+                <div className="afm-range">
+                  <input type="number" placeholder="Min" value={f.ageMin || ""} onChange={e => onChange("ageMin", e.target.value)}/>
+                  <span>—</span>
+                  <input type="number" placeholder="Max" value={f.ageMax || ""} onChange={e => onChange("ageMax", e.target.value)}/>
+                </div>
+              </div>
+              <div className="field">
+                <label>Height (cm)</label>
+                <div className="afm-range">
+                  <input type="number" placeholder="Min" value={f.heightMin || ""} onChange={e => onChange("heightMin", e.target.value)}/>
+                  <span>—</span>
+                  <input type="number" placeholder="Max" value={f.heightMax || ""} onChange={e => onChange("heightMax", e.target.value)}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="fsp-actions">
+          <button className="btn-clear" onClick={onClear}>Clear All</button>
+          <button className="btn-apply" onClick={onClose}>Done</button>
+        </div>
+      </aside>
+    </>,
+    document.body
+  );
+}
+
 /* ━━━ COMPONENT ━━━ */
 export default function ArtistShell() {
   /* Auth */
@@ -3530,8 +3700,12 @@ export default function ArtistShell() {
   const [networkTab, setNetworkTab] = useState("people");
   const [networkView, setNetworkView] = useState("list");
   const [networkSearch, setNetworkSearch] = useState("");
-  const [networkStyleFilter, setNetworkStyleFilter] = useState("all");
-  const [networkLocationFilter, setNetworkLocationFilter] = useState("all");
+  const [showNetworkFilters, setShowNetworkFilters] = useState(false);
+  const [networkFilters, setNetworkFilters] = useState({
+    artistType: "all", style: "all", skills: "", location: "all",
+    gender: "all", ethnicity: "", nationality: "",
+    ageMin: "", ageMax: "", heightMin: "", heightMax: ""
+  });
 
   /* Present / Portfolios */
   const [portfolios, setPortfolios] = useState(MOCK_PORTFOLIOS);
@@ -5333,12 +5507,14 @@ export default function ArtistShell() {
         const networkItems = networkTab === "people" ? MOCK_NETWORK_PEOPLE : MOCK_NETWORK_COMPANIES;
         const filteredNetworkItems = networkItems.filter(item => {
           const matchesSearch = !networkSearch || item.name.toLowerCase().includes(networkSearch.toLowerCase()) || item.location.toLowerCase().includes(networkSearch.toLowerCase());
-          const matchesStyle = networkStyleFilter === "all" || (item.styles && item.styles.includes(networkStyleFilter));
-          const matchesLocation = networkLocationFilter === "all" || item.location.includes(networkLocationFilter);
-          return matchesSearch && matchesStyle && matchesLocation;
+          const matchesStyle = networkFilters.style === "all" || (item.styles && item.styles.includes(networkFilters.style));
+          const matchesLocation = networkFilters.location === "all" || !networkFilters.location || item.location.toLowerCase().includes(networkFilters.location.toLowerCase());
+          const matchesType = networkFilters.artistType === "all" || (item.role && item.role.toLowerCase().includes(networkFilters.artistType.toLowerCase()));
+          return matchesSearch && matchesStyle && matchesLocation && matchesType;
         });
         const allStyles = [...new Set(networkItems.flatMap(i => i.styles || []))];
         const allLocations = [...new Set(networkItems.map(i => i.location))];
+        const networkActiveFilterCount = (networkFilters.artistType !== "all" ? 1 : 0) + (networkFilters.style !== "all" ? 1 : 0) + ((networkFilters.location && networkFilters.location !== "all") ? 1 : 0) + (networkFilters.skills ? 1 : 0) + (networkFilters.gender !== "all" ? 1 : 0) + (networkFilters.ethnicity ? 1 : 0) + (networkFilters.nationality ? 1 : 0) + (networkFilters.ageMin || networkFilters.ageMax ? 1 : 0) + (networkFilters.heightMin || networkFilters.heightMax ? 1 : 0);
 
         return (
           <div>
@@ -5364,15 +5540,23 @@ export default function ArtistShell() {
                 {I.search}
                 <input placeholder={`Search ${networkTab}...`} value={networkSearch} onChange={e => setNetworkSearch(e.target.value)} />
               </div>
-              <select className="sort-filter" value={networkStyleFilter} onChange={e => setNetworkStyleFilter(e.target.value)}>
-                <option value="all">All Styles</option>
-                {allStyles.map(s => <option key={s} value={s}>{s}</option>)}
-              </select>
-              <select className="sort-filter" value={networkLocationFilter} onChange={e => setNetworkLocationFilter(e.target.value)}>
-                <option value="all">All Locations</option>
-                {allLocations.map(l => <option key={l} value={l}>{l}</option>)}
-              </select>
+              <button className={`at-filter-btn${networkActiveFilterCount > 0 ? " active" : ""}`} onClick={() => setShowNetworkFilters(true)} style={{ position: "relative" }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                <span className="at-filter-label">Filters</span>
+                {networkActiveFilterCount > 0 && <span style={{ position: "absolute", top: -4, right: -4, minWidth: 16, height: 16, borderRadius: 8, background: "var(--ac)", color: "#fff", fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px" }}>{networkActiveFilterCount}</span>}
+              </button>
             </div>
+            <FilterPanel
+              open={showNetworkFilters}
+              onClose={() => setShowNetworkFilters(false)}
+              title={`Find ${networkTab}`}
+              subtitle="Narrow down by role, style, location, and more."
+              filters={networkFilters}
+              onChange={(k, v) => setNetworkFilters(p => ({ ...p, [k]: v }))}
+              onClear={() => setNetworkFilters({ artistType: "all", style: "all", skills: "", location: "all", gender: "all", ethnicity: "", nationality: "", ageMin: "", ageMax: "", heightMin: "", heightMax: "" })}
+              styleOptions={allStyles}
+              locationOptions={allLocations}
+            />
 
             {networkView === "list" && (
               <div className="app-list">
@@ -10243,7 +10427,7 @@ export default function ArtistShell() {
   };
 
   /* ━━━ MAIN RENDER ━━━ */
-  const shellClass = `shell${darkMode ? " dark" : ""}${sidebarCollapsed ? " sb-collapsed" : ""}${(viewSpotlight || viewOpportunity) ? " ctx-spotlight" : ""}${viewPortfolio ? " ctx-portfolio" : ""}${viewWork ? " ctx-works" : ""}`;
+  const shellClass = `shell${darkMode ? " dark" : ""}${sidebarCollapsed ? " sb-collapsed" : ""}${(viewSpotlight || viewOpportunity) ? " ctx-spotlight" : ""}${viewPortfolio ? " ctx-portfolio" : ""}${viewWork ? " ctx-works" : ""}${page === "messages" ? " on-messages" : ""}`;
 
   return (
     <>
