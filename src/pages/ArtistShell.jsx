@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import UniversalAuth from "./UniversalAuth";
 
 /* ━━━ MOCK DATA ━━━ */
 const DEMO_ARTIST = {
@@ -366,9 +367,9 @@ const ac = "#604DFF";
 
 /* ━━━ CSS ━━━ */
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
 
-:root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'DM Sans',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px}
+:root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'Manrope',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px}
 
 /* ━━━ Dark mode ━━━ */
 .dark{--bg:#0D0D12;--sf:#17171C;--tx:#E4E3EA;--g1:#1C1C24;--g2:#28283A;--g3:#3A3A4C;--g4:#7A7A8C;--g5:#A0A0B0;--g6:#D0D0DA;--ac:#7A66FF;--red:#FF6B7A;--green:#2ECC71;--amber:#FFB84D}
@@ -3913,56 +3914,9 @@ export default function ArtistShell() {
   /* ━━━ AUTH SCREEN ━━━ */
   if (auth !== "app") {
     return (
-      <>
-        <style>{CSS}</style>
-        <div className="auth-page">
-          <div className="auth-blob auth-blob-1" />
-          <div className="auth-blob auth-blob-2" />
-          <div className="auth-blob auth-blob-3" />
-          <div className="auth-blob auth-blob-4" />
-          <div className="auth-card">
-            <div className="logo-big">
-              <a href="https://lanced.eu" target="_blank" rel="noreferrer">
-                <img src="/lanced-logo.svg" alt="Lanced" style={{ height: 80 }} />
-              </a>
-            </div>
-            {auth === "login" ? (
-              <>
-                <h1>Welcome back</h1>
-                <p className="auth-sub">Sign in to your artist dashboard</p>
-                <input type="email" placeholder="Email" value={authEmail} onChange={e => setAuthEmail(e.target.value)} />
-                <input type="password" placeholder="Password" value={authPass} onChange={e => setAuthPass(e.target.value)} />
-                <button className="auth-btn" onClick={() => { setAuth("app"); setShowWelcome(true); }}>Sign In</button>
-                <div className="auth-divider">or</div>
-                <button className="auth-demo-btn" onClick={() => { setAuth("app"); setShowWelcome(true); }}>
-                  Enter Demo Mode
-                </button>
-                <p className="auth-switch">
-                  Don't have an account?{" "}
-                  <a onClick={() => setAuth("signup")}>Create one</a>
-                </p>
-              </>
-            ) : (
-              <>
-                <h1>Create your account</h1>
-                <p className="auth-sub">Join the performing arts network</p>
-                <input type="text" placeholder="Full name" value={authName} onChange={e => setAuthName(e.target.value)} />
-                <input type="email" placeholder="Email" value={authEmail} onChange={e => setAuthEmail(e.target.value)} />
-                <input type="password" placeholder="Password" value={authPass} onChange={e => setAuthPass(e.target.value)} />
-                <button className="auth-btn" onClick={() => { setAuth("app"); setShowWelcome(true); }}>Create Account</button>
-                <div className="auth-divider">or</div>
-                <button className="auth-demo-btn" onClick={() => { setAuth("app"); setShowWelcome(true); }}>
-                  Enter Demo Mode
-                </button>
-                <p className="auth-switch">
-                  Already have an account?{" "}
-                  <a onClick={() => setAuth("login")}>Sign in</a>
-                </p>
-              </>
-            )}
-          </div>
-        </div>
-      </>
+      <UniversalAuth
+        onAuth={() => { setAuth("app"); setShowWelcome(true); }}
+      />
     );
   }
 
