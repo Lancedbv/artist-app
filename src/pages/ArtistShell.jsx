@@ -28,14 +28,14 @@ const DEMO_ARTIST = {
 };
 
 const STAGE_RECORD = [
-  { id: "sr1", type: "experience", emoji: "💼", title: "Lead Dancer", org: "Akram Khan Company", start: "2023-09", end: "2026-01", location: "London, UK", desc: "Three seasons as lead dancer in touring productions. Featured in Jungle Book reimagined.", tags: ["Contemporary", "Touring"], usedIn: ["Resume", "Portfolio"] },
-  { id: "sr2", type: "experience", emoji: "💼", title: "Corps de Ballet", org: "Royal Ballet", start: "2021-09", end: "2023-06", location: "London, UK", desc: "Two years with the Royal Ballet in classical and contemporary repertoire.", tags: ["Ballet", "Classical"], usedIn: ["Resume"] },
-  { id: "sr3", type: "education", emoji: "🎓", title: "BA Dance Performance", org: "Royal Ballet School", start: "2018-09", end: "2021-06", location: "London, UK", desc: "Full scholarship. Graduated with distinction. Focus on classical ballet and contemporary technique.", tags: ["Classical", "Contemporary"], usedIn: ["Resume", "Portfolio"] },
-  { id: "sr4", type: "education", emoji: "🎓", title: "Summer Intensive", org: "Batsheva Dance Company", start: "2022-07", end: "2022-08", location: "Tel Aviv, IL", desc: "Four-week intensive in Gaga technique with Ohad Naharin.", tags: ["Gaga", "Contemporary"], usedIn: [] },
-  { id: "sr5", type: "award", emoji: "🏆", title: "Outstanding Young Dancer", org: "Critics' Circle National Dance Awards", start: "2024", end: "", location: "London, UK", desc: "Winner of the 2024 Outstanding Young Dancer award for performances in Jungle Book reimagined.", tags: ["Contemporary"], usedIn: ["Resume"] },
-  { id: "sr6", type: "skills", emoji: "⚡", title: "Technical Profile", org: "", start: "", end: "", location: "", desc: "Primary: Contemporary, Afro-fusion, Floor Work. Secondary: Classical Ballet, Partnering, Contact Improvisation. Proficient in Gaga technique.", tags: ["Contemporary", "Afro-fusion", "Ballet", "Gaga"], usedIn: [] },
-  { id: "sr7", type: "press", emoji: "📰", title: "\"A Force of Nature on Stage\"", org: "The Guardian", start: "2024-11", end: "", location: "", desc: "Five-star review of Jungle Book reimagined highlighting \"Osei's magnetic stage presence and fearless physicality.\"", tags: ["Review", "Contemporary"], usedIn: ["Portfolio"] },
-  { id: "sr8", type: "repertoire", emoji: "🎭", title: "Mowgli — Jungle Book Reimagined", org: "Akram Khan Company", start: "2024-03", end: "2025-12", location: "International Tour", desc: "Lead role. 87 performances across 14 countries. Choreography by Akram Khan.", tags: ["Contemporary", "Lead Role", "Touring"], usedIn: ["Resume", "Portfolio"] },
+  { id: "sr1", type: "experience", emoji: "briefcase", title: "Lead Dancer", org: "Akram Khan Company", start: "2023-09", end: "2026-01", location: "London, UK", desc: "Three seasons as lead dancer in touring productions. Featured in Jungle Book reimagined.", tags: ["Contemporary", "Touring"], usedIn: ["Resume", "Portfolio"] },
+  { id: "sr2", type: "experience", emoji: "briefcase", title: "Corps de Ballet", org: "Royal Ballet", start: "2021-09", end: "2023-06", location: "London, UK", desc: "Two years with the Royal Ballet in classical and contemporary repertoire.", tags: ["Ballet", "Classical"], usedIn: ["Resume"] },
+  { id: "sr3", type: "education", emoji: "graduation", title: "BA Dance Performance", org: "Royal Ballet School", start: "2018-09", end: "2021-06", location: "London, UK", desc: "Full scholarship. Graduated with distinction. Focus on classical ballet and contemporary technique.", tags: ["Classical", "Contemporary"], usedIn: ["Resume", "Portfolio"] },
+  { id: "sr4", type: "education", emoji: "graduation", title: "Summer Intensive", org: "Batsheva Dance Company", start: "2022-07", end: "2022-08", location: "Tel Aviv, IL", desc: "Four-week intensive in Gaga technique with Ohad Naharin.", tags: ["Gaga", "Contemporary"], usedIn: [] },
+  { id: "sr5", type: "award", emoji: "trophy", title: "Outstanding Young Dancer", org: "Critics' Circle National Dance Awards", start: "2024", end: "", location: "London, UK", desc: "Winner of the 2024 Outstanding Young Dancer award for performances in Jungle Book reimagined.", tags: ["Contemporary"], usedIn: ["Resume"] },
+  { id: "sr6", type: "skills", emoji: "zap", title: "Technical Profile", org: "", start: "", end: "", location: "", desc: "Primary: Contemporary, Afro-fusion, Floor Work. Secondary: Classical Ballet, Partnering, Contact Improvisation. Proficient in Gaga technique.", tags: ["Contemporary", "Afro-fusion", "Ballet", "Gaga"], usedIn: [] },
+  { id: "sr7", type: "press", emoji: "newspaper", title: "\"A Force of Nature on Stage\"", org: "The Guardian", start: "2024-11", end: "", location: "", desc: "Five-star review of Jungle Book reimagined highlighting \"Osei's magnetic stage presence and fearless physicality.\"", tags: ["Review", "Contemporary"], usedIn: ["Portfolio"] },
+  { id: "sr8", type: "repertoire", emoji: "masks", title: "Mowgli — Jungle Book Reimagined", org: "Akram Khan Company", start: "2024-03", end: "2025-12", location: "International Tour", desc: "Lead role. 87 performances across 14 countries. Choreography by Akram Khan.", tags: ["Contemporary", "Lead Role", "Touring"], usedIn: ["Resume", "Portfolio"] },
 ];
 
 const MOCK_APPLICATIONS = [
@@ -50,7 +50,7 @@ const MOCK_APPLICATIONS = [
 
 const MOCK_OPPORTUNITIES = [
   {
-    id: "opp1", company: "Royal Danish Ballet", title: "Soloist — 2026/27 Season", location: "Copenhagen, DK", type: "Full-time Contract", deadline: "2026-04-30", auditionDate: "2026-05-10", styles: ["Classical", "Neoclassical"], banner: "/demo/banners/jens-thekkeveettil-dbwvuqboou8-unsplash.jpg", saved: false,
+    id: "opp1", company: "Royal Danish Ballet", title: "Soloist — 2026/27 Season", location: "Copenhagen, DK", type: "Full-time Contract", deadline: "2026-04-30", auditionDate: "2026-05-10", styles: ["Classical", "Neoclassical"], banner: "/demo/banners/jens-thekkeveettil-dbwvuqboou8-unsplash.jpg", saved: false, match: 92,
     companyLogo: "/demo/artists/1.jpg", companyDesc: "The Royal Danish Ballet is one of the oldest ballet companies in the world, founded in 1748. Renowned for preserving the Bournonville tradition while embracing contemporary works.",
     description: "The Royal Danish Ballet is seeking an exceptional soloist to join the company for the 2026/27 season. This is a rare opportunity to perform with one of Europe's most prestigious ballet companies in a diverse repertoire spanning Bournonville classics to cutting-edge contemporary works. The position involves 8-10 productions per season with international touring.",
     requirements: "We are looking for dancers with exceptional classical technique, strong partnering skills, and the versatility to perform in both classical and contemporary repertoire. Candidates should have at least 3 years of professional company experience at soloist or principal level. Must be physically fit and available for the full season (August 2026 — June 2027).",
@@ -66,7 +66,7 @@ const MOCK_OPPORTUNITIES = [
     customQuestions: ["Why do you want to join the Royal Danish Ballet?", "Describe your experience with Bournonville technique.", "What is your availability for the 2026/27 season (August-June)?"],
   },
   {
-    id: "opp2", company: "Wayne McGregor | Random Dance", title: "Company Dancer", location: "London, UK", type: "Full-time Contract", deadline: "2026-05-15", auditionDate: "2026-05-28", styles: ["Contemporary", "Technology"], banner: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg", saved: true,
+    id: "opp2", company: "Wayne McGregor | Random Dance", title: "Company Dancer", location: "London, UK", type: "Full-time Contract", deadline: "2026-05-15", auditionDate: "2026-05-28", styles: ["Contemporary", "Technology"], banner: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg", saved: true, match: 87,
     companyLogo: "/demo/artists/2.jpg", companyDesc: "Wayne McGregor | Random Dance is at the forefront of dance innovation, integrating technology, science, and film into choreographic practice.",
     description: "Wayne McGregor is looking for a versatile company dancer to join the ensemble. The role involves performing in new creations and revivals, collaborating with digital artists and scientists, and touring internationally. You'll work directly with Wayne and the creative team on 3-4 new productions per year.",
     requirements: "Strong contemporary technique with exceptional physical range and stamina. Openness to interdisciplinary collaboration (technology, film, science). Improvisation skills and creative input valued. Experience in site-specific or immersive performance a plus.",
@@ -81,7 +81,7 @@ const MOCK_OPPORTUNITIES = [
     customQuestions: ["How do you approach interdisciplinary collaboration in your practice?", "What excites you about working with Wayne McGregor?"],
   },
   {
-    id: "opp3", company: "Pina Bausch Tanztheater", title: "Guest Performer — Rite of Spring Revival", location: "Wuppertal, DE", type: "Project-based", deadline: "2026-06-01", auditionDate: "2026-06-15", styles: ["Tanztheater", "Contemporary"], banner: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg", saved: false,
+    id: "opp3", company: "Pina Bausch Tanztheater", title: "Guest Performer — Rite of Spring Revival", location: "Wuppertal, DE", type: "Project-based", deadline: "2026-06-01", auditionDate: "2026-06-15", styles: ["Tanztheater", "Contemporary"], banner: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg", saved: false, match: 78,
     companyLogo: "/demo/artists/3.jpg", companyDesc: "Tanztheater Wuppertal Pina Bausch continues the legacy of Pina Bausch, performing her iconic works worldwide.",
     description: "Casting guest performers for the 2027 revival tour of Pina Bausch's iconic 'The Rite of Spring'. This production, performed on a stage covered in earth, is one of the most physically demanding works in the contemporary repertoire. The tour covers 6 cities across Europe and Asia.",
     requirements: "Extraordinary physicality and stamina. The earth-covered stage requires fearless performers. Previous Tanztheater experience preferred but not required. Must be comfortable with intense physical expression and group dynamics. Open to all gender identities.",
@@ -347,13 +347,13 @@ const MOCK_MESSAGES = [
 ];
 
 const MOCK_NOTIFICATIONS = [
-  { id: "n1", type: "application", title: "Application Update", body: "Your application for Corps de Ballet at Ballett Zürich has been shortlisted!", time: "2h ago", unread: true, color: "#1E90FF", icon: "📋" },
-  { id: "n2", type: "broadcast", title: "Tanz Luzern", body: "Reminder: Please submit any additional materials before the deadline on June 1st.", time: "5h ago", unread: true, color: "#604DFF", icon: "📢" },
-  { id: "n3", type: "invitation", title: "Invitation Received", body: "The Movers has invited you to the final casting round.", time: "1d ago", unread: false, color: "#1DB954", icon: "🎉" },
-  { id: "n4", type: "broadcast", title: "Ballett Zürich", body: "The audition schedule has been finalized. All applicants will receive individual time slots by email.", time: "2d ago", unread: false, color: "#604DFF", icon: "📢" },
-  { id: "n5", type: "profile", title: "Profile Views", body: "Your profile was viewed 48 times this week — up 23% from last week.", time: "3d ago", unread: false, color: "#F5A623", icon: "👁" },
-  { id: "n6", type: "opportunity", title: "New Opportunity", body: "A new opportunity matching your profile: Soloist — 2026/27 Season at Royal Danish Ballet.", time: "4d ago", unread: false, color: "#FF69B4", icon: "✨" },
-  { id: "n7", type: "broadcast", title: "Theater Regensburg", body: "Thank you to all applicants. We will be sending out decisions by the end of this week.", time: "5d ago", unread: false, color: "#604DFF", icon: "📢" },
+  { id: "n1", type: "application", title: "Application Update", body: "Your application for Corps de Ballet at Ballett Zürich has been shortlisted!", time: "2h ago", unread: true, color: "#1E90FF", icon: "clipboard" },
+  { id: "n2", type: "broadcast", title: "Tanz Luzern", body: "Reminder: Please submit any additional materials before the deadline on June 1st.", time: "5h ago", unread: true, color: "#604DFF", icon: "megaphone" },
+  { id: "n3", type: "invitation", title: "Invitation Received", body: "The Movers has invited you to the final casting round.", time: "1d ago", unread: false, color: "#1DB954", icon: "party" },
+  { id: "n4", type: "broadcast", title: "Ballett Zürich", body: "The audition schedule has been finalized. All applicants will receive individual time slots by email.", time: "2d ago", unread: false, color: "#604DFF", icon: "megaphone" },
+  { id: "n5", type: "profile", title: "Profile Views", body: "Your profile was viewed 48 times this week — up 23% from last week.", time: "3d ago", unread: false, color: "#F5A623", icon: "eye" },
+  { id: "n6", type: "opportunity", title: "New Opportunity", body: "A new opportunity matching your profile: Soloist — 2026/27 Season at Royal Danish Ballet.", time: "4d ago", unread: false, color: "#FF69B4", icon: "sparkles" },
+  { id: "n7", type: "broadcast", title: "Theater Regensburg", body: "Thank you to all applicants. We will be sending out decisions by the end of this week.", time: "5d ago", unread: false, color: "#604DFF", icon: "megaphone" },
 ];
 
 /* ━━━ HELPERS ━━━ */
@@ -369,10 +369,10 @@ const ac = "#604DFF";
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
 
-:root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'Manrope',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px}
+:root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'Manrope',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px;--glass-bg:rgba(255,255,255,.38);--glass-bg-strong:rgba(255,255,255,.62);--glass-border:rgba(232,230,240,.7);--glass-border-strong:rgba(232,230,240,.9);--glass-blur:saturate(1.6) blur(18px);--glass-blur-soft:saturate(1.3) blur(10px);--glass-blur-deep:saturate(1.4) blur(28px);--glass-highlight:inset 0 1px 0 rgba(255,255,255,.4);--glass-shadow:0 1px 2px rgba(20,18,40,.04)}
 
 /* ━━━ Dark mode ━━━ */
-.dark{--bg:#0D0D12;--sf:#17171C;--tx:#E4E3EA;--g1:#1C1C24;--g2:#28283A;--g3:#3A3A4C;--g4:#7A7A8C;--g5:#A0A0B0;--g6:#D0D0DA;--ac:#7A66FF;--red:#FF6B7A;--green:#2ECC71;--amber:#FFB84D}
+.dark{--bg:#0D0D12;--sf:#17171C;--tx:#E4E3EA;--g1:#1C1C24;--g2:#28283A;--g3:#3A3A4C;--g4:#7A7A8C;--g5:#A0A0B0;--g6:#D0D0DA;--ac:#7A66FF;--red:#FF6B7A;--green:#2ECC71;--amber:#FFB84D;--glass-bg:rgba(26,26,34,.38);--glass-bg-strong:rgba(26,26,34,.62);--glass-border:rgba(255,255,255,.06);--glass-border-strong:rgba(255,255,255,.1);--glass-highlight:inset 0 1px 0 rgba(255,255,255,.04);--glass-shadow:0 1px 2px rgba(0,0,0,.18)}
 .dark body,.shell.dark{background:var(--bg);background-image:radial-gradient(ellipse at 20% 0%,rgba(122,102,255,.1) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(122,102,255,.06) 0%,transparent 50%);color:var(--tx)}
 .dark .sidebar{box-shadow:1px 0 0 0 rgba(122,102,255,.08)}
 .dark .btn-p{background:linear-gradient(135deg,#8B7AFF,#604DFF)}
@@ -391,8 +391,8 @@ const CSS = `
 .dark .ak-column{background:var(--sf);border-color:var(--g2)}
 .dark .ak-card{background:var(--bg);border-color:var(--g2)}
 .dark .sc-card{background:var(--sf);border-color:var(--g2)}
-.dark .dash-section{background:var(--sf);border-color:var(--g2)}
-.dark .dash-banner{background:linear-gradient(135deg,#1a1040 0%,#2d1b69 25%,#4a2a8a 50%,#604DFF 75%,#2d1b69 100%);background-size:200% 200%;animation:bannerShift 8s ease infinite;border:1px solid var(--g2)}
+.dark .dash-section{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-color:var(--glass-border)}
+.dark .dash-banner{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
 .dark .overlay>div{background:var(--sf);border-color:var(--g2)}
 .dark .sr-card{background:var(--sf);border-color:var(--g2)}
 .dark .opp-card{background:var(--sf);border-color:var(--g2)}
@@ -403,7 +403,7 @@ const CSS = `
 .dark .tab-bar .tab-btn.on{color:var(--tx);border-bottom-color:var(--ac)}
 .dark .spotlight-hero{border-color:var(--g2)}
 .dark .info-card{background:var(--sf);border-color:var(--g2)}
-.dark .stat-card{background:var(--sf);border-color:var(--g2)}
+.dark .stat-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .list-search{background:var(--sf);border-color:var(--g3)}
 .dark .list-search input{color:var(--tx)}
 .dark .chip.on{background:linear-gradient(135deg,#8B7AFF,#604DFF)}
@@ -454,7 +454,8 @@ const CSS = `
 
 /* ━━━ Shell ━━━ */
 .shell{display:flex;min-height:100vh;background:var(--bg);background-image:radial-gradient(ellipse at 20% 0%,rgba(96,77,255,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(96,77,255,.04) 0%,transparent 50%);transition:background .3s}
-.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sb-w);background:var(--bg);border-right:none;box-shadow:1px 0 0 0 rgba(96,77,255,.06);display:flex;flex-direction:column;z-index:100;transition:width .25s cubic-bezier(.4,0,.2,1)}
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sb-w);background:rgba(255,255,255,.35);backdrop-filter:saturate(1.3) blur(20px);-webkit-backdrop-filter:saturate(1.3) blur(20px);border-right:1px solid rgba(255,255,255,.3);box-shadow:none;display:flex;flex-direction:column;z-index:100;transition:width .25s cubic-bezier(.4,0,.2,1)}
+@supports not (backdrop-filter:blur(1px)){.sidebar{background:var(--bg)}}
 .sidebar-header{padding:20px 20px 16px;border-bottom:1px solid var(--g1)}
 .sidebar-logo{display:flex;align-items:center;gap:10px;margin-bottom:0}
 .sidebar-logo .sb-mark{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0;box-shadow:0 2px 8px rgba(96,77,255,.25);overflow:hidden;background:linear-gradient(135deg,#7A66FF,#4A35E0)}
@@ -530,8 +531,8 @@ const CSS = `
 
 /* ━━━ Page headers ━━━ */
 .pg-header{margin-bottom:20px}
-.pg-header h1{font-family:var(--serif);font-size:32px;font-weight:400;margin-bottom:4px}
-.pg-header h1 em{font-style:italic;color:var(--ac)}
+.pg-header h1{font-family:var(--sans);font-size:32px;font-weight:500;letter-spacing:-.02em;margin-bottom:4px;color:var(--tx)}
+.pg-header h1 em{font-style:normal;color:inherit}
 .pg-header .pg-sub{font-size:14px;color:var(--g5);line-height:1.5}
 
 /* ━━━ Buttons ━━━ */
@@ -547,32 +548,76 @@ const CSS = `
 .chip:hover{border-color:var(--ac);color:var(--ac)}
 .chip.on{background:linear-gradient(135deg,#7A66FF,#4A35E0);border-color:transparent;color:#fff;box-shadow:0 2px 6px rgba(96,77,255,.2)}
 
+.dash-bg{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
+.dash-blob{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform,opacity;opacity:0}
+.dash-blob-1{width:600px;height:600px;background:radial-gradient(circle,rgba(100,90,255,.40),rgba(90,80,240,.06) 70%);top:-10%;left:-5%;animation:dashSweep1 36s linear infinite}
+.dash-blob-2{width:520px;height:520px;background:radial-gradient(circle,rgba(80,110,240,.36),rgba(100,130,250,.05) 70%);bottom:-8%;right:-6%;animation:dashSweep2 44s linear infinite;animation-delay:-12s}
+.dash-blob-3{width:460px;height:460px;background:radial-gradient(circle,rgba(75,95,235,.34),rgba(85,105,240,.04) 70%);top:30%;left:40%;animation:dashSweep3 32s linear infinite;animation-delay:-20s}
+.dash-blob-4{width:380px;height:380px;background:radial-gradient(circle,rgba(110,100,245,.30),rgba(100,120,240,.04) 70%);top:10%;right:15%;animation:dashSweep4 40s linear infinite;animation-delay:-8s}
+@keyframes dashSweep1{0%{transform:translate(-60px,-40px) scale(1);opacity:.25}25%{opacity:.55}50%{transform:translate(80px,60px) scale(1.15);opacity:.6}75%{opacity:.5}100%{transform:translate(-60px,-40px) scale(1);opacity:.25}}
+@keyframes dashSweep2{0%{transform:translate(70px,30px) scale(1.05);opacity:.2}25%{opacity:.5}50%{transform:translate(-60px,-50px) scale(1.2);opacity:.55}75%{opacity:.45}100%{transform:translate(70px,30px) scale(1.05);opacity:.2}}
+@keyframes dashSweep3{0%{transform:translate(-50px,50px) scale(.95);opacity:.3}25%{opacity:.55}50%{transform:translate(60px,-40px) scale(1.12);opacity:.6}75%{opacity:.48}100%{transform:translate(-50px,50px) scale(.95);opacity:.3}}
+@keyframes dashSweep4{0%{transform:translate(50px,-60px) scale(1);opacity:.22}25%{opacity:.48}50%{transform:translate(-40px,50px) scale(1.18);opacity:.52}75%{opacity:.42}100%{transform:translate(50px,-60px) scale(1);opacity:.22}}
+.dark .dash-blob{filter:blur(100px)}
+@media(prefers-reduced-motion:reduce){.dash-blob{animation:none!important;opacity:.45!important}}
+
 /* ━━━ Dashboard ━━━ */
-.dash-banner{background:linear-gradient(135deg,#1a1040 0%,#2d1b69 25%,#4a2a8a 50%,#604DFF 75%,#2d1b69 100%);background-size:200% 200%;animation:bannerShift 8s ease infinite;border-radius:14px;padding:32px;color:#fff;margin-bottom:24px;animation:bannerShift 8s ease infinite,slideInUp .4s ease both}
-.dash-banner .db-welcome{font-size:12px;color:rgba(255,255,255,.6);margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
-.dash-banner .db-title{font-family:var(--serif);font-size:28px;font-weight:400}
-.dash-banner .db-sub{font-size:13px;color:rgba(255,255,255,.5);margin-top:8px}
+.dash-banner{padding:28px;border-radius:20px;background:rgba(255,255,255,.42);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border:1px solid rgba(255,255,255,.55);box-shadow:0 1px 3px rgba(20,18,40,.04);margin-bottom:24px;position:relative;overflow:hidden;animation:fadeIn .4s ease}
+.dash-banner .db-welcome{font-size:14px;color:var(--g5);margin-bottom:4px;font-weight:500}
+.dash-banner .db-title{font-family:var(--sans);font-size:30px;font-weight:500;letter-spacing:-.01em;color:var(--tx);line-height:1.15}
+.dash-banner .db-sub{font-size:14px;color:var(--g5);margin-top:8px;line-height:1.5}
+.dash-banner-blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;pointer-events:none}
+.dash-banner-blob-1{width:200px;height:200px;background:rgba(96,77,255,.3);top:-40px;right:-20px;animation:blobMove1 20s ease-in-out infinite}
+.dash-banner-blob-2{width:160px;height:160px;background:rgba(120,100,240,.25);bottom:-30px;left:20%;animation:blobMove2 25s ease-in-out infinite}
+.dash-banner-blob-3{width:120px;height:120px;background:rgba(80,110,240,.2);top:20%;left:-20px;animation:blobMove3 18s ease-in-out infinite}
+.dark .dash-banner{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
+.dark .dash-banner-blob{opacity:.25}
+.dash-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-bottom:28px}
 .dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
-.stat-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:20px;animation:slideInUp .3s ease both}
+.stat-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border:1px solid var(--glass-border);border-radius:14px;padding:20px;animation:slideInUp .3s ease both}
 .stat-card:nth-child(1){animation-delay:.05s}.stat-card:nth-child(2){animation-delay:.1s}.stat-card:nth-child(3){animation-delay:.15s}.stat-card:nth-child(4){animation-delay:.2s}
 .stat-card .sc-val{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ac);margin-bottom:2px}
 .stat-card .sc-label{font-size:11px;color:var(--g4);text-transform:uppercase;letter-spacing:.05em}
-.dash-section{background:var(--sf);border:1px solid var(--g2);border-radius:16px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
+.dash-section{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;padding:22px;margin-bottom:16px;animation:slideInUp .3s ease both;box-shadow:var(--glass-shadow)}
 .dash-section h3{font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .dash-section h3 .ds-count{font-size:10px;font-weight:700;padding:2px 7px;border-radius:40px;background:var(--g1);color:var(--g4)}
+.dash-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dash-section-header h3{margin-bottom:0}
 .dash-app-row{display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:all .15s}
-.dash-app-row:hover{background:var(--g1)}
+.dash-app-row:hover{background:rgba(96,77,255,.04)}
 .dash-app-row .dar-logo{width:36px;height:36px;border-radius:10px;object-fit:cover;flex-shrink:0}
 .dash-app-row .dar-info{flex:1;min-width:0}
 .dash-app-row .dar-title{font-size:13px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dash-app-row .dar-company{font-size:11px;color:var(--g4)}
 .dash-app-row .dar-status{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 10px;border-radius:40px}
+.dash-featured-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.dash-featured-card{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:16/9;background:var(--g1);transition:all .2s}
+.dash-featured-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(96,77,255,.12)}
+.dash-featured-card img{width:100%;height:100%;object-fit:cover;display:block}
+.dash-featured-card .dfc-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.3) 40%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.dash-featured-card .dfc-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.7);margin-bottom:4px}
+.dash-featured-card .dfc-title{font-size:15px;font-weight:600;color:#fff;line-height:1.25}
+.dash-featured-card .dfc-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:3px}
+.dash-blog-section{margin-bottom:28px}
+.dash-blog-section h3{font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dash-blog-slider{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+.dash-blog-slider::-webkit-scrollbar{display:none}
+.dash-blog-card{flex:0 0 280px;scroll-snap-align:start;background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .2s}
+.dash-blog-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(96,77,255,.1)}
+.dash-blog-card .dbc-img{width:100%;height:140px;object-fit:cover}
+.dash-blog-card .dbc-body{padding:14px 16px}
+.dash-blog-card .dbc-tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);margin-bottom:6px}
+.dash-blog-card .dbc-title{font-size:14px;font-weight:600;color:var(--tx);line-height:1.35;margin-bottom:4px}
+.dash-blog-card .dbc-excerpt{font-size:12px;color:var(--g5);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dark .dash-blog-card{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
 .dash-opp-card{background:var(--g1);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .2s}
 .dash-opp-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .dash-opp-card .doc-banner{width:100%;height:100px;object-fit:cover}
 .dash-opp-card .doc-body{padding:12px 14px}
 .dash-opp-card .doc-title{font-size:13px;font-weight:600;margin-bottom:2px}
 .dash-opp-card .doc-company{font-size:11px;color:var(--g4);margin-bottom:6px}
+.dash-opp-card .doc-match{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:var(--green);background:rgba(34,197,94,.1);padding:3px 8px;border-radius:20px;margin-bottom:6px}
+.dash-opp-card .doc-match svg{width:12px;height:12px}
 .dash-opp-card .doc-meta{display:flex;gap:8px;font-size:10px;color:var(--g5)}
 .dash-opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 
@@ -1548,10 +1593,29 @@ textarea.pf-input{line-height:1.6}
 .sort-filter{height:36px;padding:0 30px 0 14px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);font-family:var(--sans);font-size:12px;font-weight:500;color:var(--g5);cursor:pointer;outline:none;box-sizing:border-box;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2398989F'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
 .sort-filter:hover{border-color:var(--g3);color:var(--tx)}
 .dark .sort-filter{background:var(--g1);border-color:var(--g3);color:var(--tx)}
+.db-toolbar{display:flex;align-items:center;justify-content:flex-start;margin-bottom:20px;gap:8px;flex-wrap:wrap;position:sticky;top:12px;z-index:40;background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);padding:8px 12px;border-radius:40px;transition:box-shadow .2s}
+.db-toolbar > .db-search{flex:0 1 360px}
+.db-toolbar.stuck{box-shadow:0 4px 20px rgba(0,0,0,.06)}
+.db-search{display:flex;align-items:center;gap:8px;padding:0 14px;height:36px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);flex:1;max-width:360px;box-sizing:border-box;transition:border-color .15s}
+.db-search:hover,.db-search:focus-within{border-color:var(--g3)}
+.db-search:focus-within{border-color:var(--ac)}
+.db-search input{border:none;outline:none;font-family:var(--sans);font-size:13px;flex:1;background:none;color:var(--tx)}
+.db-search input::placeholder{color:var(--g4)}
+.dark .db-search{background:var(--sf);border-color:var(--g3)}
+.dark .db-search input{color:var(--tx)}
+.dark .db-toolbar{background:var(--glass-bg);border:1px solid var(--glass-border)}
 .view-toggle{display:flex;border:1px solid var(--g2);border-radius:40px;overflow:hidden;height:36px;background:var(--sf);padding:3px;box-sizing:border-box;gap:0}
 .view-toggle button{padding:0 10px;min-width:34px;background:transparent;border:none;cursor:pointer;color:var(--g4);transition:all .15s;height:28px;display:flex;align-items:center;justify-content:center;border-radius:30px}
 .view-toggle button:hover{color:var(--tx)}
 .view-toggle button.active{background:var(--ac);color:#fff}
+.cand-filter-toggle{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;padding:0 14px;height:36px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);cursor:pointer;color:var(--g5);transition:all .15s;position:relative;box-sizing:border-box;line-height:1}
+.cand-filter-toggle:hover{border-color:var(--g3);color:var(--tx)}
+.cand-filter-toggle.on{background:rgba(96,77,255,.08);border-color:var(--ac);color:var(--ac)}
+.cand-filter-toggle .cft-badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--ac);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.db-toolbar .cand-filter-toggle{flex-shrink:0!important;width:40px!important;height:40px!important;padding:0!important;border-radius:50%!important;background:var(--sf)!important;border:1px solid var(--g2)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:0!important;color:var(--g5)!important;position:relative}
+.db-toolbar .cand-filter-toggle .cft-label{display:none!important}
+.db-toolbar .cand-filter-toggle svg{margin:0;width:16px;height:16px}
+.db-toolbar .cand-filter-toggle .cft-badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:8px;background:var(--ac);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px}
 
 /* ━━━ Spotlight context (room pattern) ━━━ */
 @keyframes ctxPanelIn{from{opacity:.85;transform:scale(.995)}to{opacity:1;transform:scale(1)}}
@@ -1740,28 +1804,43 @@ textarea.pf-input{line-height:1.6}
 .dark .sr-check-item{border-color:var(--g2)}
 
 /* Network Cards */
-.network-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
-.network-card{background:var(--sf);border:1px solid var(--g2);border-radius:16px;overflow:hidden;transition:all .2s;cursor:pointer;animation:slideInUp .2s ease both}
-.network-card:hover{border-color:var(--ac);box-shadow:0 4px 20px rgba(96,77,255,.08);transform:translateY(-2px)}
-.nc-header{position:relative;height:80px;background:linear-gradient(135deg,rgba(96,77,255,.15),rgba(96,77,255,.05));display:flex;align-items:flex-end;justify-content:center;padding-bottom:0}
-.nc-photo{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--sf);position:absolute;bottom:-32px;box-shadow:0 2px 12px rgba(0,0,0,.1)}
-.nc-body{padding:40px 16px 16px;text-align:center}
-.nc-name{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:2px}
-.nc-role{font-size:11px;color:var(--g4);margin-bottom:8px}
-.nc-location{font-size:10px;color:var(--g5);margin-bottom:10px}
-.nc-styles{display:flex;gap:4px;flex-wrap:wrap;justify-content:center;margin-bottom:12px}
-.nc-styles span{font-size:9px;padding:2px 8px;border-radius:20px;background:rgba(96,77,255,.06);color:var(--ac);font-weight:500}
-.nc-footer{display:flex;align-items:center;justify-content:space-between;padding-top:10px;border-top:1px solid var(--g2);font-size:10px;color:var(--g4)}
-.dark .network-card{border-color:var(--g2)}
-.dark .nc-header{background:linear-gradient(135deg,rgba(122,102,255,.2),rgba(122,102,255,.05))}
-.dark .nc-footer{border-top-color:var(--g2)}
-
-/* Network Map */
+.network-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.network-cards-people{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.network-cards-companies{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media(max-width:1200px){.network-cards-people{grid-template-columns:repeat(4,minmax(0,1fr))}.network-cards-companies{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){.network-cards-people{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.network-cards-people{grid-template-columns:repeat(2,minmax(0,1fr))}.network-cards-companies{grid-template-columns:1fr}}
+.network-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;cursor:pointer;position:relative;box-shadow:0 1px 3px rgba(96,77,255,.03);transition:all .2s}
+.network-card:hover{border-color:rgba(96,77,255,.16);transform:translateY(-1px);box-shadow:0 4px 16px rgba(96,77,255,.06)}
+@supports not (backdrop-filter:blur(1px)){.network-card{background:var(--sf)}}
+.nc-img-wrap{position:relative;width:100%;aspect-ratio:3/4}
+.nc-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.nc-overlay{position:absolute;bottom:0;left:0;right:0;padding:48px 12px 12px;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,.6) 30%,rgba(0,0,0,.32) 60%,rgba(0,0,0,.1) 85%,transparent 100%)}
+.nc-name{font-size:14px;font-weight:600;color:#fff;line-height:1.2}
+.nc-role{font-size:11px;color:rgba(255,255,255,.85);margin-top:2px}
+.nc-location{font-size:10px;color:rgba(255,255,255,.7);margin-top:3px}
+.nc-body{padding:10px 12px 12px}
+.nc-styles{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.nc-styles span{font-size:9px;padding:2px 8px;border-radius:40px;background:rgba(96,77,255,.1);color:var(--ac)}
+.nc-footer{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--g4);gap:6px}
+.network-card-co{display:flex;flex-direction:column}
+.ncc-banner{position:relative;width:100%;aspect-ratio:16/7;background-size:cover;background-position:center;background-color:var(--g1)}
+.ncc-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.18) 100%)}
+.ncc-hiring{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:5px;padding:4px 9px 4px 8px;border-radius:40px;background:rgba(255,255,255,.94);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);color:var(--green);font-size:10px;font-weight:600;z-index:1;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.ncc-pulse{width:6px;height:6px;border-radius:50%;background:var(--green);position:relative;flex-shrink:0}
+.ncc-pulse::after{content:"";position:absolute;inset:-3px;border-radius:50%;background:var(--green);opacity:.4;animation:nccPulse 1.6s ease-out infinite}
+@keyframes nccPulse{0%{transform:scale(1);opacity:.4}100%{transform:scale(2.4);opacity:0}}
+.ncc-logo-wrap{margin:-26px 0 0 14px;width:54px;height:54px;border-radius:50%;background:var(--sf);padding:3px;box-shadow:0 2px 8px rgba(0,0,0,.08);position:relative;z-index:1;flex-shrink:0}
+.ncc-logo{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.ncc-body{padding:8px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.ncc-name{font-size:14px;font-weight:600;color:var(--tx);line-height:1.2}
+.ncc-meta{font-size:11.5px;color:var(--g4);line-height:1.3}
+.ncc-meta .ncc-type{color:var(--tx);font-weight:500}
+.ncc-styles{display:flex;gap:4px;flex-wrap:wrap}
+.ncc-styles span{font-size:9px;padding:2px 8px;border-radius:40px;background:rgba(96,77,255,.1);color:var(--ac)}
+.ncc-footer{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:4px;font-size:10px;color:var(--g4)}
 .network-map{width:100%;height:500px;border-radius:16px;overflow:hidden;border:1px solid var(--g2)}
 .network-map .leaflet-container{width:100%;height:100%;font-family:var(--sans)}
-.dark .network-map{border-color:var(--g2)}
-.network-map .leaflet-popup-content-wrapper{border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.12);font-family:var(--sans)}
-.network-map .leaflet-popup-content{margin:10px 14px;font-size:12px}
 
 /* ━━━ Mobile Top Bar ━━━ */
 .mobile-topbar{display:none;position:fixed;top:0;left:0;right:0;height:56px;z-index:130;background:linear-gradient(to bottom,rgba(248,247,255,.55) 0%,rgba(248,247,255,.2) 60%,rgba(248,247,255,0) 100%);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);align-items:center;padding:0 16px;gap:10px;box-sizing:border-box}
@@ -1872,9 +1951,8 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .content{padding:20px 16px}
   .pg-header{margin-bottom:16px}
   .pg-header h1{font-size:26px}
-  .dash-stats{grid-template-columns:1fr 1fr}
   .dash-banner{padding:24px;border-radius:12px}
-  .dash-banner .db-title{font-size:22px}
+  .dash-banner .db-title{font-size:26px}
   .spotlight-grid{grid-template-columns:1fr}
   .spotlight-row{grid-template-columns:1fr!important}
   .plan-section{grid-template-columns:1fr}
@@ -1932,8 +2010,11 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .tab-bar{overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex-wrap:nowrap;gap:0;padding-bottom:0}
   .tab-bar::-webkit-scrollbar{display:none}
   .tab-btn{padding:10px 14px;font-size:12px;flex-shrink:0}
-  .network-cards{grid-template-columns:1fr}
+  .network-cards{grid-template-columns:1fr}.network-cards-people{grid-template-columns:repeat(2,1fr)}.network-cards-companies{grid-template-columns:1fr}
   .network-map{height:300px}
+  .dash-featured-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-blog-card{flex:0 0 240px}
+  .dash-grid{grid-template-columns:1fr}
   .pf-details-grid{grid-template-columns:1fr!important}
   .pf-name-row{grid-template-columns:1fr 1fr!important}
   .pf-general-grid{grid-template-columns:1fr!important}
@@ -1962,8 +2043,7 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .shell.on-messages .ms-contact .ms-snippet{color:#6c6c7a}
 }
 @media(max-width:480px){
-  .dash-stats{grid-template-columns:1fr 1fr}
-  .stat-card .sc-val{font-size:20px}
+  .dash-featured-grid{grid-template-columns:repeat(2,1fr)}
   .pg-header h1{font-size:22px}
   .content{padding:16px 12px}
   .spotlight-hero{height:160px;border-radius:12px}
@@ -3451,6 +3531,57 @@ const I = {
   filter: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>,
   settings: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
   studio: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
+  globe: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>,
+};
+
+/* ━━━ EMOJI REPLACEMENT ICONS (JSX) ━━━ */
+const EIcon = {
+  briefcase: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>,
+  graduation: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
+  trophy: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>,
+  zap: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>,
+  newspaper: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>,
+  masks: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12a5 5 0 0 0 5 5 8 8 0 0 1 5 2 8 8 0 0 1 5-2 5 5 0 0 0 5-5V7h-5a8 8 0 0 0-5 2 8 8 0 0 0-5-2H2Z"/><path d="M6 11c1.5 0 3 .5 3 2-2 0-3 0-3-2Z"/><path d="M18 11c-1.5 0-3 .5-3 2 2 0 3 0 3-2Z"/></svg>,
+  clipboard: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></svg>,
+  megaphone: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>,
+  party: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5.8 11.3 2 22l10.7-3.79"/><path d="M4 3h.01"/><path d="M22 8h.01"/><path d="M15 2h.01"/><path d="M22 20h.01"/><path d="m22 2-2.24.75a2.9 2.9 0 0 0-1.96 3.12c.1.86-.57 1.63-1.45 1.63h-.38c-.86 0-1.6.6-1.76 1.44L14 10"/><path d="m22 13-.82-.33c-.86-.34-1.82.2-1.98 1.11c-.11.7-.72 1.22-1.43 1.22H17"/><path d="m11 2 .33.82c.34.86-.2 1.82-1.11 1.98C9.52 4.9 9 5.52 9 6.23V7"/><path d="M11 13c1.93 1.93 2.83 4.17 2 5-.83.83-3.07-.07-5-2-1.93-1.93-2.83-4.17-2-5 .83-.83 3.07.07 5 2Z"/></svg>,
+  eye: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>,
+  sparkles: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>,
+  mapPin: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>,
+  calendar: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>,
+  clock: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+  pencil: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838.838-2.872a2 2 0 0 1 .506-.855z"/></svg>,
+  camera: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>,
+  clapperboard: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.3-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.3Z"/><path d="m6.2 5.3 3.1 3.9"/><path d="m12.4 3.4 3.1 4"/><path d="M3 11h18v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg>,
+  fileText: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>,
+  starIcon: <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+  starOutline: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>,
+  starGlyph: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg>,
+  user: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>,
+  search: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>,
+  palette: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2Z"/></svg>,
+  folder: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>,
+  link: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+  music: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>,
+  handshake: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14h2"/><path d="m3 4 3.86 2.31a2 2 0 0 0 1.42.25L11 6"/><path d="M5 14 9 9"/></svg>,
+  barChart: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>,
+};
+
+/* Emoji-type to EIcon key mapping (for data objects that use type strings) */
+const EMOJI_MAP = {
+  experience: "briefcase", education: "graduation", award: "trophy",
+  skills: "zap", press: "newspaper", repertoire: "masks",
+};
+
+/* Notification icon mapping */
+const NOTIF_ICON_MAP = {
+  application: "clipboard", broadcast: "megaphone", invitation: "party",
+  profile: "eye", opportunity: "sparkles",
+};
+
+/* HTML string SVGs for template literals (e.g., Leaflet popups) */
+const EIS = {
+  mapPin: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:2px"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>',
 };
 
 /* ━━━ NETWORK MAP ━━━ */
@@ -3527,8 +3658,8 @@ function NetworkMap({ items, networkTab, darkMode }) {
 
       const marker = L.marker([item.lat, item.lng], { icon }).addTo(mapInstanceRef.current);
       const popupContent = networkTab === "people"
-        ? `<div style="text-align:center"><img src="${item.photo}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:6px" /><div style="font-weight:600;font-size:13px">${item.name}</div><div style="font-size:11px;color:#888;margin-top:2px">${item.role}${item.company ? ' · ' + item.company : ''}</div><div style="font-size:10px;color:#aaa;margin-top:4px">📍 ${item.location}</div><div style="margin-top:6px;display:flex;gap:4px;justify-content:center;flex-wrap:wrap">${(item.styles || []).map(s => '<span style="font-size:9px;padding:2px 6px;border-radius:10px;background:rgba(96,77,255,.1);color:#604DFF">' + s + '</span>').join('')}</div></div>`
-        : `<div style="text-align:center"><img src="${item.logo}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:6px" /><div style="font-weight:600;font-size:13px">${item.name}</div><div style="font-size:11px;color:#888;margin-top:2px">${item.type}</div><div style="font-size:10px;color:#aaa;margin-top:4px">📍 ${item.location}</div>${item.openPositions ? '<div style="font-size:10px;color:#604DFF;margin-top:4px;font-weight:600">' + item.openPositions + ' open positions</div>' : ''}</div>`;
+        ? `<div style="text-align:center"><img src="${item.photo}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:6px" /><div style="font-weight:600;font-size:13px">${item.name}</div><div style="font-size:11px;color:#888;margin-top:2px">${item.role}${item.company ? ' · ' + item.company : ''}</div><div style="font-size:10px;color:#aaa;margin-top:4px">${EIS.mapPin} ${item.location}</div><div style="margin-top:6px;display:flex;gap:4px;justify-content:center;flex-wrap:wrap">${(item.styles || []).map(s => '<span style="font-size:9px;padding:2px 6px;border-radius:10px;background:rgba(96,77,255,.1);color:#604DFF">' + s + '</span>').join('')}</div></div>`
+        : `<div style="text-align:center"><img src="${item.logo}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;margin-bottom:6px" /><div style="font-weight:600;font-size:13px">${item.name}</div><div style="font-size:11px;color:#888;margin-top:2px">${item.type}</div><div style="font-size:10px;color:#aaa;margin-top:4px">${EIS.mapPin} ${item.location}</div>${item.openPositions ? '<div style="font-size:10px;color:#604DFF;margin-top:4px;font-weight:600">' + item.openPositions + ' open positions</div>' : ''}</div>`;
       marker.bindPopup(popupContent, { maxWidth: 220, closeButton: true });
       markersRef.current.push(marker);
     });
@@ -4008,7 +4139,7 @@ export default function ArtistShell() {
     const newEntry = {
       id: "sr" + (stageRecords.length + 1),
       type: newEntryType,
-      emoji: { experience: "💼", education: "🎓", award: "🏆", skills: "⚡", press: "📰", repertoire: "🎭" }[newEntryType],
+      emoji: EMOJI_MAP[newEntryType] || "briefcase",
       title: entryForm.title,
       org: entryForm.org,
       start: entryForm.start,
@@ -4096,7 +4227,7 @@ export default function ArtistShell() {
 
               {spotlightApp.status === "invited" && (
                 <div className="invitation-bar">
-                  <span className="ib-icon">🎉</span>
+                  <span className="ib-icon">{EIcon.party}</span>
                   <div className="ib-text"><strong>Congratulations!</strong> You've been invited. Please confirm your attendance before the deadline.</div>
                   <button className="btn btn-success" onClick={() => showToast("Attendance confirmed!")}>Confirm Attendance</button>
                 </div>
@@ -4219,7 +4350,7 @@ export default function ArtistShell() {
                   </div>
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 8 }}>
                     {[1,2,3,4].map(i => (
-                      <div key={i} style={{ height: 80, borderRadius: 10, background: "linear-gradient(135deg, var(--g1), var(--g2))", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, color: "var(--g4)" }}>📷</div>
+                      <div key={i} style={{ height: 80, borderRadius: 10, background: "linear-gradient(135deg, var(--g1), var(--g2))", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--g4)" }}>{EIcon.camera}</div>
                     ))}
                   </div>
                 </div>
@@ -4230,7 +4361,7 @@ export default function ArtistShell() {
                   </div>
                   {stageRecords.filter(sr => sr.usedIn.includes("Resume")).slice(0, 5).map(sr => (
                     <div key={sr.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 0", borderBottom: "1px solid var(--g1)" }}>
-                      <span style={{ fontSize: 18 }}>{sr.emoji}</span>
+                      <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] || "var(--g5)" }}>{EIcon[sr.emoji] || sr.emoji}</span>
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 13, fontWeight: 600 }}>{sr.title}</div>
                         <div style={{ fontSize: 11, color: "var(--g4)" }}>{sr.org} · {sr.date}</div>
@@ -4409,7 +4540,7 @@ export default function ArtistShell() {
                 <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 16 }}>
                   {currentOpp.materialsRequired.map(m => (
                     <span key={m.id} className="chip" style={{ cursor: "default" }}>
-                      {m.type === "video" ? "🎬" : "📷"} {m.label} {m.required ? "" : "(optional)"}
+                      {m.type === "video" ? EIcon.clapperboard : EIcon.camera} {m.label} {m.required ? "" : "(optional)"}
                     </span>
                   ))}
                 </div>
@@ -4532,7 +4663,7 @@ export default function ArtistShell() {
                       setApplyDraft(prev => ({ ...prev, selectedSRIds: checked ? prev.selectedSRIds.filter(x => x !== sr.id) : [...prev.selectedSRIds, sr.id] }));
                     }}>
                       <div className="sr-check-box">{checked ? "✓" : ""}</div>
-                      <span style={{ fontSize: 18 }}>{sr.emoji}</span>
+                      <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] || "var(--g5)" }}>{EIcon[sr.emoji] || sr.emoji}</span>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{sr.title}</div>
                         <div style={{ fontSize: 11, color: "var(--g4)" }}>{sr.org}{sr.start ? ` · ${sr.start}` : ""}{sr.end ? ` — ${sr.end}` : ""}</div>
@@ -4591,7 +4722,7 @@ export default function ArtistShell() {
                             )}
                           </div>
                         ) : (
-                          <div style={{ width: 80, height: 56, borderRadius: 8, background: "var(--g1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, flexShrink: 0 }}>📄</div>
+                          <div style={{ width: 80, height: 56, borderRadius: 8, background: "var(--g1)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "var(--g4)" }}>{EIcon.fileText}</div>
                         )}
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 12, fontWeight: 600, color: "var(--tx)" }}>{attachedMedia.title}</div>
@@ -4662,7 +4793,7 @@ export default function ArtistShell() {
                 <div style={{ fontSize: 13, color: "var(--g5)", marginBottom: 8 }}>{applyDraft.selectedSRIds.length} entries selected</div>
                 {stageRecords.filter(sr => applyDraft.selectedSRIds.includes(sr.id)).slice(0, 3).map(sr => (
                   <div key={sr.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0", fontSize: 12 }}>
-                    <span>{sr.emoji}</span>
+                    <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] || "var(--g5)" }}>{EIcon[sr.emoji] || sr.emoji}</span>
                     <span style={{ fontWeight: 600, color: "var(--tx)" }}>{sr.title}</span>
                     <span style={{ color: "var(--g4)" }}>· {sr.org}</span>
                   </div>
@@ -4729,60 +4860,137 @@ export default function ArtistShell() {
         return (
           <div>
             <div className="dash-banner">
-              <div className="db-welcome">Welcome back</div>
-              <div className="db-title">{artist.name}</div>
+              <div className="dash-banner-blob dash-banner-blob-1"/>
+              <div className="dash-banner-blob dash-banner-blob-2"/>
+              <div className="dash-banner-blob dash-banner-blob-3"/>
+              <div className="db-welcome">Hi {artist.name}</div>
+              <div className="db-title">Own Your Moment</div>
               <div className="db-sub">Your performing arts career, all in one place.</div>
             </div>
-            <div className="dash-stats">
-              <div className="stat-card"><div className="sc-val">{applications.length}</div><div className="sc-label">Applications</div></div>
-              <div className="stat-card"><div className="sc-val">{applications.filter(a => a.status === "shortlisted").length}</div><div className="sc-label">Shortlisted</div></div>
-              <div className="stat-card"><div className="sc-val">{applications.filter(a => a.status === "invited").length}</div><div className="sc-label">Invitations</div></div>
-              <div className="stat-card"><div className="sc-val">1.2k</div><div className="sc-label">Profile Views</div></div>
-            </div>
-            <div className="dash-section">
-              <h3>Recent Applications <span className="ds-count">{applications.length}</span></h3>
-              {applications.slice(0, 3).map(app => {
-                const sc = STATUS_COLORS[app.status];
-                return (
-                  <div key={app.id} className="dash-app-row" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
-                    <img className="dar-logo" src={app.companyLogo} alt="" />
-                    <div className="dar-info">
-                      <div className="dar-title">{app.opportunity}</div>
-                      <div className="dar-company">{app.company}</div>
-                    </div>
-                    <span className="dar-status" style={{ background: sc.bg, color: sc.color }}>{STATUS_LABELS[app.status]}</span>
-                  </div>
-                );
-              })}
-              <button className="btn btn-g btn-sm" style={{ marginTop: 8 }} onClick={() => setPage("applications")}>View all applications →</button>
-            </div>
-            <div className="dash-section">
-              <h3>Recommended Opportunities</h3>
-              <div className="dash-opp-grid">
-                {opportunities.slice(0, 3).map(opp => (
-                  <div key={opp.id} className="dash-opp-card" onClick={() => setPage("discover")}>
-                    <img className="doc-banner" src={opp.banner} alt="" />
-                    <div className="doc-body">
-                      <div className="doc-title">{opp.title}</div>
-                      <div className="doc-company">{opp.company}</div>
-                      <div className="doc-meta">
-                        <span>{opp.location}</span>
-                        <span>Deadline: {opp.deadline}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+
+            <div className="dash-featured-grid">
+              <div className="dash-featured-card" onClick={() => showToast("Lanced Events — Coming soon")}>
+                <img src="/demo/banners/pexels-mart-production-7319706.jpg" alt="" />
+                <div className="dfc-overlay">
+                  <div className="dfc-label">Events</div>
+                  <div className="dfc-title">Lanced Events</div>
+                  <div className="dfc-sub">Workshops, masterclasses & auditions near you</div>
+                </div>
+              </div>
+              <div className="dash-featured-card" onClick={() => showToast("Lanced HQ — Coming soon")}>
+                <img src="/demo/banners/danny-howe-gwqahislnra-unsplash.jpg" alt="" />
+                <div className="dfc-overlay">
+                  <div className="dfc-label">Community</div>
+                  <div className="dfc-title">Lanced HQ</div>
+                  <div className="dfc-sub">Updates, announcements & community highlights</div>
+                </div>
+              </div>
+              <div className="dash-featured-card" onClick={() => showToast("Blog — Coming soon")}>
+                <img src="/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg" alt="" />
+                <div className="dfc-overlay">
+                  <div className="dfc-label">Learn</div>
+                  <div className="dfc-title">Lanced Blog</div>
+                  <div className="dfc-sub">Tips, interviews & career advice for performers</div>
+                </div>
+              </div>
+              <div className="dash-featured-card" onClick={() => showToast("Lanced Labs — Coming soon")}>
+                <img src="/demo/banners/fabian-centeno-k4s5mtsyuli-unsplash.jpg" alt="" />
+                <div className="dfc-overlay">
+                  <div className="dfc-label">Innovation</div>
+                  <div className="dfc-title">Lanced Labs</div>
+                  <div className="dfc-sub">Explore what's next for performing arts technology</div>
+                </div>
               </div>
             </div>
-            <div className="dash-section">
-              <h3>Getting Started</h3>
-              <div className="checklist">
-                {checklist.map((item, i) => (
-                  <div key={i} className="checklist-item" onClick={() => setChecklist(prev => prev.map((c, j) => j === i ? { ...c, done: !c.done } : c))}>
-                    <div className={`ci-dot${item.done ? " done" : ""}`}>{item.done ? "✓" : ""}</div>
-                    <span className={`ci-label${item.done ? " done" : ""}`}>{item.label}</span>
+
+            <div className="dash-grid">
+              <div>
+                <div className="dash-section">
+                  <h3>Recommended Opportunities</h3>
+                  <div className="dash-opp-grid">
+                    {opportunities.slice(0, 3).map(opp => (
+                      <div key={opp.id} className="dash-opp-card" onClick={() => setPage("discover")}>
+                        <img className="doc-banner" src={opp.banner} alt="" />
+                        <div className="doc-body">
+                          <div className="doc-title">{opp.title}</div>
+                          <div className="doc-company">{opp.company}</div>
+                          {opp.match && <div className="doc-match"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8.5l2 2 4-4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>{opp.match}% match</div>}
+                          <div className="doc-meta">
+                            <span>{opp.location}</span>
+                            <span>Deadline: {opp.deadline}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+              </div>
+              <div>
+                <div className="dash-section">
+                  <div className="dash-section-header">
+                    <h3>Recent Applications <span className="ds-count">{applications.length}</span></h3>
+                    <button className="btn btn-g btn-sm" onClick={() => setPage("applications")}>View all →</button>
+                  </div>
+                  {applications.slice(0, 4).map(app => {
+                    const sc = STATUS_COLORS[app.status];
+                    return (
+                      <div key={app.id} className="dash-app-row" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
+                        <img className="dar-logo" src={app.companyLogo} alt="" />
+                        <div className="dar-info">
+                          <div className="dar-title">{app.opportunity}</div>
+                          <div className="dar-company">{app.company}</div>
+                        </div>
+                        <span className="dar-status" style={{ background: sc.bg, color: sc.color }}>{STATUS_LABELS[app.status]}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div className="dash-blog-section">
+              <h3>From the Blog</h3>
+              <div className="dash-blog-slider">
+                <div className="dash-blog-card" onClick={() => showToast("Blog — Coming soon")}>
+                  <img className="dbc-img" src="/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg" alt="" />
+                  <div className="dbc-body">
+                    <div className="dbc-tag">Career</div>
+                    <div className="dbc-title">How to Stand Out at Your Next Audition</div>
+                    <div className="dbc-excerpt">Industry casting directors share their top tips for making a lasting impression in the room.</div>
+                  </div>
+                </div>
+                <div className="dash-blog-card" onClick={() => showToast("Blog — Coming soon")}>
+                  <img className="dbc-img" src="/demo/banners/danny-howe-gwqahislnra-unsplash.jpg" alt="" />
+                  <div className="dbc-body">
+                    <div className="dbc-tag">Wellness</div>
+                    <div className="dbc-title">Protecting Your Body as a Performer</div>
+                    <div className="dbc-excerpt">A physiotherapist's guide to injury prevention, warm-ups, and recovery for dancers and athletes.</div>
+                  </div>
+                </div>
+                <div className="dash-blog-card" onClick={() => showToast("Blog — Coming soon")}>
+                  <img className="dbc-img" src="/demo/banners/pexels-mart-production-7319706.jpg" alt="" />
+                  <div className="dbc-body">
+                    <div className="dbc-tag">Industry</div>
+                    <div className="dbc-title">The Rise of Digital Portfolios</div>
+                    <div className="dbc-excerpt">Why agencies and companies are shifting towards digital comp cards and online showreels.</div>
+                  </div>
+                </div>
+                <div className="dash-blog-card" onClick={() => showToast("Blog — Coming soon")}>
+                  <img className="dbc-img" src="/demo/banners/fabian-centeno-k4s5mtsyuli-unsplash.jpg" alt="" />
+                  <div className="dbc-body">
+                    <div className="dbc-tag">Community</div>
+                    <div className="dbc-title">5 Networking Tips for Emerging Artists</div>
+                    <div className="dbc-excerpt">Building meaningful connections in the performing arts world doesn't have to feel transactional.</div>
+                  </div>
+                </div>
+                <div className="dash-blog-card" onClick={() => showToast("Blog — Coming soon")}>
+                  <img className="dbc-img" src="/demo/banners/shutterstock_1234830199.jpg" alt="" />
+                  <div className="dbc-body">
+                    <div className="dbc-tag">Training</div>
+                    <div className="dbc-title">Masterclass vs Workshop: Which Is Right for You?</div>
+                    <div className="dbc-excerpt">Understanding the difference and choosing the format that matches your growth stage.</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -4983,12 +5191,12 @@ export default function ArtistShell() {
                   <div className="sr-grid">
                     {filteredSR.map(sr => (
                       <div key={sr.id} className="sr-card" onClick={() => openEditEntry(sr)}>
-                        <div className="sr-type" style={{ background: `${SR_COLORS[sr.type]}15`, color: SR_COLORS[sr.type] }}>
-                          {sr.emoji} {SR_LABELS[sr.type]}
+                        <div className="sr-type" style={{ background: `${SR_COLORS[sr.type]}15`, color: SR_COLORS[sr.type], display: "flex", alignItems: "center", gap: 4 }}>
+                          {EIcon[sr.emoji] || sr.emoji} {SR_LABELS[sr.type]}
                         </div>
                         <div className="sr-title">{sr.title}</div>
                         {sr.org && <div className="sr-org">{sr.org}</div>}
-                        {sr.start && <div className="sr-date">📅 {sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}{sr.location ? ` · ${sr.location}` : ""}</div>}
+                        {sr.start && <div className="sr-date" style={{ display: "flex", alignItems: "center", gap: 4 }}>{EIcon.calendar} {sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}{sr.location ? ` · ${sr.location}` : ""}</div>}
                         <div className="sr-desc">{sr.desc}</div>
                         <div className="sr-tags">{sr.tags.map(t => <span key={t}>{t}</span>)}</div>
                         <div className={`sr-usage ${sr.usedIn.length ? "used" : "unused"}`}>
@@ -5001,7 +5209,7 @@ export default function ArtistShell() {
                   <div className="sr-list">
                     {filteredSR.map(sr => (
                       <div key={sr.id} className="sr-list-item" style={{ borderLeftColor: SR_COLORS[sr.type] }} onClick={() => openEditEntry(sr)}>
-                        <span style={{ fontSize: 20 }}>{sr.emoji}</span>
+                        <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] || "var(--g5)" }}>{EIcon[sr.emoji] || sr.emoji}</span>
                         <div className="sli-info">
                           <div className="sli-title">{sr.title}{sr.org ? ` · ${sr.org}` : ""}{sr.location ? ` · ${sr.location}` : ""}</div>
                           <div className="sli-sub">{sr.desc}</div>
@@ -5259,7 +5467,7 @@ export default function ArtistShell() {
                 {/* ── Drafts section ── */}
                 {appFilter === "all" && applications.filter(a => a.status === "draft").length > 0 && (
                   <div style={{ marginBottom: 24 }}>
-                    <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 12 }}>📝 Drafts</h3>
+                    <h3 style={{ fontSize: 14, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>{EIcon.pencil} Drafts</h3>
                     <div className="app-list">
                       {applications.filter(a => a.status === "draft").map(app => {
                         const progress = Math.round(((app.draftProgress?.profile ? 1 : 0) + (app.draftProgress?.resume ? 1 : 0) + (app.draftProgress?.materials ? 1 : 0) + (app.draftProgress?.motivation ? 1 : 0)) / 4 * 100);
@@ -5329,8 +5537,8 @@ export default function ArtistShell() {
                             </div>
                             <div className="at-title">{app.opportunity}</div>
                             <div className="at-meta">
-                              <span>📅 {app.submitted || "—"}</span>
-                              <span>⏰ {app.deadline}</span>
+                              <span style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>{EIcon.calendar} {app.submitted || "—"}</span>
+                              <span style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>{EIcon.clock} {app.deadline}</span>
                             </div>
                           </div>
                           <button className="at-archive" onClick={e => archiveApp(e, app.id)} title="Archive">
@@ -5360,7 +5568,7 @@ export default function ArtistShell() {
                                 <div className="ak-info">
                                   <div className="ak-title">{app.opportunity}</div>
                                   <div className="ak-company">{app.company}</div>
-                                  <div className="ak-deadline">⏰ {app.deadline}</div>
+                                  <div className="ak-deadline" style={{ display: "flex", alignItems: "center", gap: 3 }}>{EIcon.clock} {app.deadline}</div>
                                 </div>
                               </div>
                             ))}
@@ -5442,6 +5650,7 @@ export default function ArtistShell() {
 
       /* ── Network ── */
       case "network": {
+        const safeTab = networkTab === "artists" ? "people" : networkTab;
         const MOCK_NETWORK_PEOPLE = [
           { id: "p1", name: "Elise Vandenberg", role: "Contemporary Dancer", company: "NDT", location: "The Hague, NL", lat: 52.07, lng: 4.30, photo: "/demo/artists/1.jpg", styles: ["Contemporary", "Floor Work"], mutual: 5 },
           { id: "p2", name: "Marcus Chen", role: "Choreographer", company: "Freelance", location: "Berlin, DE", lat: 52.52, lng: 13.40, photo: "/demo/artists/2.jpg", styles: ["Contemporary", "Hip-Hop"], mutual: 3 },
@@ -5451,18 +5660,28 @@ export default function ArtistShell() {
           { id: "p6", name: "Aisha Diallo", role: "Afro-Contemporary Dancer", company: "Compagnie Käfig", location: "Paris, FR", lat: 48.86, lng: 2.35, photo: "/demo/artists/nisha-huizing.jpg", styles: ["Afro-fusion", "Contemporary"], mutual: 7 },
         ];
         const MOCK_NETWORK_COMPANIES = [
-          { id: "c1", name: "Ballett Zürich", type: "Company", location: "Zürich, CH", lat: 47.37, lng: 8.54, logo: "/demo/artists/1.jpg", styles: ["Classical", "Contemporary"], openPositions: 2 },
-          { id: "c2", name: "Theater Regensburg", type: "Company", location: "Regensburg, DE", lat: 49.02, lng: 12.10, logo: "/demo/artists/2.jpg", styles: ["Contemporary", "Classical"], openPositions: 3 },
-          { id: "c3", name: "The Movers", type: "Casting Agency", location: "Berlin, DE", lat: 52.52, lng: 13.41, logo: "/demo/artists/3.jpg", styles: ["Contemporary", "Physical Theatre"], openPositions: 1 },
-          { id: "c4", name: "Tanz Luzern", type: "Company", location: "Luzern, CH", lat: 47.05, lng: 8.31, logo: "/demo/artists/4.jpg", styles: ["Contemporary"], openPositions: 1 },
-          { id: "c5", name: "Pina Bausch Tanztheater", type: "Company", location: "Wuppertal, DE", lat: 51.26, lng: 7.17, logo: "/demo/artists/5.jpg", styles: ["Tanztheater"], openPositions: 1 },
-          { id: "c6", name: "Royal Ballet", type: "Company", location: "London, UK", lat: 51.51, lng: -0.13, logo: "/demo/artists/nisha-huizing.jpg", styles: ["Classical", "Contemporary"], openPositions: 2 },
+          { id: "c1", name: "Ballett Zürich", type: "Company", location: "Zürich, CH", lat: 47.37, lng: 8.54, logo: null, banner: "/demo/banners/pexels-mart-production-7319706.jpg", styles: ["Classical", "Contemporary"], openPositions: 2 },
+          { id: "c2", name: "Theater Regensburg", type: "Company", location: "Regensburg, DE", lat: 49.02, lng: 12.10, logo: null, banner: "/demo/banners/danny-howe-gwqahislnra-unsplash.jpg", styles: ["Contemporary", "Classical"], openPositions: 3 },
+          { id: "c3", name: "The Movers", type: "Casting Agency", location: "Berlin, DE", lat: 52.52, lng: 13.41, logo: null, banner: "/demo/banners/gwen-king-m3th3riq9-w-unsplash.jpg", styles: ["Contemporary", "Physical Theatre"], openPositions: 1 },
+          { id: "c4", name: "Tanz Luzern", type: "Company", location: "Luzern, CH", lat: 47.05, lng: 8.31, logo: null, banner: "/demo/banners/shutterstock_1234830199.jpg", styles: ["Contemporary"], openPositions: 1 },
+          { id: "c5", name: "Pina Bausch Tanztheater", type: "Company", location: "Wuppertal, DE", lat: 51.26, lng: 7.17, logo: null, banner: "/demo/banners/fabian-centeno-k4s5mtsyuli-unsplash.jpg", styles: ["Tanztheater"], openPositions: 0 },
+          { id: "c6", name: "Royal Ballet", type: "Company", location: "London, UK", lat: 51.51, lng: -0.13, logo: null, banner: "/demo/banners/jens-thekkeveettil-dbwvuqboou8-unsplash.jpg", styles: ["Classical", "Contemporary"], openPositions: 2 },
         ];
-        const networkItems = networkTab === "people" ? MOCK_NETWORK_PEOPLE : MOCK_NETWORK_COMPANIES;
+        const initialsLogo = (name = "") => {
+          const initials = name.split(/\s+/).filter(Boolean).slice(0,2).map(w => w[0]).join("").toUpperCase() || "•";
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='#0A0A0A'/><text x='50' y='52' font-family='Inter,system-ui,-apple-system,sans-serif' font-size='38' font-weight='600' fill='white' text-anchor='middle' dominant-baseline='central' letter-spacing='-1'>${initials}</text></svg>`;
+          return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
+        };
+        const networkItems = safeTab === "people" ? MOCK_NETWORK_PEOPLE : MOCK_NETWORK_COMPANIES;
         const filteredNetworkItems = networkItems.filter(item => {
           const matchesSearch = !networkSearch || item.name.toLowerCase().includes(networkSearch.toLowerCase()) || item.location.toLowerCase().includes(networkSearch.toLowerCase());
+          const matchesLocation = !networkFilters.location || networkFilters.location === "all" || item.location.toLowerCase().includes(networkFilters.location.toLowerCase());
+          if (safeTab === "companies") {
+            const matchesType = !networkFilters.companyType || networkFilters.companyType === "all" || item.type === networkFilters.companyType;
+            const matchesHiring = !networkFilters.hiring || networkFilters.hiring === "all" || (networkFilters.hiring === "yes" ? (item.openPositions || 0) > 0 : (item.openPositions || 0) === 0);
+            return matchesSearch && matchesType && matchesHiring && matchesLocation;
+          }
           const matchesStyle = networkFilters.style === "all" || (item.styles && item.styles.includes(networkFilters.style));
-          const matchesLocation = networkFilters.location === "all" || !networkFilters.location || item.location.toLowerCase().includes(networkFilters.location.toLowerCase());
           const matchesType = networkFilters.artistType === "all" || (item.role && item.role.toLowerCase().includes(networkFilters.artistType.toLowerCase()));
           return matchesSearch && matchesStyle && matchesLocation && matchesType;
         });
@@ -5474,36 +5693,31 @@ export default function ArtistShell() {
           <div>
             <div className="pg-header">
               <h1><em>Network</em></h1>
-              <p className="pg-sub">Connect with people and companies in the performing arts</p>
+              <p className="pg-sub">Connect with people and companies in the performing arts.</p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div className="tab-bar" style={{ flex: 1, marginBottom: 0 }}>
-                <button className={`tab-btn${networkTab === "people" ? " on" : ""}`} onClick={() => setNetworkTab("people")}>People</button>
-                <button className={`tab-btn${networkTab === "companies" ? " on" : ""}`} onClick={() => setNetworkTab("companies")}>Companies</button>
-              </div>
-              <div style={{ display: "flex", gap: 4, background: "var(--g1)", borderRadius: 10, padding: 3 }}>
-                <button className={`btn btn-sm ${networkView === "list" ? "btn-p" : "btn-s"}`} onClick={() => setNetworkView("list")} style={{ padding: "4px 10px", fontSize: 11, border: networkView === "list" ? undefined : "none", background: networkView === "list" ? undefined : "transparent" }}>☰ List</button>
-                <button className={`btn btn-sm ${networkView === "cards" ? "btn-p" : "btn-s"}`} onClick={() => setNetworkView("cards")} style={{ padding: "4px 10px", fontSize: 11, border: networkView === "cards" ? undefined : "none", background: networkView === "cards" ? undefined : "transparent" }}>▦ Cards</button>
-                <button className={`btn btn-sm ${networkView === "map" ? "btn-p" : "btn-s"}`} onClick={() => setNetworkView("map")} style={{ padding: "4px 10px", fontSize: 11, border: networkView === "map" ? undefined : "none", background: networkView === "map" ? undefined : "transparent", display: "flex", alignItems: "center", gap: 4 }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg> Map</button>
-              </div>
+            <div className="tab-bar" style={{ marginBottom: 14 }}>
+              <button className={`tab-btn${safeTab === "people" ? " on" : ""}`} onClick={() => setNetworkTab("people")}>People</button>
+              <button className={`tab-btn${safeTab === "companies" ? " on" : ""}`} onClick={() => setNetworkTab("companies")}>Companies</button>
             </div>
-
-            {/* Filters */}
-            <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap", alignItems: "center" }}>
-              <div className="list-search" style={{ flex: 1, minWidth: 200 }}>
+            <div className="db-toolbar">
+              <div className="db-search">
                 {I.search}
-                <input placeholder={`Search ${networkTab}...`} value={networkSearch} onChange={e => setNetworkSearch(e.target.value)} />
+                <input placeholder={`Search ${safeTab}...`} value={networkSearch} onChange={e => setNetworkSearch(e.target.value)} />
               </div>
-              <button className={`at-filter-btn${networkActiveFilterCount > 0 ? " active" : ""}`} onClick={() => setShowNetworkFilters(true)} style={{ position: "relative" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-                <span className="at-filter-label">Filters</span>
-                {networkActiveFilterCount > 0 && <span style={{ position: "absolute", top: -4, right: -4, minWidth: 16, height: 16, borderRadius: 8, background: "var(--ac)", color: "#fff", fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", padding: "0 4px" }}>{networkActiveFilterCount}</span>}
+              <div className="view-toggle" style={{marginLeft:"auto"}}>
+                <button className={networkView==="list"?"active":""} onClick={() => setNetworkView("list")}>{I.list}</button>
+                <button className={networkView==="cards"?"active":""} onClick={() => setNetworkView("cards")}>{I.grid}</button>
+                <button className={networkView==="map"?"active":""} onClick={() => setNetworkView("map")}>{I.globe}</button>
+              </div>
+              <button className={`cand-filter-toggle ${networkActiveFilterCount > 0 ? "on" : ""}`} onClick={() => setShowNetworkFilters(true)}>
+                {I.filter} <span className="cft-label">Filters</span>
+                {networkActiveFilterCount > 0 && <span className="cft-badge">{networkActiveFilterCount}</span>}
               </button>
             </div>
             <FilterPanel
               open={showNetworkFilters}
               onClose={() => setShowNetworkFilters(false)}
-              title={`Find ${networkTab}`}
+              title={`Find ${safeTab}`}
               subtitle="Narrow down by role, style, location, and more."
               filters={networkFilters}
               onChange={(k, v) => setNetworkFilters(p => ({ ...p, [k]: v }))}
@@ -5516,18 +5730,18 @@ export default function ArtistShell() {
               <div className="app-list">
                 {filteredNetworkItems.map(item => (
                   <div key={item.id} className="app-card" onClick={() => showToast(`${item.name} — Profile coming soon`)} style={{ cursor: "pointer" }}>
-                    <img className="ac-logo" src={item.photo || item.logo} alt="" />
+                    <img className="ac-logo" src={item.photo || item.logo || initialsLogo(item.name)} alt="" />
                     <div className="ac-info">
                       <div className="ac-title">{item.name}</div>
-                      <div className="ac-company">{networkTab === "people" ? `${item.role}${item.company ? ` · ${item.company}` : ""}` : item.type}</div>
+                      <div className="ac-company">{safeTab === "people" ? `${item.role}${item.company ? ` · ${item.company}` : ""}` : item.type}</div>
                       <div className="ac-meta">
-                        <span>📍 {item.location}</span>
+                        <span style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>{EIcon.mapPin} {item.location}</span>
                         {item.styles && <span>{item.styles.join(", ")}</span>}
-                        {item.mutual && <span>{item.mutual} mutual connections</span>}
+                        {item.mutual !== undefined && <span>{item.mutual} mutual connections</span>}
                         {item.openPositions !== undefined && <span>{item.openPositions} open positions</span>}
                       </div>
                     </div>
-                    <button className="btn btn-s btn-sm" onClick={(e) => { e.stopPropagation(); showToast(`Connection request sent to ${item.name}`); }}>{networkTab === "people" ? "Connect" : "Follow"}</button>
+                    <button className="btn btn-s btn-sm" onClick={(e) => { e.stopPropagation(); showToast(`Connection request sent to ${item.name}`); }}>{safeTab === "people" ? "Connect" : "Follow"}</button>
                   </div>
                 ))}
                 {filteredNetworkItems.length === 0 && <div style={{ textAlign: "center", padding: 40, color: "var(--g4)" }}>No results found. Try adjusting your filters.</div>}
@@ -5535,22 +5749,50 @@ export default function ArtistShell() {
             )}
 
             {networkView === "cards" && (
-              <div className="network-cards">
-                {filteredNetworkItems.map(item => (
+              <div className={`network-cards network-cards-${safeTab}`}>
+                {filteredNetworkItems.map(item => safeTab === "companies" ? (
+                  <div key={item.id} className="network-card network-card-co" onClick={() => showToast(`${item.name} — Company page coming soon`)}>
+                    <div className="ncc-banner" style={{ backgroundImage: item.banner ? `url(${item.banner})` : "linear-gradient(135deg,#7A66FF,#A294FF)" }}>
+                      {item.openPositions > 0 && (
+                        <span className="ncc-hiring"><span className="ncc-pulse"/>Active Hiring</span>
+                      )}
+                    </div>
+                    <div className="ncc-logo-wrap">
+                      <img className="ncc-logo" src={item.logo || initialsLogo(item.name)} alt={item.name}/>
+                    </div>
+                    <div className="ncc-body">
+                      <div>
+                        <div className="ncc-name">{item.name}</div>
+                        <div className="ncc-meta"><span className="ncc-type">{item.type}</span> · {item.location}</div>
+                      </div>
+                      {(item.styles || []).length > 0 && (
+                        <div className="ncc-styles">
+                          {(item.styles || []).slice(0,2).map(s => <span key={s}>{s}</span>)}
+                        </div>
+                      )}
+                      <div className="ncc-footer">
+                        <span>{item.openPositions > 0 ? `${item.openPositions} open ${item.openPositions === 1 ? "role" : "roles"}` : "No open roles"}</span>
+                        <button className="btn btn-p btn-sm" style={{ fontSize: 10, padding: "4px 12px" }} onClick={e => { e.stopPropagation(); showToast(`Following ${item.name}`); }}>Follow</button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
                   <div key={item.id} className="network-card" onClick={() => showToast(`${item.name} — Profile coming soon`)}>
-                    <div className="nc-header">
-                      <img className="nc-photo" src={item.photo || item.logo} alt="" />
+                    <div className="nc-img-wrap">
+                      <img src={item.photo || item.logo} alt={item.name}/>
+                      <div className="nc-overlay">
+                        <div className="nc-name">{item.name}</div>
+                        <div className="nc-role">{`${item.role}${item.company ? ` · ${item.company}` : ""}`}</div>
+                        <div className="nc-location">{item.location}</div>
+                      </div>
                     </div>
                     <div className="nc-body">
-                      <div className="nc-name">{item.name}</div>
-                      <div className="nc-role">{networkTab === "people" ? `${item.role}${item.company ? ` · ${item.company}` : ""}` : item.type}</div>
-                      <div className="nc-location">📍 {item.location}</div>
                       <div className="nc-styles">
                         {(item.styles || []).map(s => <span key={s}>{s}</span>)}
                       </div>
                       <div className="nc-footer">
-                        <span>{item.mutual ? `${item.mutual} mutual` : item.openPositions !== undefined ? `${item.openPositions} open roles` : ""}</span>
-                        <button className="btn btn-p btn-sm" style={{ fontSize: 10, padding: "4px 12px" }} onClick={(e) => { e.stopPropagation(); showToast(`Connection request sent to ${item.name}`); }}>{networkTab === "people" ? "Connect" : "Follow"}</button>
+                        <span>{item.mutual ? `${item.mutual} mutual` : ""}</span>
+                        <button className="btn btn-p btn-sm" style={{ fontSize: 10, padding: "4px 12px" }} onClick={e => { e.stopPropagation(); showToast(`Connection request sent to ${item.name}`); }}>Connect</button>
                       </div>
                     </div>
                   </div>
@@ -5560,7 +5802,7 @@ export default function ArtistShell() {
             )}
 
             {networkView === "map" && (
-              <NetworkMap items={filteredNetworkItems} networkTab={networkTab} darkMode={darkMode} />
+              <NetworkMap items={filteredNetworkItems} networkTab={safeTab} darkMode={darkMode} />
             )}
           </div>
         );
@@ -5573,7 +5815,7 @@ export default function ArtistShell() {
           const highlightedVid = pf.highlightedVideo ? pf.videos.find(v => v.id === pf.highlightedVideo) : null;
           const otherVideos = pf.videos.filter(v => v.id !== pf.highlightedVideo);
           const RESUME_ICONS = { experience: "exp", education: "edu", award: "award" };
-          const RESUME_EMOJI = { experience: "💼", education: "🎓", award: "🏆" };
+          const RESUME_EMOJI_KEYS = { experience: "briefcase", education: "graduation", award: "trophy" };
 
           if (portfolioPreview) {
             /* ── Portfolio Public Preview ── */
@@ -5640,7 +5882,7 @@ export default function ArtistShell() {
                   <div className="pfe-resume-list">
                     {(pf.resume || []).map(r => (
                       <div key={r.id} className="pfe-resume-item" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
-                        <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{RESUME_EMOJI[r.type] || "💼"}</div>
+                        <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{EIcon[RESUME_EMOJI_KEYS[r.type] || "briefcase"]}</div>
                         <div className="pfe-ri-info">
                           <div className="pfe-ri-title">{r.title}</div>
                           <div className="pfe-ri-org">{r.org}</div>
@@ -5675,7 +5917,7 @@ export default function ArtistShell() {
                   <h3 style={{ margin: "0 0 16px" }}>Documents</h3>
                   <div className="pfe-doc-list">
                     {pf.documents.map(d => (
-                      <div key={d.id} className="pfe-doc" style={{ background: "#fff", border: "1px solid var(--g2)" }}><div className="pfe-d-icon">📄</div><div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div></div>
+                      <div key={d.id} className="pfe-doc" style={{ background: "#fff", border: "1px solid var(--g2)" }}><div className="pfe-d-icon">{EIcon.fileText}</div><div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div></div>
                     ))}
                     {pf.documents.length === 0 && <p style={{ color: "var(--g4)", fontSize: 13 }}>No documents yet.</p>}
                   </div>
@@ -5853,7 +6095,7 @@ export default function ArtistShell() {
                 <div className="pfe-resume-list">
                   {(pf.resume || []).map(r => (
                     <div key={r.id} className="pfe-resume-item">
-                      <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{RESUME_EMOJI[r.type] || "💼"}</div>
+                      <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{EIcon[RESUME_EMOJI_KEYS[r.type] || "briefcase"]}</div>
                       <div className="pfe-ri-info">
                         <div className="pfe-ri-title">{r.title}</div>
                         <div className="pfe-ri-org">{r.org}</div>
@@ -5898,7 +6140,7 @@ export default function ArtistShell() {
                 <div className="pfe-doc-list">
                   {pf.documents.map(d => (
                     <div key={d.id} className="pfe-doc">
-                      <div className="pfe-d-icon">📄</div>
+                      <div className="pfe-d-icon">{EIcon.fileText}</div>
                       <div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div>
                     </div>
                   ))}
@@ -6002,7 +6244,7 @@ export default function ArtistShell() {
                     ))}
                     {wk.awards.map(aw => (
                       <div key={aw.id} className="wke-award-card">
-                        <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? "🏆" : aw.type === "nomination" ? "🌟" : "✨"}</div>
+                        <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? EIcon.trophy : EIcon.sparkles}</div>
                         <div className="wke-award-info">
                           <div className="wke-award-title">{aw.title}</div>
                           <div className="wke-award-meta">{aw.festival} · {aw.year} · {aw.type}</div>
@@ -6077,7 +6319,7 @@ export default function ArtistShell() {
                     <h3 className="wkp-section-title">Partners & <em>Presented By</em></h3>
                     {wk.partners.map(pt => (
                       <div key={pt.id} className="wke-partner">
-                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤝</div>
+                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D97706" }}>{EIcon.handshake}</div>
                         <div><div className="wke-partner-name">{pt.name}</div><div className="wke-partner-type">{pt.type}</div></div>
                       </div>
                     ))}
@@ -6120,7 +6362,7 @@ export default function ArtistShell() {
                     <h3 className="wkp-section-title"><em>Downloads</em></h3>
                     {wk.downloads.map(dl => (
                       <div key={dl.id} className="wke-dl-item">
-                        <div className="wke-dl-icon">📄</div>
+                        <div className="wke-dl-icon">{EIcon.fileText}</div>
                         <div className="wke-dl-info"><div className="wke-dl-title">{dl.label}</div><div className="wke-dl-meta">{dl.format} · {dl.size}</div></div>
                       </div>
                     ))}
@@ -6497,7 +6739,7 @@ export default function ArtistShell() {
                     <h3><em>Awards</em> & Selections <span className="wke-count">{wk.awards.length}</span></h3>
                     {wk.awards.map(aw => (
                       <div key={aw.id} className="wke-award-card">
-                        <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? "🏆" : aw.type === "nomination" ? "🌟" : "✨"}</div>
+                        <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? EIcon.trophy : EIcon.sparkles}</div>
                         <div className="wke-award-info">
                           <div className="wke-award-title">{aw.title}</div>
                           <div className="wke-award-meta">{aw.festival} · {aw.year} · <em>{aw.type}</em></div>
@@ -6550,7 +6792,7 @@ export default function ArtistShell() {
                     <h3>Partners & <em>Presented By</em> <span className="wke-count">{wk.partners.length}</span></h3>
                     {wk.partners.map(pt => (
                       <div key={pt.id} className="wke-partner">
-                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤝</div>
+                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D97706" }}>{EIcon.handshake}</div>
                         <div><div className="wke-partner-name">{pt.name}</div><div className="wke-partner-type">{pt.type}</div></div>
                         <button style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
                           onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, partners: w.partners.filter(p => p.id !== pt.id) } : w))}>×</button>
@@ -6599,7 +6841,7 @@ export default function ArtistShell() {
                     <h3><em>Downloads</em> <span className="wke-count">{wk.downloads.length}</span></h3>
                     {wk.downloads.map(dl => (
                       <div key={dl.id} className="wke-dl-item">
-                        <div className="wke-dl-icon">📄</div>
+                        <div className="wke-dl-icon">{EIcon.fileText}</div>
                         <div className="wke-dl-info"><div className="wke-dl-title">{dl.label}</div><div className="wke-dl-meta">{dl.format} · {dl.size}</div></div>
                         <button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }}
                           onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, downloads: w.downloads.filter(d => d.id !== dl.id) } : w))}>×</button>
@@ -6633,7 +6875,7 @@ export default function ArtistShell() {
             <div className="pf-grid">
               {portfolios.map(pf => (
                 <div key={pf.id} className="pf-card" onClick={() => { setViewPortfolio(pf.id); setPortfolioTab("overview"); }}>
-                  {pf.cover ? <img className="pfc-cover" src={pf.cover} alt="" /> : <div className="pfc-cover" style={{ height: 140, background: "linear-gradient(135deg,rgba(96,77,255,.1),rgba(96,77,255,.03))", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--g4)", fontSize: 24 }}>📁</div>}
+                  {pf.cover ? <img className="pfc-cover" src={pf.cover} alt="" /> : <div className="pfc-cover" style={{ height: 140, background: "linear-gradient(135deg,rgba(96,77,255,.1),rgba(96,77,255,.03))", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--g4)" }}>{EIcon.folder}</div>}
                   <div className="pfc-body">
                     <div className="pfc-title">{pf.name}</div>
                     <div className="pfc-meta">
@@ -6656,7 +6898,7 @@ export default function ArtistShell() {
             <div className="wk-grid">
               {works.map(wk => (
                 <div key={wk.id} className="wk-card" onClick={() => { setViewWork(wk.id); setWorkTab("overview"); }}>
-                  {wk.cover ? <img className="wkc-cover" src={wk.cover} alt="" /> : <div className="wkc-cover" style={{ height: 140, background: "linear-gradient(135deg,rgba(217,119,6,.12),rgba(217,119,6,.03))", display: "flex", alignItems: "center", justifyContent: "center", color: "#D97706", fontSize: 24 }}>🎭</div>}
+                  {wk.cover ? <img className="wkc-cover" src={wk.cover} alt="" /> : <div className="wkc-cover" style={{ height: 140, background: "linear-gradient(135deg,rgba(217,119,6,.12),rgba(217,119,6,.03))", display: "flex", alignItems: "center", justifyContent: "center", color: "#D97706" }}>{EIcon.masks}</div>}
                   <div className="wkc-body">
                     <div className="wkc-title">{wk.name}</div>
                     <div className="wkc-tagline">{wk.tagline}</div>
@@ -6699,7 +6941,7 @@ export default function ArtistShell() {
                   {m.thumb ? (
                     <img className="mi-thumb" src={m.thumb} alt="" />
                   ) : (
-                    <div className="mi-placeholder">{m.type === "doc" ? "📄" : m.type === "audio" ? "🎵" : "🔗"}</div>
+                    <div className="mi-placeholder">{m.type === "doc" ? EIcon.fileText : m.type === "audio" ? EIcon.music : EIcon.link}</div>
                   )}
                   <div className="mi-badge" style={{ background: MEDIA_COLORS[m.type] }}>{m.format}</div>
                   <div className={`mi-check${mediaSelected.includes(m.id) ? " checked" : ""}`}>
@@ -6731,7 +6973,7 @@ export default function ArtistShell() {
               <p className="pg-sub">Learn and grow your performing arts career</p>
             </div>
             <div className="stub-section">
-              <div className="stub-icon">🎓</div>
+              <div className="stub-icon">{EIcon.graduation}</div>
               <div className="stub-title">Course Library</div>
               <p>Courses, workshops, industry guides, and video tutorials. Coming soon.</p>
             </div>
@@ -6830,7 +7072,7 @@ export default function ArtistShell() {
                 </div>
               ) : (
                 <div className="ms-empty">
-                  <div className="ms-empty-icon">💬</div>
+                  <div className="ms-empty-icon">{I.messages}</div>
                   <div>Select a conversation to start messaging</div>
                 </div>
               )}
@@ -7000,12 +7242,12 @@ export default function ArtistShell() {
                   <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 16 }}>Choose what you want to be notified about.</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     {[
-                      { icon: "\uD83D\uDD14", title: "Application Updates", desc: "Status changes, invitations, and decisions", key: "appUpdates" },
-                      { icon: "\uD83D\uDCBC", title: "New Opportunities", desc: "Matching auditions, jobs, and open calls", key: "newOpps" },
-                      { icon: "\uD83D\uDCAC", title: "Messages", desc: "New messages from companies and connections", key: "messages" },
-                      { icon: "\uD83D\uDC65", title: "Network Activity", desc: "Connection requests and follows", key: "network" },
-                      { icon: "\uD83D\uDCF0", title: "Newsletter", desc: "Weekly digest of industry news and tips", key: "newsletter" },
-                      { icon: "\uD83C\uDFAF", title: "Deadline Reminders", desc: "Reminders before application deadlines", key: "deadlines" },
+                      { icon: I.bell, title: "Application Updates", desc: "Status changes, invitations, and decisions", key: "appUpdates" },
+                      { icon: EIcon.briefcase, title: "New Opportunities", desc: "Matching auditions, jobs, and open calls", key: "newOpps" },
+                      { icon: I.messages, title: "Messages", desc: "New messages from companies and connections", key: "messages" },
+                      { icon: EIcon.user, title: "Network Activity", desc: "Connection requests and follows", key: "network" },
+                      { icon: EIcon.newspaper, title: "Newsletter", desc: "Weekly digest of industry news and tips", key: "newsletter" },
+                      { icon: EIcon.clock, title: "Deadline Reminders", desc: "Reminders before application deadlines", key: "deadlines" },
                     ].map(n => (
                       <div key={n.key} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", border: "1px solid var(--g2)", borderRadius: 10 }}>
                         <div>
@@ -9902,7 +10144,7 @@ export default function ArtistShell() {
                                 </div>
                               ) : (
                                 <button className="studio-inspector-media-btn" onClick={() => { setStudioMediaPickerTarget({ section: secId, field }); setShowMediaPicker("photo"); }}>
-                                  📷 Choose from Media Library
+                                  {EIcon.camera} Choose from Media Library
                                 </button>
                               )}
                               {currentThumb && <button style={{ fontSize: 11, color: "var(--g4)", background: "none", border: "none", cursor: "pointer", padding: 0 }} onClick={() => updateSectionSetting(secId, field, null)}>Remove</button>}
@@ -10305,7 +10547,7 @@ export default function ArtistShell() {
             {studioTab === "analytics" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
                 <div className="stub-section">
-                  <div className="stub-icon">📊</div>
+                  <div className="stub-icon">{EIcon.barChart}</div>
                   <div className="stub-title">Website Analytics</div>
                   <p>Track page views, visitor locations, popular sections, and link clicks. Coming soon.</p>
                 </div>
@@ -10681,12 +10923,7 @@ export default function ArtistShell() {
             <button className="topbar-studio" onClick={() => showToast("Studio — premium tools coming soon")}>
               <span>Try Studio</span>
             </button>
-            {artist.plan === "Core" && (
-              <button className="topbar-premium" onClick={() => showToast("Plans — comparison coming soon")}>
-                <span>Go Premium</span>
-              </button>
-            )}
-            <button className="topbar-pill notif-pill" onClick={() => setShowNotifPanel(!showNotifPanel)}>
+<button className="topbar-pill notif-pill" onClick={() => setShowNotifPanel(!showNotifPanel)}>
               <span>Notifications</span>
               {notifications.filter(n => n.unread).length > 0 && <span className="notif-pill-count">{notifications.filter(n => n.unread).length}</span>}
             </button>
@@ -10793,6 +11030,12 @@ export default function ArtistShell() {
             </div>
           )}
           <div className="content">
+            <div className="dash-bg" aria-hidden="true">
+              <div className="dash-blob dash-blob-1"/>
+              <div className="dash-blob dash-blob-2"/>
+              <div className="dash-blob dash-blob-3"/>
+              <div className="dash-blob dash-blob-4"/>
+            </div>
             {renderPage()}
           </div>
         </div>
@@ -10826,7 +11069,7 @@ export default function ArtistShell() {
             <div className="np-list">
               {notifications.filter(n => notifFilter === "all" || n.type === notifFilter).map(n => (
                 <div key={n.id} className={`np-item${n.unread ? " unread" : ""}`} onClick={() => setNotifications(prev => prev.map(x => x.id === n.id ? { ...x, unread: false } : x))}>
-                  <div className="np-item-icon" style={{ background: `${n.color}15`, color: n.color }}>{n.icon}</div>
+                  <div className="np-item-icon" style={{ background: `${n.color}15`, color: n.color }}>{EIcon[n.icon] || n.icon}</div>
                   <div className="np-item-body">
                     <div className="np-item-title">{n.title}<span className="np-item-time">{n.time}</span></div>
                     <div className="np-item-text">{n.body}</div>
@@ -10844,18 +11087,18 @@ export default function ArtistShell() {
           <div onClick={e => e.stopPropagation()} style={{ position: "relative", maxWidth: 520 }}>
             <button className="modal-close" onClick={() => setShowWelcome(false)}>✕</button>
             <div style={{ textAlign: "center", marginBottom: 20 }}>
-              <div style={{ fontSize: 40, marginBottom: 12 }}>🎭</div>
+              <div style={{ marginBottom: 12, color: "var(--ac)" }}>{EIcon.masks}</div>
               <h2>Welcome to Lanced</h2>
               <p className="modal-sub">Your performing arts career starts here. Explore what's inside.</p>
             </div>
             <div className="welcome-grid">
               {[
-                { icon: "👤", title: "Profile & Resume", desc: "Build your professional identity with a modular career library" },
-                { icon: "🔍", title: "Discover", desc: "Find auditions, jobs, and open calls from top companies" },
-                { icon: "📋", title: "Applications", desc: "Track submissions and manage your entire audition pipeline" },
-                { icon: "🎨", title: "Present", desc: "Create stunning portfolios to share with the industry" },
-                { icon: "📁", title: "Media Library", desc: "Upload and organize your videos, photos, and documents" },
-                { icon: "🎓", title: "Academy", desc: "Learn from industry professionals and grow your career" },
+                { icon: I.profile, title: "Profile & Resume", desc: "Build your professional identity with a modular career library" },
+                { icon: I.discover, title: "Discover", desc: "Find auditions, jobs, and open calls from top companies" },
+                { icon: EIcon.clipboard, title: "Applications", desc: "Track submissions and manage your entire audition pipeline" },
+                { icon: EIcon.palette, title: "Present", desc: "Create stunning portfolios to share with the industry" },
+                { icon: EIcon.folder, title: "Media Library", desc: "Upload and organize your videos, photos, and documents" },
+                { icon: EIcon.graduation, title: "Academy", desc: "Learn from industry professionals and grow your career" },
               ].map((item, i) => (
                 <div key={i} className="welcome-card">
                   <div className="wc-icon">{item.icon}</div>
@@ -10884,15 +11127,15 @@ export default function ArtistShell() {
             {!newEntryType ? (
               <div className="entry-type-grid">
                 {[
-                  { type: "experience", emoji: "💼", title: "Experience", sub: "Jobs, contracts, residencies" },
-                  { type: "education", emoji: "🎓", title: "Education", sub: "Degrees, schools, intensives" },
-                  { type: "award", emoji: "🏆", title: "Award", sub: "Prizes, nominations, finals" },
-                  { type: "skills", emoji: "⚡", title: "Skills", sub: "Techniques, disciplines" },
-                  { type: "press", emoji: "📰", title: "Press", sub: "Reviews, features, mentions" },
-                  { type: "repertoire", emoji: "🎭", title: "Repertoire", sub: "Roles, productions, tours" },
+                  { type: "experience", icon: EIcon.briefcase, title: "Experience", sub: "Jobs, contracts, residencies" },
+                  { type: "education", icon: EIcon.graduation, title: "Education", sub: "Degrees, schools, intensives" },
+                  { type: "award", icon: EIcon.trophy, title: "Award", sub: "Prizes, nominations, finals" },
+                  { type: "skills", icon: EIcon.zap, title: "Skills", sub: "Techniques, disciplines" },
+                  { type: "press", icon: EIcon.newspaper, title: "Press", sub: "Reviews, features, mentions" },
+                  { type: "repertoire", icon: EIcon.masks, title: "Repertoire", sub: "Roles, productions, tours" },
                 ].map(et => (
                   <div key={et.type} className="entry-type-card" onClick={() => setNewEntryType(et.type)}>
-                    <span className="etc-emoji">{et.emoji}</span>
+                    <span className="etc-emoji">{et.icon}</span>
                     <div>
                       <div className="etc-title">{et.title}</div>
                       <div className="etc-sub">{et.sub}</div>
@@ -10965,7 +11208,7 @@ export default function ArtistShell() {
                       <div key={m.id} className={`picker-item${sel ? " selected" : ""}`} onClick={() => setPickerSelected(prev => sel ? prev.filter(x => x !== m.id) : [...prev, m.id])}>
                         <div className="pi-check">✓</div>
                         <div className="pi-dots" onClick={e => { e.stopPropagation(); showToast("Options menu"); }}>⋮</div>
-                        {m.thumb ? <img className="pi-thumb" src={m.thumb} alt="" /> : <div className="pi-placeholder">{m.type === "video" ? "▶" : m.type === "audio" ? "♪" : m.type === "doc" ? "📄" : "🔗"}</div>}
+                        {m.thumb ? <img className="pi-thumb" src={m.thumb} alt="" /> : <div className="pi-placeholder">{m.type === "video" ? "▶" : m.type === "audio" ? "♪" : m.type === "doc" ? EIcon.fileText : EIcon.link}</div>}
                         <div className="pi-info">
                           <div className="pi-info-left">
                             <div className="pi-title">{m.title}</div>
@@ -11015,7 +11258,7 @@ export default function ArtistShell() {
                 return (
                   <div key={sr.id} className={`sr-picker-item${sel ? " selected" : ""}`} onClick={() => setPickerSelected(prev => sel ? prev.filter(x => x !== sr.id) : [...prev, sr.id])}>
                     <div className="spi-check">{sel ? "✓" : ""}</div>
-                    <span className="spi-emoji">{sr.emoji}</span>
+                    <span className="spi-emoji" style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] || "var(--g5)" }}>{EIcon[sr.emoji] || sr.emoji}</span>
                     <div style={{ flex: 1 }}>
                       <div className="spi-title">{sr.title}</div>
                       <div className="spi-org">{sr.org} · {sr.date}</div>
@@ -11398,7 +11641,7 @@ export default function ArtistShell() {
         const highlightedVid = pf.highlightedVideo ? pf.videos.find(v => v.id === pf.highlightedVideo) : null;
         const otherVideos = pf.videos.filter(v => v.id !== pf.highlightedVideo);
         const RESUME_ICONS = { experience: "exp", education: "edu", award: "award" };
-        const RESUME_EMOJI = { experience: "💼", education: "🎓", award: "🏆" };
+        const RESUME_EMOJI_KEYS2 = { experience: "briefcase", education: "graduation", award: "trophy" };
         return (
           <div className="pfl-overlay">
             <div className="pfl-topbar">
@@ -11468,7 +11711,7 @@ export default function ArtistShell() {
                 <div className="pfe-resume-list">
                   {(pf.resume || []).map(r => (
                     <div key={r.id} className="pfe-resume-item" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
-                      <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{RESUME_EMOJI[r.type] || "💼"}</div>
+                      <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{EIcon[RESUME_EMOJI_KEYS2[r.type] || "briefcase"]}</div>
                       <div className="pfe-ri-info">
                         <div className="pfe-ri-title">{r.title}</div>
                         <div className="pfe-ri-org">{r.org}</div>
@@ -11504,7 +11747,7 @@ export default function ArtistShell() {
                 <div className="pfe-doc-list">
                   {pf.documents.map(d => (
                     <div key={d.id} className="pfe-doc" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
-                      <div className="pfe-d-icon">📄</div>
+                      <div className="pfe-d-icon">{EIcon.fileText}</div>
                       <div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div>
                     </div>
                   ))}
@@ -11527,7 +11770,7 @@ export default function ArtistShell() {
         const highlightedVid = primaryPortfolio?.highlightedVideo ? primaryPortfolio.videos.find(v => v.id === primaryPortfolio.highlightedVideo) : null;
         const curatedPhotos = primaryPortfolio ? primaryPortfolio.photos.slice(0, 6) : [];
         const topResume = stageRecords.filter(sr => sr.usedIn.includes("Resume") || sr.usedIn.includes("Portfolio")).slice(0, 4);
-        const RESUME_EMOJI = { experience: "💼", education: "🎓", award: "🏆", skills: "⚡", repertoire: "🎭", press: "📰" };
+        const RESUME_EMOJI_KEYS3 = { experience: "briefcase", education: "graduation", award: "trophy", skills: "zap", repertoire: "masks", press: "newspaper" };
         const viewingPf = ppViewPortfolio ? portfolios.find(p => p.id === ppViewPortfolio) : null;
         return (
           <div className="pp-overlay">
@@ -11644,7 +11887,7 @@ export default function ArtistShell() {
                       <div className="pp-resume-highlights">
                         {viewingPf.resume.map(sr => (
                           <div key={sr.id} className="pp-resume-item">
-                            <div className="pp-ri-emoji">{RESUME_EMOJI[sr.type] || "📄"}</div>
+                            <div className="pp-ri-emoji">{EIcon[RESUME_EMOJI_KEYS3[sr.type] || "fileText"]}</div>
                             <div>
                               <div className="pp-ri-title">{sr.title}</div>
                               <div className="pp-ri-org">{sr.org}</div>
@@ -11761,7 +12004,7 @@ export default function ArtistShell() {
                       <div className="pp-resume-highlights">
                         {topResume.map(sr => (
                           <div key={sr.id} className="pp-resume-item">
-                            <div className="pp-ri-emoji">{RESUME_EMOJI[sr.type] || "📄"}</div>
+                            <div className="pp-ri-emoji">{EIcon[RESUME_EMOJI_KEYS3[sr.type] || "fileText"]}</div>
                             <div>
                               <div className="pp-ri-title">{sr.title}</div>
                               <div className="pp-ri-org">{sr.org}</div>
@@ -12006,7 +12249,7 @@ export default function ArtistShell() {
                   ))}
                   {wk.awards.map(aw => (
                     <div key={aw.id} className="wke-award-card" style={{ background: "var(--sf)" }}>
-                      <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? "🏆" : aw.type === "nomination" ? "🌟" : "✨"}</div>
+                      <div className={`wke-award-icon ${aw.type}`}>{aw.type === "win" ? EIcon.trophy : EIcon.sparkles}</div>
                       <div className="wke-award-info">
                         <div className="wke-award-title">{aw.title}</div>
                         <div className="wke-award-meta">{aw.festival} · {aw.year} · {aw.type}</div>
@@ -12060,7 +12303,7 @@ export default function ArtistShell() {
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                     {wk.partners.map(pt => (
                       <div key={pt.id} className="wke-partner" style={{ background: "var(--sf)" }}>
-                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>🤝</div>
+                        <div style={{ width: 32, height: 32, borderRadius: 8, background: "rgba(217,119,6,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: "#D97706" }}>{EIcon.handshake}</div>
                         <div><div className="wke-partner-name">{pt.name}</div><div className="wke-partner-type">{pt.type}</div></div>
                       </div>
                     ))}
@@ -12074,7 +12317,7 @@ export default function ArtistShell() {
                   <h3 className="wkp-section-title"><em>Downloads</em></h3>
                   {wk.downloads.map(dl => (
                     <div key={dl.id} className="wke-dl-item" style={{ background: "var(--sf)" }}>
-                      <div className="wke-dl-icon">📄</div>
+                      <div className="wke-dl-icon">{EIcon.fileText}</div>
                       <div className="wke-dl-info"><div className="wke-dl-title">{dl.label}</div><div className="wke-dl-meta">{dl.format} · {dl.size}</div></div>
                     </div>
                   ))}
