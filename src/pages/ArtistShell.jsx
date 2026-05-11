@@ -50,7 +50,7 @@ const MOCK_APPLICATIONS = [
 
 const MOCK_OPPORTUNITIES = [
   {
-    id: "opp1", company: "Royal Danish Ballet", title: "Soloist — 2026/27 Season", location: "Copenhagen, DK", type: "Full-time Contract", deadline: "2026-04-30", auditionDate: "2026-05-10", styles: ["Classical", "Neoclassical"], banner: "/demo/banners/jens-thekkeveettil-dbwvuqboou8-unsplash.jpg", saved: false, match: 92,
+    id: "opp1", company: "Royal Danish Ballet", title: "Soloist — 2026/27 Season", location: "Copenhagen, DK", type: "Full-time Contract", opportunityType: "audition", deadline: "2026-04-30", auditionDate: "2026-05-10", styles: ["Classical", "Neoclassical"], banner: "/demo/banners/jens-thekkeveettil-dbwvuqboou8-unsplash.jpg", saved: false, match: 92,
     companyLogo: "/demo/artists/1.jpg", companyDesc: "The Royal Danish Ballet is one of the oldest ballet companies in the world, founded in 1748. Renowned for preserving the Bournonville tradition while embracing contemporary works.",
     description: "The Royal Danish Ballet is seeking an exceptional soloist to join the company for the 2026/27 season. This is a rare opportunity to perform with one of Europe's most prestigious ballet companies in a diverse repertoire spanning Bournonville classics to cutting-edge contemporary works. The position involves 8-10 productions per season with international touring.",
     requirements: "We are looking for dancers with exceptional classical technique, strong partnering skills, and the versatility to perform in both classical and contemporary repertoire. Candidates should have at least 3 years of professional company experience at soloist or principal level. Must be physically fit and available for the full season (August 2026 — June 2027).",
@@ -66,7 +66,7 @@ const MOCK_OPPORTUNITIES = [
     customQuestions: ["Why do you want to join the Royal Danish Ballet?", "Describe your experience with Bournonville technique.", "What is your availability for the 2026/27 season (August-June)?"],
   },
   {
-    id: "opp2", company: "Wayne McGregor | Random Dance", title: "Company Dancer", location: "London, UK", type: "Full-time Contract", deadline: "2026-05-15", auditionDate: "2026-05-28", styles: ["Contemporary", "Technology"], banner: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg", saved: true, match: 87,
+    id: "opp2", company: "Wayne McGregor | Random Dance", title: "Company Dancer", location: "London, UK", type: "Full-time Contract", opportunityType: "audition", deadline: "2026-05-15", auditionDate: "2026-05-28", styles: ["Contemporary", "Technology"], banner: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg", saved: true, match: 87,
     companyLogo: "/demo/artists/2.jpg", companyDesc: "Wayne McGregor | Random Dance is at the forefront of dance innovation, integrating technology, science, and film into choreographic practice.",
     description: "Wayne McGregor is looking for a versatile company dancer to join the ensemble. The role involves performing in new creations and revivals, collaborating with digital artists and scientists, and touring internationally. You'll work directly with Wayne and the creative team on 3-4 new productions per year.",
     requirements: "Strong contemporary technique with exceptional physical range and stamina. Openness to interdisciplinary collaboration (technology, film, science). Improvisation skills and creative input valued. Experience in site-specific or immersive performance a plus.",
@@ -81,17 +81,24 @@ const MOCK_OPPORTUNITIES = [
     customQuestions: ["How do you approach interdisciplinary collaboration in your practice?", "What excites you about working with Wayne McGregor?"],
   },
   {
-    id: "opp3", company: "Pina Bausch Tanztheater", title: "Guest Performer — Rite of Spring Revival", location: "Wuppertal, DE", type: "Project-based", deadline: "2026-06-01", auditionDate: "2026-06-15", styles: ["Tanztheater", "Contemporary"], banner: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg", saved: false, match: 78,
+    id: "opp3", company: "Pina Bausch Tanztheater", title: "Guest Performer — Rite of Spring Revival", location: "Wuppertal, DE", type: "Project-based", opportunityType: "casting", deadline: "2026-06-01", auditionDate: "2026-06-15", styles: ["Tanztheater", "Contemporary"], banner: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg", saved: false, match: 78,
     companyLogo: "/demo/artists/3.jpg", companyDesc: "Tanztheater Wuppertal Pina Bausch continues the legacy of Pina Bausch, performing her iconic works worldwide.",
     description: "Casting guest performers for the 2027 revival tour of Pina Bausch's iconic 'The Rite of Spring'. This production, performed on a stage covered in earth, is one of the most physically demanding works in the contemporary repertoire. The tour covers 6 cities across Europe and Asia.",
     requirements: "Extraordinary physicality and stamina. The earth-covered stage requires fearless performers. Previous Tanztheater experience preferred but not required. Must be comfortable with intense physical expression and group dynamics. Open to all gender identities.",
     employmentDetails: "Project-based contract: January — April 2027 (rehearsals in Wuppertal) + May — July 2027 (touring). Fee: €4,500/month plus touring per diem and accommodation. Travel costs covered.",
-    howToApply: "Submit a showreel demonstrating physical performance work. A short self-introduction video (max 2 min) appreciated. Headshot required.",
+    howToApply: "Submit a showreel demonstrating physical performance work. A short self-introduction video (max 2 min) appreciated. Headshot required. Please review the briefing materials below and include a self-tape of the requested excerpt.",
     profileFieldsRequired: ["nationality", "height", "gender", "dob"],
     materialsRequired: [
       { id: "mat1", label: "Physical Performance Showreel", type: "video", required: true },
-      { id: "mat2", label: "Self-Introduction Video", type: "video", required: false },
-      { id: "mat3", label: "Headshot", type: "photo", required: true },
+      { id: "mat2", label: "Self-tape — Rite of Spring Excerpt", type: "video", required: true },
+      { id: "mat3", label: "Self-Introduction Video", type: "video", required: false },
+      { id: "mat4", label: "Headshot", type: "photo", required: true },
+    ],
+    briefingDescription: "Please study the choreography reference video below. Record yourself performing the excerpt (approx. 1 minute) in a rehearsal studio or open space. Film from the front, full body visible, in comfortable rehearsal clothing. The movement involves intense floor work — wear appropriate clothing and use a suitable surface.",
+    briefingMaterials: [
+      { id: "brief-1", title: "Choreography Reference — Rite of Spring Excerpt", description: "Opening earth sequence, 1 min. Study and replicate from the front angle.", type: "video", fileName: "rite-of-spring-excerpt.mp4", fileSize: "120 MB" },
+      { id: "brief-2", title: "Music — Stravinsky, Rite of Spring (excerpt)", description: "Audio track for the self-tape. Start at 0:00.", type: "audio", fileName: "rite-excerpt-audio.mp3", fileSize: "8 MB" },
+      { id: "brief-3", title: "Floor Plan & Spatial Notes", description: "Diagram showing stage positions and spatial paths", type: "document", fileName: "spatial-notes.pdf", fileSize: "1.2 MB" },
     ],
     customQuestions: ["What does Pina Bausch's work mean to you?", "Describe a physically challenging performance experience you've had."],
   },
@@ -1777,6 +1784,22 @@ textarea.pf-input{line-height:1.6}
 .material-row .mr-label{font-size:13px;font-weight:600;color:var(--tx)}
 .material-row .mr-req{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:2px 7px;border-radius:20px;margin-left:6px}
 .dark .material-row{border-color:var(--g2)}
+/* Briefing section */
+.briefing-card{background:rgba(96,77,255,.03);border:1px solid rgba(96,77,255,.1);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
+.dark .briefing-card{background:rgba(96,77,255,.06);border-color:rgba(96,77,255,.15)}
+.briefing-card h4{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--tx);display:flex;align-items:center;gap:8px}
+.briefing-card .bc-desc{font-size:13px;color:var(--g5);line-height:1.7;margin-bottom:14px;white-space:pre-line}
+.briefing-file{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--sf);border:1px solid var(--g2);border-radius:12px;margin-bottom:8px;transition:all .15s}
+.briefing-file:hover{border-color:var(--g3)}
+.dark .briefing-file{background:var(--sf);border-color:var(--g2)}
+.briefing-file .bf-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.briefing-file .bf-icon.video{background:rgba(96,77,255,.08);color:var(--ac)}
+.briefing-file .bf-icon.document{background:rgba(245,166,35,.08);color:#F5A623}
+.briefing-file .bf-icon.audio{background:rgba(29,185,84,.08);color:var(--green)}
+.briefing-file .bf-body{flex:1;min-width:0}
+.briefing-file .bf-title{font-size:13px;font-weight:600;color:var(--tx)}
+.briefing-file .bf-desc{font-size:11px;color:var(--g4);margin-top:2px}
+.briefing-file .bf-action{flex-shrink:0}
 
 /* Apply Footer */
 .apply-footer{display:flex;align-items:center;justify-content:space-between;padding-top:20px;margin-top:24px;border-top:1px solid var(--g2)}
@@ -4559,6 +4582,25 @@ export default function ArtistShell() {
               </div>
             </div>
 
+            {(currentOpp.briefingDescription || (currentOpp.briefingMaterials && currentOpp.briefingMaterials.length > 0)) && (
+              <div className="briefing-card">
+                <h4>{EIcon.clapperboard} {currentOpp.opportunityType === "audition" ? "Repertoire" : "Selftape"} — Directions</h4>
+                {currentOpp.briefingDescription && <div className="bc-desc">{currentOpp.briefingDescription}</div>}
+                {(currentOpp.briefingMaterials || []).map(b => (
+                  <div key={b.id} className="briefing-file">
+                    <div className={`bf-icon ${b.type}`}>{b.type === "video" ? EIcon.clapperboard : b.type === "audio" ? "♫" : EIcon.fileText}</div>
+                    <div className="bf-body">
+                      <div className="bf-title">{b.title}</div>
+                      {b.description && <div className="bf-desc">{b.description}</div>}
+                    </div>
+                    <button className="btn btn-s btn-sm bf-action" onClick={() => showToast(b.type === "video" ? "Video player — coming soon" : b.type === "audio" ? "Audio player — coming soon" : "Download — coming soon")}>
+                      {b.type === "video" ? "▶ Watch" : b.type === "audio" ? "▶ Listen" : "⬇ Download"}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+
             <div className="info-card" style={{ marginBottom: 16 }}>
               <h4>About {currentOpp.company}</h4>
               <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.7 }}>{currentOpp.companyDesc}</p>
@@ -4688,6 +4730,28 @@ export default function ArtistShell() {
 
           {/* Step 3: Materials */}
           {applyStep === 3 && (
+            <>
+            {(currentOpp.briefingDescription || (currentOpp.briefingMaterials && currentOpp.briefingMaterials.length > 0)) && (
+              <details className="briefing-card" style={{ animation: "slideInUp .3s ease", cursor: "default" }} open>
+                <summary style={{ cursor: "pointer", fontSize: 14, fontWeight: 700, color: "var(--tx)", display: "flex", alignItems: "center", gap: 8, listStyle: "none" }}>
+                  {EIcon.clapperboard} Reference Materials from {currentOpp.company}
+                  <span style={{ marginLeft: "auto", fontSize: 10, color: "var(--g4)", fontWeight: 500 }}>▾</span>
+                </summary>
+                {currentOpp.briefingDescription && <div className="bc-desc" style={{ marginTop: 10 }}>{currentOpp.briefingDescription}</div>}
+                {(currentOpp.briefingMaterials || []).map(b => (
+                  <div key={b.id} className="briefing-file">
+                    <div className={`bf-icon ${b.type}`}>{b.type === "video" ? EIcon.clapperboard : b.type === "audio" ? "♫" : EIcon.fileText}</div>
+                    <div className="bf-body">
+                      <div className="bf-title">{b.title}</div>
+                      {b.description && <div className="bf-desc">{b.description}</div>}
+                    </div>
+                    <button className="btn btn-s btn-sm bf-action" onClick={() => showToast(b.type === "video" ? "Video player — coming soon" : b.type === "audio" ? "Audio player — coming soon" : "Download — coming soon")}>
+                      {b.type === "video" ? "▶ Watch" : b.type === "audio" ? "▶ Listen" : "⬇ Download"}
+                    </button>
+                  </div>
+                ))}
+              </details>
+            )}
             <div className="info-card" style={{ animation: "slideInUp .3s ease" }}>
               <h4>Required Materials</h4>
               <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 16 }}>{currentOpp.company} requests the following materials. Add them from your Media Library or upload new files.</p>
@@ -4741,6 +4805,7 @@ export default function ArtistShell() {
                 );
               })}
             </div>
+            </>
           )}
 
           {/* Step 4: Motivation & Questions */}
