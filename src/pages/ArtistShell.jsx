@@ -330,6 +330,55 @@ const MOCK_MEDIA = [
   { id: "m10", title: "YouTube — Jungle Book Excerpt", type: "link", format: "URL", size: "", thumb: "/demo/banners/pexels-mart-production-7319706.jpg" },
 ];
 
+const MOCK_VIDEO_SHARES = [
+  {
+    id: "vs1", mediaId: "m1", title: "Showreel 2026", description: "My contemporary and Afro-fusion showreel featuring work from Akram Khan Company and personal projects.", tags: ["Contemporary", "Afro-fusion", "Showreel"], privacy: "unlisted", slug: "showreel-2026-lx4k8m", thumbnailSrc: "/demo/artists/boris-de-jong/pexels-cottonbro-5102571.jpg",
+    shareSettings: { requireEmail: true, requirePassword: false, password: "" },
+    createdAt: "2026-04-10", analytics: { totalViews: 34, uniqueViewers: 12, totalPlays: 28, avgWatchTime: "2:14", retentionData: [100, 95, 88, 82, 76, 70, 65, 58, 52, 48] },
+    viewers: [
+      { id: "vw1", email: "casting@ballett-zurich.ch", name: "Sarah Müller", viewedAt: "2026-04-15T10:22:00", plays: 3, watchTime: "3:10", device: "Desktop" },
+      { id: "vw2", email: "hr@theater-regensburg.de", name: "Thomas Weber", viewedAt: "2026-04-14T16:05:00", plays: 2, watchTime: "2:40", device: "Desktop" },
+      { id: "vw3", email: "info@themovers.nl", name: "Jan de Vries", viewedAt: "2026-04-13T09:30:00", plays: 1, watchTime: "1:55", device: "Mobile" },
+      { id: "vw4", email: null, name: "Anonymous", viewedAt: "2026-04-12T14:00:00", plays: 1, watchTime: "0:45", device: "Mobile" },
+    ],
+  },
+  {
+    id: "vs2", mediaId: "m5", title: "Ballet Variation — Don Quixote", description: "Classical ballet variation from Don Quixote Act III, performed at the Royal Ballet School annual showcase.", tags: ["Classical", "Ballet", "Variation"], privacy: "private", slug: "ballet-variation-lx5r2a", thumbnailSrc: "/demo/artists/boris-de-jong/pexels-cottonbro-6221374.jpg",
+    shareSettings: { requireEmail: true, requirePassword: true, password: "ballet2026" },
+    createdAt: "2026-04-18", analytics: { totalViews: 8, uniqueViewers: 3, totalPlays: 6, avgWatchTime: "1:48", retentionData: [100, 98, 92, 88, 85, 80, 75, 70, 65, 62] },
+    viewers: [
+      { id: "vw5", email: "auditions@royal-ballet.org", name: "Emily Clarke", viewedAt: "2026-04-20T11:00:00", plays: 4, watchTime: "2:10", device: "Desktop" },
+      { id: "vw6", email: "talent@ballet-zurich.ch", name: "Anna Keller", viewedAt: "2026-04-19T09:15:00", plays: 2, watchTime: "1:30", device: "Tablet" },
+    ],
+  },
+];
+
+const MOCK_EXTERNAL_APPS = [
+  {
+    id: "ext1", type: "external", companyName: "Royal Ballet of Flanders", companyLogo: null, role: "Guest Dancer — Spring 2027", deadline: "2026-06-15", status: "viewed", slug: "royal-ballet-flan-lx5j2n",
+    motivation: "Dear Artistic Team,\n\nI am deeply passionate about classical ballet and have long admired the Royal Ballet of Flanders' unique approach to blending tradition with contemporary innovation. My training at the Royal Ballet School in London and subsequent experience with Akram Khan Company has given me a versatile foundation that I believe aligns perfectly with your company's artistic vision.\n\nI would be honoured to contribute my skills as a guest dancer for your Spring 2027 programme.",
+    selectedMedia: ["m1", "m5", "m2", "m4"],
+    shareSettings: { requireEmail: true, requirePassword: false, password: "" },
+    createdAt: "2026-04-08", sentAt: "2026-04-09",
+    analytics: { viewCount: 3, lastViewedAt: "2026-04-12T14:30:00", timeSpent: "4m 22s", mediaViewed: ["m1", "m2"], viewerEmail: "casting@ballet-flanders.be" },
+  },
+  {
+    id: "ext2", type: "external", companyName: "NDT — Nederlands Dans Theater", companyLogo: null, role: "Company Dancer — Audition Tape", deadline: "2026-05-30", status: "sent", slug: "ndt-audition-lx6r9p",
+    motivation: "Your company has been my dream since first seeing Jiří Kylián's 'Petite Mort' at the Holland Festival. My background in both classical and contemporary technique, combined with my experience in physical theatre, positions me well for NDT's diverse repertoire.\n\nI have enclosed my showreel, headshot, and CV for your consideration.",
+    selectedMedia: ["m6", "m2", "m3", "m4"],
+    shareSettings: { requireEmail: true, requirePassword: true, password: "ndt2026" },
+    createdAt: "2026-04-12", sentAt: "2026-04-12",
+    analytics: { viewCount: 0, lastViewedAt: null, timeSpent: null, mediaViewed: [], viewerEmail: null },
+  },
+  {
+    id: "ext3", type: "external", companyName: "Studio Wayne McGregor", companyLogo: null, role: "Workshop Application", deadline: "", status: "draft", slug: "",
+    motivation: "", selectedMedia: [],
+    shareSettings: { requireEmail: true, requirePassword: false, password: "" },
+    createdAt: "2026-04-18", sentAt: null,
+    analytics: { viewCount: 0, lastViewedAt: null, timeSpent: null, mediaViewed: [], viewerEmail: null },
+  },
+];
+
 const MOCK_MESSAGES = [
   { id: "msg1", from: "Ballett Zürich", preview: "Thank you for your audition video. We'd like to invite you to...", time: "2h ago", unread: true, avatar: "/demo/artists/1.jpg",
     thread: [
@@ -364,8 +413,11 @@ const MOCK_NOTIFICATIONS = [
 ];
 
 /* ━━━ HELPERS ━━━ */
-const STATUS_COLORS = { submitted: { bg: "#F0F0FF", color: "#604DFF" }, shortlisted: { bg: "#E6F0FF", color: "#1E90FF" }, invited: { bg: "#E6FFF0", color: "#1DB954" }, waitlisted: { bg: "#FFF5E6", color: "#E67E22" }, not_selected: { bg: "#FFF0F0", color: "#FF4757" }, archived: { bg: "#F0F0F0", color: "#98989F" }, draft: { bg: "rgba(255,171,0,.12)", color: "#F5A623" } };
+const STATUS_COLORS = { submitted: { bg: "rgba(96,77,255,.1)", color: "#604DFF" }, shortlisted: { bg: "rgba(30,144,255,.1)", color: "#1E90FF" }, invited: { bg: "rgba(29,185,84,.1)", color: "#1DB954" }, waitlisted: { bg: "rgba(230,126,34,.1)", color: "#E67E22" }, not_selected: { bg: "rgba(255,71,87,.1)", color: "#FF4757" }, archived: { bg: "rgba(152,152,159,.1)", color: "#98989F" }, draft: { bg: "rgba(255,171,0,.12)", color: "#F5A623" } };
 const STATUS_LABELS = { submitted: "Submitted", shortlisted: "Shortlisted", invited: "Invited", waitlisted: "Waitlisted", not_selected: "Not Selected", archived: "Archived", draft: "Draft" };
+const EXT_STATUS_COLORS = { draft: { bg: "rgba(255,171,0,.12)", color: "#F5A623" }, sent: { bg: "rgba(96,77,255,.1)", color: "#604DFF" }, viewed: { bg: "rgba(30,144,255,.1)", color: "#1E90FF" }, deadline_soon: { bg: "rgba(230,126,34,.1)", color: "#E67E22" }, waiting: { bg: "rgba(155,89,182,.1)", color: "#9B59B6" }, invited: { bg: "rgba(29,185,84,.1)", color: "#1DB954" }, expired: { bg: "rgba(255,71,87,.1)", color: "#FF4757" } };
+const EXT_STATUS_LABELS = { draft: "Draft", sent: "Sent", viewed: "Viewed", deadline_soon: "Deadline Soon", waiting: "Waiting", invited: "Invited", expired: "Expired" };
+const generateSlug = (title) => title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 20) + "-" + Date.now().toString(36);
 const SR_COLORS = { experience: "#604DFF", education: "#1E90FF", award: "#F5A623", skills: "#1DB954", press: "#FF4757", repertoire: "#FF69B4" };
 const SR_LABELS = { experience: "Experience", education: "Education", award: "Award", skills: "Skills", press: "Press", repertoire: "Repertoire" };
 const MEDIA_COLORS = { video: "#FF4757", photo: "#1DB954", doc: "#F5A623", audio: "#1E90FF", link: "#604DFF" };
@@ -376,7 +428,7 @@ const ac = "#604DFF";
 const CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Space+Grotesk:wght@400;500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400&family=Space+Mono:wght@400;700&display=swap');
 
-:root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'Manrope',system-ui,sans-serif;--serif:'Playfair Display',Georgia,serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px;--glass-bg:rgba(255,255,255,.38);--glass-bg-strong:rgba(255,255,255,.62);--glass-border:rgba(232,230,240,.7);--glass-border-strong:rgba(232,230,240,.9);--glass-blur:saturate(1.6) blur(18px);--glass-blur-soft:saturate(1.3) blur(10px);--glass-blur-deep:saturate(1.4) blur(28px);--glass-highlight:inset 0 1px 0 rgba(255,255,255,.4);--glass-shadow:0 1px 2px rgba(20,18,40,.04)}
+:root{--ac:${ac};--bg:#F8F7FF;--sf:#FFF;--tx:#0A0A0B;--g1:#F5F4FB;--g2:#E8E6F0;--g3:#D1D0D9;--g4:#98989F;--g5:#6E6E76;--g6:#48484D;--red:#FF4757;--green:#1DB954;--amber:#F5A623;--sans:'Manrope',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;--sb-w:240px;--sb-wc:64px;--glass-bg:rgba(255,255,255,.38);--glass-bg-strong:rgba(255,255,255,.62);--glass-border:rgba(232,230,240,.7);--glass-border-strong:rgba(232,230,240,.9);--glass-blur:saturate(1.6) blur(18px);--glass-blur-soft:saturate(1.3) blur(10px);--glass-blur-deep:saturate(1.4) blur(28px);--glass-highlight:inset 0 1px 0 rgba(255,255,255,.4);--glass-shadow:0 1px 2px rgba(20,18,40,.04)}
 
 /* ━━━ Dark mode ━━━ */
 .dark{--bg:#0D0D12;--sf:#17171C;--tx:#E4E3EA;--g1:#1C1C24;--g2:#28283A;--g3:#3A3A4C;--g4:#7A7A8C;--g5:#A0A0B0;--g6:#D0D0DA;--ac:#7A66FF;--red:#FF6B7A;--green:#2ECC71;--amber:#FFB84D;--glass-bg:rgba(26,26,34,.38);--glass-bg-strong:rgba(26,26,34,.62);--glass-border:rgba(255,255,255,.06);--glass-border-strong:rgba(255,255,255,.1);--glass-highlight:inset 0 1px 0 rgba(255,255,255,.04);--glass-shadow:0 1px 2px rgba(0,0,0,.18)}
@@ -405,6 +457,9 @@ const CSS = `
 .dark .opp-card{background:var(--sf);border-color:var(--g2)}
 .dark .media-item{background:var(--sf);border-color:var(--g2)}
 .dark .pf-card{background:var(--sf);border-color:var(--g2)}
+.dark .wk-card{background:var(--sf);border-color:var(--g2)}
+.dark .wk-card:hover{border-color:rgba(217,119,6,.4);box-shadow:0 4px 20px rgba(217,119,6,.12)}
+.dark .bio-card{background:var(--sf);border-color:var(--g2)}
 .dark .msg-item{border-bottom-color:var(--g2)}
 .dark .tab-bar .tab-btn{color:var(--g5)}
 .dark .tab-bar .tab-btn.on{color:var(--tx);border-bottom-color:var(--ac)}
@@ -444,7 +499,7 @@ const CSS = `
 .auth-card .logo-big a{display:inline-block;border-radius:18px;overflow:hidden;transition:transform .2s}
 .auth-card .logo-big a:hover{transform:scale(1.05)}
 .auth-card .logo-big img{height:80px;width:auto;display:block;border-radius:18px}
-.auth-card h1{font-family:var(--serif);font-size:28px;font-weight:400;color:#1a1a2e;margin-bottom:6px}
+.auth-card h1{font-family:var(--sans);font-size:28px;font-weight:600;color:#1a1a2e;margin-bottom:6px}
 .auth-card .auth-sub{font-size:13px;color:rgba(0,0,0,.4);margin-bottom:28px;line-height:1.5}
 .auth-card input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.6);color:#1a1a2e;font-family:var(--sans);font-size:14px;margin-bottom:10px;outline:none;transition:border .2s}
 .auth-card input::placeholder{color:rgba(0,0,0,.25)}
@@ -484,6 +539,11 @@ const CSS = `
 .sidebar-acct .sa-avatar img{width:100%;height:100%;object-fit:cover}
 .sidebar-acct .sa-name{font-size:12px;font-weight:600;color:var(--tx)}
 .sidebar-acct .sa-email{font-size:10px;color:var(--g4)}
+
+/* Sidebar dividers */
+.sidebar-divider{height:1px;background:var(--g2);margin:10px 14px;opacity:.7}
+.sb-collapsed .sidebar-divider{margin:8px}
+.dark .sidebar-divider{background:var(--g3)}
 
 /* Sidebar collapse */
 .sb-collapsed .sidebar{width:var(--sb-wc)}
@@ -534,11 +594,11 @@ const CSS = `
 .topbar-avatar img{width:26px;height:26px;border-radius:50%;object-fit:cover}
 .topbar-avatar .ta-name{font-size:12px;font-weight:600;color:var(--tx)}
 .topbar-avatar .ta-plan{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);background:rgba(96,77,255,.08);padding:1px 6px;border-radius:40px}
-.content{padding:16px 36px 32px;max-width:1200px;margin:0 auto;width:100%}
+.content{padding:16px 36px 32px;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1}
 
 /* ━━━ Page headers ━━━ */
 .pg-header{margin-bottom:20px}
-.pg-header h1{font-family:var(--sans);font-size:32px;font-weight:500;letter-spacing:-.02em;margin-bottom:4px;color:var(--tx)}
+.pg-header h1{font-family:var(--sans);font-size:26px;font-weight:500;letter-spacing:-.02em;margin-bottom:4px;color:var(--tx)}
 .pg-header h1 em{font-style:normal;color:inherit}
 .pg-header .pg-sub{font-size:14px;color:var(--g5);line-height:1.5}
 
@@ -549,8 +609,35 @@ const CSS = `
 .btn-g{background:transparent;color:var(--g5)}.btn-g:hover{color:var(--tx)}
 .btn-sm{padding:6px 14px;font-size:11px}
 .btn-lg{padding:12px 28px;font-size:14px}
-.btn-danger{background:#FFF0F0;color:var(--red)}.btn-danger:hover{background:#FFE0E0}
-.btn-success{background:#E6FFF0;color:var(--green)}.btn-success:hover{background:#D0FFE0}
+.btn:disabled,.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none!important;box-shadow:none!important;filter:none!important}
+.btn-ghost{background:transparent;color:var(--g5);border:1px solid var(--g2)}.btn-ghost:hover{border-color:var(--ac);color:var(--ac);background:rgba(96,77,255,.04)}
+.btn-danger{background:rgba(255,71,87,.08);color:var(--red)}.btn-danger:hover{background:rgba(255,71,87,.14)}
+.btn-success{background:rgba(29,185,84,.08);color:var(--green)}.btn-success:hover{background:rgba(29,185,84,.14)}
+
+/* ━━━ Empty states ━━━ */
+.empty-state{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 20px;text-align:center;animation:fadeIn .3s ease}
+.empty-state-icon{width:72px;height:72px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.empty-state-icon svg{width:28px;height:28px;color:var(--g3)}
+.empty-state h4{font-size:16px;font-weight:600;color:var(--tx);margin:0 0 6px}
+.empty-state p{font-size:13px;color:var(--g4);margin:0 0 20px;max-width:320px;line-height:1.5}
+.dark .empty-state-icon{background:var(--g2)}
+
+/* ━━━ Skeleton loading ━━━ */
+@keyframes shimmer{0%{background-position:-200px 0}100%{background-position:calc(200px + 100%) 0}}
+.skeleton{background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 50%,var(--g1) 100%);background-size:200px 100%;animation:shimmer 1.5s ease infinite;border-radius:8px}
+.skeleton-card{height:200px;border-radius:14px}
+.skeleton-line{height:14px;margin-bottom:8px;border-radius:6px}
+.skeleton-line.short{width:60%}
+.skeleton-line.medium{width:80%}
+.skeleton-avatar{width:40px;height:40px;border-radius:50%}
+.dark .skeleton{background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 50%,var(--g1) 100%)}
+
+/* ━━━ Spinner ━━━ */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{width:20px;height:20px;border:2px solid var(--g2);border-top-color:var(--ac);border-radius:50%;animation:spin .6s linear infinite}
+.spinner-sm{width:14px;height:14px}
+.spinner-lg{width:28px;height:28px}
+
 .chip{font-family:var(--sans);font-size:11px;font-weight:500;padding:5px 12px;border:1px solid var(--g2);border-radius:40px;background:var(--sf);cursor:pointer;transition:all .15s;color:var(--g5)}.chip:active{transform:scale(.95)}
 .chip:hover{border-color:var(--ac);color:var(--ac)}
 .chip.on{background:linear-gradient(135deg,#7A66FF,#4A35E0);border-color:transparent;color:#fff;box-shadow:0 2px 6px rgba(96,77,255,.2)}
@@ -586,7 +673,7 @@ const CSS = `
 .stat-card .sc-val{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ac);margin-bottom:2px}
 .stat-card .sc-label{font-size:11px;color:var(--g4);text-transform:uppercase;letter-spacing:.05em}
 .dash-section{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;padding:22px;margin-bottom:16px;animation:slideInUp .3s ease both;box-shadow:var(--glass-shadow)}
-.dash-section h3{font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.dash-section h3{font-size:14px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .dash-section h3 .ds-count{font-size:10px;font-weight:700;padding:2px 7px;border-radius:40px;background:var(--g1);color:var(--g4)}
 .dash-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .dash-section-header h3{margin-bottom:0}
@@ -626,6 +713,7 @@ const CSS = `
 .dash-opp-card .doc-match{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;color:var(--green);background:rgba(34,197,94,.1);padding:3px 8px;border-radius:20px;margin-bottom:6px}
 .dash-opp-card .doc-match svg{width:12px;height:12px}
 .dash-opp-card .doc-meta{display:flex;gap:8px;font-size:10px;color:var(--g5)}
+.dark .dash-opp-card{background:var(--g1)}
 .dash-opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 
 /* Checklist */
@@ -637,10 +725,10 @@ const CSS = `
 .ci-label.done{text-decoration:line-through;color:var(--g4)}
 
 /* ━━━ Overlay / Modal ━━━ */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;z-index:300;animation:fadeIn .15s ease}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:300;animation:fadeIn .15s ease}
 .overlay>div{background:var(--sf);border-radius:24px;padding:36px;max-width:560px;width:90%;max-height:90vh;overflow-y:auto;animation:scaleIn .2s ease;box-shadow:0 24px 64px rgba(0,0,0,.12)}
 .overlay>div::-webkit-scrollbar{width:0}
-.overlay h2{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:4px}
+.overlay h2{font-family:var(--sans);font-size:22px;font-weight:500;margin-bottom:4px}
 .overlay .modal-sub{font-size:13px;color:var(--g4);margin-bottom:24px}
 .overlay .modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;border:none;background:var(--g1);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--g5);transition:all .15s}
 .overlay .modal-close:hover{background:var(--g2);color:var(--tx)}
@@ -657,7 +745,7 @@ const CSS = `
 .field{margin-bottom:16px}
 .field label{display:block;font-size:12px;font-weight:600;margin-bottom:6px;color:var(--g6)}
 .field input,.field textarea,.field select{width:100%;padding:11px 14px;border:1px solid var(--g2);border-radius:10px;font-family:var(--sans);font-size:13px;background:var(--g1);transition:border .2s;outline:none;color:var(--tx)}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ac);background:#fff}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ac);background:var(--sf);box-shadow:0 0 0 3px rgba(96,77,255,.08)}
 .field input::placeholder,.field textarea::placeholder{color:var(--g4)}
 .field textarea{height:80px;resize:none}
 
@@ -671,7 +759,7 @@ const CSS = `
 .profile-header{display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;animation:slideInUp .3s ease}
 .profile-photo{width:120px;height:120px;border-radius:50%;object-fit:cover;border:3px solid var(--g2);flex-shrink:0}
 .profile-info{flex:1}
-.profile-info h2{font-family:var(--serif);font-size:24px;font-weight:400;margin-bottom:4px}
+.profile-info h2{font-family:var(--sans);font-size:24px;font-weight:500;margin-bottom:4px}
 .profile-info .pi-location{font-size:13px;color:var(--g4);margin-bottom:8px;display:flex;align-items:center;gap:4px}
 .profile-info .pi-styles{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
 .profile-info .pi-styles span{font-size:10px;padding:3px 10px;border-radius:40px;background:var(--g1);color:var(--g5)}
@@ -679,7 +767,7 @@ const CSS = `
 .profile-info .pi-links a{font-size:11px;font-weight:600;color:var(--ac);text-decoration:none;padding:4px 12px;border:1px solid rgba(96,77,255,.2);border-radius:40px;transition:all .15s}
 .profile-info .pi-links a:hover{background:rgba(96,77,255,.06)}
 .info-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
-.info-card h4{font-size:20px;font-weight:700;margin-bottom:16px;color:var(--tx)}
+.info-card h4{font-size:20px;font-weight:500;margin-bottom:16px;color:var(--tx)}
 .pf-field{display:flex;flex-direction:column;gap:4px}
 .pf-label{font-size:12px;font-weight:600;color:var(--tx)}
 .pf-input{padding:10px 14px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--tx);background:var(--bg);outline:none;transition:border-color .15s;width:100%;box-sizing:border-box}
@@ -807,7 +895,7 @@ textarea.pf-input{line-height:1.6}
 .spotlight-hero{width:100%;height:200px;border-radius:16px;overflow:hidden;position:relative;margin-bottom:24px;animation:slideInUp .3s ease both}
 .spotlight-hero img{width:100%;height:100%;object-fit:cover}
 .spotlight-hero .sh-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.7));display:flex;align-items:flex-end;padding:24px}
-.spotlight-hero .sh-title{font-family:var(--serif);font-size:24px;font-weight:400;color:#fff}
+.spotlight-hero .sh-title{font-family:var(--sans);font-size:24px;font-weight:500;color:#fff}
 .spotlight-hero .sh-company{font-size:13px;color:rgba(255,255,255,.7);margin-top:4px}
 .spotlight-hero .sh-status{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:5px 14px;border-radius:40px}
 .breadcrumb{font-size:12px;color:var(--g4);margin-bottom:16px;display:flex;align-items:center;gap:6px}
@@ -815,7 +903,7 @@ textarea.pf-input{line-height:1.6}
 .breadcrumb a:hover{color:var(--ac)}
 .spotlight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;animation:slideInUp .3s ease both;animation-delay:.1s}
 .spotlight-grid.single{grid-template-columns:1fr}
-.invitation-bar{background:#FFF8E6;border:1px solid rgba(245,166,35,.2);border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;animation:slideInUp .3s ease both}
+.invitation-bar{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);border-radius:12px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:12px;animation:slideInUp .3s ease both}
 .invitation-bar .ib-icon{font-size:24px}
 .invitation-bar .ib-text{flex:1;font-size:13px;color:var(--g6)}
 .invitation-bar .ib-text strong{color:var(--tx)}
@@ -864,6 +952,7 @@ textarea.pf-input{line-height:1.6}
 .media-item .mi-badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;text-transform:uppercase;padding:2px 7px;border-radius:40px;color:#fff}
 .media-item .mi-check{position:absolute;top:8px;left:8px;width:22px;height:22px;border-radius:6px;border:2px solid rgba(255,255,255,.7);background:rgba(0,0,0,.2);display:none;align-items:center;justify-content:center;color:#fff;font-size:12px;cursor:pointer;transition:all .15s}
 .media-item:hover .mi-check{display:flex}
+.media-item:hover .mi-share-btn{opacity:1!important}
 .media-item .mi-check.checked{display:flex;background:var(--ac);border-color:var(--ac)}
 .media-action-bar{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--tx);color:#fff;padding:12px 20px;border-radius:14px;display:flex;align-items:center;gap:16px;font-size:13px;z-index:200;animation:slideUp .2s ease;box-shadow:0 8px 32px rgba(0,0,0,.2)}
 
@@ -907,9 +996,121 @@ textarea.pf-input{line-height:1.6}
 .dark .ctx-works .sidebar{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.06)}
 .dark .ctx-works{background-image:radial-gradient(ellipse at 20% 0%,rgba(217,119,6,.14) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(217,119,6,.08) 0%,transparent 50%)}
 
+/* ── Media Studio Context ── */
+.ctx-media-studio{--ms-ac:#E11D48;--ms-ac-light:rgba(225,29,72,.08);background-image:radial-gradient(ellipse at 20% 0%,rgba(225,29,72,.10) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(225,29,72,.06) 0%,transparent 50%);transition:background .4s ease}
+.ctx-media-studio::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ms-ac),transparent 80%);z-index:210;animation:fadeIn .4s}
+.ctx-media-studio .main{position:fixed;top:12px;right:12px;bottom:12px;left:calc(var(--sb-w) + 24px);border-radius:20px;background:var(--sf);box-shadow:0 8px 40px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.03);animation:ctxPanelIn .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;margin:0;min-height:0}
+.ctx-media-studio .main .breadcrumb-bar{border-radius:20px 20px 0 0;flex-shrink:0;position:sticky;top:0;z-index:10;border-image:linear-gradient(90deg,var(--ms-ac) 0%,transparent 70%) 1}
+.ctx-media-studio .main .content{overflow-y:auto;flex:1;min-height:0;padding-top:8px}
+.ctx-media-studio .main .content>div>:first-child{margin-top:8px}
+.ctx-media-studio .main>*{animation:ctxStagger .3s ease backwards}
+.ctx-media-studio .main>*:nth-child(1){animation-delay:0s}
+.ctx-media-studio .main>*:nth-child(2){animation-delay:.03s}
+.ctx-media-studio .main>*:nth-child(3){animation-delay:.06s}
+.ctx-media-studio .topbar{display:none}
+.sb-collapsed.ctx-media-studio .main{left:calc(var(--sb-wc) + 24px)}
+.ctx-media-studio .sidebar{top:12px;left:12px;bottom:12px;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04);animation:sbSlideIn .3s cubic-bezier(.4,0,.2,1);overflow:hidden;background:linear-gradient(180deg,rgba(225,29,72,.06) 0%,var(--sf) 60%)}
+.ctx-media-studio .sidebar-item.active{background:rgba(225,29,72,.08);color:var(--ms-ac);font-weight:600}
+.ctx-media-studio .sidebar-item.active::before{background:var(--ms-ac)}
+.dark .ctx-media-studio .main{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.04)}
+.dark .ctx-media-studio .sidebar{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.06)}
+.dark .ctx-media-studio{background-image:radial-gradient(ellipse at 20% 0%,rgba(225,29,72,.14) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(225,29,72,.08) 0%,transparent 50%)}
+
+/* ━━━ Studio Creative Workspace Context ━━━ */
+.ctx-studio{--st-ac:#8B5CF6;--st-ac-light:rgba(139,92,246,.08);background-image:radial-gradient(ellipse at 20% 0%,rgba(139,92,246,.10) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(139,92,246,.06) 0%,transparent 50%);transition:background .4s ease}
+.ctx-studio::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--st-ac),transparent 80%);z-index:210;animation:fadeIn .4s}
+.ctx-studio .main{position:fixed;top:12px;right:12px;bottom:12px;left:calc(var(--sb-w) + 24px);border-radius:20px;background:var(--sf);box-shadow:0 8px 40px rgba(0,0,0,.06),0 0 0 1px rgba(0,0,0,.03);animation:ctxPanelIn .35s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;margin:0;min-height:0}
+.ctx-studio .main .content{overflow-y:auto;flex:1;min-height:0;padding-top:8px}
+.ctx-studio .main .content>div>:first-child{margin-top:8px}
+.ctx-studio .main>*{animation:ctxStagger .3s ease backwards}
+.ctx-studio .main>*:nth-child(1){animation-delay:0s}
+.ctx-studio .main>*:nth-child(2){animation-delay:.03s}
+.ctx-studio .main>*:nth-child(3){animation-delay:.06s}
+.ctx-studio .topbar{display:none}
+.sb-collapsed.ctx-studio .main{left:calc(var(--sb-wc) + 24px)}
+.ctx-studio .sidebar{top:12px;left:12px;bottom:12px;border-radius:20px;box-shadow:0 8px 40px rgba(0,0,0,.08),0 0 0 1px rgba(0,0,0,.04);animation:sbSlideIn .3s cubic-bezier(.4,0,.2,1);overflow:hidden;background:linear-gradient(180deg,rgba(139,92,246,.06) 0%,var(--sf) 60%)}
+.ctx-studio .sidebar-item.active{background:rgba(139,92,246,.08);color:var(--st-ac);font-weight:600}
+.ctx-studio .sidebar-item.active::before{background:var(--st-ac)}
+.ctx-studio .main .breadcrumb-bar{border-radius:20px 20px 0 0;flex-shrink:0;position:sticky;top:0;z-index:10;border-image:linear-gradient(90deg,var(--st-ac) 0%,transparent 70%) 1}
+.dark .ctx-studio .main{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.04)}
+.dark .ctx-studio .sidebar{box-shadow:0 8px 40px rgba(0,0,0,.2),0 0 0 1px rgba(255,255,255,.06)}
+.dark .ctx-studio{background-image:radial-gradient(ellipse at 20% 0%,rgba(139,92,246,.14) 0%,transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(139,92,246,.08) 0%,transparent 50%)}
+
+/* Studio sidebar nav item (Aria-style pill) */
+.sidebar-studio-pill{position:relative;background:linear-gradient(135deg,rgba(139,92,246,.09),rgba(160,120,255,.04));border:1px solid rgba(139,92,246,.16);margin-bottom:4px;color:#8B5CF6!important;font-weight:500}
+.sidebar-studio-pill:hover{background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(160,120,255,.06));border-color:rgba(139,92,246,.28)}
+.sidebar-studio-pill.active{background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(160,120,255,.08));border-color:rgba(139,92,246,.35);color:#8B5CF6!important}
+.sidebar-studio-pill.active::before{display:none}
+.sidebar-studio-pill svg{color:#8B5CF6}
+.sidebar-studio-pill .ss-pill{margin-left:auto;font-size:9px;font-weight:700;letter-spacing:.06em;background:rgba(139,92,246,.18);color:#8B5CF6;padding:2px 7px;border-radius:40px}
+.sb-collapsed .sidebar-studio-pill .ss-pill{display:none}
+.dark .sidebar-studio-pill{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(160,140,255,.05));border-color:rgba(139,92,246,.22)}
+.dark .sidebar-studio-pill.active{background:linear-gradient(135deg,rgba(139,92,246,.22),rgba(160,140,255,.08));border-color:rgba(139,92,246,.35)}
+
+/* Studio sidebar sub-nav */
+.sb-studio .sidebar-header,.sb-studio .sidebar-logo{display:none}
+.sb-studio .sb-studio-header{padding:20px 14px 8px;display:flex;flex-direction:column;gap:2px}
+.sb-studio .sb-studio-header h3{font-size:15px;font-weight:500;color:var(--tx);margin:0;font-family:var(--sans)}
+.sb-studio .sb-studio-header p{font-size:11px;color:var(--g4);margin:0;font-family:var(--sans)}
+.sb-collapsed .sb-studio .sb-studio-header{display:none}
+.sb-studio .sb-studio-section{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--g4);padding:16px 14px 6px;font-family:var(--sans)}
+.sb-collapsed .sb-studio .sb-studio-section{display:none}
+
+/* Studio nested contexts — portfolio/works detail inside studio */
+.ctx-studio.ctx-portfolio::before{background:linear-gradient(90deg,#0D9488,var(--st-ac) 50%,transparent 80%)}
+.ctx-studio.ctx-works::before{background:linear-gradient(90deg,#D97706,var(--st-ac) 50%,transparent 80%)}
+
+/* Studio Launchpad */
+.studio-lp-header{margin-bottom:28px}
+.studio-lp-header h1{font-family:var(--sans);font-size:26px;font-weight:500;letter-spacing:-.02em;color:var(--tx);margin:0 0 4px}
+.studio-lp-header p{font-size:14px;color:var(--g5);margin:0}
+.studio-lp-stats{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap}
+.studio-lp-stat{font-size:12px;font-weight:600;color:var(--g5);display:flex;align-items:center;gap:6px}
+.studio-lp-stat span{font-weight:700;color:var(--tx)}
+.studio-lp-stat .slps-dot{width:6px;height:6px;border-radius:50%}
+.studio-launchpad{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin-bottom:32px}
+.studio-tile{position:relative;background:var(--sf);border:1px solid var(--g2);border-radius:18px;overflow:hidden;transition:all .25s cubic-bezier(.22,1,.36,1);animation:slideInUp .3s ease both}
+.studio-tile:nth-child(1){animation-delay:0s}.studio-tile:nth-child(2){animation-delay:.06s}.studio-tile:nth-child(3){animation-delay:.12s}.studio-tile:nth-child(4){animation-delay:.18s}.studio-tile:nth-child(5){animation-delay:.24s}
+.studio-tile.available{cursor:pointer}
+.studio-tile.available:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(139,92,246,.12);border-color:rgba(139,92,246,.2)}
+.studio-tile.coming-soon{opacity:.55;cursor:default}
+.studio-tile.locked{opacity:.45;cursor:default}
+.studio-tile-hero{height:120px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.studio-tile-hero svg{width:36px;height:36px;color:#fff;position:relative;z-index:1}
+.studio-tile-hero-bg{position:absolute;inset:0;opacity:.85}
+.studio-tile-body{padding:18px 20px}
+.studio-tile-title{font-size:15px;font-weight:500;color:var(--tx);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.studio-tile-desc{font-size:12px;color:var(--g4);line-height:1.5;margin-bottom:10px}
+.studio-tile-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:40px}
+.studio-tile-badge.count{background:rgba(139,92,246,.1);color:var(--st-ac)}
+.studio-tile-badge.live{background:rgba(29,185,84,.1);color:var(--green)}
+.studio-tile-badge.draft{background:rgba(245,166,35,.1);color:var(--amber)}
+.studio-tile-badge.soon{background:var(--g1);color:var(--g4)}
+.studio-tile-badge.locked{background:rgba(96,77,255,.08);color:var(--ac)}
+.dark .studio-tile{background:var(--sf);border-color:var(--g2)}
+.dark .studio-tile.available:hover{box-shadow:0 8px 28px rgba(139,92,246,.2);border-color:rgba(139,92,246,.3)}
+
+.studio-lp-recent{margin-top:8px}
+.studio-lp-recent h3{font-size:14px;font-weight:600;margin-bottom:14px;color:var(--tx);display:flex;align-items:center;gap:8px}
+@media(max-width:768px){.studio-launchpad{grid-template-columns:1fr}.studio-tile-hero{height:100px}}
+@media(max-width:900px){.ctx-studio .main{position:static;border-radius:0;box-shadow:none;min-height:auto}.ctx-studio .sidebar{position:static;border-radius:0;box-shadow:none;background:var(--sf)}.ctx-studio::before{display:none}.ctx-studio .topbar{display:flex}}
+
+/* Sidebar media preview */
+.sb-media-preview{margin:4px 12px 8px;border-radius:10px;overflow:hidden;aspect-ratio:16/9;position:relative;background:#000}
+.sb-media-preview img{width:100%;height:100%;object-fit:cover}
+.sb-media-preview-dur{position:absolute;bottom:6px;right:6px;padding:2px 7px;border-radius:6px;background:rgba(0,0,0,.7);color:#fff;font-size:10px;font-weight:600}
+.sb-collapsed .sb-media-preview{display:none}
+
+/* Studio editor placeholder */
+.ms-editor-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center}
+.ms-editor-placeholder svg{width:64px;height:64px;color:var(--g3);margin-bottom:20px}
+.ms-editor-placeholder h3{font-size:20px;font-weight:500;color:var(--tx);margin:0 0 8px}
+.ms-editor-placeholder p{font-size:14px;color:var(--g4);max-width:400px;line-height:1.6;margin:0 0 20px}
+.ms-editor-placeholder .ms-editor-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:40px;background:linear-gradient(135deg,rgba(225,29,72,.08),rgba(225,29,72,.04));color:#E11D48;font-size:12px;font-weight:600}
+
 /* Works Editor */
 .wke-section{background:var(--sf);border:1px solid var(--g2);border-radius:16px;padding:24px;margin-bottom:16px}
-.wke-section h3{font-size:16px;font-weight:700;margin:0 0 16px}
+.wke-section h3{font-size:16px;font-weight:500;margin:0 0 16px}
 .wke-section h3 em{color:#D97706;font-style:italic}
 .wke-banner{position:relative;height:200px;border-radius:16px;overflow:hidden;margin-bottom:16px;background:linear-gradient(135deg,rgba(217,119,6,.15),rgba(217,119,6,.03))}
 .wke-banner img{width:100%;height:100%;object-fit:cover}
@@ -994,7 +1195,7 @@ textarea.pf-input{line-height:1.6}
 .wkp-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.7));pointer-events:none}
 .wkp-hero>*{position:relative;z-index:1}
 .wkp-hero-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-bottom:8px}
-.wkp-hero-title{font-size:36px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:6px;font-family:var(--serif)}
+.wkp-hero-title{font-size:36px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:6px;font-family:var(--sans)}
 .wkp-hero-tagline{font-size:15px;color:rgba(255,255,255,.7);margin-bottom:4px}
 .wkp-hero-role{display:inline-block;font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;background:rgba(217,119,6,.2);color:#FBBF24;margin-bottom:16px}
 .wkp-hero-actions{display:flex;gap:8px}
@@ -1004,7 +1205,7 @@ textarea.pf-input{line-height:1.6}
 .wkp-keyinfo-pill strong{font-weight:700;color:var(--tx)}
 .wkp-keyinfo-pill span{color:var(--g5)}
 .wkp-about{margin-bottom:24px}
-.wkp-about-pitch{font-size:18px;line-height:1.6;color:var(--tx);font-weight:500;margin-bottom:16px;font-family:var(--serif)}
+.wkp-about-pitch{font-size:18px;line-height:1.6;color:var(--tx);font-weight:500;margin-bottom:16px;font-family:var(--sans)}
 .wkp-about-desc{font-size:14px;line-height:1.7;color:var(--g5);margin-bottom:16px}
 .wkp-about-note{font-size:13px;line-height:1.6;color:var(--g4);padding:16px;border-left:3px solid #D97706;background:rgba(217,119,6,.03);border-radius:0 10px 10px 0}
 .wkp-section-title{font-size:18px;font-weight:700;margin:0 0 16px}
@@ -1056,11 +1257,13 @@ textarea.pf-input{line-height:1.6}
 .wk-card:hover{border-color:rgba(217,119,6,.3);box-shadow:0 4px 20px rgba(217,119,6,.08)}
 .wkc-cover{height:140px;object-fit:cover;width:100%}
 .wkc-body{padding:16px}
-.wkc-title{font-size:15px;font-weight:700;margin-bottom:4px}
+.wkc-title{font-size:15px;font-weight:500;margin-bottom:4px}
 .wkc-tagline{font-size:12px;color:var(--g5);margin-bottom:8px}
 .wkc-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .wkc-status{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:20px}
 .wkc-genre{font-size:10px;padding:2px 8px;border-radius:20px;background:rgba(217,119,6,.06);color:#D97706;font-weight:600}
+.ctx-studio .wkc-genre{background:var(--g1);color:var(--g5)}
+.ctx-studio .wk-card:hover{border-color:var(--g3);box-shadow:0 4px 16px rgba(0,0,0,.06)}
 .wkc-touring{font-size:9px;padding:2px 8px;border-radius:20px;background:rgba(29,185,84,.08);color:var(--green);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 .wkc-role{font-size:11px;color:var(--g4);margin-top:8px}
 
@@ -1076,12 +1279,12 @@ textarea.pf-input{line-height:1.6}
 /* New Work Modal */
 .nwk-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:300;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s}
 .nwk-modal{background:var(--sf);border-radius:20px;width:480px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.15);animation:slideUp .25s ease}
-.nwk-modal h2{font-size:20px;font-weight:700;margin:0}
+.nwk-modal h2{font-size:20px;font-weight:500;margin:0}
 
 /* New Portfolio Modal */
 .npf-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:300;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s}
 .npf-modal{background:var(--sf);border-radius:20px;width:480px;max-width:92vw;max-height:85vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.15);animation:slideUp .25s ease}
-.npf-modal h2{font-size:20px;font-weight:700;margin:0}
+.npf-modal h2{font-size:20px;font-weight:500;margin:0}
 .npf-modal .npf-head{padding:24px 28px 16px;border-bottom:1px solid var(--g1)}
 .npf-modal .npf-body{padding:20px 28px 28px;display:flex;flex-direction:column;gap:18px}
 .npf-modal label{font-size:12px;font-weight:600;color:var(--g5);display:block;margin-bottom:6px}
@@ -1107,7 +1310,7 @@ textarea.pf-input{line-height:1.6}
 .pfe-link-row button:hover{border-color:#0D9488;color:#0D9488}
 .pfe-row{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:16px}
 .pfe-section{background:var(--sf);border:1px solid var(--g2);border-radius:16px;padding:20px 24px;margin-bottom:16px}
-.pfe-section h3{font-size:16px;font-weight:700;margin:0 0 16px;display:flex;align-items:center;justify-content:space-between}
+.pfe-section h3{font-size:16px;font-weight:500;margin:0 0 16px;display:flex;align-items:center;justify-content:space-between}
 .pfe-section h3 em{font-style:italic;color:#0D9488}
 .pfe-section h3 .pfe-count{font-size:12px;font-weight:500;color:var(--g4);margin-left:8px}
 .pfe-row .pfe-section{margin-bottom:0}
@@ -1231,6 +1434,215 @@ textarea.pf-input{line-height:1.6}
 .share-modal .sm-pw-input{margin-top:8px;width:100%;padding:8px 12px;border:1px solid var(--g2);border-radius:8px;font-size:12px;font-family:var(--sans);background:var(--bg);color:var(--tx);outline:none;box-sizing:border-box}
 .share-modal .sm-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
 .share-modal .sm-actions button{padding:8px 18px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+
+/* ── Upload Panel ── */
+.upload-panel{position:fixed;top:12px;right:12px;bottom:12px;width:440px;z-index:201;background:rgba(255,255,255,.78);backdrop-filter:saturate(1.4) blur(20px);-webkit-backdrop-filter:saturate(1.4) blur(20px);border:1px solid rgba(255,255,255,.55);border-radius:20px;box-shadow:0 16px 48px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.04);display:flex;flex-direction:column;animation:filterPanelSlideIn .22s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.upload-panel-backdrop{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.18)}
+.upload-panel .up-header{padding:20px 24px 16px;border-bottom:1px solid var(--g1);display:flex;align-items:center;justify-content:space-between}
+.upload-panel .up-header h3{font-size:16px;font-weight:700;margin:0}
+.upload-panel .up-body{flex:1;overflow-y:auto;padding:20px 24px}
+.upload-panel .up-actions{padding:16px 24px;border-top:1px solid var(--g1);display:flex;gap:8px;justify-content:flex-end}
+.upload-dropzone{border:2px dashed var(--g2);border-radius:16px;padding:32px;text-align:center;cursor:pointer;transition:all .2s;margin-bottom:20px;background:var(--bg)}
+.upload-dropzone:hover,.upload-dropzone.dragover{border-color:var(--ac);background:rgba(96,77,255,.04)}
+.upload-dropzone-icon{margin-bottom:8px;color:var(--g4)}
+.upload-dropzone-text{font-size:13px;color:var(--g5);font-weight:500}
+.upload-dropzone-text span{color:var(--ac);cursor:pointer;font-weight:600}
+.upload-dropzone-hint{font-size:10px;color:var(--g3);margin-top:6px}
+.up-field{margin-bottom:14px}
+.up-field label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--g4);margin-bottom:6px}
+.up-field input,.up-field textarea,.up-field select{width:100%;padding:9px 12px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--tx);background:var(--bg);outline:none;box-sizing:border-box;transition:border-color .15s}
+.up-field input:focus,.up-field textarea:focus{border-color:var(--ac)}
+.up-field textarea{min-height:60px;resize:vertical}
+.up-type-chips{display:flex;gap:6px;margin-bottom:16px}
+.upload-progress-bar{height:4px;background:var(--g1);border-radius:4px;overflow:hidden;margin-bottom:8px}
+.upload-progress-fill{height:100%;background:linear-gradient(135deg,#7A66FF,#4A35E0);border-radius:4px;transition:width .3s ease}
+.upload-progress-text{font-size:11px;color:var(--g4);text-align:center}
+
+/* ── Video Detail Modal ── */
+/* ── Media Studio Page ── */
+.ms-page{animation:fadeIn .2s}
+.ms-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--g5);cursor:pointer;border:none;background:none;font-family:var(--sans);padding:4px 0;margin-bottom:16px;transition:color .15s}
+.ms-back:hover{color:var(--ac)}
+.ms-layout{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:start}
+.ms-main{display:flex;flex-direction:column;gap:20px}
+.ms-preview{position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;border-radius:16px;overflow:hidden;cursor:pointer}
+.ms-preview img{width:100%;height:100%;object-fit:cover}
+.ms-preview-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3);transition:background .15s}
+.ms-preview:hover .ms-preview-play{background:rgba(0,0,0,.15)}
+.ms-preview-btn{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.ms-preview-meta{position:absolute;bottom:12px;right:12px;padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.7);color:#fff;font-size:11px;font-weight:600}
+.ms-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:20px}
+.ms-card h3{font-size:14px;font-weight:700;color:var(--tx);margin:0 0 14px;display:flex;align-items:center;gap:8px}
+.ms-card h3 svg{color:var(--g4)}
+.ms-field{margin-bottom:14px}
+.ms-field label{display:block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--g4);margin-bottom:6px}
+.ms-field input,.ms-field textarea,.ms-field select{width:100%;padding:10px 12px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--tx);background:var(--bg);outline:none;transition:border-color .15s;resize:vertical}
+.ms-field input:focus,.ms-field textarea:focus{border-color:var(--ac)}
+.ms-field textarea{min-height:80px}
+.ms-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ms-tags .tag{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(96,77,255,.08);color:var(--ac);display:flex;align-items:center;gap:4px}
+.ms-tags .tag button{border:none;background:none;color:var(--ac);cursor:pointer;padding:0;font-size:12px;line-height:1;opacity:.6}
+.ms-tags .tag button:hover{opacity:1}
+.ms-thumb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.ms-thumb-option{aspect-ratio:16/9;border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .15s;position:relative}
+.ms-thumb-option.active{border-color:var(--ac)}
+.ms-thumb-option img{width:100%;height:100%;object-fit:cover}
+.ms-sidebar{display:flex;flex-direction:column;gap:16px;position:sticky;top:20px}
+.ms-share-url{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg);border:1px solid var(--g2);border-radius:10px;font-size:12px;color:var(--g5);overflow:hidden}
+.ms-share-url span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono);font-size:11px}
+.ms-share-url button{border:none;background:var(--ac);color:#fff;padding:5px 12px;border-radius:8px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:var(--sans)}
+.ms-stat-row{display:flex;gap:8px}
+.ms-stat{flex:1;padding:14px;border-radius:12px;background:var(--bg);border:1px solid var(--g1);text-align:center}
+.ms-stat-val{font-size:20px;font-weight:700;color:var(--tx);font-family:var(--mono)}
+.ms-stat-label{font-size:10px;color:var(--g4);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.ms-retention{display:flex;align-items:flex-end;gap:3px;height:48px;margin-top:12px}
+.ms-retention-bar{flex:1;background:var(--ac);border-radius:3px 3px 0 0;opacity:.7;min-height:2px;transition:opacity .15s}
+.ms-retention-bar:hover{opacity:1}
+.ms-viewer-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--g1)}
+.ms-viewer-row:last-child{border-bottom:none}
+.ms-viewer-avatar{width:28px;height:28px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;flex-shrink:0}
+.ms-viewer-info{flex:1;min-width:0}
+.ms-viewer-name{font-size:12px;font-weight:600;color:var(--tx)}
+.ms-viewer-meta{font-size:10px;color:var(--g4)}
+.ms-toggle{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g1)}
+.ms-toggle:last-child{border-bottom:none}
+.ms-toggle-info{flex:1}
+.ms-toggle-label{font-size:13px;font-weight:500;color:var(--tx)}
+.ms-toggle-desc{font-size:11px;color:var(--g4);margin-top:1px}
+.ms-actions{display:flex;gap:8px;margin-top:8px}
+.ms-danger-zone{border-color:rgba(255,71,87,.15)}
+@media(max-width:900px){
+.ms-layout{grid-template-columns:1fr;gap:20px}
+.ms-sidebar{position:static}
+}
+
+.vd-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s;padding:20px}
+.vd-modal{background:var(--sf);border-radius:20px;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:scaleIn .2s}
+.vd-modal .vd-preview{position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;border-radius:20px 20px 0 0;overflow:hidden;cursor:pointer}
+.vd-modal .vd-preview img{width:100%;height:100%;object-fit:cover}
+.vd-modal .vd-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.3)}
+.vd-modal .vd-play-btn{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .15s}
+.vd-modal .vd-play-btn:hover{transform:scale(1.08)}
+.vd-modal .vd-body{padding:20px 24px 24px}
+.vd-modal .vd-title{font-size:18px;font-weight:700;margin:0 0 4px}
+.vd-modal .vd-meta{font-size:12px;color:var(--g4);margin-bottom:12px;display:flex;gap:12px;align-items:center}
+.vd-modal .vd-desc{font-size:13px;color:var(--g5);line-height:1.5;margin-bottom:14px}
+.vd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.vd-tag{padding:3px 10px;border-radius:40px;font-size:10px;font-weight:600;background:rgba(96,77,255,.08);color:var(--ac)}
+.vd-stats{display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--g1);margin-bottom:14px}
+.vd-stat{text-align:center;flex:1}
+.vd-stat-val{font-size:18px;font-weight:700;color:var(--tx)}
+.vd-stat-label{font-size:10px;color:var(--g4);text-transform:uppercase;letter-spacing:.04em}
+.vd-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ── Video Share Modal ── */
+.vs-overlay{position:fixed;inset:0;z-index:310;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s;padding:20px}
+.vs-modal{background:var(--sf);border-radius:20px;width:560px;max-width:95vw;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:scaleIn .2s}
+.vs-modal .vs-header{padding:20px 24px 0;display:flex;align-items:center;justify-content:space-between}
+.vs-modal .vs-header h3{font-size:18px;font-weight:700;margin:0}
+.vs-tabs{display:flex;gap:0;border-bottom:1px solid var(--g1);padding:0 24px;margin-top:12px}
+.vs-tab{padding:10px 16px;font-size:12px;font-weight:600;color:var(--g4);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--sans)}
+.vs-tab.active{color:var(--ac);border-bottom-color:var(--ac)}
+.vs-tab:hover{color:var(--tx)}
+.vs-body{flex:1;overflow-y:auto;padding:20px 24px 24px}
+.vs-section{margin-bottom:18px}
+.vs-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--g4);margin-bottom:10px}
+.vs-link-row{display:flex;gap:8px;margin-bottom:12px}
+.vs-link-row input{flex:1;padding:9px 14px;border:1px solid var(--g2);border-radius:10px;font-size:12px;font-family:var(--mono,monospace);color:#0D9488;background:var(--bg);outline:none}
+.vs-link-row button{padding:9px 16px;border-radius:10px;border:none;background:#0D9488;color:#fff;font-size:11px;font-weight:600;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+.vs-retention{display:flex;align-items:flex-end;gap:3px;height:80px;padding:8px 0}
+.vs-retention-bar{flex:1;background:linear-gradient(180deg,rgba(96,77,255,.8),rgba(96,77,255,.3));border-radius:3px 3px 0 0;min-width:8px;transition:height .3s}
+.vs-retention-label{display:flex;justify-content:space-between;font-size:9px;color:var(--g3);margin-top:4px}
+.vs-viewer-list{display:flex;flex-direction:column;gap:0}
+.vs-viewer-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--g1)}
+.vs-viewer-item:last-child{border-bottom:none}
+.vs-viewer-avatar{width:32px;height:32px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--ac);flex-shrink:0}
+.vs-viewer-info{flex:1;min-width:0}
+.vs-viewer-name{font-size:13px;font-weight:600;color:var(--tx)}
+.vs-viewer-email{font-size:11px;color:var(--g4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vs-viewer-meta{text-align:right;font-size:11px;color:var(--g4);white-space:nowrap}
+.vs-privacy-select{padding:8px 12px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--tx);background:var(--bg);outline:none;cursor:pointer;width:100%}
+
+/* ── External App Badge & Cards ── */
+.ext-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:40px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:rgba(13,148,136,.1);color:#0D9488}
+.ext-app-card{position:relative}
+.ext-app-card .ext-badge{position:absolute;top:10px;right:10px;z-index:2}
+
+/* ── External App Creation Modal ── */
+.ext-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s;padding:20px}
+.ext-modal{background:var(--sf);border-radius:20px;width:600px;max-width:95vw;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2);animation:scaleIn .2s}
+.ext-modal .ext-header{padding:20px 24px 0;display:flex;align-items:center;justify-content:space-between}
+.ext-modal .ext-header h3{font-size:18px;font-weight:700;margin:0}
+.ext-steps{display:flex;align-items:center;justify-content:center;gap:6px;padding:16px 24px 0}
+.ext-step-dot{width:8px;height:8px;border-radius:50%;background:var(--g2);transition:all .2s}
+.ext-step-dot.active{background:var(--ac);width:24px;border-radius:4px}
+.ext-step-dot.done{background:var(--ac)}
+.ext-body{flex:1;overflow-y:auto;padding:20px 24px 24px}
+.ext-footer{padding:16px 24px;border-top:1px solid var(--g1);display:flex;justify-content:space-between;align-items:center}
+.ext-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.ext-media-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:all .15s;aspect-ratio:4/3}
+.ext-media-item.selected{border-color:var(--ac);box-shadow:0 0 0 2px rgba(96,77,255,.2)}
+.ext-media-item img{width:100%;height:100%;object-fit:cover}
+.ext-media-item .ext-mi-check{position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px}
+.ext-media-item.selected .ext-mi-check{background:var(--ac)}
+.ext-media-item .ext-mi-badge{position:absolute;bottom:6px;left:6px;padding:2px 7px;border-radius:20px;font-size:9px;font-weight:700;color:#fff;text-transform:uppercase}
+.ext-preview-card{padding:16px;border:1px solid var(--g2);border-radius:14px;background:var(--bg);margin-bottom:14px}
+.ext-preview-card h4{font-size:14px;font-weight:600;margin:0 0 4px}
+.ext-preview-card p{font-size:12px;color:var(--g5);margin:0;line-height:1.5}
+
+/* ── External App Detail View ── */
+.extd-header{margin-bottom:20px}
+.extd-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.extd-header h2{font-size:20px;font-weight:700;margin:0}
+.extd-header .extd-role{font-size:14px;color:var(--g5);margin-top:2px}
+.extd-tabs{display:flex;gap:0;border-bottom:1px solid var(--g1);margin-bottom:20px}
+.extd-tab{padding:10px 16px;font-size:12px;font-weight:600;color:var(--g4);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:var(--sans)}
+.extd-tab.active{color:var(--ac);border-bottom-color:var(--ac)}
+.extd-tab:hover{color:var(--tx)}
+.extd-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.extd-stat-card{padding:14px;border-radius:14px;border:1px solid var(--g1);text-align:center;background:var(--bg)}
+.extd-stat-card .extd-stat-val{font-size:22px;font-weight:700;color:var(--tx)}
+.extd-stat-card .extd-stat-label{font-size:10px;color:var(--g4);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.extd-timeline{position:relative;padding-left:20px}
+.extd-timeline::before{content:'';position:absolute;left:5px;top:4px;bottom:4px;width:2px;background:var(--g1);border-radius:1px}
+.extd-timeline-event{position:relative;padding:8px 0 16px;font-size:13px}
+.extd-timeline-event::before{content:'';position:absolute;left:-19px;top:12px;width:10px;height:10px;border-radius:50%;background:var(--ac);border:2px solid var(--sf)}
+.extd-timeline-event .extd-evt-time{font-size:10px;color:var(--g3);margin-bottom:2px}
+.extd-timeline-event .extd-evt-text{color:var(--tx);font-weight:500}
+.extd-motivation{padding:16px;border:1px solid var(--g1);border-radius:14px;background:var(--bg);font-size:13px;line-height:1.6;color:var(--tx);white-space:pre-wrap;margin-bottom:16px}
+.extd-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-bottom:16px}
+.extd-media-thumb{border-radius:10px;overflow:hidden;aspect-ratio:4/3}
+.extd-media-thumb img{width:100%;height:100%;object-fit:cover}
+
+/* ── Premium Gate ── */
+.premium-gate{position:relative;border-radius:16px;padding:32px;text-align:center;background:rgba(96,77,255,.03);border:1px solid rgba(96,77,255,.1)}
+.premium-gate-icon{font-size:28px;margin-bottom:8px}
+.premium-gate h4{font-size:16px;font-weight:700;margin:0 0 6px;color:var(--tx)}
+.premium-gate p{font-size:13px;color:var(--g4);margin:0 0 16px;line-height:1.5}
+.btn-premium-upgrade{padding:10px 24px;border:none;border-radius:12px;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#1a1a1a;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--sans);box-shadow:0 2px 8px rgba(245,166,35,.25);transition:all .15s}
+.btn-premium-upgrade:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.premium-pro-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#1a1a1a}
+
+/* ── Dark mode additions ── */
+.dark .upload-panel{background:rgba(30,30,35,.85);border-color:rgba(255,255,255,.08)}
+.dark .upload-dropzone{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1)}
+.dark .upload-dropzone:hover,.dark .upload-dropzone.dragover{border-color:var(--ac);background:rgba(96,77,255,.06)}
+.dark .vd-modal,.dark .vs-modal,.dark .ext-modal{background:var(--sf)}
+.dark .extd-motivation,.dark .ext-preview-card,.dark .extd-stat-card{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
+.dark .premium-gate{background:rgba(96,77,255,.05);border-color:rgba(96,77,255,.15)}
+.dark .ms-card{background:var(--sf);border-color:var(--g2)}
+.dark .ms-stat{background:var(--g1);border-color:var(--g2)}
+.dark .ms-share-url{background:var(--g1);border-color:var(--g2)}
+.dark .ms-viewer-avatar{background:var(--ac)}
+.dark .ms-danger-zone{border-color:rgba(255,107,122,.15)}
+
+@media(max-width:600px){
+.upload-panel{width:100%;right:0;top:auto;bottom:0;border-radius:20px 20px 0 0;max-height:85vh}
+.vd-modal,.vs-modal,.ext-modal{width:100%;max-width:100%;border-radius:20px 20px 0 0;max-height:90vh;margin-top:auto}
+.vd-overlay,.vs-overlay,.ext-overlay{align-items:flex-end;padding:0}
+.extd-stats{grid-template-columns:1fr}
+.ext-media-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
+}
 
 /* Comp Card Preview */
 .cc-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:flex-start;justify-content:center;animation:fadeIn .2s;overflow:auto;padding:80px 20px 40px}
@@ -1376,7 +1788,7 @@ textarea.pf-input{line-height:1.6}
 .pp-avatar{width:110px;height:110px;border-radius:50%;border:4px solid #fff;box-shadow:0 4px 20px rgba(0,0,0,.2);overflow:hidden;flex-shrink:0}
 .pp-avatar img{width:100%;height:100%;object-fit:cover}
 .pp-hero-info{flex:1;min-width:0;color:#fff;padding-bottom:4px}
-.pp-hero-name{font-family:var(--serif);font-size:36px;font-weight:400;line-height:1.1;margin-bottom:4px}
+.pp-hero-name{font-family:var(--sans);font-size:36px;font-weight:600;line-height:1.1;margin-bottom:4px}
 .pp-hero-name em{font-style:italic;color:rgba(255,255,255,.85)}
 .pp-hero-handle{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px}
 .pp-hero-bio{font-size:14px;color:rgba(255,255,255,.85);line-height:1.5;max-width:520px}
@@ -1387,7 +1799,7 @@ textarea.pf-input{line-height:1.6}
 .pp-hero-socials a:hover{background:rgba(255,255,255,.3);transform:scale(1.1)}
 .pp-body{max-width:900px;margin:0 auto;padding:32px 24px 80px}
 .pp-section{margin-bottom:40px;animation:slideInUp .4s ease both}
-.pp-section-title{font-family:var(--serif);font-size:22px;font-weight:400;color:var(--tx);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.pp-section-title{font-family:var(--sans);font-size:22px;font-weight:500;color:var(--tx);margin-bottom:16px;display:flex;align-items:center;gap:10px}
 .pp-section-title em{color:var(--ac);font-style:italic}
 .pp-featured-video{position:relative;width:100%;border-radius:20px;overflow:hidden;cursor:pointer;aspect-ratio:16/7;background:#000}
 .pp-featured-video img{width:100%;height:100%;object-fit:cover;opacity:.85;transition:opacity .3s}
@@ -1405,14 +1817,14 @@ textarea.pf-input{line-height:1.6}
 .pp-portfolio-card:hover img{opacity:.6}
 .pp-portfolio-card .pp-pc-overlay{position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
 .pp-portfolio-card .pp-pc-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.6);margin-bottom:6px}
-.pp-portfolio-card .pp-pc-name{font-family:var(--serif);font-size:26px;color:#fff;font-weight:400;line-height:1.2}
+.pp-portfolio-card .pp-pc-name{font-family:var(--sans);font-size:26px;color:#fff;font-weight:600;line-height:1.2}
 .pp-portfolio-card .pp-pc-name em{font-style:italic;color:rgba(255,255,255,.8)}
 .pp-portfolio-card .pp-pc-meta{font-size:12px;color:rgba(255,255,255,.6);margin-top:6px;display:flex;gap:12px}
 .pp-portfolio-card .pp-pc-arrow{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:all .3s;font-size:16px}
 .pp-portfolio-card:hover .pp-pc-arrow{opacity:1}
 .pp-portfolio-card.expanded{border-radius:20px 20px 0 0}
 .pp-pf-expanded{background:var(--sf);border:1px solid var(--g2);border-top:none;border-radius:0 0 20px 20px;padding:28px;animation:slideInUp .3s ease both}
-.pp-pf-expanded h4{font-family:var(--serif);font-size:18px;font-weight:400;color:var(--tx);margin:0 0 14px}
+.pp-pf-expanded h4{font-family:var(--sans);font-size:18px;font-weight:600;color:var(--tx);margin:0 0 14px}
 .pp-pf-expanded h4 em{color:var(--ac);font-style:italic}
 .pp-pf-section{margin-bottom:28px}
 .pp-pf-section:last-child{margin-bottom:0}
@@ -1520,7 +1932,7 @@ textarea.pf-input{line-height:1.6}
 .notif-panel{position:fixed;top:12px;right:12px;bottom:12px;width:400px;max-width:calc(100vw - 24px);z-index:200;background:var(--sf);box-shadow:0 8px 40px rgba(0,0,0,.12),0 0 0 1px rgba(0,0,0,.04);border-radius:20px;display:flex;flex-direction:column;animation:npSlideIn .3s cubic-bezier(.4,0,.2,1);overflow:hidden}
 .np-header{padding:20px 20px 0;flex-shrink:0}
 .np-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.np-header-top h2{font-family:var(--serif);font-size:22px;font-weight:400;margin:0}
+.np-header-top h2{font-family:var(--sans);font-size:22px;font-weight:600;margin:0}
 .np-close{width:32px;height:32px;border-radius:50%;border:none;background:var(--g1);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--g5);font-size:14px;transition:all .15s}
 .np-close:hover{background:var(--g2);color:var(--tx)}
 .np-mark-read{font-size:11px;font-weight:500;color:var(--ac);background:none;border:none;cursor:pointer;padding:0;font-family:var(--sans)}
@@ -1547,7 +1959,7 @@ textarea.pf-input{line-height:1.6}
 .messenger{display:grid;grid-template-columns:320px 1fr;height:calc(100vh - 160px);border-radius:20px;overflow:hidden;border:1px solid var(--g1);background:var(--sf);animation:fadeIn .3s}
 .ms-sidebar{border-right:1px solid var(--g1);display:flex;flex-direction:column;overflow:hidden}
 .ms-sidebar-header{padding:16px;border-bottom:1px solid var(--g1);flex-shrink:0}
-.ms-sidebar-header h3{font-family:var(--serif);font-size:18px;font-weight:400;margin-bottom:10px}
+.ms-sidebar-header h3{font-family:var(--sans);font-size:18px;font-weight:600;margin-bottom:10px}
 .ms-search{width:100%;padding:8px 12px;border:1px solid var(--g2);border-radius:10px;font-size:12px;font-family:var(--sans);outline:none;background:var(--bg);color:var(--tx)}
 .ms-search::placeholder{color:var(--g4)}
 .ms-search:focus{border-color:var(--ac)}
@@ -1583,6 +1995,39 @@ textarea.pf-input{line-height:1.6}
 .dark .ms-thread-header{border-bottom-color:var(--g2)}
 .dark .ms-thread-input{border-top-color:var(--g2)}
 .dark .ms-bubble.them{background:var(--g2)}
+
+/* Message compose & actions */
+.ms-compose-btn{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--ac);color:#fff;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;box-shadow:0 2px 8px rgba(96,77,255,.2)}
+.ms-compose-btn:hover{transform:scale(1.08);box-shadow:0 4px 12px rgba(96,77,255,.3)}
+.ms-compose-overlay{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s}
+.ms-compose-modal{background:var(--sf);border-radius:20px;width:90%;max-width:480px;padding:28px;animation:scaleIn .2s ease;box-shadow:0 24px 64px rgba(0,0,0,.15)}
+.dark .ms-compose-modal{background:var(--sf);border:1px solid var(--g2)}
+.ms-compose-modal h3{font-size:18px;font-weight:600;margin:0 0 20px;display:flex;align-items:center;justify-content:space-between}
+.ms-compose-modal h3 button{background:none;border:none;color:var(--g4);cursor:pointer;padding:4px;border-radius:6px;font-size:16px}
+.ms-compose-modal h3 button:hover{background:var(--g1);color:var(--tx)}
+.ms-compose-field{margin-bottom:14px}
+.ms-compose-field label{font-size:12px;font-weight:600;color:var(--g5);display:block;margin-bottom:6px}
+.ms-compose-field input,.ms-compose-field textarea{width:100%;padding:10px 14px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);color:var(--tx);background:var(--bg);outline:none;box-sizing:border-box}
+.ms-compose-field input:focus,.ms-compose-field textarea:focus{border-color:var(--ac)}
+.ms-compose-field textarea{min-height:120px;resize:vertical;line-height:1.6}
+.dark .ms-compose-field input,.dark .ms-compose-field textarea{background:var(--g1);border-color:var(--g3);color:var(--tx)}
+.ms-thread-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.ms-thread-actions button{background:none;border:none;color:var(--g4);cursor:pointer;padding:4px 6px;border-radius:6px;font-size:13px;display:flex;align-items:center;gap:4px;transition:all .12s}
+.ms-thread-actions button:hover{background:var(--g1);color:var(--tx)}
+.ms-bubble-wrap{position:relative;display:flex;flex-direction:column}
+.ms-bubble-wrap.them{align-items:flex-start}
+.ms-bubble-wrap.me{align-items:flex-end}
+.ms-thread-input-actions{display:flex;align-items:center;gap:4px;margin-right:4px}
+.ms-thread-input-actions button{background:none;border:none;color:var(--g4);cursor:pointer;padding:6px;border-radius:6px;display:flex;align-items:center;transition:all .12s}
+.ms-thread-input-actions button:hover{color:var(--ac);background:rgba(96,77,255,.06)}
+.ms-empty-illustration{width:80px;height:80px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.ms-empty-illustration svg{width:32px;height:32px;color:var(--g3)}
+.ms-empty h4{font-size:16px;font-weight:600;color:var(--tx);margin:0 0 4px}
+.ms-empty p{font-size:13px;color:var(--g4);margin:0 0 16px}
+.ms-contact-actions{display:flex;gap:2px;margin-left:auto;flex-shrink:0;opacity:0;transition:opacity .15s}
+.ms-contact:hover .ms-contact-actions{opacity:1}
+.ms-contact-actions button{background:none;border:none;color:var(--g4);cursor:pointer;padding:3px;border-radius:4px;font-size:12px;display:flex;align-items:center}
+.ms-contact-actions button:hover{color:var(--ac);background:rgba(96,77,255,.06)}
 
 /* ━━━ Toast ━━━ */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--tx);color:#fff;padding:12px 24px;border-radius:10px;font-size:13px;font-weight:500;z-index:500;animation:slideUp .2s ease;box-shadow:0 8px 24px rgba(0,0,0,.15)}
@@ -1700,7 +2145,7 @@ textarea.pf-input{line-height:1.6}
 .picker-modal{background:var(--sf);border-radius:24px;padding:0;max-width:820px;width:94%;max-height:85vh;display:flex;flex-direction:column;animation:scaleIn .2s ease;box-shadow:0 24px 64px rgba(0,0,0,.15);overflow:hidden}
 .picker-modal::-webkit-scrollbar{width:0}
 .picker-header{padding:24px 28px 0;flex-shrink:0}
-.picker-header h3{font-family:var(--serif);font-size:22px;font-weight:400;margin-bottom:16px}
+.picker-header h3{font-family:var(--sans);font-size:22px;font-weight:600;margin-bottom:16px}
 .picker-toolbar{display:flex;align-items:center;gap:8px;padding:0 28px 16px;flex-shrink:0;flex-wrap:wrap}
 .picker-toolbar .pt-tabs{display:flex;gap:4px;flex:1;flex-wrap:wrap}
 .picker-toolbar .pt-tab{padding:6px 14px;border-radius:20px;border:1px solid var(--g2);background:none;font-size:11px;font-weight:500;color:var(--g5);cursor:pointer;transition:all .15s;font-family:var(--sans)}
@@ -2048,22 +2493,22 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .filter-side-panel .fsp-header{padding:8px 20px 12px}
   .filter-side-panel .fsp-body{padding:12px 20px}
   .filter-side-panel .fsp-actions{padding:12px 20px 20px}
-  /* ─── Native white feel for Messages page on mobile ─── */
-  .shell.on-messages,.shell.on-messages .main{background:#fff!important;background-image:none!important}
+  /* ─── Native feel for Messages page on mobile ─── */
+  .shell.on-messages,.shell.on-messages .main{background:var(--sf)!important;background-image:none!important}
   .shell.on-messages::before{display:none!important}
-  .shell.on-messages .mobile-topbar{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid var(--g1)}
-  .shell.on-messages .content{background:#fff!important;padding-bottom:0!important}
-  .shell.on-messages .mobile-nav{background:#fff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;border-top:1px solid var(--g1)!important;border-radius:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;box-shadow:none!important;height:64px!important;padding-bottom:8px!important}
+  .shell.on-messages .mobile-topbar{background:var(--sf)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border-bottom:1px solid var(--g1)}
+  .shell.on-messages .content{background:var(--sf)!important;padding-bottom:0!important}
+  .shell.on-messages .mobile-nav{background:var(--sf)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;border-top:1px solid var(--g1)!important;border-radius:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;box-shadow:none!important;height:64px!important;padding-bottom:8px!important}
   .shell.on-messages .pg-header{display:none!important}
   .shell.on-messages .messenger{border:none!important;background:transparent!important;height:auto!important;border-radius:0!important}
   .shell.on-messages .ms-sidebar{border:none!important}
   .shell.on-messages .ms-sidebar-header{padding:8px 0 12px!important}
   .shell.on-messages .ms-sidebar-header h3{display:none}
-  .shell.on-messages .ms-search{height:36px;padding:0 14px;border-radius:40px;border:1px solid #E8E6F0;background:#F5F5F8;color:#1a1a1f;font-family:var(--sans);font-size:13px;width:100%;outline:none;box-sizing:border-box}
-  .shell.on-messages .ms-search::placeholder{color:#98989F}
-  .shell.on-messages .ms-contact{background:transparent;color:#1a1a1f}
-  .shell.on-messages .ms-contact .ms-name{color:#1a1a1f}
-  .shell.on-messages .ms-contact .ms-snippet{color:#6c6c7a}
+  .shell.on-messages .ms-search{height:36px;padding:0 14px;border-radius:40px;border:1px solid var(--g2);background:var(--g1);color:var(--tx);font-family:var(--sans);font-size:13px;width:100%;outline:none;box-sizing:border-box}
+  .shell.on-messages .ms-search::placeholder{color:var(--g4)}
+  .shell.on-messages .ms-contact{background:transparent;color:var(--tx)}
+  .shell.on-messages .ms-contact .ms-name{color:var(--tx)}
+  .shell.on-messages .ms-contact .ms-snippet{color:var(--g5)}
 }
 @media(max-width:480px){
   .dash-featured-grid{grid-template-columns:repeat(2,1fr)}
@@ -2071,6 +2516,115 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .content{padding:16px 12px}
   .spotlight-hero{height:160px;border-radius:12px}
 }
+
+/* ━━━ Studio Entrance Animation ━━━ */
+.studio-entrance{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;animation:studioEntranceFadeOut .6s ease 3.6s forwards}
+.studio-entrance-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(139,92,246,.2),transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(99,102,241,.15),transparent 60%),var(--bg)}
+.dark .studio-entrance-bg{background:radial-gradient(ellipse at 30% 40%,rgba(139,92,246,.15),transparent 60%),radial-gradient(ellipse at 70% 60%,rgba(99,102,241,.1),transparent 60%),var(--bg)}
+.studio-entrance-blob{position:absolute;border-radius:50%;filter:blur(50px);will-change:transform;mix-blend-mode:screen}
+.dark .studio-entrance-blob{mix-blend-mode:normal;opacity:.6}
+.studio-entrance-blob-1{width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,.5),transparent 70%);top:-10%;left:10%;animation:studioSweepA 4s ease-in-out both}
+.studio-entrance-blob-2{width:400px;height:400px;background:radial-gradient(circle,rgba(99,102,241,.45),transparent 70%);bottom:-5%;right:5%;animation:studioSweepB 4s ease-in-out both;animation-delay:.2s}
+.studio-entrance-blob-3{width:350px;height:350px;background:radial-gradient(circle,rgba(167,139,250,.4),transparent 70%);top:20%;right:20%;animation:studioSweepC 4s ease-in-out both;animation-delay:.4s}
+.studio-entrance-blob-4{width:300px;height:300px;background:radial-gradient(circle,rgba(124,58,237,.35),transparent 70%);bottom:15%;left:25%;animation:studioSweepD 4s ease-in-out both;animation-delay:.3s}
+@keyframes studioSweepA{0%{transform:translate3d(-80px,-40px,0) scale(.8);opacity:0}30%{opacity:.8}70%{opacity:.9}100%{transform:translate3d(40px,30px,0) scale(1.1);opacity:.6}}
+@keyframes studioSweepB{0%{transform:translate3d(60px,40px,0) scale(.85);opacity:0}30%{opacity:.7}70%{opacity:.85}100%{transform:translate3d(-30px,-20px,0) scale(1.15);opacity:.5}}
+@keyframes studioSweepC{0%{transform:translate3d(40px,-30px,0) scale(.9);opacity:0}30%{opacity:.6}70%{opacity:.8}100%{transform:translate3d(-20px,25px,0) scale(1.05);opacity:.4}}
+@keyframes studioSweepD{0%{transform:translate3d(-30px,40px,0) scale(.85);opacity:0}30%{opacity:.5}70%{opacity:.7}100%{transform:translate3d(25px,-15px,0) scale(1.1);opacity:.3}}
+.studio-entrance-content{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px}
+.studio-entrance-title{font-family:var(--sans);font-size:clamp(36px,6vw,56px);font-weight:400;letter-spacing:-.03em;color:var(--tx);opacity:0;transform:translateY(24px);animation:studioTextReveal .7s cubic-bezier(.22,1,.36,1) .4s forwards}
+.studio-entrance-sub{font-size:clamp(13px,1.8vw,16px);font-weight:400;color:var(--g4);opacity:0;transform:translateY(16px);animation:studioTextReveal .6s cubic-bezier(.22,1,.36,1) .7s forwards;letter-spacing:.02em}
+@keyframes studioTextReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes studioEntranceFadeOut{to{opacity:0;pointer-events:none}}
+.studio-entrance-grain{position:absolute;inset:0;opacity:.03;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");background-size:128px 128px}
+.studio-entrance-stars{position:absolute;inset:0;z-index:1;pointer-events:none}
+.studio-star{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;opacity:0;animation:studioStarTwinkle 2s ease-in-out infinite}
+.studio-star::before,.studio-star::after{content:'';position:absolute;background:#fff;border-radius:2px}
+.studio-star::before{width:12px;height:2px;top:1px;left:-4px}
+.studio-star::after{width:2px;height:12px;top:-4px;left:1px}
+.studio-star-1{top:18%;left:22%;animation-delay:.2s;transform:scale(.7)}
+.studio-star-2{top:28%;right:18%;animation-delay:.8s;transform:scale(1)}
+.studio-star-3{bottom:32%;left:15%;animation-delay:1.4s;transform:scale(.5)}
+.studio-star-4{top:12%;right:35%;animation-delay:.5s;transform:scale(.8)}
+.studio-star-5{bottom:22%;right:25%;animation-delay:1.1s;transform:scale(.6)}
+.studio-star-6{top:42%;left:8%;animation-delay:1.7s;transform:scale(.4)}
+.studio-star-7{bottom:15%;left:40%;animation-delay:.3s;transform:scale(.9)}
+.studio-star-8{top:8%;left:45%;animation-delay:1.3s;transform:scale(.5)}
+.dark .studio-star{background:rgba(167,139,250,.9)}
+.dark .studio-star::before,.dark .studio-star::after{background:rgba(167,139,250,.9)}
+@keyframes studioStarTwinkle{0%{opacity:0;transform:scale(.3) rotate(0deg)}25%{opacity:.9;transform:scale(1) rotate(15deg)}50%{opacity:.5;transform:scale(.8) rotate(30deg)}75%{opacity:1;transform:scale(1.1) rotate(45deg)}100%{opacity:0;transform:scale(.3) rotate(60deg)}}
+
+/* Studio Prompt (full-screen, replaces sidebar overview) */
+.studio-prompt-screen{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;text-align:center;background:radial-gradient(ellipse at 30% 40%,rgba(139,92,246,.06),transparent 55%),radial-gradient(ellipse at 70% 65%,rgba(99,102,241,.05),transparent 55%),var(--bg)}
+.dark .studio-prompt-screen{background:radial-gradient(ellipse at 30% 40%,rgba(139,92,246,.08),transparent 55%),radial-gradient(ellipse at 70% 65%,rgba(99,102,241,.06),transparent 55%),var(--bg)}
+.studio-prompt-question{font-family:var(--sans);font-size:clamp(24px,4vw,36px);font-weight:400;color:var(--tx);letter-spacing:-.02em;line-height:1.35;min-height:1.4em;margin-bottom:48px}
+.studio-prompt-question .sp-cursor{display:inline-block;width:2px;height:1em;background:var(--ac);margin-left:2px;vertical-align:text-bottom;animation:spCursorBlink 1s step-end infinite}
+@keyframes spCursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+.studio-prompt-tiles{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(20px);animation:studioTextReveal .5s ease forwards;animation-delay:.3s}
+.studio-prompt-tile{display:flex;flex-direction:column;align-items:center;gap:12px;width:140px;padding:28px 16px 24px;background:var(--sf);border:1px solid var(--g2);border-radius:20px;cursor:pointer;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.studio-prompt-tile:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.3);box-shadow:0 8px 28px rgba(139,92,246,.1)}
+.studio-prompt-tile.disabled{opacity:.4;cursor:default;pointer-events:none}
+.studio-prompt-tile-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff}
+.studio-prompt-tile-icon svg{width:22px;height:22px}
+.studio-prompt-tile-label{font-size:14px;font-weight:500;color:var(--tx)}
+.studio-prompt-tile-sub{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--g4);margin-top:-6px}
+.studio-prompt-tile-desc{font-size:11px;color:var(--g4);margin-top:-6px}
+.studio-exit-btn{position:absolute;top:24px;left:28px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--g4);background:none;border:none;cursor:pointer;padding:8px 14px 8px 10px;border-radius:10px;font-family:var(--sans);transition:all .15s;z-index:10}
+.studio-exit-btn:hover{color:var(--tx);background:var(--g1)}
+.studio-exit-btn svg{width:16px;height:16px}
+.dark .studio-prompt-tile{background:var(--sf);border-color:var(--g2)}
+.dark .studio-prompt-tile:hover{border-color:rgba(139,92,246,.4);box-shadow:0 8px 28px rgba(139,92,246,.18)}
+.sb-studio-prompt .sidebar{display:none}
+.sb-studio-prompt .main{position:static!important;margin-left:0!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;border-radius:0!important;box-shadow:none!important;background:var(--bg)!important;min-height:100vh!important;animation:none!important}
+.sb-studio-prompt .content{max-width:100%;padding:0}
+.sb-studio-prompt .topbar{display:none}
+.sb-studio-prompt .pg-header{display:none}
+.sb-studio-prompt .mobile-topbar{display:none}
+.sb-studio-prompt .mobile-nav{display:none}
+
+/* Studio breadcrumb bar for sub-pages */
+.studio-nav-bar{display:flex;align-items:center;gap:12px;padding:20px 40px 0;max-width:1100px;margin:0 auto}
+.studio-nav-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:var(--g4);background:none;border:none;cursor:pointer;padding:6px 12px 6px 8px;border-radius:8px;font-family:var(--sans);transition:all .15s}
+.studio-nav-back:hover{color:var(--tx);background:var(--g1)}
+.studio-nav-back svg{width:16px;height:16px}
+.studio-nav-title{font-size:13px;font-weight:500;color:var(--tx)}
+.studio-subpage-wrap{max-width:1100px;margin:0 auto;padding:20px 40px 60px}
+@media(max-width:768px){.studio-nav-bar{padding:16px 20px 0}.studio-subpage-wrap{padding:16px 20px 40px}}
+@media(max-width:768px){.studio-prompt-tiles{gap:10px}.studio-prompt-tile{width:110px;padding:20px 12px 18px}.studio-prompt-tile-icon{width:40px;height:40px;border-radius:12px}.studio-exit-btn{top:16px;left:16px;font-size:12px}}
+
+/* Studio Manager — Enhanced card view for portfolios/works */
+.studio-manager{min-height:100vh;background:radial-gradient(ellipse at 25% 20%,rgba(139,92,246,.04),transparent 50%),radial-gradient(ellipse at 75% 70%,rgba(99,102,241,.03),transparent 50%),var(--bg);padding:0 0 80px}
+.dark .studio-manager{background:radial-gradient(ellipse at 25% 20%,rgba(139,92,246,.06),transparent 50%),radial-gradient(ellipse at 75% 70%,rgba(99,102,241,.04),transparent 50%),var(--bg)}
+.studio-manager-header{max-width:1100px;margin:0 auto;padding:24px 40px 0}
+.studio-manager-header .studio-nav-back{margin-bottom:24px}
+.studio-manager-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:32px}
+.studio-manager-title{font-size:28px;font-weight:500;letter-spacing:-.02em;margin:0 0 4px;color:var(--tx)}
+.studio-manager-subtitle{font-size:14px;color:var(--g4);margin:0}
+.studio-manager-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;max-width:1100px;margin:0 auto;padding:0 40px}
+.studio-mgr-card{background:var(--sf);border:1px solid var(--g2);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .25s cubic-bezier(.22,1,.36,1)}
+.studio-mgr-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.08);border-color:rgba(139,92,246,.25)}
+.dark .studio-mgr-card{background:var(--sf);border-color:var(--g2)}
+.dark .studio-mgr-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.3);border-color:rgba(139,92,246,.35)}
+.studio-mgr-card-cover{position:relative;height:200px;overflow:hidden;background:var(--g1)}
+.studio-mgr-card-cover img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.studio-mgr-card:hover .studio-mgr-card-cover img{transform:scale(1.04)}
+.studio-mgr-card-placeholder{height:100%;display:flex;align-items:center;justify-content:center;color:var(--g3)}
+.studio-mgr-card-placeholder svg{width:40px;height:40px;opacity:.5}
+.studio-mgr-card-overlay{position:absolute;inset:0;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s}
+.studio-mgr-card:hover .studio-mgr-card-overlay{opacity:1}
+.studio-mgr-card-action{color:#fff;font-size:13px;font-weight:500;padding:8px 18px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border-radius:10px;border:1px solid rgba(255,255,255,.2)}
+.studio-mgr-card-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.45);color:rgba(255,255,255,.85);backdrop-filter:blur(8px)}
+.studio-mgr-card-badge.published{background:rgba(29,185,84,.85);color:#fff}
+.studio-mgr-card-body{padding:16px 18px 18px}
+.studio-mgr-card-title{font-size:16px;font-weight:500;color:var(--tx);margin-bottom:4px}
+.studio-mgr-card-tagline{font-size:13px;color:var(--g5);margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.studio-mgr-card-meta{font-size:12px;color:var(--g4)}
+.studio-mgr-card-new{border-style:dashed;border-color:var(--g2);background:transparent;min-height:280px;display:flex;align-items:center;justify-content:center}
+.studio-mgr-card-new:hover{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.03)}
+.studio-mgr-card-new-inner{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--g4);font-size:14px;font-weight:500}
+.studio-mgr-card-new-inner svg{width:28px;height:28px;opacity:.5}
+@media(max-width:768px){.studio-manager-header{padding:16px 20px 0}.studio-manager-grid{grid-template-columns:1fr;padding:0 20px}.studio-mgr-card-cover{height:160px}.studio-manager-title-row{flex-direction:column;gap:12px}}
+@media(prefers-reduced-motion:reduce){.studio-entrance{animation:none!important}.studio-entrance-blob{animation:none!important;opacity:.4}.studio-entrance-title,.studio-entrance-sub{animation:none!important;opacity:1;transform:none}.studio-star{animation:none!important;opacity:.5}.studio-prompt-tiles{animation:none!important;opacity:1;transform:none}}
 
 /* ━━━ STUDIO ━━━ */
 .studio-live-banner{display:flex;align-items:center;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;margin-bottom:20px;font-size:13px;color:var(--tx)}
@@ -2946,7 +3500,8 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 /* Lumen Portfolios */
 .lumen-portfolios{padding:80px 48px}
 .lumen-pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.lumen-pf-card{position:relative;overflow:hidden;border-radius:20px;cursor:pointer;background:#f0ebe5;transition:transform .3s,box-shadow .3s}
+.lumen-pf-card{position:relative;overflow:hidden;border-radius:20px;cursor:pointer;background:var(--sf);transition:transform .3s,box-shadow .3s}
+.dark .lumen-pf-card{background:var(--sf);border:1px solid var(--g2)}
 .lumen-pf-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(45,36,24,.08)}
 .lumen-pf-card-img{aspect-ratio:4/3;overflow:hidden}
 .lumen-pf-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
@@ -3555,6 +4110,10 @@ const I = {
   settings: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>,
   studio: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>,
   globe: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>,
+  close: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>,
+  mute: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><line x1="1" x2="23" y1="1" y2="23"/></svg>,
+  attachment: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>,
+  circle: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/></svg>,
 };
 
 /* ━━━ EMOJI REPLACEMENT ICONS (JSX) ━━━ */
@@ -3842,7 +4401,7 @@ export default function ArtistShell() {
   const [appSort, setAppSort] = useState("newest");
   const [appSearch, setAppSearch] = useState("");
   const [appSearchOpen, setAppSearchOpen] = useState(false);
-  const [appView, setAppView] = useState("list");
+  const [appView, setAppView] = useState("grid");
   const [viewSpotlight, setViewSpotlight] = useState(null);
   const [spotlightTab, setSpotlightTab] = useState("overview");
 
@@ -3853,7 +4412,7 @@ export default function ArtistShell() {
   const [applyDraft, setApplyDraft] = useState({ profileOverrides: {}, selectedSRIds: [], attachedMaterials: {}, motivation: "", questionAnswers: {}, uploadedResumePDF: false });
   const [pickerTargetMaterial, setPickerTargetMaterial] = useState(null);
   const [networkTab, setNetworkTab] = useState("people");
-  const [networkView, setNetworkView] = useState("list");
+  const [networkView, setNetworkView] = useState("cards");
   const [networkSearch, setNetworkSearch] = useState("");
   const [showNetworkFilters, setShowNetworkFilters] = useState(false);
   const [networkFilters, setNetworkFilters] = useState({
@@ -3917,6 +4476,15 @@ export default function ArtistShell() {
   });
   const [studioPublished, setStudioPublished] = useState(false);
   const [studioScrollY, setStudioScrollY] = useState(0);
+
+  /* Studio Creative Workspace */
+  const [inStudio, setInStudio] = useState(false);
+  const [studioEntrancePlayed, setStudioEntrancePlayed] = useState(false);
+  const [showStudioEntrance, setShowStudioEntrance] = useState(false);
+  const [studioPromptReady, setStudioPromptReady] = useState(false);
+  const [studioTypewriterText, setStudioTypewriterText] = useState("");
+  const [studioTypewriterPlayed, setStudioTypewriterPlayed] = useState(false);
+  const [studioSubPage, setStudioSubPage] = useState("overview");
   const [studioGalleryLayout, setStudioGalleryLayout] = useState("masonry");
   const [noirRevealed, setNoirRevealed] = useState(new Set());
   const [studioTestimonialIdx, setStudioTestimonialIdx] = useState(0);
@@ -3965,9 +4533,30 @@ export default function ArtistShell() {
   };
 
   /* Media */
-  const [mediaItems] = useState(MOCK_MEDIA);
+  const [mediaItems, setMediaItems] = useState(MOCK_MEDIA);
   const [mediaFilter, setMediaFilter] = useState("all");
   const [mediaSelected, setMediaSelected] = useState([]);
+  const [showUploadPanel, setShowUploadPanel] = useState(false);
+  const [uploadForm, setUploadForm] = useState({ title: "", description: "", tags: "", location: "", credits: "", privacy: "unlisted", type: "video" });
+  const [uploadProgress, setUploadProgress] = useState(null);
+
+  /* Video sharing */
+  const [videoShares, setVideoShares] = useState(MOCK_VIDEO_SHARES);
+  const [showVideoDetailModal, setShowVideoDetailModal] = useState(null);
+  const [showVideoShareModal, setShowVideoShareModal] = useState(null);
+  const [studioMediaId, setStudioMediaId] = useState(null);
+  const [studioMediaTab, setStudioMediaTab] = useState("content");
+  const [videoShareTab, setVideoShareTab] = useState("settings");
+
+  /* External applications */
+  const [externalApps, setExternalApps] = useState(MOCK_EXTERNAL_APPS);
+  const [showExtAppModal, setShowExtAppModal] = useState(false);
+  const [extAppStep, setExtAppStep] = useState(0);
+  const [extAppForm, setExtAppForm] = useState({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
+  const [extAppShareSettings, setExtAppShareSettings] = useState({ requireEmail: true, requirePassword: false, password: "" });
+  const [viewExtApp, setViewExtApp] = useState(null);
+  const [extAppDetailTab, setExtAppDetailTab] = useState("overview");
+  const [appTypeFilter, setAppTypeFilter] = useState("all");
 
   /* Picker modals */
   const [showMediaPicker, setShowMediaPicker] = useState(null); // null | "video" | "photo"
@@ -3990,6 +4579,7 @@ export default function ArtistShell() {
   const [settingsTab, setSettingsTab] = useState("account");
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [mobileChatOpen, setMobileChatOpen] = useState(null); // msg id for mobile full-page chat
+  const [showComposeMsg, setShowComposeMsg] = useState(false); // compose new message modal
   const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
 
   /* Toast */
@@ -4053,6 +4643,46 @@ export default function ArtistShell() {
     return () => { clearTimeout(timer); observer.disconnect(); };
   }, [portfolioLive]);
 
+  useEffect(() => {
+    const ct = document.querySelector(".main .content");
+    if (ct) ct.scrollTop = 0;
+    else window.scrollTo(0, 0);
+  }, [studioSubPage]);
+
+  /* Studio entrance animation */
+  useEffect(() => {
+    if (inStudio && !studioEntrancePlayed) {
+      setShowStudioEntrance(true);
+      setStudioPromptReady(false);
+      setStudioTypewriterText("");
+      const entranceTimer = setTimeout(() => {
+        setShowStudioEntrance(false);
+        setStudioEntrancePlayed(true);
+        setStudioPromptReady(true);
+      }, 4200);
+      return () => clearTimeout(entranceTimer);
+    }
+  }, [inStudio]);
+
+  /* Typewriter effect for studio prompt — only on first visit */
+  useEffect(() => {
+    if (!studioPromptReady || studioSubPage !== "overview") return;
+    const firstName = artist?.name?.split(" ")[0] || "there";
+    if (studioTypewriterPlayed) {
+      setStudioTypewriterText(`What would you like to work on, ${firstName}?`);
+      return;
+    }
+    const fullText = `Hi ${firstName}, what are you looking to create today?`;
+    let i = 0;
+    setStudioTypewriterText("");
+    const interval = setInterval(() => {
+      i++;
+      setStudioTypewriterText(fullText.slice(0, i));
+      if (i >= fullText.length) { clearInterval(interval); setStudioTypewriterPlayed(true); }
+    }, 35);
+    return () => clearInterval(interval);
+  }, [studioPromptReady, studioSubPage]);
+
   /* Lightbox keyboard navigation */
   useEffect(() => {
     if (!lightbox) return;
@@ -4078,14 +4708,22 @@ export default function ArtistShell() {
   const NAV_ITEMS = [
     { id: "dashboard", icon: I.dashboard, label: "Dashboard" },
     { id: "profile", icon: I.profile, label: "Profile" },
-    { id: "discover", icon: I.discover, label: "Discover" },
-    { id: "network", icon: I.network, label: "Network" },
-    { id: "present", icon: I.present, label: "Present" },
     { id: "media", icon: I.media, label: "Media Library" },
     { id: "applications", icon: I.applications, label: "Applications", badge: applications.filter(a => a.status === "invited").length || null },
-    { id: "studio", icon: I.studio, label: "Studio" },
-    { id: "academy", icon: I.academy, label: "Academy" },
     { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
+    { type: "divider" },
+    { id: "discover", icon: I.discover, label: "Discover" },
+    { id: "network", icon: I.network, label: "Network" },
+    { id: "academy", icon: I.academy, label: "Academy" },
+    { type: "divider" },
+    { id: "studio", icon: I.studio, label: "Studio" },
+  ];
+
+  const STUDIO_SUB_NAV = [
+    { id: "overview", icon: I.overview, label: "Overview" },
+    { id: "portfolio", icon: I.present, label: "Portfolio" },
+    { id: "website", icon: I.studio, label: "Website" },
+    { id: "works", icon: I.discover, label: "Works" },
   ];
 
   const SPOTLIGHT_TABS = [
@@ -4118,6 +4756,12 @@ export default function ArtistShell() {
     { id: "booking", icon: I.applications, label: "Booking" },
     { id: "tracking", icon: I.applications, label: "Tracking" },
     { id: "settings", icon: I.settings, label: "Settings" },
+  ];
+
+  const STUDIO_MEDIA_TABS = [
+    { id: "content", icon: I.plan, label: "Content" },
+    { id: "analytics", icon: I.applications, label: "Analytics" },
+    { id: "editor", icon: I.studio, label: "Editor" },
   ];
 
   const currentWork = viewWork ? works.find(w => w.id === viewWork) : null;
@@ -4212,6 +4856,37 @@ export default function ArtistShell() {
     setViewSpotlight(newApp.id);
     setSpotlightTab("overview");
     showToast("Application submitted successfully!");
+  };
+
+  /* ━━━ STUDIO OVERVIEW ━━━ */
+  const exitStudio = () => { setInStudio(false); setStudioSubPage("overview"); setPage("dashboard"); };
+  const renderStudioOverview = () => {
+    const PROMPT_TILES = [
+      { id: "portfolio", label: "Portfolio", desc: `${portfolios.length} portfolio${portfolios.length !== 1 ? "s" : ""}`, gradient: "linear-gradient(135deg,#0D9488,#0F766E)", icon: I.present, onClick: () => setStudioSubPage("portfolio") },
+      { id: "works", label: "Works", desc: `${works.length} production${works.length !== 1 ? "s" : ""}`, gradient: "linear-gradient(135deg,#D97706,#B45309)", icon: I.discover, onClick: () => setStudioSubPage("works") },
+      { id: "website", label: "Website", desc: studioPublished ? "Live" : "Draft", gradient: "linear-gradient(135deg,#8B5CF6,#7C3AED)", icon: I.studio, onClick: () => { setStudioSubPage("website"); setPage("studio"); } },
+      { id: "analyzer", label: "Analyze", gradient: "linear-gradient(135deg,#EC4899,#DB2777)", icon: EIcon.sparkles, sub: "Coming soon", disabled: true },
+      { id: "showreel", label: "Showreel", gradient: "linear-gradient(135deg,#6366F1,#4F46E5)", icon: EIcon.clapperboard, sub: "Coming soon", disabled: true },
+    ];
+
+    return (
+      <div className="studio-prompt-screen">
+        <button className="studio-exit-btn" onClick={exitStudio}>{I.back} Exit Studio</button>
+        <div className="studio-prompt-question">
+          {studioTypewriterText}{!studioTypewriterPlayed && <span className="sp-cursor" />}
+        </div>
+        <div className="studio-prompt-tiles" style={studioTypewriterText.length > 10 ? {} : { opacity: 0, animationPlayState: "paused" }}>
+          {PROMPT_TILES.map((tile, i) => (
+            <div key={tile.id} className={`studio-prompt-tile${tile.disabled ? " disabled" : ""}`} onClick={tile.disabled ? undefined : tile.onClick} style={{ animationDelay: `${0.3 + i * 0.08}s` }}>
+              <div className="studio-prompt-tile-icon" style={{ background: tile.gradient }}>{tile.icon}</div>
+              <div className="studio-prompt-tile-label">{tile.label}</div>
+              {tile.desc && !tile.disabled && <div className="studio-prompt-tile-desc">{tile.desc}</div>}
+              {tile.sub && <div className="studio-prompt-tile-sub">{tile.sub}</div>}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
 
   /* ━━━ RENDER PAGE CONTENT ━━━ */
@@ -4919,6 +5594,88 @@ export default function ArtistShell() {
       );
     }
 
+    /* ── Studio Creative Workspace ── */
+    if (inStudio && !viewSpotlight && !viewOpportunity && !viewPortfolio && !viewWork) {
+      if (studioSubPage === "overview") return renderStudioOverview();
+
+      const studioBack = () => { setStudioSubPage("overview"); setStudioPromptReady(true); };
+
+      if (studioSubPage === "portfolio") return (
+        <div className="studio-manager">
+          <div className="studio-manager-header">
+            <button className="studio-nav-back" onClick={studioBack}>{I.back} Back to Studio</button>
+            <div className="studio-manager-title-row">
+              <div>
+                <h1 className="studio-manager-title">Portfolio</h1>
+                <p className="studio-manager-subtitle">{portfolios.length} portfolio{portfolios.length !== 1 ? "s" : ""} · Manage and curate your collections</p>
+              </div>
+              <button className="btn btn-p" style={{ fontSize: 13, padding: "10px 20px", borderRadius: 12 }} onClick={() => setShowNewPortfolioModal(true)}>+ New Portfolio</button>
+            </div>
+          </div>
+          <div className="studio-manager-grid">
+            {portfolios.map(pf => {
+              const itemCount = pf.photos.length + pf.videos.length;
+              return (
+                <div key={pf.id} className="studio-mgr-card" onClick={() => { setViewPortfolio(pf.id); setPortfolioTab("overview"); setPage("present"); }}>
+                  <div className="studio-mgr-card-cover">
+                    {pf.cover ? <img src={pf.cover} alt="" /> : <div className="studio-mgr-card-placeholder">{EIcon.folder}</div>}
+                    <div className="studio-mgr-card-overlay">
+                      <span className="studio-mgr-card-action">Open Editor</span>
+                    </div>
+                    <span className={`studio-mgr-card-badge${pf.status === "published" ? " published" : ""}`}>{pf.status === "published" ? "Published" : "Draft"}</span>
+                  </div>
+                  <div className="studio-mgr-card-body">
+                    <div className="studio-mgr-card-title">{pf.name}</div>
+                    <div className="studio-mgr-card-meta">{itemCount} item{itemCount !== 1 ? "s" : ""} · {pf.photos.length} photo{pf.photos.length !== 1 ? "s" : ""}{pf.videos.length > 0 ? ` · ${pf.videos.length} video${pf.videos.length !== 1 ? "s" : ""}` : ""}</div>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="studio-mgr-card studio-mgr-card-new" onClick={() => setShowNewPortfolioModal(true)}>
+              <div className="studio-mgr-card-new-inner"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>New Portfolio</span></div>
+            </div>
+          </div>
+        </div>
+      );
+      if (studioSubPage === "works") return (
+        <div className="studio-manager">
+          <div className="studio-manager-header">
+            <button className="studio-nav-back" onClick={studioBack}>{I.back} Back to Studio</button>
+            <div className="studio-manager-title-row">
+              <div>
+                <h1 className="studio-manager-title">Works</h1>
+                <p className="studio-manager-subtitle">{works.length} production{works.length !== 1 ? "s" : ""} · Manage your creative pieces</p>
+              </div>
+              <button className="btn btn-p" style={{ fontSize: 13, padding: "10px 20px", borderRadius: 12 }} onClick={() => setShowNewWorkModal(true)}>+ New Work</button>
+            </div>
+          </div>
+          <div className="studio-manager-grid">
+            {works.map(wk => (
+              <div key={wk.id} className="studio-mgr-card" onClick={() => { setViewWork(wk.id); setWorkTab("overview"); setPage("present"); }}>
+                <div className="studio-mgr-card-cover">
+                  {wk.cover ? <img src={wk.cover} alt="" /> : <div className="studio-mgr-card-placeholder">{EIcon.masks}</div>}
+                  <div className="studio-mgr-card-overlay">
+                    <span className="studio-mgr-card-action">Open Editor</span>
+                  </div>
+                  <span className={`studio-mgr-card-badge${wk.status === "published" ? " published" : ""}`}>{wk.status === "published" ? "Published" : "Draft"}</span>
+                </div>
+                <div className="studio-mgr-card-body">
+                  <div className="studio-mgr-card-title">{wk.name}</div>
+                  <div className="studio-mgr-card-tagline">{wk.tagline}</div>
+                  <div className="studio-mgr-card-meta">
+                    {wk.genre}{wk.role ? ` · ${wk.role}` : ""}{wk.touringStatus === "available" ? " · Touring" : ""}
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className="studio-mgr-card studio-mgr-card-new" onClick={() => setShowNewWorkModal(true)}>
+              <div className="studio-mgr-card-new-inner"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>New Work</span></div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     switch (page) {
       /* ── Dashboard ── */
       case "dashboard":
@@ -5006,6 +5763,52 @@ export default function ArtistShell() {
                           <div className="dar-company">{app.company}</div>
                         </div>
                         <span className="dar-status" style={{ background: sc.bg, color: sc.color }}>{STATUS_LABELS[app.status]}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div className="dash-grid" style={{ marginTop: 0 }}>
+              <div>
+                <div className="dash-section">
+                  <div className="dash-section-header">
+                    <h3>Shared Videos <span className="ds-count">{videoShares.length}</span></h3>
+                    <button className="btn btn-g btn-sm" onClick={() => setPage("media")}>View all →</button>
+                  </div>
+                  {videoShares.slice(0, 3).map(vs => (
+                    <div key={vs.id} className="dash-app-row" onClick={() => { setPage("media"); setStudioMediaId(vs.mediaId); }} style={{ cursor: "pointer" }}>
+                      <div style={{ width: 40, height: 40, borderRadius: 10, overflow: "hidden", flexShrink: 0, background: "#000" }}>
+                        <img src={vs.thumbnailSrc} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                      </div>
+                      <div className="dar-info">
+                        <div className="dar-title">{vs.title}</div>
+                        <div className="dar-company">{vs.analytics.totalViews} views · {vs.analytics.uniqueViewers} viewers</div>
+                      </div>
+                      <span className="dar-status" style={{ background: "rgba(96,77,255,.1)", color: "#604DFF" }}>{vs.privacy}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="dash-section">
+                  <div className="dash-section-header">
+                    <h3>External Applications <span className="ds-count">{externalApps.filter(a => a.status !== "draft").length}</span></h3>
+                    <button className="btn btn-g btn-sm" onClick={() => { setPage("applications"); setAppTypeFilter("external"); }}>View all →</button>
+                  </div>
+                  {externalApps.filter(a => a.status !== "draft").slice(0, 3).map(ea => {
+                    const sc = EXT_STATUS_COLORS[ea.status];
+                    return (
+                      <div key={ea.id} className="dash-app-row" onClick={() => { setPage("applications"); setViewExtApp(ea.id); setExtAppDetailTab("overview"); }} style={{ cursor: "pointer" }}>
+                        <div style={{ width: 40, height: 40, borderRadius: 10, background: "linear-gradient(135deg, rgba(96,77,255,.1), rgba(96,77,255,.05))", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#604DFF" strokeWidth="1.5"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                        </div>
+                        <div className="dar-info">
+                          <div className="dar-title">{ea.companyName}</div>
+                          <div className="dar-company">{ea.role}</div>
+                        </div>
+                        <span className="dar-status" style={{ background: sc.bg, color: sc.color }}>{EXT_STATUS_LABELS[ea.status]}</span>
                       </div>
                     );
                   })}
@@ -5433,16 +6236,175 @@ export default function ArtistShell() {
 
       /* ── Applications ── */
       case "applications": {
+        /* ── External App Detail View ── */
+        if (viewExtApp) {
+          const extApp = externalApps.find(a => a.id === viewExtApp);
+          if (!extApp) { setViewExtApp(null); return null; }
+          const extSc = EXT_STATUS_COLORS[extApp.status] || EXT_STATUS_COLORS.draft;
+          const extMedia = extApp.selectedMedia.map(id => mediaItems.find(m => m.id === id)).filter(Boolean);
+          const daysLeft = extApp.deadline ? Math.max(0, Math.ceil((new Date(extApp.deadline) - new Date()) / 86400000)) : null;
+          return (
+            <div>
+              <div className="extd-header">
+                <button className="btn btn-s btn-sm" onClick={() => setViewExtApp(null)} style={{ marginBottom: 12 }}>{I.back} Back to Applications</button>
+                <div className="extd-header-top">
+                  <div>
+                    <h2>{extApp.companyName}</h2>
+                    <div className="extd-role">{extApp.role}</div>
+                  </div>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <span className="ext-badge">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                      External
+                    </span>
+                    <div style={{ padding: "3px 10px", borderRadius: 40, fontSize: 10, fontWeight: 700, background: extSc.bg, color: extSc.color }}>{EXT_STATUS_LABELS[extApp.status]}</div>
+                  </div>
+                </div>
+                {daysLeft !== null && daysLeft <= 7 && (
+                  <div style={{ padding: "8px 14px", borderRadius: 10, background: "rgba(230,126,34,.08)", color: "#E67E22", fontSize: 12, fontWeight: 600, marginBottom: 12 }}>
+                    {daysLeft === 0 ? "Deadline is today!" : `${daysLeft} day${daysLeft > 1 ? "s" : ""} until deadline`}
+                  </div>
+                )}
+              </div>
+              <div className="extd-tabs">
+                {[["overview", "Overview"], ["tracking", "Tracking"], ["share", "Share"]].map(([k, l]) => (
+                  <button key={k} className={`extd-tab${extAppDetailTab === k ? " active" : ""}`} onClick={() => setExtAppDetailTab(k)}>{l}</button>
+                ))}
+              </div>
+
+              {extAppDetailTab === "overview" && (
+                <>
+                  <div className="extd-stats">
+                    <div className="extd-stat-card"><div className="extd-stat-val">{extApp.analytics.viewCount}</div><div className="extd-stat-label">Views</div></div>
+                    <div className="extd-stat-card"><div className="extd-stat-val">{extApp.analytics.timeSpent || "—"}</div><div className="extd-stat-label">Time Spent</div></div>
+                    <div className="extd-stat-card"><div className="extd-stat-val">{extApp.analytics.mediaViewed.length}/{extApp.selectedMedia.length}</div><div className="extd-stat-label">Media Viewed</div></div>
+                  </div>
+                  {extApp.motivation && (
+                    <>
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 8 }}>Motivation</div>
+                      <div className="extd-motivation">{extApp.motivation}</div>
+                    </>
+                  )}
+                  {extMedia.length > 0 && (
+                    <>
+                      <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 8 }}>Attached Materials ({extMedia.length})</div>
+                      <div className="extd-media-grid">
+                        {extMedia.map(mi => (
+                          <div key={mi.id} className="extd-media-thumb" style={{ position: "relative" }}>
+                            {mi.thumb ? <img src={mi.thumb} alt={mi.title} /> : <div style={{ width: "100%", height: "100%", background: "var(--g1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "var(--g4)" }}>{mi.format}</div>}
+                            {extApp.analytics.mediaViewed.includes(mi.id) && <div style={{ position: "absolute", top: 4, right: 4, width: 16, height: 16, borderRadius: 50, background: "var(--green)", display: "flex", alignItems: "center", justifyContent: "center" }}><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3"><polyline points="20 6 9 17 4 12"/></svg></div>}
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 8, marginTop: 20 }}>Timeline</div>
+                  <div className="extd-timeline">
+                    <div className="extd-timeline-event"><div className="extd-evt-time">{extApp.createdAt}</div><div className="extd-evt-text">Application created</div></div>
+                    {extApp.sentAt && <div className="extd-timeline-event"><div className="extd-evt-time">{extApp.sentAt}</div><div className="extd-evt-text">Link shared</div></div>}
+                    {extApp.analytics.lastViewedAt && <div className="extd-timeline-event"><div className="extd-evt-time">{new Date(extApp.analytics.lastViewedAt).toLocaleDateString()}</div><div className="extd-evt-text">Viewed by {extApp.analytics.viewerEmail || "someone"}</div></div>}
+                  </div>
+                </>
+              )}
+
+              {extAppDetailTab === "tracking" && (
+                artist.plan === "Pro" ? (
+                  <>
+                    <div className="extd-stats">
+                      <div className="extd-stat-card"><div className="extd-stat-val">{extApp.analytics.viewCount}</div><div className="extd-stat-label">Total Views</div></div>
+                      <div className="extd-stat-card"><div className="extd-stat-val">{extApp.analytics.timeSpent || "—"}</div><div className="extd-stat-label">Time Spent</div></div>
+                      <div className="extd-stat-card"><div className="extd-stat-val">{extApp.analytics.viewerEmail || "—"}</div><div className="extd-stat-label">Viewer Email</div></div>
+                    </div>
+                    <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 8 }}>Activity</div>
+                    <div className="extd-timeline">
+                      {extApp.analytics.viewCount > 0 ? (
+                        <>
+                          <div className="extd-timeline-event"><div className="extd-evt-time">{new Date(extApp.analytics.lastViewedAt).toLocaleString()}</div><div className="extd-evt-text">Application opened by {extApp.analytics.viewerEmail}</div></div>
+                          {extApp.analytics.mediaViewed.map(mid => {
+                            const mi = mediaItems.find(m => m.id === mid);
+                            return mi ? <div key={mid} className="extd-timeline-event"><div className="extd-evt-time">During visit</div><div className="extd-evt-text">Viewed: {mi.title}</div></div> : null;
+                          })}
+                        </>
+                      ) : (
+                        <div style={{ textAlign: "center", padding: 32, color: "var(--g3)", fontSize: 13 }}>No activity yet. Share your application link to start tracking.</div>
+                      )}
+                    </div>
+                  </>
+                ) : (
+                  <div className="premium-gate">
+                    <div className="premium-gate-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    <h4>Application Tracking</h4>
+                    <p>See who viewed your application, which materials they opened, and how much time they spent. Available on the Pro plan.</p>
+                    <button className="btn-premium-upgrade" onClick={() => { setViewExtApp(null); setPage("settings"); setSettingsTab("plan"); }}>Upgrade to Pro</button>
+                  </div>
+                )
+              )}
+
+              {extAppDetailTab === "share" && (
+                <>
+                  <div className="vs-section">
+                    <div className="vs-section-title">Application Link</div>
+                    <div className="vs-link-row">
+                      <input readOnly value={`apply.lanced.app/${extApp.slug}`} />
+                      <button onClick={() => { navigator.clipboard?.writeText(`apply.lanced.app/${extApp.slug}`); showToast("Link copied!"); }}>Copy</button>
+                    </div>
+                  </div>
+                  <div className="vs-section">
+                    <div className="vs-section-title">Access Settings</div>
+                    <div className="share-modal" style={{ background: "none", boxShadow: "none", padding: 0, width: "auto" }}>
+                      <div className="sm-toggle">
+                        <div><div className="sm-toggle-label">Require email</div><div className="sm-toggle-desc">Always on for external applications</div></div>
+                        <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
+                      </div>
+                      <div className="sm-toggle">
+                        <div><div className="sm-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div></div>
+                        <div className={`sm-switch${extApp.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, requirePassword: !a.shareSettings.requirePassword } } : a))} />
+                      </div>
+                      {extApp.shareSettings.requirePassword && (
+                        <input className="sm-pw-input" type="text" placeholder="Set password..." value={extApp.shareSettings.password} onChange={e => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, password: e.target.value } } : a))} />
+                      )}
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
+                    <button className="btn btn-s btn-sm" onClick={() => window.open(`/apply.html?slug=${extApp.slug}`, "_blank")}>{I.eye} Preview as viewer</button>
+                    {extApp.status === "draft" && (
+                      <button className="btn btn-p btn-sm" onClick={() => { setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, status: "sent", sentAt: new Date().toISOString().slice(0, 10) } : a)); showToast("Application marked as sent!"); }}>Mark as Sent</button>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        }
+
         const archiveApp = (e, id) => { e.stopPropagation(); setApplications(prev => prev.map(a => a.id === id ? { ...a, status: a.status === "archived" ? "submitted" : "archived" } : a)); };
         const APP_FILTER_CHIPS = [
           ["all", "All", activeAppCount],
           ...Object.entries(STATUS_LABELS).filter(([k]) => k !== "draft" && k !== "archived").map(([k, v]) => [k, v, appCounts[k] || 0]),
         ];
+
+        const extAppsFiltered = externalApps.filter(a => {
+          if (appTypeFilter === "lanced") return false;
+          if (a.status === "draft" && appFilter !== "all") return false;
+          if (appSearch) {
+            const q = appSearch.toLowerCase();
+            if (!a.companyName.toLowerCase().includes(q) && !a.role.toLowerCase().includes(q)) return false;
+          }
+          return true;
+        });
+
         return (
           <div>
-            <div className="pg-header">
-              <h1><em>Applications</em></h1>
-              <p className="pg-sub">Track and manage everything you've applied to</p>
+            <div className="pg-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+              <div>
+                <h1><em>Applications</em></h1>
+                <p className="pg-sub">Track and manage everything you've applied to</p>
+              </div>
+              <button className="btn btn-p" onClick={() => {
+                if (artist.plan === "Free") { showToast("Upgrade to Core or Pro to create external applications"); setPage("settings"); setSettingsTab("plan"); return; }
+                setShowExtAppModal(true); setExtAppStep(0);
+                setExtAppForm({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
+              }}>+ Create Application</button>
             </div>
 
             {/* ── Unified Toolbar ── */}
@@ -5479,6 +6441,12 @@ export default function ArtistShell() {
                   <button className={appView === "kanban" ? "active" : ""} onClick={() => setAppView("kanban")} title="Board view">{I.kanban}</button>
                   <button className={appView === "list" ? "active" : ""} onClick={() => setAppView("list")} title="List view">{I.list}</button>
                 </div>
+
+                <select className="sort-filter" value={appTypeFilter} onChange={e => setAppTypeFilter(e.target.value)}>
+                  <option value="all">All types</option>
+                  <option value="lanced">On Lanced</option>
+                  <option value="external">External</option>
+                </select>
 
                 <select className="sort-filter" value={appSort} onChange={e => setAppSort(e.target.value)}>
                   <option value="newest">Newest</option>
@@ -5561,8 +6529,8 @@ export default function ArtistShell() {
                 {/* ── List view ── */}
                 {appView === "list" ? (
                   <div className="app-list">
-                    {filteredApps.length === 0 && <div style={{ textAlign: "center", padding: 40, color: "var(--g4)", fontSize: 13 }}>{appSearch ? "No applications match your search" : "No applications in this category"}</div>}
-                    {filteredApps.map(app => {
+                    {appTypeFilter !== "external" && filteredApps.length === 0 && extAppsFiltered.length === 0 && <div style={{ textAlign: "center", padding: 40, color: "var(--g4)", fontSize: 13 }}>{appSearch ? "No applications match your search" : "No applications in this category"}</div>}
+                    {appTypeFilter !== "external" && filteredApps.map(app => {
                       const sc = STATUS_COLORS[app.status];
                       return (
                         <div key={app.id} className="app-card" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
@@ -5582,12 +6550,33 @@ export default function ArtistShell() {
                         </div>
                       );
                     })}
+                    {appTypeFilter !== "lanced" && extAppsFiltered.map(app => {
+                      const sc = EXT_STATUS_COLORS[app.status] || EXT_STATUS_COLORS.draft;
+                      return (
+                        <div key={app.id} className="app-card ext-app-card" onClick={() => { setViewExtApp(app.id); setExtAppDetailTab("overview"); }}>
+                          <div className="ac-logo" style={{ width: 40, height: 40, borderRadius: 10, background: "linear-gradient(135deg,#0D9488,#06b6d4)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 700, fontSize: 16, flexShrink: 0 }}>{app.companyName[0]}</div>
+                          <div className="ac-info">
+                            <div className="ac-title">{app.role}</div>
+                            <div className="ac-company">{app.companyName}</div>
+                            <div className="ac-meta">
+                              {app.sentAt && <span>Sent: {app.sentAt}</span>}
+                              {app.deadline && <span>Deadline: {app.deadline}</span>}
+                            </div>
+                          </div>
+                          <span className="ext-badge" style={{ position: "static" }}>
+                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+                            External
+                          </span>
+                          <span className="ac-status" style={{ background: sc.bg, color: sc.color }}>{EXT_STATUS_LABELS[app.status]}</span>
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : appView === "grid" ? (
                   /* ── Tile/Card view ── */
                   <div className="app-tiles">
-                    {filteredApps.length === 0 && <div style={{ gridColumn: "1/-1", textAlign: "center", padding: 40, color: "var(--g4)", fontSize: 13 }}>{appSearch ? "No applications match your search" : "No applications in this category"}</div>}
-                    {filteredApps.map(app => {
+                    {appTypeFilter !== "external" && filteredApps.length === 0 && extAppsFiltered.length === 0 && <div style={{ gridColumn: "1/-1", textAlign: "center", padding: 40, color: "var(--g4)", fontSize: 13 }}>{appSearch ? "No applications match your search" : "No applications in this category"}</div>}
+                    {appTypeFilter !== "external" && filteredApps.map(app => {
                       const sc = STATUS_COLORS[app.status];
                       return (
                         <div key={app.id} className="app-tile" onClick={() => { setViewSpotlight(app.id); setSpotlightTab("overview"); }}>
@@ -5609,6 +6598,30 @@ export default function ArtistShell() {
                           <button className="at-archive" onClick={e => archiveApp(e, app.id)} title="Archive">
                             {I.archive}
                           </button>
+                        </div>
+                      );
+                    })}
+                    {appTypeFilter !== "lanced" && extAppsFiltered.map(app => {
+                      const sc = EXT_STATUS_COLORS[app.status] || EXT_STATUS_COLORS.draft;
+                      return (
+                        <div key={app.id} className="app-tile ext-app-card" onClick={() => { setViewExtApp(app.id); setExtAppDetailTab("overview"); }}>
+                          <div className="at-banner" style={{ background: "linear-gradient(135deg,#0D9488,#06b6d4)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <div style={{ fontSize: 32, fontWeight: 700, color: "rgba(255,255,255,.3)" }}>{app.companyName[0]}</div>
+                            <span className="at-status" style={{ background: sc.bg, color: sc.color }}>{EXT_STATUS_LABELS[app.status]}</span>
+                          </div>
+                          <div className="at-body">
+                            <div className="at-head">
+                              <div style={{ width: 22, height: 22, borderRadius: 6, background: "#0D9488", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 10, fontWeight: 700 }}>{app.companyName[0]}</div>
+                              <span className="at-company">{app.companyName}</span>
+                              <span className="ext-badge" style={{ position: "static", marginLeft: "auto" }}>External</span>
+                            </div>
+                            <div className="at-title">{app.role}</div>
+                            <div className="at-meta">
+                              {app.sentAt && <span style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>{EIcon.calendar} {app.sentAt}</span>}
+                              {app.deadline && <span style={{ display: "inline-flex", alignItems: "center", gap: 3 }}>{EIcon.clock} {app.deadline}</span>}
+                              {app.analytics.viewCount > 0 && <span style={{ display: "inline-flex", alignItems: "center", gap: 3, color: "var(--ac)" }}>{I.eye} {app.analytics.viewCount}</span>}
+                            </div>
+                          </div>
                         </div>
                       );
                     })}
@@ -5946,7 +6959,7 @@ export default function ArtistShell() {
                   <h3 style={{ margin: "0 0 16px" }}><em style={{ color: "var(--ac)", fontStyle: "italic" }}>Experience</em> & Education</h3>
                   <div className="pfe-resume-list">
                     {(pf.resume || []).map(r => (
-                      <div key={r.id} className="pfe-resume-item" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
+                      <div key={r.id} className="pfe-resume-item" style={{ background: "var(--sf)", border: "1px solid var(--g2)" }}>
                         <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{EIcon[RESUME_EMOJI_KEYS[r.type] || "briefcase"]}</div>
                         <div className="pfe-ri-info">
                           <div className="pfe-ri-title">{r.title}</div>
@@ -5963,7 +6976,7 @@ export default function ArtistShell() {
                   <h3 style={{ margin: "0 0 16px" }}><em style={{ color: "var(--ac)", fontStyle: "italic" }}>References</em> & Reviews <span style={{ fontSize: 12, fontWeight: 400, color: "var(--g4)" }}>{(pf.references || []).length}</span></h3>
                   <div className="pfe-refs">
                     {(pf.references || []).map(ref => (
-                      <div key={ref.id} className="pfe-ref-card" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
+                      <div key={ref.id} className="pfe-ref-card" style={{ background: "var(--sf)", border: "1px solid var(--g2)" }}>
                         <span className={`pfe-ref-type ${ref.type}`}>{ref.type === "reference" ? "Reference" : "Review"}</span>
                         <div className="pfe-ref-quote">"{ref.quote}"</div>
                         <div className="pfe-ref-source">
@@ -5982,7 +6995,7 @@ export default function ArtistShell() {
                   <h3 style={{ margin: "0 0 16px" }}>Documents</h3>
                   <div className="pfe-doc-list">
                     {pf.documents.map(d => (
-                      <div key={d.id} className="pfe-doc" style={{ background: "#fff", border: "1px solid var(--g2)" }}><div className="pfe-d-icon">{EIcon.fileText}</div><div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div></div>
+                      <div key={d.id} className="pfe-doc" style={{ background: "var(--sf)", border: "1px solid var(--g2)" }}><div className="pfe-d-icon">{EIcon.fileText}</div><div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div></div>
                     ))}
                     {pf.documents.length === 0 && <p style={{ color: "var(--g4)", fontSize: 13 }}>No documents yet.</p>}
                   </div>
@@ -6984,6 +7997,364 @@ export default function ArtistShell() {
 
       /* ── Media Library ── */
       case "media":
+        /* ── Media Studio (full page detail for a single media item) ── */
+        if (studioMediaId) {
+          const sm = mediaItems.find(mi => mi.id === studioMediaId);
+          if (!sm) { setStudioMediaId(null); break; }
+          const smShare = videoShares.find(vs => vs.mediaId === sm.id);
+          const smIsVideo = sm.type === "video";
+          const smSlug = smShare ? smShare.slug : "";
+          return (
+            <div className="ms-page">
+              {/* Back link */}
+              <button className="ms-back" onClick={() => { setStudioMediaId(null); setStudioMediaTab("content"); }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5"/><polyline points="12 19 5 12 12 5"/></svg>
+                Media Library
+              </button>
+
+              {/* Page header */}
+              <div className="pg-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
+                <div>
+                  <h1><em>{sm.title}</em></h1>
+                  <p className="pg-sub">{sm.format} · {sm.size}{sm.duration ? ` · ${sm.duration}` : ""}</p>
+                </div>
+                {smShare && (
+                  <button className="btn btn-s" onClick={() => window.open(`/video.html?slug=${smSlug}`, "_blank")} style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    {EIcon.eye} Preview
+                  </button>
+                )}
+              </div>
+
+              {/* Tab bar */}
+              <div className="tab-bar" style={{ marginBottom: 24 }}>
+                {STUDIO_MEDIA_TABS.map(t => (
+                  <button key={t.id} className={`tab-btn${studioMediaTab === t.id ? " on" : ""}`} onClick={() => setStudioMediaTab(t.id)}>
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* ── CONTENT TAB ── */}
+              {studioMediaTab === "content" && (
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 24, alignItems: "start" }}>
+                  {/* Left column — wider */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                    {/* Details Card */}
+                    <div className="ms-card">
+                      <h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                        Details
+                      </h3>
+                      <div className="ms-field">
+                        <label>Title</label>
+                        <input type="text" value={sm.title} onChange={e => setMediaItems(prev => prev.map(mi => mi.id === sm.id ? { ...mi, title: e.target.value } : mi))} />
+                      </div>
+                      <div className="ms-field">
+                        <label>Description</label>
+                        <textarea placeholder="Add a description..." value={smShare?.description || ""} onChange={e => { if (smShare) setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, description: e.target.value } : vs)); }} />
+                      </div>
+                      <div className="ms-field">
+                        <label>Tags</label>
+                        <div className="ms-tags">
+                          {(smShare?.tags || []).map(t => (
+                            <span key={t} className="tag">
+                              {t}
+                              <button onClick={() => setVideoShares(prev => prev.map(vs => vs.id === smShare?.id ? { ...vs, tags: vs.tags.filter(tag => tag !== t) } : vs))}>×</button>
+                            </span>
+                          ))}
+                          <input type="text" placeholder="Add tag..." style={{ border: "none", background: "none", outline: "none", fontSize: 11, color: "var(--tx)", width: 80, padding: "4px 0" }}
+                            onKeyDown={e => { if (e.key === "Enter" && e.target.value.trim()) { const tag = e.target.value.trim(); if (smShare) { setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, tags: [...vs.tags.filter(t => t !== tag), tag] } : vs)); } e.target.value = ""; } }} />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Classification */}
+                    <div className="ms-card">
+                      <h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                        Classification
+                      </h3>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
+                        <div className="ms-field" style={{ marginBottom: 0 }}>
+                          <label>Location</label>
+                          <input type="text" placeholder="e.g. London, UK" defaultValue="" />
+                        </div>
+                        <div className="ms-field" style={{ marginBottom: 0 }}>
+                          <label>Category</label>
+                          <select defaultValue="">
+                            <option value="">Select category...</option>
+                            <option>Showreel</option>
+                            <option>Variation</option>
+                            <option>Performance</option>
+                            <option>Class / Workshop</option>
+                            <option>Rehearsal</option>
+                            <option>Behind the Scenes</option>
+                            <option>Freestyle</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="ms-field" style={{ marginTop: 14, marginBottom: 0 }}>
+                        <label>Language</label>
+                        <select defaultValue="en">
+                          <option value="en">English</option>
+                          <option value="nl">Dutch</option>
+                          <option value="fr">French</option>
+                          <option value="de">German</option>
+                          <option value="es">Spanish</option>
+                          <option value="it">Italian</option>
+                          <option value="pt">Portuguese</option>
+                          <option value="ja">Japanese</option>
+                          <option value="ko">Korean</option>
+                          <option value="zh">Chinese</option>
+                          <option value="none">No audio / Instrumental</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Thumbnail Card */}
+                    {smIsVideo && (
+                      <div className="ms-card">
+                        <h3>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                          Thumbnail
+                        </h3>
+                        <div className="ms-thumb-grid">
+                          {mediaItems.filter(mi => mi.thumb && (mi.type === "video" || mi.type === "photo")).slice(0, 4).map((mi, i) => (
+                            <div key={mi.id} className={`ms-thumb-option${smShare?.thumbnailSrc === mi.thumb ? " active" : ""}${i === 0 && !smShare?.thumbnailSrc ? " active" : ""}`}
+                              onClick={() => { if (smShare) setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, thumbnailSrc: mi.thumb } : vs)); }}>
+                              <img src={mi.thumb} alt="" />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Danger Zone */}
+                    <div className="ms-card ms-danger-zone">
+                      <h3 style={{ color: "var(--red)" }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" strokeWidth="2"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                        Danger zone
+                      </h3>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        <div>
+                          <div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Delete this media</div>
+                          <div style={{ fontSize: 11, color: "var(--g4)", marginTop: 2 }}>This action cannot be undone</div>
+                        </div>
+                        <button className="btn btn-danger btn-sm" onClick={() => { setMediaItems(prev => prev.filter(mi => mi.id !== sm.id)); setStudioMediaId(null); showToast("Media deleted"); }}>Delete</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right column — video, share, info */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 20, position: "sticky", top: 24 }}>
+                    {/* Video Player */}
+                    {sm.thumb && (
+                      <div className="ms-card" style={{ padding: 0, overflow: "hidden" }}>
+                        <div className="ms-preview" style={{ margin: 0, borderRadius: "11px 11px 0 0" }}>
+                          <img src={sm.thumb} alt={sm.title} />
+                          {smIsVideo && (
+                            <div className="ms-preview-play">
+                              <div className="ms-preview-btn">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#1a1a1a"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                              </div>
+                            </div>
+                          )}
+                          {sm.duration && <div className="ms-preview-meta">{sm.duration}</div>}
+                        </div>
+                        <div style={{ padding: "12px 16px", fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{sm.title}</div>
+                      </div>
+                    )}
+
+                    {/* Sharing */}
+                    {smIsVideo && (
+                      <div className="ms-card">
+                        <h3>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                          Sharing
+                        </h3>
+                        {smShare ? (
+                          <>
+                            <div className="ms-share-url">
+                              <span>video.lanced.app/{smSlug}</span>
+                              <button onClick={() => { navigator.clipboard.writeText(`video.lanced.app/${smSlug}`); showToast("Link copied!"); }}>Copy</button>
+                            </div>
+                            <div style={{ marginTop: 12 }}>
+                              <div className="ms-toggle">
+                                <div className="ms-toggle-info">
+                                  <div className="ms-toggle-label">Require email</div>
+                                  <div className="ms-toggle-desc">Viewers enter their email to watch</div>
+                                </div>
+                                <div className={`sm-switch${smShare.shareSettings.requireEmail ? " on" : ""}`} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, shareSettings: { ...vs.shareSettings, requireEmail: !vs.shareSettings.requireEmail } } : vs))} />
+                              </div>
+                              <div className="ms-toggle">
+                                <div className="ms-toggle-info">
+                                  <div className="ms-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div>
+                                  <div className="ms-toggle-desc">Require a password to view</div>
+                                </div>
+                                <div className={`sm-switch${smShare.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, shareSettings: { ...vs.shareSettings, requirePassword: !vs.shareSettings.requirePassword } } : vs))} />
+                              </div>
+                              {smShare.shareSettings.requirePassword && (
+                                <input style={{ marginTop: 8, width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, fontSize: 12, fontFamily: "var(--mono)", background: "var(--bg)", color: "var(--tx)" }} type="text" placeholder="Set password..." value={smShare.shareSettings.password} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, shareSettings: { ...vs.shareSettings, password: e.target.value } } : vs))} />
+                              )}
+                            </div>
+                            <div className="ms-actions" style={{ marginTop: 12 }}>
+                              <button className="btn btn-s btn-sm" style={{ flex: 1 }} onClick={() => window.open(`/video.html?slug=${smSlug}`, "_blank")}>
+                                {EIcon.eye} Preview as viewer
+                              </button>
+                            </div>
+                          </>
+                        ) : (
+                          <div style={{ textAlign: "center", padding: "12px 0" }}>
+                            <div style={{ fontSize: 13, color: "var(--g4)", marginBottom: 12 }}>This video hasn't been shared yet</div>
+                            <button className="btn btn-p btn-sm" onClick={() => {
+                              const newSlug = generateSlug(sm.title);
+                              setVideoShares(prev => [...prev, {
+                                id: "vs" + Date.now(), mediaId: sm.id, title: sm.title, description: "", tags: [], privacy: "unlisted", slug: newSlug, thumbnailSrc: sm.thumb,
+                                shareSettings: { requireEmail: true, requirePassword: false, password: "" },
+                                createdAt: new Date().toISOString().slice(0, 10),
+                                analytics: { totalViews: 0, uniqueViewers: 0, totalPlays: 0, avgWatchTime: "0:00", retentionData: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100] },
+                                viewers: [],
+                              }]);
+                              showToast("Share link created!");
+                            }}>Create share link</button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* File Info */}
+                    <div className="ms-card">
+                      <h3>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                        File info
+                      </h3>
+                      <div style={{ fontSize: 12, color: "var(--g5)", display: "flex", flexDirection: "column", gap: 8 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ color: "var(--g4)" }}>Format</span><span style={{ fontWeight: 600 }}>{sm.format}</span></div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ color: "var(--g4)" }}>Size</span><span style={{ fontWeight: 600 }}>{sm.size}</span></div>
+                        <div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ color: "var(--g4)" }}>Type</span><span style={{ fontWeight: 600, textTransform: "capitalize" }}>{sm.type}</span></div>
+                        {sm.duration && <div style={{ display: "flex", justifyContent: "space-between" }}><span style={{ color: "var(--g4)" }}>Duration</span><span style={{ fontWeight: 600 }}>{sm.duration}</span></div>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* ── ANALYTICS TAB ── */}
+              {studioMediaTab === "analytics" && (
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  {smShare ? (
+                    artist.plan === "Pro" ? (
+                      <>
+                        {/* Stats Overview */}
+                        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
+                          {[
+                            { val: smShare.analytics.totalViews, label: "Total Views", icon: EIcon.eye },
+                            { val: smShare.analytics.uniqueViewers, label: "Unique Viewers", icon: EIcon.user },
+                            { val: smShare.analytics.totalPlays, label: "Total Plays", icon: EIcon.clapperboard },
+                            { val: smShare.analytics.avgWatchTime, label: "Avg Watch Time", icon: EIcon.clock },
+                          ].map(s => (
+                            <div key={s.label} className="ms-card" style={{ textAlign: "center", padding: 16 }}>
+                              <div style={{ color: "var(--g4)", marginBottom: 8 }}>{s.icon}</div>
+                              <div style={{ fontSize: 24, fontWeight: 700, color: "var(--tx)" }}>{s.val}</div>
+                              <div style={{ fontSize: 11, color: "var(--g4)", marginTop: 4 }}>{s.label}</div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Retention Chart */}
+                        <div className="ms-card">
+                          <h3>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                            Audience retention
+                          </h3>
+                          <div className="ms-retention" style={{ height: 120, alignItems: "flex-end" }}>
+                            {smShare.analytics.retentionData.map((v, i) => (
+                              <div key={i} style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 4 }}>
+                                <div style={{ fontSize: 9, color: "var(--g4)" }}>{v}%</div>
+                                <div className="ms-retention-bar" style={{ height: `${v * 0.8}px`, width: "100%", maxWidth: 40 }} />
+                                <div style={{ fontSize: 9, color: "var(--g4)" }}>{(i + 1) * 10}%</div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Viewers List */}
+                        <div className="ms-card">
+                          <h3>
+                            {EIcon.user}
+                            Viewers
+                          </h3>
+                          {smShare.viewers.length > 0 ? (
+                            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                              {smShare.viewers.map(v => (
+                                <div key={v.id} className="ms-viewer-row">
+                                  <div className="ms-viewer-avatar">{(v.name || "?")[0].toUpperCase()}</div>
+                                  <div className="ms-viewer-info">
+                                    <div className="ms-viewer-name">{v.name || v.email || "Anonymous"}</div>
+                                    <div className="ms-viewer-meta">{v.plays} plays · {v.watchTime} · {v.device}</div>
+                                  </div>
+                                  <div style={{ fontSize: 11, color: "var(--g4)", marginLeft: "auto" }}>{v.viewedAt}</div>
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            <div style={{ textAlign: "center", padding: "24px 0", color: "var(--g4)", fontSize: 13 }}>No viewers yet</div>
+                          )}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="ms-card">
+                        <div className="premium-gate" style={{ padding: 40 }}>
+                          <div className="premium-gate-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                          <h4>Analytics requires Pro</h4>
+                          <p>Upgrade to see views, retention, viewer details, and engagement metrics for your shared videos.</p>
+                          <button className="btn-premium-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade to Pro</button>
+                        </div>
+                      </div>
+                    )
+                  ) : (
+                    <div className="ms-card" style={{ textAlign: "center", padding: 40 }}>
+                      <div style={{ color: "var(--g3)", marginBottom: 12 }}>
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                      </div>
+                      <h4 style={{ fontSize: 16, fontWeight: 600, color: "var(--tx)", margin: "0 0 8px" }}>No analytics yet</h4>
+                      <p style={{ fontSize: 13, color: "var(--g4)", marginBottom: 16 }}>Share this video to start tracking views and engagement</p>
+                      <button className="btn btn-p btn-sm" onClick={() => {
+                        const newSlug = generateSlug(sm.title);
+                        setVideoShares(prev => [...prev, {
+                          id: "vs" + Date.now(), mediaId: sm.id, title: sm.title, description: "", tags: [], privacy: "unlisted", slug: newSlug, thumbnailSrc: sm.thumb,
+                          shareSettings: { requireEmail: true, requirePassword: false, password: "" },
+                          createdAt: new Date().toISOString().slice(0, 10),
+                          analytics: { totalViews: 0, uniqueViewers: 0, totalPlays: 0, avgWatchTime: "0:00", retentionData: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100] },
+                          viewers: [],
+                        }]);
+                        showToast("Share link created!");
+                        setStudioMediaTab("content");
+                      }}>Create share link</button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* ── EDITOR TAB ── */}
+              {studioMediaTab === "editor" && (
+                <div className="ms-editor-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                  </svg>
+                  <h3>Video Editor</h3>
+                  <p>Trim, cut, add text overlays, adjust colors, and create highlight reels — all from your browser. The Lanced Studio editor is coming soon.</p>
+                  <div className="ms-editor-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></svg>
+                    Coming Soon
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        }
+
         return (
           <div>
             <div className="pg-header" style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between" }}>
@@ -6991,7 +8362,7 @@ export default function ArtistShell() {
                 <h1><em>Media Library</em></h1>
                 <p className="pg-sub">All your media assets in one place</p>
               </div>
-              <button className="btn btn-p" onClick={() => showToast("Upload coming soon")}>Upload</button>
+              <button className="btn btn-p" onClick={() => setShowUploadPanel(true)}>+ Upload</button>
             </div>
             <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
               {[["all", "All Media"], ["video", "Videos"], ["photo", "Photos"], ["doc", "Docs"], ["audio", "Audio"], ["link", "Links"]].map(([key, label]) => (
@@ -6999,9 +8370,13 @@ export default function ArtistShell() {
               ))}
             </div>
             <div className="media-grid">
-              {filteredMedia.map(m => (
+              {filteredMedia.map(m => {
+                const isVideo = m.type === "video";
+                const share = isVideo ? videoShares.find(vs => vs.mediaId === m.id) : null;
+                return (
                 <div key={m.id} className="media-item" onClick={() => {
-                  setMediaSelected(prev => prev.includes(m.id) ? prev.filter(id => id !== m.id) : [...prev, m.id]);
+                  if (isVideo) { setShowVideoDetailModal(m.id); }
+                  else { setMediaSelected(prev => prev.includes(m.id) ? prev.filter(id => id !== m.id) : [...prev, m.id]); }
                 }}>
                   {m.thumb ? (
                     <img className="mi-thumb" src={m.thumb} alt="" />
@@ -7009,15 +8384,26 @@ export default function ArtistShell() {
                     <div className="mi-placeholder">{m.type === "doc" ? EIcon.fileText : m.type === "audio" ? EIcon.music : EIcon.link}</div>
                   )}
                   <div className="mi-badge" style={{ background: MEDIA_COLORS[m.type] }}>{m.format}</div>
-                  <div className={`mi-check${mediaSelected.includes(m.id) ? " checked" : ""}`}>
-                    {mediaSelected.includes(m.id) ? "✓" : ""}
-                  </div>
+                  {isVideo && (
+                    <button className="mi-share-btn" title="Edit in Studio" onClick={e => { e.stopPropagation(); setStudioMediaId(m.id); setStudioMediaTab("content"); }} style={{ position: "absolute", top: 8, right: 8, width: 28, height: 28, borderRadius: 8, background: "rgba(0,0,0,.5)", border: "none", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0, transition: "opacity .15s", zIndex: 3 }}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    </button>
+                  )}
+                  {!isVideo && (
+                    <div className={`mi-check${mediaSelected.includes(m.id) ? " checked" : ""}`}>
+                      {mediaSelected.includes(m.id) ? "✓" : ""}
+                    </div>
+                  )}
                   <div className="mi-body">
                     <div className="mi-title">{m.title}</div>
-                    <div className="mi-meta">{m.size}{m.duration ? ` · ${m.duration}` : ""}</div>
+                    <div className="mi-meta">
+                      {m.size}{m.duration ? ` · ${m.duration}` : ""}
+                      {share && <span style={{ marginLeft: 6, color: "var(--ac)", fontSize: 10 }}>· {share.analytics.totalViews} views</span>}
+                    </div>
                   </div>
                 </div>
-              ))}
+                );
+              })}
             </div>
             {mediaSelected.length > 0 && (
               <div className="media-action-bar">
@@ -7084,16 +8470,42 @@ export default function ArtistShell() {
               <h1><em>Messages</em></h1>
               <p className="pg-sub">Your conversations</p>
             </div>
+
+            {/* Compose Modal */}
+            {showComposeMsg && (
+              <div className="ms-compose-overlay" onClick={e => { if (e.target === e.currentTarget) setShowComposeMsg(false); }}>
+                <div className="ms-compose-modal">
+                  <h3>New Message <button onClick={() => setShowComposeMsg(false)}>{I.close}</button></h3>
+                  <div className="ms-compose-field">
+                    <label>To</label>
+                    <input placeholder="Search contacts or companies..." />
+                  </div>
+                  <div className="ms-compose-field">
+                    <label>Subject</label>
+                    <input placeholder="What's this about?" />
+                  </div>
+                  <div className="ms-compose-field">
+                    <label>Message</label>
+                    <textarea placeholder="Write your message..." />
+                  </div>
+                  <div style={{ display: "flex", gap: 8, justifyContent: "flex-end" }}>
+                    <button className="btn btn-s btn-sm" onClick={() => setShowComposeMsg(false)}>Cancel</button>
+                    <button className="btn btn-p btn-sm" onClick={() => { setShowComposeMsg(false); showToast("Message sent!"); }}>Send Message</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="messenger">
-              <div className="ms-sidebar">
+              <div className="ms-sidebar" style={{ position: "relative" }}>
                 <div className="ms-sidebar-header">
                   <h3>Chats</h3>
                   <input className="ms-search" placeholder="Search conversations..." />
                 </div>
+                <button className="ms-compose-btn" title="New message" onClick={() => setShowComposeMsg(true)}>+</button>
                 <div className="ms-contacts">
                   {messages.map(msg => (
                     <div key={msg.id} className={`ms-contact${activeChat === msg.id ? " active" : ""}`} onClick={() => {
-                      // On mobile: open full-page chat. On desktop: use sidebar pattern.
                       if (window.innerWidth <= 768) {
                         setMobileChatOpen(msg.id);
                       } else {
@@ -7109,6 +8521,10 @@ export default function ArtistShell() {
                         <div className="ms-preview">{msg.preview}</div>
                       </div>
                       {msg.unread && <div className="ms-unread" />}
+                      <div className="ms-contact-actions" onClick={e => e.stopPropagation()}>
+                        <button title="Mark as unread" onClick={() => showToast("Marked as unread")}>{I.circle}</button>
+                        <button title="Archive" onClick={() => showToast("Archived")}>{I.archive}</button>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -7121,24 +8537,35 @@ export default function ArtistShell() {
                       <div className="ms-th-name">{activeMsgObj.from}</div>
                       <div className="ms-th-status">Online</div>
                     </div>
+                    <div className="ms-thread-actions">
+                      <button title="Mute" onClick={() => showToast("Conversation muted")}>{I.mute}</button>
+                      <button title="Archive" onClick={() => showToast("Archived")}>{I.archive}</button>
+                    </div>
                   </div>
                   <div className="ms-thread-body">
                     {activeMsgObj.thread.map((m, i) => (
-                      <div key={i} className={`ms-bubble ${m.sender === "me" ? "me" : "them"}`}>
-                        {m.text}
-                        <div className="ms-btime">{m.time}</div>
+                      <div key={i} className={`ms-bubble-wrap ${m.sender}`}>
+                        <div className={`ms-bubble ${m.sender === "me" ? "me" : "them"}`}>
+                          {m.text}
+                          <div className="ms-btime">{m.time}</div>
+                        </div>
                       </div>
                     ))}
                   </div>
                   <div className="ms-thread-input">
+                    <div className="ms-thread-input-actions">
+                      <button title="Attach file">{I.attachment}</button>
+                    </div>
                     <textarea placeholder="Type a message..." rows={1} onKeyDown={e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); showToast("Message sent!"); e.target.value = ""; }}} />
                     <button className="btn btn-p btn-sm" onClick={() => showToast("Message sent!")}>Send</button>
                   </div>
                 </div>
               ) : (
                 <div className="ms-empty">
-                  <div className="ms-empty-icon">{I.messages}</div>
-                  <div>Select a conversation to start messaging</div>
+                  <div className="ms-empty-illustration">{I.messages}</div>
+                  <h4>No conversation selected</h4>
+                  <p>Choose a chat from the sidebar or start a new one</p>
+                  <button className="btn btn-p btn-sm" onClick={() => setShowComposeMsg(true)}>New Message</button>
                 </div>
               )}
             </div>
@@ -10548,13 +11975,27 @@ export default function ArtistShell() {
         }
 
         /* ── Default: Studio page with tabs ── */
+        const studioWebsiteBack = () => { setStudioSubPage("overview"); setStudioPromptReady(true); setPage("dashboard"); };
         return (
-          <div>
-            <div className="pg-header">
-              <h1><em>Studio</em></h1>
-              <p className="pg-sub">Build and publish your personal website</p>
-            </div>
+          <div className={inStudio ? "studio-manager" : ""}>
+            {inStudio ? (
+              <div className="studio-manager-header">
+                <button className="studio-nav-back" onClick={studioWebsiteBack}>{I.back} Back to Studio</button>
+                <div className="studio-manager-title-row">
+                  <div>
+                    <h1 className="studio-manager-title">Website</h1>
+                    <p className="studio-manager-subtitle">Build and publish your personal website</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="pg-header">
+                <h1><em>Studio</em></h1>
+                <p className="pg-sub">Build and publish your personal website</p>
+              </div>
+            )}
 
+            <div className={inStudio ? "studio-subpage-wrap" : ""}>
             <div className="tab-bar" style={{ marginBottom: 20 }}>
               {["website", "analytics", "settings"].map(t => (
                 <button key={t} className={`tab-btn${studioTab === t ? " on" : ""}`} onClick={() => setStudioTab(t)}>
@@ -10678,6 +12119,7 @@ export default function ArtistShell() {
                 </div>
               </div>
             )}
+            </div>
           </div>
         );
       }
@@ -10688,25 +12130,55 @@ export default function ArtistShell() {
   };
 
   /* ━━━ MAIN RENDER ━━━ */
-  const shellClass = `shell${darkMode ? " dark" : ""}${sidebarCollapsed ? " sb-collapsed" : ""}${(viewSpotlight || viewOpportunity) ? " ctx-spotlight" : ""}${viewPortfolio ? " ctx-portfolio" : ""}${viewWork ? " ctx-works" : ""}${page === "messages" ? " on-messages" : ""}`;
+  const shellClass = `shell${darkMode ? " dark" : ""}${sidebarCollapsed ? " sb-collapsed" : ""}${inStudio ? " ctx-studio" : ""}${inStudio && !viewPortfolio && !viewWork ? " sb-studio-prompt" : ""}${(viewSpotlight || viewOpportunity) ? " ctx-spotlight" : ""}${viewPortfolio ? " ctx-portfolio" : ""}${viewWork ? " ctx-works" : ""}${page === "messages" ? " on-messages" : ""}`;
 
   return (
     <>
       <style>{CSS}</style>
       <div className={shellClass}>
+        {/* ── Studio Entrance Animation ── */}
+        {showStudioEntrance && (
+          <div className="studio-entrance" aria-hidden="true">
+            <div className="studio-entrance-bg">
+              <div className="studio-entrance-blob studio-entrance-blob-1" />
+              <div className="studio-entrance-blob studio-entrance-blob-2" />
+              <div className="studio-entrance-blob studio-entrance-blob-3" />
+              <div className="studio-entrance-blob studio-entrance-blob-4" />
+              <div className="studio-entrance-grain" />
+            </div>
+            <div className="studio-entrance-stars">
+              <div className="studio-star studio-star-1" />
+              <div className="studio-star studio-star-2" />
+              <div className="studio-star studio-star-3" />
+              <div className="studio-star studio-star-4" />
+              <div className="studio-star studio-star-5" />
+              <div className="studio-star studio-star-6" />
+              <div className="studio-star studio-star-7" />
+              <div className="studio-star studio-star-8" />
+            </div>
+            <div className="studio-entrance-content">
+              <div className="studio-entrance-title">Welcome to Studio</div>
+              <div className="studio-entrance-sub">Your creative workspace</div>
+            </div>
+          </div>
+        )}
         {/* ── Mobile Top Bar ── */}
         <div className="mobile-topbar">
           {viewOpportunity ? (
             <button className="mt-back" onClick={() => { if (applyStep > 0) setApplyStep(0); else { setViewOpportunity(null); setPage("discover"); } }}>{I.back}</button>
           ) : viewSpotlight ? (
             <button className="mt-back" onClick={() => { setViewSpotlight(null); setPage("applications"); }}>{I.back}</button>
+          ) : viewExtApp ? (
+            <button className="mt-back" onClick={() => setViewExtApp(null)}>{I.back}</button>
+          ) : studioMediaId ? (
+            <button className="mt-back" onClick={() => setStudioMediaId(null)}>{I.back}</button>
           ) : mobileChatOpen ? (
             <button className="mt-back" onClick={() => setMobileChatOpen(null)}>{I.back}</button>
           ) : (
             <div className="mt-logo"><img src="/lanced-logo.svg" alt="L" /></div>
           )}
           <span className="mt-title">
-            {viewOpportunity && currentOpp ? (applyStep > 0 ? `Apply — Step ${applyStep}` : currentOpp.title) : viewSpotlight && spotlightApp ? spotlightApp.opportunity : mobileChatOpen ? (messages.find(m => m.id === mobileChatOpen)?.from || "Chat") : NAV_ITEMS.find(n => n.id === page)?.label || "Dashboard"}
+            {viewOpportunity && currentOpp ? (applyStep > 0 ? `Apply — Step ${applyStep}` : currentOpp.title) : viewSpotlight && spotlightApp ? spotlightApp.opportunity : viewExtApp ? (externalApps.find(a => a.id === viewExtApp)?.companyName || "Application") : studioMediaId ? (mediaItems.find(mi => mi.id === studioMediaId)?.title || "Studio") : mobileChatOpen ? (messages.find(m => m.id === mobileChatOpen)?.from || "Chat") : inStudio ? `Studio — ${STUDIO_SUB_NAV.find(s => s.id === studioSubPage)?.label || "Overview"}` : NAV_ITEMS.find(n => n.id === page)?.label || "Dashboard"}
           </span>
           <div className="mt-actions">
             <button className="mt-bell" onClick={() => setShowNotifPanel(true)}>
@@ -10756,13 +12228,20 @@ export default function ArtistShell() {
                 <button key={t.id} className={spotlightTab === t.id ? "active" : ""} onClick={() => setSpotlightTab(t.id)}>{t.icon}<span>{t.label}</span></button>
               ))}
             </>
+          ) : inStudio && !viewPortfolio && !viewWork ? (
+            <>
+              <button onClick={() => { setInStudio(false); setPage("dashboard"); }}>{I.back}<span>Back</span></button>
+              {STUDIO_SUB_NAV.slice(0, 4).map(t => (
+                <button key={t.id} className={studioSubPage === t.id ? "active" : ""} onClick={() => { setStudioSubPage(t.id); if (t.id === "website") setPage("studio"); }}>{t.icon}<span>{t.label}</span></button>
+              ))}
+            </>
           ) : (
             <>
-              <button className={page === "dashboard" ? "active" : ""} onClick={() => { setPage("dashboard"); setViewSpotlight(null); }}>{I.home}<span>Home</span></button>
-              <button className={page === "discover" ? "active" : ""} onClick={() => { setPage("discover"); setViewSpotlight(null); }}>{I.discover}<span>Discover</span></button>
-              <button className={page === "applications" ? "active" : ""} onClick={() => { setPage("applications"); setViewSpotlight(null); }}>{I.applications}<span>Apply</span></button>
-              <button className={page === "network" ? "active" : ""} onClick={() => { setPage("network"); setViewSpotlight(null); }}>{I.network}<span>Network</span></button>
-              <button className={["profile","present","media","academy","messages","studio"].includes(page) ? "active" : ""} onClick={() => setShowMobileMenu(true)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>More</span></button>
+              <button className={page === "dashboard" && !inStudio ? "active" : ""} onClick={() => { setPage("dashboard"); setInStudio(false); setViewSpotlight(null); }}>{I.home}<span>Home</span></button>
+              <button className={page === "discover" ? "active" : ""} onClick={() => { setPage("discover"); setInStudio(false); setViewSpotlight(null); }}>{I.discover}<span>Discover</span></button>
+              <button className={page === "applications" ? "active" : ""} onClick={() => { setPage("applications"); setInStudio(false); setViewSpotlight(null); }}>{I.applications}<span>Apply</span></button>
+              <button className={page === "network" ? "active" : ""} onClick={() => { setPage("network"); setInStudio(false); setViewSpotlight(null); }}>{I.network}<span>Network</span></button>
+              <button className={["profile","present","media","academy","messages","studio"].includes(page) || inStudio ? "active" : ""} onClick={() => setShowMobileMenu(true)}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg><span>More</span></button>
             </>
           )}
         </nav>
@@ -10783,17 +12262,19 @@ export default function ArtistShell() {
           <div className="mob-panel-nav">
             {[
               { id: "profile", icon: I.profile, label: "Profile" },
-              { id: "present", icon: I.present, label: "Present" },
-              { id: "studio", icon: I.studio, label: "Studio" },
               { id: "media", icon: I.media, label: "Media Library" },
               { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
               { id: "academy", icon: I.academy, label: "Academy" },
             ].map(item => (
-              <button key={item.id} className={page === item.id ? "active" : ""} onClick={() => { setPage(item.id); setShowMobileMenu(false); setViewSpotlight(null); }}>
+              <button key={item.id} className={page === item.id && !inStudio ? "active" : ""} onClick={() => { setPage(item.id); setInStudio(false); setShowMobileMenu(false); setViewSpotlight(null); }}>
                 {item.icon}<span>{item.label}</span>
                 {item.badge && <span className="mp-badge">{item.badge}</span>}
               </button>
             ))}
+            <div className="mp-divider" />
+            <button className={inStudio ? "active" : ""} onClick={() => { setInStudio(true); setStudioSubPage("overview"); setShowMobileMenu(false); setViewSpotlight(null); setViewPortfolio(null); setViewWork(null); }}>
+              {I.studio}<span>Studio</span>
+            </button>
             <div className="mp-divider" />
             <button onClick={() => { setShowMobileMenu(false); showToast("Settings coming soon"); }}>
               {I.settings}<span>Settings</span>
@@ -10811,7 +12292,7 @@ export default function ArtistShell() {
         </div>
 
         {/* ── Sidebar ── */}
-        <nav className="sidebar">
+        <nav className={`sidebar${inStudio ? " sb-studio" : ""}`}>
           <div className="sidebar-back-top" style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 0 }}>
             <button className="sb-toggle" onClick={() => setSidebarCollapsed(!sidebarCollapsed)} style={{ position: "static", opacity: 1, flexShrink: 0 }} title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}>
               {I.panelL}
@@ -10830,7 +12311,26 @@ export default function ArtistShell() {
           </div>
 
           <div className="sidebar-nav">
-            {viewSpotlight && spotlightApp ? (
+            {viewExtApp && (() => { const ea = externalApps.find(a => a.id === viewExtApp); return ea ? (
+              <>
+                <button className="sb-back-toggle" onClick={() => setViewExtApp(null)}>
+                  {I.back}
+                  <span className="sb-label">Back to Applications</span>
+                </button>
+                <div style={{ padding: "8px 14px", marginBottom: 4 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }} className="sb-label">{ea.companyName}</div>
+                  <div style={{ fontSize: 11, color: "var(--g4)", marginTop: 2 }} className="sb-label">{ea.role}</div>
+                </div>
+                {[["overview", I.overview, "Overview"], ["tracking", I.eye, "Tracking"], ["share", I.applications, "Share"]].map(([id, icon, label]) => (
+                  <button key={id} className={`sidebar-item${extAppDetailTab === id ? " active" : ""}`} onClick={() => setExtAppDetailTab(id)}>
+                    {icon}
+                    <span className="sb-label">{label}</span>
+                    <span className="sb-tip">{label}</span>
+                  </button>
+                ))}
+              </>
+            ) : null; })()}
+            {!viewExtApp && viewSpotlight && spotlightApp ? (
               <>
                 <button className="sb-back-toggle" onClick={() => { setViewSpotlight(null); setPage("applications"); }}>
                   {I.back}
@@ -10850,9 +12350,9 @@ export default function ArtistShell() {
               </>
             ) : viewWork && currentWork ? (
               <>
-                <button className="sb-back-toggle" onClick={() => { setViewWork(null); setWorkTab("overview"); setWorkPreview(false); setWorkLive(false); setPage("present"); }}>
+                <button className="sb-back-toggle" onClick={() => { setViewWork(null); setWorkTab("overview"); setWorkPreview(false); setWorkLive(false); if (inStudio) { setStudioSubPage("works"); } else { setPage("present"); } }}>
                   {I.back}
-                  <span className="sb-label">Back to Present</span>
+                  <span className="sb-label">{inStudio ? "Back to Works" : "Back to Present"}</span>
                 </button>
                 <div style={{ padding: "8px 14px", marginBottom: 4 }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }} className="sb-label">{currentWork.name}</div>
@@ -10871,9 +12371,9 @@ export default function ArtistShell() {
               </>
             ) : viewPortfolio && currentPortfolio ? (
               <>
-                <button className="sb-back-toggle" onClick={() => { setViewPortfolio(null); setPortfolioTab("overview"); setPortfolioPreview(false); setPortfolioLive(false); setPage("present"); }}>
+                <button className="sb-back-toggle" onClick={() => { setViewPortfolio(null); setPortfolioTab("overview"); setPortfolioPreview(false); setPortfolioLive(false); if (inStudio) { setStudioSubPage("portfolio"); } else { setPage("present"); } }}>
                   {I.back}
-                  <span className="sb-label">Back to Portfolios</span>
+                  <span className="sb-label">{inStudio ? "Back to Portfolio" : "Back to Portfolios"}</span>
                 </button>
                 <div style={{ padding: "8px 14px", marginBottom: 4 }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }} className="sb-label">{currentPortfolio.name}</div>
@@ -10910,14 +12410,44 @@ export default function ArtistShell() {
                   </div>
                 )}
               </>
-            ) : (
-              NAV_ITEMS.map(item => (
-                <button key={item.id} className={`sidebar-item${page === item.id ? " active" : ""}`} onClick={() => { setPage(item.id); setViewSpotlight(null); }}>
-                  {item.icon}
-                  <span className="sb-label">{item.label}</span>
-                  {item.badge && <span className="sidebar-badge">{item.badge}</span>}
-                  <span className="sb-tip">{item.label}</span>
+            ) : inStudio && !viewPortfolio && !viewWork ? (
+              <>
+                <button className="sb-back-toggle" onClick={() => { setInStudio(false); setPage("dashboard"); }}>
+                  {I.back}
+                  <span className="sb-label">Back to workspace</span>
                 </button>
+                <div className="sb-studio-header">
+                  <h3 className="sb-label">Welcome to Studio</h3>
+                  <p className="sb-label">Your creative workspace</p>
+                </div>
+                <div className="sb-studio-section sb-label">Navigate</div>
+                {STUDIO_SUB_NAV.map(item => (
+                  <button key={item.id} className={`sidebar-item${studioSubPage === item.id ? " active" : ""}`} onClick={() => { setStudioSubPage(item.id); if (item.id === "website") setPage("studio"); }}>
+                    {item.icon}
+                    <span className="sb-label">{item.label}</span>
+                    <span className="sb-tip">{item.label}</span>
+                  </button>
+                ))}
+              </>
+            ) : (
+              NAV_ITEMS.map((item, idx) => (
+                item.type === "divider" ? (
+                  <div key={`div-${idx}`} className="sidebar-divider" />
+                ) : item.id === "studio" ? (
+                  <button key={item.id} className={`sidebar-item sidebar-studio-pill${inStudio ? " active" : ""}`} onClick={() => { setInStudio(true); setStudioSubPage("overview"); setViewSpotlight(null); setViewPortfolio(null); setViewWork(null); }}>
+                    {item.icon}
+                    <span className="sb-label">{item.label}</span>
+                    <span className="ss-pill">NEW</span>
+                    <span className="sb-tip">{item.label}</span>
+                  </button>
+                ) : (
+                  <button key={item.id} className={`sidebar-item${page === item.id && !inStudio ? " active" : ""}`} onClick={() => { setPage(item.id); setInStudio(false); setViewSpotlight(null); }}>
+                    {item.icon}
+                    <span className="sb-label">{item.label}</span>
+                    {item.badge && <span className="sidebar-badge">{item.badge}</span>}
+                    <span className="sb-tip">{item.label}</span>
+                  </button>
+                )
               ))
             )}
           </div>
@@ -11001,7 +12531,7 @@ export default function ArtistShell() {
           {viewPortfolio && currentPortfolio && !portfolioPreview && (
             <div className="breadcrumb-bar">
               <div>
-                <span className="bc-link" style={{ cursor: "pointer", color: "var(--g4)", fontSize: 12 }} onClick={() => { setViewPortfolio(null); setPortfolioTab("overview"); setPage("present"); }}>Portfolios</span>
+                <span className="bc-link" style={{ cursor: "pointer", color: "var(--g4)", fontSize: 12 }} onClick={() => { setViewPortfolio(null); setPortfolioTab("overview"); if (inStudio) { setStudioSubPage("portfolio"); } else { setPage("present"); } }}>Portfolios</span>
                 <span style={{ color: "var(--g3)", margin: "0 6px" }}>›</span>
                 <span style={{ fontWeight: 600, color: "var(--tx)", fontSize: 12 }}>{currentPortfolio.name}</span>
               </div>
@@ -11035,7 +12565,7 @@ export default function ArtistShell() {
           {viewWork && currentWork && !workPreview && (
             <div className="breadcrumb-bar">
               <div>
-                <span className="bc-link" style={{ cursor: "pointer", color: "var(--g4)", fontSize: 12 }} onClick={() => { setViewWork(null); setWorkTab("overview"); setPage("present"); }}>Present</span>
+                <span className="bc-link" style={{ cursor: "pointer", color: "var(--g4)", fontSize: 12 }} onClick={() => { setViewWork(null); setWorkTab("overview"); if (inStudio) { setStudioSubPage("works"); } else { setPage("present"); } }}>{ inStudio ? "Works" : "Present" }</span>
                 <span style={{ color: "var(--g3)", margin: "0 6px" }}>›</span>
                 <span style={{ fontWeight: 600, color: "var(--tx)", fontSize: 12 }}>{currentWork.name}</span>
               </div>
@@ -11095,12 +12625,14 @@ export default function ArtistShell() {
             </div>
           )}
           <div className="content">
-            <div className="dash-bg" aria-hidden="true">
-              <div className="dash-blob dash-blob-1"/>
-              <div className="dash-blob dash-blob-2"/>
-              <div className="dash-blob dash-blob-3"/>
-              <div className="dash-blob dash-blob-4"/>
-            </div>
+            {page === "dashboard" && !inStudio && (
+              <div className="dash-bg" aria-hidden="true">
+                <div className="dash-blob dash-blob-1"/>
+                <div className="dash-blob dash-blob-2"/>
+                <div className="dash-blob dash-blob-3"/>
+                <div className="dash-blob dash-blob-4"/>
+              </div>
+            )}
             {renderPage()}
           </div>
         </div>
@@ -11775,7 +13307,7 @@ export default function ArtistShell() {
                 <h3 style={{ margin: "0 0 16px" }}><em style={{ color: "var(--ac)", fontStyle: "italic" }}>Experience</em> & Education</h3>
                 <div className="pfe-resume-list">
                   {(pf.resume || []).map(r => (
-                    <div key={r.id} className="pfe-resume-item" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
+                    <div key={r.id} className="pfe-resume-item" style={{ background: "var(--sf)", border: "1px solid var(--g2)" }}>
                       <div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{EIcon[RESUME_EMOJI_KEYS2[r.type] || "briefcase"]}</div>
                       <div className="pfe-ri-info">
                         <div className="pfe-ri-title">{r.title}</div>
@@ -11792,7 +13324,7 @@ export default function ArtistShell() {
                 <h3 style={{ margin: "0 0 16px" }}><em style={{ color: "var(--ac)", fontStyle: "italic" }}>References</em> & Reviews <span style={{ fontSize: 12, fontWeight: 400, color: "var(--g4)" }}>{(pf.references || []).length}</span></h3>
                 <div className="pfe-refs">
                   {(pf.references || []).map(ref => (
-                    <div key={ref.id} className="pfe-ref-card" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
+                    <div key={ref.id} className="pfe-ref-card" style={{ background: "var(--sf)", border: "1px solid var(--g2)" }}>
                       <span className={`pfe-ref-type ${ref.type}`}>{ref.type === "reference" ? "Reference" : "Review"}</span>
                       <div className="pfe-ref-quote">"{ref.quote}"</div>
                       <div className="pfe-ref-source">
@@ -11811,7 +13343,7 @@ export default function ArtistShell() {
                 <h3 style={{ margin: "0 0 16px" }}>Documents</h3>
                 <div className="pfe-doc-list">
                   {pf.documents.map(d => (
-                    <div key={d.id} className="pfe-doc" style={{ background: "#fff", border: "1px solid var(--g2)" }}>
+                    <div key={d.id} className="pfe-doc" style={{ background: "var(--sf)", border: "1px solid var(--g2)" }}>
                       <div className="pfe-d-icon">{EIcon.fileText}</div>
                       <div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div>
                     </div>
@@ -12397,6 +13929,459 @@ export default function ArtistShell() {
           </div>
         );
       })()}
+
+      {/* ── Upload Panel ── */}
+      {showUploadPanel && (
+        <>
+          <div className="upload-panel-backdrop" onClick={() => setShowUploadPanel(false)} />
+          <div className="upload-panel">
+            <div className="up-header">
+              <h3>Upload Media</h3>
+              <button className="btn btn-s btn-sm" onClick={() => setShowUploadPanel(false)} style={{ padding: "6px 10px" }}>{I.x}</button>
+            </div>
+            <div className="up-body">
+              <div className={`upload-dropzone${uploadProgress !== null ? "" : ""}`} onClick={() => { if (uploadProgress === null) setUploadProgress(0); }}>
+                <div className="upload-dropzone-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                </div>
+                <div className="upload-dropzone-text">Drag & drop files or <span>Browse</span></div>
+                <div className="upload-dropzone-hint">MP4, MOV, JPG, PNG, PDF up to 500 MB</div>
+              </div>
+              {uploadProgress !== null && (
+                <div style={{ marginBottom: 16 }}>
+                  <div className="upload-progress-bar"><div className="upload-progress-fill" style={{ width: `${uploadProgress}%` }} /></div>
+                  <div className="upload-progress-text">{uploadProgress < 100 ? `Uploading... ${uploadProgress}%` : "Upload complete!"}</div>
+                </div>
+              )}
+              <div className="up-type-chips">
+                {[["video", "Video"], ["photo", "Photo"], ["doc", "Document"], ["audio", "Audio"]].map(([k, l]) => (
+                  <button key={k} className={`chip${uploadForm.type === k ? " on" : ""}`} onClick={() => setUploadForm(p => ({ ...p, type: k }))}>{l}</button>
+                ))}
+              </div>
+              <div className="up-field">
+                <label>Title</label>
+                <input placeholder="e.g. Showreel 2026" value={uploadForm.title} onChange={e => setUploadForm(p => ({ ...p, title: e.target.value }))} />
+              </div>
+              <div className="up-field">
+                <label>Description</label>
+                <textarea placeholder="Describe this media..." value={uploadForm.description} onChange={e => setUploadForm(p => ({ ...p, description: e.target.value }))} />
+              </div>
+              <div className="up-field">
+                <label>Tags</label>
+                <input placeholder="Contemporary, Ballet, Showreel" value={uploadForm.tags} onChange={e => setUploadForm(p => ({ ...p, tags: e.target.value }))} />
+              </div>
+              <div className="up-field">
+                <label>Location</label>
+                <input placeholder="e.g. London, UK" value={uploadForm.location} onChange={e => setUploadForm(p => ({ ...p, location: e.target.value }))} />
+              </div>
+              <div className="up-field">
+                <label>Credits</label>
+                <input placeholder="e.g. Choreography by ..." value={uploadForm.credits} onChange={e => setUploadForm(p => ({ ...p, credits: e.target.value }))} />
+              </div>
+              <div className="up-field">
+                <label>Privacy</label>
+                <select value={uploadForm.privacy} onChange={e => setUploadForm(p => ({ ...p, privacy: e.target.value }))}>
+                  <option value="public">Public</option>
+                  <option value="unlisted">Unlisted</option>
+                  <option value="private">Private</option>
+                </select>
+              </div>
+              {uploadForm.type === "video" && (
+                <div className="up-field">
+                  <label>Thumbnail</label>
+                  <div className="upload-dropzone" style={{ padding: 16 }} onClick={() => showToast("Thumbnail selected")}>
+                    <div className="upload-dropzone-text" style={{ fontSize: 12 }}>Click to select thumbnail</div>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="up-actions">
+              <button className="btn btn-s" onClick={() => { setShowUploadPanel(false); setUploadForm({ title: "", description: "", tags: "", location: "", credits: "", privacy: "unlisted", type: "video" }); setUploadProgress(null); }}>Cancel</button>
+              <button className="btn btn-p" onClick={() => {
+                if (!uploadForm.title) { showToast("Please add a title"); return; }
+                setUploadProgress(0);
+                let p = 0;
+                const iv = setInterval(() => {
+                  p += Math.random() * 25 + 10;
+                  if (p >= 100) { p = 100; clearInterval(iv); setTimeout(() => {
+                    const newItem = { id: "m" + Date.now(), title: uploadForm.title, type: uploadForm.type, format: uploadForm.type === "video" ? "MP4" : uploadForm.type === "photo" ? "JPG" : uploadForm.type === "doc" ? "PDF" : "MP3", size: (Math.random() * 200 + 10).toFixed(1) + " MB", duration: uploadForm.type === "video" ? `${Math.floor(Math.random() * 4 + 1)}:${String(Math.floor(Math.random() * 60)).padStart(2, "0")}` : undefined, thumb: uploadForm.type === "video" || uploadForm.type === "photo" ? "/demo/artists/boris-de-jong/pexels-cottonbro-5102571.jpg" : null };
+                    setMediaItems(prev => [newItem, ...prev]);
+                    setShowUploadPanel(false);
+                    setUploadForm({ title: "", description: "", tags: "", location: "", credits: "", privacy: "unlisted", type: "video" });
+                    setUploadProgress(null);
+                    showToast("Media uploaded successfully!");
+                  }, 500); }
+                  setUploadProgress(Math.min(p, 100));
+                }, 300);
+              }}>Upload</button>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* ── Video Detail Modal ── */}
+      {showVideoDetailModal && (() => {
+        const m = mediaItems.find(mi => mi.id === showVideoDetailModal);
+        if (!m) return null;
+        const share = videoShares.find(vs => vs.mediaId === m.id);
+        return (
+          <div className="vd-overlay" onClick={e => { if (e.target === e.currentTarget) setShowVideoDetailModal(null); }}>
+            <div className="vd-modal">
+              <div className="vd-preview" onClick={() => showToast("Video playback coming soon")}>
+                {m.thumb ? <img src={m.thumb} alt={m.title} /> : <div style={{ width: "100%", height: "100%", background: "var(--g1)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--g4)" }}>No preview</div>}
+                <div className="vd-play">
+                  <div className="vd-play-btn">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--tx)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div className="vd-body">
+                <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 4 }}>
+                  <h3 className="vd-title">{m.title}</h3>
+                  <button className="btn btn-s btn-sm" onClick={() => setShowVideoDetailModal(null)} style={{ padding: "4px 8px", flexShrink: 0 }}>{I.x}</button>
+                </div>
+                <div className="vd-meta">
+                  <span>{m.format}</span>
+                  <span>{m.size}</span>
+                  {m.duration && <span>{m.duration}</span>}
+                </div>
+                {share && (
+                  <>
+                    <div className="vd-tags">
+                      {share.tags.map(t => <span key={t} className="vd-tag">{t}</span>)}
+                    </div>
+                    {share.description && <div className="vd-desc">{share.description}</div>}
+                    <div className="vd-stats">
+                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.totalViews}</div><div className="vd-stat-label">Views</div></div>
+                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.totalPlays}</div><div className="vd-stat-label">Plays</div></div>
+                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.uniqueViewers}</div><div className="vd-stat-label">Unique</div></div>
+                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.avgWatchTime}</div><div className="vd-stat-label">Avg. Time</div></div>
+                    </div>
+                  </>
+                )}
+                <div className="vd-actions">
+                  <button className="btn btn-sm" style={{ background: "linear-gradient(135deg,#E11D48,#BE123C)", color: "#fff", border: "none" }} onClick={() => { setShowVideoDetailModal(null); setStudioMediaId(m.id); setStudioMediaTab("content"); }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    {" "}Edit in Studio
+                  </button>
+                  <button className="btn btn-p btn-sm" onClick={() => { setShowVideoDetailModal(null); setShowVideoShareModal(m.id); setVideoShareTab("settings"); }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    {" "}Share
+                  </button>
+                  <button className="btn btn-s btn-sm" onClick={() => showToast("Added to portfolio")}>Add to Portfolio</button>
+                  <button className="btn btn-danger btn-sm" onClick={() => { setMediaItems(prev => prev.filter(mi => mi.id !== m.id)); setShowVideoDetailModal(null); showToast("Media deleted"); }}>Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* ── Video Share Modal ── */}
+      {showVideoShareModal && (() => {
+        const m = mediaItems.find(mi => mi.id === showVideoShareModal);
+        if (!m) return null;
+        let share = videoShares.find(vs => vs.mediaId === m.id);
+        if (!share) {
+          const newShare = {
+            id: "vs" + Date.now(), mediaId: m.id, title: m.title, description: "", tags: [], privacy: "unlisted",
+            slug: generateSlug(m.title), thumbnailSrc: m.thumb || "",
+            shareSettings: { requireEmail: true, requirePassword: false, password: "" },
+            createdAt: new Date().toISOString().slice(0, 10),
+            analytics: { totalViews: 0, uniqueViewers: 0, totalPlays: 0, avgWatchTime: "0:00", retentionData: [100, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+            viewers: [],
+          };
+          setVideoShares(prev => [...prev, newShare]);
+          share = newShare;
+        }
+        const slug = share.slug;
+        const copyLink = () => { navigator.clipboard?.writeText(`video.lanced.app/${slug}`); showToast("Link copied!"); };
+        return (
+          <div className="vs-overlay" onClick={e => { if (e.target === e.currentTarget) setShowVideoShareModal(null); }}>
+            <div className="vs-modal">
+              <div className="vs-header">
+                <h3>Share Video</h3>
+                <button className="btn btn-s btn-sm" onClick={() => setShowVideoShareModal(null)} style={{ padding: "4px 8px" }}>{I.x}</button>
+              </div>
+              <div className="vs-tabs">
+                {[["settings", "Settings"], ["share", "Share"], ["analytics", "Analytics"]].map(([k, l]) => (
+                  <button key={k} className={`vs-tab${videoShareTab === k ? " active" : ""}`} onClick={() => setVideoShareTab(k)}>{l}</button>
+                ))}
+              </div>
+              <div className="vs-body">
+                {videoShareTab === "settings" && (
+                  <>
+                    <div style={{ marginBottom: 16, borderRadius: 12, overflow: "hidden", aspectRatio: "16/9", background: "#0a0a0a" }}>
+                      {m.thumb ? <img src={m.thumb} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} /> : <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: "#666" }}>No preview</div>}
+                    </div>
+                    <div className="up-field">
+                      <label>Title</label>
+                      <input value={share.title} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, title: e.target.value } : vs))} />
+                    </div>
+                    <div className="up-field">
+                      <label>Description</label>
+                      <textarea value={share.description} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, description: e.target.value } : vs))} placeholder="Add a description for viewers..." />
+                    </div>
+                    <div className="up-field">
+                      <label>Tags</label>
+                      <input value={share.tags.join(", ")} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, tags: e.target.value.split(",").map(t => t.trim()).filter(Boolean) } : vs))} placeholder="Contemporary, Ballet, Showreel" />
+                    </div>
+                    <div className="up-field">
+                      <label>Privacy</label>
+                      <select className="vs-privacy-select" value={share.privacy} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, privacy: e.target.value } : vs))}>
+                        <option value="public">Public — Anyone with the link</option>
+                        <option value="unlisted">Unlisted — Only people with the link</option>
+                        <option value="private">Private — Only you</option>
+                      </select>
+                    </div>
+                  </>
+                )}
+                {videoShareTab === "share" && (
+                  <>
+                    <div className="vs-section">
+                      <div className="vs-section-title">Shareable Link</div>
+                      <div className="vs-link-row">
+                        <input readOnly value={`video.lanced.app/${slug}`} />
+                        <button onClick={copyLink}>Copy</button>
+                      </div>
+                    </div>
+                    <div className="vs-section">
+                      <div className="vs-section-title">Access Settings</div>
+                      <div className="share-modal">
+                        <div className="sm-toggle">
+                          <div><div className="sm-toggle-label">Require email</div><div className="sm-toggle-desc">Viewers must enter their email to watch</div></div>
+                          <div className={`sm-switch${share.shareSettings.requireEmail ? " on" : ""}`} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, requireEmail: !vs.shareSettings.requireEmail } } : vs))} />
+                        </div>
+                        <div className="sm-toggle">
+                          <div><div className="sm-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div><div className="sm-toggle-desc">Require a password to view</div></div>
+                          <div className={`sm-switch${share.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, requirePassword: !vs.shareSettings.requirePassword } } : vs))} />
+                        </div>
+                        {share.shareSettings.requirePassword && (
+                          <input className="sm-pw-input" type="text" placeholder="Set password..." value={share.shareSettings.password} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, password: e.target.value } } : vs))} />
+                        )}
+                      </div>
+                    </div>
+                    <div className="vs-section">
+                      <button className="btn btn-s btn-sm" onClick={() => window.open(`/video.html?slug=${slug}`, "_blank")}>
+                        {I.eye}{" "}Preview as viewer
+                      </button>
+                    </div>
+                  </>
+                )}
+                {videoShareTab === "analytics" && (
+                  artist.plan === "Pro" ? (
+                    <>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10, marginBottom: 20 }}>
+                        {[["totalViews", "Views"], ["uniqueViewers", "Unique"], ["totalPlays", "Plays"], ["avgWatchTime", "Avg. Time"]].map(([k, l]) => (
+                          <div key={k} className="vd-stat" style={{ padding: "12px 8px", background: "var(--bg)", borderRadius: 12, border: "1px solid var(--g1)" }}>
+                            <div className="vd-stat-val">{share.analytics[k]}</div>
+                            <div className="vd-stat-label">{l}</div>
+                          </div>
+                        ))}
+                      </div>
+                      <div className="vs-section">
+                        <div className="vs-section-title">Retention</div>
+                        <div className="vs-retention">
+                          {share.analytics.retentionData.map((v, i) => (
+                            <div key={i} className="vs-retention-bar" style={{ height: `${v}%` }} title={`${v}% at ${(i + 1) * 10}%`} />
+                          ))}
+                        </div>
+                        <div className="vs-retention-label"><span>0%</span><span>50%</span><span>100%</span></div>
+                      </div>
+                      <div className="vs-section">
+                        <div className="vs-section-title">Viewers ({share.viewers.length})</div>
+                        {share.viewers.length === 0 ? (
+                          <div style={{ textAlign: "center", padding: 20, color: "var(--g3)", fontSize: 12 }}>No viewers yet</div>
+                        ) : (
+                          <div className="vs-viewer-list">
+                            {share.viewers.map(vw => (
+                              <div key={vw.id} className="vs-viewer-item">
+                                <div className="vs-viewer-avatar">{(vw.name || "A")[0]}</div>
+                                <div className="vs-viewer-info">
+                                  <div className="vs-viewer-name">{vw.name}</div>
+                                  <div className="vs-viewer-email">{vw.email || "Anonymous"}</div>
+                                </div>
+                                <div className="vs-viewer-meta">
+                                  <div>{vw.plays} plays · {vw.watchTime}</div>
+                                  <div>{vw.device} · {new Date(vw.viewedAt).toLocaleDateString()}</div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="premium-gate">
+                      <div className="premium-gate-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      </div>
+                      <h4>Video Analytics</h4>
+                      <p>See who's watching your videos, track retention, and measure engagement. Available on the Pro plan.</p>
+                      <button className="btn-premium-upgrade" onClick={() => { setShowVideoShareModal(null); setPage("settings"); setSettingsTab("plan"); }}>Upgrade to Pro</button>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* ── External App Creation Modal ── */}
+      {showExtAppModal && (
+        <div className="ext-overlay" onClick={e => { if (e.target === e.currentTarget) { setShowExtAppModal(false); setExtAppStep(0); } }}>
+          <div className="ext-modal">
+            <div className="ext-header">
+              <h3>Create External Application</h3>
+              <button className="btn btn-s btn-sm" onClick={() => { setShowExtAppModal(false); setExtAppStep(0); }} style={{ padding: "4px 8px" }}>{I.x}</button>
+            </div>
+            <div className="ext-steps">
+              {[0, 1, 2, 3, 4].map(s => (
+                <div key={s} className={`ext-step-dot${extAppStep === s ? " active" : ""}${extAppStep > s ? " done" : ""}`} />
+              ))}
+            </div>
+            <div className="ext-body" style={{ animation: "slideInUp .2s ease" }}>
+              {extAppStep === 0 && (
+                <>
+                  <h4 style={{ fontSize: 15, fontWeight: 600, marginBottom: 16 }}>Company Details</h4>
+                  <div className="up-field">
+                    <label>Company Name *</label>
+                    <input placeholder="e.g. Royal Ballet of Flanders" value={extAppForm.companyName} onChange={e => setExtAppForm(p => ({ ...p, companyName: e.target.value }))} />
+                  </div>
+                  <div className="up-field">
+                    <label>Position / Role *</label>
+                    <input placeholder="e.g. Guest Dancer — Spring 2027" value={extAppForm.role} onChange={e => setExtAppForm(p => ({ ...p, role: e.target.value }))} />
+                  </div>
+                  <div className="up-field">
+                    <label>Application Deadline</label>
+                    <input type="date" value={extAppForm.deadline} onChange={e => setExtAppForm(p => ({ ...p, deadline: e.target.value }))} />
+                  </div>
+                </>
+              )}
+              {extAppStep === 1 && (
+                <>
+                  <h4 style={{ fontSize: 15, fontWeight: 600, marginBottom: 16 }}>Motivation Letter</h4>
+                  <div className="up-field">
+                    <label>Your motivation</label>
+                    <textarea style={{ minHeight: 180 }} placeholder="Dear Artistic Team,&#10;&#10;I am writing to express my interest in..." value={extAppForm.motivation} onChange={e => setExtAppForm(p => ({ ...p, motivation: e.target.value }))} />
+                    <div style={{ fontSize: 10, color: "var(--g3)", textAlign: "right", marginTop: 4 }}>{extAppForm.motivation.length} characters</div>
+                  </div>
+                </>
+              )}
+              {extAppStep === 2 && (
+                <>
+                  <h4 style={{ fontSize: 15, fontWeight: 600, marginBottom: 6 }}>Select Materials</h4>
+                  <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 14 }}>Choose videos, photos, and documents to include in your application.</p>
+                  <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
+                    {[["all", "All"], ["video", "Videos"], ["photo", "Photos"], ["doc", "Docs"]].map(([k, l]) => (
+                      <button key={k} className={`chip${mediaFilter === k ? " on" : ""}`} onClick={() => setMediaFilter(k)}>{l}</button>
+                    ))}
+                  </div>
+                  <div className="ext-media-grid">
+                    {(mediaFilter === "all" ? mediaItems : mediaItems.filter(mi => mi.type === mediaFilter)).map(mi => (
+                      <div key={mi.id} className={`ext-media-item${extAppForm.selectedMedia.includes(mi.id) ? " selected" : ""}`} onClick={() => setExtAppForm(p => ({ ...p, selectedMedia: p.selectedMedia.includes(mi.id) ? p.selectedMedia.filter(id => id !== mi.id) : [...p.selectedMedia, mi.id] }))}>
+                        {mi.thumb ? <img src={mi.thumb} alt={mi.title} /> : <div style={{ width: "100%", height: "100%", background: "var(--g1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 10, color: "var(--g4)" }}>{mi.format}</div>}
+                        <div className="ext-mi-check">{extAppForm.selectedMedia.includes(mi.id) ? "✓" : ""}</div>
+                        <div className="ext-mi-badge" style={{ background: MEDIA_COLORS[mi.type] }}>{mi.format}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--g4)", marginTop: 10 }}>{extAppForm.selectedMedia.length} item{extAppForm.selectedMedia.length !== 1 ? "s" : ""} selected</div>
+                </>
+              )}
+              {extAppStep === 3 && (
+                <>
+                  <h4 style={{ fontSize: 15, fontWeight: 600, marginBottom: 16 }}>Share Settings</h4>
+                  <div className="vs-section">
+                    <div className="vs-section-title">Application Link</div>
+                    <div className="vs-link-row">
+                      <input readOnly value={`apply.lanced.app/${extAppForm.companyName ? generateSlug(extAppForm.companyName) : "..."}`} style={{ color: "#0D9488" }} />
+                      <button onClick={() => showToast("Link will be generated when you create the application")}>Copy</button>
+                    </div>
+                  </div>
+                  <div className="share-modal" style={{ background: "none", boxShadow: "none", padding: 0, width: "auto" }}>
+                    <div className="sm-toggle">
+                      <div><div className="sm-toggle-label">Require email</div><div className="sm-toggle-desc">Always on — viewers must enter their email to view</div></div>
+                      <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
+                    </div>
+                    <div className="sm-toggle">
+                      <div><div className="sm-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div><div className="sm-toggle-desc">Require a password to view the application</div></div>
+                      <div className={`sm-switch${extAppShareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExtAppShareSettings(p => ({ ...p, requirePassword: !p.requirePassword }))} />
+                    </div>
+                    {extAppShareSettings.requirePassword && (
+                      <input className="sm-pw-input" type="text" placeholder="Set password..." value={extAppShareSettings.password} onChange={e => setExtAppShareSettings(p => ({ ...p, password: e.target.value }))} />
+                    )}
+                  </div>
+                </>
+              )}
+              {extAppStep === 4 && (
+                <>
+                  <h4 style={{ fontSize: 15, fontWeight: 600, marginBottom: 16 }}>Review & Send</h4>
+                  <div className="ext-preview-card">
+                    <h4>{extAppForm.companyName || "Company"}</h4>
+                    <p style={{ fontWeight: 600, color: "var(--tx)" }}>{extAppForm.role || "Position"}</p>
+                    {extAppForm.deadline && <p>Deadline: {extAppForm.deadline}</p>}
+                  </div>
+                  {extAppForm.motivation && (
+                    <div className="ext-preview-card">
+                      <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".04em", color: "var(--g4)", marginBottom: 6 }}>Motivation</div>
+                      <p style={{ whiteSpace: "pre-wrap" }}>{extAppForm.motivation.slice(0, 200)}{extAppForm.motivation.length > 200 ? "..." : ""}</p>
+                    </div>
+                  )}
+                  <div className="ext-preview-card">
+                    <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".04em", color: "var(--g4)", marginBottom: 6 }}>Materials ({extAppForm.selectedMedia.length})</div>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      {extAppForm.selectedMedia.map(id => {
+                        const mi = mediaItems.find(m => m.id === id);
+                        return mi ? <span key={id} className="chip" style={{ fontSize: 10, padding: "2px 8px" }}>{mi.title}</span> : null;
+                      })}
+                    </div>
+                  </div>
+                  <div className="ext-preview-card">
+                    <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".04em", color: "var(--g4)", marginBottom: 6 }}>Access</div>
+                    <p>Email required · {extAppShareSettings.requirePassword ? "Password protected" : "No password"}</p>
+                  </div>
+                </>
+              )}
+            </div>
+            <div className="ext-footer">
+              <button className="btn btn-s" onClick={() => { if (extAppStep === 0) { setShowExtAppModal(false); setExtAppStep(0); } else setExtAppStep(s => s - 1); }}>
+                {extAppStep === 0 ? "Cancel" : "Back"}
+              </button>
+              <div style={{ display: "flex", gap: 8 }}>
+                {extAppStep === 4 && (
+                  <button className="btn btn-s" onClick={() => {
+                    const slug = generateSlug(extAppForm.companyName || "app");
+                    const newApp = { id: "ext" + Date.now(), type: "external", companyName: extAppForm.companyName, companyLogo: null, role: extAppForm.role, deadline: extAppForm.deadline, status: "draft", slug, motivation: extAppForm.motivation, selectedMedia: extAppForm.selectedMedia, shareSettings: { ...extAppShareSettings, requireEmail: true }, createdAt: new Date().toISOString().slice(0, 10), sentAt: null, analytics: { viewCount: 0, lastViewedAt: null, timeSpent: null, mediaViewed: [], viewerEmail: null } };
+                    setExternalApps(prev => [newApp, ...prev]);
+                    setShowExtAppModal(false);
+                    setExtAppStep(0);
+                    setExtAppForm({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
+                    setExtAppShareSettings({ requireEmail: true, requirePassword: false, password: "" });
+                    showToast("Application saved as draft");
+                  }}>Save as Draft</button>
+                )}
+                <button className="btn btn-p" onClick={() => {
+                  if (extAppStep === 0 && (!extAppForm.companyName || !extAppForm.role)) { showToast("Please fill in company name and role"); return; }
+                  if (extAppStep < 4) { setExtAppStep(s => s + 1); return; }
+                  const slug = generateSlug(extAppForm.companyName || "app");
+                  const newApp = { id: "ext" + Date.now(), type: "external", companyName: extAppForm.companyName, companyLogo: null, role: extAppForm.role, deadline: extAppForm.deadline, status: "sent", slug, motivation: extAppForm.motivation, selectedMedia: extAppForm.selectedMedia, shareSettings: { ...extAppShareSettings, requireEmail: true }, createdAt: new Date().toISOString().slice(0, 10), sentAt: new Date().toISOString().slice(0, 10), analytics: { viewCount: 0, lastViewedAt: null, timeSpent: null, mediaViewed: [], viewerEmail: null } };
+                  setExternalApps(prev => [newApp, ...prev]);
+                  setShowExtAppModal(false);
+                  setExtAppStep(0);
+                  setExtAppForm({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
+                  setExtAppShareSettings({ requireEmail: true, requirePassword: false, password: "" });
+                  showToast("Application created & link ready to share!");
+                  setPage("applications");
+                }}>
+                  {extAppStep < 4 ? "Continue" : "Create & Send"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Lightbox ── */}
       {lightbox && (
