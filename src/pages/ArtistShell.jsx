@@ -2904,31 +2904,60 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 
 /* ━━━ STUDIO ━━━ */
 .studio-live-banner{display:flex;align-items:center;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;margin-bottom:20px;font-size:13px;color:var(--tx)}
-/* ━━━ Website intro / learn section ━━━ */
-.ws-intro{max-width:820px;margin:0 auto}
-.ws-hero{position:relative;border-radius:20px;overflow:hidden;aspect-ratio:16/9;background:#0D0D12;margin-bottom:24px;cursor:pointer;transition:transform .2s}
+/* ━━━ Website topbar tabs ━━━ */
+.ws-topbar{display:flex;align-items:center;gap:4px;padding:4px;background:var(--g1);border-radius:14px;margin-bottom:24px}
+.dark .ws-topbar{background:rgba(255,255,255,.06)}
+.ws-tab{padding:9px 18px;border-radius:10px;border:none;background:transparent;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--g4);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.ws-tab:hover{color:var(--tx)}
+.ws-tab.active{background:var(--sf);color:var(--tx);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.dark .ws-tab.active{background:rgba(255,255,255,.1);color:#fff}
+.ws-tab svg{width:14px;height:14px;opacity:.6}
+.ws-tab.active svg{opacity:1}
+/* ━━━ Website launchpad dashboard ━━━ */
+.ws-dash{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:14px}
+.ws-panel{background:var(--sf);border:1px solid var(--g2);border-radius:16px;padding:20px;transition:all .2s;overflow:hidden}
+.ws-panel:hover{border-color:var(--g3);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.dark .ws-panel{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
+.dark .ws-panel:hover{border-color:rgba(255,255,255,.1);box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.ws-panel-stat{display:flex;flex-direction:column;gap:2px}
+.ws-panel-stat .ws-val{font-size:28px;font-weight:700;color:var(--tx);line-height:1.1}
+.ws-panel-stat .ws-label{font-size:11px;font-weight:500;color:var(--g4);text-transform:uppercase;letter-spacing:.04em}
+.ws-panel-stat .ws-delta{font-size:11px;font-weight:600;margin-top:4px;display:flex;align-items:center;gap:4px}
+.ws-panel-stat .ws-delta.up{color:#10B981}
+.ws-panel-stat .ws-delta.down{color:#EF4444}
+.ws-panel-head{font-size:12px;font-weight:700;color:var(--g4);text-transform:uppercase;letter-spacing:.04em;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
+.ws-panel-head span{font-size:11px;font-weight:500;color:var(--ac);cursor:pointer}
+.ws-chart-bars{display:flex;align-items:flex-end;gap:4px;height:60px}
+.ws-chart-bar{flex:1;background:rgba(96,77,255,.15);border-radius:4px 4px 0 0;transition:background .15s;min-width:0}
+.ws-chart-bar:hover{background:rgba(96,77,255,.3)}
+.ws-chart-bar.accent{background:var(--ac)}
+.ws-sources{display:flex;flex-direction:column;gap:8px}
+.ws-source{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--tx)}
+.ws-source-bar{flex:1;height:6px;border-radius:3px;background:var(--g1);overflow:hidden}
+.ws-source-fill{height:100%;border-radius:3px}
+.ws-source-pct{font-size:11px;color:var(--g4);min-width:32px;text-align:right}
+/* ━━━ Website video & articles (reused) ━━━ */
+.ws-hero{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:#0D0D12;cursor:pointer;transition:transform .2s}
 .ws-hero:hover{transform:scale(1.005)}
 .ws-hero video,.ws-hero img{width:100%;height:100%;object-fit:cover;display:block}
-.ws-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.05) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px 32px}
-.ws-hero-overlay h2{color:#fff;font-size:22px;font-weight:700;margin:0 0 4px}
-.ws-hero-overlay p{color:rgba(255,255,255,.7);font-size:13px;margin:0}
-.ws-hero-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:all .2s}
+.ws-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.15) 50%,rgba(0,0,0,.05) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px 24px}
+.ws-hero-overlay h2{color:#fff;font-size:16px;font-weight:700;margin:0 0 2px}
+.ws-hero-overlay p{color:rgba(255,255,255,.7);font-size:11px;margin:0}
+.ws-hero-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:all .2s}
 .ws-hero:hover .ws-hero-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
-.ws-hero-play svg{width:20px;height:20px;color:#000;margin-left:2px}
-.ws-nav{display:flex;gap:6px;margin-bottom:28px}
-.ws-nav-btn{padding:8px 18px;border-radius:40px;border:1px solid var(--g2);background:var(--sf);font-size:12px;font-weight:600;color:var(--g5);cursor:pointer;font-family:var(--sans);transition:all .15s;display:flex;align-items:center;gap:6px}
-.ws-nav-btn:hover{border-color:var(--g3);color:var(--tx)}
-.ws-nav-btn.active{background:var(--ac);border-color:var(--ac);color:#fff}
-.ws-articles{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:32px}
-.ws-article{border:1px solid var(--g1);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .2s;background:var(--sf)}
-.ws-article:hover{border-color:var(--g2);box-shadow:0 4px 16px rgba(0,0,0,.05);transform:translateY(-2px)}
+.ws-hero-play svg{width:18px;height:18px;color:#000;margin-left:2px}
+.ws-articles{display:flex;flex-direction:column;gap:10px}
+.ws-article{display:flex;gap:14px;align-items:center;padding:12px;border:1px solid var(--g1);border-radius:12px;cursor:pointer;transition:all .15s;background:var(--sf)}
+.ws-article:hover{border-color:var(--g2);background:var(--g1)}
 .dark .ws-article{border-color:var(--g2)}
-.dark .ws-article:hover{border-color:var(--g3);box-shadow:0 4px 16px rgba(0,0,0,.2)}
-.ws-article-img{aspect-ratio:2/1;background-size:cover;background-position:center;background-color:var(--g1)}
-.ws-article-body{padding:14px 16px}
-.ws-article-body h4{font-size:13px;font-weight:600;margin:0 0 4px;color:var(--tx)}
-.ws-article-body p{font-size:11px;color:var(--g4);margin:0;line-height:1.4}
-.ws-article-tag{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:4px;margin-bottom:6px}
+.dark .ws-article:hover{border-color:var(--g3)}
+.ws-article-img{width:48px;height:48px;border-radius:10px;flex-shrink:0;background-size:cover;background-position:center}
+.ws-article-body{flex:1;min-width:0}
+.ws-article-body h4{font-size:13px;font-weight:600;margin:0 0 2px;color:var(--tx)}
+.ws-article-body p{font-size:11px;color:var(--g4);margin:0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ws-article-tag{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:4px;margin-bottom:4px}
+@media(max-width:900px){.ws-dash{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.ws-dash{grid-template-columns:1fr}.ws-topbar{overflow-x:auto;scrollbar-width:none}.ws-topbar::-webkit-scrollbar{display:none}}
 .studio-gallery-header{margin-bottom:16px}
 .studio-gallery-header h3{font-size:18px;font-weight:700;margin:0}
 .studio-theme-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
@@ -4756,8 +4785,7 @@ export default function ArtistShell() {
   const [workShareSettings, setWorkShareSettings] = useState({ trackLink: false, requireEmail: false, password: "" });
 
   /* Studio */
-  const [studioTab, setStudioTab] = useState("website");
-  const [websiteSection, setWebsiteSection] = useState("intro");
+  const [websiteSection, setWebsiteSection] = useState("launchpad");
   const [studioMode, setStudioMode] = useState("gallery");
   const [studioTheme, setStudioTheme] = useState("noir");
   const [studioCustomizeTab, setStudioCustomizeTab] = useState("theme");
@@ -11894,12 +11922,10 @@ export default function ArtistShell() {
         }
 
         /* ── Default: Studio page with tabs ── */
-        const studioWebsiteBack = () => { setStudioSubPage("overview"); setStudioPromptReady(true); setPage("dashboard"); };
         return (
           <div className={inStudio ? "studio-manager" : ""}>
             {inStudio ? (
               <div className="studio-manager-header">
-                <button className="studio-nav-back" onClick={studioWebsiteBack}>{I.back} Back to Studio</button>
                 <div className="studio-manager-title-row">
                   <div>
                     <h1 className="studio-manager-title">Website</h1>
@@ -11915,35 +11941,112 @@ export default function ArtistShell() {
             )}
 
             <div className={inStudio ? "studio-subpage-wrap" : ""}>
-            <div className="tab-bar" style={{ marginBottom: 20 }}>
-              {["website", "analytics", "settings"].map(t => (
-                <button key={t} className={`tab-btn${studioTab === t ? " on" : ""}`} onClick={() => setStudioTab(t)}>
-                  {t === "website" ? "Website" : t === "analytics" ? "Analytics" : "Settings"}
+
+            {studioPublished && (
+              <div className="studio-live-banner" style={{ marginBottom: 16 }}>
+                <span className="noir-avail-dot" style={{ marginRight: 8 }} />
+                <span>Your website is live at <strong>lanced.io/{studioSettings.slug}</strong></span>
+                <button className="btn btn-sm btn-s" style={{ marginLeft: "auto" }} onClick={() => showToast("Link copied!")}>Copy Link</button>
+              </div>
+            )}
+
+            {/* Single topbar navigation */}
+            <div className="ws-topbar">
+              {[
+                { id: "launchpad", label: "Launchpad", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8s5.69 5.69 5.69 5.69-4.28-1.41-5.69 0-1.41-5.69-1.41-5.69z" fill="currentColor" stroke="none"/><path d="M9.69 16s-5.69-5.69-5.69-5.69 4.28 1.41 5.69 0 1.41 5.69 1.41 5.69z" fill="currentColor" stroke="none"/></svg> },
+                { id: "themes", label: "Themes", icon: I.grid },
+                { id: "analytics", label: "Analytics", icon: EIcon.barChart },
+                { id: "settings", label: "Settings", icon: I.settings },
+              ].map(t => (
+                <button key={t.id} className={`ws-tab${websiteSection === t.id ? " active" : ""}`} onClick={() => setWebsiteSection(t.id)}>
+                  {t.icon} {t.label}
                 </button>
               ))}
             </div>
 
-            {/* Website tab */}
-            {studioTab === "website" && (
+            {/* ── Launchpad Dashboard ── */}
+            {websiteSection === "launchpad" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
-                {studioPublished && (
-                  <div className="studio-live-banner">
-                    <span className="noir-avail-dot" style={{ marginRight: 8 }} />
-                    <span>Your website is live at <strong>lanced.io/{studioSettings.slug}</strong></span>
-                    <button className="btn btn-sm btn-s" style={{ marginLeft: "auto" }} onClick={() => showToast("Link copied!")}>Copy Link</button>
+                <div className="ws-dash">
+                  {/* Row 1: 4 stat panels */}
+                  <div className="ws-panel">
+                    <div className="ws-panel-stat">
+                      <span className="ws-label">Page Views</span>
+                      <span className="ws-val">1,247</span>
+                      <span className="ws-delta up">
+                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
+                        +12.3%
+                      </span>
+                    </div>
                   </div>
-                )}
+                  <div className="ws-panel">
+                    <div className="ws-panel-stat">
+                      <span className="ws-label">Visitors</span>
+                      <span className="ws-val">384</span>
+                      <span className="ws-delta up">
+                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
+                        +8.1%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="ws-panel">
+                    <div className="ws-panel-stat">
+                      <span className="ws-label">Subscribers</span>
+                      <span className="ws-val">52</span>
+                      <span className="ws-delta up">
+                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
+                        +3
+                      </span>
+                    </div>
+                  </div>
+                  <div className="ws-panel">
+                    <div className="ws-panel-stat">
+                      <span className="ws-label">Uptime</span>
+                      <span className="ws-val">99.9%</span>
+                      <span className="ws-delta up" style={{ color: "#10B981" }}>
+                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 1a5 5 0 110 10A5 5 0 016 1zm-.5 3v3.5h1V4h-1zm0 4.5v1h1v-1h-1z"/></svg>
+                        All systems go
+                      </span>
+                    </div>
+                  </div>
 
-                {/* Sub-navigation */}
-                <div className="ws-nav">
-                  <button className={`ws-nav-btn${websiteSection === "intro" ? " active" : ""}`} onClick={() => setWebsiteSection("intro")}>{EIcon.sparkles} Get Started</button>
-                  <button className={`ws-nav-btn${websiteSection === "themes" ? " active" : ""}`} onClick={() => setWebsiteSection("themes")}>{I.grid} Themes</button>
-                </div>
+                  {/* Row 2: Traffic chart (span 2) + Traffic sources (span 2) */}
+                  <div className="ws-panel" style={{ gridColumn: "span 2" }}>
+                    <div className="ws-panel-head">
+                      Views — Last 14 days
+                      <span onClick={() => setWebsiteSection("analytics")}>View all</span>
+                    </div>
+                    <div className="ws-chart-bars">
+                      {[35,52,48,70,62,85,90,78,95,88,72,100,82,68].map((h,i) => (
+                        <div key={i} className={`ws-chart-bar${i === 11 ? " accent" : ""}`} style={{ height: `${h}%` }} />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="ws-panel" style={{ gridColumn: "span 2" }}>
+                    <div className="ws-panel-head">
+                      Traffic Sources
+                      <span onClick={() => setWebsiteSection("analytics")}>Details</span>
+                    </div>
+                    <div className="ws-sources">
+                      {[
+                        { label: "Direct", pct: 42, color: "var(--ac)" },
+                        { label: "Instagram", pct: 28, color: "#E4405F" },
+                        { label: "Google", pct: 18, color: "#34A853" },
+                        { label: "Other", pct: 12, color: "var(--g3)" },
+                      ].map(s => (
+                        <div key={s.label} className="ws-source">
+                          <span style={{ minWidth: 64 }}>{s.label}</span>
+                          <div className="ws-source-bar">
+                            <div className="ws-source-fill" style={{ width: `${s.pct}%`, background: s.color }} />
+                          </div>
+                          <span className="ws-source-pct">{s.pct}%</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                {websiteSection === "intro" ? (
-                  /* ── Intro / Learn Section ── */
-                  <div className="ws-intro">
-                    {/* Hero video */}
+                  {/* Row 3: Getting started video (span 2) + Articles list (span 2) */}
+                  <div className="ws-panel" style={{ gridColumn: "span 2", padding: 0, overflow: "hidden" }}>
                     <div className="ws-hero" onClick={() => showToast("Video player coming soon")}>
                       <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#1a1025 0%,#2d1b69 30%,#604DFF 60%,#8b5cf6 100%)" }} />
                       <div className="ws-hero-overlay">
@@ -11954,16 +12057,18 @@ export default function ArtistShell() {
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
                       </div>
                     </div>
-
-                    {/* Articles */}
-                    <h3 style={{ fontSize: 14, fontWeight: 700, margin: "0 0 14px", color: "var(--g5)", textTransform: "uppercase", letterSpacing: ".04em" }}>Learn & Get Inspired</h3>
+                  </div>
+                  <div className="ws-panel" style={{ gridColumn: "span 2" }}>
+                    <div className="ws-panel-head">
+                      Learn & Get Inspired
+                    </div>
                     <div className="ws-articles">
                       <div className="ws-article" onClick={() => showToast("Article coming soon")}>
                         <div className="ws-article-img" style={{ background: "linear-gradient(135deg,#0D9488,#06b6d4)" }} />
                         <div className="ws-article-body">
                           <span className="ws-article-tag" style={{ background: "rgba(13,148,136,.1)", color: "#0D9488" }}>Guide</span>
                           <h4>Choosing the right theme for your discipline</h4>
-                          <p>How ballet dancers, contemporary artists, and choreographers can pick a theme that showcases their work best.</p>
+                          <p>Pick a theme that showcases your work best.</p>
                         </div>
                       </div>
                       <div className="ws-article" onClick={() => showToast("Article coming soon")}>
@@ -11971,7 +12076,7 @@ export default function ArtistShell() {
                         <div className="ws-article-body">
                           <span className="ws-article-tag" style={{ background: "rgba(96,77,255,.1)", color: "var(--ac)" }}>Tips</span>
                           <h4>5 ways to make your showreel stand out</h4>
-                          <p>Expert tips on video quality, ordering your best work, and writing compelling descriptions.</p>
+                          <p>Expert tips on video quality, ordering your best work.</p>
                         </div>
                       </div>
                       <div className="ws-article" onClick={() => showToast("Article coming soon")}>
@@ -11979,60 +12084,62 @@ export default function ArtistShell() {
                         <div className="ws-article-body">
                           <span className="ws-article-tag" style={{ background: "rgba(217,119,6,.1)", color: "#D97706" }}>Inspiration</span>
                           <h4>Artist websites that got them hired</h4>
-                          <p>Real examples of how dancers and performers used their Lanced website to land auditions and contracts.</p>
+                          <p>Real examples of landing auditions via Lanced.</p>
                         </div>
                       </div>
                     </div>
-
-                    {/* Quick start CTA */}
-                    <div style={{ textAlign: "center", padding: "20px 0 8px" }}>
-                      <button className="btn btn-p" onClick={() => setWebsiteSection("themes")} style={{ gap: 8 }}>
-                        {EIcon.sparkles} Choose a Theme & Start Building
-                      </button>
-                    </div>
                   </div>
-                ) : (
-                  /* ── Themes Gallery ── */
-                  <>
-                    <div className="studio-gallery-header">
-                      <h3>Choose a Theme</h3>
-                      <p style={{ fontSize: 13, color: "var(--g4)", margin: "4px 0 0" }}>Select a theme and customize it to match your style.</p>
-                    </div>
-                    <div className="studio-theme-gallery">
-                      {STUDIO_THEMES.map(th => (
-                        <div key={th.id} className={`studio-gallery-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}>
-                          <div className="studio-gallery-preview" style={{ backgroundImage: `url(${th.preview})` }}>
-                            {th.locked && <div className="studio-theme-lock">PRO</div>}
-                            {studioTheme === th.id && <div className="studio-gallery-active">Current Theme</div>}
-                            <div className="studio-gallery-overlay">
-                              {!th.locked && (
-                                <button className="btn btn-sm" style={{ background: "#fff", color: "#000", fontWeight: 600 }}
-                                  onClick={() => { setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); setStudioMode("builder"); }}>
-                                  {studioTheme === th.id ? "Edit Website" : "Use Theme"}
-                                </button>
-                              )}
-                              {th.locked && (
-                                <button className="btn btn-sm" style={{ background: "rgba(255,255,255,.15)", color: "#fff", border: "1px solid rgba(255,255,255,.2)" }}
-                                  onClick={() => showToast("Upgrade to Pro to unlock this theme")}>
-                                  Unlock
-                                </button>
-                              )}
-                            </div>
-                          </div>
-                          <div className="studio-gallery-info">
-                            <span className="studio-gallery-name">{th.name}</span>
-                            <span className="studio-gallery-desc">{th.desc}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                )}
+                </div>
+
+                {/* Quick start CTA */}
+                <div style={{ textAlign: "center", padding: "28px 0 8px" }}>
+                  <button className="btn btn-p" onClick={() => { setWebsiteSection("themes"); }} style={{ gap: 8 }}>
+                    {EIcon.sparkles} Choose a Theme & Start Building
+                  </button>
+                </div>
               </div>
             )}
 
-            {/* Analytics tab — Stub */}
-            {studioTab === "analytics" && (
+            {/* ── Themes Gallery ── */}
+            {websiteSection === "themes" && (
+              <div style={{ animation: "slideInUp .2s ease" }}>
+                <div className="studio-gallery-header">
+                  <h3>Choose a Theme</h3>
+                  <p style={{ fontSize: 13, color: "var(--g4)", margin: "4px 0 0" }}>Select a theme and customize it to match your style.</p>
+                </div>
+                <div className="studio-theme-gallery">
+                  {STUDIO_THEMES.map(th => (
+                    <div key={th.id} className={`studio-gallery-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}>
+                      <div className="studio-gallery-preview" style={{ backgroundImage: `url(${th.preview})` }}>
+                        {th.locked && <div className="studio-theme-lock">PRO</div>}
+                        {studioTheme === th.id && <div className="studio-gallery-active">Current Theme</div>}
+                        <div className="studio-gallery-overlay">
+                          {!th.locked && (
+                            <button className="btn btn-sm" style={{ background: "#fff", color: "#000", fontWeight: 600 }}
+                              onClick={() => { setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); setStudioMode("builder"); }}>
+                              {studioTheme === th.id ? "Edit Website" : "Use Theme"}
+                            </button>
+                          )}
+                          {th.locked && (
+                            <button className="btn btn-sm" style={{ background: "rgba(255,255,255,.15)", color: "#fff", border: "1px solid rgba(255,255,255,.2)" }}
+                              onClick={() => showToast("Upgrade to Pro to unlock this theme")}>
+                              Unlock
+                            </button>
+                          )}
+                        </div>
+                      </div>
+                      <div className="studio-gallery-info">
+                        <span className="studio-gallery-name">{th.name}</span>
+                        <span className="studio-gallery-desc">{th.desc}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ── Analytics ── */}
+            {websiteSection === "analytics" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
                 <div className="stub-section">
                   <div className="stub-icon">{EIcon.barChart}</div>
@@ -12042,8 +12149,8 @@ export default function ArtistShell() {
               </div>
             )}
 
-            {/* Settings tab */}
-            {studioTab === "settings" && (
+            {/* ── Settings ── */}
+            {websiteSection === "settings" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
                 <div className="info-card" style={{ marginBottom: 16 }}>
                   <h4 style={{ margin: "0 0 16px" }}>Website URL</h4>
