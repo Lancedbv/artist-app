@@ -33,7 +33,11 @@ const STAGE_RECORD = [
   { id: "sr3", type: "education", emoji: "graduation", title: "BA Dance Performance", org: "Royal Ballet School", start: "2018-09", end: "2021-06", location: "London, UK", desc: "Full scholarship. Graduated with distinction. Focus on classical ballet and contemporary technique.", tags: ["Classical", "Contemporary"], usedIn: ["Resume", "Portfolio"] },
   { id: "sr4", type: "education", emoji: "graduation", title: "Summer Intensive", org: "Batsheva Dance Company", start: "2022-07", end: "2022-08", location: "Tel Aviv, IL", desc: "Four-week intensive in Gaga technique with Ohad Naharin.", tags: ["Gaga", "Contemporary"], usedIn: [] },
   { id: "sr5", type: "award", emoji: "trophy", title: "Outstanding Young Dancer", org: "Critics' Circle National Dance Awards", start: "2024", end: "", location: "London, UK", desc: "Winner of the 2024 Outstanding Young Dancer award for performances in Jungle Book reimagined.", tags: ["Contemporary"], usedIn: ["Resume"] },
-  { id: "sr6", type: "skills", emoji: "zap", title: "Technical Profile", org: "", start: "", end: "", location: "", desc: "Primary: Contemporary, Afro-fusion, Floor Work. Secondary: Classical Ballet, Partnering, Contact Improvisation. Proficient in Gaga technique.", tags: ["Contemporary", "Afro-fusion", "Ballet", "Gaga"], usedIn: [] },
+  { id: "sr6", type: "skills", emoji: "zap", title: "Dance Skills", org: "", start: "", end: "", location: "", desc: "Core dance skills and techniques.", tags: ["Contemporary", "Afro-fusion", "Ballet", "Gaga"], usedIn: [], skills: [
+    { name: "Contemporary", rating: 5 }, { name: "Afro-fusion", rating: 5 }, { name: "Floor Work", rating: 4 },
+    { name: "Classical Ballet", rating: 4 }, { name: "Partnering", rating: 4 }, { name: "Contact Improvisation", rating: 3 },
+    { name: "Gaga Technique", rating: 4 }, { name: "Acrobatics", rating: 3 }, { name: "Stage Combat", rating: 2 }, { name: "Aerial Silks", rating: 2 },
+  ] },
   { id: "sr7", type: "press", emoji: "newspaper", title: "\"A Force of Nature on Stage\"", org: "The Guardian", start: "2024-11", end: "", location: "", desc: "Five-star review of Jungle Book reimagined highlighting \"Osei's magnetic stage presence and fearless physicality.\"", tags: ["Review", "Contemporary"], usedIn: ["Portfolio"] },
   { id: "sr8", type: "repertoire", emoji: "masks", title: "Mowgli — Jungle Book Reimagined", org: "Akram Khan Company", start: "2024-03", end: "2025-12", location: "International Tour", desc: "Lead role. 87 performances across 14 countries. Choreography by Akram Khan.", tags: ["Contemporary", "Lead Role", "Touring"], usedIn: ["Resume", "Portfolio"] },
 ];
@@ -411,6 +415,42 @@ const MOCK_NOTIFICATIONS = [
   { id: "n6", type: "opportunity", title: "New Opportunity", body: "A new opportunity matching your profile: Soloist — 2026/27 Season at Royal Danish Ballet.", time: "4d ago", unread: false, color: "#FF69B4", icon: "sparkles" },
   { id: "n7", type: "broadcast", title: "Theater Regensburg", body: "Thank you to all applicants. We will be sending out decisions by the end of this week.", time: "5d ago", unread: false, color: "#604DFF", icon: "megaphone" },
 ];
+
+/* ── Website Integration Mock Data ── */
+const MOCK_SUBSCRIBERS = [
+  { id: "sub1", email: "alex.rivera@gmail.com", name: "Alex Rivera", subscribedAt: "2026-05-18T10:00:00", source: "website" },
+  { id: "sub2", email: "jordan.wells@artspace.com", name: "Jordan Wells", subscribedAt: "2026-05-15T14:30:00", source: "website" },
+  { id: "sub3", email: "dance.fan92@hotmail.com", name: "Maria Chen", subscribedAt: "2026-05-10T09:15:00", source: "website" },
+  { id: "sub4", email: "programming@sadlerswells.com", name: "Rachel Howard", subscribedAt: "2026-04-28T11:00:00", source: "website" },
+  { id: "sub5", email: "curator@tanzhaus.de", name: "Felix Braun", subscribedAt: "2026-04-20T16:45:00", source: "website" },
+  { id: "sub6", email: "sarah.k@danceumbrella.co.uk", name: "Sarah K.", subscribedAt: "2026-04-12T08:30:00", source: "website" },
+  { id: "sub7", email: "nikos.p@gmail.com", name: "Nikos Papadopoulos", subscribedAt: "2026-03-30T13:20:00", source: "website" },
+  { id: "sub8", email: "lena.m@springdance.nl", name: "Lena Mulder", subscribedAt: "2026-03-15T10:00:00", source: "website" },
+];
+
+const MOCK_INQUIRIES = [
+  { id: "inq1", name: "Rachel Howard", email: "programming@sadlerswells.com", subject: "Booking Inquiry — Spring 2027", type: "booking", message: "Dear Amara, we would love to discuss programming Echoes in Glass as part of our spring 2027 season. Could we arrange a call next week to discuss availability and technical requirements?", receivedAt: "2026-05-20T10:00:00", read: true },
+  { id: "inq2", name: "Marie Laurent", email: "press@dancemagazine.com", subject: "Interview Request", type: "press", message: "Hi Amara, Dance Magazine is running a feature on emerging choreographers shaping the European scene. We would love to interview you about your creative process and upcoming projects. Are you available for a 30-minute conversation this month?", receivedAt: "2026-05-18T15:30:00", read: false },
+  { id: "inq3", name: "Tomás Herrera", email: "tomas.h@gmail.com", subject: "Collaboration Idea", type: "collaboration", message: "Hey Amara! I'm a sound designer based in Berlin and I've been following your work since seeing Echoes in Glass at Tanzhaus NRW. I'd love to explore a collaboration — I have some ideas around spatial audio that I think could complement your movement language. Open to chatting?", receivedAt: "2026-05-12T09:00:00", read: true },
+  { id: "inq4", name: "Lisa van Dijk", email: "lisa.vd@hotmail.com", subject: "Workshop Question", type: "general", message: "Hi! I saw you're offering an Afro-Fusion workshop in London. Is there a similar one planned in Amsterdam? I'm an intermediate dancer and would love to attend.", receivedAt: "2026-05-08T18:45:00", read: false },
+];
+
+const MOCK_EVENTS = [
+  { id: "ev1", title: "Echoes in Glass", type: "performance", date: "2026-06-08", time: "19:30", venue: "Sadler's Wells", city: "London", country: "UK", ticketUrl: "#", description: "London premiere — 55-minute solo performance." },
+  { id: "ev2", title: "Afro-Fusion Workshop", type: "workshop", date: "2026-06-20", time: "10:00", venue: "The Place", city: "London", country: "UK", ticketUrl: "#", description: "3-hour workshop open to intermediate and advanced dancers." },
+  { id: "ev3", title: "Open Studio — PULSE", type: "open_rehearsal", date: "2026-07-05", time: "14:00", venue: "Dansmakers", city: "Amsterdam", country: "NL", ticketUrl: "", description: "Watch the creation process of PULSE. Free entry." },
+  { id: "ev4", title: "Echoes in Glass", type: "performance", date: "2026-09-20", time: "20:00", venue: "Théâtre de la Ville", city: "Paris", country: "FR", ticketUrl: "#", description: "French premiere." },
+  { id: "ev5", title: "Echoes in Glass", type: "performance", date: "2025-11-18", time: "20:00", venue: "Tanzhaus NRW", city: "Düsseldorf", country: "DE", ticketUrl: "", description: "German premiere." },
+  { id: "ev6", title: "Body & Code Residency Showing", type: "performance", date: "2025-09-10", time: "19:00", venue: "ICK Amsterdam", city: "Amsterdam", country: "NL", ticketUrl: "", description: "Work-in-progress showing from 2-week residency." },
+];
+
+const INTEGRATION_SECTIONS = {
+  newsletter:  { id: "newsletter",  label: "Newsletter",   icon: "mail" },
+  contactForm: { id: "contactForm", label: "Contact Form", icon: "messageSquare" },
+  events:      { id: "events",      label: "Events",       icon: "calendar" },
+  pressKit:    { id: "pressKit",    label: "Press Kit",    icon: "download" },
+  linkHub:     { id: "linkHub",     label: "Link Hub",     icon: "link" },
+};
 
 /* ━━━ HELPERS ━━━ */
 const STATUS_COLORS = { submitted: { bg: "rgba(96,77,255,.1)", color: "#604DFF" }, shortlisted: { bg: "rgba(30,144,255,.1)", color: "#1E90FF" }, invited: { bg: "rgba(29,185,84,.1)", color: "#1DB954" }, waitlisted: { bg: "rgba(230,126,34,.1)", color: "#E67E22" }, not_selected: { bg: "rgba(255,71,87,.1)", color: "#FF4757" }, archived: { bg: "rgba(152,152,159,.1)", color: "#98989F" }, draft: { bg: "rgba(255,171,0,.12)", color: "#F5A623" } };
@@ -879,6 +919,35 @@ textarea.pf-input{line-height:1.6}
 .sr-list-item .sli-sub{font-size:11px;color:var(--g4)}
 .sr-list-item .sli-period{font-size:11px;color:var(--g5);white-space:nowrap}
 .sr-list-item .sli-usage{font-size:10px;font-weight:600;white-space:nowrap}
+/* ── Timeline View ── */
+.sr-timeline{position:relative;padding:0 0 0 0}
+.sr-tl-line{position:absolute;left:19px;top:28px;bottom:0;width:2px;background:linear-gradient(to bottom,var(--ac),var(--g2) 60%,transparent);border-radius:2px;z-index:0}
+.sr-tl-year-group{position:relative;margin-bottom:8px;animation:fadeIn .35s ease both}
+.sr-tl-year-badge{position:relative;z-index:2;display:inline-flex;align-items:center;padding:5px 14px;border-radius:40px;background:var(--ac);color:#fff;font-size:12px;font-weight:800;letter-spacing:.08em;margin-bottom:8px;margin-left:6px;box-shadow:0 2px 12px rgba(96,77,255,.2)}
+.sr-tl-entry{position:relative;display:flex;gap:16px;padding:0 0 12px 0;cursor:pointer;animation:tlSlideIn .35s ease both}
+.sr-tl-dot{position:absolute;left:14px;top:8px;width:12px;height:12px;border-radius:50%;z-index:2;transition:transform .2s,box-shadow .2s}
+.sr-tl-entry:hover .sr-tl-dot{transform:scale(1.3)}
+.sr-tl-card{margin-left:40px;flex:1;padding:14px 18px;background:var(--sf);border:1px solid var(--g2);border-radius:14px;transition:all .2s}
+.sr-tl-entry:hover .sr-tl-card{border-color:rgba(96,77,255,.18);box-shadow:0 4px 16px rgba(96,77,255,.06);transform:translateX(2px)}
+.sr-tl-type-badge{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:40px}
+.sr-tl-period{font-size:11px;color:var(--g4);margin-left:auto}
+.sr-tl-title{font-size:15px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.sr-tl-org{font-size:12px;color:var(--ac);margin-bottom:4px}
+.sr-tl-desc{font-size:12px;color:var(--g5);line-height:1.5;margin:4px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sr-tl-tags{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px}
+.sr-tl-tags span{font-size:9px;padding:2px 7px;border-radius:40px;background:var(--g1);color:var(--g5)}
+.sr-tl-usage{font-size:10px;font-weight:600}
+.sr-tl-usage.used{color:var(--green)}
+.sr-tl-usage.unused{color:var(--amber)}
+/* ── Skills Rating ── */
+.sr-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.sr-skill-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0}
+.sr-skill-name{font-size:12px;color:var(--tx);font-weight:500;white-space:nowrap}
+.sr-skill-dots{display:flex;gap:4px;align-items:center}
+.sr-skill-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--g2);transition:all .2s}
+.sr-skill-dot.filled{border-color:var(--green);background:var(--green)}
+.sr-tl-skills-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:16px 20px}
+@keyframes tlSlideIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
 
 /* New Entry Modal */
 .entry-type-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
@@ -2592,6 +2661,8 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .media-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
   .sr-grid{grid-template-columns:1fr}
   .sr-toolbar{gap:6px}
+  .sr-skills-grid{grid-template-columns:1fr}
+  .sr-tl-card{padding:12px 14px}
   .list-search{max-width:100%}
   .app-toolbar{margin:0 -16px;padding:0 16px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;flex-wrap:nowrap;gap:8px;overflow:visible}
   .app-toolbar .at-filters{overflow-x:auto;flex-shrink:1;min-width:0;gap:6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
@@ -2728,8 +2799,8 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 @media(max-width:768px){.studio-prompt-tiles{gap:10px}.studio-prompt-tile{width:110px;padding:20px 12px 18px}.studio-prompt-tile-icon{width:40px;height:40px;border-radius:12px}.studio-exit-btn{top:16px;left:16px;font-size:12px}}
 
 /* Studio Manager — Enhanced card view for portfolios/works */
-.studio-manager{min-height:100vh;background:radial-gradient(ellipse at 25% 20%,rgba(139,92,246,.04),transparent 50%),radial-gradient(ellipse at 75% 70%,rgba(99,102,241,.03),transparent 50%),var(--bg);padding:0 0 80px}
-.dark .studio-manager{background:radial-gradient(ellipse at 25% 20%,rgba(139,92,246,.06),transparent 50%),radial-gradient(ellipse at 75% 70%,rgba(99,102,241,.04),transparent 50%),var(--bg)}
+.studio-manager{min-height:100vh;background:transparent;padding:0 0 80px}
+.dark .studio-manager{background:transparent}
 .studio-manager-header{max-width:1100px;margin:0 auto;padding:24px 40px 0}
 .studio-manager-header .studio-nav-back{margin-bottom:24px}
 .studio-manager-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:32px}
@@ -2905,19 +2976,23 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 /* ━━━ STUDIO ━━━ */
 .studio-live-banner{display:flex;align-items:center;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:12px;margin-bottom:20px;font-size:13px;color:var(--tx)}
 /* ━━━ Website topbar tabs ━━━ */
-.ws-topbar{display:flex;align-items:center;gap:4px;padding:4px;background:var(--g1);border-radius:14px;margin-bottom:24px}
-.dark .ws-topbar{background:rgba(255,255,255,.06)}
-.ws-tab{padding:9px 18px;border-radius:10px;border:none;background:transparent;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--g4);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.ws-tab:hover{color:var(--tx)}
-.ws-tab.active{background:var(--sf);color:var(--tx);font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.dark .ws-tab.active{background:rgba(255,255,255,.1);color:#fff}
+.ws-topbar{display:flex;align-items:center;justify-content:center;gap:6px;padding:0;background:none;border-radius:0;margin-bottom:24px}
+.dark .ws-topbar{background:none}
+.ws-tab{padding:9px 20px;border-radius:100px;border:1px solid var(--g2);background:var(--sf);font-family:var(--sans);font-size:13px;font-weight:500;color:var(--g4);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.ws-tab:hover{color:var(--tx);border-color:var(--g3)}
+.ws-tab.active{background:#111;color:#fff;border-color:#111;font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.dark .ws-tab{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+.dark .ws-tab:hover{border-color:rgba(255,255,255,.2)}
+.dark .ws-tab.active{background:#fff;color:#111;border-color:#fff}
 .ws-tab svg{width:14px;height:14px;opacity:.6}
 .ws-tab.active svg{opacity:1}
 /* ━━━ Website launchpad dashboard ━━━ */
-.ws-dash{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:auto auto auto;gap:14px}
-.ws-panel{background:var(--sf);border:1px solid var(--g2);border-radius:16px;padding:20px;transition:all .2s;overflow:hidden}
-.ws-panel:hover{border-color:var(--g3);box-shadow:0 2px 12px rgba(0,0,0,.04)}
-.dark .ws-panel{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
+.ws-dash{display:flex;flex-direction:column;gap:14px}
+.ws-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:768px){.ws-cols{grid-template-columns:1fr}}
+.ws-panel{background:rgba(255,255,255,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:20px;transition:all .2s;overflow:hidden}
+.ws-panel:hover{border-color:rgba(255,255,255,.7);box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.dark .ws-panel{background:rgba(255,255,255,.04);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-color:rgba(255,255,255,.06)}
 .dark .ws-panel:hover{border-color:rgba(255,255,255,.1);box-shadow:0 2px 12px rgba(0,0,0,.2)}
 .ws-panel-stat{display:flex;flex-direction:column;gap:2px}
 .ws-panel-stat .ws-val{font-size:28px;font-weight:700;color:var(--tx);line-height:1.1}
@@ -2956,8 +3031,27 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 .ws-article-body h4{font-size:13px;font-weight:600;margin:0 0 2px;color:var(--tx)}
 .ws-article-body p{font-size:11px;color:var(--g4);margin:0;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ws-article-tag{display:inline-block;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 8px;border-radius:4px;margin-bottom:4px}
-@media(max-width:900px){.ws-dash{grid-template-columns:1fr 1fr}}
-@media(max-width:480px){.ws-dash{grid-template-columns:1fr}.ws-topbar{overflow-x:auto;scrollbar-width:none}.ws-topbar::-webkit-scrollbar{display:none}}
+/* ━━━ Analytics extras ━━━ */
+.ws-donut{position:relative;width:100px;height:100px;margin:0 auto 8px}
+.ws-donut svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ws-donut-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--tx)}
+.ws-legend{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:center}
+.ws-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--g4)}
+.ws-legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ws-bar-h{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--tx)}
+.ws-bar-h-label{min-width:80px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ws-bar-h-track{flex:1;height:8px;border-radius:4px;background:var(--g1);overflow:hidden}
+.ws-bar-h-fill{height:100%;border-radius:4px;transition:width .3s}
+.ws-bar-h-val{min-width:36px;text-align:right;font-size:11px;color:var(--g4);font-variant-numeric:tabular-nums}
+.ws-mini-table{width:100%;border-collapse:collapse;font-size:12px}
+.ws-mini-table th{text-align:left;font-weight:600;color:var(--g4);text-transform:uppercase;letter-spacing:.04em;font-size:10px;padding:0 0 8px}
+.ws-mini-table td{padding:6px 0;border-top:1px solid var(--g1);color:var(--tx)}
+.dark .ws-mini-table td{border-color:rgba(255,255,255,.06)}
+.ws-mini-table td:last-child{text-align:right;color:var(--g4);font-variant-numeric:tabular-nums}
+.ws-section-title{font-size:14px;font-weight:700;color:var(--tx);margin:28px 0 14px;display:flex;align-items:center;gap:8px}
+.ws-section-title svg{width:16px;height:16px;color:var(--g4)}
+@media(max-width:768px){.ws-section-title{margin:20px 0 10px}}
+@media(max-width:480px){.ws-topbar{overflow-x:auto;scrollbar-width:none}.ws-topbar::-webkit-scrollbar{display:none}}
 .studio-gallery-header{margin-bottom:16px}
 .studio-gallery-header h3{font-size:18px;font-weight:700;margin:0}
 .studio-theme-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
@@ -4717,7 +4811,7 @@ export default function ArtistShell() {
 
   /* Resume */
   const [stageRecords, setStageRecords] = useState(STAGE_RECORD);
-  const [srView, setSrView] = useState("grid");
+  const [srView, setSrView] = useState("timeline");
   const [srFilter, setSrFilter] = useState("all");
   const [srSearch, setSrSearch] = useState("");
   const [showNewEntry, setShowNewEntry] = useState(false);
@@ -4804,9 +4898,18 @@ export default function ArtistShell() {
     seoTitle: `${artist.name} — ${artist.styles?.[0] || "Artist"}`,
     seoDesc: artist.bio || "",
     visibility: "public",
+    integrations: { newsletter: false, contactForm: false, events: false, pressKit: false, linkHub: false },
   });
   const [studioPublished, setStudioPublished] = useState(false);
+  const [studioShareOpen, setStudioShareOpen] = useState(false);
+  const [studioShareTab, setStudioShareTab] = useState("link"); /* link | email */
+  const [studioShareEmail, setStudioShareEmail] = useState({ to: "", subject: "", message: "" });
+  const [studioSharePassword, setStudioSharePassword] = useState(false);
+  const [studioShareRequireEmail, setStudioShareRequireEmail] = useState(false);
   const [studioScrollY, setStudioScrollY] = useState(0);
+  const [subscribers, setSubscribers] = useState(MOCK_SUBSCRIBERS);
+  const [inquiries, setInquiries] = useState(MOCK_INQUIRIES);
+  const [siteEvents, setSiteEvents] = useState(MOCK_EVENTS);
 
   /* Studio Creative Workspace */
   const [inStudio, setInStudio] = useState(false);
@@ -4848,6 +4951,17 @@ export default function ArtistShell() {
     testimonials: { source: "auto" },
     contact: { headline: null, subline: null, buttonText: null },
     footer: { tagline: null },
+    /* Integration sections */
+    newsletter: { headline: null, subline: null, buttonText: null, collectName: false, confirmationMessage: null },
+    contactForm: { headline: null, subline: null, buttonText: null, showInquiryType: true, recipientEmail: null },
+    events: { headline: null, subline: null, showPastEvents: false, showTicketLinks: true, layout: "timeline" },
+    pressKit: { headline: null, subline: null, showBio: true, showHeadshots: true, showReviews: true, showDownloads: true },
+    linkHub: { headline: null, links: [
+      { id: "lh1", label: "Get Tickets — Echoes in Glass", url: "#", icon: "ticket" },
+      { id: "lh2", label: "Afro-Fusion Workshop Registration", url: "#", icon: "calendar" },
+      { id: "lh3", label: "Interview — The Guardian", url: "#", icon: "newspaper" },
+      { id: "lh4", label: "Showreel 2026", url: "#", icon: "video" },
+    ]},
   });
   const [studioEditSection, setStudioEditSection] = useState(null); /* which section's inspector is open */
   const [studioDragId, setStudioDragId] = useState(null); /* drag-and-drop section reorder */
@@ -4864,6 +4978,31 @@ export default function ArtistShell() {
   const getSS = (sectionId, field, fallback) => {
     const val = studioSectionSettings[sectionId]?.[field];
     return val != null && val !== "" ? val : fallback;
+  };
+
+  /* Toggle integration ON/OFF — adds/removes section from studioSections */
+  const toggleIntegration = (key) => {
+    const isOn = studioSettings.integrations[key];
+    setStudioSettings(prev => ({
+      ...prev,
+      integrations: { ...prev.integrations, [key]: !isOn },
+    }));
+    if (!isOn) {
+      /* turning ON: add section before "contact" */
+      const secDef = INTEGRATION_SECTIONS[key];
+      setStudioSections(prev => {
+        if (prev.find(s => s.id === secDef.id)) return prev;
+        const contactIdx = prev.findIndex(s => s.id === "contact");
+        const insertOrder = contactIdx >= 0 ? prev[contactIdx].order : Math.max(...prev.map(s => s.order), -1) + 1;
+        /* shift contact + later sections up */
+        const shifted = prev.map(s => s.order >= insertOrder ? { ...s, order: s.order + 1 } : s);
+        return [...shifted, { ...secDef, enabled: true, order: insertOrder }];
+      });
+      showToast(`${INTEGRATION_SECTIONS[key].label} added to your website sections`);
+    } else {
+      /* turning OFF: remove section */
+      setStudioSections(prev => prev.filter(s => s.id !== INTEGRATION_SECTIONS[key].id));
+    }
   };
 
   /* Media */
@@ -5047,7 +5186,7 @@ export default function ArtistShell() {
     { id: "profile", icon: I.profile, label: "Profile" },
     { id: "media", icon: I.media, label: "Media Library" },
     { id: "applications", icon: I.applications, label: "Applications", badge: applications.filter(a => a.status === "invited").length || null },
-    { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
+    { id: "messages", icon: I.messages, label: "Inbox", badge: messages.filter(m => m.unread).length || null },
     { type: "divider" },
     { id: "discover", icon: I.discover, label: "Discover" },
     { id: "network", icon: I.network, label: "Network" },
@@ -6429,6 +6568,7 @@ export default function ArtistShell() {
                     <input placeholder="Search entries..." value={srSearch} onChange={e => setSrSearch(e.target.value)} />
                   </div>
                   <div className="view-toggle">
+                    <button className={srView === "timeline" ? "active" : ""} onClick={() => setSrView("timeline")} title="Timeline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="6" y1="4" x2="6" y2="20"/><circle cx="6" cy="7" r="2" fill="currentColor"/><circle cx="6" cy="13" r="2" fill="currentColor"/><circle cx="6" cy="19" r="2" fill="currentColor"/><line x1="10" y1="7" x2="20" y2="7"/><line x1="10" y1="13" x2="18" y2="13"/><line x1="10" y1="19" x2="16" y2="19"/></svg></button>
                     <button className={srView === "grid" ? "active" : ""} onClick={() => setSrView("grid")}>{I.grid}</button>
                     <button className={srView === "list" ? "active" : ""} onClick={() => setSrView("list")}>{I.list}</button>
                   </div>
@@ -6442,7 +6582,77 @@ export default function ArtistShell() {
                   ))}
                 </div>
 
-                {srView === "grid" ? (
+                {srView === "timeline" && (() => {
+                  /* Group entries by year, sort descending */
+                  const sorted = [...filteredSR].sort((a, b) => {
+                    const ya = a.start ? parseInt(a.start) : 0;
+                    const yb = b.start ? parseInt(b.start) : 0;
+                    return yb - ya || 0;
+                  });
+                  const groups = {};
+                  sorted.forEach(sr => {
+                    const year = sr.start ? sr.start.slice(0, 4) : "Other";
+                    if (!groups[year]) groups[year] = [];
+                    groups[year].push(sr);
+                  });
+                  const years = Object.keys(groups).sort((a, b) => b === "Other" ? -1 : a === "Other" ? 1 : b - a);
+                  return (
+                    <div className="sr-timeline">
+                      <div className="sr-tl-line" />
+                      {years.map((year, yi) => (
+                        <div key={year} className="sr-tl-year-group" style={{ animationDelay: `${yi * 0.06}s` }}>
+                          <div className="sr-tl-year-badge">{year}</div>
+                          {groups[year].map((sr, si) => (
+                            <div key={sr.id} className="sr-tl-entry" onClick={() => openEditEntry(sr)} style={{ animationDelay: `${(yi * 4 + si) * 0.04}s` }}>
+                              <div className="sr-tl-dot" style={{ background: SR_COLORS[sr.type], boxShadow: `0 0 0 3px ${SR_COLORS[sr.type]}20` }} />
+                              {sr.type === "skills" && sr.skills ? (
+                                /* ── Skills card with ratings ── */
+                                <div className="sr-tl-card sr-tl-skills-card">
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                                    <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] }}>{EIcon[sr.emoji] || sr.emoji}</span>
+                                    <span style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)" }}>{sr.title}</span>
+                                    <span className="sr-tl-type-badge" style={{ background: `${SR_COLORS[sr.type]}12`, color: SR_COLORS[sr.type] }}>{SR_LABELS[sr.type]}</span>
+                                  </div>
+                                  <div className="sr-skills-grid">
+                                    {sr.skills.map(skill => (
+                                      <div key={skill.name} className="sr-skill-row">
+                                        <span className="sr-skill-name">{skill.name}</span>
+                                        <div className="sr-skill-dots">
+                                          {[1, 2, 3, 4, 5].map(n => (
+                                            <div key={n} className={`sr-skill-dot${n <= skill.rating ? " filled" : ""}`} style={n <= skill.rating ? { background: SR_COLORS.skills, borderColor: SR_COLORS.skills } : {}} />
+                                          ))}
+                                        </div>
+                                      </div>
+                                    ))}
+                                  </div>
+                                  {sr.usedIn.length > 0 && <div className="sr-tl-usage used">● Used in {sr.usedIn.join(" · ")}</div>}
+                                </div>
+                              ) : (
+                                /* ── Regular entry card ── */
+                                <div className="sr-tl-card">
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                                    <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] }}>{EIcon[sr.emoji] || sr.emoji}</span>
+                                    <span className="sr-tl-type-badge" style={{ background: `${SR_COLORS[sr.type]}12`, color: SR_COLORS[sr.type] }}>{SR_LABELS[sr.type]}</span>
+                                    {sr.start && <span className="sr-tl-period">{sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}</span>}
+                                  </div>
+                                  <div className="sr-tl-title">{sr.title}</div>
+                                  {sr.org && <div className="sr-tl-org">{sr.org}{sr.location ? ` · ${sr.location}` : ""}</div>}
+                                  <div className="sr-tl-desc">{sr.desc}</div>
+                                  {sr.tags.length > 0 && <div className="sr-tl-tags">{sr.tags.map(t => <span key={t}>{t}</span>)}</div>}
+                                  <div className={`sr-tl-usage ${sr.usedIn.length ? "used" : "unused"}`}>
+                                    {sr.usedIn.length ? `● Used in ${sr.usedIn.join(" · ")}` : "○ Not used yet"}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })()}
+
+                {srView === "grid" && (
                   <div className="sr-grid">
                     {filteredSR.map(sr => (
                       <div key={sr.id} className="sr-card" onClick={() => openEditEntry(sr)}>
@@ -6453,6 +6663,20 @@ export default function ArtistShell() {
                         {sr.org && <div className="sr-org">{sr.org}</div>}
                         {sr.start && <div className="sr-date" style={{ display: "flex", alignItems: "center", gap: 4 }}>{EIcon.calendar} {sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}{sr.location ? ` · ${sr.location}` : ""}</div>}
                         <div className="sr-desc">{sr.desc}</div>
+                        {sr.type === "skills" && sr.skills && (
+                          <div className="sr-skills-grid" style={{ marginTop: 8 }}>
+                            {sr.skills.slice(0, 6).map(skill => (
+                              <div key={skill.name} className="sr-skill-row">
+                                <span className="sr-skill-name">{skill.name}</span>
+                                <div className="sr-skill-dots">
+                                  {[1, 2, 3, 4, 5].map(n => (
+                                    <div key={n} className={`sr-skill-dot${n <= skill.rating ? " filled" : ""}`} style={n <= skill.rating ? { background: SR_COLORS.skills, borderColor: SR_COLORS.skills } : {}} />
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
                         <div className="sr-tags">{sr.tags.map(t => <span key={t}>{t}</span>)}</div>
                         <div className={`sr-usage ${sr.usedIn.length ? "used" : "unused"}`}>
                           {sr.usedIn.length ? `● Used in ${sr.usedIn.join(" · ")}` : "○ Not used yet"}
@@ -6460,7 +6684,9 @@ export default function ArtistShell() {
                       </div>
                     ))}
                   </div>
-                ) : (
+                )}
+
+                {srView === "list" && (
                   <div className="sr-list">
                     {filteredSR.map(sr => (
                       <div key={sr.id} className="sr-list-item" style={{ borderLeftColor: SR_COLORS[sr.type] }} onClick={() => openEditEntry(sr)}>
@@ -6468,6 +6694,20 @@ export default function ArtistShell() {
                         <div className="sli-info">
                           <div className="sli-title">{sr.title}{sr.org ? ` · ${sr.org}` : ""}{sr.location ? ` · ${sr.location}` : ""}</div>
                           <div className="sli-sub">{sr.desc}</div>
+                          {sr.type === "skills" && sr.skills && (
+                            <div style={{ display: "flex", gap: 12, marginTop: 6, flexWrap: "wrap" }}>
+                              {sr.skills.slice(0, 5).map(skill => (
+                                <span key={skill.name} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: "var(--g4)" }}>
+                                  {skill.name}
+                                  <span style={{ display: "flex", gap: 2 }}>
+                                    {[1, 2, 3, 4, 5].map(n => (
+                                      <span key={n} style={{ width: 5, height: 5, borderRadius: "50%", background: n <= skill.rating ? SR_COLORS.skills : "var(--g2)" }} />
+                                    ))}
+                                  </span>
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </div>
                         <div className="sli-period">{sr.start}{sr.end ? ` — ${sr.end}` : ""}</div>
                         <div className="sli-usage" style={{ color: sr.usedIn.length ? "var(--green)" : "var(--amber)" }}>
@@ -6650,27 +6890,41 @@ export default function ArtistShell() {
 
               {extAppDetailTab === "overview" && (
                 <>
-                  <div className="spotlight-row" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginTop: 0 }}>
-                    {[
-                      { label: "VIEWS", value: extApp.analytics.viewCount },
-                      { label: "TIME SPENT", value: extApp.analytics.timeSpent || "—" },
-                      { label: "MEDIA VIEWED", value: `${extApp.analytics.mediaViewed.length}/${extApp.selectedMedia.length}` },
-                    ].map((d, i) => (
-                      <div key={i} className="info-card" style={{ textAlign: "center", padding: 16, marginBottom: 0 }}>
-                        <div style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 4 }}>{d.label}</div>
-                        <div style={{ fontSize: 20, fontWeight: 700, color: "var(--tx)" }}>{d.value}</div>
-                      </div>
-                    ))}
+                  {/* Stats Panel */}
+                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(var(--ac-rgb,99,102,241),.04)", border: "1px solid rgba(var(--ac-rgb,99,102,241),.1)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+                      {[
+                        { label: "VIEWS", value: extApp.analytics.viewCount, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> },
+                        { label: "TIME SPENT", value: extApp.analytics.timeSpent || "—", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> },
+                        { label: "MEDIA VIEWED", value: `${extApp.analytics.mediaViewed.length}/${extApp.selectedMedia.length}`, icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> },
+                      ].map((d, i) => (
+                        <div key={i} style={{ textAlign: "center", padding: 16, borderRadius: 10, background: "var(--s1)", border: "1px solid var(--br)" }}>
+                          <div style={{ color: "var(--g4)", marginBottom: 6, display: "flex", justifyContent: "center" }}>{d.icon}</div>
+                          <div style={{ fontSize: 22, fontWeight: 700, color: "var(--tx)", marginBottom: 2 }}>{d.value}</div>
+                          <div style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)" }}>{d.label}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
+
+                  {/* Motivation Panel */}
                   {extApp.motivation && (
-                    <div className="info-card">
-                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Motivation</h4>
+                    <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        Motivation
+                      </h4>
                       <p style={{ fontSize: 13, lineHeight: 1.7, color: "var(--tx)", whiteSpace: "pre-wrap", margin: 0 }}>{extApp.motivation}</p>
                     </div>
                   )}
+
+                  {/* Materials Panel */}
                   {extMedia.length > 0 && (
-                    <div className="info-card">
-                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Attached Materials ({extMedia.length})</h4>
+                    <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                        Attached Materials ({extMedia.length})
+                      </h4>
                       <div className="extd-media-grid">
                         {extMedia.map(mi => (
                           <div key={mi.id} className="extd-media-thumb" style={{ position: "relative" }}>
@@ -6681,8 +6935,13 @@ export default function ArtistShell() {
                       </div>
                     </div>
                   )}
-                  <div className="info-card">
-                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Timeline</h4>
+
+                  {/* Timeline Panel */}
+                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10, display: "flex", alignItems: "center", gap: 6 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Timeline
+                    </h4>
                     <div className="extd-timeline">
                       <div className="extd-timeline-event"><div className="extd-evt-time">{extApp.createdAt}</div><div className="extd-evt-text">Application created</div></div>
                       {extApp.sentAt && <div className="extd-timeline-event"><div className="extd-evt-time">{extApp.sentAt}</div><div className="extd-evt-text">Link shared</div></div>}
@@ -6743,35 +7002,73 @@ export default function ArtistShell() {
 
               {extAppDetailTab === "share" && (
                 <>
-                  <div className="info-card">
-                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Application Link</h4>
+                  {/* Share Link Panel */}
+                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(var(--ac-rgb,99,102,241),.04)", border: "1px solid rgba(var(--ac-rgb,99,102,241),.1)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                      Application Link
+                    </h4>
                     <div className="vs-link-row">
                       <input readOnly value={`apply.lanced.app/${extApp.slug}`} />
                       <button onClick={() => { navigator.clipboard?.writeText(`apply.lanced.app/${extApp.slug}`); showToast("Link copied!"); }}>Copy</button>
                     </div>
                   </div>
-                  <div className="info-card">
-                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Access Settings</h4>
-                    <div className="share-modal" style={{ background: "none", boxShadow: "none", padding: 0, width: "auto" }}>
-                      <div className="sm-toggle">
-                        <div><div className="sm-toggle-label">Require email</div><div className="sm-toggle-desc">Always on for external applications</div></div>
+
+                  {/* Access Settings Panel */}
+                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                      Access Settings
+                    </h4>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", borderRadius: 10, background: "var(--s1)", border: "1px solid var(--br)" }}>
+                        <div><div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Require email</div><div style={{ fontSize: 11, color: "var(--g4)" }}>Always on for external apps</div></div>
                         <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
                       </div>
-                      <div className="sm-toggle">
-                        <div><div className="sm-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div></div>
+                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", borderRadius: 10, background: "var(--s1)", border: "1px solid var(--br)" }}>
+                        <div><div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div></div>
                         <div className={`sm-switch${extApp.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, requirePassword: !a.shareSettings.requirePassword } } : a))} />
                       </div>
                       {extApp.shareSettings.requirePassword && (
-                        <input className="sm-pw-input" type="text" placeholder="Set password..." value={extApp.shareSettings.password} onChange={e => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, password: e.target.value } } : a))} />
+                        <input style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", marginTop: 4 }} type="text" placeholder="Set password..." value={extApp.shareSettings.password} onChange={e => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, password: e.target.value } } : a))} />
                       )}
                     </div>
                   </div>
-                  <div style={{ display: "flex", gap: 8, marginTop: 16 }}>
-                    <button className="btn btn-s btn-sm" onClick={() => window.open(`/apply.html?slug=${extApp.slug}`, "_blank")}>{I.eye} Preview as viewer</button>
-                    {extApp.status === "draft" && (
-                      <button className="btn btn-p btn-sm" onClick={() => { setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, status: "sent", sentAt: new Date().toISOString().slice(0, 10) } : a)); showToast("Application marked as sent!"); }}>Mark as Sent</button>
-                    )}
+
+                  {/* Send via Email Panel */}
+                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
+                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                      Send via Email
+                    </h4>
+                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                      <input placeholder="recipient@company.com" style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none" }} />
+                      <input placeholder={`Application for ${extApp.role} — ${artist.name}`} style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none" }} />
+                      <textarea placeholder="Dear hiring team,&#10;&#10;Please find attached my application materials for the position..." style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "vertical", minHeight: 90, fontFamily: "inherit" }} />
+                      {/* Preview card */}
+                      <div style={{ padding: 14, background: "var(--s1)", borderRadius: 10, border: "1px solid var(--br)" }}>
+                        <div style={{ fontSize: 10, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>Attached Preview</div>
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          <div style={{ width: 40, height: 40, borderRadius: 8, background: "linear-gradient(135deg, var(--ac), #7c5cff)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                          </div>
+                          <div>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{extApp.companyName} — {extApp.role}</div>
+                            <div style={{ fontSize: 11, color: "var(--g4)" }}>apply.lanced.app/{extApp.slug}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <button className="btn btn-p btn-sm" style={{ alignSelf: "flex-end", display: "flex", alignItems: "center", gap: 6 }}
+                        onClick={() => { showToast("Application sent via email!"); setExtAppDetailTab("overview"); }}>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Send Application
+                      </button>
+                    </div>
                   </div>
+
+                  <button className="btn btn-s btn-sm" onClick={() => window.open(`/apply.html?slug=${extApp.slug}`, "_blank")} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                    {I.eye} Preview as viewer
+                  </button>
                 </>
               )}
             </div>
@@ -8414,7 +8711,7 @@ export default function ArtistShell() {
         return (
           <div>
             <div className="pg-header">
-              <h1><em>Messages</em></h1>
+              <h1><em>Inbox</em></h1>
               <p className="pg-sub">Your conversations</p>
             </div>
 
@@ -8768,6 +9065,7 @@ export default function ArtistShell() {
 
         /* ── Noir Theme Renderer ── */
         const renderNoirTheme = () => {
+          const theme = currentThemeData;
           const nm = artist.name.toUpperCase();
           const firstName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
           const lastName = artist.lastName?.toUpperCase() || nm.split(" ").slice(1).join(" ");
@@ -9257,6 +9555,29 @@ export default function ArtistShell() {
               case "works": return renderWorksPage();
               case "portfolio": return renderPortfolioDetail(noirPage.id);
               case "work": return renderWorkDetail(noirPage.id);
+              case "linkHub": {
+                const links = studioSectionSettings.linkHub?.links || [];
+                return (
+                  <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "120px 24px 60px", background: "var(--noir-bg,#0a0a0a)" }}>
+                    <div style={{ width: 60, height: 60, borderRadius: "50%", overflow: "hidden", marginBottom: 16, border: "2px solid rgba(255,255,255,.15)" }}>
+                      <img src={artist.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <h1 style={{ fontFamily: theme.fonts.heading, fontSize: 18, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".08em", color: "#fff", marginBottom: 4 }}>{artist.name}</h1>
+                    <p style={{ fontSize: 13, color: "rgba(255,255,255,.4)", marginBottom: 32 }}>{artist.role || "Artist"}</p>
+                    <div style={{ width: "100%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 10 }}>
+                      {links.map(link => (
+                        <a key={link.id} href="#" onClick={e => e.preventDefault()}
+                          style={{ display: "block", padding: "15px 24px", border: "1px solid rgba(255,255,255,.12)", fontSize: 14, fontWeight: 600, color: "#fff", textDecoration: "none", textAlign: "center", letterSpacing: ".03em", transition: "all .2s", background: "rgba(255,255,255,.03)" }}
+                          onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.08)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.25)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+                          onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,.03)"; e.currentTarget.style.borderColor = "rgba(255,255,255,.12)"; e.currentTarget.style.transform = "none"; }}>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: 40, fontSize: 10, color: "rgba(255,255,255,.2)", letterSpacing: ".1em", textTransform: "uppercase" }}>Powered by Lanced</div>
+                  </div>
+                );
+              }
               default: return null;
             }
           };
@@ -9288,6 +9609,7 @@ export default function ArtistShell() {
                       <span onClick={() => navTo({ type: "gallery" })}>GALLERY</span>
                       {selectedPfs.length > 0 && <span onClick={() => navTo({ type: "portfolios" })}>PORTFOLIOS</span>}
                       {selectedWks.length > 0 && <span onClick={() => navTo({ type: "works" })}>WORKS</span>}
+                      {studioSettings.integrations.linkHub && <span onClick={() => navTo({ type: "linkHub" })}>LINKS</span>}
                       <span onClick={() => setNoirContactOpen(true)}>CONTACT</span>
                     </div>
                   </nav>
@@ -9603,6 +9925,184 @@ export default function ArtistShell() {
                       </section>
                     );
 
+                  /* ── Integration Sections ── */
+                  case "newsletter":
+                    return (
+                      <section key="newsletter" className="noir-reveal" style={{ padding: "100px 6vw", background: "rgba(255,255,255,.03)", borderTop: "1px solid rgba(255,255,255,.06)", position: "relative", overflow: "hidden" }}>
+                        {/* Decorative gradient glow */}
+                        <div style={{ position: "absolute", top: "-40%", left: "50%", transform: "translateX(-50%)", width: "600px", height: "400px", background: `radial-gradient(ellipse, ${theme.colors.accent}12 0%, transparent 70%)`, pointerEvents: "none" }} />
+                        <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "center", position: "relative" }}>
+                          <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".2em", color: theme.colors.accent, marginBottom: 16 }}>Newsletter</div>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(36px,5vw,56px)", fontWeight: 800, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 16, lineHeight: 1.05 }}>
+                            {getSS("newsletter", "headline", "STAY IN THE LOOP")}
+                          </h2>
+                          <p style={{ fontSize: 15, color: "rgba(255,255,255,.45)", lineHeight: 1.7, marginBottom: 36, maxWidth: 440, margin: "0 auto 36px" }}>
+                            {getSS("newsletter", "subline", "Get notified about upcoming performances, new work, and behind-the-scenes updates.")}
+                          </p>
+                          <div style={{ display: "flex", gap: 0, maxWidth: 460, margin: "0 auto", border: "1px solid rgba(255,255,255,.15)", background: "rgba(255,255,255,.03)" }}>
+                            {studioSectionSettings.newsletter?.collectName && (
+                              <input style={{ flex: .7, padding: "14px 18px", border: "none", borderRight: "1px solid rgba(255,255,255,.08)", background: "transparent", fontSize: 13, color: "#fff", outline: "none" }} placeholder="Your name" readOnly />
+                            )}
+                            <input style={{ flex: 1, padding: "14px 18px", border: "none", background: "transparent", fontSize: 13, color: "#fff", outline: "none" }} placeholder="your@email.com" readOnly />
+                            <button style={{ padding: "14px 28px", background: theme.colors.accent, color: "#fff", border: "none", fontSize: 11, fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", cursor: "pointer", whiteSpace: "nowrap" }}
+                              onClick={() => showToast(getSS("newsletter", "confirmationMessage", "Thanks for subscribing!"))}>
+                              {getSS("newsletter", "buttonText", "SUBSCRIBE")}
+                            </button>
+                          </div>
+                          {subscribers.length > 0 && (
+                            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 20, padding: "6px 16px", background: "rgba(255,255,255,.04)", border: "1px solid rgba(255,255,255,.06)" }}>
+                              <div style={{ width: 6, height: 6, borderRadius: "50%", background: theme.colors.accent, boxShadow: `0 0 8px ${theme.colors.accent}60` }} />
+                              <span style={{ fontSize: 11, color: "rgba(255,255,255,.35)", letterSpacing: ".05em", textTransform: "uppercase" }}>Join {subscribers.length}+ subscribers</span>
+                            </div>
+                          )}
+                        </div>
+                      </section>
+                    );
+
+                  case "contactForm":
+                    return (
+                      <section key="contactForm" className="noir-reveal" style={{ padding: "100px 6vw", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                        <div style={{ maxWidth: 600, margin: "0 auto" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12, justifyContent: "center" }}>
+                            <div style={{ height: 1, flex: 1, maxWidth: 60, background: "rgba(255,255,255,.15)" }} />
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={theme.colors.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: .7 }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <div style={{ height: 1, flex: 1, maxWidth: 60, background: "rgba(255,255,255,.15)" }} />
+                          </div>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(32px,4.5vw,48px)", fontWeight: 800, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 8, textAlign: "center" }}>
+                            {getSS("contactForm", "headline", "GET IN TOUCH")}
+                          </h2>
+                          <p style={{ fontSize: 14, color: "rgba(255,255,255,.4)", lineHeight: 1.7, marginBottom: 36, textAlign: "center" }}>
+                            {getSS("contactForm", "subline", "Fill in the form below and I'll get back to you.")}
+                          </p>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                            <div style={{ display: "flex", gap: 0 }}>
+                              <div style={{ flex: 1, position: "relative" }}>
+                                <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: "rgba(255,255,255,.25)", marginBottom: 6 }}>Name</div>
+                                <input style={{ width: "100%", padding: "12px 0", border: "none", borderBottom: "1px solid rgba(255,255,255,.12)", background: "transparent", fontSize: 14, color: "#fff", outline: "none" }} placeholder="Your name" readOnly />
+                              </div>
+                              <div style={{ width: 24 }} />
+                              <div style={{ flex: 1, position: "relative" }}>
+                                <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: "rgba(255,255,255,.25)", marginBottom: 6 }}>Email</div>
+                                <input style={{ width: "100%", padding: "12px 0", border: "none", borderBottom: "1px solid rgba(255,255,255,.12)", background: "transparent", fontSize: 14, color: "#fff", outline: "none" }} placeholder="your@email.com" readOnly />
+                              </div>
+                            </div>
+                            {studioSectionSettings.contactForm?.showInquiryType !== false && (
+                              <div style={{ marginTop: 20 }}>
+                                <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: "rgba(255,255,255,.25)", marginBottom: 6 }}>Inquiry Type</div>
+                                <select style={{ width: "100%", padding: "12px 0", border: "none", borderBottom: "1px solid rgba(255,255,255,.12)", background: "transparent", fontSize: 14, color: "rgba(255,255,255,.4)", outline: "none", appearance: "none" }} disabled>
+                                  <option>Select type...</option>
+                                  <option>Booking</option><option>Collaboration</option><option>Press</option><option>General</option>
+                                </select>
+                              </div>
+                            )}
+                            <div style={{ marginTop: 20 }}>
+                              <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: "rgba(255,255,255,.25)", marginBottom: 6 }}>Subject</div>
+                              <input style={{ width: "100%", padding: "12px 0", border: "none", borderBottom: "1px solid rgba(255,255,255,.12)", background: "transparent", fontSize: 14, color: "#fff", outline: "none" }} placeholder="What's this about?" readOnly />
+                            </div>
+                            <div style={{ marginTop: 20 }}>
+                              <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: "rgba(255,255,255,.25)", marginBottom: 6 }}>Message</div>
+                              <textarea style={{ width: "100%", padding: "12px 0", border: "none", borderBottom: "1px solid rgba(255,255,255,.12)", background: "transparent", fontSize: 14, color: "#fff", outline: "none", resize: "vertical", minHeight: 120, fontFamily: theme.fonts.body }} placeholder="Your message..." readOnly />
+                            </div>
+                            <button style={{ marginTop: 32, padding: "16px 36px", background: theme.colors.accent, color: "#fff", border: "none", fontSize: 11, fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase", cursor: "pointer", alignSelf: "flex-start" }}
+                              onClick={() => showToast("Message sent!")}>
+                              {getSS("contactForm", "buttonText", "SEND MESSAGE")}
+                            </button>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "events": {
+                    const showPast = studioSectionSettings.events?.showPastEvents;
+                    const now = new Date().toISOString().slice(0, 10);
+                    const filtered = siteEvents.filter(ev => showPast ? true : ev.date >= now).sort((a, b) => a.date.localeCompare(b.date));
+                    const noirTypeBadgeColor = { performance: theme.colors.accent, workshop: "#a78bfa", open_rehearsal: "#34d399" };
+                    return (
+                      <section key="events" className="noir-reveal" style={{ padding: "100px 6vw", borderTop: "1px solid rgba(255,255,255,.06)" }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 16, justifyContent: "center", marginBottom: 16 }}>
+                          <div style={{ height: 1, width: 40, background: `linear-gradient(90deg, transparent, rgba(255,255,255,.2))` }} />
+                          <span style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".2em", color: theme.colors.accent }}>Schedule</span>
+                          <div style={{ height: 1, width: 40, background: `linear-gradient(90deg, rgba(255,255,255,.2), transparent)` }} />
+                        </div>
+                        <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(36px,5vw,56px)", fontWeight: 800, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 48, textAlign: "center", lineHeight: 1.05 }}>
+                          {getSS("events", "headline", "UPCOMING EVENTS")}
+                        </h2>
+                        <div style={{ maxWidth: 720, margin: "0 auto", position: "relative" }}>
+                          {/* Timeline line */}
+                          {filtered.length > 0 && <div style={{ position: "absolute", left: 30, top: 0, bottom: 0, width: 1, background: "linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04))" }} />}
+                          {filtered.map((ev, i) => {
+                            const d = new Date(ev.date + "T00:00:00");
+                            const past = ev.date < now;
+                            const typeLabel = { performance: "Performance", workshop: "Workshop", open_rehearsal: "Open Rehearsal" }[ev.type] || ev.type;
+                            const badgeColor = noirTypeBadgeColor[ev.type] || "rgba(255,255,255,.5)";
+                            return (
+                              <div key={ev.id} style={{ display: "flex", gap: 28, padding: "24px 0", opacity: past ? .4 : 1, position: "relative" }}>
+                                {/* Timeline dot */}
+                                <div style={{ position: "absolute", left: 25, top: 32, width: 11, height: 11, borderRadius: "50%", border: `2px solid ${past ? "rgba(255,255,255,.15)" : theme.colors.accent}`, background: past ? "transparent" : theme.colors.accent, boxShadow: past ? "none" : `0 0 12px ${theme.colors.accent}40`, zIndex: 1 }} />
+                                {/* Date block */}
+                                <div style={{ minWidth: 80, textAlign: "center", paddingLeft: 50 }}>
+                                  <div style={{ fontSize: 36, fontWeight: 800, lineHeight: 1, color: theme.colors.accent, letterSpacing: "-.02em" }}>{d.getDate()}</div>
+                                  <div style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: ".1em", color: "rgba(255,255,255,.35)", fontWeight: 600 }}>{d.toLocaleDateString("en-US", { month: "short" })}</div>
+                                  <div style={{ fontSize: 10, color: "rgba(255,255,255,.2)", marginTop: 2 }}>{d.getFullYear()}</div>
+                                </div>
+                                {/* Content */}
+                                <div style={{ flex: 1, paddingTop: 4 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
+                                    <span style={{ fontSize: 17, fontWeight: 700, color: "#fff", letterSpacing: "-.01em" }}>{ev.title}</span>
+                                    <span style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", padding: "3px 8px", background: `${badgeColor}18`, color: badgeColor, border: `1px solid ${badgeColor}30` }}>{typeLabel}</span>
+                                  </div>
+                                  <div style={{ fontSize: 13, color: "rgba(255,255,255,.4)" }}>{ev.venue}, {ev.city}</div>
+                                  {ev.time && <div style={{ fontSize: 12, color: "rgba(255,255,255,.25)", marginTop: 4 }}>{ev.time}</div>}
+                                </div>
+                                {studioSectionSettings.events?.showTicketLinks !== false && ev.ticketUrl && (
+                                  <a href="#" onClick={e => e.preventDefault()} style={{ alignSelf: "center", padding: "10px 20px", border: past ? "1px solid rgba(255,255,255,.1)" : "none", background: past ? "transparent" : theme.colors.accent, fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".08em", color: "#fff", textDecoration: "none", whiteSpace: "nowrap" }}>
+                                    {past ? "Past" : "Tickets"}
+                                  </a>
+                                )}
+                              </div>
+                            );
+                          })}
+                          {filtered.length === 0 && <p style={{ textAlign: "center", color: "rgba(255,255,255,.3)", fontSize: 14, paddingTop: 20 }}>No upcoming events</p>}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "pressKit":
+                    return (
+                      <section key="pressKit" className="noir-reveal" style={{ padding: "100px 6vw", background: "rgba(255,255,255,.03)", borderTop: "1px solid rgba(255,255,255,.06)", position: "relative", overflow: "hidden" }}>
+                        <div style={{ position: "absolute", bottom: "-30%", right: "-10%", width: "400px", height: "400px", background: `radial-gradient(ellipse, ${theme.colors.accent}08 0%, transparent 70%)`, pointerEvents: "none" }} />
+                        <div style={{ maxWidth: 640, margin: "0 auto", textAlign: "center", position: "relative" }}>
+                          <div style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".2em", color: theme.colors.accent, marginBottom: 16 }}>For Press & Programmers</div>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(32px,4.5vw,48px)", fontWeight: 800, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 12, lineHeight: 1.05 }}>
+                            {getSS("pressKit", "headline", "PRESS KIT")}
+                          </h2>
+                          <p style={{ fontSize: 15, color: "rgba(255,255,255,.4)", lineHeight: 1.7, marginBottom: 32, maxWidth: 440, margin: "0 auto 32px" }}>
+                            {getSS("pressKit", "subline", "Everything you need for press and programming.")}
+                          </p>
+                          {/* What's included icons */}
+                          <div style={{ display: "flex", justifyContent: "center", gap: 32, marginBottom: 36 }}>
+                            {[
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, label: "Bio" },
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, label: "Photos" },
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>, label: "Tech Rider" },
+                            ].map((item, idx) => (
+                              <div key={idx} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                                <div style={{ width: 44, height: 44, display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid rgba(255,255,255,.1)", color: "rgba(255,255,255,.5)" }}>{item.icon}</div>
+                                <span style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".1em", color: "rgba(255,255,255,.35)" }}>{item.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <a href="#" onClick={e => { e.preventDefault(); showToast("Press Kit page coming soon"); }} style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "16px 36px", background: theme.colors.accent, color: "#fff", textDecoration: "none", fontSize: 11, fontWeight: 700, letterSpacing: ".1em", textTransform: "uppercase" }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            View Press Kit
+                          </a>
+                        </div>
+                      </section>
+                    );
+
+                  case "linkHub": return null; /* Link Hub is a separate page, not a homepage section */
+
                   default:
                     return null;
                 }
@@ -9676,6 +10176,7 @@ export default function ArtistShell() {
         };
 
         const renderAtriumTheme = () => {
+          const theme = currentThemeData;
           const nm = artist.name.toUpperCase();
           const firstName = artist.firstName?.toUpperCase() || nm.split(" ")[0];
           const lastName = artist.lastName?.toUpperCase() || nm.split(" ").slice(1).join(" ");
@@ -10108,6 +10609,29 @@ export default function ArtistShell() {
               case "works": return renderAtriumWorksPage();
               case "portfolio": return renderAtriumPortfolioDetail(atriumPage.id);
               case "work": return renderAtriumWorkDetail(atriumPage.id);
+              case "linkHub": {
+                const links = studioSectionSettings.linkHub?.links || [];
+                return (
+                  <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "120px 24px 60px", background: theme.colors.bg }}>
+                    <div style={{ width: 64, height: 64, borderRadius: "50%", overflow: "hidden", marginBottom: 16, border: `1px solid ${theme.colors.muted}30` }}>
+                      <img src={artist.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <h1 style={{ fontFamily: theme.fonts.heading, fontSize: 20, fontWeight: 700, color: theme.colors.text, marginBottom: 4 }}>{artist.name}</h1>
+                    <p style={{ fontSize: 13, color: theme.colors.muted, marginBottom: 32 }}>{artist.role || "Artist"}</p>
+                    <div style={{ width: "100%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 10 }}>
+                      {links.map(link => (
+                        <a key={link.id} href="#" onClick={e => e.preventDefault()}
+                          style={{ display: "block", padding: "13px 20px", border: `1px solid ${theme.colors.muted}40`, borderRadius: 10, fontSize: 14, fontWeight: 500, color: theme.colors.text, textDecoration: "none", textAlign: "center", transition: "all .15s" }}
+                          onMouseEnter={e => { e.currentTarget.style.borderColor = theme.colors.accent; e.currentTarget.style.background = `${theme.colors.accent}08`; }}
+                          onMouseLeave={e => { e.currentTarget.style.borderColor = `${theme.colors.muted}40`; e.currentTarget.style.background = "transparent"; }}>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: 40, fontSize: 10, color: theme.colors.muted, letterSpacing: ".1em", textTransform: "uppercase" }}>Powered by Lanced</div>
+                  </div>
+                );
+              }
               default: return null;
             }
           };
@@ -10123,6 +10647,7 @@ export default function ArtistShell() {
                   <span onClick={() => atriumNavTo({ type: "gallery" })}>GALLERY</span>
                   {selectedPfs.length > 0 && <span onClick={() => atriumNavTo({ type: "portfolios" })}>PORTFOLIOS</span>}
                   {selectedWks.length > 0 && <span onClick={() => atriumNavTo({ type: "works" })}>WORKS</span>}
+                  {studioSettings.integrations.linkHub && <span onClick={() => atriumNavTo({ type: "linkHub" })}>LINKS</span>}
                   <span>CONTACT</span>
                 </div>
               </nav>
@@ -10378,6 +10903,142 @@ export default function ArtistShell() {
                     );
                   }
 
+                  /* ── Integration Sections ── */
+                  case "newsletter":
+                    return (
+                      <section key="newsletter" className="atrium-reveal" style={{ padding: "80px 5vw", background: `${theme.colors.accent}06`, borderTop: `1px solid ${theme.colors.muted}15` }}>
+                        <div style={{ maxWidth: 560, margin: "0 auto", textAlign: "center" }}>
+                          <div style={{ width: 48, height: 48, borderRadius: 12, background: `${theme.colors.accent}10`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={theme.colors.accent} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                          </div>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: 32, fontWeight: 700, marginBottom: 10, color: theme.colors.text }}>{getSS("newsletter", "headline", "Stay in the Loop")}</h2>
+                          <p style={{ fontSize: 14, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 28, maxWidth: 420, margin: "0 auto 28px" }}>{getSS("newsletter", "subline", "Get notified about upcoming performances, new work, and behind-the-scenes updates.")}</p>
+                          <div style={{ display: "flex", gap: 8, maxWidth: 440, margin: "0 auto", padding: 6, background: "#fff", borderRadius: 12, boxShadow: "0 2px 12px rgba(0,0,0,.06)" }}>
+                            {studioSectionSettings.newsletter?.collectName && <input style={{ flex: .7, padding: "12px 14px", border: "none", borderRadius: 8, background: `${theme.colors.muted}08`, fontSize: 13, outline: "none" }} placeholder="Your name" readOnly />}
+                            <input style={{ flex: 1, padding: "12px 14px", border: "none", borderRadius: 8, background: `${theme.colors.muted}08`, fontSize: 13, outline: "none" }} placeholder="your@email.com" readOnly />
+                            <button style={{ padding: "12px 22px", background: theme.colors.accent, color: "#fff", border: "none", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}
+                              onClick={() => showToast(getSS("newsletter", "confirmationMessage", "Thanks for subscribing!"))}>{getSS("newsletter", "buttonText", "Subscribe")}</button>
+                          </div>
+                          {subscribers.length > 0 && (
+                            <div style={{ display: "inline-flex", alignItems: "center", gap: 6, marginTop: 16, fontSize: 12, color: theme.colors.muted }}>
+                              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#10b981" }} />
+                              {subscribers.length}+ subscribers
+                            </div>
+                          )}
+                        </div>
+                      </section>
+                    );
+
+                  case "contactForm":
+                    return (
+                      <section key="contactForm" className="atrium-reveal" style={{ padding: "80px 5vw" }}>
+                        <div style={{ maxWidth: 540, margin: "0 auto" }}>
+                          {sh(getSS("contactForm", "headline", "Get in Touch"))}
+                          <p style={{ fontSize: 14, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 28, textAlign: "center" }}>{getSS("contactForm", "subline", "Fill in the form below and I'll get back to you.")}</p>
+                          <div style={{ background: "#fff", borderRadius: 16, padding: "28px 24px", boxShadow: "0 2px 16px rgba(0,0,0,.05)" }}>
+                            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                              <div style={{ display: "flex", gap: 12 }}>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ fontSize: 11, fontWeight: 600, color: theme.colors.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>Name</div>
+                                  <input style={{ width: "100%", padding: "11px 14px", border: `1.5px solid ${theme.colors.muted}30`, borderRadius: 8, background: `${theme.colors.muted}06`, fontSize: 13, outline: "none" }} placeholder="Your name" readOnly />
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ fontSize: 11, fontWeight: 600, color: theme.colors.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>Email</div>
+                                  <input style={{ width: "100%", padding: "11px 14px", border: `1.5px solid ${theme.colors.muted}30`, borderRadius: 8, background: `${theme.colors.muted}06`, fontSize: 13, outline: "none" }} placeholder="your@email.com" readOnly />
+                                </div>
+                              </div>
+                              {studioSectionSettings.contactForm?.showInquiryType !== false && (
+                                <div>
+                                  <div style={{ fontSize: 11, fontWeight: 600, color: theme.colors.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>Inquiry Type</div>
+                                  <select style={{ width: "100%", padding: "11px 14px", border: `1.5px solid ${theme.colors.muted}30`, borderRadius: 8, background: `${theme.colors.muted}06`, fontSize: 13, outline: "none", color: theme.colors.muted }} disabled><option>Select...</option></select>
+                                </div>
+                              )}
+                              <div>
+                                <div style={{ fontSize: 11, fontWeight: 600, color: theme.colors.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>Subject</div>
+                                <input style={{ width: "100%", padding: "11px 14px", border: `1.5px solid ${theme.colors.muted}30`, borderRadius: 8, background: `${theme.colors.muted}06`, fontSize: 13, outline: "none" }} placeholder="Subject" readOnly />
+                              </div>
+                              <div>
+                                <div style={{ fontSize: 11, fontWeight: 600, color: theme.colors.muted, marginBottom: 6, textTransform: "uppercase", letterSpacing: ".05em" }}>Message</div>
+                                <textarea style={{ width: "100%", padding: "11px 14px", border: `1.5px solid ${theme.colors.muted}30`, borderRadius: 8, background: `${theme.colors.muted}06`, fontSize: 13, outline: "none", resize: "vertical", minHeight: 110, fontFamily: theme.fonts.body }} placeholder="Your message..." readOnly />
+                              </div>
+                              <button style={{ padding: "13px 28px", background: theme.colors.accent, color: "#fff", border: "none", borderRadius: 10, fontSize: 13, fontWeight: 600, cursor: "pointer", alignSelf: "flex-start", marginTop: 4 }}
+                                onClick={() => showToast("Message sent!")}>{getSS("contactForm", "buttonText", "Send Message")}</button>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "events": {
+                    const showPast = studioSectionSettings.events?.showPastEvents;
+                    const now = new Date().toISOString().slice(0, 10);
+                    const filtered = siteEvents.filter(ev => showPast ? true : ev.date >= now).sort((a, b) => a.date.localeCompare(b.date));
+                    const atriumTypeBadge = { performance: { bg: `${theme.colors.accent}12`, color: theme.colors.accent }, workshop: { bg: "#a78bfa15", color: "#8b5cf6" }, open_rehearsal: { bg: "#10b98112", color: "#059669" } };
+                    return (
+                      <section key="events" className="atrium-reveal" style={{ padding: "80px 5vw" }}>
+                        {sh(getSS("events", "headline", "Upcoming Events"))}
+                        <div style={{ maxWidth: 660, margin: "0 auto" }}>
+                          {filtered.map((ev, i) => {
+                            const d = new Date(ev.date + "T00:00:00");
+                            const past = ev.date < now;
+                            const typeLabel = { performance: "Performance", workshop: "Workshop", open_rehearsal: "Open Rehearsal" }[ev.type] || ev.type;
+                            const badge = atriumTypeBadge[ev.type] || { bg: `${theme.colors.muted}10`, color: theme.colors.muted };
+                            return (
+                              <div key={ev.id} style={{ display: "flex", gap: 20, padding: "20px 0", borderBottom: i < filtered.length - 1 ? `1px solid ${theme.colors.muted}20` : "none", opacity: past ? .45 : 1, alignItems: "flex-start" }}>
+                                {/* Date card */}
+                                <div style={{ minWidth: 56, textAlign: "center", padding: "8px 0", background: `${theme.colors.accent}08`, borderRadius: 10 }}>
+                                  <div style={{ fontSize: 26, fontWeight: 700, color: theme.colors.accent, lineHeight: 1 }}>{d.getDate()}</div>
+                                  <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: ".06em", color: theme.colors.muted, fontWeight: 600, marginTop: 2 }}>{d.toLocaleDateString("en-US", { month: "short" })}</div>
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                                    <div style={{ fontSize: 15, fontWeight: 600, color: theme.colors.text }}>{ev.title}</div>
+                                    <span style={{ fontSize: 10, fontWeight: 600, padding: "2px 8px", borderRadius: 6, background: badge.bg, color: badge.color }}>{typeLabel}</span>
+                                  </div>
+                                  <div style={{ fontSize: 13, color: theme.colors.muted }}>{ev.venue}, {ev.city}</div>
+                                  {ev.time && <div style={{ fontSize: 12, color: theme.colors.muted, opacity: .7, marginTop: 2 }}>{ev.time}</div>}
+                                </div>
+                                {studioSectionSettings.events?.showTicketLinks !== false && ev.ticketUrl && !past && (
+                                  <a href="#" onClick={e => e.preventDefault()} style={{ alignSelf: "center", padding: "8px 18px", background: theme.colors.accent, color: "#fff", borderRadius: 8, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>Tickets</a>
+                                )}
+                              </div>
+                            );
+                          })}
+                          {filtered.length === 0 && <p style={{ textAlign: "center", color: theme.colors.muted, padding: "20px 0" }}>No upcoming events</p>}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "pressKit":
+                    return (
+                      <section key="pressKit" className="atrium-reveal" style={{ padding: "80px 5vw", background: `${theme.colors.accent}05` }}>
+                        <div style={{ maxWidth: 560, margin: "0 auto", textAlign: "center" }}>
+                          {sh(getSS("pressKit", "headline", "Press Kit"))}
+                          <p style={{ fontSize: 14, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 28 }}>{getSS("pressKit", "subline", "Everything you need for press and programming.")}</p>
+                          {/* What's included */}
+                          <div style={{ display: "flex", justifyContent: "center", gap: 24, marginBottom: 32 }}>
+                            {[
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, label: "Bio" },
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, label: "Photos" },
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>, label: "Tech Rider" },
+                            ].map((item, idx) => (
+                              <div key={idx} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+                                <div style={{ width: 48, height: 48, borderRadius: 12, background: "#fff", boxShadow: "0 2px 8px rgba(0,0,0,.06)", display: "flex", alignItems: "center", justifyContent: "center", color: theme.colors.accent }}>{item.icon}</div>
+                                <span style={{ fontSize: 11, fontWeight: 600, color: theme.colors.muted }}>{item.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <a href="#" onClick={e => { e.preventDefault(); showToast("Press Kit page coming soon"); }} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 32px", background: theme.colors.accent, color: "#fff", textDecoration: "none", borderRadius: 10, fontSize: 13, fontWeight: 600, boxShadow: `0 4px 14px ${theme.colors.accent}30` }}>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            View Press Kit
+                          </a>
+                        </div>
+                      </section>
+                    );
+
+                  case "linkHub": return null; /* Link Hub is a separate page */
+
                   default:
                     return null;
                 }
@@ -10408,6 +11069,7 @@ export default function ArtistShell() {
            LUMEN THEME — render function
            ═══════════════════════════════════════════════════════════════════ */
         const renderLumenTheme = () => {
+          const theme = currentThemeData;
           const nm = artist.name || "Artist Name";
           const nmUp = nm.toUpperCase();
           const ss = studioSectionSettings;
@@ -10540,7 +11202,29 @@ export default function ArtistShell() {
             </>);
           };
 
-          const renderPageContent = () => { switch (lumenPage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolios": return renderPortfoliosPage(); case "works": return renderWorksPage(); case "portfolio": return renderPortfolioDetail(lumenPage.id); case "work": return renderWorkDetail(lumenPage.id); default: return null; } };
+          const renderPageContent = () => { switch (lumenPage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolios": return renderPortfoliosPage(); case "works": return renderWorksPage(); case "portfolio": return renderPortfolioDetail(lumenPage.id); case "work": return renderWorkDetail(lumenPage.id); case "linkHub": {
+                const links = studioSectionSettings.linkHub?.links || [];
+                return (
+                  <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "120px 24px 60px", background: theme.colors.bg }}>
+                    <div style={{ width: 64, height: 64, borderRadius: "50%", overflow: "hidden", marginBottom: 16 }}>
+                      <img src={artist.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <h1 style={{ fontFamily: theme.fonts.heading, fontSize: 22, fontWeight: 600, color: theme.colors.text, marginBottom: 4 }}>{artist.name}</h1>
+                    <p style={{ fontSize: 13, color: theme.colors.muted, marginBottom: 32 }}>{artist.role || "Performing Artist"}</p>
+                    <div style={{ width: "100%", maxWidth: 380, display: "flex", flexDirection: "column", gap: 10 }}>
+                      {links.map(link => (
+                        <a key={link.id} href="#" onClick={e => e.preventDefault()}
+                          style={{ display: "block", padding: "13px 20px", border: `1px solid ${theme.colors.muted}25`, borderRadius: 10, fontSize: 14, fontWeight: 500, color: theme.colors.text, textDecoration: "none", textAlign: "center", transition: "all .15s" }}
+                          onMouseEnter={e => { e.currentTarget.style.borderColor = theme.colors.accent; }}
+                          onMouseLeave={e => { e.currentTarget.style.borderColor = `${theme.colors.muted}25`; }}>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: 40, fontSize: 10, color: theme.colors.muted, letterSpacing: ".08em" }}>Powered by Lanced</div>
+                  </div>
+                );
+              } default: return null; } };
           const navCompact = studioScrollY > 60;
 
           return (
@@ -10553,6 +11237,7 @@ export default function ArtistShell() {
                   <span onClick={() => navTo({ type: "gallery" })}>Gallery</span>
                   {selectedPfs.length > 0 && <span onClick={() => navTo({ type: "portfolios" })}>Portfolios</span>}
                   {selectedWks.length > 0 && <span onClick={() => navTo({ type: "works" })}>Works</span>}
+                  {studioSettings.integrations.linkHub && <span onClick={() => navTo({ type: "linkHub" })}>Links</span>}
                   <span>Contact</span>
                 </div>
               </nav>
@@ -10709,6 +11394,145 @@ export default function ArtistShell() {
                       </section>
                     );
 
+                  /* ── Integration Sections ── */
+                  case "newsletter":
+                    return (
+                      <section key="newsletter" className="lumen-reveal" style={{ padding: "72px 5vw", background: `${theme.colors.accent}06`, position: "relative" }}>
+                        {/* Soft decorative circle */}
+                        <div style={{ position: "absolute", top: -60, right: "10%", width: 200, height: 200, borderRadius: "50%", background: `${theme.colors.accent}06`, pointerEvents: "none" }} />
+                        <div style={{ maxWidth: 520, margin: "0 auto", textAlign: "center", position: "relative" }}>
+                          <div className="lumen-sh"><div className="lumen-sh-label">Newsletter</div><h2 className="lumen-sh-title" style={{ fontSize: "clamp(28px,4vw,38px)" }}>{getSS("newsletter", "headline", "Stay in the Loop")}</h2></div>
+                          <p style={{ fontSize: 15, color: theme.colors.muted, lineHeight: 1.8, marginBottom: 28, maxWidth: 420, margin: "0 auto 28px" }}>{getSS("newsletter", "subline", "Get notified about upcoming performances, new work, and behind-the-scenes updates.")}</p>
+                          <div style={{ display: "flex", gap: 8, maxWidth: 420, margin: "0 auto", padding: 5, background: theme.colors.bg, borderRadius: 24, boxShadow: `0 2px 16px ${theme.colors.accent}10` }}>
+                            {studioSectionSettings.newsletter?.collectName && <input style={{ flex: .7, padding: "12px 16px", border: "none", borderRadius: 20, background: `${theme.colors.muted}08`, fontSize: 13, outline: "none" }} placeholder="Your name" readOnly />}
+                            <input style={{ flex: 1, padding: "12px 16px", border: "none", borderRadius: 20, background: `${theme.colors.muted}08`, fontSize: 13, outline: "none" }} placeholder="your@email.com" readOnly />
+                            <button style={{ padding: "12px 22px", background: theme.colors.accent, color: "#fff", border: "none", borderRadius: 20, fontSize: 12, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}
+                              onClick={() => showToast(getSS("newsletter", "confirmationMessage", "Thanks for subscribing!"))}>{getSS("newsletter", "buttonText", "Subscribe")}</button>
+                          </div>
+                          {subscribers.length > 0 && (
+                            <p style={{ fontSize: 12, color: theme.colors.muted, marginTop: 14, fontStyle: "italic" }}>Joining {subscribers.length}+ others</p>
+                          )}
+                        </div>
+                      </section>
+                    );
+
+                  case "contactForm":
+                    return (
+                      <section key="contactForm" className="lumen-reveal" style={{ padding: "72px 5vw" }}>
+                        <div style={{ maxWidth: 500, margin: "0 auto" }}>
+                          <div className="lumen-sh" style={{ textAlign: "center" }}>
+                            <div className="lumen-sh-label">Contact</div>
+                            <h2 className="lumen-sh-title" style={{ fontSize: "clamp(28px,4vw,38px)" }}>{getSS("contactForm", "headline", "Get in Touch")}</h2>
+                          </div>
+                          <p style={{ fontSize: 15, color: theme.colors.muted, lineHeight: 1.8, marginBottom: 28, textAlign: "center" }}>{getSS("contactForm", "subline", "Fill in the form below and I'll get back to you.")}</p>
+                          {/* Warm decorative divider */}
+                          <div style={{ display: "flex", justifyContent: "center", gap: 6, marginBottom: 28 }}>
+                            <div style={{ width: 4, height: 4, borderRadius: "50%", background: `${theme.colors.accent}40` }} />
+                            <div style={{ width: 4, height: 4, borderRadius: "50%", background: `${theme.colors.accent}25` }} />
+                            <div style={{ width: 4, height: 4, borderRadius: "50%", background: `${theme.colors.accent}15` }} />
+                          </div>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                            <div style={{ display: "flex", gap: 12 }}>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ fontSize: 12, fontWeight: 500, color: theme.colors.muted, marginBottom: 6 }}>Name</div>
+                                <input style={{ width: "100%", padding: "12px 16px", border: `1.5px solid ${theme.colors.muted}25`, borderRadius: 12, background: `${theme.colors.accent}04`, fontSize: 13, outline: "none" }} placeholder="Your name" readOnly />
+                              </div>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ fontSize: 12, fontWeight: 500, color: theme.colors.muted, marginBottom: 6 }}>Email</div>
+                                <input style={{ width: "100%", padding: "12px 16px", border: `1.5px solid ${theme.colors.muted}25`, borderRadius: 12, background: `${theme.colors.accent}04`, fontSize: 13, outline: "none" }} placeholder="your@email.com" readOnly />
+                              </div>
+                            </div>
+                            {studioSectionSettings.contactForm?.showInquiryType !== false && (
+                              <div>
+                                <div style={{ fontSize: 12, fontWeight: 500, color: theme.colors.muted, marginBottom: 6 }}>Inquiry Type</div>
+                                <select style={{ width: "100%", padding: "12px 16px", border: `1.5px solid ${theme.colors.muted}25`, borderRadius: 12, background: `${theme.colors.accent}04`, fontSize: 13, outline: "none", color: theme.colors.muted }} disabled><option>Select type...</option></select>
+                              </div>
+                            )}
+                            <div>
+                              <div style={{ fontSize: 12, fontWeight: 500, color: theme.colors.muted, marginBottom: 6 }}>Subject</div>
+                              <input style={{ width: "100%", padding: "12px 16px", border: `1.5px solid ${theme.colors.muted}25`, borderRadius: 12, background: `${theme.colors.accent}04`, fontSize: 13, outline: "none" }} placeholder="Subject" readOnly />
+                            </div>
+                            <div>
+                              <div style={{ fontSize: 12, fontWeight: 500, color: theme.colors.muted, marginBottom: 6 }}>Message</div>
+                              <textarea style={{ width: "100%", padding: "12px 16px", border: `1.5px solid ${theme.colors.muted}25`, borderRadius: 12, background: `${theme.colors.accent}04`, fontSize: 13, outline: "none", resize: "vertical", minHeight: 110, fontFamily: theme.fonts.body }} placeholder="Your message..." readOnly />
+                            </div>
+                            <button style={{ padding: "13px 28px", background: theme.colors.accent, color: "#fff", border: "none", borderRadius: 24, fontSize: 13, fontWeight: 600, cursor: "pointer", alignSelf: "flex-start", marginTop: 4 }}
+                              onClick={() => showToast("Message sent!")}>{getSS("contactForm", "buttonText", "Send Message")}</button>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "events": {
+                    const showPast = studioSectionSettings.events?.showPastEvents;
+                    const now = new Date().toISOString().slice(0, 10);
+                    const filtered = siteEvents.filter(ev => showPast ? true : ev.date >= now).sort((a, b) => a.date.localeCompare(b.date));
+                    const lumenTypeBadge = { performance: { bg: `${theme.colors.accent}12`, color: theme.colors.accent }, workshop: { bg: "#a78bfa12", color: "#7c3aed" }, open_rehearsal: { bg: "#10b98110", color: "#059669" } };
+                    return (
+                      <section key="events" className="lumen-reveal" style={{ padding: "72px 5vw" }}>
+                        <div className="lumen-sh"><div className="lumen-sh-label">Events</div><h2 className="lumen-sh-title" style={{ fontSize: "clamp(28px,4vw,38px)" }}>{getSS("events", "headline", "Upcoming Events")}</h2></div>
+                        <div style={{ maxWidth: 620, margin: "0 auto" }}>
+                          {filtered.map((ev, i) => {
+                            const d = new Date(ev.date + "T00:00:00");
+                            const past = ev.date < now;
+                            const typeLabel = { performance: "Performance", workshop: "Workshop", open_rehearsal: "Open Rehearsal" }[ev.type] || ev.type;
+                            const badge = lumenTypeBadge[ev.type] || { bg: `${theme.colors.muted}10`, color: theme.colors.muted };
+                            return (
+                              <div key={ev.id} style={{ display: "flex", gap: 20, padding: "20px 0", borderBottom: i < filtered.length - 1 ? `1px solid ${theme.colors.muted}15` : "none", opacity: past ? .45 : 1, alignItems: "flex-start" }}>
+                                {/* Date circle */}
+                                <div style={{ minWidth: 56, height: 56, borderRadius: "50%", background: `${theme.colors.accent}08`, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                  <div style={{ fontSize: 20, fontWeight: 700, color: theme.colors.accent, lineHeight: 1 }}>{d.getDate()}</div>
+                                  <div style={{ fontSize: 9, textTransform: "uppercase", letterSpacing: ".06em", color: theme.colors.muted, fontWeight: 600 }}>{d.toLocaleDateString("en-US", { month: "short" })}</div>
+                                </div>
+                                <div style={{ flex: 1, paddingTop: 4 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4, flexWrap: "wrap" }}>
+                                    <div style={{ fontSize: 16, fontWeight: 600, color: theme.colors.text }}>{ev.title}</div>
+                                    <span style={{ fontSize: 10, fontWeight: 600, padding: "2px 10px", borderRadius: 12, background: badge.bg, color: badge.color }}>{typeLabel}</span>
+                                  </div>
+                                  <div style={{ fontSize: 13, color: theme.colors.muted }}>{ev.venue}, {ev.city}</div>
+                                  {ev.time && <div style={{ fontSize: 12, color: theme.colors.muted, opacity: .6, marginTop: 3 }}>{ev.time}</div>}
+                                </div>
+                                {studioSectionSettings.events?.showTicketLinks !== false && ev.ticketUrl && !past && (
+                                  <a href="#" onClick={e => e.preventDefault()} style={{ alignSelf: "center", padding: "8px 18px", background: theme.colors.accent, color: "#fff", borderRadius: 20, fontSize: 11, fontWeight: 600, textDecoration: "none" }}>Tickets</a>
+                                )}
+                              </div>
+                            );
+                          })}
+                          {filtered.length === 0 && <p style={{ textAlign: "center", color: theme.colors.muted, fontStyle: "italic", padding: "20px 0" }}>No upcoming events</p>}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "pressKit":
+                    return (
+                      <section key="pressKit" className="lumen-reveal" style={{ padding: "72px 5vw", background: `${theme.colors.accent}06` }}>
+                        <div style={{ maxWidth: 520, margin: "0 auto", textAlign: "center" }}>
+                          <div className="lumen-sh"><div className="lumen-sh-label">Press</div><h2 className="lumen-sh-title" style={{ fontSize: "clamp(28px,4vw,38px)" }}>{getSS("pressKit", "headline", "Press Kit")}</h2></div>
+                          <p style={{ fontSize: 15, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 28 }}>{getSS("pressKit", "subline", "Everything you need for press and programming.")}</p>
+                          {/* Included items */}
+                          <div style={{ display: "flex", justifyContent: "center", gap: 20, marginBottom: 32 }}>
+                            {[
+                              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, label: "Bio" },
+                              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, label: "Photos" },
+                              { icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>, label: "Tech Rider" },
+                            ].map((item, idx) => (
+                              <div key={idx} style={{ display: "flex", alignItems: "center", gap: 8, padding: "8px 16px", borderRadius: 20, background: `${theme.colors.accent}08` }}>
+                                <span style={{ color: theme.colors.accent }}>{item.icon}</span>
+                                <span style={{ fontSize: 12, fontWeight: 500, color: theme.colors.text }}>{item.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <a href="#" onClick={e => { e.preventDefault(); showToast("Press Kit page coming soon"); }} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 32px", background: theme.colors.accent, color: "#fff", textDecoration: "none", borderRadius: 24, fontSize: 13, fontWeight: 600 }}>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            View Press Kit
+                          </a>
+                        </div>
+                      </section>
+                    );
+
+                  case "linkHub": return null; /* Link Hub is a separate page */
+
                   default: return null;
                 }
               })}
@@ -10731,6 +11555,7 @@ export default function ArtistShell() {
            SLATER THEME RENDER
            ═══════════════════════════════════════════════════ */
         const renderSlaterTheme = () => {
+          const theme = currentThemeData;
           const nm = (artist.name || "Artist Name").toUpperCase();
           const firstName = (artist.firstName || "Artist").toUpperCase();
           const ss = studioSectionSettings;
@@ -10902,7 +11727,29 @@ export default function ArtistShell() {
             </>);
           };
 
-          const renderPageContent = () => { switch (slaterPage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolios": return renderPortfoliosPage(); case "works": return renderWorksPage(); case "portfolio": return renderPortfolioDetail(slaterPage.id); case "work": return renderWorkDetail(slaterPage.id); default: return null; } };
+          const renderPageContent = () => { switch (slaterPage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolios": return renderPortfoliosPage(); case "works": return renderWorksPage(); case "portfolio": return renderPortfolioDetail(slaterPage.id); case "work": return renderWorkDetail(slaterPage.id); case "linkHub": {
+                const links = studioSectionSettings.linkHub?.links || [];
+                return (
+                  <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "120px 24px 60px", background: theme.colors.bg }}>
+                    <div style={{ width: 56, height: 56, borderRadius: "50%", overflow: "hidden", marginBottom: 16 }}>
+                      <img src={artist.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <h1 style={{ fontFamily: theme.fonts.heading, fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.text, marginBottom: 4 }}>{artist.name?.toUpperCase()}</h1>
+                    <p style={{ fontSize: 11, letterSpacing: ".08em", textTransform: "uppercase", color: theme.colors.muted, marginBottom: 32 }}>{artist.role || "Artist"}</p>
+                    <div style={{ width: "100%", maxWidth: 380, display: "flex", flexDirection: "column", gap: 8 }}>
+                      {links.map(link => (
+                        <a key={link.id} href="#" onClick={e => e.preventDefault()}
+                          style={{ display: "block", padding: "13px 20px", border: `1px solid ${theme.colors.muted}25`, fontSize: 13, fontWeight: 500, letterSpacing: ".02em", color: theme.colors.text, textDecoration: "none", textAlign: "center", transition: "all .15s" }}
+                          onMouseEnter={e => { e.currentTarget.style.background = `${theme.colors.text}08`; }}
+                          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; }}>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: 40, fontSize: 9, color: theme.colors.muted, letterSpacing: ".12em", textTransform: "uppercase" }}>Powered by Lanced</div>
+                  </div>
+                );
+              } default: return null; } };
           const navCompact = studioScrollY > 60;
 
           /* Hero collage photos */
@@ -10925,6 +11772,7 @@ export default function ArtistShell() {
                   <button className={`slater-nav-link${slaterPage.type === "home" ? " active" : ""}`} onClick={() => navTo({ type: "home" })}>WORK</button>
                   <button className={`slater-nav-link${slaterPage.type === "about" ? " active" : ""}`} onClick={() => navTo({ type: "about" })}>ABOUT</button>
                   <button className={`slater-nav-link${slaterPage.type === "gallery" ? " active" : ""}`} onClick={() => navTo({ type: "gallery" })}>GALLERY</button>
+                  {studioSettings.integrations.linkHub && <button className={`slater-nav-link${slaterPage.type === "linkHub" ? " active" : ""}`} onClick={() => navTo({ type: "linkHub" })}>LINKS</button>}
                   <button className="slater-nav-link" onClick={() => { const el = document.querySelector(".slater-contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>CONTACT</button>
                 </div>
               </nav>
@@ -11110,6 +11958,166 @@ export default function ArtistShell() {
                       </section>
                     );
 
+                  /* ── Integration Sections ── */
+                  case "newsletter":
+                    return (
+                      <section key="newsletter" className="slater-reveal" style={{ padding: "72px 6vw", borderTop: `1px solid ${theme.colors.muted}20` }}>
+                        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 40 }}>
+                            {/* Left: editorial label */}
+                            <div style={{ minWidth: 120, paddingTop: 4 }}>
+                              <div style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".15em", color: theme.colors.muted, marginBottom: 8 }}>Newsletter</div>
+                              <div style={{ width: 20, height: 1, background: theme.colors.text }} />
+                            </div>
+                            {/* Right: content */}
+                            <div style={{ flex: 1 }}>
+                              <h2 style={{ fontFamily: theme.fonts.heading, fontSize: 24, fontWeight: 600, marginBottom: 10, color: theme.colors.text }}>{getSS("newsletter", "headline", "Stay in the Loop")}</h2>
+                              <p style={{ fontSize: 14, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 24 }}>{getSS("newsletter", "subline", "Get notified about upcoming performances, new work, and behind-the-scenes updates.")}</p>
+                              <div style={{ display: "flex", gap: 0, borderBottom: `2px solid ${theme.colors.text}` }}>
+                                {studioSectionSettings.newsletter?.collectName && <input style={{ flex: .7, padding: "12px 0 12px 0", border: "none", background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text, borderRight: `1px solid ${theme.colors.muted}20` }} placeholder="Name" readOnly />}
+                                <input style={{ flex: 1, padding: "12px 0", border: "none", background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text, paddingLeft: studioSectionSettings.newsletter?.collectName ? 12 : 0 }} placeholder="your@email.com" readOnly />
+                                <button style={{ padding: "12px 20px", background: theme.colors.text, color: theme.colors.bg, border: "none", fontSize: 11, fontWeight: 600, cursor: "pointer", textTransform: "uppercase", letterSpacing: ".08em", whiteSpace: "nowrap" }}
+                                  onClick={() => showToast(getSS("newsletter", "confirmationMessage", "Thanks for subscribing!"))}>{getSS("newsletter", "buttonText", "Subscribe")}</button>
+                              </div>
+                              {subscribers.length > 0 && (
+                                <div style={{ fontSize: 11, color: theme.colors.muted, marginTop: 12, textTransform: "uppercase", letterSpacing: ".06em" }}>{subscribers.length}+ subscribers</div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "contactForm":
+                    return (
+                      <section key="contactForm" className="slater-reveal" style={{ padding: "72px 6vw", borderTop: `1px solid ${theme.colors.muted}20` }}>
+                        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 40 }}>
+                            {/* Left: editorial label */}
+                            <div style={{ minWidth: 120, paddingTop: 4 }}>
+                              <div style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".15em", color: theme.colors.muted, marginBottom: 8 }}>Contact</div>
+                              <div style={{ width: 20, height: 1, background: theme.colors.text }} />
+                              {/* Decorative mail icon */}
+                              <div style={{ marginTop: 20 }}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={theme.colors.muted} strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: .35 }}><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                              </div>
+                            </div>
+                            {/* Right: form */}
+                            <div style={{ flex: 1 }}>
+                              <h2 style={{ fontFamily: theme.fonts.heading, fontSize: 24, fontWeight: 600, marginBottom: 10, color: theme.colors.text }}>{getSS("contactForm", "headline", "Get in Touch")}</h2>
+                              <p style={{ fontSize: 14, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 28 }}>{getSS("contactForm", "subline", "Fill in the form below and I'll get back to you.")}</p>
+                              <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                                <div style={{ display: "flex", gap: 24 }}>
+                                  <div style={{ flex: 1 }}>
+                                    <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Name</div>
+                                    <input style={{ width: "100%", padding: "10px 0", border: "none", borderBottom: `1px solid ${theme.colors.muted}30`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text }} placeholder="Your name" readOnly />
+                                  </div>
+                                  <div style={{ flex: 1 }}>
+                                    <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Email</div>
+                                    <input style={{ width: "100%", padding: "10px 0", border: "none", borderBottom: `1px solid ${theme.colors.muted}30`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text }} placeholder="your@email.com" readOnly />
+                                  </div>
+                                </div>
+                                {studioSectionSettings.contactForm?.showInquiryType !== false && (
+                                  <div style={{ marginTop: 18 }}>
+                                    <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Inquiry Type</div>
+                                    <select style={{ width: "100%", padding: "10px 0", border: "none", borderBottom: `1px solid ${theme.colors.muted}30`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.muted }} disabled><option>Select type...</option></select>
+                                  </div>
+                                )}
+                                <div style={{ marginTop: 18 }}>
+                                  <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Subject</div>
+                                  <input style={{ width: "100%", padding: "10px 0", border: "none", borderBottom: `1px solid ${theme.colors.muted}30`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text }} placeholder="Subject" readOnly />
+                                </div>
+                                <div style={{ marginTop: 18 }}>
+                                  <div style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Message</div>
+                                  <textarea style={{ width: "100%", padding: "10px 0", border: "none", borderBottom: `1px solid ${theme.colors.muted}30`, background: "transparent", fontSize: 13, outline: "none", resize: "vertical", minHeight: 100, fontFamily: theme.fonts.body, color: theme.colors.text }} placeholder="Your message..." readOnly />
+                                </div>
+                                <button style={{ marginTop: 28, padding: "12px 28px", background: theme.colors.text, color: theme.colors.bg, border: "none", fontSize: 11, fontWeight: 600, cursor: "pointer", alignSelf: "flex-start", textTransform: "uppercase", letterSpacing: ".08em" }}
+                                  onClick={() => showToast("Message sent!")}>{getSS("contactForm", "buttonText", "Send Message")}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "events": {
+                    const showPast = studioSectionSettings.events?.showPastEvents;
+                    const now = new Date().toISOString().slice(0, 10);
+                    const filtered = siteEvents.filter(ev => showPast ? true : ev.date >= now).sort((a, b) => a.date.localeCompare(b.date));
+                    return (
+                      <section key="events" className="slater-reveal" style={{ padding: "72px 6vw", borderTop: `1px solid ${theme.colors.muted}20` }}>
+                        <div style={{ display: "flex", alignItems: "flex-start", gap: 40, maxWidth: 640, margin: "0 auto" }}>
+                          {/* Left: label */}
+                          <div style={{ minWidth: 120, paddingTop: 4 }}>
+                            <div style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".15em", color: theme.colors.muted, marginBottom: 8 }}>Schedule</div>
+                            <div style={{ width: 20, height: 1, background: theme.colors.text }} />
+                          </div>
+                          {/* Right: events list */}
+                          <div style={{ flex: 1 }}>
+                            <h2 style={{ fontFamily: theme.fonts.heading, fontSize: 24, fontWeight: 600, marginBottom: 28, color: theme.colors.text }}>{getSS("events", "headline", "Upcoming Events")}</h2>
+                            {filtered.map((ev, i) => {
+                              const d = new Date(ev.date + "T00:00:00");
+                              const past = ev.date < now;
+                              const typeLabel = { performance: "Performance", workshop: "Workshop", open_rehearsal: "Open Rehearsal" }[ev.type] || ev.type;
+                              return (
+                                <div key={ev.id} style={{ padding: "16px 0", borderTop: i === 0 ? `1px solid ${theme.colors.muted}20` : "none", borderBottom: `1px solid ${theme.colors.muted}15`, opacity: past ? .35 : 1 }}>
+                                  <div style={{ display: "flex", alignItems: "baseline", gap: 16, marginBottom: 4 }}>
+                                    <span style={{ fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".08em", color: theme.colors.muted, minWidth: 80 }}>{d.toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span>
+                                    <span style={{ flex: 1, fontSize: 15, fontWeight: 500, color: theme.colors.text }}>{ev.title}</span>
+                                    <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".08em", color: theme.colors.muted, padding: "2px 8px", border: `1px solid ${theme.colors.muted}25` }}>{typeLabel}</span>
+                                  </div>
+                                  <div style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
+                                    <span style={{ minWidth: 80 }} />
+                                    <span style={{ fontSize: 12, color: theme.colors.muted }}>{ev.venue}, {ev.city}{ev.time ? ` / ${ev.time}` : ""}</span>
+                                    {studioSectionSettings.events?.showTicketLinks !== false && ev.ticketUrl && !past && (
+                                      <a href="#" onClick={e => e.preventDefault()} style={{ marginLeft: "auto", fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".08em", color: theme.colors.text, textDecoration: "underline", textUnderlineOffset: 3 }}>Tickets</a>
+                                    )}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            {filtered.length === 0 && <p style={{ color: theme.colors.muted, fontSize: 13, fontStyle: "italic" }}>No upcoming events</p>}
+                          </div>
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "pressKit":
+                    return (
+                      <section key="pressKit" className="slater-reveal" style={{ padding: "72px 6vw", borderTop: `1px solid ${theme.colors.muted}20` }}>
+                        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+                          <div style={{ display: "flex", alignItems: "flex-start", gap: 40 }}>
+                            {/* Left: label */}
+                            <div style={{ minWidth: 120, paddingTop: 4 }}>
+                              <div style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".15em", color: theme.colors.muted, marginBottom: 8 }}>Press</div>
+                              <div style={{ width: 20, height: 1, background: theme.colors.text }} />
+                            </div>
+                            {/* Right: content */}
+                            <div style={{ flex: 1 }}>
+                              <h2 style={{ fontFamily: theme.fonts.heading, fontSize: 24, fontWeight: 600, marginBottom: 10, color: theme.colors.text }}>{getSS("pressKit", "headline", "Press Kit")}</h2>
+                              <p style={{ fontSize: 14, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 24 }}>{getSS("pressKit", "subline", "Everything you need for press and programming.")}</p>
+                              {/* Included list */}
+                              <div style={{ display: "flex", gap: 0, marginBottom: 28 }}>
+                                {["Bio", "Photos", "Tech Rider"].map((item, idx) => (
+                                  <div key={idx} style={{ display: "flex", alignItems: "center", gap: 6, padding: "0 16px 0 0" }}>
+                                    <div style={{ width: 3, height: 3, borderRadius: "50%", background: theme.colors.text }} />
+                                    <span style={{ fontSize: 11, fontWeight: 500, textTransform: "uppercase", letterSpacing: ".06em", color: theme.colors.muted }}>{item}</span>
+                                  </div>
+                                ))}
+                              </div>
+                              <a href="#" onClick={e => { e.preventDefault(); showToast("Press Kit page coming soon"); }} style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "12px 28px", background: theme.colors.text, color: theme.colors.bg, textDecoration: "none", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".08em" }}>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                View Press Kit
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "linkHub": return null; /* Link Hub is a separate page */
+
                   default: return null;
                   }
                 })}
@@ -11126,6 +12134,7 @@ export default function ArtistShell() {
 
         /* ── Strobe Theme Renderer ── */
         const renderStrobeTheme = () => {
+          const theme = currentThemeData;
           const nm = (artist.name || "Artist Name").toUpperCase();
           const ss = studioSectionSettings;
           const expRecordIds = ss.experience?.selectedRecords || [];
@@ -11269,7 +12278,29 @@ export default function ArtistShell() {
             </>);
           };
 
-          const renderPageContent = () => { switch (strobePage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolio": return renderPortfolioDetail(strobePage.id); case "work": return renderWorkDetail(strobePage.id); default: return null; } };
+          const renderPageContent = () => { switch (strobePage.type) { case "gallery": return renderGalleryPage(); case "about": return renderAboutPage(); case "portfolio": return renderPortfolioDetail(strobePage.id); case "work": return renderWorkDetail(strobePage.id); case "linkHub": {
+                const links = studioSectionSettings.linkHub?.links || [];
+                return (
+                  <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "120px 24px 60px", background: theme.colors.bg }}>
+                    <div style={{ width: 60, height: 60, borderRadius: "50%", overflow: "hidden", marginBottom: 16, border: `2px solid ${theme.colors.text}` }}>
+                      <img src={artist.photo} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    </div>
+                    <h1 style={{ fontFamily: theme.fonts.heading, fontSize: 20, fontWeight: 900, textTransform: "uppercase", letterSpacing: "-.01em", color: theme.colors.text, marginBottom: 4 }}>{artist.name?.toUpperCase()}</h1>
+                    <p style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", color: theme.colors.muted, marginBottom: 32 }}>{artist.role || "Artist"}</p>
+                    <div style={{ width: "100%", maxWidth: 400, display: "flex", flexDirection: "column", gap: 8 }}>
+                      {links.map(link => (
+                        <a key={link.id} href="#" onClick={e => e.preventDefault()}
+                          style={{ display: "block", padding: "14px 20px", border: `2px solid ${theme.colors.text}`, fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".04em", color: theme.colors.text, textDecoration: "none", textAlign: "center", transition: "all .15s" }}
+                          onMouseEnter={e => { e.currentTarget.style.background = theme.colors.text; e.currentTarget.style.color = theme.colors.bg; }}
+                          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = theme.colors.text; }}>
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: 40, fontSize: 9, fontWeight: 800, color: theme.colors.muted, letterSpacing: ".12em", textTransform: "uppercase" }}>Powered by Lanced</div>
+                  </div>
+                );
+              } default: return null; } };
 
           return (
             <div className="strobe-theme" ref={strobeRevealRef} style={{ "--strobe-accent": studioBrand.accentColor || "#111111", "--strobe-bg": studioBrand.backgroundColor || "#e6e2dc", "--strobe-title": studioBrand.titleColor || "#111111", "--strobe-text": studioBrand.textColor || "rgba(17,17,17,.55)", fontFamily }}>
@@ -11284,6 +12315,7 @@ export default function ArtistShell() {
                   <button className="strobe-menu-link" onClick={() => navTo({ type: "home" })}>WORK</button>
                   <button className="strobe-menu-link" onClick={() => navTo({ type: "about" })}>ABOUT</button>
                   <button className="strobe-menu-link" onClick={() => navTo({ type: "gallery" })}>GALLERY</button>
+                  {studioSettings.integrations.linkHub && <button className="strobe-menu-link" onClick={() => navTo({ type: "linkHub" })}>LINKS</button>}
                   <button className="strobe-menu-link" onClick={() => { setStrobeMenuOpen(false); const el = document.querySelector(".strobe-contact"); if (el) el.scrollIntoView({ behavior: "smooth" }); }}>CONTACT</button>
                 </div>
               </div>
@@ -11435,6 +12467,149 @@ export default function ArtistShell() {
                       </section>
                     );
 
+                  /* ── Integration Sections ── */
+                  case "newsletter":
+                    return (
+                      <section key="newsletter" className="strobe-reveal" style={{ padding: "100px 6vw", background: `${theme.colors.accent}10`, position: "relative", overflow: "hidden" }}>
+                        {/* Bold accent stripe */}
+                        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 4, background: theme.colors.accent }} />
+                        <div style={{ maxWidth: 580, margin: "0 auto", textAlign: "center" }}>
+                          <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".2em", color: theme.colors.accent, marginBottom: 16 }}>Newsletter</div>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(36px,6vw,56px)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 14, color: theme.colors.text, lineHeight: 1 }}>{getSS("newsletter", "headline", "STAY IN THE LOOP")}</h2>
+                          <p style={{ fontSize: 15, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 32 }}>{getSS("newsletter", "subline", "Get notified about upcoming performances, new work, and behind-the-scenes updates.")}</p>
+                          <div style={{ display: "flex", gap: 0, maxWidth: 460, margin: "0 auto", border: `3px solid ${theme.colors.text}`, overflow: "hidden" }}>
+                            {studioSectionSettings.newsletter?.collectName && <input style={{ flex: .7, padding: "16px 16px", border: "none", borderRight: `2px solid ${theme.colors.muted}15`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text, textTransform: "uppercase" }} placeholder="NAME" readOnly />}
+                            <input style={{ flex: 1, padding: "16px 16px", border: "none", background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text }} placeholder="YOUR@EMAIL.COM" readOnly />
+                            <button style={{ padding: "16px 28px", background: theme.colors.accent, color: "#fff", border: "none", fontSize: 12, fontWeight: 900, cursor: "pointer", textTransform: "uppercase", letterSpacing: ".1em", whiteSpace: "nowrap" }}
+                              onClick={() => showToast(getSS("newsletter", "confirmationMessage", "Thanks for subscribing!"))}>{getSS("newsletter", "buttonText", "SUBSCRIBE")}</button>
+                          </div>
+                          {subscribers.length > 0 && (
+                            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 20, padding: "6px 16px", border: `2px solid ${theme.colors.text}20` }}>
+                              <div style={{ width: 8, height: 8, background: theme.colors.accent }} />
+                              <span style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".08em", color: theme.colors.muted }}>{subscribers.length}+ subscribers</span>
+                            </div>
+                          )}
+                        </div>
+                      </section>
+                    );
+
+                  case "contactForm":
+                    return (
+                      <section key="contactForm" className="strobe-reveal" style={{ padding: "100px 6vw", position: "relative" }}>
+                        <div style={{ maxWidth: 560, margin: "0 auto" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 12, justifyContent: "center" }}>
+                            <div style={{ height: 3, flex: 1, maxWidth: 40, background: theme.colors.accent }} />
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={theme.colors.accent} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <div style={{ height: 3, flex: 1, maxWidth: 40, background: theme.colors.accent }} />
+                          </div>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(32px,5vw,48px)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 8, textAlign: "center", color: theme.colors.text }}>{getSS("contactForm", "headline", "GET IN TOUCH")}</h2>
+                          <p style={{ fontSize: 14, color: theme.colors.muted, marginBottom: 32, textAlign: "center" }}>{getSS("contactForm", "subline", "Fill in the form below and I'll get back to you.")}</p>
+                          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                            <div style={{ display: "flex", gap: 14 }}>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Name</div>
+                                <input style={{ width: "100%", padding: "14px 16px", border: `3px solid ${theme.colors.text}`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text, textTransform: "uppercase" }} placeholder="YOUR NAME" readOnly />
+                              </div>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Email</div>
+                                <input style={{ width: "100%", padding: "14px 16px", border: `3px solid ${theme.colors.text}`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text }} placeholder="YOUR@EMAIL.COM" readOnly />
+                              </div>
+                            </div>
+                            {studioSectionSettings.contactForm?.showInquiryType !== false && (
+                              <div>
+                                <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Inquiry Type</div>
+                                <select style={{ width: "100%", padding: "14px 16px", border: `3px solid ${theme.colors.text}`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.muted, textTransform: "uppercase" }} disabled><option>SELECT TYPE</option></select>
+                              </div>
+                            )}
+                            <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Subject</div>
+                              <input style={{ width: "100%", padding: "14px 16px", border: `3px solid ${theme.colors.text}`, background: "transparent", fontSize: 13, outline: "none", color: theme.colors.text, textTransform: "uppercase" }} placeholder="SUBJECT" readOnly />
+                            </div>
+                            <div>
+                              <div style={{ fontSize: 10, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".12em", color: theme.colors.muted, marginBottom: 6 }}>Message</div>
+                              <textarea style={{ width: "100%", padding: "14px 16px", border: `3px solid ${theme.colors.text}`, background: "transparent", fontSize: 13, outline: "none", resize: "vertical", minHeight: 120, fontFamily: theme.fonts.body, color: theme.colors.text }} placeholder="YOUR MESSAGE..." readOnly />
+                            </div>
+                            <button style={{ marginTop: 4, padding: "16px 36px", background: theme.colors.accent, color: "#fff", border: "none", fontSize: 12, fontWeight: 900, cursor: "pointer", alignSelf: "flex-start", textTransform: "uppercase", letterSpacing: ".1em" }}
+                              onClick={() => showToast("Message sent!")}>{getSS("contactForm", "buttonText", "SEND MESSAGE")}</button>
+                          </div>
+                        </div>
+                      </section>
+                    );
+
+                  case "events": {
+                    const showPast = studioSectionSettings.events?.showPastEvents;
+                    const now = new Date().toISOString().slice(0, 10);
+                    const filtered = siteEvents.filter(ev => showPast ? true : ev.date >= now).sort((a, b) => a.date.localeCompare(b.date));
+                    const strobeTypeBadge = { performance: theme.colors.accent, workshop: "#a78bfa", open_rehearsal: "#34d399" };
+                    return (
+                      <section key="events" className="strobe-reveal" style={{ padding: "100px 6vw" }}>
+                        <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(36px,6vw,56px)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 12, textAlign: "center", color: theme.colors.text, lineHeight: 1 }}>{getSS("events", "headline", "UPCOMING EVENTS")}</h2>
+                        <div style={{ width: 60, height: 4, background: theme.colors.accent, margin: "0 auto 40px" }} />
+                        <div style={{ maxWidth: 700, margin: "0 auto" }}>
+                          {filtered.map((ev, i) => {
+                            const d = new Date(ev.date + "T00:00:00");
+                            const past = ev.date < now;
+                            const typeLabel = { performance: "Performance", workshop: "Workshop", open_rehearsal: "Open Rehearsal" }[ev.type] || ev.type;
+                            const badgeColor = strobeTypeBadge[ev.type] || theme.colors.muted;
+                            return (
+                              <div key={ev.id} style={{ display: "flex", alignItems: "center", gap: 24, padding: "22px 0", borderBottom: `3px solid ${theme.colors.text}${past ? "10" : "15"}`, opacity: past ? .35 : 1 }}>
+                                {/* Date block */}
+                                <div style={{ minWidth: 72, textAlign: "center" }}>
+                                  <div style={{ fontSize: 40, fontWeight: 900, lineHeight: 1, color: theme.colors.accent, letterSpacing: "-.02em" }}>{d.getDate()}</div>
+                                  <div style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".1em", color: theme.colors.muted }}>{d.toLocaleDateString("en-US", { month: "short" })}</div>
+                                  <div style={{ fontSize: 10, fontWeight: 700, color: theme.colors.muted, opacity: .5, marginTop: 2 }}>{d.getFullYear()}</div>
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
+                                    <div style={{ fontSize: 17, fontWeight: 900, textTransform: "uppercase", color: theme.colors.text, letterSpacing: "-.01em" }}>{ev.title}</div>
+                                    <span style={{ fontSize: 9, fontWeight: 800, textTransform: "uppercase", letterSpacing: ".06em", padding: "3px 8px", background: badgeColor, color: "#fff" }}>{typeLabel}</span>
+                                  </div>
+                                  <div style={{ fontSize: 13, color: theme.colors.muted, fontWeight: 500 }}>{ev.venue}, {ev.city}</div>
+                                  {ev.time && <div style={{ fontSize: 12, color: theme.colors.muted, opacity: .6, marginTop: 2 }}>{ev.time}</div>}
+                                </div>
+                                {studioSectionSettings.events?.showTicketLinks !== false && ev.ticketUrl && !past && (
+                                  <a href="#" onClick={e => e.preventDefault()} style={{ padding: "10px 20px", background: theme.colors.accent, color: "#fff", fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: ".08em", textDecoration: "none" }}>Tickets</a>
+                                )}
+                              </div>
+                            );
+                          })}
+                          {filtered.length === 0 && <p style={{ textAlign: "center", color: theme.colors.muted, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", fontSize: 13 }}>No upcoming events</p>}
+                        </div>
+                      </section>
+                    );
+                  }
+
+                  case "pressKit":
+                    return (
+                      <section key="pressKit" className="strobe-reveal" style={{ padding: "100px 6vw", background: `${theme.colors.accent}10`, position: "relative", overflow: "hidden" }}>
+                        {/* Bottom accent stripe */}
+                        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 4, background: theme.colors.accent }} />
+                        <div style={{ maxWidth: 600, margin: "0 auto", textAlign: "center" }}>
+                          <h2 style={{ fontFamily: theme.fonts.heading, fontSize: "clamp(36px,5vw,52px)", fontWeight: 900, textTransform: "uppercase", letterSpacing: "-.03em", marginBottom: 12, color: theme.colors.text, lineHeight: 1 }}>{getSS("pressKit", "headline", "PRESS KIT")}</h2>
+                          <p style={{ fontSize: 15, color: theme.colors.muted, lineHeight: 1.7, marginBottom: 28 }}>{getSS("pressKit", "subline", "Everything you need for press and programming.")}</p>
+                          {/* Included items - bold strobe style */}
+                          <div style={{ display: "flex", justifyContent: "center", gap: 12, marginBottom: 36 }}>
+                            {[
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>, label: "BIO" },
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>, label: "PHOTOS" },
+                              { icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>, label: "RIDER" },
+                            ].map((item, idx) => (
+                              <div key={idx} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "14px 20px", border: `3px solid ${theme.colors.text}`, minWidth: 80 }}>
+                                <span style={{ color: theme.colors.accent }}>{item.icon}</span>
+                                <span style={{ fontSize: 10, fontWeight: 900, letterSpacing: ".1em", color: theme.colors.text }}>{item.label}</span>
+                              </div>
+                            ))}
+                          </div>
+                          <a href="#" onClick={e => { e.preventDefault(); showToast("Press Kit page coming soon"); }} style={{ display: "inline-flex", alignItems: "center", gap: 10, padding: "16px 40px", background: theme.colors.accent, color: "#fff", textDecoration: "none", fontSize: 12, fontWeight: 900, textTransform: "uppercase", letterSpacing: ".1em" }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            VIEW PRESS KIT
+                          </a>
+                        </div>
+                      </section>
+                    );
+
+                  case "linkHub": return null; /* Link Hub is a separate page */
+
                   default: return null;
                   }
                 })}
@@ -11510,12 +12685,124 @@ export default function ArtistShell() {
                   ))}
                 </div>
                 <div className="studio-builder-topbar-right">
+                  <button className="btn btn-sm btn-s" onClick={() => setStudioShareOpen(true)} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                    Share
+                  </button>
                   <button className="btn btn-sm btn-s" onClick={() => { setStudioScrollY(0); setStudioMode("preview"); }}>Preview</button>
                   <button className="btn btn-sm btn-p" onClick={() => { setStudioPublished(true); showToast("Website published!"); }}>
                     {studioPublished ? "Update" : "Publish"}
                   </button>
                 </div>
               </div>
+
+              {/* ── Share Modal ── */}
+              {studioShareOpen && (
+                <div style={{ position: "fixed", inset: 0, zIndex: 9999, display: "flex", alignItems: "center", justifyContent: "center" }}
+                  onClick={e => { if (e.target === e.currentTarget) setStudioShareOpen(false); }}>
+                  <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.55)", backdropFilter: "blur(8px)" }} />
+                  <div style={{ position: "relative", width: 480, maxWidth: "90vw", background: "var(--bg)", borderRadius: 16, border: "1px solid var(--br)", boxShadow: "0 24px 80px rgba(0,0,0,.25)", overflow: "hidden" }}>
+                    {/* Header */}
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "18px 24px", borderBottom: "1px solid var(--br)" }}>
+                      <h3 style={{ margin: 0, fontSize: 16, fontWeight: 600, color: "var(--tx)" }}>Share Website</h3>
+                      <button onClick={() => setStudioShareOpen(false)} style={{ background: "none", border: "none", color: "var(--g4)", cursor: "pointer", padding: 4 }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                      </button>
+                    </div>
+
+                    {/* Tab Bar */}
+                    <div style={{ display: "flex", gap: 0, borderBottom: "1px solid var(--br)" }}>
+                      {[{ id: "link", label: "Share Link", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> },
+                        { id: "email", label: "Send via Email", icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> },
+                      ].map(tab => (
+                        <button key={tab.id} onClick={() => setStudioShareTab(tab.id)}
+                          style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", gap: 6, padding: "12px 16px", background: "none", border: "none", borderBottom: studioShareTab === tab.id ? "2px solid var(--ac)" : "2px solid transparent", color: studioShareTab === tab.id ? "var(--ac)" : "var(--g4)", fontSize: 13, fontWeight: 500, cursor: "pointer", transition: "all .15s" }}>
+                          {tab.icon} {tab.label}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Content */}
+                    <div style={{ padding: 24 }}>
+                      {studioShareTab === "link" ? (<>
+                        {/* Share Link */}
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8, display: "block" }}>Website Link</label>
+                        <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+                          <input readOnly value={`https://${studioSettings.slug}.lanced.io`}
+                            style={{ flex: 1, padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none" }} />
+                          <button onClick={() => { navigator.clipboard?.writeText(`https://${studioSettings.slug}.lanced.io`); showToast("Link copied!"); }}
+                            style={{ padding: "10px 16px", background: "var(--ac)", color: "#fff", border: "none", borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: "pointer", whiteSpace: "nowrap" }}>
+                            Copy Link
+                          </button>
+                        </div>
+
+                        {/* Access Settings */}
+                        <label style={{ fontSize: 12, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 12, display: "block" }}>Access Settings</label>
+                        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", background: "var(--s1)", borderRadius: 10, border: "1px solid var(--br)" }}>
+                            <div>
+                              <div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Password Protection</div>
+                              <div style={{ fontSize: 11, color: "var(--g4)" }}>Require a password to view</div>
+                            </div>
+                            <div className={`sm-switch${studioSharePassword ? " on" : ""}`} onClick={() => setStudioSharePassword(!studioSharePassword)} />
+                          </div>
+                          {studioSharePassword && (
+                            <input placeholder="Enter password" type="password"
+                              style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", marginLeft: 16, marginRight: 16 }} />
+                          )}
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 16px", background: "var(--s1)", borderRadius: 10, border: "1px solid var(--br)" }}>
+                            <div>
+                              <div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Require Email</div>
+                              <div style={{ fontSize: 11, color: "var(--g4)" }}>Visitors must sign in to view</div>
+                            </div>
+                            <div className={`sm-switch${studioShareRequireEmail ? " on" : ""}`} onClick={() => setStudioShareRequireEmail(!studioShareRequireEmail)} />
+                          </div>
+                        </div>
+                      </>) : (<>
+                        {/* Send via Email */}
+                        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                          <div>
+                            <label style={{ fontSize: 12, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 6, display: "block" }}>To</label>
+                            <input placeholder="recipient@email.com" value={studioShareEmail.to}
+                              onChange={e => setStudioShareEmail(prev => ({ ...prev, to: e.target.value }))}
+                              style={{ width: "100%", padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", boxSizing: "border-box" }} />
+                          </div>
+                          <div>
+                            <label style={{ fontSize: 12, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 6, display: "block" }}>Subject</label>
+                            <input placeholder={`Check out ${artist.name}'s website`} value={studioShareEmail.subject}
+                              onChange={e => setStudioShareEmail(prev => ({ ...prev, subject: e.target.value }))}
+                              style={{ width: "100%", padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", boxSizing: "border-box" }} />
+                          </div>
+                          <div>
+                            <label style={{ fontSize: 12, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 6, display: "block" }}>Message</label>
+                            <textarea placeholder="Add a personal message..." value={studioShareEmail.message}
+                              onChange={e => setStudioShareEmail(prev => ({ ...prev, message: e.target.value }))}
+                              style={{ width: "100%", padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "vertical", minHeight: 100, fontFamily: "inherit", boxSizing: "border-box" }} />
+                          </div>
+                          {/* Preview card */}
+                          <div style={{ padding: 16, background: "var(--s1)", borderRadius: 10, border: "1px solid var(--br)", marginTop: 4 }}>
+                            <div style={{ fontSize: 11, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>Link Preview</div>
+                            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                              <div style={{ width: 48, height: 48, borderRadius: 8, background: "var(--ac)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                              </div>
+                              <div>
+                                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{artist.name}'s Website</div>
+                                <div style={{ fontSize: 11, color: "var(--g4)" }}>https://{studioSettings.slug}.lanced.io</div>
+                              </div>
+                            </div>
+                          </div>
+                          <button onClick={() => { showToast("Email sent!"); setStudioShareOpen(false); setStudioShareEmail({ to: "", subject: "", message: "" }); }}
+                            style={{ padding: "12px 24px", background: "var(--ac)", color: "#fff", border: "none", borderRadius: 8, fontSize: 13, fontWeight: 600, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, alignSelf: "flex-end", marginTop: 4 }}>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Send Email
+                          </button>
+                        </div>
+                      </>)}
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Split pane */}
               <div className="studio-builder-body">
@@ -11755,6 +13042,89 @@ export default function ArtistShell() {
                               {secId === "footer" && <>
                                 {inpField("TAGLINE", "tagline", "EVERY MOMENT HOLDS A STORY WAITING TO BE CAPTURED", true)}
                               </>}
+
+                              {/* Integration sections */}
+                              {secId === "newsletter" && <>
+                                {inpField("HEADLINE", "headline", "STAY IN THE LOOP", true)}
+                                {inpField("DESCRIPTION", "subline", "Get notified about upcoming performances and new work.", true)}
+                                {inpField("BUTTON TEXT", "buttonText", "SUBSCRIBE")}
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, fontWeight: 600, color: "var(--g4)", cursor: "pointer", marginTop: 8 }}>
+                                  <input type="checkbox" checked={studioSectionSettings.newsletter?.collectName || false}
+                                    onChange={e => updateSectionSetting("newsletter", "collectName", e.target.checked)} />
+                                  Collect subscriber name
+                                </label>
+                                {inpField("CONFIRMATION MESSAGE", "confirmationMessage", "Thanks for subscribing!")}
+                              </>}
+
+                              {secId === "contactForm" && <>
+                                {inpField("HEADLINE", "headline", "GET IN TOUCH", true)}
+                                {inpField("DESCRIPTION", "subline", "Fill in the form below and I'll get back to you.", true)}
+                                {inpField("BUTTON TEXT", "buttonText", "SEND MESSAGE")}
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, fontWeight: 600, color: "var(--g4)", cursor: "pointer", marginTop: 8 }}>
+                                  <input type="checkbox" checked={studioSectionSettings.contactForm?.showInquiryType !== false}
+                                    onChange={e => updateSectionSetting("contactForm", "showInquiryType", e.target.checked)} />
+                                  Show inquiry type dropdown
+                                </label>
+                                {inpField("RECIPIENT EMAIL", "recipientEmail", artist.email || "you@email.com")}
+                              </>}
+
+                              {secId === "events" && <>
+                                {inpField("HEADLINE", "headline", "UPCOMING EVENTS", true)}
+                                {inpField("DESCRIPTION", "subline", "See where I'm performing next.", true)}
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, fontWeight: 600, color: "var(--g4)", cursor: "pointer", marginTop: 8 }}>
+                                  <input type="checkbox" checked={studioSectionSettings.events?.showPastEvents || false}
+                                    onChange={e => updateSectionSetting("events", "showPastEvents", e.target.checked)} />
+                                  Show past events
+                                </label>
+                                <label style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, fontWeight: 600, color: "var(--g4)", cursor: "pointer", marginTop: 4 }}>
+                                  <input type="checkbox" checked={studioSectionSettings.events?.showTicketLinks !== false}
+                                    onChange={e => updateSectionSetting("events", "showTicketLinks", e.target.checked)} />
+                                  Show ticket links
+                                </label>
+                              </>}
+
+                              {secId === "pressKit" && <>
+                                {inpField("HEADLINE", "headline", "PRESS KIT", true)}
+                                {inpField("DESCRIPTION", "subline", "Everything you need for press and programming.", true)}
+                                {[
+                                  { field: "showBio", label: "Show biography" },
+                                  { field: "showHeadshots", label: "Show headshots" },
+                                  { field: "showReviews", label: "Show reviews" },
+                                  { field: "showDownloads", label: "Show downloads" },
+                                ].map(opt => (
+                                  <label key={opt.field} style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, fontWeight: 600, color: "var(--g4)", cursor: "pointer", marginTop: 4 }}>
+                                    <input type="checkbox" checked={studioSectionSettings.pressKit?.[opt.field] !== false}
+                                      onChange={e => updateSectionSetting("pressKit", opt.field, e.target.checked)} />
+                                    {opt.label}
+                                  </label>
+                                ))}
+                              </>}
+
+                              {secId === "linkHub" && <>
+                                {inpField("HEADLINE", "headline", "LINKS", true)}
+                                <div style={{ fontSize: 10, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginTop: 8 }}>Links</div>
+                                {(studioSectionSettings.linkHub?.links || []).map((link, idx) => (
+                                  <div key={link.id} style={{ display: "flex", gap: 6, alignItems: "center", marginTop: 6 }}>
+                                    <input style={{ flex: 1, padding: "6px 8px", border: "1px solid rgba(255,255,255,.15)", borderRadius: 6, background: "rgba(255,255,255,.06)", fontSize: 11, color: "#fff", outline: "none" }}
+                                      value={link.label} onChange={e => {
+                                        const updated = [...(studioSectionSettings.linkHub?.links || [])];
+                                        updated[idx] = { ...updated[idx], label: e.target.value };
+                                        updateSectionSetting("linkHub", "links", updated);
+                                      }} placeholder="Label" />
+                                    <button style={{ fontSize: 11, color: "#FF4757", background: "none", border: "none", cursor: "pointer", padding: 4 }}
+                                      onClick={() => {
+                                        const updated = (studioSectionSettings.linkHub?.links || []).filter((_, i) => i !== idx);
+                                        updateSectionSetting("linkHub", "links", updated);
+                                      }}>×</button>
+                                  </div>
+                                ))}
+                                <button style={{ marginTop: 8, fontSize: 11, color: "var(--ac)", background: "none", border: "1px dashed rgba(255,255,255,.15)", borderRadius: 6, padding: "6px 12px", cursor: "pointer", width: "100%" }}
+                                  onClick={() => {
+                                    const links = [...(studioSectionSettings.linkHub?.links || [])];
+                                    links.push({ id: `lh${Date.now()}`, label: "New Link", url: "#", icon: "link" });
+                                    updateSectionSetting("linkHub", "links", links);
+                                  }}>+ Add Link</button>
+                              </>}
                             </div>
                           );
                         })() : (
@@ -11926,12 +13296,28 @@ export default function ArtistShell() {
           <div className={inStudio ? "studio-manager" : ""}>
             {inStudio ? (
               <div className="studio-manager-header">
-                <div className="studio-manager-title-row">
-                  <div>
-                    <h1 className="studio-manager-title">Website</h1>
-                    <p className="studio-manager-subtitle">Build and publish your personal website</p>
-                  </div>
+                {/* Topbar navigation — above the title */}
+                <div className="ws-topbar">
+                  {[
+                    { id: "launchpad", label: "Launchpad", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8s5.69 5.69 5.69 5.69-4.28-1.41-5.69 0-1.41-5.69-1.41-5.69z" fill="currentColor" stroke="none"/><path d="M9.69 16s-5.69-5.69-5.69-5.69 4.28 1.41 5.69 0 1.41 5.69 1.41 5.69z" fill="currentColor" stroke="none"/></svg> },
+                    { id: "themes", label: "Themes", icon: I.grid },
+                    { id: "analytics", label: "Analytics", icon: EIcon.barChart },
+                    { id: "audience", label: "Audience", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> },
+                    { id: "settings", label: "Settings", icon: I.settings },
+                  ].map(t => (
+                    <button key={t.id} className={`ws-tab${websiteSection === t.id ? " active" : ""}`} onClick={() => setWebsiteSection(t.id)}>
+                      {t.icon} {t.label}
+                    </button>
+                  ))}
                 </div>
+                {websiteSection === "launchpad" && (
+                  <div className="studio-manager-title-row">
+                    <div>
+                      <h1 className="studio-manager-title">Website</h1>
+                      <p className="studio-manager-subtitle">Build and publish your personal website</p>
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="pg-header">
@@ -11950,103 +13336,12 @@ export default function ArtistShell() {
               </div>
             )}
 
-            {/* Single topbar navigation */}
-            <div className="ws-topbar">
-              {[
-                { id: "launchpad", label: "Launchpad", icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M14.31 8s5.69 5.69 5.69 5.69-4.28-1.41-5.69 0-1.41-5.69-1.41-5.69z" fill="currentColor" stroke="none"/><path d="M9.69 16s-5.69-5.69-5.69-5.69 4.28 1.41 5.69 0 1.41 5.69 1.41 5.69z" fill="currentColor" stroke="none"/></svg> },
-                { id: "themes", label: "Themes", icon: I.grid },
-                { id: "analytics", label: "Analytics", icon: EIcon.barChart },
-                { id: "settings", label: "Settings", icon: I.settings },
-              ].map(t => (
-                <button key={t.id} className={`ws-tab${websiteSection === t.id ? " active" : ""}`} onClick={() => setWebsiteSection(t.id)}>
-                  {t.icon} {t.label}
-                </button>
-              ))}
-            </div>
-
             {/* ── Launchpad Dashboard ── */}
             {websiteSection === "launchpad" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
-                <div className="ws-dash">
-                  {/* Row 1: 4 stat panels */}
-                  <div className="ws-panel">
-                    <div className="ws-panel-stat">
-                      <span className="ws-label">Page Views</span>
-                      <span className="ws-val">1,247</span>
-                      <span className="ws-delta up">
-                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
-                        +12.3%
-                      </span>
-                    </div>
-                  </div>
-                  <div className="ws-panel">
-                    <div className="ws-panel-stat">
-                      <span className="ws-label">Visitors</span>
-                      <span className="ws-val">384</span>
-                      <span className="ws-delta up">
-                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
-                        +8.1%
-                      </span>
-                    </div>
-                  </div>
-                  <div className="ws-panel">
-                    <div className="ws-panel-stat">
-                      <span className="ws-label">Subscribers</span>
-                      <span className="ws-val">52</span>
-                      <span className="ws-delta up">
-                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 2l4 5H2z"/></svg>
-                        +3
-                      </span>
-                    </div>
-                  </div>
-                  <div className="ws-panel">
-                    <div className="ws-panel-stat">
-                      <span className="ws-label">Uptime</span>
-                      <span className="ws-val">99.9%</span>
-                      <span className="ws-delta up" style={{ color: "#10B981" }}>
-                        <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d="M6 1a5 5 0 110 10A5 5 0 016 1zm-.5 3v3.5h1V4h-1zm0 4.5v1h1v-1h-1z"/></svg>
-                        All systems go
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Row 2: Traffic chart (span 2) + Traffic sources (span 2) */}
-                  <div className="ws-panel" style={{ gridColumn: "span 2" }}>
-                    <div className="ws-panel-head">
-                      Views — Last 14 days
-                      <span onClick={() => setWebsiteSection("analytics")}>View all</span>
-                    </div>
-                    <div className="ws-chart-bars">
-                      {[35,52,48,70,62,85,90,78,95,88,72,100,82,68].map((h,i) => (
-                        <div key={i} className={`ws-chart-bar${i === 11 ? " accent" : ""}`} style={{ height: `${h}%` }} />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="ws-panel" style={{ gridColumn: "span 2" }}>
-                    <div className="ws-panel-head">
-                      Traffic Sources
-                      <span onClick={() => setWebsiteSection("analytics")}>Details</span>
-                    </div>
-                    <div className="ws-sources">
-                      {[
-                        { label: "Direct", pct: 42, color: "var(--ac)" },
-                        { label: "Instagram", pct: 28, color: "#E4405F" },
-                        { label: "Google", pct: 18, color: "#34A853" },
-                        { label: "Other", pct: 12, color: "var(--g3)" },
-                      ].map(s => (
-                        <div key={s.label} className="ws-source">
-                          <span style={{ minWidth: 64 }}>{s.label}</span>
-                          <div className="ws-source-bar">
-                            <div className="ws-source-fill" style={{ width: `${s.pct}%`, background: s.color }} />
-                          </div>
-                          <span className="ws-source-pct">{s.pct}%</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Row 3: Getting started video (span 2) + Articles list (span 2) */}
-                  <div className="ws-panel" style={{ gridColumn: "span 2", padding: 0, overflow: "hidden" }}>
+                <div className="ws-cols">
+                  {/* Left: Video */}
+                  <div className="ws-panel" style={{ padding: 0, overflow: "hidden" }}>
                     <div className="ws-hero" onClick={() => showToast("Video player coming soon")}>
                       <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#1a1025 0%,#2d1b69 30%,#604DFF 60%,#8b5cf6 100%)" }} />
                       <div className="ws-hero-overlay">
@@ -12058,7 +13353,9 @@ export default function ArtistShell() {
                       </div>
                     </div>
                   </div>
-                  <div className="ws-panel" style={{ gridColumn: "span 2" }}>
+
+                  {/* Right: Articles */}
+                  <div className="ws-panel">
                     <div className="ws-panel-head">
                       Learn & Get Inspired
                     </div>
@@ -12141,10 +13438,351 @@ export default function ArtistShell() {
             {/* ── Analytics ── */}
             {websiteSection === "analytics" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
-                <div className="stub-section">
-                  <div className="stub-icon">{EIcon.barChart}</div>
-                  <div className="stub-title">Website Analytics</div>
-                  <p>Track page views, visitor locations, popular sections, and link clicks. Coming soon.</p>
+                <div className="ws-dash">
+
+                  {/* ── Row 1: Key metrics ── */}
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))", gap: 14 }}>
+                    {[
+                      { label: "Page Views", val: "1,247", delta: "+12.3%", up: true },
+                      { label: "Unique Visitors", val: "384", delta: "+8.1%", up: true },
+                      { label: "Sessions", val: "612", delta: "+5.4%", up: true },
+                      { label: "Subscribers", val: String(subscribers.length), delta: "+3", up: true },
+                      { label: "Avg. Time on Site", val: "2:34", delta: "+18s", up: true },
+                      { label: "Engagement Rate", val: "68%", delta: "+4.2%", up: true },
+                    ].map(s => (
+                      <div key={s.label} className="ws-panel">
+                        <div className="ws-panel-stat">
+                          <span className="ws-label">{s.label}</span>
+                          <span className="ws-val">{s.val}</span>
+                          <span className={`ws-delta ${s.up ? "up" : "down"}`}>
+                            <svg viewBox="0 0 12 12" width="10" height="10" fill="currentColor"><path d={s.up ? "M6 2l4 5H2z" : "M6 10l4-5H2z"}/></svg>
+                            {s.delta}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* ── Row 2: Traffic & Acquisition ── */}
+                  <div className="ws-section-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    Traffic & Acquisition
+                  </div>
+                  <div className="ws-cols">
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Views — Last 30 days</div>
+                      <div className="ws-chart-bars" style={{ height: 80 }}>
+                        {[28,35,42,38,52,48,55,62,58,70,65,72,68,78,85,82,90,88,78,95,92,88,72,85,100,95,82,76,68,74].map((h,i) => (
+                          <div key={i} className={`ws-chart-bar${i === 24 ? " accent" : ""}`} style={{ height: `${h}%` }} />
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Traffic Sources</div>
+                      <div className="ws-sources">
+                        {[
+                          { label: "Organic Search", pct: 34, color: "#34A853" },
+                          { label: "Direct", pct: 28, color: "var(--ac)" },
+                          { label: "Social", pct: 22, color: "#E4405F" },
+                          { label: "Referral", pct: 12, color: "#F59E0B" },
+                          { label: "Paid", pct: 4, color: "#3B82F6" },
+                        ].map(s => (
+                          <div key={s.label} className="ws-source">
+                            <span style={{ minWidth: 90 }}>{s.label}</span>
+                            <div className="ws-source-bar">
+                              <div className="ws-source-fill" style={{ width: `${s.pct}%`, background: s.color }} />
+                            </div>
+                            <span className="ws-source-pct">{s.pct}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ── Row 3: Engagement ── */}
+                  <div className="ws-section-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    Engagement
+                  </div>
+                  <div className="ws-cols">
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Popular Pages</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        {[
+                          { page: "/", views: 412, time: "1:52" },
+                          { page: "/portfolio", views: 287, time: "3:18" },
+                          { page: "/showreel", views: 198, time: "4:02" },
+                          { page: "/about", views: 156, time: "1:24" },
+                          { page: "/contact", views: 94, time: "0:48" },
+                        ].map(p => (
+                          <div key={p.page} className="ws-bar-h">
+                            <span className="ws-bar-h-label">{p.page}</span>
+                            <div className="ws-bar-h-track">
+                              <div className="ws-bar-h-fill" style={{ width: `${(p.views / 412) * 100}%`, background: "var(--ac)" }} />
+                            </div>
+                            <span className="ws-bar-h-val">{p.views}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Time on Page</div>
+                      <table className="ws-mini-table">
+                        <thead><tr><th>Page</th><th style={{ textAlign: "right" }}>Avg. Time</th></tr></thead>
+                        <tbody>
+                          {[
+                            { page: "Showreel", time: "4:02", depth: "82%" },
+                            { page: "Portfolio", time: "3:18", depth: "74%" },
+                            { page: "Home", time: "1:52", depth: "61%" },
+                            { page: "About", time: "1:24", depth: "58%" },
+                            { page: "Contact", time: "0:48", depth: "45%" },
+                          ].map(p => (
+                            <tr key={p.page}><td>{p.page}</td><td style={{ textAlign: "right" }}>{p.time}</td></tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div className="ws-cols">
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Popular Media Viewed</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                        {[
+                          { name: "Contemporary Solo — Berlin 2025", type: "Video", views: 142, color: "#604DFF" },
+                          { name: "Afro-fusion Workshop Highlights", type: "Video", views: 98, color: "#604DFF" },
+                          { name: "Portrait Series — Studio Shoot", type: "Photo", views: 87, color: "#0D9488" },
+                          { name: "Rehearsal Process — Swan Lake", type: "Video", views: 64, color: "#604DFF" },
+                        ].map(m => (
+                          <div key={m.name} className="ws-bar-h">
+                            <span className="ws-bar-h-label" title={m.name}>{m.name}</span>
+                            <div className="ws-bar-h-track">
+                              <div className="ws-bar-h-fill" style={{ width: `${(m.views / 142) * 100}%`, background: m.color }} />
+                            </div>
+                            <span className="ws-bar-h-val">{m.views}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Scroll Depth</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        {[
+                          { depth: "25%", pct: 92 },
+                          { depth: "50%", pct: 74 },
+                          { depth: "75%", pct: 51 },
+                          { depth: "100%", pct: 28 },
+                        ].map(d => (
+                          <div key={d.depth} className="ws-bar-h">
+                            <span style={{ minWidth: 40, fontSize: 12, color: "var(--g4)" }}>{d.depth}</span>
+                            <div className="ws-bar-h-track">
+                              <div className="ws-bar-h-fill" style={{ width: `${d.pct}%`, background: d.pct > 70 ? "#10B981" : d.pct > 40 ? "#F59E0B" : "#EF4444" }} />
+                            </div>
+                            <span className="ws-bar-h-val">{d.pct}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ── Row 4: Conversion ── */}
+                  <div className="ws-section-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+                    Conversion
+                  </div>
+                  <div className="ws-cols">
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Conversion Funnel</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                        {[
+                          { step: "Visited Website", count: 384, pct: 100, color: "var(--ac)" },
+                          { step: "Viewed Portfolio", count: 287, pct: 75, color: "#8B5CF6" },
+                          { step: "Played Showreel", count: 142, pct: 37, color: "#6366F1" },
+                          { step: "Opened Contact", count: 94, pct: 24, color: "#4F46E5" },
+                          { step: "Sent Enquiry", count: 23, pct: 6, color: "#4338CA" },
+                        ].map(f => (
+                          <div key={f.step} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                            <div style={{ flex: 1, background: f.color, height: 28, borderRadius: 6, display: "flex", alignItems: "center", paddingLeft: 10, width: `${f.pct}%`, minWidth: "fit-content" }}>
+                              <span style={{ fontSize: 11, fontWeight: 600, color: "#fff", whiteSpace: "nowrap" }}>{f.step}</span>
+                            </div>
+                            <span style={{ fontSize: 11, color: "var(--g4)", minWidth: 32, textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{f.count}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Goals</div>
+                      <table className="ws-mini-table">
+                        <thead><tr><th>Goal</th><th style={{ textAlign: "right" }}>Rate</th></tr></thead>
+                        <tbody>
+                          {[
+                            { goal: "Contact Form Submitted", rate: `${((inquiries.length / 384) * 100).toFixed(1)}%`, count: inquiries.length },
+                            { goal: "Showreel Played", rate: "37%", count: 142 },
+                            { goal: "Portfolio Downloaded", rate: "4.2%", count: 16 },
+                            { goal: "Social Link Clicked", rate: "18%", count: 69 },
+                            { goal: "Newsletter Signup", rate: `${((subscribers.length / 384) * 100).toFixed(1)}%`, count: subscribers.length },
+                          ].map(g => (
+                            <tr key={g.goal}><td>{g.goal}</td><td style={{ textAlign: "right" }}>{g.rate}</td></tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* ── Row 5: Demographics ── */}
+                  <div className="ws-section-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    Demographics
+                  </div>
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 14 }}>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Gender</div>
+                      <div className="ws-donut">
+                        <svg viewBox="0 0 36 36">
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--g1)" strokeWidth="3.8" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#8B5CF6" strokeWidth="3.8" strokeDasharray="58 42" strokeDashoffset="0" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="#F472B6" strokeWidth="3.8" strokeDasharray="35 65" strokeDashoffset="-58" />
+                          <circle cx="18" cy="18" r="15.9" fill="none" stroke="var(--g3)" strokeWidth="3.8" strokeDasharray="7 93" strokeDashoffset="-93" />
+                        </svg>
+                      </div>
+                      <div className="ws-legend">
+                        <span className="ws-legend-item"><span className="ws-legend-dot" style={{ background: "#8B5CF6" }} /> Male 58%</span>
+                        <span className="ws-legend-item"><span className="ws-legend-dot" style={{ background: "#F472B6" }} /> Female 35%</span>
+                        <span className="ws-legend-item"><span className="ws-legend-dot" style={{ background: "var(--g3)" }} /> Other 7%</span>
+                      </div>
+                    </div>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Age</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        {[
+                          { range: "18–24", pct: 32 },
+                          { range: "25–34", pct: 41 },
+                          { range: "35–44", pct: 18 },
+                          { range: "45–54", pct: 6 },
+                          { range: "55+", pct: 3 },
+                        ].map(a => (
+                          <div key={a.range} className="ws-bar-h">
+                            <span style={{ minWidth: 40, fontSize: 11, color: "var(--g4)" }}>{a.range}</span>
+                            <div className="ws-bar-h-track">
+                              <div className="ws-bar-h-fill" style={{ width: `${(a.pct / 41) * 100}%`, background: "var(--ac)" }} />
+                            </div>
+                            <span className="ws-bar-h-val">{a.pct}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="ws-panel">
+                      <div className="ws-panel-head">Top Locations</div>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        {[
+                          { loc: "London, UK", pct: 28 },
+                          { loc: "New York, US", pct: 18 },
+                          { loc: "Amsterdam, NL", pct: 14 },
+                          { loc: "Berlin, DE", pct: 11 },
+                          { loc: "Paris, FR", pct: 8 },
+                        ].map(l => (
+                          <div key={l.loc} className="ws-bar-h">
+                            <span className="ws-bar-h-label">{l.loc}</span>
+                            <div className="ws-bar-h-track">
+                              <div className="ws-bar-h-fill" style={{ width: `${(l.pct / 28) * 100}%`, background: "#0D9488" }} />
+                            </div>
+                            <span className="ws-bar-h-val">{l.pct}%</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            )}
+
+            {/* ── Audience ── */}
+            {websiteSection === "audience" && (
+              <div style={{ animation: "slideInUp .2s ease" }}>
+                <div className="ws-cols" style={{ alignItems: "flex-start" }}>
+                  {/* Left: Subscribers */}
+                  <div className="ws-panel">
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        <h4 style={{ margin: 0, fontSize: 16, fontWeight: 600 }}>Subscribers</h4>
+                        {studioSettings.integrations.newsletter && <span style={{ background: "var(--ac)", color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 100, fontVariantNumeric: "tabular-nums" }}>{subscribers.length}</span>}
+                      </div>
+                      {studioSettings.integrations.newsletter && subscribers.length > 0 && (
+                        <button style={{ fontSize: 11, color: "var(--ac)", background: "none", border: "none", cursor: "pointer", fontWeight: 600 }} onClick={() => showToast("CSV exported")}>Export CSV</button>
+                      )}
+                    </div>
+                    {!studioSettings.integrations.newsletter ? (
+                      <div style={{ textAlign: "center", padding: "32px 16px", color: "var(--g4)" }}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: .4, marginBottom: 8 }}><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        <p style={{ margin: "0 0 4px", fontSize: 13, fontWeight: 600 }}>Newsletter not enabled</p>
+                        <p style={{ margin: 0, fontSize: 12 }}>Enable Newsletter in <span style={{ color: "var(--ac)", cursor: "pointer" }} onClick={() => setWebsiteSection("settings")}>Settings</span> to start collecting subscribers</p>
+                      </div>
+                    ) : subscribers.length === 0 ? (
+                      <div style={{ textAlign: "center", padding: "32px 16px", color: "var(--g4)" }}>
+                        <p style={{ margin: 0, fontSize: 13 }}>No subscribers yet. Share your website to grow your list!</p>
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr .8fr", gap: 8, padding: "0 0 8px", borderBottom: "1px solid var(--g1)" }}>
+                          <span style={{ fontSize: 10, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em" }}>Name</span>
+                          <span style={{ fontSize: 10, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em" }}>Email</span>
+                          <span style={{ fontSize: 10, fontWeight: 600, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em" }}>Date</span>
+                        </div>
+                        {subscribers.map(sub => (
+                          <div key={sub.id} style={{ display: "grid", gridTemplateColumns: "1fr 1.4fr .8fr", gap: 8, padding: "8px 0", borderBottom: "1px solid var(--g1)", alignItems: "center" }}>
+                            <span style={{ fontSize: 12, fontWeight: 500, color: "var(--tx)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{sub.name}</span>
+                            <span style={{ fontSize: 12, color: "var(--g4)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{sub.email}</span>
+                            <span style={{ fontSize: 11, color: "var(--g4)", fontVariantNumeric: "tabular-nums" }}>{new Date(sub.subscribedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Right: Inquiries */}
+                  <div className="ws-panel">
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                      <h4 style={{ margin: 0, fontSize: 16, fontWeight: 600 }}>Inquiries</h4>
+                      {studioSettings.integrations.contactForm && (() => { const unread = inquiries.filter(i => !i.read).length; return unread > 0 ? <span style={{ background: "#FF4757", color: "#fff", fontSize: 10, fontWeight: 700, padding: "2px 8px", borderRadius: 100 }}>{unread} new</span> : null; })()}
+                    </div>
+                    {!studioSettings.integrations.contactForm ? (
+                      <div style={{ textAlign: "center", padding: "32px 16px", color: "var(--g4)" }}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: .4, marginBottom: 8 }}><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <p style={{ margin: "0 0 4px", fontSize: 13, fontWeight: 600 }}>Contact Form not enabled</p>
+                        <p style={{ margin: 0, fontSize: 12 }}>Enable Contact Form in <span style={{ color: "var(--ac)", cursor: "pointer" }} onClick={() => setWebsiteSection("settings")}>Settings</span> to receive inquiries</p>
+                      </div>
+                    ) : inquiries.length === 0 ? (
+                      <div style={{ textAlign: "center", padding: "32px 16px", color: "var(--g4)" }}>
+                        <p style={{ margin: 0, fontSize: 13 }}>No inquiries yet.</p>
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                        {inquiries.map(inq => {
+                          const typeColors = { booking: { bg: "rgba(96,77,255,.1)", color: "#604DFF" }, press: { bg: "rgba(30,144,255,.1)", color: "#1E90FF" }, collaboration: { bg: "rgba(29,185,84,.1)", color: "#1DB954" }, general: { bg: "rgba(152,152,159,.1)", color: "#98989F" } };
+                          const tc = typeColors[inq.type] || typeColors.general;
+                          return (
+                            <div key={inq.id} style={{ padding: "12px 14px", border: "1px solid var(--g1)", borderRadius: 10, cursor: "pointer", background: !inq.read ? "rgba(96,77,255,.03)" : "transparent", borderLeft: !inq.read ? "3px solid var(--ac)" : "1px solid var(--g1)" }}
+                              onClick={() => { setInquiries(prev => prev.map(i => i.id === inq.id ? { ...i, read: true, expanded: !i.expanded } : i)); }}>
+                              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 4 }}>
+                                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                                  <span style={{ fontSize: 13, fontWeight: !inq.read ? 700 : 500, color: "var(--tx)" }}>{inq.name}</span>
+                                  <span style={{ fontSize: 9, fontWeight: 600, textTransform: "uppercase", letterSpacing: ".05em", padding: "2px 6px", borderRadius: 4, background: tc.bg, color: tc.color }}>{inq.type}</span>
+                                </div>
+                                <span style={{ fontSize: 11, color: "var(--g4)" }}>{new Date(inq.receivedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short" })}</span>
+                              </div>
+                              <div style={{ fontSize: 12, fontWeight: !inq.read ? 600 : 400, color: "var(--tx)", marginBottom: inq.expanded ? 8 : 0 }}>{inq.subject}</div>
+                              {inq.expanded && (
+                                <div style={{ fontSize: 12, color: "var(--g4)", lineHeight: 1.5, paddingTop: 8, borderTop: "1px solid var(--g1)" }}>
+                                  <div style={{ fontSize: 11, color: "var(--g4)", marginBottom: 4 }}>{inq.email}</div>
+                                  {inq.message}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -12152,58 +13790,95 @@ export default function ArtistShell() {
             {/* ── Settings ── */}
             {websiteSection === "settings" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
-                <div className="info-card" style={{ marginBottom: 16 }}>
-                  <h4 style={{ margin: "0 0 16px" }}>Website URL</h4>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                    <span style={{ fontSize: 13, color: "var(--g4)", whiteSpace: "nowrap" }}>lanced.io/</span>
-                    <input style={{ flex: 1, padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none" }}
-                      value={studioSettings.slug}
-                      onChange={e => setStudioSettings(prev => ({ ...prev, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "") }))} />
-                  </div>
-                  <div style={{ marginBottom: 12 }}>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Custom Domain <span style={{ fontSize: 10, color: "var(--ac)", fontWeight: 400 }}>PRO</span></label>
-                    <input style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none" }}
-                      placeholder="www.yourdomain.com"
-                      value={studioSettings.customDomain}
-                      onChange={e => setStudioSettings(prev => ({ ...prev, customDomain: e.target.value }))} />
-                  </div>
-                </div>
-
-                <div className="info-card" style={{ marginBottom: 16 }}>
-                  <h4 style={{ margin: "0 0 16px" }}>SEO</h4>
-                  <div style={{ marginBottom: 12 }}>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Page Title</label>
-                    <input style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none" }}
-                      value={studioSettings.seoTitle}
-                      onChange={e => setStudioSettings(prev => ({ ...prev, seoTitle: e.target.value }))} />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Meta Description</label>
-                    <textarea style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "var(--bg)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "vertical", minHeight: 60, fontFamily: "var(--sans)" }}
-                      value={studioSettings.seoDesc}
-                      onChange={e => setStudioSettings(prev => ({ ...prev, seoDesc: e.target.value }))} />
-                  </div>
-                </div>
-
-                <div className="info-card">
-                  <h4 style={{ margin: "0 0 16px" }}>Visibility</h4>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                    {[
-                      { id: "public", label: "Public", desc: "Anyone with the link can view" },
-                      { id: "private", label: "Private", desc: "Only you can see your website" },
-                      { id: "password", label: "Password Protected", desc: "Visitors need a password to access" },
-                    ].map(v => (
-                      <div key={v.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", border: `1px solid ${studioSettings.visibility === v.id ? "var(--ac)" : "var(--g2)"}`, borderRadius: 10, cursor: "pointer", background: studioSettings.visibility === v.id ? "var(--ac-light, rgba(96,77,255,.05))" : "transparent" }}
-                        onClick={() => setStudioSettings(prev => ({ ...prev, visibility: v.id }))}>
-                        <div style={{ width: 16, height: 16, borderRadius: "50%", border: `2px solid ${studioSettings.visibility === v.id ? "var(--ac)" : "var(--g3)"}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          {studioSettings.visibility === v.id && <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--ac)" }} />}
-                        </div>
-                        <div>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{v.label}</div>
-                          <div style={{ fontSize: 11, color: "var(--g4)" }}>{v.desc}</div>
-                        </div>
+                <div className="ws-cols" style={{ alignItems: "flex-start" }}>
+                  {/* Left: Website URL + SEO */}
+                  <div className="ws-dash">
+                    <div className="ws-panel">
+                      <h4 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 600 }}>Website URL</h4>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                        <span style={{ fontSize: 13, color: "var(--g4)", whiteSpace: "nowrap" }}>lanced.io/</span>
+                        <input style={{ flex: 1, padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "rgba(255,255,255,.5)", fontSize: 13, color: "var(--tx)", outline: "none" }}
+                          value={studioSettings.slug}
+                          onChange={e => setStudioSettings(prev => ({ ...prev, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "") }))} />
                       </div>
-                    ))}
+                      <div>
+                        <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Custom Domain <span style={{ fontSize: 10, color: "var(--ac)", fontWeight: 400 }}>PRO</span></label>
+                        <input style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "rgba(255,255,255,.5)", fontSize: 13, color: "var(--tx)", outline: "none" }}
+                          placeholder="www.yourdomain.com"
+                          value={studioSettings.customDomain}
+                          onChange={e => setStudioSettings(prev => ({ ...prev, customDomain: e.target.value }))} />
+                      </div>
+                    </div>
+
+                    <div className="ws-panel">
+                      <h4 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 600 }}>SEO</h4>
+                      <div style={{ marginBottom: 12 }}>
+                        <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Page Title</label>
+                        <input style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "rgba(255,255,255,.5)", fontSize: 13, color: "var(--tx)", outline: "none" }}
+                          value={studioSettings.seoTitle}
+                          onChange={e => setStudioSettings(prev => ({ ...prev, seoTitle: e.target.value }))} />
+                      </div>
+                      <div>
+                        <label style={{ display: "block", fontSize: 12, fontWeight: 600, color: "var(--g4)", marginBottom: 6 }}>Meta Description</label>
+                        <textarea style={{ width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, background: "rgba(255,255,255,.5)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "vertical", minHeight: 60, fontFamily: "var(--sans)" }}
+                          value={studioSettings.seoDesc}
+                          onChange={e => setStudioSettings(prev => ({ ...prev, seoDesc: e.target.value }))} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Visibility + Integrations */}
+                  <div className="ws-dash">
+                    <div className="ws-panel">
+                      <h4 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 600 }}>Visibility</h4>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                        {[
+                          { id: "public", label: "Public", desc: "Anyone with the link can view" },
+                          { id: "private", label: "Private", desc: "Only you can see your website" },
+                          { id: "password", label: "Password Protected", desc: "Visitors need a password to access" },
+                        ].map(v => (
+                          <div key={v.id} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", border: `1px solid ${studioSettings.visibility === v.id ? "var(--ac)" : "rgba(255,255,255,.3)"}`, borderRadius: 10, cursor: "pointer", background: studioSettings.visibility === v.id ? "rgba(96,77,255,.06)" : "transparent" }}
+                            onClick={() => setStudioSettings(prev => ({ ...prev, visibility: v.id }))}>
+                            <div style={{ width: 16, height: 16, borderRadius: "50%", border: `2px solid ${studioSettings.visibility === v.id ? "var(--ac)" : "var(--g3)"}`, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                              {studioSettings.visibility === v.id && <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--ac)" }} />}
+                            </div>
+                            <div>
+                              <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{v.label}</div>
+                              <div style={{ fontSize: 11, color: "var(--g4)" }}>{v.desc}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Integrations */}
+                    <div className="ws-panel">
+                      <h4 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 600 }}>Integrations</h4>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                        {[
+                          { key: "newsletter", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>, label: "Newsletter", desc: "Collect emails and build your audience" },
+                          { key: "contactForm", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>, label: "Contact Form", desc: "Let visitors send you messages" },
+                          { key: "events", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>, label: "Events", desc: "Promote shows, workshops & classes" },
+                          { key: "pressKit", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>, label: "Press Kit", desc: "Downloadable bio, photos & rider" },
+                          { key: "linkHub", icon: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>, label: "Link Hub", desc: "Your important links in one place" },
+                        ].map(integ => {
+                          const isOn = studioSettings.integrations[integ.key];
+                          return (
+                            <div key={integ.key} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 14px", border: `1px solid ${isOn ? "rgba(29,185,84,.25)" : "rgba(255,255,255,.3)"}`, borderRadius: 10, cursor: "pointer", background: isOn ? "rgba(29,185,84,.06)" : "transparent", transition: "all .15s" }}
+                              onClick={() => toggleIntegration(integ.key)}>
+                              <div style={{ color: isOn ? "#1DB954" : "var(--g4)", flexShrink: 0 }}>{integ.icon}</div>
+                              <div style={{ flex: 1 }}>
+                                <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{integ.label}</div>
+                                <div style={{ fontSize: 11, color: "var(--g4)" }}>{integ.desc}</div>
+                              </div>
+                              <div style={{ width: 36, height: 20, borderRadius: 10, background: isOn ? "#1DB954" : "var(--g2)", position: "relative", transition: "background .15s", flexShrink: 0 }}>
+                                <div style={{ width: 16, height: 16, borderRadius: "50%", background: "#fff", position: "absolute", top: 2, left: isOn ? 18 : 2, transition: "left .15s", boxShadow: "0 1px 3px rgba(0,0,0,.15)" }} />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -12402,7 +14077,7 @@ export default function ArtistShell() {
             {[
               { id: "profile", icon: I.profile, label: "Profile" },
               { id: "media", icon: I.media, label: "Media Library" },
-              { id: "messages", icon: I.messages, label: "Messages", badge: messages.filter(m => m.unread).length || null },
+              { id: "messages", icon: I.messages, label: "Inbox", badge: messages.filter(m => m.unread).length || null },
               { id: "academy", icon: I.academy, label: "Academy" },
             ].map(item => (
               <button key={item.id} className={page === item.id && !inStudio ? "active" : ""} onClick={() => { setPage(item.id); setInStudio(false); setShowMobileMenu(false); setViewSpotlight(null); }}>
@@ -12460,7 +14135,7 @@ export default function ArtistShell() {
                   <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }} className="sb-label">{ea.companyName}</div>
                   <div style={{ fontSize: 11, color: "var(--g4)", marginTop: 2 }} className="sb-label">{ea.role}</div>
                 </div>
-                {[["overview", I.overview, "Overview"], ["activity", I.updates || I.eye, "Activity"], ["tracking", I.eye, "Tracking"], ["share", I.applications, "Share"]].map(([id, icon, label]) => (
+                {[["overview", I.overview, "Overview"], ["activity", I.updates || I.eye, "Activity"], ["tracking", I.eye, "Tracking"]].map(([id, icon, label]) => (
                   <button key={id} className={`sidebar-item${extAppDetailTab === id ? " active" : ""}`} onClick={() => setExtAppDetailTab(id)}>
                     {icon}
                     <span className="sb-label">{label}</span>
@@ -12643,6 +14318,16 @@ export default function ArtistShell() {
               <div className="bc-actions">
                 <span className="ext-badge" style={{ fontSize: 9 }}><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg> External</span>
                 <span style={{ background: esc.bg, color: esc.color, padding: "3px 10px", borderRadius: 40, fontSize: 10, fontWeight: 700, textTransform: "uppercase" }}>{EXT_STATUS_LABELS[ea.status]}</span>
+                <button className="btn btn-s btn-sm" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}
+                  onClick={() => setExtAppDetailTab("share")}>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                  Share
+                </button>
+                {ea.status === "draft" && (
+                  <button className="btn btn-p btn-sm" onClick={() => { setExternalApps(prev => prev.map(a => a.id === ea.id ? { ...a, status: "sent", sentAt: new Date().toISOString().slice(0, 10) } : a)); showToast("Application marked as sent!"); }}>
+                    Mark as Sent
+                  </button>
+                )}
               </div>
             </div>
           ) : null; })()}
