@@ -28,18 +28,13 @@ const DEMO_ARTIST = {
 };
 
 const STAGE_RECORD = [
-  { id: "sr1", type: "experience", emoji: "briefcase", title: "Lead Dancer", org: "Akram Khan Company", start: "2023-09", end: "2026-01", location: "London, UK", desc: "Three seasons as lead dancer in touring productions. Featured in Jungle Book reimagined.", tags: ["Contemporary", "Touring"], usedIn: ["Resume", "Portfolio"] },
-  { id: "sr2", type: "experience", emoji: "briefcase", title: "Corps de Ballet", org: "Royal Ballet", start: "2021-09", end: "2023-06", location: "London, UK", desc: "Two years with the Royal Ballet in classical and contemporary repertoire.", tags: ["Ballet", "Classical"], usedIn: ["Resume"] },
-  { id: "sr3", type: "education", emoji: "graduation", title: "BA Dance Performance", org: "Royal Ballet School", start: "2018-09", end: "2021-06", location: "London, UK", desc: "Full scholarship. Graduated with distinction. Focus on classical ballet and contemporary technique.", tags: ["Classical", "Contemporary"], usedIn: ["Resume", "Portfolio"] },
-  { id: "sr4", type: "education", emoji: "graduation", title: "Summer Intensive", org: "Batsheva Dance Company", start: "2022-07", end: "2022-08", location: "Tel Aviv, IL", desc: "Four-week intensive in Gaga technique with Ohad Naharin.", tags: ["Gaga", "Contemporary"], usedIn: [] },
-  { id: "sr5", type: "award", emoji: "trophy", title: "Outstanding Young Dancer", org: "Critics' Circle National Dance Awards", start: "2024", end: "", location: "London, UK", desc: "Winner of the 2024 Outstanding Young Dancer award for performances in Jungle Book reimagined.", tags: ["Contemporary"], usedIn: ["Resume"] },
-  { id: "sr6", type: "skills", emoji: "zap", title: "Dance Skills", org: "", start: "", end: "", location: "", desc: "Core dance skills and techniques.", tags: ["Contemporary", "Afro-fusion", "Ballet", "Gaga"], usedIn: [], skills: [
-    { name: "Contemporary", rating: 5 }, { name: "Afro-fusion", rating: 5 }, { name: "Floor Work", rating: 4 },
-    { name: "Classical Ballet", rating: 4 }, { name: "Partnering", rating: 4 }, { name: "Contact Improvisation", rating: 3 },
-    { name: "Gaga Technique", rating: 4 }, { name: "Acrobatics", rating: 3 }, { name: "Stage Combat", rating: 2 }, { name: "Aerial Silks", rating: 2 },
-  ] },
-  { id: "sr7", type: "press", emoji: "newspaper", title: "\"A Force of Nature on Stage\"", org: "The Guardian", start: "2024-11", end: "", location: "", desc: "Five-star review of Jungle Book reimagined highlighting \"Osei's magnetic stage presence and fearless physicality.\"", tags: ["Review", "Contemporary"], usedIn: ["Portfolio"] },
-  { id: "sr8", type: "repertoire", emoji: "masks", title: "Mowgli — Jungle Book Reimagined", org: "Akram Khan Company", start: "2024-03", end: "2025-12", location: "International Tour", desc: "Lead role. 87 performances across 14 countries. Choreography by Akram Khan.", tags: ["Contemporary", "Lead Role", "Touring"], usedIn: ["Resume", "Portfolio"] },
+  { id: "sr1", type: "experience", emoji: "briefcase", title: "Lead Dancer", org: "Akram Khan Company", start: "2023-09", end: "2026-01", location: "London, UK", desc: "Three seasons as lead dancer in touring productions. Featured in Jungle Book reimagined.", tags: ["Contemporary", "Touring"], usedIn: ["Resume", "Portfolio"], categories: ["rc1"] },
+  { id: "sr2", type: "experience", emoji: "briefcase", title: "Corps de Ballet", org: "Royal Ballet", start: "2021-09", end: "2023-06", location: "London, UK", desc: "Two years with the Royal Ballet in classical and contemporary repertoire.", tags: ["Ballet", "Classical"], usedIn: ["Resume"], categories: ["rc1"] },
+  { id: "sr3", type: "education", emoji: "graduation", title: "BA Dance Performance", org: "Royal Ballet School", start: "2018-09", end: "2021-06", location: "London, UK", desc: "Full scholarship. Graduated with distinction. Focus on classical ballet and contemporary technique.", tags: ["Classical", "Contemporary"], usedIn: ["Resume", "Portfolio"], categories: ["rc1"] },
+  { id: "sr4", type: "education", emoji: "graduation", title: "Summer Intensive", org: "Batsheva Dance Company", start: "2022-07", end: "2022-08", location: "Tel Aviv, IL", desc: "Four-week intensive in Gaga technique with Ohad Naharin.", tags: ["Gaga", "Contemporary"], usedIn: [], categories: ["rc2"] },
+  { id: "sr5", type: "award", emoji: "trophy", title: "Outstanding Young Dancer", org: "Critics' Circle National Dance Awards", start: "2024", end: "", location: "London, UK", desc: "Winner of the 2024 Outstanding Young Dancer award for performances in Jungle Book reimagined.", tags: ["Contemporary"], usedIn: ["Resume"], categories: ["rc1"] },
+  { id: "sr7", type: "press", emoji: "newspaper", title: "\"A Force of Nature on Stage\"", org: "The Guardian", start: "2024-11", end: "", location: "", desc: "Five-star review of Jungle Book reimagined highlighting \"Osei's magnetic stage presence and fearless physicality.\"", tags: ["Review", "Contemporary"], usedIn: ["Portfolio"], categories: ["rc1"] },
+  { id: "sr8", type: "repertoire", emoji: "masks", title: "Mowgli — Jungle Book Reimagined", org: "Akram Khan Company", start: "2024-03", end: "2025-12", location: "International Tour", desc: "Lead role. 87 performances across 14 countries. Choreography by Akram Khan.", tags: ["Contemporary", "Lead Role", "Touring"], usedIn: ["Resume", "Portfolio"], categories: ["rc1", "rc2"] },
 ];
 
 const MOCK_APPLICATIONS = [
@@ -518,8 +513,8 @@ const renderTimeline = (events, { compact = false, onItemClick, emptyMsg = "No a
   );
 };
 const generateSlug = (title) => title.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 20) + "-" + Date.now().toString(36);
-const SR_COLORS = { experience: "#604DFF", education: "#1E90FF", award: "#F5A623", skills: "#1DB954", press: "#FF4757", repertoire: "#FF69B4" };
-const SR_LABELS = { experience: "Experience", education: "Education", award: "Award", skills: "Skills", press: "Press", repertoire: "Repertoire" };
+const SR_COLORS = { experience: "#604DFF", education: "#1E90FF", award: "#F5A623", press: "#FF4757", repertoire: "#FF69B4" };
+const SR_LABELS = { experience: "Experience", education: "Education", award: "Award", press: "Press", repertoire: "Repertoire" };
 const MEDIA_COLORS = { video: "#FF4757", photo: "#1DB954", doc: "#F5A623", audio: "#1E90FF", link: "#604DFF" };
 
 const ac = "#604DFF";
@@ -896,7 +891,9 @@ textarea.pf-input{line-height:1.6}
 
 /* ━━━ Resume ━━━ */
 .sr-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
-.sr-count{font-size:10px;font-weight:700;padding:3px 10px;border-radius:40px;background:var(--g1);color:var(--g4);text-transform:uppercase;letter-spacing:.05em}
+.sr-toolbar select{font-size:12px;font-weight:500;padding:0 30px 0 14px;height:36px;border-radius:40px;border:1px solid var(--g2);background:var(--sf);color:var(--tx);font-family:var(--sans);cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239994a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:border-color .15s}
+.sr-toolbar select:hover{border-color:var(--g3)}
+.sr-toolbar select:focus{outline:none;border-color:var(--ac)}
 .sr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;animation:fadeIn .3s ease}
 .sr-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:18px;transition:all .2s;cursor:pointer;position:relative;animation:popIn .25s ease both}
 .sr-card:nth-child(1){animation-delay:.03s}.sr-card:nth-child(2){animation-delay:.06s}.sr-card:nth-child(3){animation-delay:.09s}.sr-card:nth-child(4){animation-delay:.12s}
@@ -939,14 +936,46 @@ textarea.pf-input{line-height:1.6}
 .sr-tl-usage{font-size:10px;font-weight:600}
 .sr-tl-usage.used{color:var(--green)}
 .sr-tl-usage.unused{color:var(--amber)}
-/* ── Skills Rating ── */
-.sr-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
-.sr-skill-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:3px 0}
-.sr-skill-name{font-size:12px;color:var(--tx);font-weight:500;white-space:nowrap}
-.sr-skill-dots{display:flex;gap:4px;align-items:center}
-.sr-skill-dot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--g2);transition:all .2s}
-.sr-skill-dot.filled{border-color:var(--green);background:var(--green)}
-.sr-tl-skills-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:16px 20px}
+/* ── Skills Tab ── */
+.skills-tab{display:flex;flex-direction:column;gap:16px}
+.skills-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.skills-toolbar select{font-size:12px;font-weight:500;padding:0 30px 0 14px;height:36px;border-radius:40px;border:1px solid var(--g2);background:var(--sf);color:var(--tx);font-family:var(--sans);cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239994a8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;transition:border-color .15s}
+.skills-toolbar select:hover{border-color:var(--g3)}
+.skills-toolbar select:focus{outline:none;border-color:var(--ac)}
+.sk-top-section{margin-bottom:4px}
+.sk-top-section h4{font-size:13px;font-weight:600;color:var(--g4);text-transform:uppercase;letter-spacing:.5px;margin:0 0 10px}
+.sk-top-grid{display:flex;flex-wrap:wrap;gap:8px}
+.sk-top-chip{display:flex;align-items:center;gap:6px;padding:8px 14px;background:linear-gradient(135deg,rgba(96,77,255,.06),rgba(96,77,255,.12));border:1px solid rgba(96,77,255,.15);border-radius:12px;font-size:12px;font-weight:600;color:var(--ac)}
+.sk-top-chip .sk-top-dots{display:flex;gap:3px;margin-left:4px}
+.sk-top-chip .sk-top-dot{width:8px;height:8px;border-radius:50%;background:var(--g2)}
+.sk-top-chip .sk-top-dot.filled{background:var(--ac)}
+.sk-list{display:flex;flex-direction:column;gap:6px}
+.sk-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--sf);border:1px solid var(--g2);border-radius:12px;transition:all .15s}
+.sk-row:hover{border-color:var(--g3)}
+.sk-star{background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;color:var(--g3);transition:all .15s;font-size:16px}
+.sk-star.active{color:#F5A623}
+.sk-star:hover{color:#F5A623;transform:scale(1.15)}
+.sk-name{flex:1;border:none;background:transparent;outline:none;font-size:13px;font-weight:500;color:var(--tx);font-family:var(--sans)}
+.sk-name::placeholder{color:var(--g3)}
+.sk-cat-badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;background:var(--g1);color:var(--g4);white-space:nowrap}
+.sk-rating{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.sk-rating-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--g2);background:transparent;cursor:pointer;transition:all .15s;padding:0}
+.sk-rating-dot.filled{border-color:#1DB954;background:#1DB954}
+.sk-rating-dot:hover{border-color:#1DB954;transform:scale(1.15)}
+.sk-remove{background:none;border:none;cursor:pointer;color:var(--g3);padding:2px;display:flex;font-size:14px;line-height:1;transition:color .15s}
+.sk-remove:hover{color:var(--red)}
+/* ── Resume Categories ── */
+.sr-categories{display:flex;align-items:center;gap:6px;padding:8px 0 14px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.sr-categories::-webkit-scrollbar{display:none}
+.sr-cat-chip{font-size:12px;font-weight:500;padding:6px 14px;border-radius:40px;border:1px solid var(--g2);background:var(--sf);cursor:pointer;white-space:nowrap;transition:all .15s;font-family:var(--sans);color:var(--g5)}
+.sr-cat-chip:hover{border-color:var(--g3);color:var(--tx)}
+.sr-cat-chip.active{border-color:var(--ac);background:rgba(96,77,255,.06);color:var(--ac);font-weight:600}
+.sr-cat-add{font-size:12px;font-weight:600;padding:6px 12px;border-radius:40px;border:1px dashed var(--g2);background:none;cursor:pointer;color:var(--g4);transition:all .15s;font-family:var(--sans);white-space:nowrap}
+.sr-cat-add:hover{border-color:var(--ac);color:var(--ac)}
+/* ── Public Profile Footer ── */
+.pfl-footer{position:sticky;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(0,0,0,.05);z-index:10}
+.pfl-footer img{height:24px;opacity:.7;transition:opacity .2s}
+.pfl-footer img:hover{opacity:1}
 @keyframes tlSlideIn{from{opacity:0;transform:translateX(-8px)}to{opacity:1;transform:translateX(0)}}
 
 /* New Entry Modal */
@@ -2663,7 +2692,11 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .media-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
   .sr-grid{grid-template-columns:1fr}
   .sr-toolbar{gap:6px}
-  .sr-skills-grid{grid-template-columns:1fr}
+  .sr-toolbar select{font-size:11px;padding:0 22px 0 8px;height:30px}
+  .skills-toolbar{gap:6px}
+  .skills-toolbar select{font-size:11px;padding:0 22px 0 8px;height:30px}
+  .sk-row{padding:8px 10px;gap:8px}
+  .sk-cat-badge{font-size:9px;padding:2px 6px}
   .sr-tl-card{padding:12px 14px}
   .list-search{max-width:100%}
   .app-toolbar{margin:0 -16px;padding:0 16px;background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;border:none!important;flex-wrap:nowrap;gap:8px;overflow:visible}
@@ -2675,6 +2708,11 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .app-toolbar .at-filter-btn .at-filter-label{display:none}
   .app-toolbar .at-filter-btn{width:36px;padding:0;justify-content:center;border-radius:50%}
   .app-tiles{grid-template-columns:1fr}
+  .app-tile .at-banner{height:70px}
+  .app-tile .at-body{padding:12px}
+  .app-tile .at-title{font-size:13px}
+  .app-tile .at-meta{gap:8px;font-size:9px}
+  .app-tile .at-head img{width:28px;height:28px;margin-top:-20px}
   .app-card{flex-direction:column;align-items:flex-start;gap:10px;padding:14px}
   .app-card .ac-status{align-self:flex-start}
   .app-card .ac-archive{opacity:1}
@@ -4828,11 +4866,33 @@ export default function ArtistShell() {
   const [srView, setSrView] = useState("timeline");
   const [srFilter, setSrFilter] = useState("all");
   const [srSearch, setSrSearch] = useState("");
+  const [srSort, setSrSort] = useState("date-desc");
   const [showNewEntry, setShowNewEntry] = useState(false);
   const [newEntryType, setNewEntryType] = useState(null);
   const [editEntry, setEditEntry] = useState(null);
-  const [entryForm, setEntryForm] = useState({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" });
-  const [skillsForm, setSkillsForm] = useState({ title: "Dance Skills", desc: "", skills: [{ name: "", rating: 3 }] });
+  const [entryForm, setEntryForm] = useState({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "", categories: [] });
+
+  /* Skills (own tab) */
+  const [skills, setSkills] = useState([
+    { id: "sk1", name: "Contemporary", rating: 5, category: "Dance", topSkill: true },
+    { id: "sk2", name: "Afro-fusion", rating: 5, category: "Dance", topSkill: true },
+    { id: "sk3", name: "Ballet", rating: 4, category: "Dance", topSkill: false },
+    { id: "sk4", name: "Hip-Hop", rating: 4, category: "Dance", topSkill: false },
+    { id: "sk5", name: "Improvisation", rating: 5, category: "Dance", topSkill: true },
+    { id: "sk6", name: "Choreography", rating: 5, category: "Technical", topSkill: true },
+    { id: "sk7", name: "Teaching", rating: 4, category: "Technical", topSkill: false },
+    { id: "sk8", name: "Lighting Design", rating: 3, category: "Technical", topSkill: false },
+  ]);
+  const [skillCategories, setSkillCategories] = useState(["Dance", "Technical"]);
+  const [skillCatFilter, setSkillCatFilter] = useState("all");
+  const [skillSearch, setSkillSearch] = useState("");
+
+  /* Resume Categories */
+  const [resumeCategories, setResumeCategories] = useState([
+    { id: "rc1", name: "Dancer", entryIds: ["sr1", "sr2", "sr3", "sr5", "sr7", "sr8"] },
+    { id: "rc2", name: "Choreographer", entryIds: ["sr4", "sr8"] },
+  ]);
+  const [activeCategory, setActiveCategory] = useState("all");
 
   /* Applications */
   const [applications, setApplications] = useState(MOCK_APPLICATIONS);
@@ -5268,10 +5328,20 @@ export default function ArtistShell() {
   const filteredSR = stageRecords.filter(sr => {
     if (srFilter !== "all" && sr.type !== srFilter) return false;
     if (srSearch && !sr.title.toLowerCase().includes(srSearch.toLowerCase()) && !sr.org.toLowerCase().includes(srSearch.toLowerCase())) return false;
+    if (activeCategory !== "all") {
+      const cat = resumeCategories.find(c => c.id === activeCategory);
+      if (cat && !cat.entryIds.includes(sr.id)) return false;
+    }
     return true;
+  }).sort((a, b) => {
+    if (srSort === "date-desc") return (b.start || "").localeCompare(a.start || "");
+    if (srSort === "date-asc") return (a.start || "").localeCompare(b.start || "");
+    if (srSort === "az") return a.title.localeCompare(b.title);
+    if (srSort === "za") return b.title.localeCompare(a.title);
+    return 0;
   });
   const filteredMedia = mediaFilter === "all" ? mediaItems : mediaItems.filter(m => m.type === mediaFilter);
-  const srCounts = { all: stageRecords.length, experience: stageRecords.filter(s => s.type === "experience").length, education: stageRecords.filter(s => s.type === "education").length, award: stageRecords.filter(s => s.type === "award").length, skills: stageRecords.filter(s => s.type === "skills").length, press: stageRecords.filter(s => s.type === "press").length, repertoire: stageRecords.filter(s => s.type === "repertoire").length };
+  const srCounts = { all: stageRecords.length, experience: stageRecords.filter(s => s.type === "experience").length, education: stageRecords.filter(s => s.type === "education").length, award: stageRecords.filter(s => s.type === "award").length, press: stageRecords.filter(s => s.type === "press").length, repertoire: stageRecords.filter(s => s.type === "repertoire").length };
 
   /* ━━━ HELPERS ━━━ */
   const calcAge = (dob) => {
@@ -5281,36 +5351,9 @@ export default function ArtistShell() {
   };
 
   const handleSaveEntry = () => {
-    if (newEntryType === "skills") {
-      const validSkills = skillsForm.skills.filter(s => s.name.trim());
-      const newEntry = {
-        id: "sr" + (stageRecords.length + 1),
-        type: "skills",
-        emoji: "zap",
-        title: skillsForm.title || "Skills",
-        org: "",
-        start: "",
-        end: "",
-        location: "",
-        desc: skillsForm.desc,
-        tags: validSkills.map(s => s.name),
-        usedIn: [],
-        skills: validSkills.map(s => ({ name: s.name.trim(), rating: s.rating })),
-      };
-      if (editEntry) {
-        setStageRecords(prev => prev.map(sr => sr.id === editEntry.id ? { ...sr, ...newEntry, id: sr.id } : sr));
-      } else {
-        setStageRecords(prev => [...prev, newEntry]);
-      }
-      setShowNewEntry(false);
-      setNewEntryType(null);
-      setEditEntry(null);
-      setSkillsForm({ title: "Dance Skills", desc: "", skills: [{ name: "", rating: 3 }] });
-      showToast(editEntry ? "Skills updated" : "Skills added to Resume");
-      return;
-    }
+    const entryId = editEntry ? editEntry.id : "sr" + (stageRecords.length + 1);
     const newEntry = {
-      id: "sr" + (stageRecords.length + 1),
+      id: entryId,
       type: newEntryType,
       emoji: EMOJI_MAP[newEntryType] || "briefcase",
       title: entryForm.title,
@@ -5320,32 +5363,34 @@ export default function ArtistShell() {
       location: entryForm.location,
       desc: entryForm.desc,
       tags: entryForm.tags.split(",").map(t => t.trim()).filter(Boolean),
-      usedIn: [],
+      usedIn: editEntry ? editEntry.usedIn : [],
+      categories: entryForm.categories || [],
     };
     if (editEntry) {
       setStageRecords(prev => prev.map(sr => sr.id === editEntry.id ? { ...sr, ...newEntry, id: sr.id } : sr));
     } else {
       setStageRecords(prev => [...prev, newEntry]);
     }
+    // Update resume categories
+    const cats = entryForm.categories || [];
+    setResumeCategories(prev => prev.map(cat => {
+      if (cats.includes(cat.id)) {
+        return { ...cat, entryIds: cat.entryIds.includes(entryId) ? cat.entryIds : [...cat.entryIds, entryId] };
+      } else {
+        return { ...cat, entryIds: cat.entryIds.filter(id => id !== entryId) };
+      }
+    }));
     setShowNewEntry(false);
     setNewEntryType(null);
     setEditEntry(null);
-    setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" });
+    setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "", categories: [] });
     showToast(editEntry ? "Entry updated" : "Entry added to Resume");
   };
 
   const openEditEntry = (entry) => {
     setEditEntry(entry);
     setNewEntryType(entry.type);
-    if (entry.type === "skills") {
-      setSkillsForm({
-        title: entry.title,
-        desc: entry.desc,
-        skills: entry.skills && entry.skills.length > 0 ? entry.skills.map(s => ({ name: s.name, rating: s.rating })) : [{ name: "", rating: 3 }],
-      });
-    } else {
-      setEntryForm({ title: entry.title, org: entry.org, start: entry.start, end: entry.end, location: entry.location, desc: entry.desc, tags: entry.tags.join(", ") });
-    }
+    setEntryForm({ title: entry.title, org: entry.org, start: entry.start, end: entry.end, location: entry.location, desc: entry.desc, tags: entry.tags.join(", "), categories: entry.categories || [] });
     setShowNewEntry(true);
   };
 
@@ -5898,6 +5943,18 @@ export default function ArtistShell() {
                   <button className="btn btn-p btn-sm" onClick={() => { setShowNewEntry(true); setNewEntryType(null); setEditEntry(null); setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" }); }}>+ Add New</button>
                 </div>
                 <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>Choose which entries from your Resume to include in this application.</p>
+                {resumeCategories.length > 0 && (
+                  <div style={{ display: "flex", gap: 6, marginBottom: 10, flexWrap: "wrap" }}>
+                    <span style={{ fontSize: 10, fontWeight: 600, color: "var(--g4)", alignSelf: "center", marginRight: 2 }}>Quick select:</span>
+                    {resumeCategories.map(cat => (
+                      <button key={cat.id} className="sr-cat-chip" style={{ fontSize: 11, padding: "4px 12px" }} onClick={() => {
+                        setApplyDraft(prev => ({ ...prev, selectedSRIds: [...new Set([...prev.selectedSRIds, ...cat.entryIds.filter(id => stageRecords.some(sr => sr.id === id))])] }));
+                      }}>
+                        {cat.name}
+                      </button>
+                    ))}
+                  </div>
+                )}
                 <div style={{ display: "flex", gap: 6, marginBottom: 14, flexWrap: "wrap" }}>
                   {Object.entries(SR_LABELS).map(([key, label]) => {
                     const count = stageRecords.filter(s => s.type === key).length;
@@ -6470,9 +6527,9 @@ export default function ArtistShell() {
               <p className="pg-sub">Your professional identity on Lanced</p>
             </div>
             <div className="tab-bar">
-              {["general", "resume", "comp-card"].map(t => (
+              {["general", "resume", "skills", "comp-card"].map(t => (
                 <button key={t} className={`tab-btn${profileTab === t ? " on" : ""}`} onClick={() => setProfileTab(t)}>
-                  {t === "general" ? "General Info" : t === "resume" ? "Resume" : "Comp Card"}
+                  {t === "general" ? "General Info" : t === "resume" ? "Resume" : t === "skills" ? "Skills" : "Comp Card"}
                 </button>
               ))}
             </div>
@@ -6633,24 +6690,44 @@ export default function ArtistShell() {
                 </div>
 
                 <div className="sr-toolbar">
-                  <span className="sr-count">{stageRecords.length} entries</span>
                   <div className="list-search">
                     {I.search}
-                    <input placeholder="Search entries..." value={srSearch} onChange={e => setSrSearch(e.target.value)} />
+                    <input placeholder="Search..." value={srSearch} onChange={e => setSrSearch(e.target.value)} />
                   </div>
+                  <select value={activeCategory} onChange={e => {
+                    if (e.target.value === "__new__") {
+                      const name = prompt("New category name:");
+                      if (name && name.trim()) {
+                        const newId = "rc" + Date.now();
+                        setResumeCategories(prev => [...prev, { id: newId, name: name.trim(), entryIds: [] }]);
+                        setActiveCategory(newId);
+                      } else { e.target.value = activeCategory; }
+                    } else { setActiveCategory(e.target.value); }
+                  }}>
+                    <option value="all">All Categories</option>
+                    {resumeCategories.map(cat => (
+                      <option key={cat.id} value={cat.id}>{cat.name} ({cat.entryIds.length})</option>
+                    ))}
+                    <option value="__new__">+ Create new...</option>
+                  </select>
+                  <select value={srFilter} onChange={e => setSrFilter(e.target.value)}>
+                    <option value="all">All Types</option>
+                    {Object.entries(SR_LABELS).map(([key, label]) => (
+                      <option key={key} value={key}>{label} ({srCounts[key]})</option>
+                    ))}
+                  </select>
+                  <select value={srSort} onChange={e => setSrSort(e.target.value)}>
+                    <option value="date-desc">Newest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="az">A → Z</option>
+                    <option value="za">Z → A</option>
+                  </select>
                   <div className="view-toggle">
                     <button className={srView === "timeline" ? "active" : ""} onClick={() => setSrView("timeline")} title="Timeline"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="6" y1="4" x2="6" y2="20"/><circle cx="6" cy="7" r="2" fill="currentColor"/><circle cx="6" cy="13" r="2" fill="currentColor"/><circle cx="6" cy="19" r="2" fill="currentColor"/><line x1="10" y1="7" x2="20" y2="7"/><line x1="10" y1="13" x2="18" y2="13"/><line x1="10" y1="19" x2="16" y2="19"/></svg></button>
                     <button className={srView === "grid" ? "active" : ""} onClick={() => setSrView("grid")}>{I.grid}</button>
                     <button className={srView === "list" ? "active" : ""} onClick={() => setSrView("list")}>{I.list}</button>
                   </div>
-                  <button className="btn btn-p btn-sm" style={{ marginLeft: "auto" }} onClick={() => { setShowNewEntry(true); setNewEntryType(null); setEditEntry(null); setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" }); }}>+ New Entry</button>
-                </div>
-                <div style={{ display: "flex", gap: 6, marginBottom: 16, flexWrap: "wrap" }}>
-                  {Object.entries(SR_LABELS).map(([key, label]) => (
-                    <button key={key} className={`chip${srFilter === key ? " on" : ""}`} onClick={() => setSrFilter(srFilter === key ? "all" : key)}>
-                      {label} <span style={{ opacity: .7 }}>{srCounts[key]}</span>
-                    </button>
-                  ))}
+                  <button className="btn btn-p btn-sm" style={{ marginLeft: "auto" }} onClick={() => { setShowNewEntry(true); setNewEntryType(null); setEditEntry(null); setEntryForm({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "", categories: [] }); }}>+ New Entry</button>
                 </div>
 
                 {srView === "timeline" && (() => {
@@ -6676,45 +6753,20 @@ export default function ArtistShell() {
                           {groups[year].map((sr, si) => (
                             <div key={sr.id} className="sr-tl-entry" onClick={() => openEditEntry(sr)} style={{ animationDelay: `${(yi * 4 + si) * 0.04}s` }}>
                               <div className="sr-tl-dot" style={{ background: SR_COLORS[sr.type], boxShadow: `0 0 0 3px ${SR_COLORS[sr.type]}20` }} />
-                              {sr.type === "skills" && sr.skills ? (
-                                /* ── Skills card with ratings ── */
-                                <div className="sr-tl-card sr-tl-skills-card">
-                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                                    <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] }}>{EIcon[sr.emoji] || sr.emoji}</span>
-                                    <span style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)" }}>{sr.title}</span>
-                                    <span className="sr-tl-type-badge" style={{ background: `${SR_COLORS[sr.type]}12`, color: SR_COLORS[sr.type] }}>{SR_LABELS[sr.type]}</span>
-                                  </div>
-                                  <div className="sr-skills-grid">
-                                    {sr.skills.map(skill => (
-                                      <div key={skill.name} className="sr-skill-row">
-                                        <span className="sr-skill-name">{skill.name}</span>
-                                        <div className="sr-skill-dots">
-                                          {[1, 2, 3, 4, 5].map(n => (
-                                            <div key={n} className={`sr-skill-dot${n <= skill.rating ? " filled" : ""}`} style={n <= skill.rating ? { background: SR_COLORS.skills, borderColor: SR_COLORS.skills } : {}} />
-                                          ))}
-                                        </div>
-                                      </div>
-                                    ))}
-                                  </div>
-                                  {sr.usedIn.length > 0 && <div className="sr-tl-usage used">● Used in {sr.usedIn.join(" · ")}</div>}
+                              <div className="sr-tl-card">
+                                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                                  <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] }}>{EIcon[sr.emoji] || sr.emoji}</span>
+                                  <span className="sr-tl-type-badge" style={{ background: `${SR_COLORS[sr.type]}12`, color: SR_COLORS[sr.type] }}>{SR_LABELS[sr.type]}</span>
+                                  {sr.start && <span className="sr-tl-period">{sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}</span>}
                                 </div>
-                              ) : (
-                                /* ── Regular entry card ── */
-                                <div className="sr-tl-card">
-                                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                                    <span style={{ display: "flex", alignItems: "center", color: SR_COLORS[sr.type] }}>{EIcon[sr.emoji] || sr.emoji}</span>
-                                    <span className="sr-tl-type-badge" style={{ background: `${SR_COLORS[sr.type]}12`, color: SR_COLORS[sr.type] }}>{SR_LABELS[sr.type]}</span>
-                                    {sr.start && <span className="sr-tl-period">{sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}</span>}
-                                  </div>
-                                  <div className="sr-tl-title">{sr.title}</div>
-                                  {sr.org && <div className="sr-tl-org">{sr.org}{sr.location ? ` · ${sr.location}` : ""}</div>}
-                                  <div className="sr-tl-desc">{sr.desc}</div>
-                                  {sr.tags.length > 0 && <div className="sr-tl-tags">{sr.tags.map(t => <span key={t}>{t}</span>)}</div>}
-                                  <div className={`sr-tl-usage ${sr.usedIn.length ? "used" : "unused"}`}>
-                                    {sr.usedIn.length ? `● Used in ${sr.usedIn.join(" · ")}` : "○ Not used yet"}
-                                  </div>
+                                <div className="sr-tl-title">{sr.title}</div>
+                                {sr.org && <div className="sr-tl-org">{sr.org}{sr.location ? ` · ${sr.location}` : ""}</div>}
+                                <div className="sr-tl-desc">{sr.desc}</div>
+                                {sr.tags.length > 0 && <div className="sr-tl-tags">{sr.tags.map(t => <span key={t}>{t}</span>)}</div>}
+                                <div className={`sr-tl-usage ${sr.usedIn.length ? "used" : "unused"}`}>
+                                  {sr.usedIn.length ? `● Used in ${sr.usedIn.join(" · ")}` : "○ Not used yet"}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -6734,20 +6786,6 @@ export default function ArtistShell() {
                         {sr.org && <div className="sr-org">{sr.org}</div>}
                         {sr.start && <div className="sr-date" style={{ display: "flex", alignItems: "center", gap: 4 }}>{EIcon.calendar} {sr.start}{sr.end ? ` — ${sr.end}` : " — Present"}{sr.location ? ` · ${sr.location}` : ""}</div>}
                         <div className="sr-desc">{sr.desc}</div>
-                        {sr.type === "skills" && sr.skills && (
-                          <div className="sr-skills-grid" style={{ marginTop: 8 }}>
-                            {sr.skills.slice(0, 6).map(skill => (
-                              <div key={skill.name} className="sr-skill-row">
-                                <span className="sr-skill-name">{skill.name}</span>
-                                <div className="sr-skill-dots">
-                                  {[1, 2, 3, 4, 5].map(n => (
-                                    <div key={n} className={`sr-skill-dot${n <= skill.rating ? " filled" : ""}`} style={n <= skill.rating ? { background: SR_COLORS.skills, borderColor: SR_COLORS.skills } : {}} />
-                                  ))}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        )}
                         <div className="sr-tags">{sr.tags.map(t => <span key={t}>{t}</span>)}</div>
                         <div className={`sr-usage ${sr.usedIn.length ? "used" : "unused"}`}>
                           {sr.usedIn.length ? `● Used in ${sr.usedIn.join(" · ")}` : "○ Not used yet"}
@@ -6765,20 +6803,6 @@ export default function ArtistShell() {
                         <div className="sli-info">
                           <div className="sli-title">{sr.title}{sr.org ? ` · ${sr.org}` : ""}{sr.location ? ` · ${sr.location}` : ""}</div>
                           <div className="sli-sub">{sr.desc}</div>
-                          {sr.type === "skills" && sr.skills && (
-                            <div style={{ display: "flex", gap: 12, marginTop: 6, flexWrap: "wrap" }}>
-                              {sr.skills.slice(0, 5).map(skill => (
-                                <span key={skill.name} style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: "var(--g4)" }}>
-                                  {skill.name}
-                                  <span style={{ display: "flex", gap: 2 }}>
-                                    {[1, 2, 3, 4, 5].map(n => (
-                                      <span key={n} style={{ width: 5, height: 5, borderRadius: "50%", background: n <= skill.rating ? SR_COLORS.skills : "var(--g2)" }} />
-                                    ))}
-                                  </span>
-                                </span>
-                              ))}
-                            </div>
-                          )}
                         </div>
                         <div className="sli-period">{sr.start}{sr.end ? ` — ${sr.end}` : ""}</div>
                         <div className="sli-usage" style={{ color: sr.usedIn.length ? "var(--green)" : "var(--amber)" }}>
@@ -6788,6 +6812,93 @@ export default function ArtistShell() {
                     ))}
                   </div>
                 )}
+              </div>
+            )}
+
+            {profileTab === "skills" && (
+              <div className="skills-tab">
+                <div className="skills-toolbar">
+                  <div className="list-search">
+                    {I.search}
+                    <input placeholder="Search skills..." value={skillSearch} onChange={e => setSkillSearch(e.target.value)} />
+                  </div>
+                  <select value={skillCatFilter} onChange={e => {
+                    if (e.target.value === "__new__") {
+                      const name = prompt("New skill category:");
+                      if (name && name.trim()) {
+                        setSkillCategories(prev => [...prev, name.trim()]);
+                        setSkillCatFilter(name.trim());
+                      } else { e.target.value = skillCatFilter; }
+                    } else { setSkillCatFilter(e.target.value); }
+                  }}>
+                    <option value="all">All Categories</option>
+                    {skillCategories.map(cat => (
+                      <option key={cat} value={cat}>{cat} ({skills.filter(s => s.category === cat).length})</option>
+                    ))}
+                    <option value="__new__">+ Create new...</option>
+                  </select>
+                  <button className="btn btn-p btn-sm" onClick={() => {
+                    const cat = skillCatFilter !== "all" ? skillCatFilter : (skillCategories[0] || "General");
+                    if (!skillCategories.includes(cat)) setSkillCategories(prev => [...prev, cat]);
+                    setSkills(prev => [...prev, { id: "sk" + Date.now(), name: "", rating: 3, category: cat, topSkill: false }]);
+                  }}>+ Add Skill</button>
+                </div>
+
+                {/* Top Skills Section */}
+                {skills.filter(s => s.topSkill).length > 0 && (
+                  <div className="sk-top-section">
+                    <h4>Top Skills</h4>
+                    <div className="sk-top-grid">
+                      {skills.filter(s => s.topSkill).map(skill => (
+                        <div key={skill.id} className="sk-top-chip">
+                          {skill.name || "Unnamed"}
+                          <div className="sk-top-dots">
+                            {[1,2,3,4,5].map(n => (
+                              <span key={n} className={`sk-top-dot${n <= skill.rating ? " filled" : ""}`} />
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Skill List */}
+                <div className="sk-list">
+                  {skills
+                    .filter(s => (skillCatFilter === "all" || s.category === skillCatFilter) && (!skillSearch || s.name.toLowerCase().includes(skillSearch.toLowerCase())))
+                    .map(skill => (
+                    <div key={skill.id} className="sk-row">
+                      <button className={`sk-star${skill.topSkill ? " active" : ""}`} onClick={() => setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, topSkill: !s.topSkill } : s))} title={skill.topSkill ? "Remove from top skills" : "Add to top skills"}>
+                        {skill.topSkill ? "★" : "☆"}
+                      </button>
+                      <input
+                        className="sk-name"
+                        value={skill.name}
+                        onChange={e => setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, name: e.target.value } : s))}
+                        placeholder="Skill name..."
+                      />
+                      <span className="sk-cat-badge">{skill.category}</span>
+                      <div className="sk-rating">
+                        {[1, 2, 3, 4, 5].map(n => (
+                          <button
+                            key={n}
+                            className={`sk-rating-dot${n <= skill.rating ? " filled" : ""}`}
+                            onClick={() => setSkills(prev => prev.map(s => s.id === skill.id ? { ...s, rating: n } : s))}
+                            title={`${n}/5`}
+                          />
+                        ))}
+                      </div>
+                      <button className="sk-remove" onClick={() => setSkills(prev => prev.filter(s => s.id !== skill.id))} title="Remove">✕</button>
+                    </div>
+                  ))}
+                  {skills.filter(s => (skillCatFilter === "all" || s.category === skillCatFilter) && (!skillSearch || s.name.toLowerCase().includes(skillSearch.toLowerCase()))).length === 0 && (
+                    <div style={{ textAlign: "center", padding: 40, color: "var(--g4)" }}>
+                      <p style={{ fontSize: 14, marginBottom: 12 }}>No skills yet</p>
+                      <p style={{ fontSize: 12 }}>Add your first skill to get started</p>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
 
@@ -14521,7 +14632,6 @@ export default function ArtistShell() {
                   { type: "experience", icon: EIcon.briefcase, title: "Experience", sub: "Jobs, contracts, residencies" },
                   { type: "education", icon: EIcon.graduation, title: "Education", sub: "Degrees, schools, intensives" },
                   { type: "award", icon: EIcon.trophy, title: "Award", sub: "Prizes, nominations, finals" },
-                  { type: "skills", icon: EIcon.zap, title: "Skills", sub: "Techniques, disciplines" },
                   { type: "press", icon: EIcon.newspaper, title: "Press", sub: "Reviews, features, mentions" },
                   { type: "repertoire", icon: EIcon.masks, title: "Repertoire", sub: "Roles, productions, tours" },
                 ].map(et => (
@@ -14533,41 +14643,6 @@ export default function ArtistShell() {
                     </div>
                   </div>
                 ))}
-              </div>
-            ) : newEntryType === "skills" ? (
-              /* ── Skills-specific form ── */
-              <div>
-                <div className="field"><label>Title</label><input value={skillsForm.title} onChange={e => setSkillsForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Dance Skills" /></div>
-                <div className="field"><label>Description</label><textarea value={skillsForm.desc} onChange={e => setSkillsForm(f => ({ ...f, desc: e.target.value }))} placeholder="Briefly describe your skill set..." rows={2} /></div>
-                <div style={{ marginTop: 16, marginBottom: 8 }}>
-                  <label style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 12, fontWeight: 600, color: "var(--g5)", marginBottom: 10 }}>
-                    <span>Skills & Ratings</span>
-                    <button className="btn btn-s btn-sm" style={{ fontSize: 11, padding: "4px 12px" }} onClick={() => setSkillsForm(f => ({ ...f, skills: [...f.skills, { name: "", rating: 3 }] }))}>+ Add Skill</button>
-                  </label>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                    {skillsForm.skills.map((skill, idx) => (
-                      <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: "var(--g1)", borderRadius: 12, border: "1px solid var(--g2)" }}>
-                        <input style={{ flex: 1, border: "none", background: "transparent", outline: "none", fontSize: 13, fontWeight: 500, color: "var(--tx)", fontFamily: "var(--sans)" }} value={skill.name} onChange={e => { const s = [...skillsForm.skills]; s[idx] = { ...s[idx], name: e.target.value }; setSkillsForm(f => ({ ...f, skills: s })); }} placeholder="Skill name..." />
-                        <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
-                          {[1, 2, 3, 4, 5].map(n => (
-                            <button key={n} onClick={() => { const s = [...skillsForm.skills]; s[idx] = { ...s[idx], rating: n }; setSkillsForm(f => ({ ...f, skills: s })); }} style={{ width: 20, height: 20, borderRadius: "50%", border: `2px solid ${n <= skill.rating ? "#1DB954" : "var(--g2)"}`, background: n <= skill.rating ? "#1DB954" : "transparent", cursor: "pointer", transition: "all .15s", padding: 0 }} title={`${n}/5`} />
-                          ))}
-                        </div>
-                        {skillsForm.skills.length > 1 && (
-                          <button onClick={() => setSkillsForm(f => ({ ...f, skills: f.skills.filter((_, i) => i !== idx) }))} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--g3)", padding: 2, display: "flex", fontSize: 16, lineHeight: 1 }} title="Remove">✕</button>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 20 }}>
-                  <button className="btn btn-s" onClick={() => { if (editEntry) { setShowNewEntry(false); } else { setNewEntryType(null); } }}>
-                    {editEntry ? "Cancel" : "← Back"}
-                  </button>
-                  <button className="btn btn-p" onClick={handleSaveEntry} disabled={!skillsForm.skills.some(s => s.name.trim())}>
-                    {editEntry ? "Save Changes" : "Add Skills"}
-                  </button>
-                </div>
               </div>
             ) : (
               /* ── Regular entry form ── */
@@ -14581,6 +14656,27 @@ export default function ArtistShell() {
                 <div className="field"><label>Location</label><input value={entryForm.location} onChange={e => setEntryForm(f => ({ ...f, location: e.target.value }))} placeholder="e.g. London, UK" /></div>
                 <div className="field"><label>Description</label><textarea value={entryForm.desc} onChange={e => setEntryForm(f => ({ ...f, desc: e.target.value }))} placeholder="Describe this experience..." /></div>
                 <div className="field"><label>Tags (comma-separated)</label><input value={entryForm.tags} onChange={e => setEntryForm(f => ({ ...f, tags: e.target.value }))} placeholder="e.g. Contemporary, Touring" /></div>
+                <div className="field">
+                  <label>Categories</label>
+                  <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginTop: 4 }}>
+                    {resumeCategories.map(cat => {
+                      const selected = (entryForm.categories || []).includes(cat.id);
+                      return (
+                        <button key={cat.id} className={`sr-cat-chip${selected ? " active" : ""}`} style={{ fontSize: 11, padding: "4px 12px" }} onClick={() => setEntryForm(f => ({ ...f, categories: selected ? f.categories.filter(c => c !== cat.id) : [...(f.categories || []), cat.id] }))}>
+                          {cat.name}
+                        </button>
+                      );
+                    })}
+                    <button className="sr-cat-chip" style={{ fontSize: 11, padding: "4px 12px", borderStyle: "dashed" }} onClick={() => {
+                      const name = prompt("New category name:");
+                      if (name && name.trim()) {
+                        const newId = "rc" + Date.now();
+                        setResumeCategories(prev => [...prev, { id: newId, name: name.trim(), entryIds: [] }]);
+                        setEntryForm(f => ({ ...f, categories: [...(f.categories || []), newId] }));
+                      }
+                    }}>+ New</button>
+                  </div>
+                </div>
                 <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 16 }}>
                   <button className="btn btn-s" onClick={() => { if (editEntry) { setShowNewEntry(false); } else { setNewEntryType(null); } }}>
                     {editEntry ? "Cancel" : "← Back"}
@@ -15202,7 +15298,7 @@ export default function ArtistShell() {
         const highlightedVid = primaryPortfolio?.highlightedVideo ? primaryPortfolio.videos.find(v => v.id === primaryPortfolio.highlightedVideo) : null;
         const curatedPhotos = primaryPortfolio ? primaryPortfolio.photos.slice(0, 6) : [];
         const topResume = stageRecords.filter(sr => sr.usedIn.includes("Resume") || sr.usedIn.includes("Portfolio")).slice(0, 4);
-        const RESUME_EMOJI_KEYS3 = { experience: "briefcase", education: "graduation", award: "trophy", skills: "zap", repertoire: "masks", press: "newspaper" };
+        const RESUME_EMOJI_KEYS3 = { experience: "briefcase", education: "graduation", award: "trophy", repertoire: "masks", press: "newspaper" };
         const viewingPf = ppViewPortfolio ? portfolios.find(p => p.id === ppViewPortfolio) : null;
         return (
           <div className="pp-overlay">
@@ -15447,12 +15543,31 @@ export default function ArtistShell() {
                       </div>
                     </div>
                   )}
+
+                  {/* Top Skills */}
+                  {skills.filter(s => s.topSkill).length > 0 && (
+                    <div className="pp-section" style={{ animationDelay: ".6s" }}>
+                      <div className="pp-section-title">Top <em>Skills</em></div>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                        {skills.filter(s => s.topSkill).map(skill => (
+                          <div key={skill.id} className="sk-top-chip">
+                            {skill.name}
+                            <div className="sk-top-dots">
+                              {[1,2,3,4,5].map(n => (
+                                <span key={n} className={`sk-top-dot${n <= skill.rating ? " filled" : ""}`} />
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </>
             )}
 
             {/* Footer */}
-            <div className="pfl-footer" style={{ position: "sticky" }}>
+            <div className="pfl-footer">
               <img src="/made-with-lanced.png" alt="Made with Lanced" />
             </div>
           </div>
