@@ -2649,6 +2649,8 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .ms-sidebar-header{padding:0 0 12px}
   .ms-contact{border-radius:12px;margin-bottom:2px}
   .ctx-spotlight .main{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;border-radius:0!important;box-shadow:none!important;min-height:auto;background:transparent!important}
+  .ctx-spotlight .main .content{overflow-y:visible!important;flex:none!important;min-height:auto!important}
+  .ctx-spotlight::before{display:none}
   .ctx-spotlight .topbar{display:none!important}
   .ctx-spotlight::before{display:none}
   .pfe-section h3{font-size:14px}
@@ -2702,6 +2704,10 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .dash-featured-grid{grid-template-columns:repeat(2,1fr)}
   .dash-blog-card{flex:0 0 240px}
   .dash-grid{grid-template-columns:1fr}
+  .dash-stats{grid-template-columns:repeat(2,1fr);gap:8px}
+  .dash-opp-grid{grid-template-columns:1fr}
+  .dash-opp-card .doc-banner{height:80px}
+  .stat-card .sc-val{font-size:20px}
   .pf-details-grid{grid-template-columns:1fr!important}
   .pf-name-row{grid-template-columns:1fr 1fr!important}
   .pf-general-grid{grid-template-columns:1fr!important}
@@ -2730,10 +2736,18 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
   .shell.on-messages .ms-contact .ms-snippet{color:var(--g5)}
 }
 @media(max-width:480px){
-  .dash-featured-grid{grid-template-columns:repeat(2,1fr)}
+  .dash-featured-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .dash-featured-card{aspect-ratio:4/3}
   .pg-header h1{font-size:22px}
   .content{padding:16px 12px}
   .spotlight-hero{height:160px;border-radius:12px}
+  .dash-stats{grid-template-columns:1fr 1fr;gap:6px}
+  .dash-stats .stat-card{padding:12px}
+  .dash-stats .stat-card .sc-val{font-size:18px}
+  .dash-opp-card .doc-body{padding:10px 12px}
+  .dash-opp-card .doc-title{font-size:12px}
+  .dash-blog-card{flex:0 0 220px}
+  .dash-section{padding:16px}
 }
 
 /* ━━━ Studio Entrance Animation ━━━ */
@@ -4818,6 +4832,7 @@ export default function ArtistShell() {
   const [newEntryType, setNewEntryType] = useState(null);
   const [editEntry, setEditEntry] = useState(null);
   const [entryForm, setEntryForm] = useState({ title: "", org: "", start: "", end: "", location: "", desc: "", tags: "" });
+  const [skillsForm, setSkillsForm] = useState({ title: "Dance Skills", desc: "", skills: [{ name: "", rating: 3 }] });
 
   /* Applications */
   const [applications, setApplications] = useState(MOCK_APPLICATIONS);
@@ -5122,6 +5137,15 @@ export default function ArtistShell() {
     else window.scrollTo(0, 0);
   }, [studioSubPage]);
 
+  /* Scroll to top on page/tab navigation */
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const ct = document.querySelector(".main .content");
+    if (ct) ct.scrollTop = 0;
+    const main = document.querySelector(".main");
+    if (main) main.scrollTop = 0;
+  }, [page, profileTab, viewSpotlight, viewExtApp, viewPortfolio, viewWork, viewOpportunity]);
+
   /* Studio entrance animation */
   useEffect(() => {
     if (inStudio && !studioEntrancePlayed) {
@@ -5257,6 +5281,34 @@ export default function ArtistShell() {
   };
 
   const handleSaveEntry = () => {
+    if (newEntryType === "skills") {
+      const validSkills = skillsForm.skills.filter(s => s.name.trim());
+      const newEntry = {
+        id: "sr" + (stageRecords.length + 1),
+        type: "skills",
+        emoji: "zap",
+        title: skillsForm.title || "Skills",
+        org: "",
+        start: "",
+        end: "",
+        location: "",
+        desc: skillsForm.desc,
+        tags: validSkills.map(s => s.name),
+        usedIn: [],
+        skills: validSkills.map(s => ({ name: s.name.trim(), rating: s.rating })),
+      };
+      if (editEntry) {
+        setStageRecords(prev => prev.map(sr => sr.id === editEntry.id ? { ...sr, ...newEntry, id: sr.id } : sr));
+      } else {
+        setStageRecords(prev => [...prev, newEntry]);
+      }
+      setShowNewEntry(false);
+      setNewEntryType(null);
+      setEditEntry(null);
+      setSkillsForm({ title: "Dance Skills", desc: "", skills: [{ name: "", rating: 3 }] });
+      showToast(editEntry ? "Skills updated" : "Skills added to Resume");
+      return;
+    }
     const newEntry = {
       id: "sr" + (stageRecords.length + 1),
       type: newEntryType,
@@ -5285,7 +5337,15 @@ export default function ArtistShell() {
   const openEditEntry = (entry) => {
     setEditEntry(entry);
     setNewEntryType(entry.type);
-    setEntryForm({ title: entry.title, org: entry.org, start: entry.start, end: entry.end, location: entry.location, desc: entry.desc, tags: entry.tags.join(", ") });
+    if (entry.type === "skills") {
+      setSkillsForm({
+        title: entry.title,
+        desc: entry.desc,
+        skills: entry.skills && entry.skills.length > 0 ? entry.skills.map(s => ({ name: s.name, rating: s.rating })) : [{ name: "", rating: 3 }],
+      });
+    } else {
+      setEntryForm({ title: entry.title, org: entry.org, start: entry.start, end: entry.end, location: entry.location, desc: entry.desc, tags: entry.tags.join(", ") });
+    }
     setShowNewEntry(true);
   };
 
@@ -6067,6 +6127,17 @@ export default function ArtistShell() {
 
     /* ── Studio Creative Workspace ── */
     if (inStudio && !viewSpotlight && !viewOpportunity && !viewPortfolio && !viewWork) {
+      /* ── Studio desktop-only gate ── */
+      if (window.innerWidth <= 768) return (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "60px 24px", minHeight: "60vh", gap: 16 }}>
+          <div style={{ width: 64, height: 64, borderRadius: 20, background: "linear-gradient(135deg, rgba(96,77,255,.1), rgba(96,77,255,.2))", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 8 }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#604DFF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h2 style={{ fontSize: 20, fontWeight: 700, color: "var(--tx)", margin: 0, fontFamily: "var(--sans)" }}>Studio is desktop only</h2>
+          <p style={{ fontSize: 14, color: "var(--g4)", margin: 0, maxWidth: 320, lineHeight: 1.5 }}>The Studio workspace with website builder, portfolio editor, and creative tools is optimized for larger screens. Open Lanced on your computer to access Studio.</p>
+          <button className="btn btn-p" style={{ marginTop: 8, padding: "10px 24px", borderRadius: 12, fontSize: 13 }} onClick={() => { setInStudio(false); setPage("dashboard"); }}>← Back to Home</button>
+        </div>
+      );
       if (studioActivity) return (
         <div className="studio-manager" style={{ maxWidth: 720, margin: "0 auto", padding: "0 24px" }}>
           <div className="studio-manager-header">
@@ -14463,7 +14534,43 @@ export default function ArtistShell() {
                   </div>
                 ))}
               </div>
+            ) : newEntryType === "skills" ? (
+              /* ── Skills-specific form ── */
+              <div>
+                <div className="field"><label>Title</label><input value={skillsForm.title} onChange={e => setSkillsForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Dance Skills" /></div>
+                <div className="field"><label>Description</label><textarea value={skillsForm.desc} onChange={e => setSkillsForm(f => ({ ...f, desc: e.target.value }))} placeholder="Briefly describe your skill set..." rows={2} /></div>
+                <div style={{ marginTop: 16, marginBottom: 8 }}>
+                  <label style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 12, fontWeight: 600, color: "var(--g5)", marginBottom: 10 }}>
+                    <span>Skills & Ratings</span>
+                    <button className="btn btn-s btn-sm" style={{ fontSize: 11, padding: "4px 12px" }} onClick={() => setSkillsForm(f => ({ ...f, skills: [...f.skills, { name: "", rating: 3 }] }))}>+ Add Skill</button>
+                  </label>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                    {skillsForm.skills.map((skill, idx) => (
+                      <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", background: "var(--g1)", borderRadius: 12, border: "1px solid var(--g2)" }}>
+                        <input style={{ flex: 1, border: "none", background: "transparent", outline: "none", fontSize: 13, fontWeight: 500, color: "var(--tx)", fontFamily: "var(--sans)" }} value={skill.name} onChange={e => { const s = [...skillsForm.skills]; s[idx] = { ...s[idx], name: e.target.value }; setSkillsForm(f => ({ ...f, skills: s })); }} placeholder="Skill name..." />
+                        <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
+                          {[1, 2, 3, 4, 5].map(n => (
+                            <button key={n} onClick={() => { const s = [...skillsForm.skills]; s[idx] = { ...s[idx], rating: n }; setSkillsForm(f => ({ ...f, skills: s })); }} style={{ width: 20, height: 20, borderRadius: "50%", border: `2px solid ${n <= skill.rating ? "#1DB954" : "var(--g2)"}`, background: n <= skill.rating ? "#1DB954" : "transparent", cursor: "pointer", transition: "all .15s", padding: 0 }} title={`${n}/5`} />
+                          ))}
+                        </div>
+                        {skillsForm.skills.length > 1 && (
+                          <button onClick={() => setSkillsForm(f => ({ ...f, skills: f.skills.filter((_, i) => i !== idx) }))} style={{ background: "none", border: "none", cursor: "pointer", color: "var(--g3)", padding: 2, display: "flex", fontSize: 16, lineHeight: 1 }} title="Remove">✕</button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div style={{ display: "flex", gap: 8, justifyContent: "flex-end", marginTop: 20 }}>
+                  <button className="btn btn-s" onClick={() => { if (editEntry) { setShowNewEntry(false); } else { setNewEntryType(null); } }}>
+                    {editEntry ? "Cancel" : "← Back"}
+                  </button>
+                  <button className="btn btn-p" onClick={handleSaveEntry} disabled={!skillsForm.skills.some(s => s.name.trim())}>
+                    {editEntry ? "Save Changes" : "Add Skills"}
+                  </button>
+                </div>
+              </div>
             ) : (
+              /* ── Regular entry form ── */
               <div>
                 <div className="field"><label>Title *</label><input value={entryForm.title} onChange={e => setEntryForm(f => ({ ...f, title: e.target.value }))} placeholder="e.g. Lead Dancer" /></div>
                 <div className="field"><label>Organisation</label><input value={entryForm.org} onChange={e => setEntryForm(f => ({ ...f, org: e.target.value }))} placeholder="e.g. Royal Ballet" /></div>
