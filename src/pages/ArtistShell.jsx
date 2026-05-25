@@ -725,7 +725,7 @@ const CSS = `
 .topbar-avatar img{width:26px;height:26px;border-radius:50%;object-fit:cover}
 .topbar-avatar .ta-name{font-size:12px;font-weight:600;color:var(--tx)}
 .topbar-avatar .ta-plan{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ac);background:rgba(96,77,255,.08);padding:1px 6px;border-radius:40px}
-.content{padding:16px 36px 32px;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1}
+.content{padding:16px 36px 32px;max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:1;box-sizing:border-box}
 .content:has(.asset-builder){z-index:501}
 .shell:has(.asset-builder) .sidebar{display:none}
 .shell:has(.asset-builder) .topbar{display:none}
@@ -803,13 +803,14 @@ const CSS = `
 .dash-banner-blob-3{width:120px;height:120px;background:rgba(80,110,240,.2);top:20%;left:-20px;animation:blobMove3 18s ease-in-out infinite}
 .dark .dash-banner{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
 .dark .dash-banner-blob{opacity:.25}
-.dash-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-bottom:28px}
+.dash-grid{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-bottom:28px;min-width:0}
+.dash-grid>div{min-width:0}
 .dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
 .stat-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border:1px solid var(--glass-border);border-radius:14px;padding:20px;animation:slideInUp .3s ease both}
 .stat-card:nth-child(1){animation-delay:.05s}.stat-card:nth-child(2){animation-delay:.1s}.stat-card:nth-child(3){animation-delay:.15s}.stat-card:nth-child(4){animation-delay:.2s}
 .stat-card .sc-val{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ac);margin-bottom:2px}
 .stat-card .sc-label{font-size:11px;color:var(--g4);text-transform:uppercase;letter-spacing:.05em}
-.dash-section{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;padding:22px;margin-bottom:16px;animation:slideInUp .3s ease both;box-shadow:var(--glass-shadow)}
+.dash-section{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--glass-border);border-radius:16px;padding:22px;margin-bottom:16px;animation:slideInUp .3s ease both;box-shadow:var(--glass-shadow);overflow:hidden}
 .dash-section h3{font-size:14px;font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .dash-section h3 .ds-count{font-size:10px;font-weight:700;padding:2px 7px;border-radius:40px;background:var(--g1);color:var(--g4)}
 .dash-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
@@ -851,7 +852,7 @@ const CSS = `
 .dash-opp-card .doc-match svg{width:12px;height:12px}
 .dash-opp-card .doc-meta{display:flex;gap:8px;font-size:10px;color:var(--g5)}
 .dark .dash-opp-card{background:var(--g1)}
-.dash-opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.dash-opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:12px}
 
 /* Checklist */
 .checklist{display:flex;flex-direction:column;gap:2px}
