@@ -409,6 +409,11 @@ const MOCK_NOTIFICATIONS = [
   { id: "n5", type: "profile", title: "Profile Views", body: "Your profile was viewed 48 times this week — up 23% from last week.", time: "3d ago", unread: false, color: "#F5A623", icon: "eye" },
   { id: "n6", type: "opportunity", title: "New Opportunity", body: "A new opportunity matching your profile: Soloist — 2026/27 Season at Royal Danish Ballet.", time: "4d ago", unread: false, color: "#FF69B4", icon: "sparkles" },
   { id: "n7", type: "broadcast", title: "Theater Regensburg", body: "Thank you to all applicants. We will be sending out decisions by the end of this week.", time: "5d ago", unread: false, color: "#604DFF", icon: "megaphone" },
+  { id: "n8", type: "plan", title: "Deadline in 3 days", body: "Company Dancer at Wayne McGregor | Random Dance — deadline May 15. Your prep checklist is incomplete.", time: "1h ago", unread: true, color: "#E67E22", icon: "clock" },
+  { id: "n9", type: "plan", title: "Deadline Tomorrow", body: "Teaching Position at Pineapple Dance Studios — deadline May 20. Don't forget to apply!", time: "6h ago", unread: true, color: "#FF4757", icon: "clock" },
+  { id: "n10", type: "plan", title: "Weekly Planning Digest", body: "You have 3 upcoming deadlines this week. Tap to review your Plan.", time: "1d ago", unread: false, color: "#604DFF", icon: "calendar" },
+  { id: "n11", type: "plan", title: "New Match", body: "A new call matching your profile: Guest Performer — Rite of Spring Revival at Pina Bausch Tanztheater.", time: "2d ago", unread: false, color: "#FF69B4", icon: "sparkles" },
+  { id: "n12", type: "plan", title: "How did it go?", body: "Your audition for Corps de Ballet at Ballett Zürich was this week. Log your notes and outcome.", time: "3d ago", unread: false, color: "#0D9488", icon: "clipboard" },
 ];
 
 /* ── Website Integration Mock Data ── */
@@ -437,6 +442,37 @@ const MOCK_EVENTS = [
   { id: "ev4", title: "Echoes in Glass", type: "performance", date: "2026-09-20", time: "20:00", venue: "Théâtre de la Ville", city: "Paris", country: "FR", ticketUrl: "#", description: "French premiere." },
   { id: "ev5", title: "Echoes in Glass", type: "performance", date: "2025-11-18", time: "20:00", venue: "Tanzhaus NRW", city: "Düsseldorf", country: "DE", ticketUrl: "", description: "German premiere." },
   { id: "ev6", title: "Body & Code Residency Showing", type: "performance", date: "2025-09-10", time: "19:00", venue: "ICK Amsterdam", city: "Amsterdam", country: "NL", ticketUrl: "", description: "Work-in-progress showing from 2-week residency." },
+];
+
+const MOCK_PLAN_ENTRIES = [
+  { id: "pl1", source: "lanced", title: "Corps de Ballet — 2026/27 Season", company: "Ballett Zürich", companyLogo: "/demo/artists/1.jpg", deadline: "2026-04-15", type: "audition", status: "applied", reminders: ["7d", "3d", "1d"], notes: "Bring pointe shoes and contemporary solo (max 1 min). Travel booked — Zürich via EasyJet.", checklist: [{ text: "Update headshot", done: true }, { text: "Record contemporary solo", done: true }, { text: "Book flights", done: true }, { text: "Confirm accommodation", done: false }], linkedAppId: "app1", linkedExtAppId: null, createdAt: "2026-03-10" },
+  { id: "pl2", source: "lanced", title: "Soloist — 2026/27 Season", company: "Royal Danish Ballet", companyLogo: "/demo/artists/1.jpg", deadline: "2026-04-30", type: "audition", status: "planned", reminders: ["7d", "5d", "1d"], notes: "Dream company. Need classical and contemporary showreel. Audition in Copenhagen May 10.", checklist: [{ text: "Record classical variation", done: false }, { text: "Update CV with latest press", done: false }, { text: "Prepare Bournonville excerpt", done: false }], linkedAppId: null, linkedExtAppId: null, createdAt: "2026-03-20" },
+  { id: "pl3", source: "lanced", title: "Company Dancer", company: "Wayne McGregor | Random Dance", companyLogo: "/demo/artists/2.jpg", deadline: "2026-05-15", type: "audition", status: "planned", reminders: ["5d", "3d"], notes: "Improv clip needed. Research recent McGregor works.", checklist: [{ text: "Film improvisation clip", done: false }, { text: "Watch recent productions", done: false }], linkedAppId: null, linkedExtAppId: null, createdAt: "2026-03-25" },
+  { id: "pl4", source: "external", title: "Guest Dancer — Spring 2027", company: "Royal Ballet of Flanders", companyLogo: null, deadline: "2026-06-15", type: "audition", status: "applied", reminders: ["7d", "3d", "1d"], notes: "Sent application via external link. Motivation letter focused on classical-contemporary crossover.", checklist: [{ text: "Follow up in 2 weeks", done: false }], linkedAppId: null, linkedExtAppId: "ext1", createdAt: "2026-04-08" },
+  { id: "pl5", source: "external", title: "Company Dancer — Audition Tape", company: "NDT — Nederlands Dans Theater", companyLogo: null, deadline: "2026-05-30", type: "audition", status: "applied", reminders: ["5d", "1d"], notes: "Tape sent. No response yet — check back mid-May.", checklist: [], linkedAppId: null, linkedExtAppId: "ext2", createdAt: "2026-04-12" },
+  { id: "pl6", source: "external", title: "Summer Intensive Audition", company: "Batsheva Dance Company", companyLogo: null, deadline: "2026-06-01", type: "workshop", status: "planned", reminders: ["7d", "5d", "3d", "1d"], notes: "Gaga technique intensive. Need self-tape in Gaga style. Ask Ohad for reference letter.", checklist: [{ text: "Film Gaga self-tape", done: false }, { text: "Request reference letter", done: false }, { text: "Prepare application fee", done: false }], linkedAppId: null, linkedExtAppId: null, createdAt: "2026-04-20" },
+  { id: "pl7", source: "lanced", title: "Guest Performer — Rite of Spring Revival", company: "Pina Bausch Tanztheater", companyLogo: "/demo/artists/3.jpg", deadline: "2026-06-01", type: "casting", status: "planned", reminders: ["7d", "3d"], notes: "Earth-stage production. Physically demanding — step up conditioning. Self-tape of excerpt required.", checklist: [{ text: "Study choreography reference video", done: true }, { text: "Record self-tape excerpt", done: false }, { text: "Film self-introduction video", done: false }], linkedAppId: null, linkedExtAppId: null, createdAt: "2026-04-25" },
+  { id: "pl8", source: "external", title: "Teaching Position — Contemporary", company: "Pineapple Dance Studios", companyLogo: null, deadline: "2026-05-20", type: "job", status: "planned", reminders: ["3d", "1d"], notes: "Part-time teaching gig. Good for income stability. Tuesday & Thursday evenings.", checklist: [{ text: "Prepare class plan samples", done: false }, { text: "Update teaching CV", done: false }], linkedAppId: null, linkedExtAppId: null, createdAt: "2026-05-01" },
+];
+
+const PLAN_ENTRY_COLORS = {
+  lanced: { bg: "rgba(96,77,255,.1)", color: "#604DFF", dot: "#604DFF" },
+  external: { bg: "rgba(13,148,136,.1)", color: "#0D9488", dot: "#0D9488" },
+};
+const PLAN_STATUS_LABELS = { planned: "Planned", applied: "Applied", completed: "Completed" };
+const PLAN_STATUS_COLORS = { planned: { bg: "rgba(245,166,35,.12)", color: "#F5A623" }, applied: { bg: "rgba(96,77,255,.1)", color: "#604DFF" }, completed: { bg: "rgba(29,185,84,.1)", color: "#1DB954" } };
+const PLAN_TYPE_LABELS = { audition: "Audition", casting: "Casting", workshop: "Workshop", job: "Job", other: "Other" };
+const REMINDER_PRESETS = [
+  { id: "7d", label: "7 days before" },
+  { id: "5d", label: "5 days before" },
+  { id: "3d", label: "3 days before" },
+  { id: "1d", label: "1 day before" },
+  { id: "0d", label: "Day of" },
+];
+const CAL_PROVIDERS = [
+  { id: "google", label: "Google Calendar", icon: "calendar", connected: true },
+  { id: "apple", label: "Apple Calendar", icon: "calendar", connected: false },
+  { id: "outlook", label: "Outlook", icon: "calendar", connected: false },
 ];
 
 const INTEGRATION_SECTIONS = {
@@ -1099,6 +1135,9 @@ textarea.pf-input{line-height:1.6}
 .opp-card .oc-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 .opp-card .oc-meta span{font-size:10px;padding:3px 8px;border-radius:40px;background:var(--g1);color:var(--g5)}
 .opp-card .oc-footer{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--g4)}
+.opp-card .oc-cal-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--g2);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;color:var(--g4);padding:0}
+.opp-card .oc-cal-btn svg{width:14px;height:14px}
+.opp-card .oc-cal-btn:hover{border-color:var(--ac);color:var(--ac);background:rgba(96,77,255,.06)}
 .opp-card .oc-save{width:28px;height:28px;border-radius:50%;border:1px solid var(--g2);background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .15s}
 .opp-card .oc-save:hover{border-color:var(--ac);color:var(--ac)}
 .opp-card .oc-save.saved{background:rgba(96,77,255,.08);border-color:var(--ac);color:var(--ac)}
@@ -4547,6 +4586,134 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 .strobe-theme > section,.strobe-theme > .strobe-contact{margin-top:clamp(48px,8vw,80px)}
 }
 
+/* ━━━ PLAN SECTION ━━━ */
+.plan-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;flex-wrap:wrap}
+.plan-nav-left,.plan-nav-right{display:flex;align-items:center;gap:8px}
+.plan-nav-center{display:flex;align-items:center;gap:10px}
+.plan-month-label{font-size:14px;font-weight:700;min-width:180px;text-align:center;color:var(--tx)}
+.plan-arrow{background:none;border:1px solid var(--g2);border-radius:8px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--tx);font-size:16px;transition:background .15s}
+.plan-arrow:hover{background:var(--g1)}
+.plan-view-toggle{display:flex;background:var(--g1);border-radius:10px;padding:2px;gap:2px}
+.plan-view-toggle button{border:none;background:none;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;color:var(--g5);transition:all .15s}
+.plan-view-toggle button.active{background:var(--bg);color:var(--tx);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.plan-filter-chips{display:flex;gap:4px}
+
+/* Calendar Grid */
+.plan-cal{background:var(--bg);border:1px solid var(--g2);border-radius:16px;overflow:hidden}
+.plan-cal-header{display:grid;grid-template-columns:repeat(7,1fr);background:var(--g1);border-bottom:1px solid var(--g2)}
+.plan-cal-dow{padding:10px 0;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--g4)}
+.plan-cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.plan-cal-cell{min-height:80px;padding:8px;border-right:1px solid var(--g2);border-bottom:1px solid var(--g2);cursor:pointer;transition:background .15s;position:relative}
+.plan-cal-cell:nth-child(7n){border-right:none}
+.plan-cal-cell:hover{background:var(--g1)}
+.plan-cal-cell.empty{cursor:default;background:var(--g1);opacity:.4}
+.plan-cal-cell.today .plan-cal-day{background:var(--ac);color:var(--bg);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center}
+.plan-cal-cell.selected{background:rgba(96,77,255,.06);outline:2px solid var(--ac);outline-offset:-2px;border-radius:0}
+.plan-cal-day{font-size:12px;font-weight:600;color:var(--tx);display:inline-flex;align-items:center;justify-content:center}
+.plan-cal-dots{display:flex;gap:3px;margin-top:6px;flex-wrap:wrap}
+.plan-cal-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.plan-cal-more{font-size:9px;color:var(--g4);font-weight:600}
+
+/* Day Detail Panel */
+.plan-day-detail{border-top:1px solid var(--g2);padding:20px}
+.plan-day-detail-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.plan-day-detail-header h3{margin:0;font-size:15px;font-weight:700;color:var(--tx)}
+.plan-day-entries{display:flex;flex-direction:column;gap:8px}
+
+/* Entry Card */
+.plan-entry-card{display:flex;gap:0;background:var(--bg);border:1px solid var(--g2);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .15s}
+.plan-entry-card:hover{border-color:var(--g3);transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.plan-entry-accent{width:4px;flex-shrink:0}
+.plan-entry-body{padding:12px 14px;flex:1;min-width:0}
+.plan-entry-top{display:flex;gap:6px;align-items:center;margin-bottom:4px;flex-wrap:wrap}
+.plan-entry-source{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.03em}
+.plan-entry-status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px}
+.plan-entry-type{font-size:10px;color:var(--g4);font-weight:600}
+.plan-entry-title{font-size:13px;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plan-entry-company{font-size:12px;color:var(--g4)}
+
+/* Week View */
+.plan-week{display:grid;grid-template-columns:repeat(7,1fr);gap:0;border:1px solid var(--g2);border-radius:16px;overflow:hidden;background:var(--bg)}
+.plan-week-day{border-right:1px solid var(--g2);min-height:200px;display:flex;flex-direction:column}
+.plan-week-day:last-child{border-right:none}
+.plan-week-day.today .plan-week-day-header{background:var(--ac);color:var(--bg)}
+.plan-week-day-header{padding:10px 8px;font-size:12px;font-weight:700;text-align:center;background:var(--g1);border-bottom:1px solid var(--g2);color:var(--tx)}
+.plan-week-day-entries{padding:6px;display:flex;flex-direction:column;gap:4px;flex:1}
+.plan-week-entry{padding:8px;border-radius:8px;background:var(--g1);cursor:pointer;transition:background .15s}
+.plan-week-entry:hover{background:var(--g2)}
+.plan-week-entry-title{font-size:11px;font-weight:700;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plan-week-entry-company{font-size:10px;color:var(--g4);margin-top:2px}
+.plan-week-empty{flex:1}
+
+/* List View */
+.plan-list{display:flex;flex-direction:column;gap:6px}
+.plan-list-row{display:flex;gap:0;background:var(--bg);border:1px solid var(--g2);border-radius:14px;overflow:hidden;cursor:pointer;transition:all .15s;align-items:stretch}
+.plan-list-row:hover{border-color:var(--g3);transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.plan-list-row.urgent{border-color:rgba(255,71,87,.3)}
+.plan-list-accent{width:4px;flex-shrink:0}
+.plan-list-main{padding:14px 16px;flex:1;min-width:0}
+.plan-list-top{display:flex;gap:6px;align-items:center;margin-bottom:4px;flex-wrap:wrap}
+.plan-list-title{font-size:14px;font-weight:700;color:var(--tx)}
+.plan-list-company{font-size:12px;color:var(--g4);margin-top:2px}
+.plan-list-notes{font-size:11px;color:var(--g5);margin-top:6px;line-height:1.4}
+.plan-list-right{padding:14px 16px;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;min-width:100px;text-align:right}
+.plan-list-deadline{font-size:13px;font-weight:700;color:var(--tx)}
+.plan-list-deadline.urgent{color:#FF4757}
+.plan-list-date{font-size:11px;color:var(--g4);font-family:var(--mono);margin-top:2px}
+.plan-list-progress{font-size:10px;color:var(--g4);margin-top:4px}
+
+/* Entry Detail Modal */
+.plan-detail{position:relative;max-width:560px;width:100%;max-height:85vh;overflow-y:auto}
+.plan-detail-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
+.plan-detail-grid{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+.plan-detail-grid .info-card{margin-bottom:0}
+
+/* Checklist */
+.plan-check-input{border:none;background:none;font-size:12px;color:var(--tx);flex:1;font-family:var(--sans);outline:none;padding:2px 0}
+.plan-check-del{border:none;background:none;color:var(--g3);cursor:pointer;font-size:11px;padding:2px 4px;opacity:0;transition:opacity .15s}
+.plan-item:hover .plan-check-del{opacity:1}
+
+/* Add External Call Modal */
+.plan-add-modal{position:relative;max-width:460px;width:100%}
+.plan-add-title{margin:0 0 4px;font-size:18px;font-weight:700}
+.plan-add-sub{font-size:13px;color:var(--g4);margin:0 0 20px}
+.plan-add-form{display:flex;flex-direction:column;gap:16px}
+.plan-add-row{display:flex;flex-direction:column;gap:6px}
+.plan-add-row-pair{display:flex;gap:12px}
+.plan-add-row-pair .plan-add-row{flex:1}
+.plan-add-label{font-size:12px;font-weight:600;color:var(--g5);letter-spacing:.02em}
+.plan-add-input{width:100%;padding:10px 12px;border:1px solid var(--g2);border-radius:10px;font-size:13px;font-family:var(--sans);background:var(--bg);color:var(--tx);outline:none;transition:border-color .15s;box-sizing:border-box}
+.plan-add-input:focus{border-color:var(--ac)}
+.plan-add-input::placeholder{color:var(--g3)}
+select.plan-add-input{appearance:auto;cursor:pointer}
+textarea.plan-add-input{resize:vertical;line-height:1.5}
+.plan-add-chips{display:flex;flex-wrap:wrap;gap:6px}
+.plan-add-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--g2)}
+
+/* Settings */
+.plan-settings-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--g2)}
+.plan-settings-row:last-child{border-bottom:none}
+.btn-success{background:rgba(29,185,84,.1)!important;color:#1DB954!important;border-color:rgba(29,185,84,.2)!important}
+
+/* Responsive */
+@media(max-width:768px){
+.plan-nav{flex-direction:column;align-items:stretch;gap:8px}
+.plan-nav-center{justify-content:center}
+.plan-nav-left,.plan-nav-right{justify-content:center;flex-wrap:wrap}
+.plan-cal-cell{min-height:56px;padding:4px}
+.plan-cal-dow{font-size:9px;padding:6px 0}
+.plan-cal-day{font-size:10px}
+.plan-cal-dots{margin-top:2px}
+.plan-cal-dot{width:5px;height:5px}
+.plan-week{grid-template-columns:1fr;border-radius:12px}
+.plan-week-day{min-height:auto;border-right:none;border-bottom:1px solid var(--g2)}
+.plan-week-day:last-child{border-bottom:none}
+.plan-week-day-header{text-align:left}
+.plan-detail-grid{grid-template-columns:1fr}
+.plan-list-row{flex-direction:column}
+.plan-list-right{flex-direction:row;padding:8px 16px;gap:12px;border-top:1px solid var(--g2);min-width:auto}
+}
+
 `;
 
 /* ━━━ SVG ICONS (inline) ━━━ */
@@ -4590,6 +4757,8 @@ const I = {
   mute: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><line x1="1" x2="23" y1="1" y2="23"/></svg>,
   attachment: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>,
   circle: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/></svg>,
+  calendar: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>,
+  mapPin: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>,
 };
 
 /* ━━━ EMOJI REPLACEMENT ICONS (JSX) ━━━ */
@@ -5122,6 +5291,20 @@ export default function ArtistShell() {
   const [showNotifPanel, setShowNotifPanel] = useState(false);
   const [notifFilter, setNotifFilter] = useState("all");
 
+  /* Plan */
+  const [planEntries, setPlanEntries] = useState(MOCK_PLAN_ENTRIES);
+  const [planView, setPlanView] = useState("month");
+  const [planMonth, setPlanMonth] = useState(() => { const d = new Date(); return { year: d.getFullYear(), month: d.getMonth() }; });
+  const [planWeekStart, setPlanWeekStart] = useState(() => { const d = new Date(); d.setDate(d.getDate() - d.getDay() + 1); return d.toISOString().slice(0, 10); });
+  const [planSelectedDay, setPlanSelectedDay] = useState(null);
+  const [planSelectedEntry, setPlanSelectedEntry] = useState(null);
+  const [planFilter, setPlanFilter] = useState("all");
+  const [planShowAdd, setPlanShowAdd] = useState(false);
+  const [planAddForm, setPlanAddForm] = useState({ title: "", company: "", deadline: "", type: "audition", notes: "", reminders: ["3d", "1d"], linkedExtAppId: "" });
+  const [planShowSettings, setPlanShowSettings] = useState(false);
+  const [planDefaultReminders, setPlanDefaultReminders] = useState(["5d", "3d", "1d"]);
+  const [calProviders, setCalProviders] = useState(CAL_PROVIDERS);
+
   /* Mobile */
   const [showMobileActions, setShowMobileActions] = useState(false);
   const [settingsTab, setSettingsTab] = useState("account");
@@ -5270,6 +5453,7 @@ export default function ArtistShell() {
     { id: "profile", icon: I.profile, label: "Profile" },
     { id: "media", icon: I.media, label: "Media Library" },
     { id: "applications", icon: I.applications, label: "Applications", badge: applications.filter(a => a.status === "invited").length || null },
+    { id: "plan", icon: I.calendar, label: "Plan", badge: planEntries.filter(e => { const d = new Date(e.deadline); const now = new Date(); const diff = (d - now) / 86400000; return diff >= 0 && diff <= 3; }).length || null },
     { id: "messages", icon: I.messages, label: "Inbox", badge: messages.filter(m => m.unread).length || null },
     { type: "divider" },
     { id: "discover", icon: I.discover, label: "Discover" },
@@ -5853,8 +6037,14 @@ export default function ArtistShell() {
             )}
 
             <div className="info-card" style={{ marginBottom: 16 }}>
-              <h4>About {currentOpp.company}</h4>
-              <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.7 }}>{currentOpp.companyDesc}</p>
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
+                {currentOpp.companyLogo && <img src={currentOpp.companyLogo} alt="" style={{ width: 40, height: 40, borderRadius: 10, objectFit: "cover", border: "1px solid var(--g1)" }} />}
+                <div style={{ flex: 1 }}>
+                  <h4 style={{ margin: 0 }}>About {currentOpp.company}</h4>
+                </div>
+                <button className="btn btn-s btn-sm" onClick={(e) => { e.stopPropagation(); showToast("Company page — coming soon"); }} style={{ whiteSpace: "nowrap", fontSize: 12 }}>Discover this company →</button>
+              </div>
+              <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.7, margin: 0 }}>{currentOpp.companyDesc}</p>
             </div>
 
             <div style={{ display: "flex", gap: 12, justifyContent: "center", marginTop: 24 }}>
@@ -7602,7 +7792,17 @@ export default function ArtistShell() {
                         <div className="oc-meta"><span>{opp.location}</span><span>{opp.type}</span></div>
                         <div className="oc-footer">
                           <span>Deadline: {opp.deadline}</span>
-                          <button className="oc-save saved" onClick={(e) => { e.stopPropagation(); setOpportunities(prev => prev.map(o => o.id === opp.id ? { ...o, saved: !o.saved } : o)); }}>★</button>
+                          <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                            <button className="oc-cal-btn" title="Save to Calendar" onClick={(e) => {
+                              e.stopPropagation();
+                              const exists = planEntries.some(pe => pe.source === "lanced" && pe.title === opp.title && pe.company === opp.company);
+                              if (exists) { showToast("Already in your calendar"); return; }
+                              const newEntry = { id: "pl" + Date.now(), source: "lanced", title: opp.title, company: opp.company, companyLogo: opp.banner, deadline: opp.deadline, type: opp.type === "Open Call" ? "audition" : opp.type.toLowerCase(), status: "planned", reminders: ["5d", "1d"], notes: "", checklist: [], linkedAppId: null, linkedExtAppId: null, createdAt: new Date().toISOString().slice(0, 10) };
+                              setPlanEntries(prev => [...prev, newEntry]);
+                              showToast("Saved to Calendar — tap Plan to view");
+                            }}>{I.calendar}</button>
+                            <button className="oc-save saved" onClick={(e) => { e.stopPropagation(); setOpportunities(prev => prev.map(o => o.id === opp.id ? { ...o, saved: !o.saved } : o)); }}>★</button>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -7625,12 +7825,22 @@ export default function ArtistShell() {
                     </div>
                     <div className="oc-footer">
                       <span>Deadline: {opp.deadline}</span>
-                      <button className={`oc-save${opp.saved ? " saved" : ""}`} onClick={(e) => {
-                        e.stopPropagation();
-                        setOpportunities(prev => prev.map(o => o.id === opp.id ? { ...o, saved: !o.saved } : o));
-                      }}>
-                        {opp.saved ? "★" : "☆"}
-                      </button>
+                      <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+                        <button className="oc-cal-btn" title="Save to Calendar" onClick={(e) => {
+                          e.stopPropagation();
+                          const exists = planEntries.some(pe => pe.source === "lanced" && pe.title === opp.title && pe.company === opp.company);
+                          if (exists) { showToast("Already in your calendar"); return; }
+                          const newEntry = { id: "pl" + Date.now(), source: "lanced", title: opp.title, company: opp.company, companyLogo: opp.banner, deadline: opp.deadline, type: opp.type === "Open Call" ? "audition" : opp.type.toLowerCase(), status: "planned", reminders: ["5d", "1d"], notes: "", checklist: [], linkedAppId: null, linkedExtAppId: null, createdAt: new Date().toISOString().slice(0, 10) };
+                          setPlanEntries(prev => [...prev, newEntry]);
+                          showToast("Saved to Calendar — tap Plan to view");
+                        }}>{I.calendar}</button>
+                        <button className={`oc-save${opp.saved ? " saved" : ""}`} onClick={(e) => {
+                          e.stopPropagation();
+                          setOpportunities(prev => prev.map(o => o.id === opp.id ? { ...o, saved: !o.saved } : o));
+                        }}>
+                          {opp.saved ? "★" : "☆"}
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -8840,6 +9050,436 @@ export default function ArtistShell() {
             )}
           </div>
         );
+
+      /* ── Plan ── */
+      case "plan": {
+        const today = new Date();
+        const todayStr = today.toISOString().slice(0, 10);
+
+        const daysInMonth = (y, m) => new Date(y, m + 1, 0).getDate();
+        const firstDayOfMonth = (y, m) => (new Date(y, m, 1).getDay() + 6) % 7;
+
+        const pm = planMonth;
+        const totalDays = daysInMonth(pm.year, pm.month);
+        const startDay = firstDayOfMonth(pm.year, pm.month);
+        const monthLabel = new Date(pm.year, pm.month).toLocaleDateString("en-US", { month: "long", year: "numeric" });
+
+        const prevMonth = () => setPlanMonth(p => p.month === 0 ? { year: p.year - 1, month: 11 } : { ...p, month: p.month - 1 });
+        const nextMonth = () => setPlanMonth(p => p.month === 11 ? { year: p.year + 1, month: 0 } : { ...p, month: p.month + 1 });
+        const goToday = () => { const d = new Date(); setPlanMonth({ year: d.getFullYear(), month: d.getMonth() }); setPlanSelectedDay(d.toISOString().slice(0, 10)); };
+
+        const getWeekDays = (startStr) => {
+          const d = new Date(startStr);
+          return Array.from({ length: 7 }, (_, i) => { const nd = new Date(d); nd.setDate(d.getDate() + i); return nd.toISOString().slice(0, 10); });
+        };
+        const prevWeek = () => setPlanWeekStart(p => { const d = new Date(p); d.setDate(d.getDate() - 7); return d.toISOString().slice(0, 10); });
+        const nextWeek = () => setPlanWeekStart(p => { const d = new Date(p); d.setDate(d.getDate() + 7); return d.toISOString().slice(0, 10); });
+        const weekDays = getWeekDays(planWeekStart);
+        const weekLabel = (() => { const s = new Date(weekDays[0]); const e = new Date(weekDays[6]); return `${s.toLocaleDateString("en-US", { month: "short", day: "numeric" })} — ${e.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`; })();
+
+        const entriesForDate = (dateStr) => planEntries.filter(e => e.deadline === dateStr);
+        const filteredEntries = planFilter === "all" ? planEntries : planEntries.filter(e => e.source === planFilter);
+        const upcomingEntries = [...filteredEntries].filter(e => e.deadline >= todayStr).sort((a, b) => a.deadline.localeCompare(b.deadline));
+        const selectedDayEntries = planSelectedDay ? entriesForDate(planSelectedDay) : [];
+
+        const getDaysUntil = (dateStr) => { const diff = (new Date(dateStr) - today) / 86400000; return Math.ceil(diff); };
+        const formatDeadline = (dateStr) => { const d = getDaysUntil(dateStr); if (d < 0) return "Passed"; if (d === 0) return "Today"; if (d === 1) return "Tomorrow"; return `${d} days`; };
+
+        const handleAddEntry = () => {
+          if (!planAddForm.title || !planAddForm.deadline) return;
+          const newEntry = {
+            id: "pl" + Date.now(),
+            source: "external",
+            title: planAddForm.title,
+            company: planAddForm.company,
+            companyLogo: null,
+            deadline: planAddForm.deadline,
+            type: planAddForm.type,
+            status: "planned",
+            reminders: planAddForm.reminders.length ? planAddForm.reminders : planDefaultReminders,
+            notes: planAddForm.notes,
+            checklist: [],
+            linkedAppId: null,
+            linkedExtAppId: planAddForm.linkedExtAppId || null,
+            createdAt: todayStr,
+          };
+          setPlanEntries(prev => [...prev, newEntry]);
+          setPlanShowAdd(false);
+          setPlanAddForm({ title: "", company: "", deadline: "", type: "audition", notes: "", reminders: ["3d", "1d"], linkedExtAppId: "" });
+          showToast("Entry added to Plan");
+        };
+
+        const updateEntry = (id, updates) => setPlanEntries(prev => prev.map(e => e.id === id ? { ...e, ...updates } : e));
+        const deleteEntry = (id) => { setPlanEntries(prev => prev.filter(e => e.id !== id)); setPlanSelectedEntry(null); showToast("Entry removed"); };
+
+        const selEntry = planSelectedEntry ? planEntries.find(e => e.id === planSelectedEntry) : null;
+
+        return (
+          <div>
+            <div className="pg-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <h1><em>Plan</em></h1>
+                <p className="pg-sub">Your audition calendar — Lanced and beyond</p>
+              </div>
+              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <button className="btn btn-s btn-sm" onClick={() => setPlanShowSettings(true)}>{I.settings}</button>
+                <button className="btn btn-p btn-sm" onClick={() => setPlanShowAdd(true)}>+ Add Call</button>
+              </div>
+            </div>
+
+            {/* ── View Toggle & Nav ── */}
+            <div className="plan-nav">
+              <div className="plan-nav-left">
+                <div className="plan-view-toggle">
+                  {["month", "week", "list"].map(v => (
+                    <button key={v} className={planView === v ? "active" : ""} onClick={() => setPlanView(v)}>{v.charAt(0).toUpperCase() + v.slice(1)}</button>
+                  ))}
+                </div>
+              </div>
+              <div className="plan-nav-center">
+                <button className="plan-arrow" onClick={planView === "week" ? prevWeek : prevMonth}>‹</button>
+                <span className="plan-month-label">{planView === "week" ? weekLabel : monthLabel}</span>
+                <button className="plan-arrow" onClick={planView === "week" ? nextWeek : nextMonth}>›</button>
+              </div>
+              <div className="plan-nav-right">
+                <button className="btn btn-s btn-sm" onClick={goToday}>Today</button>
+                <div className="plan-filter-chips">
+                  {[{ id: "all", label: "All" }, { id: "lanced", label: "Lanced" }, { id: "external", label: "External" }].map(f => (
+                    <button key={f.id} className={`chip${planFilter === f.id ? " on" : ""}`} onClick={() => setPlanFilter(f.id)}>{f.label}</button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* ── Month View ── */}
+            {planView === "month" && (
+              <div className="plan-cal">
+                <div className="plan-cal-header">
+                  {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(d => <div key={d} className="plan-cal-dow">{d}</div>)}
+                </div>
+                <div className="plan-cal-grid">
+                  {Array.from({ length: startDay }).map((_, i) => <div key={"e" + i} className="plan-cal-cell empty" />)}
+                  {Array.from({ length: totalDays }).map((_, i) => {
+                    const day = i + 1;
+                    const dateStr = `${pm.year}-${String(pm.month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+                    const entries = entriesForDate(dateStr).filter(e => planFilter === "all" || e.source === planFilter);
+                    const isToday = dateStr === todayStr;
+                    const isSelected = dateStr === planSelectedDay;
+                    return (
+                      <div key={day} className={`plan-cal-cell${isToday ? " today" : ""}${isSelected ? " selected" : ""}${entries.length ? " has-entries" : ""}`} onClick={() => setPlanSelectedDay(dateStr === planSelectedDay ? null : dateStr)}>
+                        <span className="plan-cal-day">{day}</span>
+                        <div className="plan-cal-dots">
+                          {entries.slice(0, 3).map(e => <span key={e.id} className="plan-cal-dot" style={{ background: PLAN_ENTRY_COLORS[e.source]?.dot }} />)}
+                          {entries.length > 3 && <span className="plan-cal-more">+{entries.length - 3}</span>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Day detail panel */}
+                {planSelectedDay && (
+                  <div className="plan-day-detail">
+                    <div className="plan-day-detail-header">
+                      <h3>{new Date(planSelectedDay + "T12:00:00").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</h3>
+                      <button className="btn btn-s btn-sm" onClick={() => setPlanSelectedDay(null)}>✕</button>
+                    </div>
+                    {selectedDayEntries.length === 0 ? (
+                      <div style={{ textAlign: "center", padding: "24px 0", color: "var(--g4)", fontSize: 13 }}>
+                        <p>No deadlines on this day</p>
+                        <button className="btn btn-s btn-sm" onClick={() => { setPlanAddForm(f => ({ ...f, deadline: planSelectedDay })); setPlanShowAdd(true); }}>+ Add Call</button>
+                      </div>
+                    ) : (
+                      <div className="plan-day-entries">
+                        {selectedDayEntries.map(entry => (
+                          <div key={entry.id} className="plan-entry-card" onClick={() => setPlanSelectedEntry(entry.id)}>
+                            <div className="plan-entry-accent" style={{ background: PLAN_ENTRY_COLORS[entry.source]?.color }} />
+                            <div className="plan-entry-body">
+                              <div className="plan-entry-top">
+                                <span className="plan-entry-source" style={{ background: PLAN_ENTRY_COLORS[entry.source]?.bg, color: PLAN_ENTRY_COLORS[entry.source]?.color }}>{entry.source === "lanced" ? "Lanced" : "External"}</span>
+                                <span className="plan-entry-type">{PLAN_TYPE_LABELS[entry.type] || entry.type}</span>
+                              </div>
+                              <div className="plan-entry-title">{entry.title}</div>
+                              <div className="plan-entry-company">{entry.company}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* ── Week View ── */}
+            {planView === "week" && (
+              <div className="plan-week">
+                {weekDays.map(dateStr => {
+                  const entries = entriesForDate(dateStr).filter(e => planFilter === "all" || e.source === planFilter);
+                  const isToday = dateStr === todayStr;
+                  const dayLabel = new Date(dateStr + "T12:00:00").toLocaleDateString("en-US", { weekday: "short", day: "numeric" });
+                  return (
+                    <div key={dateStr} className={`plan-week-day${isToday ? " today" : ""}`}>
+                      <div className="plan-week-day-header">{dayLabel}</div>
+                      <div className="plan-week-day-entries">
+                        {entries.map(entry => (
+                          <div key={entry.id} className="plan-week-entry" style={{ borderLeft: `3px solid ${PLAN_ENTRY_COLORS[entry.source]?.color}` }} onClick={() => setPlanSelectedEntry(entry.id)}>
+                            <div className="plan-week-entry-title">{entry.title}</div>
+                            <div className="plan-week-entry-company">{entry.company}</div>
+                          </div>
+                        ))}
+                        {entries.length === 0 && <div className="plan-week-empty" />}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* ── List View ── */}
+            {planView === "list" && (
+              <div className="plan-list">
+                {upcomingEntries.length === 0 ? (
+                  <div className="stub-section">
+                    <div className="stub-icon">{EIcon.calendar}</div>
+                    <div className="stub-title">No upcoming deadlines</div>
+                    <p>Add calls from Discover or create external entries to start planning.</p>
+                  </div>
+                ) : (
+                  upcomingEntries.map(entry => {
+                    const daysLeft = getDaysUntil(entry.deadline);
+                    const urgent = daysLeft >= 0 && daysLeft <= 3;
+                    return (
+                      <div key={entry.id} className={`plan-list-row${urgent ? " urgent" : ""}`} onClick={() => setPlanSelectedEntry(entry.id)}>
+                        <div className="plan-list-accent" style={{ background: PLAN_ENTRY_COLORS[entry.source]?.color }} />
+                        <div className="plan-list-main">
+                          <div className="plan-list-top">
+                            <span className="plan-entry-source" style={{ background: PLAN_ENTRY_COLORS[entry.source]?.bg, color: PLAN_ENTRY_COLORS[entry.source]?.color }}>{entry.source === "lanced" ? "Lanced" : "External"}</span>
+                            <span className="plan-entry-status" style={{ background: PLAN_STATUS_COLORS[entry.status]?.bg, color: PLAN_STATUS_COLORS[entry.status]?.color }}>{PLAN_STATUS_LABELS[entry.status]}</span>
+                            <span className="plan-entry-type">{PLAN_TYPE_LABELS[entry.type]}</span>
+                          </div>
+                          <div className="plan-list-title">{entry.title}</div>
+                          <div className="plan-list-company">{entry.company}</div>
+                          {entry.notes && <div className="plan-list-notes">{entry.notes.slice(0, 80)}{entry.notes.length > 80 ? "…" : ""}</div>}
+                        </div>
+                        <div className="plan-list-right">
+                          <div className={`plan-list-deadline${urgent ? " urgent" : ""}`}>{formatDeadline(entry.deadline)}</div>
+                          <div className="plan-list-date">{entry.deadline}</div>
+                          {entry.checklist.length > 0 && (
+                            <div className="plan-list-progress">{entry.checklist.filter(c => c.done).length}/{entry.checklist.length} prep</div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            )}
+
+            {/* ── Entry Detail Overlay ── */}
+            {selEntry && (
+              <>
+                <div className="overlay" onClick={() => setPlanSelectedEntry(null)}>
+                  <div className="plan-detail" onClick={e => e.stopPropagation()}>
+                    <div className="plan-detail-header">
+                      <div>
+                        <div style={{ display: "flex", gap: 8, marginBottom: 8, flexWrap: "wrap" }}>
+                          <span className="plan-entry-source" style={{ background: PLAN_ENTRY_COLORS[selEntry.source]?.bg, color: PLAN_ENTRY_COLORS[selEntry.source]?.color }}>{selEntry.source === "lanced" ? "Lanced" : "External"}</span>
+                          <span className="plan-entry-status" style={{ background: PLAN_STATUS_COLORS[selEntry.status]?.bg, color: PLAN_STATUS_COLORS[selEntry.status]?.color }}>{PLAN_STATUS_LABELS[selEntry.status]}</span>
+                          <span className="plan-entry-type">{PLAN_TYPE_LABELS[selEntry.type]}</span>
+                        </div>
+                        <h2 style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>{selEntry.title}</h2>
+                        <div style={{ fontSize: 13, color: "var(--g4)", marginTop: 4 }}>{selEntry.company}</div>
+                      </div>
+                      <button className="modal-close" onClick={() => setPlanSelectedEntry(null)}>✕</button>
+                    </div>
+
+                    <div className="plan-detail-grid">
+                      <div className="info-card">
+                        <h4>Deadline</h4>
+                        <div style={{ fontSize: 20, fontWeight: 700, fontFamily: "var(--mono)" }}>{selEntry.deadline}</div>
+                        <div style={{ fontSize: 13, color: getDaysUntil(selEntry.deadline) <= 3 && getDaysUntil(selEntry.deadline) >= 0 ? "#FF4757" : "var(--g4)", marginTop: 4, fontWeight: 600 }}>{formatDeadline(selEntry.deadline)}</div>
+                      </div>
+
+                      <div className="info-card">
+                        <h4>Reminders</h4>
+                        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                          {REMINDER_PRESETS.map(r => {
+                            const isOn = selEntry.reminders.includes(r.id);
+                            return (
+                              <button key={r.id} className={`chip${isOn ? " on" : ""}`} onClick={() => updateEntry(selEntry.id, { reminders: isOn ? selEntry.reminders.filter(x => x !== r.id) : [...selEntry.reminders, r.id] })}>{r.label}</button>
+                            );
+                          })}
+                        </div>
+                        {calProviders.some(p => p.connected) && <div style={{ fontSize: 11, color: "var(--g4)", marginTop: 8 }}>{EIcon.calendar} Synced to {calProviders.filter(p => p.connected).map(p => p.label).join(", ")}</div>}
+                      </div>
+
+                      <div className="info-card">
+                        <h4>Status</h4>
+                        <div style={{ display: "flex", gap: 6 }}>
+                          {Object.entries(PLAN_STATUS_LABELS).map(([k, v]) => (
+                            <button key={k} className={`chip${selEntry.status === k ? " on" : ""}`} onClick={() => updateEntry(selEntry.id, { status: k })}>{v}</button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Notes */}
+                    <div className="info-card">
+                      <h4>Notes</h4>
+                      <textarea className="msg-input" style={{ width: "100%", minHeight: 80, resize: "vertical" }} value={selEntry.notes} onChange={e => updateEntry(selEntry.id, { notes: e.target.value })} placeholder="Add notes for this call..." />
+                    </div>
+
+                    {/* Prep Checklist */}
+                    <div className="info-card">
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                        <h4 style={{ margin: 0 }}>Prep Checklist</h4>
+                        <button className="btn btn-s btn-sm" onClick={() => updateEntry(selEntry.id, { checklist: [...selEntry.checklist, { text: "New item", done: false }] })}>+ Add</button>
+                      </div>
+                      {selEntry.checklist.length === 0 ? (
+                        <p style={{ fontSize: 12, color: "var(--g4)" }}>No checklist items yet. Add tasks to prepare for this call.</p>
+                      ) : (
+                        <div className="plan-checklist">
+                          {selEntry.checklist.map((item, i) => (
+                            <div key={i} className="plan-item">
+                              <div className={`plan-check${item.done ? " done" : ""}`} onClick={() => updateEntry(selEntry.id, { checklist: selEntry.checklist.map((c, ci) => ci === i ? { ...c, done: !c.done } : c) })}>{item.done ? "✓" : ""}</div>
+                              <input className="plan-check-input" value={item.text} style={item.done ? { textDecoration: "line-through", opacity: .5 } : {}} onChange={e => updateEntry(selEntry.id, { checklist: selEntry.checklist.map((c, ci) => ci === i ? { ...c, text: e.target.value } : c) })} />
+                              <button className="plan-check-del" onClick={() => updateEntry(selEntry.id, { checklist: selEntry.checklist.filter((_, ci) => ci !== i) })}>✕</button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Linked Application */}
+                    {selEntry.linkedExtAppId && (() => {
+                      const ext = externalApps.find(a => a.id === selEntry.linkedExtAppId);
+                      return ext ? (
+                        <div className="info-card" style={{ cursor: "pointer" }} onClick={() => { setPlanSelectedEntry(null); setViewExtApp(ext.id); setPage("applications"); }}>
+                          <h4>Linked Application</h4>
+                          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                            <div style={{ width: 8, height: 8, borderRadius: "50%", background: EXT_STATUS_COLORS[ext.status]?.color }} />
+                            <div>
+                              <div style={{ fontSize: 13, fontWeight: 600 }}>{ext.companyName} — {ext.role}</div>
+                              <div style={{ fontSize: 11, color: "var(--g4)" }}>{EXT_STATUS_LABELS[ext.status]} · {ext.selectedMedia.length} media attached</div>
+                            </div>
+                            <span style={{ marginLeft: "auto", fontSize: 12, color: "var(--g4)" }}>→</span>
+                          </div>
+                        </div>
+                      ) : null;
+                    })()}
+
+                    <div style={{ display: "flex", justifyContent: "space-between", marginTop: 8 }}>
+                      <button className="btn btn-s btn-sm" style={{ color: "#FF4757" }} onClick={() => deleteEntry(selEntry.id)}>Remove from Plan</button>
+                      <button className="btn btn-p btn-sm" onClick={() => setPlanSelectedEntry(null)}>Done</button>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* ── Add Entry Modal ── */}
+            {planShowAdd && (
+              <div className="overlay" onClick={() => setPlanShowAdd(false)}>
+                <div className="plan-add-modal" onClick={e => e.stopPropagation()}>
+                  <button className="modal-close" onClick={() => setPlanShowAdd(false)}>✕</button>
+                  <h2 className="plan-add-title">Add External Call</h2>
+                  <p className="plan-add-sub">Track an audition, casting, or opportunity from outside Lanced.</p>
+                  <div className="plan-add-form">
+                    <div className="plan-add-row">
+                      <label className="plan-add-label">Title *</label>
+                      <input className="plan-add-input" placeholder="e.g. Company Dancer — 2027 Season" value={planAddForm.title} onChange={e => setPlanAddForm(f => ({ ...f, title: e.target.value }))} />
+                    </div>
+                    <div className="plan-add-row">
+                      <label className="plan-add-label">Company *</label>
+                      <input className="plan-add-input" placeholder="e.g. Dutch National Ballet" value={planAddForm.company} onChange={e => setPlanAddForm(f => ({ ...f, company: e.target.value }))} />
+                    </div>
+                    <div className="plan-add-row-pair">
+                      <div className="plan-add-row">
+                        <label className="plan-add-label">Deadline *</label>
+                        <input className="plan-add-input" type="date" value={planAddForm.deadline} onChange={e => setPlanAddForm(f => ({ ...f, deadline: e.target.value }))} />
+                      </div>
+                      <div className="plan-add-row">
+                        <label className="plan-add-label">Type</label>
+                        <select className="plan-add-input" value={planAddForm.type} onChange={e => setPlanAddForm(f => ({ ...f, type: e.target.value }))}>
+                          {Object.entries(PLAN_TYPE_LABELS).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
+                        </select>
+                      </div>
+                    </div>
+                    <div className="plan-add-row">
+                      <label className="plan-add-label">Reminders</label>
+                      <div className="plan-add-chips">
+                        {REMINDER_PRESETS.map(r => {
+                          const isOn = planAddForm.reminders.includes(r.id);
+                          return <button key={r.id} className={`chip${isOn ? " on" : ""}`} onClick={() => setPlanAddForm(f => ({ ...f, reminders: isOn ? f.reminders.filter(x => x !== r.id) : [...f.reminders, r.id] }))}>{r.label}</button>;
+                        })}
+                      </div>
+                    </div>
+                    {externalApps.length > 0 && (
+                      <div className="plan-add-row">
+                        <label className="plan-add-label">Link External App</label>
+                        <select className="plan-add-input" value={planAddForm.linkedExtAppId} onChange={e => setPlanAddForm(f => ({ ...f, linkedExtAppId: e.target.value }))}>
+                          <option value="">None</option>
+                          {externalApps.map(ea => <option key={ea.id} value={ea.id}>{ea.companyName} — {ea.role}</option>)}
+                        </select>
+                      </div>
+                    )}
+                    <div className="plan-add-row">
+                      <label className="plan-add-label">Notes</label>
+                      <textarea className="plan-add-input" rows={3} placeholder="Requirements, preparation notes, links..." value={planAddForm.notes} onChange={e => setPlanAddForm(f => ({ ...f, notes: e.target.value }))} />
+                    </div>
+                  </div>
+                  <div className="plan-add-actions">
+                    <button className="btn btn-s" onClick={() => setPlanShowAdd(false)}>Cancel</button>
+                    <button className="btn btn-p" onClick={handleAddEntry} disabled={!planAddForm.title || !planAddForm.deadline}>Add to Plan</button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* ── Calendar Settings Modal ── */}
+            {planShowSettings && (
+              <div className="overlay" onClick={() => setPlanShowSettings(false)}>
+                <div onClick={e => e.stopPropagation()} style={{ position: "relative", maxWidth: 440 }}>
+                  <button className="modal-close" onClick={() => setPlanShowSettings(false)}>✕</button>
+                  <h2 style={{ marginTop: 0, fontSize: 18 }}>Plan Settings</h2>
+
+                  <div className="info-card">
+                    <h4>Calendar Sync</h4>
+                    <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>One-way sync — deadlines push from Lanced to your external calendar.</p>
+                    {calProviders.map(p => (
+                      <div key={p.id} className="plan-settings-row">
+                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                          {EIcon.calendar}
+                          <span style={{ fontSize: 13, fontWeight: 600 }}>{p.label}</span>
+                        </div>
+                        <button className={`btn btn-sm ${p.connected ? "btn-success" : "btn-s"}`} onClick={() => { setCalProviders(prev => prev.map(cp => cp.id === p.id ? { ...cp, connected: !cp.connected } : cp)); showToast(p.connected ? `${p.label} disconnected` : `${p.label} connected`); }}>
+                          {p.connected ? "Connected" : "Connect"}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="info-card">
+                    <h4>Default Reminders</h4>
+                    <p style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12 }}>Applied to all new entries unless overridden.</p>
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                      {REMINDER_PRESETS.map(r => {
+                        const isOn = planDefaultReminders.includes(r.id);
+                        return <button key={r.id} className={`chip${isOn ? " on" : ""}`} onClick={() => setPlanDefaultReminders(prev => isOn ? prev.filter(x => x !== r.id) : [...prev, r.id])}>{r.label}</button>;
+                      })}
+                    </div>
+                  </div>
+
+                  <div style={{ textAlign: "right", marginTop: 12 }}>
+                    <button className="btn btn-p btn-sm" onClick={() => setPlanShowSettings(false)}>Done</button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      }
 
       /* ── Academy ── */
       case "academy":
@@ -14560,6 +15200,7 @@ export default function ArtistShell() {
                 {[
                   { id: "all", label: "All" },
                   { id: "application", label: "Applications" },
+                  { id: "plan", label: "Plan" },
                   { id: "broadcast", label: "Broadcasts" },
                   { id: "invitation", label: "Invitations" },
                   { id: "opportunity", label: "Opportunities" },
