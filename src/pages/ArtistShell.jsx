@@ -1866,6 +1866,40 @@ textarea.pf-input{line-height:1.6}
 .ext-email-actions{padding:14px 20px;display:flex;justify-content:flex-end}
 .ext-email-spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* Share / Email Modal */
+.share-modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;animation:fadeIn .15s;padding:20px}
+.share-modal{width:100%;max-width:560px;background:var(--sf);border-radius:18px;border:1px solid var(--br);box-shadow:0 24px 80px rgba(0,0,0,.18);overflow:hidden;animation:slideUp .2s}
+.share-modal-head{display:flex;align-items:center;justify-content:space-between;padding:6px 12px 0 12px;border-bottom:1px solid var(--g1)}
+.share-modal-tabs{display:flex;gap:0}
+.share-modal-tab{display:flex;align-items:center;gap:6px;padding:12px 20px;font-size:13px;font-weight:600;color:var(--g4);background:none;border:none;cursor:pointer;font-family:var(--sans);border-bottom:2px solid transparent;transition:all .15s}
+.share-modal-tab.active{color:var(--ac);border-bottom-color:var(--ac)}
+.share-modal-tab:hover:not(.active){color:var(--tx)}
+.share-modal-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:none;background:none;color:var(--g4);font-size:16px;cursor:pointer;border-radius:8px;transition:all .15s}
+.share-modal-close:hover{background:var(--g1);color:var(--tx)}
+.share-modal-body{padding:24px;display:flex;flex-direction:column;gap:16px;max-height:70vh;overflow-y:auto}
+.share-modal-section{display:flex;flex-direction:column;gap:10px}
+.share-modal-section-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--g4);display:flex;align-items:center;gap:6px}
+.share-modal-settings{display:flex;flex-direction:column;gap:6px}
+.share-modal-setting-row{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:10px;background:var(--s1);border:1px solid var(--br)}
+.share-modal-setting-title{font-size:13px;font-weight:500;color:var(--tx)}
+.share-modal-setting-sub{font-size:11px;color:var(--g4)}
+.share-modal-pw-input{padding:10px 14px;border:1px solid var(--br);border-radius:8px;background:var(--s1);font-size:13px;color:var(--tx);outline:none;font-family:var(--sans)}
+.share-email-form{display:flex;flex-direction:column;gap:14px}
+.share-email-row{display:flex;flex-direction:column;gap:6px}
+.share-email-label{font-size:12px;font-weight:600;color:var(--g5);letter-spacing:.02em}
+.share-email-value{font-size:13px;color:var(--tx);padding:12px 14px;background:var(--bg);border:1px solid var(--g2);border-radius:10px}
+.share-email-input{width:100%;padding:12px 14px;border:1px solid var(--g2);border-radius:10px;background:var(--bg);font-size:13px;font-family:var(--sans);color:var(--tx);outline:none;box-sizing:border-box;transition:border-color .15s}
+.share-email-input:focus{border-color:var(--ac)}
+.share-email-input::placeholder{color:var(--g3)}
+.share-email-body{min-height:160px;resize:vertical;line-height:1.6}
+.share-email-attachment{padding:0}
+.share-email-att-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--g4);margin-bottom:8px}
+.share-email-att-card{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--g1);border-radius:10px}
+.share-email-actions{padding:4px 0 0;display:flex;justify-content:flex-end}
+@media(max-width:600px){
+.share-modal-overlay{align-items:flex-end;padding:0}
+.share-modal{max-width:100%;border-radius:20px 20px 0 0;max-height:90vh}
+}
 .extd-motivation{padding:16px;border:1px solid var(--g1);border-radius:14px;background:var(--bg);font-size:13px;line-height:1.6;color:var(--tx);white-space:pre-wrap;margin-bottom:16px}
 .extd-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-bottom:16px}
 .extd-media-thumb{border-radius:10px;overflow:hidden;aspect-ratio:4/3}
@@ -1884,7 +1918,7 @@ textarea.pf-input{line-height:1.6}
 .dark .upload-panel{background:rgba(30,30,35,.85);border-color:rgba(255,255,255,.08)}
 .dark .upload-dropzone{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.1)}
 .dark .upload-dropzone:hover,.dark .upload-dropzone.dragover{border-color:var(--ac);background:rgba(96,77,255,.06)}
-.dark .vd-modal,.dark .vs-modal,.dark .ext-modal{background:var(--sf)}
+.dark .vd-modal,.dark .vs-modal,.dark .ext-modal,.dark .share-modal{background:var(--sf)}
 .dark .extd-motivation,.dark .ext-preview-card,.dark .extd-stat-card{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
 .dark .premium-gate{background:rgba(96,77,255,.05);border-color:rgba(96,77,255,.15)}
 .dark .ms-card{background:var(--sf);border-color:var(--g2)}
@@ -4808,6 +4842,7 @@ const EIcon = {
   palette: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2Z"/></svg>,
   folder: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>,
   link: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
+  mail: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>,
   music: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>,
   handshake: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14h2"/><path d="m3 4 3.86 2.31a2 2 0 0 0 1.42.25L11 6"/><path d="M5 14 9 9"/></svg>,
   barChart: <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>,
@@ -5292,7 +5327,10 @@ export default function ArtistShell() {
   const [extAppShareSettings, setExtAppShareSettings] = useState({ requireEmail: true, requirePassword: false, password: "" });
   const [viewExtApp, setViewExtApp] = useState(null);
   const [extAppDetailTab, setExtAppDetailTab] = useState("overview");
+  const [extShareModal, setExtShareModal] = useState(false);
+  const [extShareTab, setExtShareTab] = useState("share");
   const [extEmailForm, setExtEmailForm] = useState({ to: "", subject: "", body: "", sending: false, sent: false });
+  const [dynamicActivity, setDynamicActivity] = useState([]);
   const [appTypeFilter, setAppTypeFilter] = useState("all");
 
   /* Picker modals */
@@ -7372,115 +7410,131 @@ export default function ArtistShell() {
                     </div>
                   )}
                   {renderTimeline(
-                    APP_ACTIVITY_FEED.filter(ev => ev.appId === extApp.id || ev.appId === viewExtApp),
+                    [...dynamicActivity, ...APP_ACTIVITY_FEED].filter(ev => ev.appId === extApp.id || ev.appId === viewExtApp),
                     { compact: true, emptyMsg: "Activity for this application will appear here" }
                   )}
                 </div>
               )}
 
-              {extAppDetailTab === "share" && (
-                <>
-                  {/* Share Link Panel */}
-                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(var(--ac-rgb,99,102,241),.04)", border: "1px solid rgba(var(--ac-rgb,99,102,241),.1)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
-                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                      Application Link
-                    </h4>
-                    <div className="vs-link-row">
-                      <input readOnly value={`apply.lanced.app/${extApp.slug}`} />
-                      <button onClick={() => { navigator.clipboard?.writeText(`apply.lanced.app/${extApp.slug}`); showToast("Link copied!"); }}>Copy</button>
+              {/* Share / Email Modal */}
+              {extShareModal && (
+                <div className="share-modal-overlay" onClick={() => setExtShareModal(false)}>
+                  <div className="share-modal" onClick={e => e.stopPropagation()}>
+                    <div className="share-modal-head">
+                      <div className="share-modal-tabs">
+                        <button className={`share-modal-tab${extShareTab === "share" ? " active" : ""}`} onClick={() => setExtShareTab("share")}>
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                          Share
+                        </button>
+                        <button className={`share-modal-tab${extShareTab === "email" ? " active" : ""}`} onClick={() => setExtShareTab("email")}>
+                          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                          Email
+                        </button>
+                      </div>
+                      <button className="share-modal-close" onClick={() => setExtShareModal(false)}>✕</button>
                     </div>
-                  </div>
 
-                  {/* Access Settings Panel */}
-                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
-                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                      Access Settings
-                    </h4>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", borderRadius: 10, background: "var(--s1)", border: "1px solid var(--br)" }}>
-                        <div><div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Require email</div><div style={{ fontSize: 11, color: "var(--g4)" }}>Always on for external apps</div></div>
-                        <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
-                      </div>
-                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 14px", borderRadius: 10, background: "var(--s1)", border: "1px solid var(--br)" }}>
-                        <div><div style={{ fontSize: 13, fontWeight: 500, color: "var(--tx)" }}>Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div></div>
-                        <div className={`sm-switch${extApp.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, requirePassword: !a.shareSettings.requirePassword } } : a))} />
-                      </div>
-                      {extApp.shareSettings.requirePassword && (
-                        <input style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", marginTop: 4 }} type="text" placeholder="Set password..." value={extApp.shareSettings.password} onChange={e => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, password: e.target.value } } : a))} />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Send via Email Panel */}
-                  <div className="ext-email-panel">
-                    <div className="ext-email-header">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                      <span>Send Application via Email</span>
-                    </div>
-                    {extEmailForm.sent ? (
-                      <div style={{ textAlign: "center", padding: "32px 16px" }}>
-                        <div style={{ fontSize: 32, marginBottom: 8 }}>{EIcon.check}</div>
-                        <div style={{ fontSize: 15, fontWeight: 600, color: "var(--tx)", marginBottom: 4 }}>Application Sent</div>
-                        <div style={{ fontSize: 12, color: "var(--g4)", marginBottom: 16 }}>Your application was emailed to {extEmailForm.to}</div>
-                        <button className="btn btn-s btn-sm" onClick={() => setExtEmailForm({ to: "", subject: "", body: "", sending: false, sent: false })}>Send Another</button>
-                      </div>
-                    ) : (
-                      <div className="ext-email-form">
-                        <div className="ext-email-row">
-                          <label className="ext-email-label">From</label>
-                          <div className="ext-email-from">{artist.name} &lt;{artist.email || "amara@lanced.io"}&gt; <span className="ext-email-via">via Lanced</span></div>
-                        </div>
-                        <div className="ext-email-row">
-                          <label className="ext-email-label">To</label>
-                          <input className="ext-email-input" placeholder="casting@company.com" value={extEmailForm.to} onChange={e => setExtEmailForm(f => ({ ...f, to: e.target.value }))} />
-                        </div>
-                        <div className="ext-email-row">
-                          <label className="ext-email-label">Subject</label>
-                          <input className="ext-email-input" placeholder={`Application: ${extApp.role} — ${artist.name}`} value={extEmailForm.subject} onChange={e => setExtEmailForm(f => ({ ...f, subject: e.target.value }))} />
-                        </div>
-                        <div className="ext-email-row" style={{ flexDirection: "column", alignItems: "stretch" }}>
-                          <label className="ext-email-label" style={{ marginBottom: 6 }}>Message</label>
-                          <textarea className="ext-email-input ext-email-body" rows={5} placeholder={`Dear hiring team,\n\nPlease find my application for the ${extApp.role} position. I have included my portfolio, media, and relevant materials via the link below.\n\nI look forward to hearing from you.\n\nBest regards,\n${artist.name}`} value={extEmailForm.body} onChange={e => setExtEmailForm(f => ({ ...f, body: e.target.value }))} />
-                        </div>
-                        <div className="ext-email-attachment">
-                          <div className="ext-email-att-label">Attached link</div>
-                          <div className="ext-email-att-card">
-                            <div className="ext-email-att-icon">
-                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                            </div>
-                            <div>
-                              <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{extApp.companyName} — {extApp.role}</div>
-                              <div style={{ fontSize: 11, color: "var(--ac)" }}>apply.lanced.app/{extApp.slug}</div>
-                            </div>
+                    {extShareTab === "share" && (
+                      <div className="share-modal-body">
+                        <div className="share-modal-section">
+                          <div className="share-modal-section-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            Application Link
+                          </div>
+                          <div className="vs-link-row">
+                            <input readOnly value={`apply.lanced.app/${extApp.slug}`} />
+                            <button onClick={() => { navigator.clipboard?.writeText(`apply.lanced.app/${extApp.slug}`); showToast("Link copied!"); }}>Copy</button>
                           </div>
                         </div>
-                        <div className="ext-email-actions">
-                          <button className="btn btn-p" style={{ display: "flex", alignItems: "center", gap: 6 }}
-                            disabled={!extEmailForm.to || extEmailForm.sending}
-                            onClick={() => {
-                              setExtEmailForm(f => ({ ...f, sending: true }));
-                              setTimeout(() => {
-                                setExtEmailForm(f => ({ ...f, sending: false, sent: true }));
-                                showToast("Application sent to " + extEmailForm.to);
-                              }, 1500);
-                            }}>
-                            {extEmailForm.sending ? (
-                              <><span className="ext-email-spinner" /> Sending...</>
-                            ) : (
-                              <><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Application</>
+                        <div className="share-modal-section">
+                          <div className="share-modal-section-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            Access Settings
+                          </div>
+                          <div className="share-modal-settings">
+                            <div className="share-modal-setting-row">
+                              <div><div className="share-modal-setting-title">Require email</div><div className="share-modal-setting-sub">Always on for external apps</div></div>
+                              <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
+                            </div>
+                            <div className="share-modal-setting-row">
+                              <div><div className="share-modal-setting-title">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div></div>
+                              <div className={`sm-switch${extApp.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, requirePassword: !a.shareSettings.requirePassword } } : a))} />
+                            </div>
+                            {extApp.shareSettings.requirePassword && (
+                              <input className="share-modal-pw-input" type="text" placeholder="Set password..." value={extApp.shareSettings.password} onChange={e => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, password: e.target.value } } : a))} />
                             )}
-                          </button>
+                          </div>
                         </div>
+                        <button className="btn btn-s btn-sm" onClick={() => window.open(`/apply.html?slug=${extApp.slug}`, "_blank")} style={{ display: "inline-flex", alignItems: "center", gap: 5, marginTop: 4 }}>
+                          {I.eye} Preview as viewer
+                        </button>
+                      </div>
+                    )}
+
+                    {extShareTab === "email" && (
+                      <div className="share-modal-body">
+                        {extEmailForm.sent ? (
+                          <div style={{ textAlign: "center", padding: "32px 16px" }}>
+                            <div style={{ fontSize: 32, marginBottom: 8 }}>{EIcon.check}</div>
+                            <div style={{ fontSize: 15, fontWeight: 600, color: "var(--tx)", marginBottom: 4 }}>Application Sent</div>
+                            <div style={{ fontSize: 12, color: "var(--g4)", marginBottom: 16 }}>Your application was emailed to {extEmailForm.to}</div>
+                            <button className="btn btn-s btn-sm" onClick={() => setExtEmailForm({ to: "", subject: "", body: "", sending: false, sent: false })}>Send Another</button>
+                          </div>
+                        ) : (
+                          <div className="share-email-form">
+                            <div className="share-email-row">
+                              <label className="share-email-label">From</label>
+                              <div className="share-email-value">{artist.name} &lt;{artist.email || "amara@lanced.io"}&gt; <span className="ext-email-via">via Lanced</span></div>
+                            </div>
+                            <div className="share-email-row">
+                              <label className="share-email-label">To</label>
+                              <input className="share-email-input" placeholder="casting@company.com" value={extEmailForm.to} onChange={e => setExtEmailForm(f => ({ ...f, to: e.target.value }))} />
+                            </div>
+                            <div className="share-email-row">
+                              <label className="share-email-label">Subject</label>
+                              <input className="share-email-input" placeholder={`Application: ${extApp.role} — ${artist.name}`} value={extEmailForm.subject} onChange={e => setExtEmailForm(f => ({ ...f, subject: e.target.value }))} />
+                            </div>
+                            <div className="share-email-row">
+                              <label className="share-email-label">Message</label>
+                              <textarea className="share-email-input share-email-body" rows={7} placeholder={`Dear hiring team,\n\nPlease find my application for the ${extApp.role} position. I have included my portfolio, media, and relevant materials via the link below.\n\nI look forward to hearing from you.\n\nBest regards,\n${artist.name}`} value={extEmailForm.body} onChange={e => setExtEmailForm(f => ({ ...f, body: e.target.value }))} />
+                            </div>
+                            <div className="share-email-attachment">
+                              <div className="share-email-att-label">Attached link</div>
+                              <div className="share-email-att-card">
+                                <div className="ext-email-att-icon">
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                                </div>
+                                <div>
+                                  <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{extApp.companyName} — {extApp.role}</div>
+                                  <div style={{ fontSize: 11, color: "var(--ac)" }}>apply.lanced.app/{extApp.slug}</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="share-email-actions">
+                              <button className="btn btn-p" style={{ display: "flex", alignItems: "center", gap: 6 }}
+                                disabled={!extEmailForm.to || extEmailForm.sending}
+                                onClick={() => {
+                                  const toAddr = extEmailForm.to;
+                                  setExtEmailForm(f => ({ ...f, sending: true }));
+                                  setTimeout(() => {
+                                    setExtEmailForm(f => ({ ...f, sending: false, sent: true }));
+                                    setDynamicActivity(prev => [{ id: "da-" + Date.now(), type: "emailed", time: "Just now", group: "Today", title: "Application emailed", desc: `You emailed your application to ${toAddr} for ${extApp.companyName} — ${extApp.role}`, appId: extApp.id, icon: "mail", color: "#604DFF" }, ...prev]);
+                                    showToast("Application sent to " + toAddr);
+                                  }, 1500);
+                                }}>
+                                {extEmailForm.sending ? (
+                                  <><span className="ext-email-spinner" /> Sending...</>
+                                ) : (
+                                  <><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Application</>
+                                )}
+                              </button>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     )}
                   </div>
-
-                  <button className="btn btn-s btn-sm" onClick={() => window.open(`/apply.html?slug=${extApp.slug}`, "_blank")} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
-                    {I.eye} Preview as viewer
-                  </button>
-                </>
+                </div>
               )}
             </div>
           );
@@ -7524,7 +7578,7 @@ export default function ArtistShell() {
                 {I.grid} My Applications
               </button>
               <button className={`app-page-tab${appPageTab === "activity" ? " active" : ""}`} onClick={() => setAppPageTab("activity")}>
-                {EIcon.zap} Activity <span className="apt-badge">{APP_ACTIVITY_FEED.length}</span>
+                {EIcon.zap} Activity <span className="apt-badge">{APP_ACTIVITY_FEED.length + dynamicActivity.length}</span>
               </button>
             </div>
 
@@ -7535,7 +7589,7 @@ export default function ArtistShell() {
                   <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 4px" }}>Recent Activity</h3>
                   <p style={{ fontSize: 13, color: "var(--g4)", margin: 0 }}>Track what's happening across all your applications</p>
                 </div>
-                {renderTimeline(APP_ACTIVITY_FEED, {
+                {renderTimeline([...dynamicActivity, ...APP_ACTIVITY_FEED], {
                   onItemClick: (ev) => {
                     if (ev.appId) {
                       const ext = externalApps.find(a => a.id === ev.appId);
@@ -15180,7 +15234,7 @@ export default function ArtistShell() {
                 <span className="ext-badge" style={{ fontSize: 9 }}><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg> External</span>
                 <span style={{ background: esc.bg, color: esc.color, padding: "3px 10px", borderRadius: 40, fontSize: 10, fontWeight: 700, textTransform: "uppercase" }}>{EXT_STATUS_LABELS[ea.status]}</span>
                 <button className="btn btn-s btn-sm" style={{ display: "inline-flex", alignItems: "center", gap: 4 }}
-                  onClick={() => setExtAppDetailTab("share")}>
+                  onClick={() => { setExtShareModal(true); setExtShareTab("share"); }}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                   Share
                 </button>
