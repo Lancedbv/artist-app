@@ -6,7 +6,7 @@ import UniversalAuth from "./UniversalAuth";
 
 /* ━━━ MOCK DATA ━━━ */
 const DEMO_ARTIST = {
-  firstName: "Amara", lastName: "Osei", name: "Amara Osei", handle: "amaraosei", email: "amara@lanced.io", plan: "Core",
+  firstName: "Amara", lastName: "Osei", name: "Amara Osei", handle: "amaraosei", email: "amara@lanced.io", plan: "Pro",
   photo: "/demo/artists/nisha-huizing.jpg",
   dob: "1999-08-14", gender: "Female", pronouns: "She/Her/Hers", height: "5'8\"",
   nationality: ["British-Ghanaian"], ethnicity: ["Black or African American"], heightUnit: "ft",
@@ -270,6 +270,13 @@ const MOCK_WORK_TRACKING = [
   { id: "wt3", workId: "wk1", email: null, name: "Anonymous", org: null, viewedAt: "2026-03-27T08:20:00", duration: "1m 12s", sections: ["About"], device: "Mobile" },
 ];
 
+const PLAN_LIMITS = {
+  Free: { portfolios: 1, works: 1, externalApps: 1, videoShares: 1, planCalendar: false, activityTracking: false, analytics: false, sharePassword: false, shareRequireEmail: false, shareEmailCompose: false, resumeDownload: false, compCard: false, academyFull: false, studioPublish: false, studioAllThemes: false, studioBrand: false, studioSections: false, studioSharing: false },
+  Pro: { portfolios: 999, works: 999, externalApps: 999, videoShares: 999, planCalendar: true, activityTracking: true, analytics: true, sharePassword: true, shareRequireEmail: true, shareEmailCompose: true, resumeDownload: true, compCard: true, academyFull: true, studioPublish: false, studioAllThemes: false, studioBrand: false, studioSections: false, studioSharing: false },
+  Studio: { portfolios: 999, works: 999, externalApps: 999, videoShares: 999, planCalendar: true, activityTracking: true, analytics: true, sharePassword: true, shareRequireEmail: true, shareEmailCompose: true, resumeDownload: true, compCard: true, academyFull: true, studioPublish: true, studioAllThemes: true, studioBrand: true, studioSections: true, studioSharing: true },
+};
+const FEATURE_PLAN = { planCalendar: "Pro", activityTracking: "Pro", analytics: "Pro", sharePassword: "Pro", shareRequireEmail: "Pro", shareEmailCompose: "Pro", resumeDownload: "Pro", compCard: "Pro", academyFull: "Pro", studioPublish: "Studio", studioAllThemes: "Studio", studioBrand: "Studio", studioSections: "Studio", studioSharing: "Studio" };
+
 const STUDIO_THEMES = [
   {
     id: "noir", name: "Noir", desc: "Bold editorial. Cinematic. Motion-heavy.", tier: "free",
@@ -290,13 +297,13 @@ const STUDIO_THEMES = [
     fonts: { heading: "'DM Serif Display',Georgia,serif", body: "'Inter',system-ui,sans-serif" },
   },
   {
-    id: "slater", name: "Slater", desc: "Editorial. Cinematic. Motion-rich.", tier: "free",
+    id: "slater", name: "Slater", desc: "Editorial. Cinematic. Motion-rich.", tier: "studio", locked: true,
     preview: "/demo/banners/theme-slater.png",
     colors: { bg: "#ffffff", text: "#111111", accent: "#111111", muted: "rgba(17,17,17,.35)" },
     fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
   },
   {
-    id: "strobe", name: "Strobe", desc: "Blinds reveal. Bold type. Full-bleed.", tier: "free",
+    id: "strobe", name: "Strobe", desc: "Blinds reveal. Bold type. Full-bleed.", tier: "studio", locked: true,
     preview: "/demo/banners/theme-noir.png",
     colors: { bg: "#e6e2dc", text: "#111111", accent: "#7c3aed", muted: "rgba(17,17,17,.35)" },
     fonts: { heading: "'Inter',system-ui,sans-serif", body: "'Inter',system-ui,sans-serif" },
@@ -842,6 +849,37 @@ const CSS = `
 .dash-blog-card .dbc-title{font-size:14px;font-weight:600;color:var(--tx);line-height:1.35;margin-bottom:4px}
 .dash-blog-card .dbc-excerpt{font-size:12px;color:var(--g5);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .dark .dash-blog-card{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
+.aca-featured{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;margin-bottom:20px}
+.aca-featured img{width:100%;height:240px;object-fit:cover;display:block}
+.aca-featured-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.2) 50%,transparent 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.aca-featured-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:4px 10px;border-radius:20px;display:inline-block;width:fit-content;margin-bottom:8px}
+.aca-featured-title{font-size:20px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:6px}
+.aca-featured-desc{font-size:12px;color:rgba(255,255,255,.75);line-height:1.4}
+.aca-featured-type{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;padding:4px 10px;border-radius:8px;background:rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(8px);letter-spacing:.02em}
+.aca-cats{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:18px}
+.aca-cats::-webkit-scrollbar{display:none}
+.aca-cat{flex:0 0 auto;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;border:1px solid var(--g2);background:var(--bg);color:var(--g5);cursor:pointer;transition:all .15s;white-space:nowrap;font-family:var(--sans)}
+.aca-cat.active{background:var(--ac);color:#fff;border-color:var(--ac)}
+.aca-cat:hover:not(.active){border-color:var(--g3);color:var(--tx)}
+.aca-masonry{column-count:2;column-gap:14px}
+.aca-card{break-inside:avoid;border-radius:14px;overflow:hidden;cursor:pointer;background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border:1px solid var(--glass-border);transition:all .2s;margin-bottom:14px;display:inline-block;width:100%}
+.aca-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(96,77,255,.1)}
+.aca-card-img{position:relative;width:100%;overflow:hidden}
+.aca-card-img img{width:100%;display:block;object-fit:cover}
+.aca-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.3) 0%,transparent 50%)}
+.aca-card-cat{position:absolute;top:8px;left:8px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:12px;z-index:2}
+.aca-card-type{position:absolute;bottom:8px;right:8px;font-size:9px;font-weight:600;padding:3px 8px;border-radius:8px;background:rgba(0,0,0,.5);color:#fff;z-index:2;backdrop-filter:blur(4px)}
+.aca-card-pro{position:absolute;top:8px;right:8px;font-size:9px;font-weight:700;padding:3px 8px;border-radius:8px;background:linear-gradient(135deg,#7A66FF,#4A35E0);color:#fff;z-index:2;letter-spacing:.04em}
+.aca-card-lock{position:absolute;inset:0;background:rgba(0,0,0,.12);z-index:1}
+.aca-card-body{padding:12px 14px}
+.aca-card-title{font-size:13px;font-weight:600;color:var(--tx);line-height:1.35;margin-bottom:2px}
+.aca-card-meta{display:flex;gap:6px;align-items:center;font-size:10px;color:var(--g4);margin-top:4px}
+.aca-card-meta span{display:flex;align-items:center;gap:3px}
+.dark .aca-card{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
+.dark .aca-featured{border:1px solid rgba(255,255,255,.06)}
+.aca-gate-banner{margin-top:20px;padding:20px;border-radius:14px;border:1px dashed var(--ac);background:rgba(96,77,255,.04);text-align:center}
+.aca-gate-banner h4{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:4px}
+.aca-gate-banner p{font-size:12px;color:var(--g5);margin-bottom:12px}
 .dash-opp-card{background:var(--g1);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .2s}
 .dash-opp-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .dash-opp-card .doc-banner{width:100%;height:100px;object-fit:cover}
@@ -5357,6 +5395,7 @@ export default function ArtistShell() {
   const [planSelectedDay, setPlanSelectedDay] = useState(null);
   const [planSelectedEntry, setPlanSelectedEntry] = useState(null);
   const [planFilter, setPlanFilter] = useState("all");
+  const [acaCat, setAcaCat] = useState("all");
   const [planShowAdd, setPlanShowAdd] = useState(false);
   const [planAddForm, setPlanAddForm] = useState({ title: "", company: "", deadline: "", type: "audition", notes: "", reminders: ["3d", "1d"], linkedExtAppId: "" });
   const [planShowSettings, setPlanShowSettings] = useState(false);
@@ -5374,6 +5413,29 @@ export default function ArtistShell() {
   /* Toast */
   const [toast, setToast] = useState(null);
   const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(null), 2500); };
+
+  const planLimits = PLAN_LIMITS[artist.plan] || (artist.plan === "Core" ? PLAN_LIMITS.Pro : PLAN_LIMITS.Free);
+  const canUse = (feature) => !!planLimits[feature];
+  const gateUpgrade = (requiredPlan) => { setPage("settings"); setSettingsTab("plan"); };
+  const tasteCheck = (resource, count) => { const limit = planLimits[resource]; if (limit >= 999) return { allowed: true }; return { allowed: count < limit }; };
+  const PlanGate = ({ feature, title, description, compact }) => {
+    const req = FEATURE_PLAN[feature] || "Pro";
+    if (compact) return (
+      <div style={{ padding: "20px 16px", borderRadius: 14, border: "1px solid rgba(96,77,255,.1)", background: "rgba(96,77,255,.03)", textAlign: "center" }}>
+        <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)", marginBottom: 4 }}>{title}</div>
+        <div style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12, lineHeight: 1.5 }}>{description}</div>
+        <button className="btn-premium-upgrade" style={{ fontSize: 12, padding: "8px 18px" }} onClick={() => gateUpgrade(req)}>Upgrade to {req}</button>
+      </div>
+    );
+    return (
+      <div className="premium-gate">
+        <div className="premium-gate-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h4>{title}</h4>
+        <p>{description}</p>
+        <button className="btn-premium-upgrade" onClick={() => gateUpgrade(req)}>Upgrade to {req}</button>
+      </div>
+    );
+  };
 
   /* Checklist */
   const [checklist, setChecklist] = useState([
@@ -6476,8 +6538,6 @@ export default function ArtistShell() {
 
       const studioBack = () => { setStudioSubPage("overview"); setStudioPromptReady(true); };
 
-      const PLAN_LIMITS = { Free: { portfolios: 1, works: 1 }, Core: { portfolios: 3, works: 3 }, Pro: { portfolios: 10, works: 10 }, Studio: { portfolios: 999, works: 999 } };
-      const planLimits = PLAN_LIMITS[artist.plan] || PLAN_LIMITS.Core;
 
       if (studioSubPage === "portfolio") {
         const pfUsed = portfolios.length;
@@ -6677,6 +6737,13 @@ export default function ArtistShell() {
                 <div className="dash-section">
                   <div className="dash-section-header">
                     <h3>Shared Videos <span className="ds-count">{videoShares.length}</span></h3>
+                    {planLimits.videoShares < 999 && (() => { const vsMax = planLimits.videoShares; const vsFull = videoShares.length >= vsMax; return (
+                      <div className="plan-meter" style={{ marginRight: "auto" }}>
+                        <div className="plan-meter-bar"><div className={`plan-meter-fill${vsFull ? " full" : ""}`} style={{ width: `${Math.min(100, (videoShares.length / vsMax) * 100)}%` }} /></div>
+                        <span className="plan-meter-count">{videoShares.length}/{vsMax}</span>
+                        {vsFull && <button className="plan-meter-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade</button>}
+                      </div>
+                    ); })()}
                     <button className="btn btn-g btn-sm" onClick={() => setPage("media")}>View all →</button>
                   </div>
                   {videoShares.slice(0, 3).map(vs => (
@@ -7158,10 +7225,14 @@ export default function ArtistShell() {
                     <div style={{ fontSize: 14, fontWeight: 700, color: "var(--tx)" }}>Your Comp Card</div>
                     <div style={{ fontSize: 12, color: "var(--g4)", marginTop: 2 }}>Generate a printable one-pager with your headshot, stats, skills, and QR code.</div>
                   </div>
-                  <button className="btn" style={{ background: "var(--ac)", color: "#fff", border: "none", padding: "10px 20px", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)", display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap" }} onClick={() => setShowCompCard(true)}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
-                    Generate Comp Card
-                  </button>
+                  {canUse("compCard") ? (
+                    <button className="btn" style={{ background: "var(--ac)", color: "#fff", border: "none", padding: "10px 20px", borderRadius: 10, fontSize: 12, fontWeight: 600, cursor: "pointer", fontFamily: "var(--sans)", display: "flex", alignItems: "center", gap: 6, whiteSpace: "nowrap" }} onClick={() => setShowCompCard(true)}>
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+                      Generate Comp Card
+                    </button>
+                  ) : (
+                    <button className="btn-premium-upgrade" style={{ fontSize: 11, padding: "8px 16px" }} onClick={() => gateUpgrade("Pro")}>Pro</button>
+                  )}
                 </div>
 
                 {/* Physical Appearance */}
@@ -7383,35 +7454,39 @@ export default function ArtistShell() {
 
               {extAppDetailTab === "activity" && (
                 <div>
-                  {artist.plan === "Pro" && (
-                    <div className="spotlight-row" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginTop: 0, marginBottom: 12 }}>
-                      {[
-                        { label: "TOTAL VIEWS", value: extApp.analytics.viewCount },
-                        { label: "TIME SPENT", value: extApp.analytics.timeSpent || "—" },
-                        { label: "VIEWER", value: extApp.analytics.viewerEmail || "—" },
-                      ].map((d, i) => (
-                        <div key={i} className="info-card" style={{ textAlign: "center", padding: 16, marginBottom: 0 }}>
-                          <div style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 4 }}>{d.label}</div>
-                          <div style={{ fontSize: 18, fontWeight: 700, color: "var(--tx)" }}>{d.value}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                  {artist.plan === "Pro" && extApp.analytics.viewCount > 0 && (
-                    <div className="info-card" style={{ marginBottom: 12 }}>
-                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Viewer Activity</h4>
-                      <div className="extd-timeline">
-                        <div className="extd-timeline-event"><div className="extd-evt-time">{new Date(extApp.analytics.lastViewedAt).toLocaleString()}</div><div className="extd-evt-text">Application opened by {extApp.analytics.viewerEmail}</div></div>
-                        {extApp.analytics.mediaViewed.map(mid => {
-                          const mi = mediaItems.find(m => m.id === mid);
-                          return mi ? <div key={mid} className="extd-timeline-event"><div className="extd-evt-time">During visit</div><div className="extd-evt-text">Viewed: {mi.title}</div></div> : null;
-                        })}
+                  {canUse("activityTracking") ? (<>
+                    {canUse("analytics") && (
+                      <div className="spotlight-row" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginTop: 0, marginBottom: 12 }}>
+                        {[
+                          { label: "TOTAL VIEWS", value: extApp.analytics.viewCount },
+                          { label: "TIME SPENT", value: extApp.analytics.timeSpent || "—" },
+                          { label: "VIEWER", value: extApp.analytics.viewerEmail || "—" },
+                        ].map((d, i) => (
+                          <div key={i} className="info-card" style={{ textAlign: "center", padding: 16, marginBottom: 0 }}>
+                            <div style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 4 }}>{d.label}</div>
+                            <div style={{ fontSize: 18, fontWeight: 700, color: "var(--tx)" }}>{d.value}</div>
+                          </div>
+                        ))}
                       </div>
-                    </div>
-                  )}
-                  {renderTimeline(
-                    [...dynamicActivity, ...APP_ACTIVITY_FEED].filter(ev => ev.appId === extApp.id || ev.appId === viewExtApp),
-                    { compact: true, emptyMsg: "Activity for this application will appear here" }
+                    )}
+                    {canUse("analytics") && extApp.analytics.viewCount > 0 && (
+                      <div className="info-card" style={{ marginBottom: 12 }}>
+                        <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Viewer Activity</h4>
+                        <div className="extd-timeline">
+                          <div className="extd-timeline-event"><div className="extd-evt-time">{new Date(extApp.analytics.lastViewedAt).toLocaleString()}</div><div className="extd-evt-text">Application opened by {extApp.analytics.viewerEmail}</div></div>
+                          {extApp.analytics.mediaViewed.map(mid => {
+                            const mi = mediaItems.find(m => m.id === mid);
+                            return mi ? <div key={mid} className="extd-timeline-event"><div className="extd-evt-time">During visit</div><div className="extd-evt-text">Viewed: {mi.title}</div></div> : null;
+                          })}
+                        </div>
+                      </div>
+                    )}
+                    {renderTimeline(
+                      [...dynamicActivity, ...APP_ACTIVITY_FEED].filter(ev => ev.appId === extApp.id || ev.appId === viewExtApp),
+                      { compact: true, emptyMsg: "Activity for this application will appear here" }
+                    )}
+                  </>) : (
+                    <PlanGate feature="activityTracking" title="Activity & Tracking" description="Track who views your application, monitor engagement, and see a full activity timeline." />
                   )}
                 </div>
               )}
@@ -7457,8 +7532,8 @@ export default function ArtistShell() {
                               <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
                             </div>
                             <div className="share-modal-setting-row">
-                              <div><div className="share-modal-setting-title">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div></div>
-                              <div className={`sm-switch${extApp.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, requirePassword: !a.shareSettings.requirePassword } } : a))} />
+                              <div><div className="share-modal-setting-title">Password protection{!canUse("sharePassword") ? <span style={{ fontSize: 10, color: "var(--ac)", fontWeight: 600, marginLeft: 6 }}>Pro</span> : ""}</div></div>
+                              <div className={`sm-switch${extApp.shareSettings.requirePassword ? " on" : ""}${!canUse("sharePassword") ? " disabled" : ""}`} style={!canUse("sharePassword") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, requirePassword: !a.shareSettings.requirePassword } } : a))} />
                             </div>
                             {extApp.shareSettings.requirePassword && (
                               <input className="share-modal-pw-input" type="text" placeholder="Set password..." value={extApp.shareSettings.password} onChange={e => setExternalApps(prev => prev.map(a => a.id === extApp.id ? { ...a, shareSettings: { ...a.shareSettings, password: e.target.value } } : a))} />
@@ -7473,7 +7548,9 @@ export default function ArtistShell() {
 
                     {extShareTab === "email" && (
                       <div className="share-modal-body">
-                        {extEmailForm.sent ? (
+                        {!canUse("shareEmailCompose") ? (
+                          <PlanGate feature="shareEmailCompose" title="Email Compose" description="Send applications directly via email with your Lanced portfolio link attached." />
+                        ) : extEmailForm.sent ? (
                           <div style={{ textAlign: "center", padding: "32px 16px" }}>
                             <div style={{ fontSize: 32, marginBottom: 8 }}>{EIcon.check}</div>
                             <div style={{ fontSize: 15, fontWeight: 600, color: "var(--tx)", marginBottom: 4 }}>Application Sent</div>
@@ -7563,13 +7640,28 @@ export default function ArtistShell() {
                 <h1><em>Applications</em></h1>
                 <p className="pg-sub">Track and manage everything you've applied to</p>
               </div>
-              {appPageTab === "listing" && (
-                <button className="btn btn-p" onClick={() => {
-                  if (artist.plan === "Free") { showToast("Upgrade to Core or Pro to create external applications"); setPage("settings"); setSettingsTab("plan"); return; }
-                  setShowExtAppModal(true); setExtAppStep(0);
-                  setExtAppForm({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
-                }}>+ Create Application</button>
-              )}
+              {appPageTab === "listing" && (() => {
+                const extCount = externalApps.filter(a => a.status !== "draft").length;
+                const extMax = planLimits.externalApps;
+                const extFull = extCount >= extMax;
+                const extWarn = extCount >= extMax - 1 && !extFull;
+                return (
+                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    {extMax < 999 && (
+                      <div className="plan-meter">
+                        <div className="plan-meter-bar"><div className={`plan-meter-fill${extFull ? " full" : extWarn ? " warn" : ""}`} style={{ width: `${Math.min(100, (extCount / extMax) * 100)}%` }} /></div>
+                        <span className="plan-meter-count">{extCount}/{extMax} ext apps</span>
+                        {extFull && <button className="plan-meter-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade</button>}
+                      </div>
+                    )}
+                    <button className="btn btn-p" onClick={() => {
+                      if (!tasteCheck("externalApps", extCount).allowed) { showToast("Upgrade to Pro for unlimited external applications"); gateUpgrade("Pro"); return; }
+                      setShowExtAppModal(true); setExtAppStep(0);
+                      setExtAppForm({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
+                    }}>+ Create Application</button>
+                  </div>
+                );
+              })()}
             </div>
 
             {/* ── Page Tabs ── */}
@@ -7584,6 +7676,7 @@ export default function ArtistShell() {
 
             {appPageTab === "activity" ? (
               /* ── Activity Timeline Page ── */
+              canUse("activityTracking") ? (
               <div>
                 <div style={{ marginBottom: 24 }}>
                   <h3 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 4px" }}>Recent Activity</h3>
@@ -7599,6 +7692,9 @@ export default function ArtistShell() {
                   emptyMsg: "Activity from your applications will show up here"
                 })}
               </div>
+              ) : (
+                <PlanGate feature="activityTracking" title="Application Activity" description="See a timeline of all application events — views, status changes, emails sent, and more." />
+              )
             ) : (
             <>
             {/* ── Unified Toolbar ── */}
@@ -8114,7 +8210,7 @@ export default function ArtistShell() {
           /* ── Portfolio Tracking View ── */
           if (portfolioTab === "tracking") {
             const views = MOCK_PF_TRACKING.filter(t => t.portfolioId === viewPortfolio);
-            const isPro = artist.plan === "Pro" || artist.plan === "Studio";
+            const isPro = canUse("analytics");
             return (
               <div style={{ padding: "0 8px", animation: "fadeIn .3s ease" }}>
                 <div className="pfe-section">
@@ -8353,12 +8449,11 @@ export default function ArtistShell() {
           /* ── Work Tracking View ── */
           if (workTab === "tracking") {
             const views = MOCK_WORK_TRACKING.filter(t => t.workId === viewWork);
-            const isPro = artist.plan === "Pro" || artist.plan === "Studio";
             return (
               <div style={{ padding: "0 8px", animation: "fadeIn .3s ease" }}>
                 <div className="wke-section">
                   <h3><em style={{ color: "#D97706" }}>Tracking</em> & Analytics</h3>
-                  {isPro ? (
+                  {canUse("analytics") ? (
                     <>
                       <div className="wkt-stats">
                         <div className="wkt-stat"><div className="wkt-val">{views.length}</div><div className="wkt-label">Total Views</div></div>
@@ -8386,11 +8481,7 @@ export default function ArtistShell() {
                       </div>
                     </>
                   ) : (
-                    <div className="wkt-pro-gate">
-                      <h4>Upgrade to Pro</h4>
-                      <p>Track who views your work page, see which sections they explore, and get notified when someone opens your link.</p>
-                      <button onClick={() => showToast("Upgrade to Pro")}>Upgrade to Pro</button>
-                    </div>
+                    <PlanGate feature="analytics" title="Work Analytics" description="Track who views your work page, see which sections they explore, and get notified when someone opens your link." />
                   )}
                 </div>
               </div>
@@ -8918,10 +9009,10 @@ export default function ArtistShell() {
                               </div>
                               <div className="ms-toggle">
                                 <div className="ms-toggle-info">
-                                  <div className="ms-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div>
+                                  <div className="ms-toggle-label">Password protection{!canUse("sharePassword") ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Pro</span> : ""}</div>
                                   <div className="ms-toggle-desc">Require a password to view</div>
                                 </div>
-                                <div className={`sm-switch${smShare.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, shareSettings: { ...vs.shareSettings, requirePassword: !vs.shareSettings.requirePassword } } : vs))} />
+                                <div className={`sm-switch${smShare.shareSettings.requirePassword ? " on" : ""}${!canUse("sharePassword") ? " disabled" : ""}`} style={!canUse("sharePassword") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, shareSettings: { ...vs.shareSettings, requirePassword: !vs.shareSettings.requirePassword } } : vs))} />
                               </div>
                               {smShare.shareSettings.requirePassword && (
                                 <input style={{ marginTop: 8, width: "100%", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, fontSize: 12, fontFamily: "var(--mono)", background: "var(--bg)", color: "var(--tx)" }} type="text" placeholder="Set password..." value={smShare.shareSettings.password} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === smShare.id ? { ...vs, shareSettings: { ...vs.shareSettings, password: e.target.value } } : vs))} />
@@ -8937,6 +9028,8 @@ export default function ArtistShell() {
                           <div style={{ textAlign: "center", padding: "12px 0" }}>
                             <div style={{ fontSize: 13, color: "var(--g4)", marginBottom: 12 }}>This video hasn't been shared yet</div>
                             <button className="btn btn-p btn-sm" onClick={() => {
+                              const { allowed } = tasteCheck("videoShares", videoShares.length);
+                              if (!allowed) { showToast("Video share limit reached — upgrade your plan"); gateUpgrade("Pro"); return; }
                               const newSlug = generateSlug(sm.title);
                               setVideoShares(prev => [...prev, {
                                 id: "vs" + Date.now(), mediaId: sm.id, title: sm.title, description: "", tags: [], privacy: "unlisted", slug: newSlug, thumbnailSrc: sm.thumb,
@@ -8973,7 +9066,7 @@ export default function ArtistShell() {
               {studioMediaTab === "analytics" && (
                 <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                   {smShare ? (
-                    artist.plan === "Pro" ? (
+                    canUse("analytics") ? (
                       <>
                         {/* Stats Overview */}
                         <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12 }}>
@@ -9034,12 +9127,7 @@ export default function ArtistShell() {
                       </>
                     ) : (
                       <div className="ms-card">
-                        <div className="premium-gate" style={{ padding: 40 }}>
-                          <div className="premium-gate-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                          <h4>Analytics requires Pro</h4>
-                          <p>Upgrade to see views, retention, viewer details, and engagement metrics for your shared videos.</p>
-                          <button className="btn-premium-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade to Pro</button>
-                        </div>
+                        <PlanGate feature="analytics" title="Video Analytics" description="Upgrade to see views, retention, viewer details, and engagement metrics for your shared videos." />
                       </div>
                     )
                   ) : (
@@ -9050,6 +9138,8 @@ export default function ArtistShell() {
                       <h4 style={{ fontSize: 16, fontWeight: 600, color: "var(--tx)", margin: "0 0 8px" }}>No analytics yet</h4>
                       <p style={{ fontSize: 13, color: "var(--g4)", marginBottom: 16 }}>Share this video to start tracking views and engagement</p>
                       <button className="btn btn-p btn-sm" onClick={() => {
+                        const { allowed } = tasteCheck("videoShares", videoShares.length);
+                        if (!allowed) { showToast("Video share limit reached — upgrade your plan"); gateUpgrade("Pro"); return; }
                         const newSlug = generateSlug(sm.title);
                         setVideoShares(prev => [...prev, {
                           id: "vs" + Date.now(), mediaId: sm.id, title: sm.title, description: "", tags: [], privacy: "unlisted", slug: newSlug, thumbnailSrc: sm.thumb,
@@ -9114,7 +9204,7 @@ export default function ArtistShell() {
                   )}
                   <div className="mi-badge" style={{ background: MEDIA_COLORS[m.type] }}>{m.format}</div>
                   {isVideo && (
-                    <button className="mi-share-btn" title="Edit in Studio" onClick={e => { e.stopPropagation(); setStudioMediaId(m.id); setStudioMediaTab("content"); }} style={{ position: "absolute", top: 8, right: 8, width: 28, height: 28, borderRadius: 8, background: "rgba(0,0,0,.5)", border: "none", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0, transition: "opacity .15s", zIndex: 3 }}>
+                    <button className="mi-share-btn" title="Edit in Studio" onClick={e => { e.stopPropagation(); setStudioMediaId(m.id); setStudioMediaTab("content"); }} style={{ position: "absolute", top: 8, right: 8, width: 28, height: 28, borderRadius: 8, background: "linear-gradient(135deg,#7A66FF,#4A35E0)", border: "none", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0, transition: "opacity .15s", zIndex: 3 }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
                     </button>
                   )}
@@ -9206,6 +9296,13 @@ export default function ArtistShell() {
         const deleteEntry = (id) => { setPlanEntries(prev => prev.filter(e => e.id !== id)); setPlanSelectedEntry(null); showToast("Entry removed"); };
 
         const selEntry = planSelectedEntry ? planEntries.find(e => e.id === planSelectedEntry) : null;
+
+        if (!canUse("planCalendar")) return (
+          <div>
+            <div className="pg-header"><h1><em>Plan</em></h1><p className="pg-sub">Your audition calendar — Lanced and beyond</p></div>
+            <PlanGate feature="planCalendar" title="Plan Your Audition Season" description="Track deadlines, set reminders, manage external calls, and sync with your calendar. Upgrade to Pro to unlock the full planning toolkit." />
+          </div>
+        );
 
         return (
           <div>
@@ -9575,20 +9672,88 @@ export default function ArtistShell() {
       }
 
       /* ── Academy ── */
-      case "academy":
+      case "academy": {
+        const ACA_CATS = [
+          { id: "all", label: "All" },
+          { id: "audition", label: "Audition Prep", color: "#E86833" },
+          { id: "freelancing", label: "Freelancing", color: "#0D9488" },
+          { id: "marketing", label: "Marketing", color: "#D946A8" },
+          { id: "career", label: "Career Growth", color: "#3B82F6" },
+          { id: "industry", label: "Industry", color: "#D97706" },
+          { id: "wellness", label: "Wellness", color: "#22C55E" },
+        ];
+        const ACA_ITEMS = [
+          { id: "a1", title: "How to Stand Out at Your Next Audition", cat: "audition", type: "Blog", pro: false, time: "5 min read", img: "/demo/banners/pexels-joseph-phillips-2044494-3753820.jpg", h: 180 },
+          { id: "a2", title: "Self-Tape Lighting & Setup Guide", cat: "audition", type: "Tool", pro: true, time: "Interactive", img: "/demo/banners/shutterstock_1505137721.jpg", h: 140 },
+          { id: "a3", title: "Building Your Freelance Dance Career", cat: "freelancing", type: "Blog", pro: false, time: "7 min read", img: "/demo/artists/boris-de-jong/pexels-cottonbro-6221378.jpg", h: 200 },
+          { id: "a4", title: "Invoice & Contract Templates", cat: "freelancing", type: "Template", pro: true, time: "Download", img: "/demo/banners/shutterstock_1247570584.jpg", h: 130 },
+          { id: "a5", title: "Social Media Strategy for Performers", cat: "marketing", type: "Webinar", pro: true, time: "45 min", img: "/demo/banners/hulki-okan-tabak-paog427w_as-unsplash-2.jpg", h: 170 },
+          { id: "a6", title: "Headshot Do's and Don'ts", cat: "marketing", type: "Blog", pro: false, time: "4 min read", img: "/demo/artists/nisha-huizing.jpg", h: 190 },
+          { id: "a7", title: "Navigating Rejection in the Arts", cat: "wellness", type: "Blog", pro: false, time: "6 min read", img: "/demo/banners/rachel-coyne-u7hlzmo4siy-unsplash.jpg", h: 150 },
+          { id: "a8", title: "Agent & Audition Tracker", cat: "career", type: "Tool", pro: true, time: "Interactive", img: "/demo/banners/shutterstock_1234830199.jpg", h: 140 },
+          { id: "a9", title: "1-on-1 Career Coaching", cat: "career", type: "Meeting", pro: true, time: "30 min", img: "/demo/banners/pexels-mart-production-7319706.jpg", h: 180 },
+          { id: "a10", title: "What Casting Directors Look For", cat: "industry", type: "Webinar", pro: true, time: "60 min", img: "/demo/banners/jens-thekkeveettil-dbwvuqboou8-unsplash.jpg", h: 160 },
+          { id: "a11", title: "Warm-Up Routines That Prevent Injury", cat: "wellness", type: "Blog", pro: false, time: "5 min read", img: "/demo/artists/boris-de-jong/pexels-cottonbro-5102571.jpg", h: 200 },
+          { id: "a12", title: "Negotiating Your First Contract", cat: "freelancing", type: "Blog", pro: false, time: "8 min read", img: "/demo/banners/fabian-centeno-k4s5mtsyuli-unsplash.jpg", h: 150 },
+        ];
+        const catColor = (catId) => ACA_CATS.find(c => c.id === catId)?.color || "var(--ac)";
+        const filtered = acaCat === "all" ? ACA_ITEMS : ACA_ITEMS.filter(i => i.cat === acaCat);
+        const featured = ACA_ITEMS[0];
         return (
           <div>
             <div className="pg-header">
               <h1><em>Academy</em></h1>
-              <p className="pg-sub">Learn and grow your performing arts career</p>
+              <p className="pg-sub">Courses, tools & resources for performing artists</p>
             </div>
-            <div className="stub-section">
-              <div className="stub-icon">{EIcon.graduation}</div>
-              <div className="stub-title">Course Library</div>
-              <p>Courses, workshops, industry guides, and video tutorials. Coming soon.</p>
+
+            <div className="aca-featured" onClick={() => showToast("Full article — Coming soon")}>
+              <img src={featured.img} alt={featured.title} />
+              <div className="aca-featured-overlay">
+                <span className="aca-featured-cat" style={{ background: catColor(featured.cat), color: "#fff" }}>{ACA_CATS.find(c => c.id === featured.cat)?.label}</span>
+                <div className="aca-featured-title">{featured.title}</div>
+                <div className="aca-featured-desc">{featured.time}</div>
+              </div>
+              <span className="aca-featured-type">{featured.type}</span>
             </div>
+
+            <div className="aca-cats">
+              {ACA_CATS.map(c => (
+                <button key={c.id} className={`aca-cat${acaCat === c.id ? " active" : ""}`} onClick={() => setAcaCat(c.id)}
+                  style={acaCat === c.id && c.color ? { background: c.color, borderColor: c.color } : undefined}>{c.label}</button>
+              ))}
+            </div>
+
+            <div className="aca-masonry">
+              {filtered.filter(i => i.id !== featured.id || acaCat !== "all").map(item => {
+                const locked = item.pro && !canUse("academyFull");
+                return (
+                  <div key={item.id} className="aca-card" onClick={() => { if (locked) { gateUpgrade("Pro"); } else { showToast(`${item.title} — Coming soon`); } }}>
+                    <div className="aca-card-img">
+                      <img src={item.img} alt={item.title} style={{ height: item.h }} />
+                      <span className="aca-card-cat" style={{ background: catColor(item.cat), color: "#fff" }}>{ACA_CATS.find(c => c.id === item.cat)?.label}</span>
+                      <span className="aca-card-type">{item.type}</span>
+                      {item.pro && <span className="aca-card-pro">PRO</span>}
+                      {locked && <div className="aca-card-lock" />}
+                    </div>
+                    <div className="aca-card-body">
+                      <div className="aca-card-title">{item.title}</div>
+                      <div className="aca-card-meta"><span>{item.time}</span></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {!canUse("academyFull") && (
+              <div className="aca-gate-banner">
+                <h4>Unlock the Full Academy</h4>
+                <p>Get tools, templates, webinars, and 1-on-1 coaching with Pro.</p>
+                <button className="btn btn-p btn-sm" onClick={() => gateUpgrade("Pro")}>Upgrade to Pro — €4.99/mo</button>
+              </div>
+            )}
           </div>
         );
+      }
 
       /* ── Messages ── */
       case "messages": {
@@ -9798,39 +9963,46 @@ export default function ArtistShell() {
                 <div className="info-card" style={{ marginBottom: 16 }}>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
                     <h4 style={{ margin: 0 }}>Current Plan</h4>
-                    <span style={{ padding: "4px 14px", borderRadius: 20, background: "rgba(96,77,255,.1)", color: "var(--ac)", fontSize: 12, fontWeight: 700, textTransform: "uppercase" }}>{artist.plan}</span>
+                    <span style={{ padding: "4px 14px", borderRadius: 20, background: artist.plan === "Studio" ? "linear-gradient(135deg, #7c3aed, #604DFF)" : artist.plan === "Pro" ? "rgba(96,77,255,.1)" : "rgba(0,0,0,.06)", color: artist.plan === "Studio" ? "#fff" : artist.plan === "Pro" ? "var(--ac)" : "var(--g5)", fontSize: 12, fontWeight: 700, textTransform: "uppercase" }}>{artist.plan}</span>
                   </div>
-                  <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.6, marginBottom: 16 }}>Your Core plan includes unlimited applications, full Resume, media library, and portfolio builder.</p>
-                  <div className="info-row"><span className="ir-label">Billing Period</span><span className="ir-value">Monthly</span></div>
-                  <div className="info-row"><span className="ir-label">Next Billing</span><span className="ir-value">April 30, 2026</span></div>
-                  <div className="info-row"><span className="ir-label">Amount</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>€9.99/month</span></div>
-                  <button className="btn btn-p btn-sm" style={{ marginTop: 14 }}>Upgrade Plan</button>
+                  <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.6, marginBottom: 16 }}>{artist.plan === "Free" ? "Your Free plan includes unlimited Lanced applications, profile, resume view, media, and network." : artist.plan === "Pro" ? "Your Pro plan adds external apps, planning, analytics, and advanced sharing." : "Studio adds website publishing, brand customization, and all premium features."}</p>
+                  {artist.plan !== "Free" && <>
+                    <div className="info-row"><span className="ir-label">Billing Period</span><span className="ir-value">Monthly</span></div>
+                    <div className="info-row"><span className="ir-label">Next Billing</span><span className="ir-value">June 30, 2026</span></div>
+                    <div className="info-row"><span className="ir-label">Amount</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>{artist.plan === "Pro" ? "€4.99" : "€12.99"}/month</span></div>
+                  </>}
                 </div>
                 <div className="info-card" style={{ marginBottom: 16 }}>
                   <h4>Available Plans</h4>
                   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 12 }}>
                     {[
-                      { name: "Free", price: "€0", features: ["5 applications/month", "Basic Resume", "1 Portfolio"] },
-                      { name: "Core", price: "€9.99", features: ["Unlimited applications", "Full Resume", "Media Library", "3 Portfolios"], current: true },
-                      { name: "Pro", price: "€19.99", features: ["Everything in Core", "Priority visibility", "Analytics", "Unlimited Portfolios", "Custom domain"] },
-                    ].map(plan => (
-                      <div key={plan.name} style={{ padding: 16, border: plan.current ? "2px solid var(--ac)" : "1px solid var(--g2)", borderRadius: 14, textAlign: "center", position: "relative" }}>
-                        {plan.current && <div style={{ position: "absolute", top: -8, left: "50%", transform: "translateX(-50%)", fontSize: 9, fontWeight: 700, textTransform: "uppercase", padding: "2px 10px", borderRadius: 20, background: "var(--ac)", color: "#fff" }}>Current</div>}
-                        <div style={{ fontSize: 16, fontWeight: 700, color: "var(--tx)", marginBottom: 4, marginTop: plan.current ? 4 : 0 }}>{plan.name}</div>
-                        <div style={{ fontSize: 20, fontWeight: 700, color: "var(--ac)", fontFamily: "var(--mono)", marginBottom: 12 }}>{plan.price}<span style={{ fontSize: 11, color: "var(--g4)", fontWeight: 400 }}>/mo</span></div>
-                        {plan.features.map((f, i) => <div key={i} style={{ fontSize: 11, color: "var(--g5)", padding: "3px 0" }}>{"\u2713"} {f}</div>)}
-                        <button className={`btn btn-sm ${plan.current ? "btn-s" : "btn-p"}`} style={{ marginTop: 12, width: "100%" }}>{plan.current ? "Current Plan" : "Upgrade"}</button>
+                      { name: "Free", price: "€0", color: "var(--g5)", features: ["Unlimited Lanced applications", "Profile & resume view", "Media library", "Network & inbox", "Academy blogs", "1 portfolio taste", "1 work taste", "1 ext app taste", "1 video share taste"] },
+                      { name: "Pro", price: "€4.99", color: "var(--ac)", features: ["Everything in Free", "Unlimited portfolios & works", "Unlimited ext apps & shares", "Plan calendar & reminders", "Activity & tracking", "Analytics everywhere", "Full Academy content", "Resume download", "Comp card", "Password & email gates"] },
+                      { name: "Studio", price: "€12.99", color: "#7c3aed", features: ["Everything in Pro", "Publish website", "All 5 themes", "Brand customization", "Section editor", "Website sharing"] },
+                    ].map(plan => {
+                      const isCurrent = artist.plan === plan.name;
+                      return (
+                      <div key={plan.name} style={{ padding: 16, border: isCurrent ? `2px solid ${plan.color}` : "1px solid var(--g2)", borderRadius: 14, textAlign: "center", position: "relative", display: "flex", flexDirection: "column" }}>
+                        {isCurrent && <div style={{ position: "absolute", top: -8, left: "50%", transform: "translateX(-50%)", fontSize: 9, fontWeight: 700, textTransform: "uppercase", padding: "2px 10px", borderRadius: 20, background: plan.color, color: "#fff" }}>Current</div>}
+                        <div style={{ fontSize: 16, fontWeight: 700, color: "var(--tx)", marginBottom: 4, marginTop: isCurrent ? 4 : 0 }}>{plan.name}</div>
+                        <div style={{ fontSize: 22, fontWeight: 700, color: plan.color, fontFamily: "var(--mono)", marginBottom: 12 }}>{plan.price}{plan.price !== "€0" && <span style={{ fontSize: 11, color: "var(--g4)", fontWeight: 400 }}>/mo</span>}</div>
+                        <div style={{ flex: 1, marginBottom: 12 }}>
+                          {plan.features.map((f, i) => <div key={i} style={{ fontSize: 11, color: "var(--g5)", padding: "3px 0", textAlign: "left" }}>{"✓"} {f}</div>)}
+                        </div>
+                        <button className={`btn btn-sm ${isCurrent ? "btn-s" : "btn-p"}`} style={{ width: "100%", background: !isCurrent && plan.name === "Studio" ? "linear-gradient(135deg, #7c3aed, #604DFF)" : undefined }} onClick={() => { if (!isCurrent) { setArtist(a => ({ ...a, plan: plan.name })); showToast(`Switched to ${plan.name} plan`); } }}>{isCurrent ? "Current Plan" : `Upgrade to ${plan.name}`}</button>
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
+                {artist.plan !== "Free" && (
                 <div className="info-card">
                   <h4>Billing History</h4>
                   <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
                     {[
-                      { date: "Mar 1, 2026", amount: "€9.99", status: "Paid" },
-                      { date: "Feb 1, 2026", amount: "€9.99", status: "Paid" },
-                      { date: "Jan 1, 2026", amount: "€9.99", status: "Paid" },
+                      { date: "May 1, 2026", amount: artist.plan === "Pro" ? "€4.99" : "€12.99", status: "Paid" },
+                      { date: "Apr 1, 2026", amount: artist.plan === "Pro" ? "€4.99" : "€12.99", status: "Paid" },
+                      { date: "Mar 1, 2026", amount: artist.plan === "Pro" ? "€4.99" : "€12.99", status: "Paid" },
                     ].map((inv, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, fontSize: 12 }}>
                         <span style={{ color: "var(--tx)" }}>{inv.date}</span>
@@ -9840,6 +10012,7 @@ export default function ArtistShell() {
                     ))}
                   </div>
                 </div>
+                )}
               </div>
             )}
 
@@ -13561,8 +13734,8 @@ export default function ArtistShell() {
                   {I.back} <span style={{ marginLeft: 6 }}>Back to Editor</span>
                 </button>
                 <span style={{ fontSize: 12, color: "rgba(255,255,255,.5)" }}>Preview Mode — {currentThemeData.name}</span>
-                <button className="btn btn-sm" style={{ background: "#fff", color: "#000" }} onClick={() => { setStudioPublished(true); showToast("Website published!"); setStudioMode("builder"); }}>
-                  Publish
+                <button className="btn btn-sm" style={{ background: canUse("studioPublish") ? "#fff" : "rgba(255,255,255,.4)", color: "#000" }} onClick={() => { if (!canUse("studioPublish")) { showToast("Upgrade to Studio to publish your website"); return; } setStudioPublished(true); showToast("Website published!"); setStudioMode("builder"); }}>
+                  {canUse("studioPublish") ? "Publish" : "Studio — Publish"}
                 </button>
               </div>
               <div className="studio-preview-viewport" onScroll={e => setStudioScrollY(e.target.scrollTop)}>
@@ -13600,13 +13773,13 @@ export default function ArtistShell() {
                   ))}
                 </div>
                 <div className="studio-builder-topbar-right">
-                  <button className="btn btn-sm btn-s" onClick={() => setStudioShareOpen(true)} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
+                  <button className="btn btn-sm btn-s" onClick={() => { if (!canUse("studioSharing")) { showToast("Upgrade to Studio to share your website"); return; } setStudioShareOpen(true); }} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: canUse("studioSharing") ? 1 : 0.5 }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                     Share
                   </button>
                   <button className="btn btn-sm btn-s" onClick={() => { setStudioScrollY(0); setStudioMode("preview"); }}>Preview</button>
-                  <button className="btn btn-sm btn-p" onClick={() => { setStudioPublished(true); showToast("Website published!"); }}>
-                    {studioPublished ? "Update" : "Publish"}
+                  <button className="btn btn-sm btn-p" style={{ opacity: canUse("studioPublish") ? 1 : 0.5 }} onClick={() => { if (!canUse("studioPublish")) { showToast("Upgrade to Studio to publish your website"); return; } setStudioPublished(true); showToast("Website published!"); }}>
+                    {canUse("studioPublish") ? (studioPublished ? "Update" : "Publish") : "Studio — Publish"}
                   </button>
                 </div>
               </div>
@@ -13736,10 +13909,10 @@ export default function ArtistShell() {
                     {studioCustomizeTab === "theme" && (
                       <div className="studio-theme-grid">
                         {STUDIO_THEMES.map(th => (
-                          <div key={th.id} className={`studio-theme-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}
-                            onClick={() => { if (!th.locked) { setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); } }}>
+                          <div key={th.id} className={`studio-theme-card${studioTheme === th.id ? " active" : ""}${th.locked && !canUse("studioAllThemes") ? " locked" : ""}`}
+                            onClick={() => { if (th.locked && !canUse("studioAllThemes")) { showToast("Upgrade to Studio to unlock all themes"); gateUpgrade("Studio"); return; } setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); }}>
                             <div className="studio-theme-preview" style={{ backgroundImage: `url(${th.preview})` }}>
-                              {th.locked && <div className="studio-theme-lock">PRO</div>}
+                              {th.locked && !canUse("studioAllThemes") && <div className="studio-theme-lock">STUDIO</div>}
                               {studioTheme === th.id && <div className="studio-theme-active">Active</div>}
                             </div>
                             <div className="studio-theme-info">
@@ -13752,7 +13925,10 @@ export default function ArtistShell() {
                     )}
 
                     {/* Layout sub-tab — sections list OR section inspector */}
-                    {studioCustomizeTab === "layout" && (
+                    {studioCustomizeTab === "layout" && !canUse("studioSections") && (
+                      <PlanGate feature="studioSections" title="Section Editor" description="Customize your website sections, reorder content, and control what visitors see. Upgrade to Studio to unlock." compact />
+                    )}
+                    {studioCustomizeTab === "layout" && canUse("studioSections") && (
                       <div className="studio-layout-tab">
                         {studioEditSection ? (() => {
                           /* ── Section Inspector Panel ── */
@@ -14088,7 +14264,10 @@ export default function ArtistShell() {
                     )}
 
                     {/* Brand sub-tab */}
-                    {studioCustomizeTab === "brand" && (() => {
+                    {studioCustomizeTab === "brand" && !canUse("studioBrand") && (
+                      <PlanGate feature="studioBrand" title="Brand Customization" description="Set your accent colors, font pairing, and brand identity across your website. Upgrade to Studio to unlock." compact />
+                    )}
+                    {studioCustomizeTab === "brand" && canUse("studioBrand") && (() => {
                       const themeDefaults = { noir: { accent: "#ffffff", bg: "#0a0a0a", title: "#ffffff", text: "#b3b3b3" }, atrium: { accent: "#ffffff", bg: "#F7F7F5", title: "#111111", text: "#636363" }, lumen: { accent: "#c8956c", bg: "#fdf8f4", title: "#2d2418", text: "#8a7a6a" }, slater: { accent: "#111111", bg: "#ffffff", title: "#111111", text: "#8a8a8a" }, strobe: { accent: "#7c3aed", bg: "#e6e2dc", title: "#111111", text: "#8a8a8a" } };
                       const td = themeDefaults[studioTheme] || themeDefaults.atrium;
                       return (
@@ -14321,20 +14500,20 @@ export default function ArtistShell() {
                 </div>
                 <div className="studio-theme-gallery">
                   {STUDIO_THEMES.map(th => (
-                    <div key={th.id} className={`studio-gallery-card${studioTheme === th.id ? " active" : ""}${th.locked ? " locked" : ""}`}>
+                    <div key={th.id} className={`studio-gallery-card${studioTheme === th.id ? " active" : ""}${th.locked && !canUse("studioAllThemes") ? " locked" : ""}`}>
                       <div className="studio-gallery-preview" style={{ backgroundImage: `url(${th.preview})` }}>
-                        {th.locked && <div className="studio-theme-lock">PRO</div>}
+                        {th.locked && !canUse("studioAllThemes") && <div className="studio-theme-lock">STUDIO</div>}
                         {studioTheme === th.id && <div className="studio-gallery-active">Current Theme</div>}
                         <div className="studio-gallery-overlay">
-                          {!th.locked && (
+                          {(!th.locked || canUse("studioAllThemes")) && (
                             <button className="btn btn-sm" style={{ background: "#fff", color: "#000", fontWeight: 600 }}
                               onClick={() => { setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); setStudioMode("builder"); }}>
                               {studioTheme === th.id ? "Edit Website" : "Use Theme"}
                             </button>
                           )}
-                          {th.locked && (
+                          {th.locked && !canUse("studioAllThemes") && (
                             <button className="btn btn-sm" style={{ background: "rgba(255,255,255,.15)", color: "#fff", border: "1px solid rgba(255,255,255,.2)" }}
-                              onClick={() => showToast("Upgrade to Pro to unlock this theme")}>
+                              onClick={() => { showToast("Upgrade to Studio to unlock all themes"); gateUpgrade("Studio"); }}>
                               Unlock
                             </button>
                           )}
@@ -14982,7 +15161,7 @@ export default function ArtistShell() {
             <img src={artist.headshot || "/demo/artists/1.jpg"} alt="" />
             <div>
               <div className="mp-name">{artist.firstName} {artist.lastName}</div>
-              <div className="mp-plan">{artist.plan === "studio" ? "Studio" : artist.plan === "pro" ? "Pro" : "Core"} Plan</div>
+              <div className="mp-plan">{artist.plan} Plan</div>
             </div>
             <button className="mob-panel-close" onClick={() => setShowMobileMenu(false)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -15751,9 +15930,9 @@ export default function ArtistShell() {
                   <span>{resumeZoom}%</span>
                   <button onClick={() => setResumeZoom(z => Math.min(120, z + 10))}>+</button>
                 </div>
-                <button style={{ background: "#fff", color: "#1a1a2e" }} onClick={() => window.print()}>
+                <button style={{ background: "#fff", color: "#1a1a2e", opacity: canUse("resumeDownload") ? 1 : 0.5 }} onClick={() => { if (!canUse("resumeDownload")) { showToast("Upgrade to Pro to download your resume"); return; } window.print(); }}>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
-                  Print / Save PDF
+                  {canUse("resumeDownload") ? "Print / Save PDF" : "Pro — Print / Save PDF"}
                 </button>
                 <button style={{ background: "var(--ac)", color: "#fff" }} onClick={() => { showToast("Resume link copied!"); }}>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
@@ -15855,8 +16034,7 @@ export default function ArtistShell() {
                   <div className="sm-toggle-label">Track link views</div>
                   <div className="sm-toggle-desc">See who viewed your portfolio and when</div>
                 </div>
-                <div className={`sm-switch${shareSettings.trackLink ? " on" : ""}`} onClick={() => {
-                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                <div className={`sm-switch${shareSettings.trackLink ? " on" : ""}${!canUse("analytics") ? " disabled" : ""}`} style={!canUse("analytics") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => {
                   setShareSettings(s => ({ ...s, trackLink: !s.trackLink }));
                 }} />
               </div>
@@ -15865,8 +16043,7 @@ export default function ArtistShell() {
                   <div className="sm-toggle-label">Require email to view</div>
                   <div className="sm-toggle-desc">Viewers must enter their email before accessing</div>
                 </div>
-                <div className={`sm-switch${shareSettings.requireEmail ? " on" : ""}`} onClick={() => {
-                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                <div className={`sm-switch${shareSettings.requireEmail ? " on" : ""}${!canUse("shareRequireEmail") ? " disabled" : ""}`} style={!canUse("shareRequireEmail") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => {
                   setShareSettings(s => ({ ...s, requireEmail: !s.requireEmail }));
                 }} />
               </div>
@@ -15875,8 +16052,7 @@ export default function ArtistShell() {
                   <div className="sm-toggle-label">Password protect</div>
                   <div className="sm-toggle-desc">Require a password to access your portfolio</div>
                 </div>
-                <div className={`sm-switch${shareSettings.password ? " on" : ""}`} onClick={() => {
-                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                <div className={`sm-switch${shareSettings.password ? " on" : ""}${!canUse("sharePassword") ? " disabled" : ""}`} style={!canUse("sharePassword") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => {
                   setShareSettings(s => ({ ...s, password: s.password ? "" : "demo123" }));
                 }} />
               </div>
@@ -16398,8 +16574,7 @@ export default function ArtistShell() {
                   <div className="sm-toggle-label">Track link views</div>
                   <div className="sm-toggle-desc">See who viewed your work page and when</div>
                 </div>
-                <div className={`sm-switch${workShareSettings.trackLink ? " on" : ""}`} onClick={() => {
-                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                <div className={`sm-switch${workShareSettings.trackLink ? " on" : ""}${!canUse("analytics") ? " disabled" : ""}`} style={!canUse("analytics") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => {
                   setWorkShareSettings(s => ({ ...s, trackLink: !s.trackLink }));
                 }} />
               </div>
@@ -16408,8 +16583,7 @@ export default function ArtistShell() {
                   <div className="sm-toggle-label">Require email to view</div>
                   <div className="sm-toggle-desc">Viewers must enter their email before accessing</div>
                 </div>
-                <div className={`sm-switch${workShareSettings.requireEmail ? " on" : ""}`} onClick={() => {
-                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                <div className={`sm-switch${workShareSettings.requireEmail ? " on" : ""}${!canUse("shareRequireEmail") ? " disabled" : ""}`} style={!canUse("shareRequireEmail") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => {
                   setWorkShareSettings(s => ({ ...s, requireEmail: !s.requireEmail }));
                 }} />
               </div>
@@ -16418,8 +16592,7 @@ export default function ArtistShell() {
                   <div className="sm-toggle-label">Password protect</div>
                   <div className="sm-toggle-desc">Require a password to access your work page</div>
                 </div>
-                <div className={`sm-switch${workShareSettings.password ? " on" : ""}`} onClick={() => {
-                  if (artist.plan === "Core") { showToast("Upgrade to Pro to use this feature"); return; }
+                <div className={`sm-switch${workShareSettings.password ? " on" : ""}${!canUse("sharePassword") ? " disabled" : ""}`} style={!canUse("sharePassword") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => {
                   setWorkShareSettings(s => ({ ...s, password: s.password ? "" : "demo123" }));
                 }} />
               </div>
@@ -16673,7 +16846,6 @@ export default function ArtistShell() {
       {showVideoDetailModal && (() => {
         const m = mediaItems.find(mi => mi.id === showVideoDetailModal);
         if (!m) return null;
-        const share = videoShares.find(vs => vs.mediaId === m.id);
         return (
           <div className="vd-overlay" onClick={e => { if (e.target === e.currentTarget) setShowVideoDetailModal(null); }}>
             <div className="vd-modal">
@@ -16695,28 +16867,10 @@ export default function ArtistShell() {
                   <span>{m.size}</span>
                   {m.duration && <span>{m.duration}</span>}
                 </div>
-                {share && (
-                  <>
-                    <div className="vd-tags">
-                      {share.tags.map(t => <span key={t} className="vd-tag">{t}</span>)}
-                    </div>
-                    {share.description && <div className="vd-desc">{share.description}</div>}
-                    <div className="vd-stats">
-                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.totalViews}</div><div className="vd-stat-label">Views</div></div>
-                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.totalPlays}</div><div className="vd-stat-label">Plays</div></div>
-                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.uniqueViewers}</div><div className="vd-stat-label">Unique</div></div>
-                      <div className="vd-stat"><div className="vd-stat-val">{share.analytics.avgWatchTime}</div><div className="vd-stat-label">Avg. Time</div></div>
-                    </div>
-                  </>
-                )}
                 <div className="vd-actions">
-                  <button className="btn btn-sm" style={{ background: "linear-gradient(135deg,#E11D48,#BE123C)", color: "#fff", border: "none" }} onClick={() => { setShowVideoDetailModal(null); setStudioMediaId(m.id); setStudioMediaTab("content"); }}>
+                  <button className="btn btn-sm" style={{ background: "linear-gradient(135deg,#7A66FF,#4A35E0)", color: "#fff", border: "none" }} onClick={() => { setShowVideoDetailModal(null); setStudioMediaId(m.id); setStudioMediaTab("content"); }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-                    {" "}Edit in Studio
-                  </button>
-                  <button className="btn btn-p btn-sm" onClick={() => { setShowVideoDetailModal(null); setShowVideoShareModal(m.id); setVideoShareTab("settings"); }}>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                    {" "}Share
+                    {" "}Open in Studio
                   </button>
                   <button className="btn btn-s btn-sm" onClick={() => showToast("Added to portfolio")}>Add to Portfolio</button>
                   <button className="btn btn-danger btn-sm" onClick={() => { setMediaItems(prev => prev.filter(mi => mi.id !== m.id)); setShowVideoDetailModal(null); showToast("Media deleted"); }}>Delete</button>
@@ -16733,6 +16887,8 @@ export default function ArtistShell() {
         if (!m) return null;
         let share = videoShares.find(vs => vs.mediaId === m.id);
         if (!share) {
+          const { allowed } = tasteCheck("videoShares", videoShares.length);
+          if (!allowed) { showToast("Video share limit reached — upgrade your plan"); setShowVideoShareModal(null); gateUpgrade("Pro"); return null; }
           const newShare = {
             id: "vs" + Date.now(), mediaId: m.id, title: m.title, description: "", tags: [], privacy: "unlisted",
             slug: generateSlug(m.title), thumbnailSrc: m.thumb || "",
@@ -16803,8 +16959,8 @@ export default function ArtistShell() {
                           <div className={`sm-switch${share.shareSettings.requireEmail ? " on" : ""}`} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, requireEmail: !vs.shareSettings.requireEmail } } : vs))} />
                         </div>
                         <div className="sm-toggle">
-                          <div><div className="sm-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div><div className="sm-toggle-desc">Require a password to view</div></div>
-                          <div className={`sm-switch${share.shareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, requirePassword: !vs.shareSettings.requirePassword } } : vs))} />
+                          <div><div className="sm-toggle-label">Password protection{!canUse("sharePassword") ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Pro</span> : ""}</div><div className="sm-toggle-desc">Require a password to view</div></div>
+                          <div className={`sm-switch${share.shareSettings.requirePassword ? " on" : ""}${!canUse("sharePassword") ? " disabled" : ""}`} style={!canUse("sharePassword") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, requirePassword: !vs.shareSettings.requirePassword } } : vs))} />
                         </div>
                         {share.shareSettings.requirePassword && (
                           <input className="sm-pw-input" type="text" placeholder="Set password..." value={share.shareSettings.password} onChange={e => setVideoShares(prev => prev.map(vs => vs.id === share.id ? { ...vs, shareSettings: { ...vs.shareSettings, password: e.target.value } } : vs))} />
@@ -16819,7 +16975,7 @@ export default function ArtistShell() {
                   </>
                 )}
                 {videoShareTab === "analytics" && (
-                  artist.plan === "Pro" ? (
+                  canUse("analytics") ? (
                     <>
                       <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 10, marginBottom: 20 }}>
                         {[["totalViews", "Views"], ["uniqueViewers", "Unique"], ["totalPlays", "Plays"], ["avgWatchTime", "Avg. Time"]].map(([k, l]) => (
@@ -16862,14 +17018,7 @@ export default function ArtistShell() {
                       </div>
                     </>
                   ) : (
-                    <div className="premium-gate">
-                      <div className="premium-gate-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                      </div>
-                      <h4>Video Analytics</h4>
-                      <p>See who's watching your videos, track retention, and measure engagement. Available on the Pro plan.</p>
-                      <button className="btn-premium-upgrade" onClick={() => { setShowVideoShareModal(null); setPage("settings"); setSettingsTab("plan"); }}>Upgrade to Pro</button>
-                    </div>
+                    <PlanGate feature="analytics" title="Video Analytics" description="See who's watching your videos, track retention, and measure engagement." />
                   )
                 )}
               </div>
@@ -16956,8 +17105,8 @@ export default function ArtistShell() {
                       <div className="sm-switch on" style={{ opacity: 0.6, pointerEvents: "none" }} />
                     </div>
                     <div className="sm-toggle">
-                      <div><div className="sm-toggle-label">Password protection{artist.plan === "Free" ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Core+</span> : ""}</div><div className="sm-toggle-desc">Require a password to view the application</div></div>
-                      <div className={`sm-switch${extAppShareSettings.requirePassword ? " on" : ""}${artist.plan === "Free" ? " disabled" : ""}`} style={artist.plan === "Free" ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExtAppShareSettings(p => ({ ...p, requirePassword: !p.requirePassword }))} />
+                      <div><div className="sm-toggle-label">Password protection{!canUse("sharePassword") ? <span style={{ fontSize: 10, color: "var(--amber)", fontWeight: 600, marginLeft: 6 }}>Pro</span> : ""}</div><div className="sm-toggle-desc">Require a password to view the application</div></div>
+                      <div className={`sm-switch${extAppShareSettings.requirePassword ? " on" : ""}${!canUse("sharePassword") ? " disabled" : ""}`} style={!canUse("sharePassword") ? { opacity: 0.4, pointerEvents: "none" } : {}} onClick={() => setExtAppShareSettings(p => ({ ...p, requirePassword: !p.requirePassword }))} />
                     </div>
                     {extAppShareSettings.requirePassword && (
                       <input className="sm-pw-input" type="text" placeholder="Set password..." value={extAppShareSettings.password} onChange={e => setExtAppShareSettings(p => ({ ...p, password: e.target.value }))} />
