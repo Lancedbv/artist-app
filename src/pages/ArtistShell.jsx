@@ -1848,6 +1848,24 @@ textarea.pf-input{line-height:1.6}
 .extd-timeline-event:hover::before{background:var(--ac)}
 .extd-timeline-event .extd-evt-time{font-size:10px;color:var(--g3);margin-bottom:2px;font-weight:500}
 .extd-timeline-event .extd-evt-text{color:var(--tx);font-weight:500}
+/* Email Compose */
+.ext-email-panel{border-radius:14px;border:1px solid var(--br);overflow:hidden;margin-bottom:12px}
+.ext-email-header{display:flex;align-items:center;gap:8px;padding:14px 20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--g4);border-bottom:1px solid var(--g1);background:rgba(var(--ac-rgb,99,102,241),.03)}
+.ext-email-form{display:flex;flex-direction:column;gap:0}
+.ext-email-row{display:flex;align-items:center;gap:0;padding:0 20px;border-bottom:1px solid var(--g1)}
+.ext-email-label{font-size:12px;font-weight:600;color:var(--g4);width:56px;flex-shrink:0;padding:12px 0}
+.ext-email-from{font-size:13px;color:var(--tx);padding:12px 0;flex:1}
+.ext-email-via{font-size:10px;font-weight:600;color:var(--ac);background:rgba(96,77,255,.08);padding:2px 6px;border-radius:4px;margin-left:6px}
+.ext-email-input{flex:1;padding:12px 0;border:none;background:transparent;font-size:13px;font-family:var(--sans);color:var(--tx);outline:none}
+.ext-email-input::placeholder{color:var(--g3)}
+.ext-email-body{padding:14px 0;resize:vertical;min-height:100px;line-height:1.6}
+.ext-email-attachment{padding:14px 20px;border-bottom:1px solid var(--g1)}
+.ext-email-att-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--g4);margin-bottom:8px}
+.ext-email-att-card{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--g1);border-radius:10px}
+.ext-email-att-icon{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--ac),#7c5cff);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ext-email-actions{padding:14px 20px;display:flex;justify-content:flex-end}
+.ext-email-spinner{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
 .extd-motivation{padding:16px;border:1px solid var(--g1);border-radius:14px;background:var(--bg);font-size:13px;line-height:1.6;color:var(--tx);white-space:pre-wrap;margin-bottom:16px}
 .extd-media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px;margin-bottom:16px}
 .extd-media-thumb{border-radius:10px;overflow:hidden;aspect-ratio:4/3}
@@ -5274,6 +5292,7 @@ export default function ArtistShell() {
   const [extAppShareSettings, setExtAppShareSettings] = useState({ requireEmail: true, requirePassword: false, password: "" });
   const [viewExtApp, setViewExtApp] = useState(null);
   const [extAppDetailTab, setExtAppDetailTab] = useState("overview");
+  const [extEmailForm, setExtEmailForm] = useState({ to: "", subject: "", body: "", sending: false, sent: false });
   const [appTypeFilter, setAppTypeFilter] = useState("all");
 
   /* Picker modals */
@@ -7326,17 +7345,8 @@ export default function ArtistShell() {
 
               {extAppDetailTab === "activity" && (
                 <div>
-                  {renderTimeline(
-                    APP_ACTIVITY_FEED.filter(ev => ev.appId === extApp.id || ev.appId === viewExtApp),
-                    { compact: true, emptyMsg: "Activity for this application will appear here" }
-                  )}
-                </div>
-              )}
-
-              {extAppDetailTab === "tracking" && (
-                artist.plan === "Pro" ? (
-                  <>
-                    <div className="spotlight-row" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginTop: 0 }}>
+                  {artist.plan === "Pro" && (
+                    <div className="spotlight-row" style={{ gridTemplateColumns: "repeat(3, 1fr)", marginTop: 0, marginBottom: 12 }}>
                       {[
                         { label: "TOTAL VIEWS", value: extApp.analytics.viewCount },
                         { label: "TIME SPENT", value: extApp.analytics.timeSpent || "—" },
@@ -7348,29 +7358,24 @@ export default function ArtistShell() {
                         </div>
                       ))}
                     </div>
-                    <div className="info-card">
-                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Activity</h4>
-                      {extApp.analytics.viewCount > 0 ? (
-                        <div className="extd-timeline">
-                          <div className="extd-timeline-event"><div className="extd-evt-time">{new Date(extApp.analytics.lastViewedAt).toLocaleString()}</div><div className="extd-evt-text">Application opened by {extApp.analytics.viewerEmail}</div></div>
-                          {extApp.analytics.mediaViewed.map(mid => {
-                            const mi = mediaItems.find(m => m.id === mid);
-                            return mi ? <div key={mid} className="extd-timeline-event"><div className="extd-evt-time">During visit</div><div className="extd-evt-text">Viewed: {mi.title}</div></div> : null;
-                          })}
-                        </div>
-                      ) : (
-                        <div style={{ textAlign: "center", padding: 32, color: "var(--g3)", fontSize: 13 }}>No activity yet. Share your application link to start tracking.</div>
-                      )}
+                  )}
+                  {artist.plan === "Pro" && extApp.analytics.viewCount > 0 && (
+                    <div className="info-card" style={{ marginBottom: 12 }}>
+                      <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 10 }}>Viewer Activity</h4>
+                      <div className="extd-timeline">
+                        <div className="extd-timeline-event"><div className="extd-evt-time">{new Date(extApp.analytics.lastViewedAt).toLocaleString()}</div><div className="extd-evt-text">Application opened by {extApp.analytics.viewerEmail}</div></div>
+                        {extApp.analytics.mediaViewed.map(mid => {
+                          const mi = mediaItems.find(m => m.id === mid);
+                          return mi ? <div key={mid} className="extd-timeline-event"><div className="extd-evt-time">During visit</div><div className="extd-evt-text">Viewed: {mi.title}</div></div> : null;
+                        })}
+                      </div>
                     </div>
-                  </>
-                ) : (
-                  <div className="premium-gate">
-                    <div className="premium-gate-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                    <h4>Application Tracking</h4>
-                    <p>See who viewed your application, which materials they opened, and how much time they spent. Available on the Pro plan.</p>
-                    <button className="btn-premium-upgrade" onClick={() => { setViewExtApp(null); setPage("settings"); setSettingsTab("plan"); }}>Upgrade to Pro</button>
-                  </div>
-                )
+                  )}
+                  {renderTimeline(
+                    APP_ACTIVITY_FEED.filter(ev => ev.appId === extApp.id || ev.appId === viewExtApp),
+                    { compact: true, emptyMsg: "Activity for this application will appear here" }
+                  )}
+                </div>
               )}
 
               {extAppDetailTab === "share" && (
@@ -7409,34 +7414,67 @@ export default function ArtistShell() {
                   </div>
 
                   {/* Send via Email Panel */}
-                  <div style={{ padding: 20, borderRadius: 14, background: "rgba(255,255,255,.02)", border: "1px solid var(--br)", backdropFilter: "blur(8px)", marginBottom: 12 }}>
-                    <h4 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: "var(--g4)", marginBottom: 12, display: "flex", alignItems: "center", gap: 6 }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                      Send via Email
-                    </h4>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                      <input placeholder="recipient@company.com" style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none" }} />
-                      <input placeholder={`Application for ${extApp.role} — ${artist.name}`} style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none" }} />
-                      <textarea placeholder="Dear hiring team,&#10;&#10;Please find attached my application materials for the position..." style={{ padding: "10px 14px", border: "1px solid var(--br)", borderRadius: 8, background: "var(--s1)", fontSize: 13, color: "var(--tx)", outline: "none", resize: "vertical", minHeight: 90, fontFamily: "inherit" }} />
-                      {/* Preview card */}
-                      <div style={{ padding: 14, background: "var(--s1)", borderRadius: 10, border: "1px solid var(--br)" }}>
-                        <div style={{ fontSize: 10, color: "var(--g4)", textTransform: "uppercase", letterSpacing: ".04em", marginBottom: 8 }}>Attached Preview</div>
-                        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                          <div style={{ width: 40, height: 40, borderRadius: 8, background: "linear-gradient(135deg, var(--ac), #7c5cff)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                          </div>
-                          <div>
-                            <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{extApp.companyName} — {extApp.role}</div>
-                            <div style={{ fontSize: 11, color: "var(--g4)" }}>apply.lanced.app/{extApp.slug}</div>
+                  <div className="ext-email-panel">
+                    <div className="ext-email-header">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                      <span>Send Application via Email</span>
+                    </div>
+                    {extEmailForm.sent ? (
+                      <div style={{ textAlign: "center", padding: "32px 16px" }}>
+                        <div style={{ fontSize: 32, marginBottom: 8 }}>{EIcon.check}</div>
+                        <div style={{ fontSize: 15, fontWeight: 600, color: "var(--tx)", marginBottom: 4 }}>Application Sent</div>
+                        <div style={{ fontSize: 12, color: "var(--g4)", marginBottom: 16 }}>Your application was emailed to {extEmailForm.to}</div>
+                        <button className="btn btn-s btn-sm" onClick={() => setExtEmailForm({ to: "", subject: "", body: "", sending: false, sent: false })}>Send Another</button>
+                      </div>
+                    ) : (
+                      <div className="ext-email-form">
+                        <div className="ext-email-row">
+                          <label className="ext-email-label">From</label>
+                          <div className="ext-email-from">{artist.name} &lt;{artist.email || "amara@lanced.io"}&gt; <span className="ext-email-via">via Lanced</span></div>
+                        </div>
+                        <div className="ext-email-row">
+                          <label className="ext-email-label">To</label>
+                          <input className="ext-email-input" placeholder="casting@company.com" value={extEmailForm.to} onChange={e => setExtEmailForm(f => ({ ...f, to: e.target.value }))} />
+                        </div>
+                        <div className="ext-email-row">
+                          <label className="ext-email-label">Subject</label>
+                          <input className="ext-email-input" placeholder={`Application: ${extApp.role} — ${artist.name}`} value={extEmailForm.subject} onChange={e => setExtEmailForm(f => ({ ...f, subject: e.target.value }))} />
+                        </div>
+                        <div className="ext-email-row" style={{ flexDirection: "column", alignItems: "stretch" }}>
+                          <label className="ext-email-label" style={{ marginBottom: 6 }}>Message</label>
+                          <textarea className="ext-email-input ext-email-body" rows={5} placeholder={`Dear hiring team,\n\nPlease find my application for the ${extApp.role} position. I have included my portfolio, media, and relevant materials via the link below.\n\nI look forward to hearing from you.\n\nBest regards,\n${artist.name}`} value={extEmailForm.body} onChange={e => setExtEmailForm(f => ({ ...f, body: e.target.value }))} />
+                        </div>
+                        <div className="ext-email-attachment">
+                          <div className="ext-email-att-label">Attached link</div>
+                          <div className="ext-email-att-card">
+                            <div className="ext-email-att-icon">
+                              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                            </div>
+                            <div>
+                              <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }}>{extApp.companyName} — {extApp.role}</div>
+                              <div style={{ fontSize: 11, color: "var(--ac)" }}>apply.lanced.app/{extApp.slug}</div>
+                            </div>
                           </div>
                         </div>
+                        <div className="ext-email-actions">
+                          <button className="btn btn-p" style={{ display: "flex", alignItems: "center", gap: 6 }}
+                            disabled={!extEmailForm.to || extEmailForm.sending}
+                            onClick={() => {
+                              setExtEmailForm(f => ({ ...f, sending: true }));
+                              setTimeout(() => {
+                                setExtEmailForm(f => ({ ...f, sending: false, sent: true }));
+                                showToast("Application sent to " + extEmailForm.to);
+                              }, 1500);
+                            }}>
+                            {extEmailForm.sending ? (
+                              <><span className="ext-email-spinner" /> Sending...</>
+                            ) : (
+                              <><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Application</>
+                            )}
+                          </button>
+                        </div>
                       </div>
-                      <button className="btn btn-p btn-sm" style={{ alignSelf: "flex-end", display: "flex", alignItems: "center", gap: 6 }}
-                        onClick={() => { showToast("Application sent via email!"); setExtAppDetailTab("overview"); }}>
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                        Send Application
-                      </button>
-                    </div>
+                    )}
                   </div>
 
                   <button className="btn btn-s btn-sm" onClick={() => window.open(`/apply.html?slug=${extApp.slug}`, "_blank")} style={{ display: "inline-flex", alignItems: "center", gap: 5 }}>
@@ -14958,7 +14996,7 @@ export default function ArtistShell() {
                   <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)" }} className="sb-label">{ea.companyName}</div>
                   <div style={{ fontSize: 11, color: "var(--g4)", marginTop: 2 }} className="sb-label">{ea.role}</div>
                 </div>
-                {[["overview", I.overview, "Overview"], ["activity", I.updates || I.eye, "Activity"], ["tracking", I.eye, "Tracking"]].map(([id, icon, label]) => (
+                {[["overview", I.overview, "Overview"], ["activity", I.updates || I.eye, "Activity"]].map(([id, icon, label]) => (
                   <button key={id} className={`sidebar-item${extAppDetailTab === id ? " active" : ""}`} onClick={() => setExtAppDetailTab(id)}>
                     {icon}
                     <span className="sb-label">{label}</span>
