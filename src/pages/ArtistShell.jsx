@@ -137,6 +137,7 @@ const MOCK_PORTFOLIOS = [
       { id: "r3", type: "education", title: "BA Dance Performance", org: "Royal Ballet School", period: "2018 – 2021", location: "London, UK" },
       { id: "r4", type: "award", title: "Outstanding Young Dancer", org: "Critics' Circle National Dance Awards", period: "2024", location: "" },
     ],
+    artistStatement: "My work lives at the intersection of contemporary European form and West African movement traditions. I'm drawn to the tension between precision and abandon — the moment where technique dissolves into something instinctive and raw. Through dance, I explore identity, diaspora, and the body as archive.",
     highlightedVideo: "v1",
     slug: "amara-osei-contemporary",
   },
@@ -154,6 +155,7 @@ const MOCK_PORTFOLIOS = [
     references: [],
     documents: [],
     resume: [],
+    artistStatement: "",
     highlightedVideo: null,
     slug: "amara-osei-afrofusion",
   },
@@ -271,11 +273,12 @@ const MOCK_WORK_TRACKING = [
 ];
 
 const PLAN_LIMITS = {
-  Free: { portfolios: 1, works: 1, externalApps: 1, videoShares: 1, planCalendar: false, activityTracking: false, analytics: false, sharePassword: false, shareRequireEmail: false, shareEmailCompose: false, resumeDownload: false, compCard: false, academyFull: false, studioPublish: false, studioAllThemes: false, studioBrand: false, studioSections: false, studioSharing: false },
-  Pro: { portfolios: 999, works: 999, externalApps: 999, videoShares: 999, planCalendar: true, activityTracking: true, analytics: true, sharePassword: true, shareRequireEmail: true, shareEmailCompose: true, resumeDownload: true, compCard: true, academyFull: true, studioPublish: false, studioAllThemes: false, studioBrand: false, studioSections: false, studioSharing: false },
-  Studio: { portfolios: 999, works: 999, externalApps: 999, videoShares: 999, planCalendar: true, activityTracking: true, analytics: true, sharePassword: true, shareRequireEmail: true, shareEmailCompose: true, resumeDownload: true, compCard: true, academyFull: true, studioPublish: true, studioAllThemes: true, studioBrand: true, studioSections: true, studioSharing: true },
+  Free: { portfolios: 0, works: 0, externalApps: 0, videoShares: 0, networkMessages: 5, planCalendar: false, activityTracking: false, analytics: false, sharePassword: false, shareRequireEmail: false, shareEmailCompose: false, resumeDownload: false, compCard: false, academyFull: false, studioPublish: false, studioAllThemes: false, studioBrand: false, studioSections: false, studioSharing: false, workStudioFeatures: false, portfolioStudioFeatures: false },
+  Pro: { portfolios: 1, works: 1, externalApps: 999, videoShares: 999, networkMessages: 20, planCalendar: true, activityTracking: true, analytics: true, sharePassword: false, shareRequireEmail: true, shareEmailCompose: true, resumeDownload: true, compCard: true, academyFull: true, studioPublish: false, studioAllThemes: false, studioBrand: false, studioSections: false, studioSharing: false, workStudioFeatures: false, portfolioStudioFeatures: false },
+  Studio: { portfolios: 5, works: 5, externalApps: 999, videoShares: 999, networkMessages: 999, planCalendar: true, activityTracking: true, analytics: true, sharePassword: true, shareRequireEmail: true, shareEmailCompose: true, resumeDownload: true, compCard: true, academyFull: true, studioPublish: true, studioAllThemes: true, studioBrand: true, studioSections: true, studioSharing: true, workStudioFeatures: true, portfolioStudioFeatures: true },
 };
-const FEATURE_PLAN = { planCalendar: "Pro", activityTracking: "Pro", analytics: "Pro", sharePassword: "Pro", shareRequireEmail: "Pro", shareEmailCompose: "Pro", resumeDownload: "Pro", compCard: "Pro", academyFull: "Pro", studioPublish: "Studio", studioAllThemes: "Studio", studioBrand: "Studio", studioSections: "Studio", studioSharing: "Studio" };
+const FEATURE_PLAN = { planCalendar: "Pro", activityTracking: "Pro", analytics: "Pro", sharePassword: "Studio", shareRequireEmail: "Pro", shareEmailCompose: "Pro", resumeDownload: "Pro", compCard: "Pro", academyFull: "Pro", workStudioFeatures: "Studio", portfolioStudioFeatures: "Studio", studioPublish: "Studio", studioAllThemes: "Studio", studioBrand: "Studio", studioSections: "Studio", studioSharing: "Studio" };
+const PLAN_PRICES = { Free: "€0", Pro: "€4.99", Studio: "€14.99" };
 
 const STUDIO_THEMES = [
   {
@@ -583,7 +586,7 @@ const CSS = `
 .dark .app-toolbar .at-search-btn{background:var(--sf);border-color:var(--g3)}
 .dark .app-toolbar .at-search-expanded{background:var(--sf);border-color:var(--ac)}
 .dark .app-toolbar .at-filter-btn{background:var(--sf);border-color:var(--g3)}
-.dark .app-card{background:var(--sf);border-color:var(--g2)}
+.dark .app-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .app-tile{background:var(--sf);border-color:var(--g2)}
 .dark .ak-column{background:var(--sf);border-color:var(--g2)}
 .dark .ak-card{background:var(--bg);border-color:var(--g2)}
@@ -591,22 +594,25 @@ const CSS = `
 .dark .dash-section{background:var(--glass-bg);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border-color:var(--glass-border)}
 .dark .dash-banner{background:rgba(23,23,28,.42);border-color:rgba(255,255,255,.06)}
 .dark .overlay>div{background:var(--sf);border-color:var(--g2)}
-.dark .sr-card{background:var(--sf);border-color:var(--g2)}
-.dark .opp-card{background:var(--sf);border-color:var(--g2)}
+.dark .sr-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
+.dark .opp-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .media-item{background:var(--sf);border-color:var(--g2)}
-.dark .pf-card{background:var(--sf);border-color:var(--g2)}
-.dark .wk-card{background:var(--sf);border-color:var(--g2)}
+.dark .pf-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
+.dark .wk-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .wk-card:hover{border-color:rgba(217,119,6,.4);box-shadow:0 4px 20px rgba(217,119,6,.12)}
-.dark .bio-card{background:var(--sf);border-color:var(--g2)}
+.dark .bio-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .msg-item{border-bottom-color:var(--g2)}
 .dark .tab-bar .tab-btn{color:var(--g5)}
 .dark .tab-bar .tab-btn.on{color:var(--tx);border-bottom-color:var(--ac)}
 .dark .spotlight-hero{border-color:var(--g2)}
-.dark .info-card{background:var(--sf);border-color:var(--g2)}
+.dark .info-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .stat-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
 .dark .list-search{background:var(--sf);border-color:var(--g3)}
 .dark .list-search input{color:var(--tx)}
 .dark .chip.on{background:linear-gradient(135deg,#8B7AFF,#604DFF)}
+.dark .plan-cal{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
+.dark .plan-cal-header{background:rgba(28,28,36,.6);border-bottom-color:var(--glass-border)}
+.dark .plan-cal-cell{border-color:var(--glass-border)}
 
 /* Dark mode toggle */
 .dark-toggle{display:flex;align-items:center;gap:8px;padding:8px 14px;cursor:pointer;border:none;background:none;font-family:var(--sans);font-size:12px;font-weight:500;color:var(--g5);border-radius:8px;transition:all .15s;width:100%}
@@ -776,6 +782,17 @@ const CSS = `
 .skeleton-avatar{width:40px;height:40px;border-radius:50%}
 .dark .skeleton{background:linear-gradient(90deg,var(--g1) 0%,var(--g2) 50%,var(--g1) 100%)}
 
+/* ━━━ Page transitions ━━━ */
+.page-content{animation:pageIn .25s ease}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ━━━ Focus styles ━━━ */
+.btn:focus-visible,.sidebar-item:focus-visible,.chip:focus-visible,.tab-btn:focus-visible,button:focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:8px}
+
+/* ━━━ Glass card base ━━━ */
+.glass-card{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:var(--r-card);transition:all .2s}
+.dark .glass-card{background:var(--glass-bg);backdrop-filter:var(--glass-blur-soft);-webkit-backdrop-filter:var(--glass-blur-soft);border-color:var(--glass-border)}
+
 /* ━━━ Spinner ━━━ */
 @keyframes spin{to{transform:rotate(360deg)}}
 .spinner{width:20px;height:20px;border:2px solid var(--g2);border-top-color:var(--ac);border-radius:50%;animation:spin .6s linear infinite}
@@ -942,7 +959,7 @@ const CSS = `
 .profile-info .pi-links{display:flex;gap:8px}
 .profile-info .pi-links a{font-size:11px;font-weight:600;color:var(--ac);text-decoration:none;padding:4px 12px;border:1px solid rgba(96,77,255,.2);border-radius:40px;transition:all .15s}
 .profile-info .pi-links a:hover{background:rgba(96,77,255,.06)}
-.info-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
+.info-card{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
 .info-card h4{font-size:20px;font-weight:500;margin-bottom:16px;color:var(--tx)}
 .pf-field{display:flex;flex-direction:column;gap:4px}
 .pf-label{font-size:12px;font-weight:600;color:var(--tx)}
@@ -960,7 +977,7 @@ textarea.pf-input{line-height:1.6}
 .info-row{display:flex;align-items:center;padding:6px 0;font-size:13px}
 .info-row .ir-label{width:120px;color:var(--g4);flex-shrink:0}
 .info-row .ir-value{color:var(--tx);font-weight:500}
-.bio-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
+.bio-card{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:14px;padding:20px;margin-bottom:16px;animation:slideInUp .3s ease both}
 .bio-card h4{font-size:13px;font-weight:600;margin-bottom:8px}
 .bio-card p{font-size:13px;color:var(--g5);line-height:1.6}
 
@@ -970,7 +987,7 @@ textarea.pf-input{line-height:1.6}
 .sr-toolbar select:hover{border-color:var(--g3)}
 .sr-toolbar select:focus{outline:none;border-color:var(--ac)}
 .sr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;animation:fadeIn .3s ease}
-.sr-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;padding:18px;transition:all .2s;cursor:pointer;position:relative;animation:popIn .25s ease both}
+.sr-card{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:14px;padding:18px;transition:all .2s;cursor:pointer;position:relative;animation:popIn .25s ease both}
 .sr-card:nth-child(1){animation-delay:.03s}.sr-card:nth-child(2){animation-delay:.06s}.sr-card:nth-child(3){animation-delay:.09s}.sr-card:nth-child(4){animation-delay:.12s}
 .sr-card:hover{border-color:rgba(96,77,255,.18);transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .sr-card .sr-type{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 8px;border-radius:40px;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px}
@@ -1092,7 +1109,7 @@ textarea.pf-input{line-height:1.6}
 .app-toolbar .at-filter-btn svg{width:14px;height:14px}
 @media(max-width:480px){.app-toolbar{flex-wrap:wrap;gap:6px;margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}.app-toolbar .at-right{flex-wrap:wrap;gap:6px;width:100%}.app-toolbar .at-filter-btn{display:none}.sort-filter{flex:1;min-width:0}}
 .app-list{display:flex;flex-direction:column;gap:8px;animation:fadeIn .3s ease}
-.app-card{display:flex;align-items:center;gap:16px;padding:16px 20px;background:var(--sf);border:1px solid var(--g2);border-radius:14px;cursor:pointer;transition:all .2s;animation:slideInUp .3s ease both;position:relative}
+.app-card{display:flex;align-items:center;gap:16px;padding:16px 20px;background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:14px;cursor:pointer;transition:all .2s;animation:slideInUp .3s ease both;position:relative}
 .app-card:nth-child(1){animation-delay:.03s}.app-card:nth-child(2){animation-delay:.06s}.app-card:nth-child(3){animation-delay:.09s}.app-card:nth-child(4){animation-delay:.12s}
 .app-card:hover{border-color:rgba(96,77,255,.18);transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .app-card .ac-logo{width:44px;height:44px;border-radius:12px;object-fit:cover;flex-shrink:0}
@@ -1165,7 +1182,7 @@ textarea.pf-input{line-height:1.6}
 
 /* ━━━ Discover ━━━ */
 .opp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;animation:fadeIn .3s ease}
-.opp-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;overflow:hidden;transition:all .2s;cursor:pointer;animation:popIn .25s ease both}
+.opp-card{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;transition:all .2s;cursor:pointer;animation:popIn .25s ease both}
 .opp-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .opp-card .oc-banner{width:100%;height:120px;object-fit:cover}
 .opp-card .oc-body{padding:14px 16px}
@@ -1183,7 +1200,7 @@ textarea.pf-input{line-height:1.6}
 
 /* ━━━ Present / Portfolios ━━━ */
 .pf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;animation:fadeIn .3s ease}
-.pf-card{background:var(--sf);border:1px solid var(--g2);border-radius:14px;overflow:hidden;transition:all .2s;cursor:pointer}
+.pf-card{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:14px;overflow:hidden;transition:all .2s;cursor:pointer}
 .pf-card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(96,77,255,.08)}
 .pf-card .pfc-cover{width:100%;height:140px;object-fit:cover}
 .pf-card .pfc-body{padding:14px 16px}
@@ -1471,7 +1488,7 @@ textarea.pf-input{line-height:1.6}
 
 /* Works Cards on Present page */
 .wk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-top:16px}
-.wk-card{border:1px solid var(--g2);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .2s;background:var(--sf)}
+.wk-card{border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px)}
 .wk-card:hover{border-color:rgba(217,119,6,.3);box-shadow:0 4px 20px rgba(217,119,6,.08)}
 .wkc-cover{height:140px;object-fit:cover;width:100%}
 .wkc-body{padding:16px}
@@ -1944,13 +1961,41 @@ textarea.pf-input{line-height:1.6}
 .extd-media-thumb img{width:100%;height:100%;object-fit:cover}
 
 /* ── Premium Gate ── */
-.premium-gate{position:relative;border-radius:16px;padding:32px;text-align:center;background:rgba(96,77,255,.03);border:1px solid rgba(96,77,255,.1)}
+.premium-gate{position:relative;border-radius:16px;padding:32px;text-align:center;background:linear-gradient(135deg,rgba(96,77,255,.03),rgba(124,58,237,.02));border:1px solid rgba(96,77,255,.08);backdrop-filter:blur(2px)}
 .premium-gate-icon{font-size:28px;margin-bottom:8px}
 .premium-gate h4{font-size:16px;font-weight:700;margin:0 0 6px;color:var(--tx)}
-.premium-gate p{font-size:13px;color:var(--g4);margin:0 0 16px;line-height:1.5}
-.btn-premium-upgrade{padding:10px 24px;border:none;border-radius:12px;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#1a1a1a;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--sans);box-shadow:0 2px 8px rgba(245,166,35,.25);transition:all .15s}
-.btn-premium-upgrade:hover{filter:brightness(1.05);transform:translateY(-1px)}
-.premium-pro-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(135deg,#FFD86B,#F5A623);color:#1a1a1a}
+.premium-gate p{font-size:13px;color:var(--g4);margin:0 0 16px;line-height:1.5;max-width:320px;margin-left:auto;margin-right:auto}
+.btn-premium-upgrade{padding:10px 24px;border:none;border-radius:10px;background:var(--ac);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .15s;letter-spacing:-.01em}
+.btn-premium-upgrade:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-premium-studio{background:linear-gradient(135deg,#7c3aed,#604DFF)}
+.premium-pro-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:var(--ac);color:#fff}
+.premium-studio-badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;background:linear-gradient(135deg,#7c3aed,#604DFF);color:#fff}
+/* ── Upsell Popup ── */
+.upsell-popup{position:fixed;bottom:24px;right:24px;width:340px;max-height:calc(100vh - 48px);overflow-y:auto;padding:24px;border-radius:16px;background:var(--sf);border:1px solid var(--g2);box-shadow:0 8px 32px rgba(0,0,0,.1);z-index:9999;animation:slideInUp .25s ease}
+.upsell-popup-close{position:absolute;top:12px;right:12px;width:24px;height:24px;border:none;background:none;color:var(--g4);cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:6px}
+.upsell-popup-close:hover{background:var(--g1);color:var(--tx)}
+.upsell-popup h4{font-size:15px;font-weight:700;color:var(--tx);margin:0 0 6px;line-height:1.3}
+.upsell-popup p{font-size:12.5px;color:var(--g5);margin:0 0 16px;line-height:1.5}
+.upsell-popup .btn-premium-upgrade{width:100%;text-align:center;padding:11px 20px;font-size:13px}
+.upsell-popup-price{font-size:11px;color:var(--g4);text-align:center;margin-top:8px}
+/* ── Plan Cards ── */
+.plan-cards-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px}
+.plan-card{padding:24px 20px;border:1px solid var(--g2);border-radius:16px;display:flex;flex-direction:column;position:relative;transition:all .15s}
+.plan-card:hover{border-color:var(--g3)}
+.plan-card.current{border-width:2px}
+.plan-card.recommended{border-color:var(--ac);border-width:2px}
+.plan-card-badge{position:absolute;top:-9px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 12px;border-radius:20px;color:#fff;letter-spacing:.03em}
+.plan-card-name{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:2px}
+.plan-card-tagline{font-size:11.5px;color:var(--g4);margin-bottom:14px;line-height:1.4;min-height:32px}
+.plan-card-price{font-size:26px;font-weight:700;font-family:var(--mono);margin-bottom:16px}
+.plan-card-price span{font-size:12px;color:var(--g4);font-weight:400}
+.plan-card-divider{height:1px;background:var(--g1);margin-bottom:14px}
+.plan-card-features{flex:1;margin-bottom:16px}
+.plan-card-feature{font-size:11.5px;color:var(--g5);padding:3px 0;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.plan-card-feature svg{flex-shrink:0;margin-top:2px}
+.plan-card-section{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--g4);margin-top:10px;margin-bottom:4px}
+.plan-card-section:first-child{margin-top:0}
+@media(max-width:700px){.plan-cards-grid{grid-template-columns:1fr}.upsell-popup{left:16px;right:16px;bottom:16px;width:auto}}
 
 /* ── Dark mode additions ── */
 .dark .upload-panel{background:rgba(30,30,35,.85);border-color:rgba(255,255,255,.08)}
@@ -1958,7 +2003,8 @@ textarea.pf-input{line-height:1.6}
 .dark .upload-dropzone:hover,.dark .upload-dropzone.dragover{border-color:var(--ac);background:rgba(96,77,255,.06)}
 .dark .vd-modal,.dark .vs-modal,.dark .ext-modal,.dark .share-modal{background:var(--sf)}
 .dark .extd-motivation,.dark .ext-preview-card,.dark .extd-stat-card{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.08)}
-.dark .premium-gate{background:rgba(96,77,255,.05);border-color:rgba(96,77,255,.15)}
+.dark .premium-gate{background:linear-gradient(135deg,rgba(96,77,255,.06),rgba(124,58,237,.04));border-color:rgba(96,77,255,.12)}
+.dark .upsell-popup{background:var(--sf);border-color:var(--g2);box-shadow:0 8px 32px rgba(0,0,0,.3)}
 .dark .ms-card{background:var(--sf);border-color:var(--g2)}
 .dark .ms-stat{background:var(--g1);border-color:var(--g2)}
 .dark .ms-share-url{background:var(--g1);border-color:var(--g2)}
@@ -4690,11 +4736,11 @@ body:has(.filter-side-panel) .feedback-tab{display:none}
 .plan-filter-chips{display:flex;gap:4px}
 
 /* Calendar Grid */
-.plan-cal{background:var(--bg);border:1px solid var(--g2);border-radius:16px;overflow:hidden}
-.plan-cal-header{display:grid;grid-template-columns:repeat(7,1fr);background:var(--g1);border-bottom:1px solid var(--g2)}
+.plan-cal{background:rgba(255,255,255,.72);backdrop-filter:saturate(1.2) blur(8px);-webkit-backdrop-filter:saturate(1.2) blur(8px);border:1px solid var(--glass-border);border-radius:16px;overflow:hidden}
+.plan-cal-header{display:grid;grid-template-columns:repeat(7,1fr);background:rgba(245,244,251,.6);border-bottom:1px solid var(--glass-border)}
 .plan-cal-dow{padding:10px 0;text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--g4)}
 .plan-cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
-.plan-cal-cell{min-height:80px;padding:8px;border-right:1px solid var(--g2);border-bottom:1px solid var(--g2);cursor:pointer;transition:background .15s;position:relative}
+.plan-cal-cell{min-height:80px;padding:8px;border-right:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);cursor:pointer;transition:background .15s;position:relative}
 .plan-cal-cell:nth-child(7n){border-right:none}
 .plan-cal-cell:hover{background:var(--g1)}
 .plan-cal-cell.empty{cursor:default;background:var(--g1);opacity:.4}
@@ -5416,23 +5462,67 @@ export default function ArtistShell() {
 
   const planLimits = PLAN_LIMITS[artist.plan] || (artist.plan === "Core" ? PLAN_LIMITS.Pro : PLAN_LIMITS.Free);
   const canUse = (feature) => !!planLimits[feature];
-  const gateUpgrade = (requiredPlan) => { setPage("settings"); setSettingsTab("plan"); };
   const tasteCheck = (resource, count) => { const limit = planLimits[resource]; if (limit >= 999) return { allowed: true }; return { allowed: count < limit }; };
+
+  const PRO_HIGHLIGHTS = ["Application tracking — see who views", "Deadline planner & calendar sync", "External applications", "1 Work & 1 Portfolio", "AI matching insights", "Full Academy access"];
+  const STUDIO_HIGHLIGHTS = ["5 Works with credits, reviews & press", "5 Portfolios with statements & awards", "Your own artist website", "Full customization & themes", "Press Kits & LinkHub", "Password protection"];
+
+  const [upsellPopup, setUpsellPopup] = useState(null);
+  const [showPricingModal, setShowPricingModal] = useState(null);
+
+  const showUpsell = (title, description, plan) => {
+    setUpsellPopup({ title, description, plan });
+    setTimeout(() => setUpsellPopup(null), 12000);
+  };
+  const gateUpgrade = (requiredPlan) => { setShowPricingModal(requiredPlan); };
+
+  const UPSELL_MESSAGES = {
+    portfolio: { title: "Showcase every side of your artistry", desc: "Create your first Portfolio — curate your best work and share it with the world.", plan: "Pro" },
+    portfolioLimit: { title: "One portfolio isn't enough", desc: "Unlock 5 Portfolios with artist statements, awards, references, and full analytics.", plan: "Studio" },
+    work: { title: "Your media deserves a stage", desc: "Create your first Work — present your productions with credits, reviews, and more.", plan: "Pro" },
+    workLimit: { title: "One stage isn't enough", desc: "Get 5 Works with booking info, touring dates, press photos, and full analytics.", plan: "Studio" },
+    drafts: { title: "Never lose your progress", desc: "Save drafts and pick up where you left off — no more starting over.", plan: "Pro" },
+    tracking: { title: "See who's watching", desc: "Track who views your applications — opens, clicks, and engagement, all in one place.", plan: "Pro" },
+    planner: { title: "Take control of your audition season", desc: "Add reminders, track external calls, sync your calendar — manage everything from one place.", plan: "Pro" },
+    analytics: { title: "Understand your audience", desc: "See who's viewing your work, where they come from, and what they engage with.", plan: "Pro" },
+    videoShare: { title: "Share your best moments", desc: "Create shareable video links with viewer tracking and engagement analytics.", plan: "Pro" },
+    extApp: { title: "Reach beyond Lanced", desc: "Build applications for companies outside the platform — track opens and engagement.", plan: "Pro" },
+    profileViews: { title: "Someone viewed your profile", desc: "Upgrade to see who's watching and which companies are interested.", plan: "Pro" },
+    academy: { title: "Unlock the full Academy", desc: "Access all courses, masterclasses, and coaching — invest in your craft.", plan: "Pro" },
+    studioFeatures: { title: "Make it yours", desc: "Custom themes, colors, typography — present your brand, your way.", plan: "Studio" },
+    password: { title: "Keep it exclusive", desc: "Password-protect any Work or Portfolio — control who sees your best work.", plan: "Studio" },
+    customization: { title: "Your brand, your way", desc: "Full customization with themes, layouts, and typography across everything you share.", plan: "Studio" },
+  };
+
   const PlanGate = ({ feature, title, description, compact }) => {
     const req = FEATURE_PLAN[feature] || "Pro";
+    const isStudio = req === "Studio";
+    const highlights = isStudio ? STUDIO_HIGHLIGHTS : PRO_HIGHLIGHTS;
     if (compact) return (
-      <div style={{ padding: "20px 16px", borderRadius: 14, border: "1px solid rgba(96,77,255,.1)", background: "rgba(96,77,255,.03)", textAlign: "center" }}>
+      <div style={{ padding: "20px 16px", borderRadius: 14, border: `1px solid ${isStudio ? "rgba(124,58,237,.1)" : "rgba(96,77,255,.08)"}`, background: isStudio ? "linear-gradient(135deg,rgba(124,58,237,.03),rgba(96,77,255,.02))" : "linear-gradient(135deg,rgba(96,77,255,.03),rgba(124,58,237,.02))" }}>
+        <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: isStudio ? "#7C3AED" : "var(--ac)", marginBottom: 8 }}>{req} Feature</div>
         <div style={{ fontSize: 13, fontWeight: 600, color: "var(--tx)", marginBottom: 4 }}>{title}</div>
-        <div style={{ fontSize: 12, color: "var(--g4)", marginBottom: 12, lineHeight: 1.5 }}>{description}</div>
-        <button className="btn-premium-upgrade" style={{ fontSize: 12, padding: "8px 18px" }} onClick={() => gateUpgrade(req)}>Upgrade to {req}</button>
+        <div style={{ fontSize: 12, color: "var(--g4)", marginBottom: 14, lineHeight: 1.5 }}>{description}</div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 14 }}>
+          {highlights.slice(0, 3).map((h, i) => <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11.5, color: "var(--g5)" }}><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={isStudio ? "#7C3AED" : "var(--ac)"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>{h}</div>)}
+        </div>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button className={`btn-premium-upgrade${isStudio ? " btn-premium-studio" : ""}`} style={{ fontSize: 12, padding: "8px 18px", flex: 1 }} onClick={() => gateUpgrade(req)}>Upgrade to {req}</button>
+          <button style={{ fontSize: 11, padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 10, background: "none", color: "var(--g5)", cursor: "pointer", whiteSpace: "nowrap" }} onClick={() => gateUpgrade(req)}>See all plans</button>
+        </div>
       </div>
     );
     return (
       <div className="premium-gate">
         <div className="premium-gate-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".05em", color: isStudio ? "#7C3AED" : "var(--ac)", marginBottom: 4 }}>{req} Feature</div>
         <h4>{title}</h4>
         <p>{description}</p>
-        <button className="btn-premium-upgrade" onClick={() => gateUpgrade(req)}>Upgrade to {req}</button>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20, textAlign: "left", maxWidth: 280, margin: "0 auto 20px" }}>
+          {highlights.slice(0, 4).map((h, i) => <div key={i} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 12, color: "var(--g5)" }}><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={isStudio ? "#7C3AED" : "var(--ac)"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>{h}</div>)}
+        </div>
+        <button className={`btn-premium-upgrade${isStudio ? " btn-premium-studio" : ""}`} onClick={() => gateUpgrade(req)}>Upgrade to {req} — {PLAN_PRICES[req]}/mo</button>
+        <div style={{ marginTop: 10 }}><button style={{ background: "none", border: "none", color: "var(--g4)", fontSize: 12, cursor: "pointer", textDecoration: "underline" }} onClick={() => gateUpgrade(req)}>Compare all plans</button></div>
       </div>
     );
   };
@@ -5497,12 +5587,12 @@ export default function ArtistShell() {
   useEffect(() => {
     const ct = document.querySelector(".main .content");
     if (ct) ct.scrollTop = 0;
-    else window.scrollTo(0, 0);
+    else window.scrollTo({ top: 0, behavior: "smooth" });
   }, [studioSubPage]);
 
   /* Scroll to top on page/tab navigation */
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
     const ct = document.querySelector(".main .content");
     if (ct) ct.scrollTop = 0;
     const main = document.querySelector(".main");
@@ -6554,11 +6644,13 @@ export default function ArtistShell() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div className="plan-meter">
-                  <div className="plan-meter-bar"><div className={`plan-meter-fill${pfFull ? " full" : pfWarn ? " warn" : ""}`} style={{ width: `${Math.min(100, (pfUsed / pfMax) * 100)}%` }} /></div>
-                  <span className="plan-meter-count">{pfUsed}/{pfMax}</span>
-                  {pfFull && <button className="plan-meter-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade</button>}
+                  {pfMax > 0 ? <>
+                    <div className="plan-meter-bar"><div className={`plan-meter-fill${pfFull ? " full" : pfWarn ? " warn" : ""}`} style={{ width: `${Math.min(100, (pfUsed / Math.max(pfMax, 1)) * 100)}%` }} /></div>
+                    <span className="plan-meter-count">{pfUsed}/{pfMax >= 999 ? "∞" : pfMax}</span>
+                  </> : <span className="plan-meter-count" style={{ color: "var(--ac)" }}>Pro</span>}
+                  {pfFull && <button className="plan-meter-upgrade" onClick={() => { const msg = artist.plan === "Free" ? UPSELL_MESSAGES.portfolio : UPSELL_MESSAGES.portfolioLimit; showUpsell(msg.title, msg.desc, msg.plan); }}>Upgrade</button>}
                 </div>
-                <button className="btn btn-p" style={{ fontSize: 13, padding: "10px 20px", borderRadius: 12 }} onClick={() => { if (pfFull) { showToast("Portfolio limit reached — upgrade your plan"); setPage("settings"); setSettingsTab("plan"); return; } setShowNewPortfolioModal(true); }}>+ New Portfolio</button>
+                <button className="btn btn-p" style={{ fontSize: 13, padding: "10px 20px", borderRadius: 12 }} onClick={() => { if (pfFull) { const msg = artist.plan === "Free" ? UPSELL_MESSAGES.portfolio : UPSELL_MESSAGES.portfolioLimit; showUpsell(msg.title, msg.desc, msg.plan); return; } setShowNewPortfolioModal(true); }}>+ New Portfolio</button>
               </div>
             </div>
           </div>
@@ -6582,7 +6674,7 @@ export default function ArtistShell() {
                 </div>
               );
             })}
-            <div className="studio-mgr-card studio-mgr-card-new" onClick={() => setShowNewPortfolioModal(true)}>
+            <div className="studio-mgr-card studio-mgr-card-new" onClick={() => { if (pfFull) { const msg = artist.plan === "Free" ? UPSELL_MESSAGES.portfolio : UPSELL_MESSAGES.portfolioLimit; showUpsell(msg.title, msg.desc, msg.plan); return; } setShowNewPortfolioModal(true); }}>
               <div className="studio-mgr-card-new-inner"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>New Portfolio</span></div>
             </div>
           </div>
@@ -6604,11 +6696,13 @@ export default function ArtistShell() {
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <div className="plan-meter">
-                  <div className="plan-meter-bar"><div className={`plan-meter-fill${wkFull ? " full" : wkWarn ? " warn" : ""}`} style={{ width: `${Math.min(100, (wkUsed / wkMax) * 100)}%` }} /></div>
-                  <span className="plan-meter-count">{wkUsed}/{wkMax}</span>
-                  {wkFull && <button className="plan-meter-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade</button>}
+                  {wkMax > 0 ? <>
+                    <div className="plan-meter-bar"><div className={`plan-meter-fill${wkFull ? " full" : wkWarn ? " warn" : ""}`} style={{ width: `${Math.min(100, (wkUsed / Math.max(wkMax, 1)) * 100)}%` }} /></div>
+                    <span className="plan-meter-count">{wkUsed}/{wkMax >= 999 ? "∞" : wkMax}</span>
+                  </> : <span className="plan-meter-count" style={{ color: "var(--ac)" }}>Pro</span>}
+                  {wkFull && <button className="plan-meter-upgrade" onClick={() => { const msg = artist.plan === "Free" ? UPSELL_MESSAGES.work : UPSELL_MESSAGES.workLimit; showUpsell(msg.title, msg.desc, msg.plan); }}>Upgrade</button>}
                 </div>
-                <button className="btn btn-p" style={{ fontSize: 13, padding: "10px 20px", borderRadius: 12 }} onClick={() => { if (wkFull) { showToast("Works limit reached — upgrade your plan"); setPage("settings"); setSettingsTab("plan"); return; } setShowNewWorkModal(true); }}>+ New Work</button>
+                <button className="btn btn-p" style={{ fontSize: 13, padding: "10px 20px", borderRadius: 12 }} onClick={() => { if (wkFull) { const msg = artist.plan === "Free" ? UPSELL_MESSAGES.work : UPSELL_MESSAGES.workLimit; showUpsell(msg.title, msg.desc, msg.plan); return; } setShowNewWorkModal(true); }}>+ New Work</button>
               </div>
             </div>
           </div>
@@ -6629,7 +6723,7 @@ export default function ArtistShell() {
                 <div className="studio-mgr-card-hover"><span className="studio-mgr-card-action">Open Editor</span></div>
               </div>
             ))}
-            <div className="studio-mgr-card studio-mgr-card-new" onClick={() => setShowNewWorkModal(true)}>
+            <div className="studio-mgr-card studio-mgr-card-new" onClick={() => { if (wkFull) { const msg = artist.plan === "Free" ? UPSELL_MESSAGES.work : UPSELL_MESSAGES.workLimit; showUpsell(msg.title, msg.desc, msg.plan); return; } setShowNewWorkModal(true); }}>
               <div className="studio-mgr-card-new-inner"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>New Work</span></div>
             </div>
           </div>
@@ -6739,9 +6833,11 @@ export default function ArtistShell() {
                     <h3>Shared Videos <span className="ds-count">{videoShares.length}</span></h3>
                     {planLimits.videoShares < 999 && (() => { const vsMax = planLimits.videoShares; const vsFull = videoShares.length >= vsMax; return (
                       <div className="plan-meter" style={{ marginRight: "auto" }}>
-                        <div className="plan-meter-bar"><div className={`plan-meter-fill${vsFull ? " full" : ""}`} style={{ width: `${Math.min(100, (videoShares.length / vsMax) * 100)}%` }} /></div>
-                        <span className="plan-meter-count">{videoShares.length}/{vsMax}</span>
-                        {vsFull && <button className="plan-meter-upgrade" onClick={() => { setPage("settings"); setSettingsTab("plan"); }}>Upgrade</button>}
+                        {vsMax > 0 ? <>
+                          <div className="plan-meter-bar"><div className={`plan-meter-fill${vsFull ? " full" : ""}`} style={{ width: `${Math.min(100, (videoShares.length / Math.max(vsMax, 1)) * 100)}%` }} /></div>
+                          <span className="plan-meter-count">{videoShares.length}/{vsMax}</span>
+                        </> : <span className="plan-meter-count" style={{ color: "var(--ac)" }}>Pro</span>}
+                        {vsFull && <button className="plan-meter-upgrade" onClick={() => showUpsell(UPSELL_MESSAGES.videoShare.title, UPSELL_MESSAGES.videoShare.desc, "Pro")}>Upgrade</button>}
                       </div>
                     ); })()}
                     <button className="btn btn-g btn-sm" onClick={() => setPage("media")}>View all →</button>
@@ -7655,7 +7751,6 @@ export default function ArtistShell() {
                       </div>
                     )}
                     <button className="btn btn-p" onClick={() => {
-                      if (!tasteCheck("externalApps", extCount).allowed) { showToast("Upgrade to Pro for unlimited external applications"); gateUpgrade("Pro"); return; }
                       setShowExtAppModal(true); setExtAppStep(0);
                       setExtAppForm({ companyName: "", role: "", deadline: "", motivation: "", selectedMedia: [] });
                     }}>+ Create Application</button>
@@ -8314,9 +8409,10 @@ export default function ArtistShell() {
             { id: "info", label: "Info", icon: I.doc, count: null },
             { id: "gallery", label: "Gallery", icon: I.media, count: pf.photos.length },
             { id: "videos", label: "Videos", icon: I.present, count: pf.videos.length },
+            { id: "statement", label: "Artist Statement", icon: I.doc, count: null, studio: true },
             { id: "resume", label: "Resume", icon: I.profile, count: (pf.resume || []).length },
-            { id: "references", label: "References", icon: I.doc, count: (pf.references || []).length },
-            { id: "documents", label: "Documents", icon: I.applications, count: pf.documents.length },
+            { id: "references", label: "References", icon: I.doc, count: (pf.references || []).length, studio: true },
+            { id: "documents", label: "Documents", icon: I.applications, count: pf.documents.length, studio: true },
           ];
           const pSec = portfolioEditSection;
           const setPSec = (id) => { setPortfolioEditSection(id); setPortfolioTab("overview"); };
@@ -8339,17 +8435,27 @@ export default function ArtistShell() {
               <div className="pfe-video-list" style={{ marginBottom: 16 }}>{pf.videos.map(v => (<div key={v.id} className={`pfe-video${v.id === pf.highlightedVideo ? " featured" : ""}`}><img src={v.thumb} alt="" /><div className="pfe-v-info"><div className="pfe-v-title">{v.title}</div><div className="pfe-v-meta">{v.duration}{v.id === pf.highlightedVideo ? <span className="pfe-featured-badge">★ Featured</span> : ""}</div></div><div className="pfe-v-actions">{v.id !== pf.highlightedVideo && <button onClick={() => { setPortfolios(prev => prev.map(p => p.id === viewPortfolio ? { ...p, highlightedVideo: v.id } : p)); showToast("Set as featured"); }}>★</button>}<button onClick={() => { setPortfolios(prev => prev.map(p => p.id === viewPortfolio ? { ...p, videos: p.videos.filter(x => x.id !== v.id), highlightedVideo: p.highlightedVideo === v.id ? null : p.highlightedVideo } : p)); showToast("Video removed"); }}>×</button></div></div>))}</div>
               <div style={{ display: "flex", gap: 8 }}><button className="pfe-add-btn primary" onClick={() => showToast("Opening Media Library picker...")}>Add From Library</button><button className="pfe-add-btn secondary" onClick={() => showToast("Paste YouTube/Vimeo URL")}>Add URL</button></div>
             </div>);
+            if (pSec === "statement") return (<div className="asset-builder-inspector">{back}<h4>Artist Statement</h4><p className="abi-hint">Your artistic vision — what drives your work and creative identity.</p>
+              {!canUse("portfolioStudioFeatures") ? <PlanGate feature="portfolioStudioFeatures" title="Share your artistic vision" description="Add a formal artist statement to set your portfolio apart — tell the world what drives your creative practice." compact /> : <>
+              <div className="abi-group"><label className="abi-label">Statement</label><textarea className="abi-textarea" style={{ minHeight: 160 }} value={pf.artistStatement || ""} onChange={e => setPortfolios(prev => prev.map(p => p.id === viewPortfolio ? { ...p, artistStatement: e.target.value } : p))} placeholder="Write about your artistic vision, what drives your practice, and the themes that inspire your work..." /></div>
+              <div style={{ fontSize: 11, color: "var(--g4)", textAlign: "right" }}>{(pf.artistStatement || "").length} characters</div>
+              </>}
+            </div>);
             if (pSec === "resume") return (<div className="asset-builder-inspector">{back}<h4>Resume & Experience</h4><p className="abi-hint">Add experience, education, and awards.</p>
               <div style={{ marginBottom: 16 }}>{(pf.resume || []).map(r => (<div key={r.id} className="pfe-resume-item"><div className={`pfe-ri-icon ${RESUME_ICONS[r.type] || "exp"}`}>{EIcon[RESUME_EMOJI_KEYS[r.type] || "briefcase"]}</div><div className="pfe-ri-info"><div className="pfe-ri-title">{r.title}</div><div className="pfe-ri-org">{r.org}</div><div className="pfe-ri-meta">{r.period}</div></div></div>))}{(!pf.resume || pf.resume.length === 0) && <p style={{ color: "var(--g4)", fontSize: 12 }}>No resume entries yet.</p>}</div>
               <div style={{ display: "flex", gap: 8 }}><button className="pfe-add-btn primary" onClick={() => showToast("Add from Resume")}>Add From Resume</button><button className="pfe-add-btn secondary" onClick={() => showToast("Add entry manually")}>+ Manual</button></div>
             </div>);
             if (pSec === "references") return (<div className="asset-builder-inspector">{back}<h4>References & Reviews</h4><p className="abi-hint">Testimonials and press quotes.</p>
+              {!canUse("portfolioStudioFeatures") ? <PlanGate feature="portfolioStudioFeatures" title="Let others speak for you" description="Add references and testimonials from collaborators, directors, and press — the performing arts version of LinkedIn Recommendations." compact /> : <>
               <div style={{ marginBottom: 16 }}>{(pf.references || []).map(ref => (<div key={ref.id} className="pfe-ref-card"><span className={`pfe-ref-type ${ref.type}`}>{ref.type === "reference" ? "Reference" : "Review"}</span><div className="pfe-ref-quote">"{ref.quote}"</div><div className="pfe-ref-source">{ref.type === "reference" ? <><strong>{ref.name}</strong> · {ref.role}, {ref.org}</> : <><strong>{ref.source}</strong> · {ref.date}</>}</div></div>))}{(!pf.references || pf.references.length === 0) && <p style={{ color: "var(--g4)", fontSize: 12 }}>No references yet.</p>}</div>
               <div style={{ display: "flex", gap: 8 }}><button className="pfe-add-btn primary" onClick={() => showToast("Add reference")}>+ Reference</button><button className="pfe-add-btn secondary" onClick={() => showToast("Add review")}>+ Review</button></div>
+              </>}
             </div>);
-            if (pSec === "documents") return (<div className="asset-builder-inspector">{back}<h4>Documents</h4><p className="abi-hint">CVs, tech riders, and press kits.</p>
+            if (pSec === "documents") return (<div className="asset-builder-inspector">{back}<h4>Documents</h4><p className="abi-hint">CVs, credentials, and creative documents.</p>
+              {!canUse("portfolioStudioFeatures") ? <PlanGate feature="portfolioStudioFeatures" title="Attach your credentials" description="Upload typed documents — credentials, creative docs, tech riders — organized and shareable from your portfolio." compact /> : <>
               <div style={{ marginBottom: 16 }}>{pf.documents.map(d => (<div key={d.id} className="pfe-doc"><div className="pfe-d-icon">{EIcon.fileText}</div><div className="pfe-d-info"><div className="pfe-d-title">{d.title}</div><div className="pfe-d-meta">{d.format} · {d.size}</div></div></div>))}{pf.documents.length === 0 && <p style={{ color: "var(--g4)", fontSize: 12 }}>No documents yet.</p>}</div>
               <button className="pfe-add-btn primary" onClick={() => showToast("Add document")}>+ Add Document</button>
+              </>}
             </div>);
             return null;
           };
@@ -8366,6 +8472,7 @@ export default function ArtistShell() {
                 </div>
                 <div className="asset-builder-topbar-right">
                   <button className="btn btn-sm btn-s" onClick={() => setPortfolioLive(true)}>Preview</button>
+                  <button className="btn btn-sm btn-s" onClick={() => setShowShareModal(true)} style={{ display: "flex", alignItems: "center", gap: 4 }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>Share</button>
                   <button className="btn btn-sm btn-p" style={{ background: "#0D9488" }} onClick={() => { setPortfolios(prev => prev.map(p => p.id === viewPortfolio ? { ...p, status: "published" } : p)); showToast("Portfolio published!"); }}>
                     {pf.status === "published" ? "Update" : "Publish"}
                   </button>
@@ -8380,7 +8487,8 @@ export default function ArtistShell() {
                         <button key={sec.id} className={`asset-builder-sec-row${pSec === sec.id ? " active" : ""}`} onClick={() => setPSec(sec.id)}>
                           {sec.icon}
                           <span>{sec.label}</span>
-                          {sec.count !== null && <span className="sec-count">{sec.count}</span>}
+                          {sec.studio && !canUse("portfolioStudioFeatures") && <span style={{ fontSize: 9, fontWeight: 700, padding: "2px 5px", borderRadius: 4, background: "rgba(124,58,237,.08)", color: "#7C3AED", letterSpacing: ".03em" }}>STUDIO</span>}
+                          {sec.count !== null && !sec.studio && <span className="sec-count">{sec.count}</span>}
                         </button>
                       ))}
                     </div>
@@ -8558,9 +8666,9 @@ export default function ArtistShell() {
             { id: "about", label: "About", icon: I.doc, count: null },
             { id: "media", label: "Media", icon: I.media, count: wk.gallery.length + (wk.trailerUrl ? 1 : 0) },
             { id: "credits", label: "Credits", icon: I.profile, count: wk.credits.length },
-            { id: "performances", label: "Performances", icon: I.present, count: wk.upcomingPerformances.length + wk.pastPerformances.length },
-            { id: "reviews", label: "Reviews & Awards", icon: I.doc, count: wk.reviews.length + wk.awards.length },
-            { id: "booking", label: "Booking", icon: I.applications, count: null },
+            { id: "performances", label: "Performances", icon: I.present, count: wk.upcomingPerformances.length + wk.pastPerformances.length, studio: true },
+            { id: "reviews", label: "Reviews & Awards", icon: I.doc, count: wk.reviews.length + wk.awards.length, studio: true },
+            { id: "booking", label: "Booking", icon: I.applications, count: null, studio: true },
           ];
           const wSec = workEditSection;
           const setWSec = (id) => { setWorkEditSection(id); setWorkTab("overview"); };
@@ -8598,6 +8706,7 @@ export default function ArtistShell() {
               <div style={{ display: "flex", gap: 8 }}><button className="pfe-add-btn primary" onClick={() => { const id = "cr" + Date.now(); setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, credits: [...w.credits, { id, name: "New Credit", role: "Role", profileUrl: "" }] } : w)); showToast("Credit added"); }}>+ Add Credit</button><button className="pfe-add-btn secondary" onClick={() => showToast("Link from Lanced profiles")}>Link Profile</button></div>
             </div>);
             if (wSec === "performances") return (<div className="asset-builder-inspector">{back}<h4>Performances</h4><p className="abi-hint">Upcoming shows, past performances, and availability.</p>
+              {!canUse("workStudioFeatures") ? <PlanGate feature="workStudioFeatures" title="Showcase your touring schedule" description="Add upcoming performances, past shows, and availability — let programmers see where you've been and where you're going." compact /> : <>
               <div className="abi-group"><label className="abi-label">Upcoming ({wk.upcomingPerformances.length})</label>
                 {wk.upcomingPerformances.map(p => { const d = new Date(p.date); return (<div key={p.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid var(--g1)" }}><div style={{ textAlign: "center", minWidth: 36 }}><div style={{ fontSize: 16, fontWeight: 800, color: "#D97706" }}>{d.getDate()}</div><div style={{ fontSize: 10, color: "var(--g4)", textTransform: "uppercase" }}>{d.toLocaleDateString("en-GB", { month: "short" })}</div></div><div style={{ flex: 1 }}><div style={{ fontSize: 13, fontWeight: 600 }}>{p.venue}</div><div style={{ fontSize: 11, color: "var(--g4)" }}>{p.city}</div></div><button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, upcomingPerformances: w.upcomingPerformances.filter(x => x.id !== p.id) } : w))}>×</button></div>); })}
                 <button className="pfe-add-btn primary" style={{ marginTop: 8 }} onClick={() => { const id = "up" + Date.now(); setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, upcomingPerformances: [...w.upcomingPerformances, { id, date: "2026-12-01", venue: "New Venue", city: "City", ticketUrl: "" }] } : w)); showToast("Performance added"); }}>+ Add Performance</button>
@@ -8610,8 +8719,10 @@ export default function ArtistShell() {
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}><div className={`wkp-avail-dot ${wk.touringStatus}`} style={{ width: 10, height: 10 }} /><span style={{ fontSize: 13, fontWeight: 600 }}>{touringLabel}</span></div>
                 <select className="abi-select" value={wk.touringStatus} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, touringStatus: e.target.value } : w))}>{TOURING_STATUSES.map(s => <option key={s.id} value={s.id}>{s.label}</option>)}</select>
               </div>
+              </>}
             </div>);
             if (wSec === "reviews") return (<div className="asset-builder-inspector">{back}<h4>Reviews & Awards</h4><p className="abi-hint">Press reviews, audience quotes, and awards.</p>
+              {!canUse("workStudioFeatures") ? <PlanGate feature="workStudioFeatures" title="Highlight your acclaim" description="Add press reviews, audience quotes, and awards — let your recognition speak for itself." compact /> : <>
               <div className="abi-group"><label className="abi-label">Reviews & Press ({wk.reviews.length})</label>
                 {wk.reviews.map(rv => (<div key={rv.id} className="pfe-ref-card"><span className={`pfe-ref-type ${rv.type}`}>{rv.type === "press" ? "Press" : "Audience"}</span><div className="pfe-ref-quote">"{rv.quote}"</div><div className="pfe-ref-source"><strong>{rv.source}</strong>{rv.rating ? ` · ${"★".repeat(rv.rating)}${"☆".repeat(5 - rv.rating)}` : ""}<button style={{ marginLeft: 8, background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, reviews: w.reviews.filter(r => r.id !== rv.id) } : w))}>×</button></div></div>))}
                 <div style={{ display: "flex", gap: 8, marginTop: 8 }}><button className="pfe-add-btn primary" onClick={() => { const id = "rv" + Date.now(); setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, reviews: [...w.reviews, { id, quote: "New review...", source: "Source", rating: 0, type: "press" }] } : w)); showToast("Review added"); }}>+ Review</button><button className="pfe-add-btn secondary" onClick={() => { const id = "rv" + Date.now(); setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, reviews: [...w.reviews, { id, quote: "Audience quote...", source: "Audience member", rating: 0, type: "audience" }] } : w)); showToast("Quote added"); }}>+ Audience Quote</button></div>
@@ -8620,8 +8731,10 @@ export default function ArtistShell() {
                 {wk.awards.map(aw => (<div key={aw.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid var(--g1)" }}><div style={{ width: 28, height: 28, borderRadius: 8, background: aw.type === "win" ? "rgba(217,119,6,.1)" : "rgba(139,92,246,.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>{aw.type === "win" ? EIcon.trophy : EIcon.sparkles}</div><div style={{ flex: 1 }}><div style={{ fontSize: 13, fontWeight: 600 }}>{aw.title}</div><div style={{ fontSize: 11, color: "var(--g4)" }}>{aw.festival} · {aw.year}</div></div><button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, awards: w.awards.filter(a => a.id !== aw.id) } : w))}>×</button></div>))}
                 <button className="pfe-add-btn primary" style={{ marginTop: 8 }} onClick={() => { const id = "aw" + Date.now(); setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, awards: [...w.awards, { id, title: "Award Name", festival: "Festival", year: "2026", type: "win" }] } : w)); showToast("Award added"); }}>+ Add Award</button>
               </div>
+              </>}
             </div>);
             if (wSec === "booking") return (<div className="asset-builder-inspector">{back}<h4>Booking</h4><p className="abi-hint">Contact, CTAs, partners, tech specs, and accessibility.</p>
+              {!canUse("workStudioFeatures") ? <PlanGate feature="workStudioFeatures" title="Open for bookings" description="Add booking contact, CTAs, partners, tech requirements, and accessibility info — everything a programmer needs to book your work." compact /> : <>
               <div className="abi-group"><label className="abi-label">Booking Email</label><input className="abi-input" type="email" value={wk.bookingEmail} onChange={e => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, bookingEmail: e.target.value } : w))} placeholder="booking@yourcompany.com" /></div>
               <div className="abi-group"><label className="abi-label">CTA Buttons ({wk.bookingCtas.length})</label>
                 {wk.bookingCtas.map((cta, i) => (<div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}><span style={{ fontSize: 12, fontWeight: 600, color: "#D97706" }}>{cta.label}</span><span style={{ fontSize: 11, color: "var(--g4)" }}>{cta.intent}</span><button style={{ marginLeft: "auto", background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, bookingCtas: w.bookingCtas.filter((_, j) => j !== i) } : w))}>×</button></div>))}
@@ -8649,6 +8762,7 @@ export default function ArtistShell() {
                 {wk.downloads.map(dl => (<div key={dl.id} style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0", borderBottom: "1px solid var(--g1)" }}><div style={{ width: 28, height: 28, borderRadius: 8, background: "var(--g1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13 }}>{EIcon.fileText}</div><div style={{ flex: 1 }}><div style={{ fontSize: 13, fontWeight: 600 }}>{dl.label}</div><div style={{ fontSize: 11, color: "var(--g4)" }}>{dl.format} · {dl.size}</div></div><button style={{ background: "none", border: "none", color: "var(--red)", fontSize: 11, cursor: "pointer" }} onClick={() => setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, downloads: w.downloads.filter(d => d.id !== dl.id) } : w))}>×</button></div>))}
                 <button className="pfe-add-btn primary" style={{ marginTop: 8 }} onClick={() => showToast("Upload file")}>+ Add Download</button>
               </div>
+              </>}
             </div>);
             return null;
           };
@@ -8665,6 +8779,7 @@ export default function ArtistShell() {
                 </div>
                 <div className="asset-builder-topbar-right">
                   <button className="btn btn-sm btn-s" onClick={() => setWorkLive(true)}>Preview</button>
+                  <button className="btn btn-sm btn-s" onClick={() => setShowWorkShareModal(true)} style={{ display: "flex", alignItems: "center", gap: 4 }}><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>Share</button>
                   <button className="btn btn-sm btn-p" style={{ background: "#D97706" }} onClick={() => { setWorks(prev => prev.map(w => w.id === viewWork ? { ...w, status: "published" } : w)); showToast("Work published!"); }}>
                     {wk.status === "published" ? "Update" : "Publish"}
                   </button>
@@ -8679,7 +8794,8 @@ export default function ArtistShell() {
                         <button key={sec.id} className={`asset-builder-sec-row${wSec === sec.id ? " active" : ""}`} onClick={() => setWSec(sec.id)}>
                           {sec.icon}
                           <span>{sec.label}</span>
-                          {sec.count !== null && <span className="sec-count">{sec.count}</span>}
+                          {sec.studio && !canUse("workStudioFeatures") && <span style={{ fontSize: 9, fontWeight: 700, padding: "2px 5px", borderRadius: 4, background: "rgba(124,58,237,.08)", color: "#7C3AED", letterSpacing: ".03em" }}>STUDIO</span>}
+                          {sec.count !== null && !sec.studio && <span className="sec-count">{sec.count}</span>}
                         </button>
                       ))}
                     </div>
@@ -9029,7 +9145,7 @@ export default function ArtistShell() {
                             <div style={{ fontSize: 13, color: "var(--g4)", marginBottom: 12 }}>This video hasn't been shared yet</div>
                             <button className="btn btn-p btn-sm" onClick={() => {
                               const { allowed } = tasteCheck("videoShares", videoShares.length);
-                              if (!allowed) { showToast("Video share limit reached — upgrade your plan"); gateUpgrade("Pro"); return; }
+                              if (!allowed) { showUpsell(UPSELL_MESSAGES.videoShare.title, UPSELL_MESSAGES.videoShare.desc, "Pro"); return; }
                               const newSlug = generateSlug(sm.title);
                               setVideoShares(prev => [...prev, {
                                 id: "vs" + Date.now(), mediaId: sm.id, title: sm.title, description: "", tags: [], privacy: "unlisted", slug: newSlug, thumbnailSrc: sm.thumb,
@@ -9139,7 +9255,7 @@ export default function ArtistShell() {
                       <p style={{ fontSize: 13, color: "var(--g4)", marginBottom: 16 }}>Share this video to start tracking views and engagement</p>
                       <button className="btn btn-p btn-sm" onClick={() => {
                         const { allowed } = tasteCheck("videoShares", videoShares.length);
-                        if (!allowed) { showToast("Video share limit reached — upgrade your plan"); gateUpgrade("Pro"); return; }
+                        if (!allowed) { showUpsell(UPSELL_MESSAGES.videoShare.title, UPSELL_MESSAGES.videoShare.desc, "Pro"); return; }
                         const newSlug = generateSlug(sm.title);
                         setVideoShares(prev => [...prev, {
                           id: "vs" + Date.now(), mediaId: sm.id, title: sm.title, description: "", tags: [], privacy: "unlisted", slug: newSlug, thumbnailSrc: sm.thumb,
@@ -9299,8 +9415,52 @@ export default function ArtistShell() {
 
         if (!canUse("planCalendar")) return (
           <div>
-            <div className="pg-header"><h1><em>Plan</em></h1><p className="pg-sub">Your audition calendar — Lanced and beyond</p></div>
-            <PlanGate feature="planCalendar" title="Plan Your Audition Season" description="Track deadlines, set reminders, manage external calls, and sync with your calendar. Upgrade to Pro to unlock the full planning toolkit." />
+            <div className="pg-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+              <div>
+                <h1><em>Plan</em></h1>
+                <p className="pg-sub">Your audition calendar — Lanced and beyond</p>
+              </div>
+            </div>
+            <div style={{ position: "relative" }}>
+              <div style={{ filter: "blur(4px)", pointerEvents: "none", userSelect: "none", opacity: 0.6 }}>
+                <div className="plan-nav">
+                  <div className="plan-nav-left"><div className="plan-view-toggle"><button className="active">Month</button><button>Week</button><button>List</button></div></div>
+                  <div className="plan-nav-center"><button className="plan-arrow">‹</button><span className="plan-month-label">{monthLabel}</span><button className="plan-arrow">›</button></div>
+                  <div className="plan-nav-right"><button className="btn btn-s btn-sm">Today</button></div>
+                </div>
+                <div className="plan-cal">
+                  <div className="plan-cal-header">{["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(d => <div key={d} className="plan-cal-dow">{d}</div>)}</div>
+                  <div className="plan-cal-grid">
+                    {Array.from({ length: startDay }).map((_, i) => <div key={"e" + i} className="plan-cal-cell empty" />)}
+                    {Array.from({ length: totalDays }).map((_, i) => {
+                      const day = i + 1;
+                      const dateStr = `${pm.year}-${String(pm.month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+                      const entries = entriesForDate(dateStr);
+                      const isToday = dateStr === todayStr;
+                      return (
+                        <div key={day} className={`plan-cal-cell${isToday ? " today" : ""}${entries.length ? " has-entries" : ""}`}>
+                          <span className="plan-cal-day">{day}</span>
+                          <div className="plan-cal-dots">{entries.slice(0, 3).map(e => <span key={e.id} className="plan-cal-dot" style={{ background: PLAN_ENTRY_COLORS[e.source]?.dot }} />)}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+              <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 2 }}>
+                <div style={{ textAlign: "center", padding: "32px 40px", borderRadius: 20, background: "var(--glass-bg-strong)", backdropFilter: "var(--glass-blur)", WebkitBackdropFilter: "var(--glass-blur)", border: "1px solid var(--glass-border)", maxWidth: 400 }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(96,77,255,.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 14px" }}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" strokeWidth="1.5"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                  <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", color: "var(--ac)", marginBottom: 8 }}>Pro Feature</div>
+                  <h4 style={{ fontSize: 16, fontWeight: 700, margin: "0 0 6px", color: "var(--tx)" }}>Take control of your audition season</h4>
+                  <p style={{ fontSize: 13, color: "var(--g5)", margin: "0 0 16px", lineHeight: 1.5 }}>Add reminders, track external calls, sync your calendar — manage everything from one place.</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 16, textAlign: "left", maxWidth: 280, margin: "0 auto 16px" }}>
+                    {PRO_HIGHLIGHTS.slice(0, 3).map((h, i) => <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11.5, color: "var(--g5)" }}><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>{h}</div>)}
+                  </div>
+                  <button className="btn-premium-upgrade" onClick={() => gateUpgrade("Pro")}>Upgrade to Pro — {PLAN_PRICES.Pro}/mo</button>
+                  <div style={{ marginTop: 10 }}><button style={{ background: "none", border: "none", color: "var(--g4)", fontSize: 12, cursor: "pointer", textDecoration: "underline" }} onClick={() => gateUpgrade("Pro")}>Compare all plans</button></div>
+                </div>
+              </div>
+            </div>
           </div>
         );
 
@@ -9746,9 +9906,9 @@ export default function ArtistShell() {
 
             {!canUse("academyFull") && (
               <div className="aca-gate-banner">
-                <h4>Unlock the Full Academy</h4>
-                <p>Get tools, templates, webinars, and 1-on-1 coaching with Pro.</p>
-                <button className="btn btn-p btn-sm" onClick={() => gateUpgrade("Pro")}>Upgrade to Pro — €4.99/mo</button>
+                <h4>Invest in your craft</h4>
+                <p>Unlock all courses, masterclasses, templates, and coaching with Pro.</p>
+                <button className="btn-premium-upgrade" style={{ fontSize: 13, padding: "10px 24px" }} onClick={() => gateUpgrade("Pro")}>Pro — €4.99/mo</button>
               </div>
             )}
           </div>
@@ -9961,48 +10121,86 @@ export default function ArtistShell() {
             {settingsTab === "plan" && (
               <div style={{ animation: "slideInUp .2s ease" }}>
                 <div className="info-card" style={{ marginBottom: 16 }}>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16 }}>
-                    <h4 style={{ margin: 0 }}>Current Plan</h4>
-                    <span style={{ padding: "4px 14px", borderRadius: 20, background: artist.plan === "Studio" ? "linear-gradient(135deg, #7c3aed, #604DFF)" : artist.plan === "Pro" ? "rgba(96,77,255,.1)" : "rgba(0,0,0,.06)", color: artist.plan === "Studio" ? "#fff" : artist.plan === "Pro" ? "var(--ac)" : "var(--g5)", fontSize: 12, fontWeight: 700, textTransform: "uppercase" }}>{artist.plan}</span>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+                    <div>
+                      <h4 style={{ margin: "0 0 4px" }}>Your Plan</h4>
+                      <p style={{ fontSize: 12.5, color: "var(--g5)", margin: 0, lineHeight: 1.5 }}>{artist.plan === "Free" ? "Find and apply to opportunities on Lanced — always free." : artist.plan === "Pro" ? "Manage your audition season — in and off Lanced." : "Build your artistic presence — your brand, your way."}</p>
+                    </div>
+                    <span className={artist.plan === "Studio" ? "premium-studio-badge" : artist.plan === "Pro" ? "premium-pro-badge" : ""} style={artist.plan === "Free" ? { padding: "4px 14px", borderRadius: 20, background: "var(--g1)", color: "var(--g5)", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".03em" } : { fontSize: 10, padding: "4px 14px" }}>{artist.plan}</span>
                   </div>
-                  <p style={{ fontSize: 13, color: "var(--g5)", lineHeight: 1.6, marginBottom: 16 }}>{artist.plan === "Free" ? "Your Free plan includes unlimited Lanced applications, profile, resume view, media, and network." : artist.plan === "Pro" ? "Your Pro plan adds external apps, planning, analytics, and advanced sharing." : "Studio adds website publishing, brand customization, and all premium features."}</p>
                   {artist.plan !== "Free" && <>
-                    <div className="info-row"><span className="ir-label">Billing Period</span><span className="ir-value">Monthly</span></div>
-                    <div className="info-row"><span className="ir-label">Next Billing</span><span className="ir-value">June 30, 2026</span></div>
-                    <div className="info-row"><span className="ir-label">Amount</span><span className="ir-value" style={{ fontFamily: "var(--mono)" }}>{artist.plan === "Pro" ? "€4.99" : "€12.99"}/month</span></div>
+                    <div style={{ height: 1, background: "var(--g1)", margin: "12px 0" }} />
+                    <div className="info-row"><span className="ir-label">Billing</span><span className="ir-value">Monthly</span></div>
+                    <div className="info-row"><span className="ir-label">Next billing</span><span className="ir-value">June 30, 2026</span></div>
+                    <div className="info-row"><span className="ir-label">Amount</span><span className="ir-value" style={{ fontFamily: "var(--mono)", fontWeight: 600 }}>{PLAN_PRICES[artist.plan]}/month</span></div>
                   </>}
                 </div>
+
                 <div className="info-card" style={{ marginBottom: 16 }}>
-                  <h4>Available Plans</h4>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginTop: 12 }}>
+                  <div style={{ textAlign: "center", marginBottom: 20 }}>
+                    <h4 style={{ margin: "0 0 4px", fontSize: 17 }}>Your career. Your stage. Your terms.</h4>
+                    <p style={{ fontSize: 12.5, color: "var(--g4)", margin: 0, lineHeight: 1.5 }}>From your first audition to your own website — Lanced grows with you.</p>
+                  </div>
+
+                  <div className="plan-cards-grid">
                     {[
-                      { name: "Free", price: "€0", color: "var(--g5)", features: ["Unlimited Lanced applications", "Profile & resume view", "Media library", "Network & inbox", "Academy blogs", "1 portfolio taste", "1 work taste", "1 ext app taste", "1 video share taste"] },
-                      { name: "Pro", price: "€4.99", color: "var(--ac)", features: ["Everything in Free", "Unlimited portfolios & works", "Unlimited ext apps & shares", "Plan calendar & reminders", "Activity & tracking", "Analytics everywhere", "Full Academy content", "Resume download", "Comp card", "Password & email gates"] },
-                      { name: "Studio", price: "€12.99", color: "#7c3aed", features: ["Everything in Pro", "Publish website", "All 5 themes", "Brand customization", "Section editor", "Website sharing"] },
+                      { name: "Free", price: "€0", color: "var(--g5)", tagline: "Find your next opportunity", sections: [
+                        { label: null, items: ["Discover & apply to all calls on Lanced", "Profile & resume", "Media library — unlimited uploads", "Network & inbox", "Plan — view upcoming deadlines", "Academy — intro content"] },
+                      ]},
+                      { name: "Pro", price: "€4.99", color: "var(--ac)", tagline: "Manage your audition season — in and off Lanced", recommended: true, sections: [
+                        { label: "Everything in Free, plus", items: ["1 Work & 1 Portfolio", "Application tracking — opens, views, engagement", "External applications — share via link", "Deadline planner — reminders & calendar sync", "Who viewed your profile", "AI matching insights", "Share video links", "Full Academy access", "Resume download & comp card"] },
+                      ]},
+                      { name: "Studio", price: "€14.99", color: "#7c3aed", tagline: "Build your artistic presence", sections: [
+                        { label: "Everything in Pro, plus", items: ["5 Works with booking, credits, reviews & press", "5 Portfolios with statements, awards & references", "Your own artist website with analytics", "All themes & full customization", "Press Kits & LinkHub", "Media Studio — video analytics", "Password protection", "Contact form — inbound to your inbox"] },
+                        { label: "Add-ons", items: ["Custom domain", "Remove Lanced branding"] },
+                      ]},
                     ].map(plan => {
                       const isCurrent = artist.plan === plan.name;
+                      const isStudio = plan.name === "Studio";
                       return (
-                      <div key={plan.name} style={{ padding: 16, border: isCurrent ? `2px solid ${plan.color}` : "1px solid var(--g2)", borderRadius: 14, textAlign: "center", position: "relative", display: "flex", flexDirection: "column" }}>
-                        {isCurrent && <div style={{ position: "absolute", top: -8, left: "50%", transform: "translateX(-50%)", fontSize: 9, fontWeight: 700, textTransform: "uppercase", padding: "2px 10px", borderRadius: 20, background: plan.color, color: "#fff" }}>Current</div>}
-                        <div style={{ fontSize: 16, fontWeight: 700, color: "var(--tx)", marginBottom: 4, marginTop: isCurrent ? 4 : 0 }}>{plan.name}</div>
-                        <div style={{ fontSize: 22, fontWeight: 700, color: plan.color, fontFamily: "var(--mono)", marginBottom: 12 }}>{plan.price}{plan.price !== "€0" && <span style={{ fontSize: 11, color: "var(--g4)", fontWeight: 400 }}>/mo</span>}</div>
-                        <div style={{ flex: 1, marginBottom: 12 }}>
-                          {plan.features.map((f, i) => <div key={i} style={{ fontSize: 11, color: "var(--g5)", padding: "3px 0", textAlign: "left" }}>{"✓"} {f}</div>)}
+                      <div key={plan.name} className={`plan-card${isCurrent ? " current" : ""}${plan.recommended && !isCurrent ? " recommended" : ""}`} style={{ borderColor: isCurrent ? plan.color : plan.recommended && !isCurrent ? "var(--ac)" : undefined }}>
+                        {isCurrent && <div className="plan-card-badge" style={{ background: isStudio ? "linear-gradient(135deg,#7c3aed,#604DFF)" : plan.color }}>Current</div>}
+                        {plan.recommended && !isCurrent && <div className="plan-card-badge" style={{ background: "var(--ac)" }}>Recommended</div>}
+                        <div className="plan-card-name">{plan.name}</div>
+                        <div className="plan-card-tagline">{plan.tagline}</div>
+                        <div className="plan-card-price" style={{ color: plan.color }}>{plan.price}{plan.price !== "€0" && <span>/mo</span>}</div>
+                        <div className="plan-card-divider" />
+                        <div className="plan-card-features">
+                          {plan.sections.map((sec, si) => (
+                            <div key={si}>
+                              {sec.label && <div className="plan-card-section">{sec.label}</div>}
+                              {sec.items.map((f, fi) => (
+                                <div key={fi} className="plan-card-feature">
+                                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={plan.color === "var(--g5)" ? "var(--g4)" : plan.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                  <span>{f}</span>
+                                </div>
+                              ))}
+                            </div>
+                          ))}
                         </div>
-                        <button className={`btn btn-sm ${isCurrent ? "btn-s" : "btn-p"}`} style={{ width: "100%", background: !isCurrent && plan.name === "Studio" ? "linear-gradient(135deg, #7c3aed, #604DFF)" : undefined }} onClick={() => { if (!isCurrent) { setArtist(a => ({ ...a, plan: plan.name })); showToast(`Switched to ${plan.name} plan`); } }}>{isCurrent ? "Current Plan" : `Upgrade to ${plan.name}`}</button>
+                        <button
+                          className={`btn btn-sm ${isCurrent ? "btn-s" : "btn-p"}`}
+                          style={{ width: "100%", background: !isCurrent && isStudio ? "linear-gradient(135deg,#7c3aed,#604DFF)" : undefined, borderRadius: 10, padding: "10px 16px", fontSize: 13, fontWeight: 600 }}
+                          onClick={() => { if (!isCurrent) { setArtist(a => ({ ...a, plan: plan.name })); showToast(`Switched to ${plan.name} plan`); } }}
+                        >{isCurrent ? "Current Plan" : plan.name === "Free" ? "Downgrade" : `Upgrade to ${plan.name}`}</button>
                       </div>
                       );
                     })}
                   </div>
+
+                  <div style={{ textAlign: "center", marginTop: 16, padding: "12px 0" }}>
+                    <p style={{ fontSize: 11.5, color: "var(--g4)", margin: 0 }}>Applying to opportunities on Lanced is always free. Your Media Library stays intact if you downgrade.</p>
+                  </div>
                 </div>
+
                 {artist.plan !== "Free" && (
                 <div className="info-card">
                   <h4>Billing History</h4>
                   <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 8 }}>
                     {[
-                      { date: "May 1, 2026", amount: artist.plan === "Pro" ? "€4.99" : "€12.99", status: "Paid" },
-                      { date: "Apr 1, 2026", amount: artist.plan === "Pro" ? "€4.99" : "€12.99", status: "Paid" },
-                      { date: "Mar 1, 2026", amount: artist.plan === "Pro" ? "€4.99" : "€12.99", status: "Paid" },
+                      { date: "May 1, 2026", amount: PLAN_PRICES[artist.plan], status: "Paid" },
+                      { date: "Apr 1, 2026", amount: PLAN_PRICES[artist.plan], status: "Paid" },
+                      { date: "Mar 1, 2026", amount: PLAN_PRICES[artist.plan], status: "Paid" },
                     ].map((inv, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 12px", border: "1px solid var(--g2)", borderRadius: 8, fontSize: 12 }}>
                         <span style={{ color: "var(--tx)" }}>{inv.date}</span>
@@ -13734,7 +13932,7 @@ export default function ArtistShell() {
                   {I.back} <span style={{ marginLeft: 6 }}>Back to Editor</span>
                 </button>
                 <span style={{ fontSize: 12, color: "rgba(255,255,255,.5)" }}>Preview Mode — {currentThemeData.name}</span>
-                <button className="btn btn-sm" style={{ background: canUse("studioPublish") ? "#fff" : "rgba(255,255,255,.4)", color: "#000" }} onClick={() => { if (!canUse("studioPublish")) { showToast("Upgrade to Studio to publish your website"); return; } setStudioPublished(true); showToast("Website published!"); setStudioMode("builder"); }}>
+                <button className="btn btn-sm" style={{ background: canUse("studioPublish") ? "#fff" : "rgba(255,255,255,.4)", color: "#000" }} onClick={() => { if (!canUse("studioPublish")) { showUpsell("Publish your website", "Go live with your own artist website — analytics, contact form, and full customization.", "Studio"); return; } setStudioPublished(true); showToast("Website published!"); setStudioMode("builder"); }}>
                   {canUse("studioPublish") ? "Publish" : "Studio — Publish"}
                 </button>
               </div>
@@ -13773,12 +13971,12 @@ export default function ArtistShell() {
                   ))}
                 </div>
                 <div className="studio-builder-topbar-right">
-                  <button className="btn btn-sm btn-s" onClick={() => { if (!canUse("studioSharing")) { showToast("Upgrade to Studio to share your website"); return; } setStudioShareOpen(true); }} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: canUse("studioSharing") ? 1 : 0.5 }}>
+                  <button className="btn btn-sm btn-s" onClick={() => { if (!canUse("studioSharing")) { showUpsell("Share your website", "Share your artist website with a custom link — embed it, send it, own it.", "Studio"); return; } setStudioShareOpen(true); }} style={{ display: "inline-flex", alignItems: "center", gap: 5, opacity: canUse("studioSharing") ? 1 : 0.5 }}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                     Share
                   </button>
                   <button className="btn btn-sm btn-s" onClick={() => { setStudioScrollY(0); setStudioMode("preview"); }}>Preview</button>
-                  <button className="btn btn-sm btn-p" style={{ opacity: canUse("studioPublish") ? 1 : 0.5 }} onClick={() => { if (!canUse("studioPublish")) { showToast("Upgrade to Studio to publish your website"); return; } setStudioPublished(true); showToast("Website published!"); }}>
+                  <button className="btn btn-sm btn-p" style={{ opacity: canUse("studioPublish") ? 1 : 0.5 }} onClick={() => { if (!canUse("studioPublish")) { showUpsell("Publish your website", "Go live with your own artist website — analytics, contact form, and full customization.", "Studio"); return; } setStudioPublished(true); showToast("Website published!"); }}>
                     {canUse("studioPublish") ? (studioPublished ? "Update" : "Publish") : "Studio — Publish"}
                   </button>
                 </div>
@@ -13910,7 +14108,7 @@ export default function ArtistShell() {
                       <div className="studio-theme-grid">
                         {STUDIO_THEMES.map(th => (
                           <div key={th.id} className={`studio-theme-card${studioTheme === th.id ? " active" : ""}${th.locked && !canUse("studioAllThemes") ? " locked" : ""}`}
-                            onClick={() => { if (th.locked && !canUse("studioAllThemes")) { showToast("Upgrade to Studio to unlock all themes"); gateUpgrade("Studio"); return; } setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); }}>
+                            onClick={() => { if (th.locked && !canUse("studioAllThemes")) { gateUpgrade("Studio"); return; } setStudioTheme(th.id); setStudioBrand(prev => ({ ...prev, accentColor: th.colors.accent, backgroundColor: null, titleColor: null, textColor: null })); }}>
                             <div className="studio-theme-preview" style={{ backgroundImage: `url(${th.preview})` }}>
                               {th.locked && !canUse("studioAllThemes") && <div className="studio-theme-lock">STUDIO</div>}
                               {studioTheme === th.id && <div className="studio-theme-active">Active</div>}
@@ -13926,7 +14124,7 @@ export default function ArtistShell() {
 
                     {/* Layout sub-tab — sections list OR section inspector */}
                     {studioCustomizeTab === "layout" && !canUse("studioSections") && (
-                      <PlanGate feature="studioSections" title="Section Editor" description="Customize your website sections, reorder content, and control what visitors see. Upgrade to Studio to unlock." compact />
+                      <PlanGate feature="studioSections" title="Section Editor" description="Reorder, toggle, and customize your website sections — put your best work front and center." compact />
                     )}
                     {studioCustomizeTab === "layout" && canUse("studioSections") && (
                       <div className="studio-layout-tab">
@@ -14265,7 +14463,7 @@ export default function ArtistShell() {
 
                     {/* Brand sub-tab */}
                     {studioCustomizeTab === "brand" && !canUse("studioBrand") && (
-                      <PlanGate feature="studioBrand" title="Brand Customization" description="Set your accent colors, font pairing, and brand identity across your website. Upgrade to Studio to unlock." compact />
+                      <PlanGate feature="studioBrand" title="Brand Customization" description="Set your accent colors, fonts, and brand identity — make your website unmistakably yours." compact />
                     )}
                     {studioCustomizeTab === "brand" && canUse("studioBrand") && (() => {
                       const themeDefaults = { noir: { accent: "#ffffff", bg: "#0a0a0a", title: "#ffffff", text: "#b3b3b3" }, atrium: { accent: "#ffffff", bg: "#F7F7F5", title: "#111111", text: "#636363" }, lumen: { accent: "#c8956c", bg: "#fdf8f4", title: "#2d2418", text: "#8a7a6a" }, slater: { accent: "#111111", bg: "#ffffff", title: "#111111", text: "#8a8a8a" }, strobe: { accent: "#7c3aed", bg: "#e6e2dc", title: "#111111", text: "#8a8a8a" } };
@@ -14513,7 +14711,7 @@ export default function ArtistShell() {
                           )}
                           {th.locked && !canUse("studioAllThemes") && (
                             <button className="btn btn-sm" style={{ background: "rgba(255,255,255,.15)", color: "#fff", border: "1px solid rgba(255,255,255,.2)" }}
-                              onClick={() => { showToast("Upgrade to Studio to unlock all themes"); gateUpgrade("Studio"); }}>
+                              onClick={() => { gateUpgrade("Studio"); }}>
                               Unlock
                             </button>
                           )}
@@ -15450,7 +15648,9 @@ export default function ArtistShell() {
                 <div className="dash-blob dash-blob-4"/>
               </div>
             )}
-            {renderPage()}
+            <div className="page-content" key={page + (inStudio ? "-studio" : "") + (viewPortfolio || "") + (viewWork || "")}>
+              {renderPage()}
+            </div>
           </div>
         </div>
       </div>
@@ -15930,7 +16130,7 @@ export default function ArtistShell() {
                   <span>{resumeZoom}%</span>
                   <button onClick={() => setResumeZoom(z => Math.min(120, z + 10))}>+</button>
                 </div>
-                <button style={{ background: "#fff", color: "#1a1a2e", opacity: canUse("resumeDownload") ? 1 : 0.5 }} onClick={() => { if (!canUse("resumeDownload")) { showToast("Upgrade to Pro to download your resume"); return; } window.print(); }}>
+                <button style={{ background: "#fff", color: "#1a1a2e", opacity: canUse("resumeDownload") ? 1 : 0.5 }} onClick={() => { if (!canUse("resumeDownload")) { showUpsell("Download your resume", "Export your resume as a polished PDF — ready to send anywhere.", "Pro"); return; } window.print(); }}>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
                   {canUse("resumeDownload") ? "Print / Save PDF" : "Pro — Print / Save PDF"}
                 </button>
@@ -16888,7 +17088,7 @@ export default function ArtistShell() {
         let share = videoShares.find(vs => vs.mediaId === m.id);
         if (!share) {
           const { allowed } = tasteCheck("videoShares", videoShares.length);
-          if (!allowed) { showToast("Video share limit reached — upgrade your plan"); setShowVideoShareModal(null); gateUpgrade("Pro"); return null; }
+          if (!allowed) { showUpsell(UPSELL_MESSAGES.videoShare.title, UPSELL_MESSAGES.videoShare.desc, "Pro"); setShowVideoShareModal(null); return null; }
           const newShare = {
             id: "vs" + Date.now(), mediaId: m.id, title: m.title, description: "", tags: [], privacy: "unlisted",
             slug: generateSlug(m.title), thumbnailSrc: m.thumb || "",
@@ -17164,6 +17364,7 @@ export default function ArtistShell() {
                 <button className="btn btn-p" onClick={() => {
                   if (extAppStep === 0 && (!extAppForm.companyName || !extAppForm.role)) { showToast("Please fill in company name and role"); return; }
                   if (extAppStep < 4) { setExtAppStep(s => s + 1); return; }
+                  if (!canUse("activityTracking")) { showUpsell(UPSELL_MESSAGES.extApp.title, UPSELL_MESSAGES.extApp.desc, "Pro"); return; }
                   const slug = generateSlug(extAppForm.companyName || "app");
                   const newApp = { id: "ext" + Date.now(), type: "external", companyName: extAppForm.companyName, companyLogo: null, role: extAppForm.role, deadline: extAppForm.deadline, status: "sent", slug, motivation: extAppForm.motivation, selectedMedia: extAppForm.selectedMedia, shareSettings: { ...extAppShareSettings, requireEmail: true }, createdAt: new Date().toISOString().slice(0, 10), sentAt: new Date().toISOString().slice(0, 10), analytics: { viewCount: 0, lastViewedAt: null, timeSpent: null, mediaViewed: [], viewerEmail: null } };
                   setExternalApps(prev => [newApp, ...prev]);
@@ -17203,6 +17404,94 @@ export default function ArtistShell() {
 
       {/* ── Toast ── */}
       {toast && <div className="toast">{toast}</div>}
+
+      {/* ── Upsell Popup ── */}
+      {upsellPopup && (
+        <div className="upsell-popup" style={inStudio ? { bottom: 110 } : undefined}>
+          <button className="upsell-popup-close" onClick={() => setUpsellPopup(null)}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+          </button>
+          <div style={{ fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".06em", color: upsellPopup.plan === "Studio" ? "#7C3AED" : "var(--ac)", marginBottom: 8 }}>{upsellPopup.plan} Feature</div>
+          <h4>{upsellPopup.title}</h4>
+          <p>{upsellPopup.description}</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 5, marginBottom: 14 }}>
+            {(upsellPopup.plan === "Studio" ? STUDIO_HIGHLIGHTS : PRO_HIGHLIGHTS).slice(0, 3).map((h, i) => <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 11.5, color: "var(--g5)" }}><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke={upsellPopup.plan === "Studio" ? "#7C3AED" : "var(--ac)"} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>{h}</div>)}
+          </div>
+          <button className={`btn-premium-upgrade${upsellPopup.plan === "Studio" ? " btn-premium-studio" : ""}`} onClick={() => { setUpsellPopup(null); gateUpgrade(upsellPopup.plan); }}>Upgrade to {upsellPopup.plan} — {PLAN_PRICES[upsellPopup.plan]}/mo</button>
+          <button style={{ width: "100%", marginTop: 8, background: "none", border: "1px solid var(--g2)", borderRadius: 10, padding: "9px 16px", fontSize: 12, color: "var(--g5)", cursor: "pointer" }} onClick={() => { setUpsellPopup(null); gateUpgrade(upsellPopup.plan); }}>Explore all plans</button>
+        </div>
+      )}
+
+      {/* ── Central Pricing Modal ── */}
+      {showPricingModal && (
+        <div className="share-overlay" style={{ zIndex: 10001 }} onClick={e => { if (e.target === e.currentTarget) setShowPricingModal(null); }}>
+          <div style={{ width: "min(920px, 95vw)", maxHeight: "90vh", overflow: "auto", borderRadius: 20, background: "var(--sf)", border: "1px solid var(--g2)", boxShadow: "0 24px 80px rgba(0,0,0,.15)", padding: "32px 28px", position: "relative" }}>
+            <button style={{ position: "absolute", top: 16, right: 16, background: "none", border: "none", fontSize: 20, cursor: "pointer", color: "var(--g4)", padding: 4 }} onClick={() => setShowPricingModal(null)}>×</button>
+            <div style={{ textAlign: "center", marginBottom: 24 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 700, margin: "0 0 6px" }}>Your career. Your stage. Your terms.</h3>
+              <p style={{ fontSize: 13, color: "var(--g4)", margin: 0 }}>From your first audition to your own website — Lanced grows with you.</p>
+            </div>
+            <div className="plan-cards-grid">
+              {[
+                { name: "Free", price: "€0", color: "var(--g5)", tagline: "Find your next opportunity", sections: [
+                  { label: null, items: ["Discover & apply to all calls on Lanced", "Profile & resume", "Media library — unlimited uploads", "Network & inbox", "Plan — view upcoming deadlines", "Academy — intro content"] },
+                ]},
+                { name: "Pro", price: "€4.99", color: "var(--ac)", tagline: "Manage your audition season — in and off Lanced", recommended: true, sections: [
+                  { label: "Everything in Free, plus", items: ["1 Work & 1 Portfolio", "Application tracking — opens, views, engagement", "External applications — share via link", "Deadline planner — reminders & calendar sync", "Who viewed your profile", "AI matching insights", "Share video links", "Full Academy access", "Resume download & comp card"] },
+                ]},
+                { name: "Studio", price: "€14.99", color: "#7c3aed", tagline: "Build your artistic presence", sections: [
+                  { label: "Everything in Pro, plus", items: ["5 Works with booking, credits, reviews & press", "5 Portfolios with statements, awards & references", "Your own artist website with analytics", "All themes & full customization", "Press Kits & LinkHub", "Media Studio — video analytics", "Password protection", "Contact form — inbound to your inbox"] },
+                  { label: "Add-ons", items: ["Custom domain", "Remove Lanced branding"] },
+                ]},
+              ].map(plan => {
+                const isCurrent = artist.plan === plan.name;
+                const isStudio = plan.name === "Studio";
+                const isHighlighted = showPricingModal === plan.name;
+                return (
+                <div key={plan.name} className={`plan-card${isCurrent ? " current" : ""}${(plan.recommended && !isCurrent) || isHighlighted ? " recommended" : ""}`} style={{ borderColor: isCurrent ? plan.color : isHighlighted ? plan.color : plan.recommended && !isCurrent ? "var(--ac)" : undefined, transform: isHighlighted ? "scale(1.02)" : undefined, transition: "transform .2s" }}>
+                  {isCurrent && <div className="plan-card-badge" style={{ background: isStudio ? "linear-gradient(135deg,#7c3aed,#604DFF)" : plan.color }}>Current</div>}
+                  {isHighlighted && !isCurrent && <div className="plan-card-badge" style={{ background: isStudio ? "linear-gradient(135deg,#7c3aed,#604DFF)" : plan.color }}>Recommended</div>}
+                  {plan.recommended && !isCurrent && !isHighlighted && <div className="plan-card-badge" style={{ background: "var(--ac)" }}>Popular</div>}
+                  <div className="plan-card-name">{plan.name}</div>
+                  <div className="plan-card-tagline">{plan.tagline}</div>
+                  <div className="plan-card-price" style={{ color: plan.color }}>{plan.price}{plan.price !== "€0" && <span>/mo</span>}</div>
+                  <div className="plan-card-divider" />
+                  <div className="plan-card-features">
+                    {plan.sections.map((sec, si) => (
+                      <div key={si}>
+                        {sec.label && <div className="plan-card-section">{sec.label}</div>}
+                        {sec.items.map((f, fi) => (
+                          <div key={fi} className="plan-card-feature">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={plan.color === "var(--g5)" ? "var(--g4)" : plan.color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span>{f}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    className={`btn btn-sm ${isCurrent ? "btn-s" : "btn-p"}`}
+                    style={{ width: "100%", background: !isCurrent && isStudio ? "linear-gradient(135deg,#7c3aed,#604DFF)" : undefined, borderRadius: 10, padding: "10px 16px", fontSize: 13, fontWeight: 600 }}
+                    onClick={() => { if (!isCurrent) { setArtist(a => ({ ...a, plan: plan.name })); showToast(`Upgraded to ${plan.name}!`); setShowPricingModal(null); } }}
+                  >{isCurrent ? "Current Plan" : plan.name === "Free" ? "Downgrade" : `Upgrade to ${plan.name}`}</button>
+                </div>
+                );
+              })}
+            </div>
+            <div style={{ textAlign: "center", marginTop: 20, padding: "14px 0", borderTop: "1px solid var(--g1)" }}>
+              <p style={{ fontSize: 12, color: "var(--g5)", margin: "0 0 4px", fontWeight: 600 }}>Join 2,000+ artists managing their careers on Lanced</p>
+              <p style={{ fontSize: 11.5, color: "var(--g4)", margin: 0 }}>Applying to opportunities on Lanced is always free. Your Media Library stays intact if you downgrade.</p>
+            </div>
+            <div style={{ marginTop: 16, borderTop: "1px solid var(--g1)", paddingTop: 16 }}>
+              {[
+                { q: "Can I still apply to opportunities for free?", a: "Yes, always. Core gives you full access to every call on Lanced." },
+                { q: "What happens to my media if I downgrade?", a: "Your Media Library stays intact. You just can't create new Works or Portfolios until you re-upgrade." },
+                { q: "Can I switch plans anytime?", a: "Absolutely. Upgrade, downgrade, or cancel anytime — no lock-in." },
+              ].map((faq, i) => <details key={i} style={{ marginBottom: 8, fontSize: 12.5 }}><summary style={{ cursor: "pointer", fontWeight: 600, color: "var(--tx)", padding: "6px 0", listStyle: "none", display: "flex", alignItems: "center", gap: 6 }}><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--g4)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>{faq.q}</summary><p style={{ margin: "4px 0 0 16px", color: "var(--g4)", lineHeight: 1.5 }}>{faq.a}</p></details>)}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
