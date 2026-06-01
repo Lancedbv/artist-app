@@ -3,6 +3,8 @@ import { createPortal } from "react-dom";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import UniversalAuth from "./UniversalAuth";
+import UniversalOnboarding, { createOnboardingState } from "./UniversalOnboarding";
+import { ONBOARDING_CONFIG } from "./onboardingConfig.jsx";
 
 /* ━━━ MOCK DATA ━━━ */
 const DEMO_ARTIST = {
@@ -5156,9 +5158,18 @@ export default function ArtistShell() {
   const [authPass, setAuthPass] = useState("");
   const [authName, setAuthName] = useState("");
 
+  /* Onboarding state — demo only, in-memory (never auto-starts on app open) */
+  const [onboardingState, setOnboardingState] = useState(null);
+  const [obFirstName, setObFirstName] = useState("");
+
   /* Navigation */
   const [page, setPage] = useState("dashboard");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  /* Collapse the real sidebar when the in-app onboarding (conversation/learning) begins */
+  useEffect(() => {
+    const s = onboardingState?.stage;
+    if (s === "conversation" || s === "learning") setSidebarCollapsed(true);
+  }, [onboardingState?.stage]);
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("lanced-artist-dark") === "true");
 
   /* Welcome */
@@ -5652,10 +5663,29 @@ export default function ArtistShell() {
   if (auth !== "app") {
     return (
       <UniversalAuth
-        onAuth={() => { setAuth("app"); setShowWelcome(true); }}
+        onAuth={(result) => { setAuth("app"); setShowWelcome(true); if (result?.firstName) setObFirstName(result.firstName); }}
       />
     );
   }
+
+  /* ━━━ ONBOARDING ━━━ */
+  /* Welcome + purpose are cinematic full-screen takeovers (like the auth screens). */
+  if (onboardingState && (onboardingState.stage === "welcome" || onboardingState.stage === "purpose")) {
+    return (
+      <div className={`shell${darkMode ? " dark" : ""}`}>
+        <style>{CSS}</style>
+        <UniversalOnboarding
+          config={ONBOARDING_CONFIG}
+          state={onboardingState}
+          setState={setOnboardingState}
+          firstName={obFirstName || onboardingState.firstName || "there"}
+          onComplete={() => setOnboardingState(prev => ({ ...prev, stage: "complete" }))}
+        />
+      </div>
+    );
+  }
+  /* Conversation + learning render INSIDE the real shell (real sidebar stays, collapsed) — see .main below. */
+  const obInShell = onboardingState && (onboardingState.stage === "conversation" || onboardingState.stage === "learning");
 
   /* ━━━ SIDEBAR NAV ITEMS ━━━ */
   const NAV_ITEMS = [
@@ -15573,8 +15603,30 @@ export default function ArtistShell() {
         </nav>
 
         {/* ── Main ── */}
-        <div className="main">
+        <div className={`main${obInShell ? " ob-main-host" : ""}`}>
+          {obInShell && (
+            <UniversalOnboarding
+              embedded
+              config={ONBOARDING_CONFIG}
+              state={onboardingState}
+              setState={setOnboardingState}
+              firstName={obFirstName || onboardingState.firstName || "there"}
+              onComplete={() => setOnboardingState(prev => ({ ...prev, stage: "complete" }))}
+            />
+          )}
           <div className="topbar">
+            <button
+              onClick={() => setOnboardingState(createOnboardingState(ONBOARDING_CONFIG, "new", "Amara"))}
+              style={{
+                position:"relative",padding:"8px 20px",borderRadius:24,border:"none",cursor:"pointer",
+                fontFamily:"var(--sans)",fontSize:13,fontWeight:600,letterSpacing:"-.01em",
+                background:"linear-gradient(135deg,#604DFF 0%,#8B7AFF 100%)",color:"#fff",
+                display:"inline-flex",alignItems:"center",gap:8,boxShadow:"0 2px 8px rgba(96,77,255,.3)",
+                transition:"transform .15s,box-shadow .15s",
+              }}
+              onMouseEnter={e=>{e.currentTarget.style.transform="scale(1.03)";e.currentTarget.style.boxShadow="0 4px 14px rgba(96,77,255,.4)"}}
+              onMouseLeave={e=>{e.currentTarget.style.transform="scale(1)";e.currentTarget.style.boxShadow="0 2px 8px rgba(96,77,255,.3)"}}
+            >✨ Onboarding Experience</button>
             <button className="topbar-studio" onClick={() => showToast("Studio — premium tools coming soon")}>
               <span>Try Studio</span>
             </button>
